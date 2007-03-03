@@ -1,0 +1,16 @@
+Begin3
+Title:          ksudoku -- KDE sudoku game
+Version:        0.2
+Entered-date:   
+Description:    
+Keywords:       KDE Qt
+Author:         Francesco Rossi <redsh@email.it>
+Maintained-by:  Francesco Rossi <redsh@email.it>
+Home-page:      
+Alternate-site: 
+Primary-site:   http://projects.sf.net/ksudoku/
+                xxxxxx  ksudoku-0.2.tar.gz
+                xxx     ksudoku-0.2.lsm
+Platform:       Linux. Needs KDE
+Copying-policy: Custom
+End

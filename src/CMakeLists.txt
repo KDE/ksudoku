@@ -1,0 +1,113 @@
+# i don't know where to get the actual values from, KDE4 version seems
+# to has this values already set
+#set(BIN_INSTALL_DIR bin )
+#set(XDG_APPS_DIR ??)
+#set(DATA_INSTALL_DIR ??)
+#set(ICON_INSTALL_DIR ??)
+
+########### next target ###############
+
+set(ksudoku_SRCS
+	main.cpp
+)
+
+kde4_automoc( ${ksudoku_SRCS} )
+
+kde4_add_executable(ksudoku ${ksudoku_SRCS})
+
+target_link_libraries(ksudoku
+	ksudoku_gui ksudoku_views ksudoku_logic
+	${QT_AND_KDECORE_LIBRARIES} ${KDE4_KDEUI_LIBS} ${KDE4_KDECORE_LIBS} ${QT_QTOPENGL_LIBRARY}  ${KDE4_KDEPRINT_LIBS}   ${KDE4_KDEIO_LIBS} GL GLU knewstuff
+) #ksudoku_export ksudoku_draw
+
+set(BIN_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/bin)
+
+install(TARGETS ksudoku  DESTINATION ${BIN_INSTALL_DIR} )
+
+########### next target ###############
+ADD_SUBDIRECTORY( logic  )
+ADD_SUBDIRECTORY( gui             )
+ADD_SUBDIRECTORY( gui/views       )
+#ADD_SUBDIRECTORY( gui/export      ) #TODO PORT
+#ADD_SUBDIRECTORY( gui/export/draw ) #TODO PORT
+
+
+#set(ksudoku_client_SRCS
+#    ksudoku_client.cpp
+#)
+
+#kde3_automoc( ${ksudoku_client_SRCS} )
+
+#kde3_add_executable(ksudoku_client ${ksudoku_client_SRCS})
+
+#target_link_libraries(ksudoku_client ${QT_AND_KDECORE_LIBRARIES} kdeui)
+
+
+
+#install(TARGETS ksudoku_client  DESTINATION ${BIN_INSTALL_DIR} )
+
+########### install files ###############
+
+FIND_PROGRAM(KDE3_KDECONFIG_EXECUTABLE NAMES kde-config )
+
+EXEC_PROGRAM(${KDE3_KDECONFIG_EXECUTABLE} ARGS --expandvars --install apps OUTPUT_VARIABLE KDE3_XDG_APPS_DIR )
+EXEC_PROGRAM(${KDE3_KDECONFIG_EXECUTABLE} ARGS --expandvars --install data OUTPUT_VARIABLE KDE3_DATA_INSTALL_DIR )
+EXEC_PROGRAM(${KDE3_KDECONFIG_EXECUTABLE} ARGS --expandvars --install config OUTPUT_VARIABLE KDE3_CONFIG_INSTALL_DIR )
+
+install( FILES gui/ksudoku.desktop  DESTINATION  ${KDE3_XDG_APPS_DIR}/Games )
+install( FILES gui/ksudokuui.rc  DESTINATION  ${KDE3_DATA_INSTALL_DIR}/ksudoku )
+install( FILES ksudokurc  DESTINATION ${KDE3_CONFIG_INSTALL_DIR})
+
+install(FILES shapes/4x4.xml shapes/Jigsaw.xml shapes/XSudoku.xml shapes/Samurai.xml DESTINATION ${KDE3_DATA_INSTALL_DIR}/ksudoku)
+
+
+
+kde4_install_icons(hicolor)
+
+
+########### the old Makefile.am #########
+
+# ## Makefile.am for ksudoku
+#
+# # this is the program that gets installed.  it's name is used for all
+# # of the other Makefile.am variables
+# bin_PROGRAMS = ksudoku ksudoku_client
+#
+# # set the include path for X, qt and KDE
+# INCLUDES         = $(all_includes)
+#
+# # the library search path.
+# ksudoku_LDFLAGS = $(KDE_RPATH) $(all_libraries)
+#
+# # the libraries to link against.
+# ksudoku_LDADD   = $(LIB_KFILE) $(LIB_KDEPRINT)  -lGL -lGLU
+#
+# # which sources should be compiled for ksudoku
+# ksudoku_SOURCES = main.cpp ksudoku.cpp ksudokuview.cpp ksudokuiface.skel \
+# 		qsudokubutton.cpp knewdlg.cpp sudoku_solver.cpp glwindow.cpp ArcBall.cpp
+#
+# # these are the headers for your project
+# noinst_HEADERS = ksudoku.h ksudokuview.h qsudokubutton.h knewdlg.h \
+# 		sudoku_solver.h glwindow.h
+#
+# # client stuff
+# ksudoku_client_LDFLAGS = $(KDE_RPATH) $(all_libraries)
+# ksudoku_client_LDADD   = $(LIB_KDECORE)
+# ksudoku_client_SOURCES = ksudoku_client.cpp
+#
+# # let automoc handle all of the meta source files (moc)
+# METASOURCES = AUTO
+#
+# messages: rc.cpp
+# 	$(EXTRACTRC) `find . -name \*.ui -o -name \*.rc` > rc.cpp
+# 	$(XGETTEXT) *.cpp -o $(podir)/ksudoku.pot
+#
+# KDE_ICON = AUTO
+#
+# # this is where the kdelnk file will go
+# kdelnkdir   = $(kde_appsdir)/Games
+# kdelnk_DATA = ksudoku.desktop
+#
+# # this is where the XML-GUI resource file goes
+# rcdir = $(kde_datadir)/ksudoku
+# rc_DATA = ksudokuui.rc

@@ -1,0 +1,336 @@
+// part of KSUDOKU - by Francesco Rossi <redsh@email.it> 2005
+
+#include "sudoku_solver.h"
+#include "ksudokuview.h"
+
+#include <qpainter.h>
+//Added by qt3to4:
+#include <QResizeEvent>
+#include <kmessagebox.h>
+#include <klocale.h>
+		
+#include <math.h>
+#include "puzzle.h"
+
+
+namespace ksudoku {
+
+ksudokuView::ksudokuView(QWidget *parent, bool customd)
+	: QWidget(parent)
+	, KsView(parent)
+{
+	isWaitingForNumber = -1;
+	highlighted = -1;
+	
+	custom = customd;
+	m_color0 = 0;
+	m_buttons.setAutoDelete(true);
+}
+
+void ksudokuView::setup(const ksudoku::Game& game)
+{
+//	std::srand( time(0) );//srandom((unsigned)time( NULL ) );
+//	puzzle_mark_wrong=true;
+	m_guidedMode = true;
+	current_selected_number = 0;
+	
+	setGame(game);
+}
+
+ksudokuView::~ksudokuView()
+{
+
+}
+
+QString ksudokuView::status() const
+{
+	QString m;
+
+	int secs = QTime(0,0).secsTo(m_game.time());
+	if(secs % 36 < 12)
+		m = i18n("Selected item %1, Time elapsed %2. Press SHIFT to highlight.",
+		         m_game.value2Char((current_selected_number > 0) ? current_selected_number : 0),
+		         m_game.time().toString("hh:mm:ss"));
+	else if(secs % 36 < 24)
+		m = i18n("Selected item %1, Time elapsed %2. Use RMB to pencil-mark(superscript).",
+		         m_game.value2Char((current_selected_number > 0) ? current_selected_number : 0),
+		         m_game.time().toString("hh:mm:ss"));
+	else
+		m = i18n("Selected item %1, Time elapsed %2. Type in a cell to replace that number in it.",
+		         m_game.value2Char((current_selected_number > 0) ? current_selected_number : 0),
+		         m_game.time().toString("hh::mm::ss"));
+
+	return m;
+}
+
+void ksudokuView::draw(QPainter& p, int height, int width) const
+{
+	if(m_buttons.size() == 0)
+		return;
+
+	int w = m_buttons[0]->width ();
+	int h = m_buttons[0]->height();
+	int o = m_game.order();
+
+	//must fit on height width
+	float scaleH = static_cast<float>(height) / (h*o);
+	float scaleW = static_cast<float>(width)  / (w*o);
+	p.scale(scaleW,scaleH);
+
+	for(uint i = 0; i < m_buttons.size(); ++i){
+		int x,y;
+		if(custom==0)
+		{
+			x = w * (i/o);
+			y = h * (i%o);
+		}
+		else
+		{
+			x = w* m_buttons[i]->getX();
+			y = w* m_buttons[i]->getY();
+		}
+		p.translate(x,y);
+		m_buttons[i]->drawExt(p);
+		p.translate(-x,-y);  //avoid resetMatrix()
+	}
+}
+
+
+void ksudokuView::btn_enter(uint y, uint x) // oops
+{
+	//for wrapping:
+	uint max_y = ((GraphCustom*) m_game.puzzle()->solver()->g)->sizeX() - 1;
+	uint max_x = ((GraphCustom*) m_game.puzzle()->solver()->g)->sizeY() - 1;
+	if(x > max_x+1) x = max_x;  //uint => negative == max uint
+	if(y > max_y+1) y = max_y;
+	if(x > max_x) x = 0;
+	if(y > max_y) y = 0;
+
+	m_buttons[m_game.index(y,x)]->setFocus();
+
+	isWaitingForNumber = -1;
+
+	for(uint i = 0; i < m_game.size(); ++i)
+		for(int j = 0; j < 3; ++j)
+			m_buttons[i]->setHighlighted(j,false);
+
+	if(custom==0)
+	{
+
+		for(uint i = 0; i < m_game.order(); ++i)
+		{
+	// 		uint base = m_game.userPuzzle()->base;
+			uint base = (uint)sqrt(m_game.puzzle()->order());
+			m_buttons[m_game.index(y, i)]->setHighlighted(0,true);
+			m_buttons[m_game.index(i, x)]->setHighlighted(1,true);
+			uint sx = (x/base) * base;
+			uint sy = (y/base) * base;
+			m_buttons[m_game.index(i/base+ sy, sx+(i%base))]->setHighlighted(2,true);
+		}
+	}
+	else
+	{
+		/*int colorA = m_color0;
+		m_color0 = (m_color0+1)%2;
+		int colorB = m_color0;
+		GraphCustom* g = ((GraphCustom*) m_game.puzzle()->solver()->g);
+		int index = m_game.index(y,x);
+		m_buttons[index]->setHighlighted(colorA+1,true);
+		for(int i=0; i<g->optimized_d[index]; i++)
+		{
+			m_buttons[g->optimized[index][i]]->setHighlighted(colorB+1,true);
+		}*/
+		GraphCustom* g = ((GraphCustom*) m_game.puzzle()->solver()->g);
+		int index = g->index(y,x);
+		//printf("(%d %d) %d\n", y, x, index);
+		int count = 0;
+
+		for(int i=0; i<g->cliques.size(); i++)
+		{
+			for(int j=0; j<g->cliques[i].size(); j++)
+			{
+				if(g->cliques[i][j]==index)
+				{
+					for(int k=0; k<g->cliques[i].size(); k++)
+					{
+						m_buttons[g->cliques[i][k]]->setHighlighted(count,true);
+					}
+					count = (count+1)%3;
+					break;
+				}
+			}
+		}
+	}
+	for(uint i = 0; i < m_game.size(); ++i)
+		m_buttons[i]->update();
+}
+
+
+void ksudokuView::btn_leave(uint /*x*/, uint /*y*/)
+{}
+
+void ksudokuView::setGame(const ksudoku::Game& game) {
+	if(m_game.interface()) {
+		disconnect(m_game.interface(), SIGNAL(cellChange(uint)), this, SLOT(onCellChange(uint)));
+		disconnect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(onFullChange()));
+		
+		disconnect(m_game.interface(), SIGNAL(completed(bool,const QTime&,bool)), parent(), SLOT(onCompleted(bool,const QTime&,bool)));
+		disconnect(m_game.interface(), SIGNAL(modified(bool)), parent(), SLOT(onModified(bool)));
+	}
+
+	m_game = game;
+
+	if(custom==0)
+	{
+		// Resize button-array
+		if(m_buttons.size() > (uint)m_game.size()) {
+			m_buttons.resize(m_game.size());
+		} else if(m_buttons.size() < (uint)m_game.size()) {
+			uint oldsize = m_buttons.size();
+			m_buttons.resize(m_game.size());
+			for(uint i = oldsize; i < (uint)m_game.size(); ++i) {
+				QSudokuButton* btn = new QSudokuButton(this, 0, 0, 0);
+				
+				connect(btn, SIGNAL(clicked2(uint, uint)), this, SLOT(slotHello(uint, uint)));
+				connect(btn, SIGNAL(rightclicked(uint, uint)), this, SLOT(slotRight(uint, uint)));
+				connect(btn, SIGNAL(enter(uint,uint)), this, SLOT(btn_enter(uint,uint)));
+				connect(btn, SIGNAL(leave(uint,uint)), this, SLOT(btn_leave(uint,uint)));
+				
+				connect(btn, SIGNAL(beginHighlight(uint)), this, SLOT(beginHighlight(uint)));
+				connect(btn, SIGNAL(finishHighlight()), this, SLOT(finishHighlight()));
+				m_buttons.insert(i, btn);
+			}
+		}
+		
+		for(uint i = 0; i < m_game.size(); ++i) {
+			m_buttons[i]->setX(i/m_game.order());
+			m_buttons[i]->setY(i%m_game.order());
+			m_buttons[i]->updateData();
+			m_buttons[i]->resize();
+			m_buttons[i]->show();
+		}
+	}
+	else
+	{
+		m_buttons.resize(0);
+		m_buttons.resize(m_game.size());
+		for(uint i = 0; i < (uint)m_game.size(); ++i) {
+			bool notConnectedNode = ((GraphCustom*) m_game.puzzle()->solver()->g)->optimized_d[i] == 0;
+			QSudokuButton* btn = new QSudokuButton((ksudokuView*) this, 0, 0, 0);
+
+			btn->setCustom(1);
+
+			if(!notConnectedNode)
+			{
+				btn->setConnected(true);
+				connect(btn, SIGNAL(clicked2(uint, uint)), this, SLOT(slotHello(uint, uint)));
+				connect(btn, SIGNAL(rightclicked(uint, uint)), this, SLOT(slotRight(uint, uint)));
+				connect(btn, SIGNAL(enter(uint,uint)), this, SLOT(btn_enter(uint,uint)));
+				connect(btn, SIGNAL(leave(uint,uint)), this, SLOT(btn_leave(uint,uint)));
+				connect(btn, SIGNAL(beginHighlight(uint)), this, SLOT(beginHighlight(uint)));
+				connect(btn, SIGNAL(finishHighlight()), this, SLOT(finishHighlight()));
+			}
+			else
+			{
+				btn->setConnected(false);
+			}
+			m_buttons.insert(i, btn);
+		}
+		
+	
+		for(uint i = 0; i < m_buttons.size(); ++i) {
+			GraphCustom* g = (GraphCustom*)m_game.puzzle()->solver()->g;
+			m_buttons[i]->setY(g->get_y(i));
+			m_buttons[i]->setX(g->get_x(i));
+			m_buttons[i]->updateData();
+			m_buttons[i]->resize();
+			m_buttons[i]->show();
+		}
+	}
+
+	connect(m_game.interface(), SIGNAL(cellChange(uint)), this, SLOT(onCellChange(uint)));
+	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(onFullChange()));
+	
+	connect(m_game.interface(), SIGNAL(completed(bool,const QTime&,bool)), parent(), SLOT(onCompleted(bool,const QTime&,bool)));
+	connect(m_game.interface(), SIGNAL(modified(bool)), parent(), SLOT(onModified(bool)));
+
+	//printf("DONE\n");
+}
+
+void ksudokuView::beginHighlight(uint val)
+{
+	if( ! m_game.hasSolver()) return;
+
+	highlighted = val;
+	if(val == 0) highlighted = current_selected_number;
+	if(highlighted == -1) return;
+	
+	QBitArray highlightedBtns = m_game.highlightValueConnections(highlighted, true);
+	if(highlightedBtns.size() < m_game.size())
+		return;
+	
+	for(uint i = 0; i < m_game.size(); ++i) {
+		m_buttons[i]->setHighlighted(3, highlightedBtns[i]);
+		m_buttons[i]->update();
+	}
+}
+
+void ksudokuView::finishHighlight()
+{
+	highlighted = -1;
+
+	for(uint i = 0; i < m_game.size(); ++i)
+	{
+		m_buttons[i]->setHighlighted(3,0);
+		m_buttons[i]->update();
+	}
+}
+	
+void ksudokuView::resizeEvent(QResizeEvent * /*event*/ )
+{
+	for(uint i = 0; i < m_buttons.size(); ++i)
+		m_buttons[i]->resize();
+}
+	
+void ksudokuView::slotHello(uint x, uint y)
+{
+	if(m_game.given(x,y))
+	{
+		current_selected_number = m_game.value(x,y);
+		emit changedSelectedNum();
+	}
+	else
+	{
+		m_game.setValue(current_selected_number,x,y);
+	}
+}
+
+void  ksudokuView::slotRight(uint x, uint y)
+{
+	if(!m_game.given(x,y))
+	{
+		if(mouseOnlySuperscript == 1)
+		{
+			m_game.flipMarker(current_selected_number, x, y);
+		}
+		else
+		{
+			isWaitingForNumber = m_game.index(x,y);
+			m_buttons[m_game.index(x,y)]->update();
+		}
+	}
+}
+
+void ksudokuView::onCellChange(uint index) {
+	if(m_buttons[index])
+		m_buttons[index]->updateData();
+}
+
+void ksudokuView::onFullChange() {
+	for(uint i = 0; i < m_buttons.count(); i++)
+		m_buttons[i]->updateData();
+}
+
+}
+
+#include "ksudokuview.moc"

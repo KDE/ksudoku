@@ -1,0 +1,235 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+  <!ENTITY ksudoku "<application>ksudoku 0.2</application>">
+  <!ENTITY kappname "&ksudoku;"><!-- Do *not* replace kappname-->
+  <!ENTITY package "kde-module"><!-- kdebase, kdeadmin, etc -->
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % English "INCLUDE"><!-- change language only here -->
+  
+  
+  <!-- Do not define any other entities; instead, use the entities
+       from kde-genent.entities and $LANG/user.entities. -->
+]>
+<!-- kdoctemplate v0.8 October 1 1999 
+     Minor update to "Credits and Licenses" section on August 24, 2000
+     Removed "Revision history" section on 22 January 2001
+     Changed to Installation/Help menu entities 18 October 2001
+     Other minor cleanup and changes 18 October 2001 -->
+
+
+<!--
+This template was designed by: David Rugge davidrugge@mindspring.com
+with lots of help from: Eric Bischoff ebisch@cybercable.tm.fr
+and Frederik Fouvry fouvry@sfs.nphil.uni-tuebingen.de
+of the KDE DocBook team.
+
+You may freely use this template for writing any sort of KDE documentation.
+If you have any changes or improvements, please let us know.
+
+Remember:
+- in XML, the case of the <tags> and attributes is relevant ;
+- also, quote all attributes.
+
+Please don't forget to remove all these comments in your final documentation,
+thanks ;-).
+-->
+
+<!-- ................................................................ -->
+
+<!-- The language must NOT be changed here. -->
+
+<book lang="&language;">
+
+<!-- This header contains all of the meta-information for the document such
+as Authors, publish date, the abstract, and Keywords -->
+
+<bookinfo>
+<title>The &ksudoku; Handbook</title>
+
+<authorgroup>
+<author>
+<firstname></firstname>
+<othername></othername>
+<surname>Francesco Rossi</surname>
+<affiliation>
+<address><email>redsh@email.it</email></address>
+</affiliation>
+</author>
+</authorgroup>
+
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+
+<copyright>
+<year>1999</year>
+<year>2005</year>
+<holder>Francesco Rossi</holder>
+</copyright>
+<!-- Translators: put here the copyright notice of the translation -->
+<!-- Put here the FDL notice.  Read the explanation in fdl-notice.docbook
+     and in the FDL itself on how to use it. -->
+<legalnotice>&FDLNotice;</legalnotice>
+
+<!-- Date and version information of the documentation
+Don't forget to include this last date and this last revision number, we
+need them for translation coordination !
+Please respect the format of the date (YYYY-MM-DD) and of the version
+(V.MM.LL), it could be used by automation scripts.
+Do NOT change these in the translation. -->
+
+<date>2005-09-13</date>
+<releaseinfo>0.2</releaseinfo>
+
+<!-- Abstract about this handbook -->
+
+<abstract>
+<para>
+&ksudoku; is an application specially designed to do nothing you would
+ever want.
+</para>
+</abstract>
+
+<!-- This is a set of Keywords for indexing by search engines.
+Please at least include KDE, the KDE package it is in, the name
+ of your application, and a few relevant keywords. -->
+
+<keywordset>
+<keyword>KDE</keyword>
+<keyword>ksudoku</keyword>
+<keyword>sudoku</keyword>
+<keyword>linux</keyword>
+</keywordset>
+
+</bookinfo>
+
+<!-- The contents of the documentation begin here.  Label
+each chapter so with the id attribute. This is necessary for two reasons: it
+allows you to easily reference the chapter from other chapters of your
+document, and if there is no ID, the name of the generated HTML files will vary
+from time to time making it hard to manage for maintainers and for the CVS
+system. Any chapter labelled (OPTIONAL) may be left out at the author's
+discretion. Other chapters should not be left out in order to maintain a
+consistent documentation style across all KDE apps. -->
+
+<chapter id="introduction">
+<title>Introduction</title>
+
+<!-- The introduction chapter contains a brief introduction for the
+application that explains what it does and where to report
+problems. Basically a long version of the abstract.  Don't include a
+revision history. (see installation appendix comment) -->
+
+<para>
+&ksudoku; is a sudoku game for linux/KDE. Please report
+any problems or feature requests to ksudoku.sf.net .
+</para>
+</chapter>
+
+<chapter id="using-ksudoku">
+<title>Using &ksudoku;</title>
+
+<!-- This chapter should tell the user how to use your app. You should use as
+many sections (Chapter, Sect1, Sect3, etc...) as is necessary to fully document
+your application. -->
+
+<para>
+
+<!-- Note that all graphics should be in .png format. Use no gifs because of
+patent issues. -->
+<!--
+<screenshot>
+<screeninfo>Here's a screenshot of &ksudoku;</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="screenshot.png" format="PNG"/>
+	  </imageobject>
+	  <imageobject>
+	    <imagedata fileref="screenshot.eps" format="EPS"/>
+	  </imageobject>
+	  <textobject>
+	    <phrase>Screenshot</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>!-->
+</para>
+
+
+<sect1 id="ksudoku-features">
+<title>More &ksudoku; features</title>
+
+<para>Boards supported: 9x9 and 16x16. GUI for playing, saving, printing, solving and dubbing puzzles. The program is fully expandable since the algorithm is extendible to any general graph coloring problem.</para>
+<para>
+</para>
+
+</sect1>
+</chapter>
+
+
+<!-- (OPTIONAL, BUT RECOMMENDED) This chapter should list all of the
+application windows and their menubar and toolbar commands for easy reference.
+Also include any keys that have a special function but have no equivalent in the
+menus or toolbars. This may not be necessary for small apps or apps with no tool
+or menu bars. -->
+
+<chapter id="credits">
+
+<!-- Include credits for the programmers, documentation writers, and
+contributors here. The license for your software should then be included below
+the credits with a reference to the appropriate license file included in the KDE
+distribution. -->
+
+<title>Credits and License</title>
+
+<para>
+&ksudoku;
+</para>
+<para>
+Program copyright 2005 Francesco Rossi <email>redsh@email.it</email>
+Program icon by 
+</para>
+<para>
+Contributors:
+<itemizedlist>
+<listitem><para>Konqui the KDE Dragon <email>konqui@kde.org</email></para>
+</listitem>
+<listitem><para>Tux the Linux Penguin <email>tux@linux.org</email></para>
+</listitem>
+</itemizedlist>
+</para>
+
+<para>
+Documentation copyright 2005 Francesco Rossi <email>redsh@email.it</email>
+</para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+
+&underFDL;               <!-- FDL: do not remove -->
+
+<!-- Determine which license your application is licensed under, 
+     and delete all the remaining licenses below:
+
+     (NOTE:  All documentation are licensed under the FDL, 
+     regardless of what license the application uses) -->
+
+&underGPL;        	 <!-- GPL License -->
+&underBSDLicense;        <!-- BSD License -->
+&underArtisticLicense;   <!-- BSD Artistic License -->
+&underX11License;        <!-- X11 License  -->
+
+</chapter>
+
+
+&documentation.index;
+</book>
+
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-indent-step:0
+sgml-indent-data:nil
+End:
+
+vim:tabstop=2:shiftwidth=2:expandtab 
+-->
+

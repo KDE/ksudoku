@@ -1,0 +1,56 @@
+PROGRAM NAME  ksudoku
+LICENSE       GPL v2
+VERSION       0.3
+AUTHOR        Francesco Rossi <redsh@email.it> 2005
+DATE          29/9/2005
+
+KSudoku is a program that can generate and solve sudoku (en.wikipedia.org/wiki/Sudoku)  puzzles (of different difficulty level) using a randomized least-candidate algorithm.
+From version 0.3 i added a new kind of puzzles: 3d puzzles. (see changelog)
+The sudoku boards currently supported are 9x9, 16x16, 25x25: but the program is fully expandable since the algorithm is extendible to any general graph coloring problem (the board is in fact stored as a graph and the numbers are the colors) 
+In order to create a playable puzzle it fills a blank sudoku grid with a completed puzzle (randomly), then another algorithm (to be improved with some logical constraint) removes randomly numbers from it checking each time that the resultant puzzle has only one solution: it is a bit slower than logic-based elimination tecniques but it creates puzzles that are less straight-solved (more fun).
+The GUI is user-friendly and requires KDE and opengl.
+Written in C++.
+
+REQUIREMENTS :
+	- open gl library (also header files)  - mesa3d.org
+	- glu library (also header files) - mesa3d.org
+	- kde headers and libs
+
+INSTALLATION
+
+1. Open a shell in project directory (the one where this file is located)
+2. Ectract project tar -xvvzf ksudoku-0.3.tar.gz
+2. Run "./configure --prefix=`kdeconfig --prefix`"
+(will install the program in /usr/local/kde, if you want to install in /usr run "./configure --prefix=/usr")
+3. Run "make"
+4. Run "make install" as root.
+5. Run "ksudoku" (if does not start check point 2)
+
+
+CHANGE LOG 0.3
+
+- Now it supports 3d puzzles (totally new!!)
+- Open gl (qtglwidget) engine
+- 3d puzzles supported 3x3x3, 4x4x4, 5x5x5 (hard)
+- Now it generates also simmetric puzzles
+- You can choose puzzle's simmetry type (random, diagonal, central, 4-way, none)
+- Fixed "Solve bug"
+- Tracker can be hidden
+- Rip function improved
+- Support for 25x25 puzzles (625 numbers to place!)
+- Faster
+- Faster Checkpoint use: added shortcuts CTRL+A CTRL+E 
+
+CHANGE LOG 0.2
+
+- New Icon (by sheepzilla)
+- Added click-and-write superscript mode (RMB then write number) (idea from dovidhalevi (David Baron) suggestion)
+- Algorithm optimized
+- All puzzles allows only 1 solution, in 0.1 Hardest lavel could have multiple ones.
+- Timer function
+- Highlight function (fast number place locator) PRESS SHIFT during gameplay TRY IT
+- Font sizes fixed (idea from dovidhalevi (David Baron) suggestion)
+- New colors
+- Checkpoint stack(save & resume)
+- Status bar with current selected number indicator and hints (idea from Isma (Ismael Asensio) suggestion)
+- Now you can choose if you want computer to show red your errors during gameplay (idea from Isma (Ismael Asensio) suggestion)

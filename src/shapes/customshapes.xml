@@ -1,0 +1,49 @@
+<knewstuff>
+<stuff>
+	<name>4x4</name>
+	<type>ksudoku/shape</type>
+	<author email="redsh@email.it">Francesco Rossi</author>
+	<licence>GPL</licence>
+	<summary>4x4 shape puzzle</summary>
+	<version>1.0</version>
+	<release>1</release>
+	<releasedate>2006-02-17</releasedate>
+	<payload>
+	http://ksudoku.sourceforge.net/shapes/4x4.tar
+	</payload>
+	<rating>5</rating>
+	<downloads>0</downloads>
+</stuff>
+
+<stuff>
+	<name>XSudoku</name>
+	<type>ksudoku/shape</type>
+	<author email="redsh@email.it">Francesco Rossi</author>
+	<licence>GPL</licence>
+	<summary>XSudoku shape puzzle</summary>
+	<version>1.0</version>
+	<release>1</release>
+	<releasedate>2006-02-17</releasedate>
+	<payload>
+		http://ksudoku.sourceforge.net/shapes/XSudoku.tar
+	</payload>
+	<rating>5</rating>
+	<downloads>0</downloads>
+</stuff>
+
+<stuff>
+	<name>Jigsaw</name>
+	<type>ksudoku/shape</type>
+	<author email="redsh@email.it">Francesco Rossi</author>
+	<licence>GPL</licence>
+	<summary>Jigsaw shape puzzle</summary>
+	<version>1.0</version>
+	<release>1</release>
+	<releasedate>2006-02-17</releasedate>
+	<payload>
+		http://ksudoku.sourceforge.net/shapes/Jigsaw.tar
+	</payload>
+	<rating>5</rating>
+	<downloads>0</downloads>
+</stuff>
+</knewstuff>

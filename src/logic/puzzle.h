@@ -1,0 +1,130 @@
+#ifndef _KSUDOKUPUZZLE_H_
+#define _KSUDOKUPUZZLE_H_
+
+#include <q3cstring.h>
+#include "sudoku_solver.h"
+#include "ksudoku_types.h"
+
+class QChar;
+
+namespace ksudoku {
+	
+class Puzzle {
+public:
+	/**
+	* @param[in] sovler       The solver used for this puzzle (the GameType) (not deleted when Puzzle is deleted)
+	* @param[in] withSolution Whether a the solution for this puzzle should be stored
+	*/
+	Puzzle(SKSolver* solver, bool withSolution = true);
+	
+	/**
+	* @todo Delete puzzle and solver when this class is not only used for puzzle creation
+	*/
+	~Puzzle();
+	
+	/**
+	* Creates a puzzle without any content
+	*/
+	bool init();
+	/**
+	* Creates a new puzzle based on the solver
+	* @param[in] difficulty The difficulty of the new game (for valid values see
+	*                       code of @c SKSolver)
+	* @param[in] symmetry   The symmetry (for valid values see code of @c SKSolver)
+	*/
+	bool init(int difficulty, int symmetry);
+	/**
+	* Tries to create a game on existing values
+	* @param[in]  values The values used for the new puzzle
+	* @param[out] forks  The count of forks did solving the puzzle
+	* @return <0 on error, 0 for no solutions, 1 for exactly one solution and
+	* 2 for more than 1 solutions. For return value <= 0 the init failed.
+	*/
+	int init(const QByteArray& values, int* forks = 0);
+	/**
+	* Create a puzzle based on complete data
+	* @param[in] values   The values used for the new puzzle
+	* @param[in] solution The values used for the solution of the new puzzle
+	* @note If you don't need a solution simply pass QByteArray() as solution.
+	*/
+	bool init(const QByteArray& values, const QByteArray& solutionValues);
+	
+//		/**
+// 		 * Gets the corresponding character for a @p value
+// 		 * @note This method can be called before @c init was called
+// 		 */
+// 		QChar value2Char(uint value) const;
+
+// 		/**
+// 		 * Gets the value for a character @p c.
+// 		 * If @p c has no corresponding value a value < 0 will be returned.
+// 		 * @note This method can be called before @c init was called
+// 		 */
+// 		int char2Value(QChar c) const;
+
+	/**
+	* Return game type
+	*/
+	GameType gameType() const {
+		return (m_solver->g->type==0) ? sudoku : (m_solver->g->type==1 ? roxdoku : custom); 
+	}
+
+// 		inline uint value(uint index) const { return m_puzzle ? m_puzzle->value(index) : 0; }
+// 		inline uint value(uint x, uint y, uint z = 0) const { return value(index(x,y,z)); }
+// 		inline uint solution(uint index) const { return m_solution ? m_solution->value(index) : 0; }
+	inline uint value(uint index) const { return m_puzzle ? m_puzzle->numbers[index] : 0; }
+	inline uint value(uint x, uint y, uint z = 0) const { return value(index(x,y,z)); }
+	inline uint solution(uint index) const { return m_solution ? m_solution->numbers[index] : 0; }
+	
+	inline bool hasSolution() const { return m_withSolution && m_solution; }
+
+	///convert coordinates in a puzzle to one index value
+	uint index(uint x, uint y, uint z = 0) const {
+		if(!m_solver) return 0;
+		return (x*m_solver->g->sizeY() + y)*m_solver->g->sizeZ() + z;
+	}
+
+	///@return order of game
+	uint order() const { return m_solver->g->order; }
+	
+	///@return total elements in puzzle
+	uint size() const { 
+		return m_solver->g->sizeX() * m_solver->g->sizeY() * m_solver->g->sizeZ(); 
+		}
+
+	uint optimized_d(int index) const { return m_solver->g->optimized_d[index]; }
+	uint optimized(int indX, int indY) const { return m_solver->g->optimized[indX][indY]; }
+	bool hasConnection(int i, int j) const { return m_solver->g->hasConnection(i,j); }
+
+	///@return if Puzzle has a solver or not
+	bool hasSolver() { return (m_solver == 0) ? false : true; }
+
+	///create new Puzzle with same solver and set withSolution to true
+	Puzzle* dubPuzzle() { return new Puzzle(m_solver,true) ; }
+
+public:
+	inline SKPuzzle* puzzle()   const { return m_puzzle  ; }
+	inline SKPuzzle* solution() const { return m_solution; }
+	inline SKSolver* solver  () const { return m_solver  ; }
+
+	///return value used for difficulty setting.
+	///@WARNING only valid after init(int difficulty, int symmetry)
+	///         has been called
+	inline int difficulty() const { return m_difficulty; }
+	///return value used for symmetry setting.
+	///@WARNING only valid after init(int difficulty, int symmetry)
+	///         has been called
+	inline int symmetry() const { return m_symmetry; }
+private:
+	bool m_withSolution;
+	SKPuzzle* m_puzzle;
+	SKPuzzle* m_solution;
+	SKSolver* m_solver;
+
+	int m_difficulty;
+	int m_symmetry  ;
+};
+
+}
+
+#endif

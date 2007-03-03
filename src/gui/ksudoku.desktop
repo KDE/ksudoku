@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=ksudoku
+Name[xx]=xxksudokuxx
+Exec=ksudoku %i %m -caption "%c"
+Icon=ksudoku
+Type=Application
+DocPath=ksudoku/ksudoku.html
+Comment=KSudoku, Sudoku game & more for KDE
+Terminal=false
+Categories=Qt;KDE;Game;PuzzleGame;

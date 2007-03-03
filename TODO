@@ -1,0 +1,57 @@
+TODO list:
+
+
+#CURRENT BUGS:
+- if puzzle > 9 number list 1-9 doesn't change to a-p (etc)
+  and select Number (menu) is also wrong (only checked with order 25)
+- Action menu item is still visible
+- still using tabs ... (last state is they will be removed)
+- creation of custom puzzle results in a segmentation fault
+ -==-==-==-==-
+
+For release 1.0
+- get code in "good shape" ("abstracting etc  according to OOP)
+- document code
+- rewrite INSTALL and README's
+
+- fix "hardest" level puzzle bug
+- fix quality (??)
+- fix i18n calls and add .po files support
+- fix grammar & spelling in dialogs
+
+- start game with a welcome screen instead of the first puzzle (like in k3b, where the user can select the game he wants to play)
+
+- redesign/remove start interface 
+- options must be game-type dependent
+- game-type specific toolbar auto added (default, should be an option)
+- open games in tabs (tabs (will) have tear-off functionality
+- adding logo in background when exporting / printing
+
+ User Features to add:
+ - extend export print functionality (multiple pages)
+ -==-==-==-==-
+
+DONE LIST (to be exported to ChangeLog):
+User Features:
+- Replaced checkpoints with history 
+- Added export functionality. Current Game and/or multiple games can be
+  exported to file or printed.
+- Printing is now 'sort of' wysiwyg extended (as opposed to printing from export).
+- fixed wrapping
+- user input can be deleted with del and backspace keys
+Code:
+- Replaced autoconf/make utils with cmake
+
+END For release 1.0 #=-
+
+Other todo's:
+- reface web site
+- prepare for the kdegames porting (maybe)
+- prepare for the win32 porting (we shall ask for a contribution from
+win32 users like it happens for xchat)
+
+- add world-wide high scores
+- add support for custom-shaped puzzles
+- add a puzzle-shape editor downloader & uploader
+
+

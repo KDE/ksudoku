@@ -1,0 +1,603 @@
+<ui version="4.0" >
+ <class>ExportDlgBase</class>
+ <widget class="QDialog" name="ExportDlgBase" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>634</width>
+    <height>627</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Ksudoku Export</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>11</number>
+   </property>
+   <property name="spacing" >
+    <number>6</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" >
+     <property name="margin" >
+      <number>0</number>
+     </property>
+     <property name="spacing" >
+      <number>6</number>
+     </property>
+     <item>
+      <widget class="Q3Frame" name="frame4" >
+       <property name="sizePolicy" >
+        <sizepolicy>
+         <hsizetype>1</hsizetype>
+         <vsizetype>7</vsizetype>
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="frameShape" >
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="frameShadow" >
+        <enum>QFrame::Raised</enum>
+       </property>
+       <layout class="QVBoxLayout" >
+        <property name="margin" >
+         <number>11</number>
+        </property>
+        <property name="spacing" >
+         <number>6</number>
+        </property>
+        <item>
+         <widget class="Q3GroupBox" name="groupBox3_2" >
+          <property name="title" >
+           <string>Game Count</string>
+          </property>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="KIntSpinBox" native="1" name="kisbHCount" />
+             </item>
+             <item>
+              <widget class="KSqueezedTextLabel" native="1" name="kSqueezedTextLabel3_2" />
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="KIntSpinBox" native="1" name="kisbVCount" />
+             </item>
+             <item>
+              <widget class="KSqueezedTextLabel" native="1" name="kSqueezedTextLabel3_2_2" />
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="Q3GroupBox" name="Spacing" >
+          <property name="title" >
+           <string>Spacing</string>
+          </property>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="KIntSpinBox" native="1" name="kisbMargin" />
+             </item>
+             <item>
+              <widget class="KSqueezedTextLabel" native="1" name="kSqueezedTextLabel3" />
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" >
+             <property name="margin" >
+              <number>0</number>
+             </property>
+             <property name="spacing" >
+              <number>6</number>
+             </property>
+             <item>
+              <widget class="KDoubleSpinBox" native="1" name="kdsbAspectRatio" />
+             </item>
+             <item>
+              <widget class="KSqueezedTextLabel" native="1" name="kSqueezedTextLabel2" />
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="Q3GroupBox" name="groupBox4v" >
+          <property name="sizePolicy" >
+           <sizepolicy>
+            <hsizetype>1</hsizetype>
+            <vsizetype>5</vsizetype>
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="title" >
+           <string>Output Size (Save only)</string>
+          </property>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <layout class="QVBoxLayout" >
+           <property name="margin" >
+            <number>0</number>
+           </property>
+           <property name="spacing" >
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="KComboBox" name="kcbPageSize" />
+           </item>
+           <item>
+            <widget class="Q3GroupBox" name="Spacing_2" >
+             <property name="title" >
+              <string>Custom Size (mm)</string>
+             </property>
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
+             </property>
+             <layout class="QVBoxLayout" >
+              <property name="margin" >
+               <number>0</number>
+              </property>
+              <property name="spacing" >
+               <number>6</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout" >
+                <property name="margin" >
+                 <number>0</number>
+                </property>
+                <property name="spacing" >
+                 <number>6</number>
+                </property>
+                <item>
+                 <widget class="KIntSpinBox" native="1" name="kisbHres" />
+                </item>
+                <item>
+                 <widget class="KSqueezedTextLabel" native="1" name="kSqueezedTextLabel2_2_2" />
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" >
+                <property name="margin" >
+                 <number>0</number>
+                </property>
+                <property name="spacing" >
+                 <number>6</number>
+                </property>
+                <item>
+                 <widget class="KIntSpinBox" native="1" name="kisbVres" />
+                </item>
+                <item>
+                 <widget class="KSqueezedTextLabel" native="1" name="kSqueezedTextLabel2_2_2_2" />
+                </item>
+               </layout>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="cbLockCustomSize" >
+                <property name="text" >
+                 <string>Lock</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" >
+          <property name="margin" >
+           <number>0</number>
+          </property>
+          <property name="spacing" >
+           <number>6</number>
+          </property>
+          <item>
+           <widget class="KIntSpinBox" native="1" name="kispPageCount" />
+          </item>
+          <item>
+           <widget class="KSqueezedTextLabel" native="1" name="kSqueezedTextLabel2_2" />
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer>
+          <property name="orientation" >
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeType" >
+           <enum>QSizePolicy::Expanding</enum>
+          </property>
+          <property name="sizeHint" >
+           <size>
+            <width>20</width>
+            <height>21</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" >
+       <property name="margin" >
+        <number>0</number>
+       </property>
+       <property name="spacing" >
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="Q3Frame" name="fPreview" >
+         <property name="sizePolicy" >
+          <sizepolicy>
+           <hsizetype>7</hsizetype>
+           <vsizetype>7</vsizetype>
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="frameShape" >
+          <enum>QFrame::StyledPanel</enum>
+         </property>
+         <property name="frameShadow" >
+          <enum>QFrame::Raised</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="cbGenPrevGame" >
+         <property name="text" >
+          <string>View (and generate) game data</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="cbUseCurrGame" >
+         <property name="text" >
+          <string>Use current game</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>0</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="KPushButton" native="1" name="kpbRegenerate" />
+         </item>
+         <item>
+          <spacer>
+           <property name="orientation" >
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType" >
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" >
+            <size>
+             <width>41</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="Q3Frame" name="frame5" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QHBoxLayout" >
+      <property name="margin" >
+       <number>11</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item>
+       <widget class="KPushButton" native="1" name="kpbHelp" />
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Expanding</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>130</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="KPushButton" native="1" name="kpbCancel" />
+      </item>
+      <item>
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <property name="sizeType" >
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" >
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
+       <widget class="KPushButton" native="1" name="kpbPrint" />
+      </item>
+      <item>
+       <widget class="KPushButton" native="1" name="kpbExport" />
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="KProgress" native="1" name="kProgress" />
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+ <customwidgets>
+  <customwidget>
+   <class>Q3Frame</class>
+   <extends>QFrame</extends>
+   <header>Qt3Support/Q3Frame</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>KSqueezedTextLabel</class>
+   <extends>QWidget</extends>
+   <header>ksqueezedtextlabel.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>KPushButton</class>
+   <extends>QWidget</extends>
+   <header>kpushbutton.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Q3GroupBox</class>
+   <extends>QGroupBox</extends>
+   <header>Qt3Support/Q3GroupBox</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>KComboBox</class>
+   <extends>QComboBox</extends>
+   <header>kcombobox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>KProgress</class>
+   <extends>QWidget</extends>
+   <header>kprogress.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>KDoubleSpinBox</class>
+   <extends>QWidget</extends>
+   <header>kdoublespinbox.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>KIntSpinBox</class>
+   <extends>QWidget</extends>
+   <header>kintspinbox.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <includes>
+  <include location="local" >knuminput.h</include>
+  <include location="local" >ksqueezedtextlabel.h</include>
+  <include location="local" >knuminput.h</include>
+  <include location="local" >ksqueezedtextlabel.h</include>
+  <include location="local" >knuminput.h</include>
+  <include location="local" >ksqueezedtextlabel.h</include>
+  <include location="local" >knuminput.h</include>
+  <include location="local" >ksqueezedtextlabel.h</include>
+  <include location="local" >kcombobox.h</include>
+  <include location="local" >knuminput.h</include>
+  <include location="local" >ksqueezedtextlabel.h</include>
+  <include location="local" >knuminput.h</include>
+  <include location="local" >ksqueezedtextlabel.h</include>
+  <include location="local" >knuminput.h</include>
+  <include location="local" >ksqueezedtextlabel.h</include>
+  <include location="local" >kpushbutton.h</include>
+  <include location="local" >kpushbutton.h</include>
+  <include location="local" >kpushbutton.h</include>
+  <include location="local" >kpushbutton.h</include>
+  <include location="local" >kpushbutton.h</include>
+  <include location="local" >kprogress.h</include>
+ </includes>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>cbGenPrevGame</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>ExportDlgBase</receiver>
+   <slot>emitAValueChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kisbHCount</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ExportDlgBase</receiver>
+   <slot>emitAValueChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kisbVCount</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ExportDlgBase</receiver>
+   <slot>emitAValueChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kisbMargin</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ExportDlgBase</receiver>
+   <slot>emitAValueChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>kdsbAspectRatio</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>ExportDlgBase</receiver>
+   <slot>emitAValueChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cbGenPrevGame</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>ExportDlgBase</receiver>
+   <slot>emitAValueChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cbUseCurrGame</sender>
+   <signal>stateChanged(int)</signal>
+   <receiver>ExportDlgBase</receiver>
+   <slot>emitAValueChanged()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>20</x>
+     <y>20</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

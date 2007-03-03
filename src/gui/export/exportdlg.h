@@ -1,0 +1,150 @@
+//
+// C++ Interface: export
+//
+// Description: 
+//
+//
+// Author:  <>, (C) 2006
+//
+// Copyright: See COPYING file that comes with this distribution
+//
+//
+#ifndef KSUDOKUEXPORTDLG_H
+#define KSUDOKUEXPORTDLG_H
+
+#include "exportdlgsettings.h"
+
+#include "pagesize.h"
+#include "exportpuzzles.h"
+
+#include <qobject.h>
+//Added by qt3to4:
+#include <QCustomEvent>
+
+//generated
+#include "ui_exportdlgbase.h"
+
+namespace ksudoku {
+
+class Puzzle;
+class DrawBase;
+class ExportPreview;
+class Symbols;
+
+/**
+ * Export functions (and dialog)
+ * @todo create better dialog
+ */
+class ExportDlg : public ExportDlgBase
+{
+	Q_OBJECT
+public:
+	ExportDlg(Puzzle const& currGame, Symbols const& symbols);
+	virtual ~ExportDlg();
+
+	///Manage Output size
+	///If @arg type is given (not empty), @arg height en @arg width are ignored
+	///If @arg height and or @arg width are given, @arg type is set to Custum
+	///If @arg height or @arg width is less than 1, its value is ignored
+	///@warning @arg type is not checked for validity => make sure it makes sense
+	void setOutputSize(QString type, int height, int width);
+
+public slots:
+	///reimplemented from qwidget
+	virtual void polish();
+
+	void updatePreview();
+
+	///draw contents to qpainter honoring ExportDlgSettings
+	void draw(QPainter& qpainter, int height, int width) const;
+	///draw contents to qpainter using specific settings
+	void draw(QPainter& qpainter, int height, int width
+	          , bool drawContent, bool useCurrent) const;
+
+	///leave dialog, not storing changes
+	void cancel();
+	///export contents honoring ExportDlgSettings to printer
+	void print();
+	///export contents honoring ExportDlgSettings to file
+	void save();
+
+	///@return page size selected by user (or set by loading settings)
+	QSize currentPageSize() const;
+
+	///Change output type (and set height and width values in view)
+	inline void setOutputType(const QString& type);
+	///Change output height (and changes type to custom in view)
+	inline void setOutputHeight(int height);
+	///Change output width (and changes type to custom in view)
+	inline void setOutputWidth(int width);
+
+signals:
+	void updatePreviewSig();
+
+protected:
+	///reimplemented from QObject
+	virtual void customEvent(QCustomEvent* e);
+	
+	///get visable and unvisavle values and store them
+	void getSettings();
+	///set visable and unvisavle values from stored data
+	void setSettings();
+
+private slots:
+	inline void pageSizeLockChanged(int) { setAspectRatio(); }
+
+	///update the progressbar, thread safe
+	void updateProgressBar();
+
+	///create puzzles to export
+	void createPuzzles();
+	///recreate puzzles to export (aka regenerate)
+	///(first resizes m_puzzleList to current size)
+	void reCreatePuzzles();
+
+private:
+	///set the aspectratio (used by setOutputSize) to reflect current
+	///width and height
+	void setAspectRatio();
+
+
+	///current puzzle export is called from
+	Puzzle const& m_currPuzzle;
+	///generates and holds puzzles for export
+	ExportPuzzles m_puzzleList;
+	///symbols used for current puzzle
+	Symbols const& m_currSymbols;
+
+	///settings used for export
+	Ui_ExportDlgSettings m_expDlgSettings;
+
+	DrawBase* m_drawer;
+	ExportPreview*  m_qwPreview;
+
+	
+	PageSize m_pageSize;
+
+	///aspect size used by setOutputSize if size is locked
+	float mPSizeAspect;
+};
+
+
+void ExportDlg::setOutputType(const QString& type)
+{
+	setOutputSize(type,-1,-1);
+}
+
+void ExportDlg::setOutputHeight(int height)
+{
+	setOutputSize(QString::null,height,-1);
+}
+
+void ExportDlg::setOutputWidth(int width)
+{
+	setOutputSize(QString::null,-1,width);
+}
+
+
+}
+
+#endif

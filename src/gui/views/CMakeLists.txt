@@ -1,0 +1,12 @@
+
+set(ksudoku_views_SRCS
+	ksview.cpp
+	ArcBall.cpp
+	roxdokuview.cpp
+	ksudokuview.cpp
+	qsudokubutton.cpp
+)
+
+qt4_automoc( ${ksudoku_views_SRCS} )
+add_library(ksudoku_views ${ksudoku_views_SRCS})
+

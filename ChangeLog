@@ -1,0 +1,27 @@
+CHANGE LOG 0.3
+
+- Now it supports 3d puzzles (totally new!!)
+- Open gl (qtglwidget) engine
+- 3d puzzles supported 3x3x3, 4x4x4, 5x5x5 (hard)
+- Now it generates also simmetric puzzles
+- You can choose puzzle's simmetry type (random, diagonal, central, 4-way, none)
+- Fixed "Solve bug"
+- Tracker can be hidden
+- Rip function improved
+- Support for 25x25 puzzles (625 numbers to place!)
+- Faster
+- Faster Checkpoint use: added shortcuts CTRL+A CTRL+E 
+
+CHANGE LOG 0.2
+
+- New Icon (by sheepzilla)
+- Added click-and-write superscript mode (RMB then write number) (idea from dovidhalevi (David Baron) suggestion)
+- Algorithm optimized
+- All puzzles allows only 1 solution, in 0.1 Hardest lavel could have multiple ones.
+- Timer function
+- Highlight function (fast number place locator) PRESS SHIFT during gameplay TRY IT
+- Font sizes fixed (idea from dovidhalevi (David Baron) suggestion)
+- New colors
+- Checkpoint stack(save & resume)
+- Status bar with current selected number indicator and hints (idea from Isma (Ismael Asensio) suggestion)
+- Now you can choose if you want computer to show red your errors during gameplay (idea from Isma (Ismael Asensio) suggestion)
