@@ -1,7 +1,6 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=ksudoku
-Name[xx]=xxksudokuxx
 Exec=ksudoku %i %m -caption "%c"
 Icon=ksudoku
 Type=Application
