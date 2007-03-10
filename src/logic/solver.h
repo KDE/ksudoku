@@ -40,7 +40,7 @@ enum ProcessState {
 	/// To count of maximum forks was exceeded
 	KSS_ENOUGH_FORKS     = 3,
 	/// There is an internal failure
-	KSS_CRITICAL         = 4,
+	KSS_CRITICAL         = 4
 };
 
 enum DifficultyFlags {
@@ -49,7 +49,7 @@ enum DifficultyFlags {
 	KSS_SYM_CENTRAL  = 2,
 	KSS_SYM_FOURWAY  = KSS_SYM_DIAGONAL | KSS_SYM_CENTRAL,
 	KSS_SYM_MASK     = KSS_SYM_FOURWAY,
-	KSS_REM_1VALUE   = 4,
+	KSS_REM_1VALUE   = 4
 };
 
 typedef SKGraph Graph;
@@ -85,6 +85,6 @@ private:
 	Q3ValueVector<uint> m_result;
 };
 
-};
+}
 
 #endif
