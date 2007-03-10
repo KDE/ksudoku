@@ -9,6 +9,4 @@ set(ksudoku_SRCS
 	solver.cpp
 )
 
-INCLUDE_DIRECTORIES( ../gui )
-
 add_library(ksudoku_logic ${ksudoku_SRCS})

@@ -7,6 +7,18 @@
 
 ########### next target ###############
 
+include_directories(
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_SOURCE_DIR}/gui
+        ${CMAKE_CURRENT_SOURCE_DIR}/gui/views
+        ${CMAKE_CURRENT_SOURCE_DIR}/logic
+        ${CMAKE_CURRENT_BINARY_DIR}/gui
+        ${CMAKE_CURRENT_BINARY_DIR}/gui/views
+#        ${CMAKE_CURRENT_BINARY_DIR}/gui/export
+#        ${CMAKE_CURRENT_BINARY_DIR}/gui/export/draw
+#        ${CMAKE_CURRENT_BINARY_DIR}/logic
+)
+
 set(ksudoku_SRCS
 	main.cpp
 )
