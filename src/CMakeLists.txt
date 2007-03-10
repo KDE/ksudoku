@@ -1,9 +1,3 @@
-# i don't know where to get the actual values from, KDE4 version seems
-# to has this values already set
-#set(BIN_INSTALL_DIR bin )
-#set(XDG_APPS_DIR ??)
-#set(DATA_INSTALL_DIR ??)
-#set(ICON_INSTALL_DIR ??)
 
 ########### next target ###############
 
@@ -60,21 +54,16 @@ ADD_SUBDIRECTORY( gui/views       )
 
 ########### install files ###############
 
-FIND_PROGRAM(KDE3_KDECONFIG_EXECUTABLE NAMES kde-config )
+install( FILES gui/ksudoku.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES gui/ksudokuui.rc  DESTINATION  ${DATA_INSTALL_DIR}/ksudoku )
+install( FILES ksudokurc  DESTINATION ${CONFIG_INSTALL_DIR})
 
-EXEC_PROGRAM(${KDE3_KDECONFIG_EXECUTABLE} ARGS --expandvars --install apps OUTPUT_VARIABLE KDE3_XDG_APPS_DIR )
-EXEC_PROGRAM(${KDE3_KDECONFIG_EXECUTABLE} ARGS --expandvars --install data OUTPUT_VARIABLE KDE3_DATA_INSTALL_DIR )
-EXEC_PROGRAM(${KDE3_KDECONFIG_EXECUTABLE} ARGS --expandvars --install config OUTPUT_VARIABLE KDE3_CONFIG_INSTALL_DIR )
 
-install( FILES gui/ksudoku.desktop  DESTINATION  ${KDE3_XDG_APPS_DIR}/Games )
-install( FILES gui/ksudokuui.rc  DESTINATION  ${KDE3_DATA_INSTALL_DIR}/ksudoku )
-install( FILES ksudokurc  DESTINATION ${KDE3_CONFIG_INSTALL_DIR})
-
-install(FILES shapes/4x4.xml shapes/Jigsaw.xml shapes/XSudoku.xml shapes/Samurai.xml DESTINATION ${KDE3_DATA_INSTALL_DIR}/ksudoku)
+install(FILES shapes/4x4.xml shapes/Jigsaw.xml shapes/XSudoku.xml shapes/Samurai.xml DESTINATION ${DATA_INSTALL_DIR}/ksudoku)
 
 
 
-kde4_install_icons(hicolor)
+kde4_install_icons(${ICON_INSTALL_DIR})
 
 
 ########### the old Makefile.am #########
