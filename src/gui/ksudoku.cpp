@@ -107,10 +107,11 @@ void KSudoku::updateStatusBar()
 // }
 
 KSudoku::KSudoku()
-	: KMainWindow( 0, "ksudoku" )
+	: KMainWindow()
 // 	, m_tabs(0)
 	, m_autoDelCentralWidget(false)
 {
+	setObjectName("ksudoku");
 // 	m_tabs = new KTabWidget(this);
 // 	m_tabs->setHoverCloseButton(true);
 // 	m_tabs->show();
