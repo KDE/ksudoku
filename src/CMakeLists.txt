@@ -23,10 +23,8 @@ kde4_add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
 	ksudoku_gui ksudoku_views ksudoku_logic
-	${QT_AND_KDECORE_LIBRARIES} ${KDE4_KDEUI_LIBS} ${KDE4_KDECORE_LIBS} ${QT_QTOPENGL_LIBRARY}  ${KDE4_KDEPRINT_LIBS}   ${KDE4_KDEIO_LIBS} GL GLU knewstuff
+	${KDE4_KDEUI_LIBS} ${QT_QTOPENGL_LIBRARY} ${KDE4_KDEPRINT_LIBS} ${KDE4_KIO_LIBS} GL GLU ${KDE4_KNEWSTUFF_LIBRARY}
 ) #ksudoku_export ksudoku_draw
-
-set(BIN_INSTALL_DIR ${CMAKE_INSTALL_PREFIX}/bin)
 
 install(TARGETS ksudoku  DESTINATION ${BIN_INSTALL_DIR} )
 
