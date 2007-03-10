@@ -39,8 +39,6 @@ include_directories(
 	${CMAKE_BINARY_DIR}/src/logic
 )
 
-add_subdirectory( doc )
-add_subdirectory( po )
 add_subdirectory( src )
 
 message(STATUS "DEBUG: ${DEBUG}")
