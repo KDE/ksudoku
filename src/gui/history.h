@@ -58,12 +58,12 @@ public:
 	}
 public:
 	void reset() {
-		for(uint i = 0; i < m_markers.size(); i++) {
+		for(int i = 0; i < m_markers.size(); i++) {
 			QBitArray &array = m_markers[i];
-			for(uint j = 0; j < array.size(); j++)
+			for(int j = 0; j < array.size(); j++)
 				array.clearBit(j);
 		}
-		for(uint i = 0; i < m_values.size(); i++) {
+		for(int i = 0; i < m_values.size(); i++) {
 			m_values[i] = 0;
 			m_given.clearBit(i);
 		}
@@ -76,7 +76,7 @@ public:
 	}
 	inline void resetMarkers(uint index)
 	{
-		for(uint i = 0; i < m_markers.size(); i++) {
+		for(int i = 0; i < m_markers.size(); i++) {
 			m_markers[i].clearBit(index);
 		}
 	}
@@ -85,7 +85,7 @@ public:
 			resetMarkers(index);
 			return;
 		}
-		for(uint i = 0; i < m_markers.size(); i++) {
+		for(int i = 0; i < m_markers.size(); i++) {
 			m_markers[i].setBit(index, values[i]);
 		}
 	}
@@ -97,7 +97,7 @@ public:
 	}
 	inline QBitArray markers(uint index) const {
 		QBitArray array(m_markers.size());
-		for(uint i = 0; i < m_markers.size(); i++) {
+		for(int i = 0; i < m_markers.size(); i++) {
 			array.setBit(i, m_markers[i][index]);
 		}
 		return array;
