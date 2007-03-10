@@ -533,29 +533,28 @@ void KSudoku::sendComment()
 void KSudoku::checkForUpdates()
 {
 	QString name;
-	char buf[16];
+	QString version;
 	QString myVer = "0.3";
 	KIO::NetAccess::download(KUrl("http://ksudoku.sourceforge.net/latest.php"), name, this);
-		
-	FILE *fp;
-	
-	if (!(fp = fopen(QFile::encodeName(name), "r"))) 
+
+	QFile file(name);
+	if (!file.open(QIODevice::ReadOnly)) 
 	{
 		KMessageBox::information(this, "Could not get the response from server.");
 		return;
 	}
 
-	fscanf(fp, "%s", buf);
-	if(QString(&buf[0]) == myVer)
+	QByteArray tmpbuf = file.readLine();
+	QString buf = QString::fromAscii(tmpbuf);
+	file.close();
+	if(buf == myVer)
 		KMessageBox::information(this, "Your program is at the latest version");
 	else
 	{
-		QString msg;
-		msg.sprintf("Your program version is %s, the latest version is %s.\nDo you want to update?",  myVer.toAscii(), &buf[0]);
+		QString msg = i18n("Your program version is %1, the latest version is %1.\nDo you want to update?", myVer, buf);
 		if(KMessageBox::questionYesNo(this, msg) == KMessageBox::Yes)
 			KRun::runUrl (KUrl("http://ksudoku.sourceforge.net/3.htm"), "text/html", this);
 	}
-	//close(fp);
 	KIO::NetAccess::removeTempFile( name );
 }
 
