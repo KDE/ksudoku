@@ -95,6 +95,7 @@ void GameSelectionGroup::updateLayout() {
 		m_gridLayout->addWidget(button, pos / m_usedCols, pos % m_usedCols);
 	}
 }
+
 GameSelectionDialog::GameSelectionDialog(QWidget* parent) : QWidget(parent) {
 	m_mainLayout = new QVBoxLayout(this);
 	m_mainLayout->setSpacing(KDialog::spacingHint());
@@ -106,7 +107,7 @@ GameSelectionDialog::GameSelectionDialog(QWidget* parent) : QWidget(parent) {
 	m_mainLayout->addWidget (new QLabel("<center><h1>"+i18n("Welcome to KSudoku")+"</h1></center>", this));
 
 		
-};
+}
 
 GameSelectionDialog::~GameSelectionDialog() {
 }
