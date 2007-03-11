@@ -118,7 +118,7 @@ void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int si
 {//TODO free in when done
 	base = 0;
 
-	name = new char[strlen(_name)];
+	name = new char[strlen(_name)+1];
 	strcpy(name, _name);
 
 	order = _order;
