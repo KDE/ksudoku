@@ -6,6 +6,7 @@ Icon=ksudoku
 Type=Application
 DocPath=ksudoku/ksudoku.html
 Comment=KSudoku, Sudoku game & more for KDE
+Comment[de]=KSudoku, Sudoku-Spiel & mehr für KDE
 Comment[nl]=KSudoku, Sudoku-spel en meer voor KDE
 Comment[pt]=KSudoku, um jogo do Sudoku para o KDE
 Comment[pt_BR]=KSudoku, um jogo do Sudoku para o KDE
