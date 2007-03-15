@@ -944,11 +944,11 @@ void KSudoku::readProperties(KConfig *config)
 //	QWidget* current = (QWidget*) currentView();
 //kDebug(1000) << "guided mode=" << config->readEntry("guidedMode", QVariant(1)) << ";" << endl;
 	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
-		view->setGuidedMode(config->readEntry("guidedMode", QVariant(1).toBool())); //TODO PORT
-		view->showTracker = config->readEntry("showTracker", QVariant(1).toBool()); //TODO PORT
-   		view->mouseOnlySuperscript = config->readEntry("mouseOnlySuperscript",QVariant(1).toBool()); //TODO PORT
+		view->setGuidedMode(config->readEntry("guidedMode", true)); //TODO PORT
+		view->showTracker = config->readEntry("showTracker", true); //TODO PORT
+   		view->mouseOnlySuperscript = config->readEntry("mouseOnlySuperscript",true); //TODO PORT
 	} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
-		view->setGuidedMode(config->readEntry("guidedMode", QVariant(1).toBool())); //TODO PORT
+		view->setGuidedMode(config->readEntry("guidedMode", true)); //TODO PORT
 	}
 }
 
