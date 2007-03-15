@@ -15,7 +15,7 @@ INCLUDE_DIRECTORIES( views ksudoku_export)
 
 qt4_automoc( ${ksudoku_SRCS} )
 
-add_library(ksudoku_gui ${ksudoku_SRCS})
+kde4_add_library(ksudoku_gui ${ksudoku_SRCS})
 #constrains on build order:
 ADD_DEPENDENCIES(ksudoku_gui ksudoku_views ksudoku_export)
 

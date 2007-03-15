@@ -9,4 +9,4 @@ set(ksudoku_SRCS
 	solver.cpp
 )
 
-add_library(ksudoku_logic ${ksudoku_SRCS})
+kde4_add_library(ksudoku_logic ${ksudoku_SRCS})

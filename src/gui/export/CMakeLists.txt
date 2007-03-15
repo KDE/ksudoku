@@ -25,4 +25,4 @@
 
 INCLUDE_DIRECTORIES( draw ../../logic)
 
-ADD_LIBRARY(ksudoku_export ${ksudoku_SRCS})
+KDE4_ADD_LIBRARY(ksudoku_export ${ksudoku_SRCS})

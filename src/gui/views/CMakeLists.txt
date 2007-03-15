@@ -8,5 +8,5 @@ set(ksudoku_views_SRCS
 )
 
 qt4_automoc( ${ksudoku_views_SRCS} )
-add_library(ksudoku_views ${ksudoku_views_SRCS})
+kde4_add_library(ksudoku_views ${ksudoku_views_SRCS})
 
