@@ -38,7 +38,7 @@ class ksudokuView : public QWidget, public KsView
 	friend class QSudokuButton;
 public:
 	/// Default constructor
-	ksudokuView(QWidget *parent, bool custom);
+	ksudokuView(QWidget *parent, const Game& game, bool custom);
 	// Destructor
 	virtual ~ksudokuView();
 
@@ -59,8 +59,7 @@ signals:
 	void changedSelectedNum();
 
 public:
-	void setup  (const Game& game);
-	void setGame(const Game& game);
+// 	void setup  (const Game& game);
 
 	bool mouseOnlySuperscript;
 	bool showTracker;
@@ -87,6 +86,8 @@ private slots:
 	void onFullChange();
 
 private:
+	void setGame(const Game& game);
+	
 	Q3PtrVector<QSudokuButton> m_buttons;
 
 	bool puzzle_mark_wrong;

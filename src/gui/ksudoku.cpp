@@ -239,8 +239,8 @@ void KSudoku::addGame(const Game& game) {
 
 	switch(type){
 		case sudoku: { //cUrly braces needed to avoid "crosses initialization" compile error
-			ksudokuView* v = new ksudokuView(this, false);
-			v->setup(game);
+			ksudokuView* v = new ksudokuView(this, game, false);
+// 			v->setup(game);
 			connect( v, SIGNAL(changedSelectedNum()), this, SLOT(updateStatusBar()) );
 			view = v;
 			break;     }
@@ -250,8 +250,8 @@ void KSudoku::addGame(const Game& game) {
 		case custom:{
 // 			SKPuzzle* puzzle = game.puzzle()->puzzle();
 			//GraphCustom* gc = game.puzzle()->solver()->g;
-			ksudokuView* v = new ksudokuView(this, true);
-			v->setup(game);
+			ksudokuView* v = new ksudokuView(this, game, true);
+// 			v->setup(game);
 			connect( v, SIGNAL(changedSelectedNum()), this, SLOT(updateStatusBar()) );
 			view = v;
 		}

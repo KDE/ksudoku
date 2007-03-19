@@ -189,48 +189,114 @@ void QSudokuButton::draw(QPainter& qpainter)
 
 	//draw border
 	
+	Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
+	if(!g) return;
+	
 	if(!isCustom())
 	{
-		QPen pen(QColor(150,150,150));
-		pen.setWidth(1);
-		qpainter.setPen(pen);
-		qpainter.drawRect(rect());	
-		drawMajorGrid(qpainter);
-	}
-	else if(isConnected())
-	{
-		GraphCustom* g = (GraphCustom*)m_ksView.game().puzzle()->solver()->g;
-		int connections=0;
-		int myIndex = g->index(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesnt work with coordinates
+// 		QPen pen(QColor(150,150,150));
+// 		pen.setWidth(1);
+// 		qpainter.setPen(pen);
+// 		qpainter.drawRect(rect());	
+// 		drawMajorGrid(qpainter);
+// 		Graph* g = m_ksView.game().puzzle()->solver()->g;
+// 		int connections=0;
+		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesnt work with coordinates
 		QPen pen(QColor(150,150,150));
 		pen.setWidth(1);
 
+		bool left = g->hasLeftBorder(m_x, m_y);
+		bool top = g->hasTopBorder(m_x, m_y);
+		bool right = g->hasRightBorder(m_x, m_y);
+		bool bottom = g->hasBottomBorder(m_x, m_y);
 		//LEFT
-		if((m_y-1)>=0)
-		{
-			if(g->linksLeft[myIndex]!=0)
-			{
-				connections = 3-g->linksLeft[myIndex];
-				if(connections<0) connections = 0;
-				pen.setWidth( 1 + connections);
-				pen.setColor(QColor(90/(connections+1),90/(connections+1),90/(connections+1)));
-				qpainter.setPen(pen);
-				qpainter.drawLine(0,0,width(),0);
-			}
-		}
-		//TOP
-		if((m_x-1)>=0)
-		{
-			if(g->linksUp[myIndex]!=0)
-			{ 
-				connections = 3-g->linksUp[myIndex];
-				if(connections<0) connections = 0;
-				pen.setWidth(1 + connections);
-				pen.setColor(QColor(90/(connections+1),90/(connections+1),90/(connections+1)));
-				qpainter.setPen(pen);
-				qpainter.drawLine(0,0,0,height());
-			}
-		}
+		pen.setColor(QColor(128,128,128));
+		pen.setWidth( 1 );
+		qpainter.setPen(pen);
+		if(!top) { qpainter.drawLine(0,0,width()-1,0); }
+		if(!left) { qpainter.drawLine(0,0,0,height()-1); }
+		if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
+		if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
+		pen.setWidth( 1 );
+		pen.setColor(QColor(64,64,64));
+		qpainter.setPen(pen);
+		if(top) { qpainter.drawLine(0,0,width()-1,0); }
+		if(left) { qpainter.drawLine(0,0,0,height()-1); }
+		if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
+		if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
+	}
+	else if(isConnected())
+	{
+// 		Graph2d* g = dynamic_cast<m_ksView.game().puzzle()->solver()->g;
+// 		int connections=0;
+		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesnt work with coordinates
+		QPen pen(QColor(150,150,150));
+		pen.setWidth(1);
+
+		bool left = g->hasLeftBorder(m_x, m_y);
+		bool top = g->hasTopBorder(m_x, m_y);
+		bool right = g->hasRightBorder(m_x, m_y);
+		bool bottom = g->hasBottomBorder(m_x, m_y);
+		//LEFT
+		pen.setColor(QColor(192,192,192));
+		pen.setWidth( 1 );
+		qpainter.setPen(pen);
+		if(!top) { qpainter.drawLine(0,0,width()-1,0); }
+		if(!left) { qpainter.drawLine(0,0,0,height()-1); }
+		if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
+		if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
+		pen.setWidth( 1 );
+		pen.setColor(QColor(64,64,64));
+		qpainter.setPen(pen);
+		if(top) { qpainter.drawLine(0,0,width()-1,0); }
+		if(left) { qpainter.drawLine(0,0,0,height()-1); }
+		if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
+		if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
+		
+		
+		
+// 		if((m_y-1)>=0)
+// 		{
+// 			if(g->linksLeft[myIndex]!=0)
+// 			{
+// 				connections = 3-g->linksLeft[myIndex];
+// 				if(connections<0) connections = 0;
+// 				pen.setWidth( 1 + connections);
+// 				pen.setColor(QColor(90/(connections+1),90/(connections+1),90/(connections+1)));
+// 				qpainter.setPen(pen);
+// 				qpainter.drawLine(0,0,width(),0);
+// 			}
+// 		}
+// 		//TOP
+// 		if((m_x-1)>=0)
+// 		{
+// 			if(g->linksUp[myIndex]!=0)
+// 			{ 
+// 				connections = 3-g->linksUp[myIndex];
+// 				if(connections<0) connections = 0;
+// 				pen.setWidth(1 + connections);
+// 				pen.setColor(QColor(90/(connections+1),90/(connections+1),90/(connections+1)));
+// 				qpainter.setPen(pen);
+// 				qpainter.drawLine(0,0,0,height());
+// 			}
+// 		}
+	} else {
+// 		Graph* g = (GraphCustom*)m_ksView.game().puzzle()->solver()->g;
+		
+		QPen pen(QColor(150,150,150));
+		pen.setWidth(1);
+		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is 
+		bool left = g->hasLeftBorder(m_x, m_y);
+		bool top = g->hasTopBorder(m_x, m_y);
+		bool right = g->hasRightBorder(m_x, m_y);
+		bool bottom = g->hasBottomBorder(m_x, m_y);
+		pen.setWidth( 1 );
+		pen.setColor(QColor(64,64,64));
+		qpainter.setPen(pen);
+		if(top) { qpainter.drawLine(0,0,width()-1,0); }
+		if(left) { qpainter.drawLine(0,0,0,height()-1); }
+		if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
+		if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
 	}
 
 	if(isConnected())

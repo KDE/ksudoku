@@ -72,6 +72,20 @@ void ksudoku::GraphSudoku::init()
 			addConnection(i, ((subsquare/base)*base + j%base) * order + (subsquare%base)*base + j/base);
 		}
 	}
+	
+	// initialize borders
+	m_borderLeft.resize(size);
+	m_borderTop.resize(size);
+	m_borderRight.resize(size);
+	m_borderBottom.resize(size);
+	for(int i = 0; i < base; ++i) {
+		for(int j = 0; j < order; ++j) {
+			m_borderLeft.setBit(cellIndex(i*base, j, 0));
+			m_borderTop.setBit(cellIndex(j, i*base, 0));
+			m_borderRight.setBit(cellIndex((i+1)*base-1, j, 0));
+			m_borderBottom.setBit(cellIndex(j, (i+1)*base-1, 0));
+		}
+	}
 }
 
 void ksudoku::GraphRoxdoku::init()
@@ -97,6 +111,8 @@ void ksudoku::GraphRoxdoku::init()
 			if((j % order) / base == faces[2]) addConnection(i, j);
 		}
 	}
+	
+	// no need to initialize borders, roxdokus have no borders
 }
 
 ksudoku::GraphCustom::GraphCustom(const char* filenamed)
@@ -114,6 +130,60 @@ ksudoku::GraphCustom::GraphCustom()
 	ITERATE(i,625)	optimized_d[i]=0;
 
 }
+
+void ksudoku::Graph2d::addClique(int count, int* data) {
+	bool hasBorders = true;
+	
+	// check whether this clicque needs shown borders
+	bool horz = true, vert = true;
+	int x = cellPosX(data[0]);
+	int y = cellPosY(data[0]);
+	for(int i = 1; i < count; ++i) {
+		if(x != cellPosX(data[i])) vert = false;
+		if(y != cellPosY(data[i])) horz = false;
+	}
+	if(vert || horz) hasBorders = false;
+	
+	// addBorders
+	if(hasBorders) {
+		for(int i = 0; i < count; ++i) {
+			int index = data[i];
+			bool left = true;
+			bool right = true;
+			bool top = true;
+			bool bottom = true;
+			char borders = 0;
+			int posX1 = cellPosX(index);
+			int posY1 = cellPosY(index);
+			for(int j = 0; j < count; ++j) {
+				int posX2 = cellPosX(data[j]);
+				int posY2 = cellPosY(data[j]);
+				if(posY1 == posY2) {
+					if(posX1 == posX2 +1) borders |= 0x1;
+					if(posX1 == posX2 -1) borders |= 0x2;
+				}
+				if(posX1 == posX2) {
+					if(posY1 == posY2 +1) borders |= 0x4;
+					if(posY1 == posY2 -1) borders |= 0x8;
+				}
+			}
+			if(!(borders & 0x1)) m_borderLeft.setBit(index);
+			if(!(borders & 0x2)) m_borderRight.setBit(index);
+			if(!(borders & 0x4)) m_borderTop.setBit(index);
+			if(!(borders & 0x8)) m_borderBottom.setBit(index);
+		}
+	}
+	
+	// add connections to the graph
+	for(int i = 0; i < count; ++i) {
+		for(int j = 0; j < count; ++j) {
+			addConnection(data[i], data[j]);
+		}
+	}
+	
+	// add to the cliques list
+}
+
 void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in)
 {//TODO free in when done
 	base = 0;
@@ -130,50 +200,101 @@ void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int si
 	if(order<10) zerochar='0';
 	else zerochar='a'-1;
 
-	linksUp   = std::vector<int>(size);
-	linksLeft = std::vector<int>(size);
+// 	linksUp   = std::vector<int>(size);
+// 	linksLeft = std::vector<int>(size);
 
-	for(int i=0; i<size; i++)
-	{
-		linksUp[i]=linksLeft[i]=0;
-	}
+// 	for(int i=0; i<size; i++)
+// 	{
+// 		linksUp[i]=linksLeft[i]=0;
+// 	}
 
-	int max=0;
-	maxConnections=0;
+// 	int max=0;
+// 	maxConnections=0;
 	std::istringstream is(in);
 
+	m_borderLeft.resize(size);
+	m_borderTop.resize(size);
+	m_borderRight.resize(size);
+	m_borderBottom.resize(size);
+	
 	ITERATE(i, ncliques)
 	{
+		
 		cliques.push_back(std::vector<int>());
 		//read clique line
 		int n;
 		is >> n;
 		if(n>625) return;
 
+		int temp[625];
+		is >> temp[0];
+		
+// 		bool horz = true;
+// 		bool vert = true;
+// 		int x = cellPosX(temp[0]);
+// 		int y = cellPosY(temp[0]);
+		for(int j = 1; j < n; ++j) {
+			is >> temp[j];
+// 			if(x != cellPosX(temp[j])) vert = false;
+// 			if(y != cellPosY(temp[j])) horz = false;
+		}
+		
+		addClique(n, temp);
+		
+// 		if(!(horz || vert)) {
+// 			for(int j = 0; j < n; ++j) {
+// 				bool left = true;
+// 				bool right = true;
+// 				bool top = true;
+// 				bool bottom = true;
+// 				for(int k = 0; k < n; ++k) {
+// 					if(cellPosY(temp[j]) == cellPosY(temp[k])) {
+// 						if(cellPosX(temp[j]) == cellPosX(temp[k]) +1)
+// 							left = false;
+// 						if(cellPosX(temp[j]) == cellPosX(temp[k]) -1)
+// 							right = false;
+// 					}
+// 					if(cellPosX(temp[j]) == cellPosX(temp[k])) {
+// 						if(cellPosY(temp[j]) == cellPosY(temp[k]) +1)
+// 							top = false;
+// 						if(cellPosY(temp[j]) == cellPosY(temp[k]) -1)
+// 							bottom = false;
+// 					}
+// // 					if(cellPosY(temp[j]) == cellPosY(temp[k]) +1)
+// // 						top == false;;
+// 				}
+// 				if(left) m_borderLeft.setBit(temp[j]);
+// 				if(right) m_borderRight.setBit(temp[j]);
+// 				if(top) m_borderTop.setBit(temp[j]);
+// 				if(bottom) m_borderBottom.setBit(temp[j]);
+// 			}
+// 		}
+
 		ITERATE(j,n)
 		{
 			int vv;
-			is >> vv; //TODO check errors
+// 			is >> vv; //TODO check errors
+			vv = temp[j];
 
 			std::vector<int>& clique = cliques.back();
 			clique.push_back(vv);
-			if(vv>max) max=vv; 
+// 			if(vv>max) max=vv; 
 
-			ITERATE(k,j)
-			{
-				addConnection(clique[j], clique[k]);
-				addConnection(clique[k], clique[j]);
+// 			ITERATE(k,j)
+// 			{
+// 				addConnection(clique[j], clique[k]);
+// 				addConnection(clique[k], clique[j]);
 				
-				int jx,jy,kx,ky;
-				jx = get_x( clique[j] );
-				jy = get_y( clique[j] );
-				kx = get_x( clique[k] );
-				ky = get_y( clique[k] );
+// 				int jx,jy,kx,ky;
+// 				jx = cellPosX( clique[j] );
+// 				jy = cellPosY( clique[j] );
+// 				kx = cellPosX( clique[k] );
+// 				ky = cellPosY( clique[k] );
 
-				if(jx==kx && jy==ky+1) linksLeft[ clique[j] ]++;
-				if(jx==kx && jy==ky-1) linksLeft[ clique[k] ]++;
-				if(jy==ky && jx==kx-1) linksUp  [ clique[k] ]++;
-				if(jy==ky && jx==kx+1) linksUp  [ clique[j] ]++;
+// 				if(jx==kx && jy==ky+1) linksLeft[ clique[j] ]++;
+// 				if(jx==kx && jy==ky-1) linksLeft[ clique[k] ]++;
+// 				if(jy==ky && jx==kx-1) linksUp  [ clique[k] ]++;
+// 				if(jy==ky && jx==kx+1) linksUp  [ clique[j] ]++;
 				
 				//diagonal links -> disabled
 				//if(jx==kx+1 && jy==ky+1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
@@ -181,116 +302,153 @@ void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int si
 				//if(jx==kx+1 && jy==ky-1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
 				//if(jx==kx-1 && jy==ky+1) {linksLeft[ clique[k] ]++; linksUp  [ clique[k] ]++;}
 
-				if(linksUp  [ clique[k] ] > maxConnections) maxConnections = linksUp  [ clique[k] ];
-				if(linksLeft[ clique[k] ] > maxConnections) maxConnections = linksLeft[ clique[k] ];
-				if(linksUp  [ clique[j] ] > maxConnections) maxConnections = linksUp  [ clique[j] ];
-				if(linksLeft[ clique[j] ] > maxConnections) maxConnections = linksLeft[ clique[j] ];
-			}
+// 				if(linksUp  [ clique[k] ] > maxConnections) maxConnections = linksUp  [ clique[k] ];
+// 				if(linksLeft[ clique[k] ] > maxConnections) maxConnections = linksLeft[ clique[k] ];
+// 				if(linksUp  [ clique[j] ] > maxConnections) maxConnections = linksUp  [ clique[j] ];
+// 				if(linksLeft[ clique[j] ] > maxConnections) maxConnections = linksLeft[ clique[j] ];
+// 			}
 		}
 		
 	}
+	
+	
+// 	// setup Borders
+// 	int connections;
+// 	m_borderLeft.resize(size);
+// 	m_borderTop.resize(size);
+// 	for(int i = 0; i < size; ++i) {
+// 		int x = cellPosX(i);
+// 		int y = cellPosY(i);
+// 		if(y > 0 && linksLeft[i]) {
+// 			connections = 3 - linksLeft[i];
+// 			if(connections >= 2) m_borderLeft.setBit(i);
+// 		}
+// 		if(x > 0 && linksUp[i]) {
+// 			connections = 3 - linksUp[i];
+// 			if(connections >= 2) m_borderTop.setBit(i);
+// 		}
+// 	}
+	
 	//printf("%d\n", size);
 	valid=true;
 	return;
 }
 
-void ksudoku::GraphCustom::init()
-{
-	if(filename==0) return;
-	order=base=0;
-	FILE* in = fopen(filename, "r");
-	if(in == NULL) return;
-	if(fscanf(in, "%d\n", &order) == EOF) return;
-	if(order==0)return;
-	if(order<10) zerochar='0';
-	else zerochar='a'-1;
-
-	if(fscanf(in, "%d %d %d\n", &m_sizeX, &m_sizeY, &m_sizeZ) == EOF) return;//Z for further compatibility
-	if(m_sizeX<1 || m_sizeY<1 || m_sizeZ<1) return;
-	size = m_sizeX*m_sizeY*m_sizeZ;
-
-	linksUp   = std::vector<int>(size);
-	linksLeft = std::vector<int>(size);
-
-	for(int i=0; i<size; i++)
-	{
-		linksUp[i]=linksLeft[i]=0;
-	}
-
-	//READ CLIQUES
-	int ncliques=0;
-
-	if(fscanf(in, "%d\n", &ncliques) == EOF) return;
-	if(ncliques==0)return;
-	int max=0;
-	maxConnections=0;
-
-	ITERATE(i, ncliques)
-	{
-		cliques.push_back(std::vector<int>());
-		//read clique line
-		int n;
-		if(fscanf(in, "%d ", &n)==EOF) return;
-		if(n>625) return;
-
-		ITERATE(j,n)
-		{
-			int vv;
-			if(fscanf(in, "%d", &vv) == EOF) return;
-			std::vector<int>& clique = cliques.back();
-			clique.push_back(vv);
-			if(vv>max) max=vv; 
-
-			ITERATE(k,j)
-			{
-				addConnection(clique[j], clique[k]);
-				addConnection(clique[k], clique[j]);
-				
-				int jx,jy,kx,ky;
-				jx = get_x( clique[j] );
-				jy = get_y( clique[j] );
-				kx = get_x( clique[k] );
-				ky = get_y( clique[k] );
-
-				if(jx==kx && jy==ky+1) linksLeft[ clique[j] ]++;
-				if(jx==kx && jy==ky-1) linksLeft[ clique[k] ]++;
-				if(jy==ky && jx==kx-1) linksUp  [ clique[k] ]++;
-				if(jy==ky && jx==kx+1) linksUp  [ clique[j] ]++;
-				
-				//diagonal links -> disabled
-				//if(jx==kx+1 && jy==ky+1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
-				//if(jx==kx-1 && jy==ky-1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
-				//if(jx==kx+1 && jy==ky-1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
-				//if(jx==kx-1 && jy==ky+1) {linksLeft[ clique[k] ]++; linksUp  [ clique[k] ]++;}
-
-				if(linksUp  [ clique[k] ] > maxConnections) maxConnections = linksUp  [ clique[k] ];
-				if(linksLeft[ clique[k] ] > maxConnections) maxConnections = linksLeft[ clique[k] ];
-				if(linksUp  [ clique[j] ] > maxConnections) maxConnections = linksUp  [ clique[j] ];
-				if(linksLeft[ clique[j] ] > maxConnections) maxConnections = linksLeft[ clique[j] ];
-			}
-		}
-		
-	}
-	//printf("%d\n", size);
-	valid=true;
-	fclose(in);
-	return;
-}
-
-SKSolver* ksudoku::GraphCustom::createCustomSolver(const char* path)
-{
-	//only 4 testing: buggy
-	ksudoku::GraphCustom* gc = new ksudoku::GraphCustom(path);
-	gc->init();
-	if(gc->valid==false) return NULL;
-	
-	SKSolver* solver = new SKSolver(gc);
-	
-	//SKPuzzle* puzzle    = new SKPuzzle();
-	//puzzle->size=solver->size;
-	solver->setType(custom);
-	return solver;
-}
+// void ksudoku::GraphCustom::init()
+// {
+// 	if(filename==0) return;
+// 	order=base=0;
+// 	FILE* in = fopen(filename, "r");
+// 	if(in == NULL) return;
+// 	if(fscanf(in, "%d\n", &order) == EOF) return;
+// 	if(order==0)return;
+// 	if(order<10) zerochar='0';
+// 	else zerochar='a'-1;
+// 
+// 	if(fscanf(in, "%d %d %d\n", &m_sizeX, &m_sizeY, &m_sizeZ) == EOF) return;//Z for further compatibility
+// 	if(m_sizeX<1 || m_sizeY<1 || m_sizeZ<1) return;
+// 	size = m_sizeX*m_sizeY*m_sizeZ;
+// 
+// 	linksUp   = std::vector<int>(size);
+// 	linksLeft = std::vector<int>(size);
+// 
+// 	for(int i=0; i<size; i++)
+// 	{
+// 		linksUp[i]=linksLeft[i]=0;
+// 	}
+// 
+// 	//READ CLIQUES
+// 	int ncliques=0;
+// 
+// 	if(fscanf(in, "%d\n", &ncliques) == EOF) return;
+// 	if(ncliques==0)return;
+// 	int max=0;
+// 	maxConnections=0;
+// 
+// 	ITERATE(i, ncliques)
+// 	{
+// 		cliques.push_back(std::vector<int>());
+// 		//read clique line
+// 		int n;
+// 		if(fscanf(in, "%d ", &n)==EOF) return;
+// 		if(n>625) return;
+// 
+// 		ITERATE(j,n)
+// 		{
+// 			int vv;
+// 			if(fscanf(in, "%d", &vv) == EOF) return;
+// 			std::vector<int>& clique = cliques.back();
+// 			clique.push_back(vv);
+// 			if(vv>max) max=vv; 
+// 
+// 			ITERATE(k,j)
+// 			{
+// 				addConnection(clique[j], clique[k]);
+// 				addConnection(clique[k], clique[j]);
+// 				
+// 				int jx,jy,kx,ky;
+// 				jx = cellPosX( clique[j] );
+// 				jy = cellPosY( clique[j] );
+// 				kx = cellPosX( clique[k] );
+// 				ky = cellPosY( clique[k] );
+// 
+// 				if(jx==kx && jy==ky+1) linksLeft[ clique[j] ]++;
+// 				if(jx==kx && jy==ky-1) linksLeft[ clique[k] ]++;
+// 				if(jy==ky && jx==kx-1) linksUp  [ clique[k] ]++;
+// 				if(jy==ky && jx==kx+1) linksUp  [ clique[j] ]++;
+// 				
+// 				//diagonal links -> disabled
+// 				//if(jx==kx+1 && jy==ky+1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
+// 				//if(jx==kx-1 && jy==ky-1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
+// 				//if(jx==kx+1 && jy==ky-1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
+// 				//if(jx==kx-1 && jy==ky+1) {linksLeft[ clique[k] ]++; linksUp  [ clique[k] ]++;}
+// 
+// 				if(linksUp  [ clique[k] ] > maxConnections) maxConnections = linksUp  [ clique[k] ];
+// 				if(linksLeft[ clique[k] ] > maxConnections) maxConnections = linksLeft[ clique[k] ];
+// 				if(linksUp  [ clique[j] ] > maxConnections) maxConnections = linksUp  [ clique[j] ];
+// 				if(linksLeft[ clique[j] ] > maxConnections) maxConnections = linksLeft[ clique[j] ];
+// 			}
+// 		}
+// 		
+// 	}
+// 	//printf("%d\n", size);
+// 	
+// 	// setup Borders
+// 	int connections;
+// 	m_borderLeft.resize(size);
+// 	m_borderTop.resize(size);
+// 	for(int i = 0; i < size; ++i) {
+// 		int x = cellPosX(i);
+// 		int y = cellPosY(i);
+// 		if(y > 0 && linksLeft[i]) {
+// 			connections = 3-linksLeft[i];
+// 			if(connections >= 2) m_borderLeft.setBit(i);
+// 		}
+// 		if(x > 0 && linksUp[i]) {
+// 			connections = 3-linksUp[i];
+// 			if(connections >= 2) m_borderTop.setBit(i);
+// 		}
+// 	}
+// 	
+// 	valid=true;
+// 	fclose(in);
+// 	return;
+// }
+// 
+// SKSolver* ksudoku::GraphCustom::createCustomSolver(const char* path)
+// {
+// 	//only 4 testing: buggy
+// 	ksudoku::GraphCustom* gc = new ksudoku::GraphCustom(path);
+// 	gc->init();
+// 	if(gc->valid==false) return NULL;
+// 	
+// 	SKSolver* solver = new SKSolver(gc);
+// 	
+// 	//SKPuzzle* puzzle    = new SKPuzzle();
+// 	//puzzle->size=solver->size;
+// 	solver->setType(custom);
+// 	return solver;
+// }
 //only for testing !!! !!! !!!
 /*int main(void)
 {
