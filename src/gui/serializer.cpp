@@ -334,7 +334,7 @@ Game Serializer::load(const KUrl& url, QWidget* window, QString *errorMsg) {
 		return Game();
 	}
 	
-	
+#warning there is no use in this variable - it's constant and creates dead code below	
 	bool hasGame = false;
 	Game game;
 	
