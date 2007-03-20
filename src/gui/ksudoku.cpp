@@ -589,6 +589,7 @@ void KSudoku::dubPuzzle()
 		
 	if(state <= 0) {
 		KMessageBox::information(this, i18n("Sorry, No solutions have been found."));
+		delete puzzle;
 		return;
 	} else if(state == 1) {
 		KMessageBox::information(this, i18n("The Puzzle you entered has only one solution. (Forks required: %1)",forks));
