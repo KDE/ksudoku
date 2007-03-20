@@ -56,11 +56,15 @@ Puzzle* PuzzleFactory::create_instance(GameType type, int order, int difficulty,
 	Puzzle* puzzle = new Puzzle(solver, !dub);
 	
 	if(!dub) {
-		if(!puzzle->init(difficulty, symmetry))
+		if(!puzzle->init(difficulty, symmetry)) {
+			delete puzzle;
 			return 0;
+		}
 	}else {
-		if(!puzzle->init())
+		if(!puzzle->init()) {
+			delete puzzle;
 			return 0;
+		}
 	}
 	return puzzle;
 }
