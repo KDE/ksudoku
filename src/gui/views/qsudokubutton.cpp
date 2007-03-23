@@ -18,6 +18,38 @@
 #include <iostream>
 
 namespace ksudoku {
+	
+;
+
+
+// Highlights
+// Bit 1: Horz clique highlight
+// Bit 2: Vert clique highlight
+// Bit 3: Other Clique highlight
+// Bit 4: Use Help Highlights
+// Bit 5: Help Highlight for "allowed"
+// Bit 6: Special highlights (e.g. cross in XSudoku)
+const uint highlightColors[] = {
+	0xffbfd9ff, 0xff80b3ff, 0xfff082b0, 0xffe8b7d7,
+	0xff00cc88, 0xff6193cf, 0xffb3925d, 0xff888a85,
+	0xffffbfbf, 0xffffbfbf, 0xffffbfbf, 0xffffbfbf,
+	0xffffbfbf, 0xffffbfbf, 0xffffbfbf, 0xffffbfbf,
+
+	0xffeeeeec, 0xffa4c0e4, 0xfffcd9b0, 0xfff9cade,
+	0xff99dcc6, 0xffa8dde0, 0xffd8e8c2, 0xffd3d7cf,
+	0xffbfffbf, 0xffbfffbf, 0xffbfffbf, 0xffbfffbf,
+	0xffbfffbf, 0xffbfffbf, 0xffbfffbf, 0xffbfffbf,
+
+	0xffeeeeec, 0xffa4c0e4, 0xfffcd9b0, 0xfff9cade,
+	0xff99dcc6, 0xffa8dde0, 0xffd8e8c2, 0xffd3d7cf,
+	0xff000000, 0xff000000, 0xff000000, 0xff000000,
+	0xff000000, 0xff000000, 0xff000000, 0xff000000,
+
+	0xff000000, 0xff000000, 0xff000000, 0xff000000,
+	0xff000000, 0xff000000, 0xff000000, 0xff000000,
+	0xff000000, 0xff000000, 0xff000000, 0xff000000,
+	0xff000000, 0xff000000, 0xff000000, 0xff000000,
+};
 
 QSudokuButton::QSudokuButton(ksudokuView *parent, const char *name, int x, int y)
 	: QWidget(parent)
@@ -29,11 +61,8 @@ QSudokuButton::QSudokuButton(ksudokuView *parent, const char *name, int x, int y
 
 	m_mousein = false;
 	m_state   = WrongValue;
-
-	m_highlighted[0] = 0;
-	m_highlighted[1] = 0;
-	m_highlighted[2] = 0;
-	m_highlighted[3] = 0;
+	
+	m_highlights = HighlightNone;
 
 	m_text = " ";
 
@@ -192,45 +221,12 @@ void QSudokuButton::draw(QPainter& qpainter)
 	Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
 	if(!g) return;
 	
-	if(!isCustom())
-	{
-// 		QPen pen(QColor(150,150,150));
-// 		pen.setWidth(1);
-// 		qpainter.setPen(pen);
-// 		qpainter.drawRect(rect());	
-// 		drawMajorGrid(qpainter);
-// 		Graph* g = m_ksView.game().puzzle()->solver()->g;
-// 		int connections=0;
-		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesnt work with coordinates
-		QPen pen(QColor(150,150,150));
-		pen.setWidth(1);
-
-		bool left = g->hasLeftBorder(m_x, m_y);
-		bool top = g->hasTopBorder(m_x, m_y);
-		bool right = g->hasRightBorder(m_x, m_y);
-		bool bottom = g->hasBottomBorder(m_x, m_y);
-		//LEFT
-		pen.setColor(QColor(128,128,128));
-		pen.setWidth( 1 );
-		qpainter.setPen(pen);
-		if(!top) { qpainter.drawLine(0,0,width()-1,0); }
-		if(!left) { qpainter.drawLine(0,0,0,height()-1); }
-		if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
-		if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
-		pen.setWidth( 1 );
-		pen.setColor(QColor(64,64,64));
-		qpainter.setPen(pen);
-		if(top) { qpainter.drawLine(0,0,width()-1,0); }
-		if(left) { qpainter.drawLine(0,0,0,height()-1); }
-		if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
-		if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
-	}
-	else if(isConnected())
+	if(isConnected())
 	{
 // 		Graph2d* g = dynamic_cast<m_ksView.game().puzzle()->solver()->g;
 // 		int connections=0;
 		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesnt work with coordinates
-		QPen pen(QColor(150,150,150));
+		QPen pen(QColor(0xff888a85));
 		pen.setWidth(1);
 
 		bool left = g->hasLeftBorder(m_x, m_y);
@@ -238,7 +234,7 @@ void QSudokuButton::draw(QPainter& qpainter)
 		bool right = g->hasRightBorder(m_x, m_y);
 		bool bottom = g->hasBottomBorder(m_x, m_y);
 		//LEFT
-		pen.setColor(QColor(192,192,192));
+		pen.setColor(QColor(0xff80b3ff));
 		pen.setWidth( 1 );
 		qpainter.setPen(pen);
 		if(!top) { qpainter.drawLine(0,0,width()-1,0); }
@@ -246,7 +242,7 @@ void QSudokuButton::draw(QPainter& qpainter)
 		if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
 		if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
 		pen.setWidth( 1 );
-		pen.setColor(QColor(64,64,64));
+		pen.setColor(QColor(0xff00316e));
 		qpainter.setPen(pen);
 		if(top) { qpainter.drawLine(0,0,width()-1,0); }
 		if(left) { qpainter.drawLine(0,0,0,height()-1); }
@@ -283,7 +279,7 @@ void QSudokuButton::draw(QPainter& qpainter)
 	} else {
 // 		Graph* g = (GraphCustom*)m_ksView.game().puzzle()->solver()->g;
 		
-		QPen pen(QColor(150,150,150));
+		QPen pen(QColor(0xff888a85));
 		pen.setWidth(1);
 		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is 
 		bool left = g->hasLeftBorder(m_x, m_y);
@@ -291,7 +287,7 @@ void QSudokuButton::draw(QPainter& qpainter)
 		bool right = g->hasRightBorder(m_x, m_y);
 		bool bottom = g->hasBottomBorder(m_x, m_y);
 		pen.setWidth( 1 );
-		pen.setColor(QColor(64,64,64));
+		pen.setColor(QColor(0xff2e3436));
 		qpainter.setPen(pen);
 		if(top) { qpainter.drawLine(0,0,width()-1,0); }
 		if(left) { qpainter.drawLine(0,0,0,height()-1); }
@@ -303,31 +299,10 @@ void QSudokuButton::draw(QPainter& qpainter)
 		drawValue    (qpainter);
 }
 
-void QSudokuButton::paintHighlight(QPainter& qpainter)
-{
-	if(m_ksView.highlighted == -1)
-	{
-		unsigned char cc[3][3] = {{0xf1,0x9e,0x53},{0x9b,0xcb,0xe8},{0xad,0xe8,0x9b}};
-		unsigned int c[3]  = {0xdc,0xdc,0xdc};
-		if(m_ksView.showTracker) 
-		{
-			for(int i=0; i < 3; ++i)
-				if(m_highlighted[i] != 0)
-					ITERATE(j,3)
-						c[j] = static_cast<unsigned>(c[j]*.475f + cc[i][j]*.475f);
-			if(m_highlighted[0]+m_highlighted[1]+m_highlighted[2] == 3)
-				ITERATE(i,3)
-					c[i] = static_cast<unsigned>(0xdc*.205f+cc[0][i]*.205f+cc[1][i]*.205f+cc[2][i]*.205f);
-		}
-		qpainter.fillRect(rect(), QBrush(QColor(c[0],c[1],c[2])));
-	}
-	else
-//		if(m_highlighted[3]==1 || given == true)
-		if(m_highlighted[3] == 1 || state() == GivenValue)
-			qpainter.fillRect(rect(), QBrush(QColor(255,200,200)));
-		else
-			qpainter.fillRect(rect(), QBrush(QColor(0xdc,0xdc,0xdc)));
-		
+void QSudokuButton::paintHighlight(QPainter& qpainter) {
+	int col = 0;
+	
+	qpainter.fillRect(rect(), QBrush(highlightColors[m_highlights & HighlightMask]));
 }
 
 void QSudokuButton::drawMajorGrid(QPainter& qpainter)
@@ -423,6 +398,25 @@ void QSudokuButton::updateData() {
 	m_needRedraw = true;
 	update();
 }
+
+void QSudokuButton::setConnected(bool connected) {
+		m_connected = connected;
+		setAttribute(Qt::WA_OpaquePaintEvent, connected);
+}
+
+bool QSudokuButton::hasHighlight(int mask) const {
+	return m_highlights & mask == mask;
+}
+
+void QSudokuButton::setHighlight(int value) {
+	m_highlights |= value;
+}
+
+void QSudokuButton::setHighlight(int mask, int value) {
+	m_highlights = m_highlights & (HighlightMask ^ mask) | value;
+}
+
+
 
 }
 

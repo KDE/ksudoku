@@ -21,6 +21,20 @@ namespace ksudoku {
 
 class ksudokuView;
 
+enum HighlightValues {
+	HighlightRow        = 0x01, // for rows
+	HighlightColumn     = 0x02, // for columns
+	HighlightClique     = 0x04, // for other cliques
+	HighlightShowHelp   = 0x08, // set this when help (shift-key) is to be shown
+	HighlightHelpGreen  = 0x10, // for cells which are valid for current number
+	HighlightSpecial    = 0x20, // for special cells or special cliques (not used yet)
+
+	HighlightNone       = 0x00,
+	HighlightBaseMask   = 0x07, // mask for row, column and other cliques
+	HighlightHelpMask   = 0x18,
+	HighlightMask       = 0x3f,
+};
+
 /**
  * QSudokuButton represents a tile in KSudokuView
  */
@@ -50,7 +64,7 @@ public:
 	void updateData();
 
 	bool isConnected(){return m_connected;}
-	void setConnected(bool b){m_connected=b;};
+	void setConnected(bool b);
 	
 	bool isCustom(){return m_custom;}
 	void setCustom(bool b){m_custom=b;};
@@ -81,10 +95,10 @@ signals:
 	void finishHighlight();
 
 public:
-	bool highlighted(int index) const { return m_highlighted[index]; }
+	bool hasHighlight(int mask) const;
 	
-	void setHighlighted(int index, bool state) 
-		{ if(m_highlighted[index] == state) return; m_highlighted[index] = state; m_needRedraw = true;}
+	void setHighlight(int value);
+	void setHighlight(int mask, int value);
 	void setX(int x) { if(m_x == x) return; m_x = x; m_needRedraw = true; }
 	void setY(int y) { if(m_y == y) return; m_y = y; m_needRedraw = true; }
 	int getX() { return m_x; }
@@ -107,7 +121,8 @@ private:
 	/// more readable)
 	ksudokuView& m_ksView;
 
-	bool m_highlighted[4];
+	uint m_highlights;
+	
 	int  m_x;
 	int  m_y;
 	bool m_mousein;

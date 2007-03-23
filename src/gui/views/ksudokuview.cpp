@@ -98,11 +98,11 @@ void ksudokuView::draw(QPainter& p, int height, int width) const
 }
 
 
-void ksudokuView::btn_enter(uint y, uint x) // oops
+void ksudokuView::btn_enter(uint x, uint y)
 {
 	//for wrapping:
-	uint max_y = ((GraphCustom*) m_game.puzzle()->solver()->g)->sizeX() - 1;
-	uint max_x = ((GraphCustom*) m_game.puzzle()->solver()->g)->sizeY() - 1;
+	uint max_x = ((GraphCustom*) m_game.puzzle()->solver()->g)->sizeX() - 1;
+	uint max_y = ((GraphCustom*) m_game.puzzle()->solver()->g)->sizeY() - 1;
 	if(x > max_x+1) x = max_x;  //uint => negative == max uint
 	if(y > max_y+1) y = max_y;
 	if(x > max_x) x = 0;
@@ -112,9 +112,10 @@ void ksudokuView::btn_enter(uint y, uint x) // oops
 
 	isWaitingForNumber = -1;
 
-	for(uint i = 0; i < m_game.size(); ++i)
-		for(int j = 0; j < 3; ++j)
-			m_buttons[i]->setHighlighted(j,false);
+	for(int i = 0; i < m_game.size(); ++i) {
+		m_buttons[i]->setHighlight(HighlightBaseMask, HighlightNone);
+	}
+	
 
 	if(custom==0)
 	{
@@ -123,11 +124,11 @@ void ksudokuView::btn_enter(uint y, uint x) // oops
 		{
 	// 		uint base = m_game.userPuzzle()->base;
 			uint base = (uint)sqrt(m_game.puzzle()->order());
-			m_buttons[m_game.index(y, i)]->setHighlighted(0,true);
-			m_buttons[m_game.index(i, x)]->setHighlighted(1,true);
+			m_buttons[m_game.index(i, y)]->setHighlight(HighlightRow);
+			m_buttons[m_game.index(x, i)]->setHighlight(HighlightColumn);
 			uint sx = (x/base) * base;
 			uint sy = (y/base) * base;
-			m_buttons[m_game.index(i/base+ sy, sx+(i%base))]->setHighlighted(2,true);
+			m_buttons[m_game.index(i/base+sx, sy+(i%base))]->setHighlight(HighlightClique);
 		}
 	}
 	else
@@ -143,7 +144,7 @@ void ksudokuView::btn_enter(uint y, uint x) // oops
 			m_buttons[g->optimized[index][i]]->setHighlighted(colorB+1,true);
 		}*/
 		GraphCustom* g = ((GraphCustom*) m_game.puzzle()->solver()->g);
-		int index = g->cellIndex(y,x);
+		int index = g->cellIndex(x,y);
 		//printf("(%d %d) %d\n", y, x, index);
 		int count = 0;
 
@@ -153,9 +154,21 @@ void ksudokuView::btn_enter(uint y, uint x) // oops
 			{
 				if(g->cliques[i][j]==index)
 				{
+					uint mask = HighlightNone;
+					switch(count) {
+						case 0:
+							mask = HighlightColumn;
+							break;
+						case 1:
+							mask = HighlightRow;
+							break;
+						default:
+							mask = HighlightClique;
+							break;
+					}
 					for(int k=0; k<g->cliques[i].size(); k++)
 					{
-						m_buttons[g->cliques[i][k]]->setHighlighted(count,true);
+						m_buttons[g->cliques[i][k]]->setHighlight(mask);
 					}
 					count = (count+1)%3;
 					break;
@@ -257,7 +270,7 @@ void ksudokuView::beginHighlight(uint val)
 		return;
 	
 	for(uint i = 0; i < m_game.size(); ++i) {
-		m_buttons[i]->setHighlighted(3, highlightedBtns[i]);
+		m_buttons[i]->setHighlight(HighlightHelpMask, highlightedBtns[i] ? HighlightShowHelp : HighlightHelpMask);
 		m_buttons[i]->update();
 	}
 }
@@ -268,7 +281,7 @@ void ksudokuView::finishHighlight()
 
 	for(uint i = 0; i < m_game.size(); ++i)
 	{
-		m_buttons[i]->setHighlighted(3,0);
+		m_buttons[i]->setHighlight(HighlightHelpMask, HighlightNone);
 		m_buttons[i]->update();
 	}
 }
