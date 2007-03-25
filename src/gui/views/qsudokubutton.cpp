@@ -19,7 +19,7 @@
 
 namespace ksudoku {
 	
-;
+
 
 
 // Highlights
