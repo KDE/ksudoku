@@ -32,7 +32,7 @@ enum HighlightValues {
 	HighlightNone       = 0x00,
 	HighlightBaseMask   = 0x07, // mask for row, column and other cliques
 	HighlightHelpMask   = 0x18,
-	HighlightMask       = 0x3f,
+	HighlightMask       = 0x3f
 };
 
 /**
