@@ -17,7 +17,7 @@ namespace ksudoku {
 
 ksudokuView::ksudokuView(QWidget *parent, const Game& game, bool customd)
 	: QWidget(parent)
-	, KsView(parent)
+	, KsView()
 {
 	isWaitingForNumber = -1;
 	highlighted = -1;

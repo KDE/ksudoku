@@ -40,7 +40,7 @@ Matrix3fT ThisRot     = {{  {1.0f},  {0.0f},  {0.0f},          // NEW: This Rota
 
 RoxdokuView::RoxdokuView(ksudoku::Game game, QWidget *parent, const char* /*name*/)
 	: QGLWidget(parent)
-	, KsView(parent)
+	, KsView()
 	
 {
 	m_game = ksudoku::Game();

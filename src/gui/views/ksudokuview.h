@@ -84,6 +84,8 @@ private slots:
 
 	void onCellChange(uint index);
 	void onFullChange();
+	
+	QWidget* widget() { return this; }
 
 private:
 	void setGame(const Game& game);

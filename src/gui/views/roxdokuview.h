@@ -82,6 +82,8 @@ public:
 		glMatrixMode(GL_MODELVIEW); // Select The Modelview Matrix
 		glLoadIdentity();
 	}
+	
+	QWidget* widget() { return this; }
 protected:
 	void paintGL();
 protected:

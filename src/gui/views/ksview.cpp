@@ -9,9 +9,8 @@
 
 namespace ksudoku{
 
-KsView::KsView(QWidget* parent)
-	:/* QWidget(parent)
-	,*/ m_game()
+KsView::KsView()
+	: m_game()
 {
 }
 

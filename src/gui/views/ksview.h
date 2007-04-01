@@ -33,7 +33,7 @@ private:
 	KsView& operator=(KsView const& other);
 
 public:
-	KsView(QWidget* parent);
+	KsView();
 	virtual ~KsView();
 
 	///draw content to external qpainter (use for printing etc.)
@@ -59,6 +59,8 @@ public:
 
 	///return some info on current status (can be used for status bar)
 	virtual QString status() const =0;
+	
+	virtual QWidget* widget() = 0;
 
 protected:
 	///pointer to external Game
@@ -67,12 +69,6 @@ protected:
 	///whether wrong entries (by user) should be visable color marked
 	bool m_guidedMode;
 };
-
-class foo : public QWidget
-{};
-
-class foo2 : public foo,QGLWidget
-{};
 
 }
 

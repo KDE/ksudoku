@@ -261,18 +261,7 @@ void KSudoku::addGame(const Game& game) {
 	}
 // 	m_tabs->insertTab(view, "Test");
 // 	m_tabs->showPage(view);
-	if(ksudokuView* view2 = dynamic_cast<ksudokuView*>(view)) 
-	{
-		setCentralWidget((ksudokuView*)view, true);
-	}
-	else if (RoxdokuView* view2 = dynamic_cast<RoxdokuView*>(view)) 
-	{
-		setCentralWidget((RoxdokuView*)view, true);
-	}
-	else
-	{
-		//error
-	}
+	setCentralWidget(view->widget(), true);
     printf("out\n");
 }
 
@@ -1112,6 +1101,9 @@ ksudoku::KsView* KSudoku::currentView() const{
 // 		return view;
 // 	else
 // 		return 0;
+	
+	// TODO this might cause trouble as the central widget don't have to be a
+	// KsView instance
 	return dynamic_cast<KsView*>(centralWidget());
 }
 
