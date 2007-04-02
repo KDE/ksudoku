@@ -39,19 +39,19 @@ public:
 	inline void setSizeZ(int n) { m_sizeZ = n; }
 	inline void setSize (int n) { size = n; }
 	
-	inline uint cellIndex(uint x, uint y, uint z = 0) 
+	inline int cellIndex(uint x, uint y, uint z = 0) 
 	{
 		return (x*sizeY() + y)*sizeZ() + z;
 	}
-	inline uint cellPosX(int i) {
+	inline int cellPosX(int i) {
 		if(!(sizeX() && sizeY() && sizeZ())) return 0;
 		return i/sizeZ()/sizeY();
 	}
-	inline uint cellPosY(int i) {
+	inline int cellPosY(int i) {
 		if(!(sizeX() && sizeY() && sizeZ())) return 0;
 		return i/sizeZ()%sizeY();
 	}
-	inline uint cellPosZ(int i) {
+	inline int cellPosZ(int i) {
 		if(!(sizeX() && sizeY() && sizeZ())) return 0;
 		return i%sizeZ();
 	}

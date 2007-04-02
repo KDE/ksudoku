@@ -15,7 +15,7 @@
 
 namespace ksudoku {
 
-GameOptionsDialog::GameOptionsDialog(QWidget* parent, bool dub, int type, int order)
+GameOptionsDialog::GameOptionsDialog(QWidget* parent, bool /*dub*/, int type, int order)
 	: QWidget(parent)
 	, m_config(*KApplication::kApplication()->sessionConfig())
 {

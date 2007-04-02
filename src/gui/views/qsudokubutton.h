@@ -48,7 +48,7 @@ private:
 	QSudokuButton& operator=(QSudokuButton const& other);
 
 public:
-	QSudokuButton(ksudokuView *parent = 0, const char *name = 0,   int x=0, int y=0);
+	QSudokuButton(ksudokuView *parent = 0, int x=0, int y=0);
 	~QSudokuButton();
 
 	void resize();
@@ -84,14 +84,14 @@ public slots:
 
 	
 signals:
-	void clicked2(uint, uint);
-	void enter   (uint, uint);
-	void leave   (uint, uint);
-	void rightclicked(uint, uint);
+	void clicked2(int, int);
+	void enter   (int, int);
+	void leave   (int, int);
+	void rightclicked(int, int);
 	
-	void numberset(uint,uint,uint);
+	void numberset(int,int,int);
 
-	void beginHighlight(uint val);
+	void beginHighlight(int val);
 	void finishHighlight();
 
 public:

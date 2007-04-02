@@ -7,7 +7,7 @@ HistoryEvent::HistoryEvent()
 {
 }
 
-HistoryEvent::HistoryEvent(uint index, const CellInfo& changeCell) 
+HistoryEvent::HistoryEvent(int index, const CellInfo& changeCell) 
 	: m_cellsIndex(1, index), m_cellsBefore(), m_cellsAfter(1, changeCell)
 {
 }
@@ -15,13 +15,13 @@ HistoryEvent::HistoryEvent(uint index, const CellInfo& changeCell)
 HistoryEvent::HistoryEvent(const PuzzleState& puzzleChange)
 	: m_cellsIndex(puzzleChange.size()), m_cellsBefore(), m_cellsAfter(puzzleChange.size())
 {
-	for(uint i = 0; i < puzzleChange.size(); i++) {
+	for(int i = 0; i < puzzleChange.size(); i++) {
 		m_cellsIndex[i] = i;
 		m_cellsAfter[i] = getPuzzleCell(puzzleChange, i);
 	}
 }
 
-void HistoryEvent::setPuzzleCell(PuzzleState& puzzle, uint index, const CellInfo& cell) const {
+void HistoryEvent::setPuzzleCell(PuzzleState& puzzle, int index, const CellInfo& cell) const {
 	switch(cell.state()) {
 		case GivenValue:
 			puzzle.setGiven(index, true);
@@ -43,7 +43,7 @@ void HistoryEvent::setPuzzleCell(PuzzleState& puzzle, uint index, const CellInfo
 	}
 }
 
-CellInfo HistoryEvent::getPuzzleCell(const PuzzleState& puzzle, uint index) const {
+CellInfo HistoryEvent::getPuzzleCell(const PuzzleState& puzzle, int index) const {
 	if(puzzle.given(index)) {
  		return CellInfo(GivenValue, puzzle.value(index));
 	} else if(puzzle.value(index) == 0) {
@@ -59,7 +59,7 @@ bool HistoryEvent::applyTo(PuzzleState& puzzle) {
 		return false;
 	
 	m_cellsBefore = QVector<CellInfo>(m_cellsIndex.count());
-	for(uint i = 0; i < m_cellsIndex.count(); ++i) {
+	for(int i = 0; i < m_cellsIndex.count(); ++i) {
 		m_cellsBefore[i] = getPuzzleCell(puzzle, m_cellsIndex[i]);
 		setPuzzleCell(puzzle, m_cellsIndex[i], m_cellsAfter[i]);
 	}
@@ -70,7 +70,7 @@ bool HistoryEvent::undoOn(PuzzleState& puzzle) const {
 	if(m_cellsBefore.size() == 0 || m_cellsBefore.size() != m_cellsIndex.size())
 		return false;
 	
-	for(uint i = 0; i < m_cellsIndex.count(); ++i) {
+	for(int i = 0; i < m_cellsIndex.count(); ++i) {
 		setPuzzleCell(puzzle, m_cellsIndex[i], m_cellsBefore[i]);
 	}
 	return true;
@@ -80,7 +80,7 @@ bool HistoryEvent::redoOn(PuzzleState& puzzle) const {
 	if(m_cellsBefore.size() == 0 || m_cellsBefore.size() != m_cellsIndex.size())
 		return false;
 	
-	for(uint i = 0; i < m_cellsIndex.count(); ++i) {
+	for(int i = 0; i < m_cellsIndex.count(); ++i) {
 		setPuzzleCell(puzzle, m_cellsIndex[i], m_cellsAfter[i]);
 	}
 	return true;

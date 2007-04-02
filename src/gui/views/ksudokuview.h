@@ -64,7 +64,7 @@ public:
 	bool mouseOnlySuperscript;
 	bool showTracker;
 	int  isWaitingForNumber;
-	uint current_selected_number;
+	int current_selected_number;
 
 	bool custom;
 
@@ -73,16 +73,16 @@ protected:
 	//void paintEvent(QPaintEvent *);
 
 private slots:
-	void slotHello(uint x, uint y);
-	void btn_enter(uint x, uint y);
-	void btn_leave(uint x, uint y);
+	void slotHello(int x, int y);
+	void btn_enter(int x, int y);
+	void btn_leave(int x, int y);
 	
-	void slotRight(uint x, uint y);
+	void slotRight(int x, int y);
 
-	void beginHighlight(uint val);
+	void beginHighlight(int val);
 	void finishHighlight();
 
-	void onCellChange(uint index);
+	void onCellChange(int index);
 	void onFullChange();
 	
 	QWidget* widget() { return this; }

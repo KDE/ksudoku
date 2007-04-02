@@ -18,7 +18,7 @@ KsView::~KsView()
 {
 }
 
-void KsView::draw(QPainter& p, int height, int width) const
+void KsView::draw(QPainter& /*p*/, int /*height*/, int /*width*/) const
 { ///@TODO improve performance (low priority)
 //	//get user view
 //	QPixmap const qp(const_cast< KsView* >(this)->renderPixmap(width, height, FALSE));
@@ -28,6 +28,3 @@ void KsView::draw(QPainter& p, int height, int width) const
 }
 
 }
-
-//#include "ksview.moc"
-

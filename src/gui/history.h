@@ -16,7 +16,7 @@ class CellInfo {
 		inline CellInfo()
 		  : m_state(Marker), m_value(0), m_markers()
 		{ }
-		inline CellInfo(ButtonState state, uint value)
+		inline CellInfo(ButtonState state, int value)
 		  : m_state(state), m_value(value), m_markers()
 		{ }
 		inline CellInfo(const QBitArray& markers)
@@ -26,9 +26,9 @@ class CellInfo {
 		  : m_state(info.m_state), m_value(info.m_value), m_markers(info.m_markers)
 		{ }
 		inline ButtonState state() const { return m_state; }
-		inline uint value() const { return m_value; }
+		inline int value() const { return m_value; }
 		inline const QBitArray markers() const { return m_markers; }
-		inline bool marker(uint value) const {
+		inline bool marker(int value) const {
 			if(value > m_markers.size() || value == 0) return false;
 			return m_markers[value-1];
 		}
@@ -40,7 +40,7 @@ class CellInfo {
 		}
 	private:
 		ButtonState m_state;
-		uint m_value;
+		int m_value;
 		QBitArray m_markers;
 };
 
@@ -48,11 +48,11 @@ class PuzzleState {
 public:
 	PuzzleState() {
 	}
-	PuzzleState(uint size, uint values)
+	PuzzleState(int size, int values)
 	  : m_markers(values), m_values(size, 0), m_given(size)
   
 	{
-		for(uint i = 0; i < values; i++) {
+		for(int i = 0; i < values; i++) {
 			m_markers[i] = QBitArray(size);
 		}
 	}
@@ -68,19 +68,19 @@ public:
 			m_given.clearBit(i);
 		}
 	}
-	inline void setMarker(uint index, uint value, bool status)
+	inline void setMarker(int index, int value, bool status)
 	{
 		if(value == 0 || value > m_markers.size())
 			return;
 		m_markers[value-1].setBit(index, status);
 	}
-	inline void resetMarkers(uint index)
+	inline void resetMarkers(int index)
 	{
 		for(int i = 0; i < m_markers.size(); i++) {
 			m_markers[i].clearBit(index);
 		}
 	}
-	inline void setMarkers(uint index, const QBitArray& values) {
+	inline void setMarkers(int index, const QBitArray& values) {
 		if(values.size() == 0) {
 			resetMarkers(index);
 			return;
@@ -89,37 +89,37 @@ public:
 			m_markers[i].setBit(index, values[i]);
 		}
 	}
-	inline bool marker(uint index, uint value) const
+	inline bool marker(int index, int value) const
 	{
 		if(value == 0 || value > m_markers.size())
 			return false;
 		return m_markers[value-1][index];
 	}
-	inline QBitArray markers(uint index) const {
+	inline QBitArray markers(int index) const {
 		QBitArray array(m_markers.size());
 		for(int i = 0; i < m_markers.size(); i++) {
 			array.setBit(i, m_markers[i][index]);
 		}
 		return array;
 	}
-	inline void setGiven(uint index, bool given)
+	inline void setGiven(int index, bool given)
 	{
 		m_given.setBit(index, given);
 	}
-	inline void setValue(uint index, int value)
+	inline void setValue(int index, int value)
 	{
 		m_values[index] = value;
 	}
-	inline void setValue(uint index, uint value, bool given)
+	inline void setValue(int index, int value, bool given)
 	{
 		m_given.setBit(index, given);
 		m_values[index] = value;
 	};
-	inline bool given(uint index) const
+	inline bool given(int index) const
 	{
 		return m_given[index];
 	}
-	inline uint value(uint index) const
+	inline int value(int index) const
 	{
 		return m_values[index];
 	}
@@ -129,7 +129,7 @@ public:
 // 		m_given = state.m_given;
 // 	}
 	inline void detach() {
-		for(uint i = 0; i < m_markers.size(); ++i) {
+		for(int i = 0; i < m_markers.size(); ++i) {
 			// Detach m_markers
 			// This actually is only needed once and not every loop
 			// However this way it's more secure (m_markers.size() might be 0)
@@ -148,7 +148,7 @@ public:
 	 *@note Use this method only to get size of puzzle when operating
 	 * directly on the puzzle state.
 	 */
-	inline uint size() const {
+	inline int size() const {
 		return m_values.size();
 	}
 	
@@ -162,22 +162,22 @@ private:
 class HistoryEvent {
 	public:
 		HistoryEvent();
-		HistoryEvent(uint index, const CellInfo& changedCell);
+		HistoryEvent(int index, const CellInfo& changedCell);
 		HistoryEvent(const PuzzleState& newState);
 		
 		bool applyTo(PuzzleState& puzzle);
 		bool undoOn(PuzzleState& puzzle) const;
 		bool redoOn(PuzzleState& puzzle) const;
 		
-		const QVector<uint>& cellIndices() const { return m_cellsIndex; }
+		const QVector<int>& cellIndices() const { return m_cellsIndex; }
 		const QVector<CellInfo>& cellChanges() const { return m_cellsAfter; }
 		
 	private:
-		void setPuzzleCell(PuzzleState& puzzle, uint index, const CellInfo& cell) const;
-		CellInfo getPuzzleCell(const PuzzleState& puzzle, uint index) const;
+		void setPuzzleCell(PuzzleState& puzzle, int index, const CellInfo& cell) const;
+		CellInfo getPuzzleCell(const PuzzleState& puzzle, int index) const;
 		
 	private:
-		QVector<uint> m_cellsIndex;
+		QVector<int> m_cellsIndex;
 		QVector<CellInfo> m_cellsBefore;
 		QVector<CellInfo> m_cellsAfter;
 };

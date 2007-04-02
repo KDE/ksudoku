@@ -109,7 +109,7 @@ private:
 	
 	/**
 	 */
-	uint getSymmetry(uint flags, uint index, uint out[4]);
+	uint getSymmetry(uint flags, int index, int out[4]);
 	
 	int solve_engine(SKPuzzle *s,  int& solutions, SKPuzzle* out_solutions = 0, int maxsolutions = 1, int last_add=-1, int dynindex=-1, int dynvalue=0, int* forks=0);
 	void addConnection(int i, int j);

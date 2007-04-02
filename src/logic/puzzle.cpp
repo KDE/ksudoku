@@ -31,7 +31,7 @@ bool Puzzle::init() {
 
 	m_puzzle = new SKPuzzle(m_solver->g->order, m_solver->g->type);
 
-	for(uint i = 0; i < (uint)m_puzzle->size; ++i)
+	for(int i = 0; i < m_puzzle->size; ++i)
 		m_puzzle->numbers[i] = 0;
 // 		m_puzzle->setValue(i, 0);
 
@@ -83,7 +83,7 @@ int Puzzle::init(const QByteArray& values, int* forks) {
 	if(!(puzzle && solution))
 		return -1;
 	
-	for(uint i = 0; i < (uint)m_solver->g->size; ++i)
+	for(int i = 0; i < m_solver->g->size; ++i)
 		puzzle->numbers[i] = values[i];
 // 		puzzle->setValue(i, values[i]);
 	
@@ -116,7 +116,7 @@ bool Puzzle::init(const QByteArray& values, const QByteArray& solutionValues) {
 	if(!puzzle)
 		return false;
 	
-	for(uint i = 0; i < (uint)m_solver->g->size; ++i)
+	for(int i = 0; i < m_solver->g->size; ++i)
 		puzzle->numbers[i] = values[i];
 // 		puzzle->setValue(i, values[i]);
 	
@@ -127,7 +127,7 @@ bool Puzzle::init(const QByteArray& values, const QByteArray& solutionValues) {
 			return false;
 		}
 		
-		for(uint i = 0; i < (uint)m_solver->g->size; ++i)
+		for(int i = 0; i < m_solver->g->size; ++i)
 			solution->numbers[i] = solutionValues[i];
 // 			solution->setValue(i, solutionValues[i]);
 		

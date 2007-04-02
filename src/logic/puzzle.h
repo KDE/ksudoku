@@ -72,28 +72,28 @@ public:
 // 		inline uint value(uint index) const { return m_puzzle ? m_puzzle->value(index) : 0; }
 // 		inline uint value(uint x, uint y, uint z = 0) const { return value(index(x,y,z)); }
 // 		inline uint solution(uint index) const { return m_solution ? m_solution->value(index) : 0; }
-	inline uint value(uint index) const { return m_puzzle ? m_puzzle->numbers[index] : 0; }
-	inline uint value(uint x, uint y, uint z = 0) const { return value(index(x,y,z)); }
-	inline uint solution(uint index) const { return m_solution ? m_solution->numbers[index] : 0; }
+	inline int value(int index) const { return m_puzzle ? m_puzzle->numbers[index] : 0; }
+	inline int value(int x, int y, int z = 0) const { return value(index(x,y,z)); }
+	inline int solution(int index) const { return m_solution ? m_solution->numbers[index] : 0; }
 	
 	inline bool hasSolution() const { return m_withSolution && m_solution; }
 
 	///convert coordinates in a puzzle to one index value
-	uint index(uint x, uint y, uint z = 0) const {
+	int index(int x, int y, int z = 0) const {
 		if(!m_solver) return 0;
 		return (x*m_solver->g->sizeY() + y)*m_solver->g->sizeZ() + z;
 	}
 
 	///@return order of game
-	uint order() const { return m_solver->g->order; }
+	int order() const { return m_solver->g->order; }
 	
 	///@return total elements in puzzle
-	uint size() const { 
+	int size() const { 
 		return m_solver->g->sizeX() * m_solver->g->sizeY() * m_solver->g->sizeZ(); 
 		}
 
-	uint optimized_d(int index) const { return m_solver->g->optimized_d[index]; }
-	uint optimized(int indX, int indY) const { return m_solver->g->optimized[indX][indY]; }
+	int optimized_d(int index) const { return m_solver->g->optimized_d[index]; }
+	int optimized(int indX, int indY) const { return m_solver->g->optimized[indX][indY]; }
 	bool hasConnection(int i, int j) const { return m_solver->g->hasConnection(i,j); }
 
 	///@return if Puzzle has a solver or not

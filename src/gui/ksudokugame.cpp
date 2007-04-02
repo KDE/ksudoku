@@ -31,7 +31,7 @@ public:
 	inline void ref() { ++m_refCount; }
 	inline bool deref() { return !--m_refCount; }
 private:
-	uint m_refCount;
+	int m_refCount;
 	
 public: // The slots of GameIFace
 	void undo();
@@ -44,13 +44,13 @@ public:
 	inline void emitCompleted(bool isCorrect, const QTime& required, bool withHelp) {
 		emit completed(isCorrect, required, withHelp);
 	}
-	inline void emitCellChange(uint index) { emit cellChange(index); }
+	inline void emitCellChange(int index) { emit cellChange(index); }
 	inline void emitFullChange() { emit fullChange(); }
 	
 public:
 	//use this to set order (multiple changes)
 	void setOrder(int o) { order = o; symbols.setOrder(o); }
-	uint order;
+	int order;
 
 	PuzzleState state;
 	
@@ -60,7 +60,7 @@ public:
 	QTime time;
 	KUrl url;
 	QList<HistoryEvent> history;
-	uint historyPos;
+	int historyPos;
 
 	///@todo move this to proper place (or remove this todo)
 	Symbols symbols;
@@ -72,11 +72,11 @@ void Game::Private::undo() {
 	HistoryEvent event(history[--historyPos]);
 	event.undoOn(state);
 	
-	const QVector<uint>& indices = event.cellIndices();
+	const QVector<int>& indices = event.cellIndices();
 	if(indices.count() > 10) {
 		emit fullChange();
 	} else {
-		for(uint i = 0; i < indices.count(); ++i)
+		for(int i = 0; i < indices.count(); ++i)
 			emit cellChange(indices[i]);
 	}
 	emit modified(true);
@@ -88,11 +88,11 @@ void Game::Private::redo() {
 	HistoryEvent event(history[historyPos++]);
 	event.redoOn(state);
 
-	const QVector<uint>& indices = event.cellIndices();
+	const QVector<int>& indices = event.cellIndices();
 	if(indices.count() > 10) {
 		emit fullChange();
 	} else {
-		for(uint i = 0; i < indices.count(); ++i)
+		for(int i = 0; i < indices.count(); ++i)
 			emit cellChange(indices[i]);
 	}
 	emit modified(true);
@@ -130,7 +130,7 @@ Game::Game(Puzzle* puzzle)
 	m_private->state = PuzzleState(size(), m_private->order);
 	m_private->state.reset();
 
-	for(uint i = 0; i < size(); i++) {
+	for(int i = 0; i < size(); i++) {
 		m_private->state.setValue(i, m_private->puzzle->value(i));
 		if(value(i) != 0)
 			m_private->state.setGiven(i, true);
@@ -165,13 +165,13 @@ Game& Game::operator=(const Game& game) {
 bool Game::simpleCheck() const {
 	if(!m_private) return false;
 	
-	for(uint i = 0; i < size(); ++i) {
+	for(int i = 0; i < size(); ++i) {
 		if(m_private->puzzle->value(i) == 0)
 			continue;
 		
-		for(uint j = 0; j < m_private->puzzle->optimized_d(i); ++j){
+		for(int j = 0; j < m_private->puzzle->optimized_d(i); ++j){
 			// set k to the index of the connected field
-			uint k = m_private->puzzle->optimized(i,j);
+			int k = m_private->puzzle->optimized(i,j);
 			if(k == i)
 				continue;
 
@@ -186,17 +186,17 @@ bool Game::simpleCheck() const {
 	return true;
 }
 
-uint Game::order() const {
+int Game::order() const {
 	if(!m_private) return 0;
 	return m_private->order;
 }
 
-uint Game::index(uint x, uint y, uint z) const {
+int Game::index(int x, int y, int z) const {
 	if(!m_private) return 0;
 	return m_private->puzzle->index(x,y,z);
 }
 
-uint Game::size() const {
+int Game::size() const {
 	if(!m_private) return 0;
 	return m_private->puzzle->size();
 }
@@ -233,21 +233,21 @@ KUrl Game::getUrl() const {
 }
 
 
-QBitArray Game::highlightValueConnections(uint val, bool allValues) const {
+QBitArray Game::highlightValueConnections(int val, bool allValues) const {
 	if(!m_private) return QBitArray();
 		
 	if(val <= 0 || val > m_private->order)
 		return QBitArray();
 	
 	QBitArray array(size());
-	for(uint i = 0; i < size(); i++)
+	for(int i = 0; i < size(); i++)
 		array.clearBit(i);
 	
-	for(uint i = 0; i < size(); i++) {
+	for(int i = 0; i < size(); i++) {
 		if(allValues && value(i))
 			array.setBit(i);
 		if(value(i) == val) {
-			for(uint j = 0; j < (uint)m_private->puzzle->optimized_d(i); j++)
+			for(int j = 0; j < m_private->puzzle->optimized_d(i); j++)
 				array.setBit(m_private->puzzle->optimized(i,j));
 		}
 	}
@@ -255,7 +255,7 @@ QBitArray Game::highlightValueConnections(uint val, bool allValues) const {
 	return array;
 }
 
-void Game::setGiven(uint index, bool given) {
+void Game::setGiven(int index, bool given) {
 	if(!m_private) return;
 	
 	if(given != m_private->state.given(index)) {
@@ -269,7 +269,7 @@ void Game::setGiven(uint index, bool given) {
 	}
 }
 
-bool Game::setMarker(uint index, uint val, bool state) {
+bool Game::setMarker(int index, int val, bool state) {
 	if(!m_private) return false;
 	
 	if(val == 0 || val > order())
@@ -277,7 +277,7 @@ bool Game::setMarker(uint index, uint val, bool state) {
 
 	if(m_private->state.given(index))
 		return false;
-	uint val2 = value(index);
+	int val2 = value(index);
 	if(val == val2) {
 		doEvent(HistoryEvent(index, CellInfo()));
 	} else {
@@ -297,12 +297,12 @@ bool Game::setMarker(uint index, uint val, bool state) {
 	return true;
 }
 
-void Game::setValue(uint index, uint val) {
+void Game::setValue(int index, int val) {
 	if(!m_private) return;
 	
 	if(m_private->state.given(index)) return;
 	
-	uint oldvalue = value(index);
+	int oldvalue = value(index);
 	doEvent(HistoryEvent(index, CellInfo(CorrectValue, val)));
 	
 	m_private->emitCellChange(index);
@@ -315,11 +315,11 @@ void Game::setValue(uint index, uint val) {
 void Game::checkCompleted() {
 	if(!m_private || !m_private->puzzle->hasSolution()) return;
 
-	for(uint i = 0; i < size(); i++)
+	for(int i = 0; i < size(); i++)
 		if(value(i) == 0)
 			return;
 	
-	for(uint i = 0; i < size(); i++) {
+	for(int i = 0; i < size(); i++) {
 		if(value(i) != m_private->puzzle->solution(i)) {
 			m_private->emitCompleted(false, time(), m_private->hadHelp);
 			return;
@@ -344,8 +344,8 @@ bool Game::giveHint() {
 // 		i = RANDOM(size());
 // 	} while (m_private->isGiven(i));
 	
-	uint start = RANDOM(size());
-	uint i;
+	int start = RANDOM(size());
+	int i;
 	for(i = start; i < size(); ++i)
 		if(!given(i))
 			break;
@@ -356,7 +356,7 @@ bool Game::giveHint() {
 		if(i == start) return false;
 	}
 	
-	uint val = m_private->puzzle->solution(i);
+	int val = m_private->puzzle->solution(i);
 	doEvent(HistoryEvent(i, CellInfo(GivenValue, val)));
 	
 	m_private->emitCellChange(i);
@@ -375,8 +375,8 @@ bool Game::autoSolve() {
 	PuzzleState newState(size(), order());
 	newState.reset();
 	
-	for(uint i = 0; i < size(); ++i) {
-		uint val = m_private->puzzle->solution(i);
+	for(int i = 0; i < size(); ++i) {
+		int val = m_private->puzzle->solution(i);
 		newState.setValue(i, val);
 		newState.setGiven(i, true);
 	}
@@ -392,22 +392,22 @@ bool Game::autoSolve() {
 }
 
 
-uint Game::value(uint index) const {
+int Game::value(int index) const {
 	if(!m_private) return 0;
 	return m_private->state.value(index);
 }
 
-bool Game::given(uint index) const {
+bool Game::given(int index) const {
 	if(!m_private) return false;
 	return m_private->state.given(index);
 }
 
-bool Game::marker(uint index, uint val) const {
+bool Game::marker(int index, int val) const {
 	if(!m_private) return false;
 	return m_private->state.marker(index, val);
 }
 
-ksudoku::ButtonState Game::buttonState(uint index) const {
+ksudoku::ButtonState Game::buttonState(int index) const {
 	if(!m_private) return WrongValue;
 	
 	if(given(index))
@@ -419,7 +419,7 @@ ksudoku::ButtonState Game::buttonState(uint index) const {
 	return CorrectValue;
 }
 
-CellInfo Game::cellInfo(uint index) const {
+CellInfo Game::cellInfo(int index) const {
 	if(!m_private)
 		return CellInfo(WrongValue, 0);
 				
@@ -438,7 +438,7 @@ const QByteArray Game::allValues() const {
 	return m_private->state.allValues();
 }
 
-QChar Game::value2Char(uint value) const {
+QChar Game::value2Char(int value) const {
 	if(!m_private || value == 0) return QChar('\0');
 	
 	//return m_private->puzzle->value2Char(value);
@@ -475,13 +475,13 @@ void Game::doEvent(const HistoryEvent& event) {
 	m_private->historyPos++;
 }
 
-uint Game::historyLength() const {
+int Game::historyLength() const {
 	if(!m_private) return 0;
 	
 	return m_private->history.count();
 }
 
-HistoryEvent Game::historyEvent(uint i) const {
+HistoryEvent Game::historyEvent(int i) const {
 	if(!m_private || i >= m_private->history.count())
 		return HistoryEvent();
 	

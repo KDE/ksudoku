@@ -265,7 +265,7 @@ void KSudoku::addGame(const Game& game) {
     printf("out\n");
 }
 
-void KSudoku::dlgSelectedGame(const QString& name)
+void KSudoku::dlgSelectedGame(const QString& /*name*/)
 {
 // 	int order =  m_gameSelDlg->order;
 // 	int difficulty = m_gameSelDlg->difficulty;
@@ -942,7 +942,7 @@ void KSudoku::readProperties(KConfig *config)
 	}
 }
 
-void KSudoku::dragEnterEvent(QDragEnterEvent *event)
+void KSudoku::dragEnterEvent(QDragEnterEvent */*event*/)
 {
     // accept uri drops only
 	
@@ -1044,9 +1044,9 @@ void KSudoku::filePrint()
     // button is clicked
 
 // 	Game* game = currentGame();
-	ksudoku::KsView* view = currentView();
 
 //TODO PORT
+// 	ksudoku::KsView* view = currentView();
 //	if(view)
 //		ksudoku::Print p(*view);// *game, game->solver()->g->sizeZ() > 0);
 	//else ??? give message noting to print with hint what is printable ??
@@ -1118,7 +1118,7 @@ void KSudoku::loadCustomShapeFromPath()
 	}	
 	
 	QString tmpFile;
-	bool success = false;
+// 	bool success = false;
 	QDomDocument doc;
 	if(!KIO::NetAccess::download( Url, tmpFile, this )) 
 	{
@@ -1173,7 +1173,7 @@ bool KSudokuNewStuff::install( const QString &fileName )
 	return true;
 }
 
-bool KSudokuNewStuff::createUploadFile( const QString &fileName )
+bool KSudokuNewStuff::createUploadFile( const QString &/*fileName*/ )
 {
 	return true;
 }

@@ -148,10 +148,6 @@ void ksudoku::Graph2d::addClique(int count, int* data) {
 	if(hasBorders) {
 		for(int i = 0; i < count; ++i) {
 			int index = data[i];
-			bool left = true;
-			bool right = true;
-			bool top = true;
-			bool bottom = true;
 			char borders = 0;
 			int posX1 = cellPosX(index);
 			int posY1 = cellPosY(index);

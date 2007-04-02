@@ -26,7 +26,7 @@ namespace ksudoku {
 
 class SolverState {
 public:
-	SolverState(uint size, uint order)
+	SolverState(int size, int order)
 		: m_size(size), m_order(order), m_values(size, 0), m_flags(order),
 		  m_remaining(size, order+1, order)
 	{
@@ -45,19 +45,19 @@ public:
 		}
 	}
 	
-	uint value(uint index) const { return m_values[index]; }
+	int value(int index) const { return m_values[index]; }
 	
-	inline ProcessState setValue(uint index, uint value, SKGraph* graph) {
+	inline ProcessState setValue(int index, int value, SKGraph* graph) {
 		if(m_values[index] != 0) return KSS_CRITICAL;
 		m_remaining.setValue(index, 0);
 		m_values[index] = value;
-		for(uint i = 0; i < (uint)graph->optimized_d[index]; ++i) {
-			uint j = graph->optimized[index][i];
+		for(int i = 0; i < graph->optimized_d[index]; ++i) {
+			int j = graph->optimized[index][i];
 			if(m_values[j] == 0) {
 				if(m_flags[value-1][j]) {
 					m_flags[value-1].clearBit(j);
 // 					if(m_remaining.value(j) == 8) printf("Aha\n");
-					uint remaining = m_remaining.value(j);
+					int remaining = m_remaining.value(j);
 					if(remaining == 1) return KSS_FAILURE;
 					m_remaining.setValue(j, remaining-1);
 				}
@@ -66,8 +66,8 @@ public:
 		return KSS_SUCCESS;
 	}
 	
-	inline ProcessState fill(const Q3ValueVector<uint>& values, SKGraph* graph) {
-		for(uint i = 0; i < m_size; ++i) {
+	inline ProcessState fill(const Q3ValueVector<int>& values, SKGraph* graph) {
+		for(int i = 0; i < m_size; ++i) {
 			if(values[i] == 0) continue;
 			if(setValue(i, values[i], graph) != KSS_SUCCESS)
 				return KSS_FAILURE;
@@ -83,7 +83,7 @@ public:
 		int index;
 		ProcessState state;
 		while((index = m_remaining.firstIndexWithValue(1)) >= 0) {
-			for(uint i = 0; ; ++i) {
+			for(int i = 0; ; ++i) {
 				// Check whethere there wasn't a flag left
 				if(i >= m_order) return KSS_CRITICAL;
 				
@@ -97,16 +97,16 @@ public:
 	}
 	
 	int optimalSolvingIndex() {
-		for(uint i = 2; i <= m_order; ++i) {
+		for(int i = 2; i <= m_order; ++i) {
 			if(m_remaining.firstIndexWithValue(i) >= 0)
 				return m_remaining.firstIndexWithValue(i);
 		}
 		return -1;
 	}
 	
-	uint possibleValue(uint index, uint startValue = 0) {
+	int possibleValue(int index, int startValue = 0) {
 		if(m_values[index] != 0) return 0;
-		for(uint i = startValue ? startValue-1 : 0; i < m_order; ++i) {
+		for(int i = startValue ? startValue-1 : 0; i < m_order; ++i) {
 			if(m_flags[i][index])
 				return i+1;
 		}
@@ -114,11 +114,11 @@ public:
 	}
 	
 private:
-	uint                    m_size;
-	uint                    m_order;
-	Q3ValueVector<uint>      m_values;
+	int                      m_size;
+	int                      m_order;
+	Q3ValueVector<int>       m_values;
 	Q3ValueVector<QBitArray> m_flags; // I don't know whether this is fast enough
-	GroupLookup             m_remaining;
+	GroupLookup              m_remaining;
 };
 
 
@@ -129,7 +129,7 @@ Solver::Solver(Graph* graph, uint flags) : m_graph(graph), m_flags(flags) {
 Solver::~Solver() {
 }
 
-uint Solver::getSymmetry(uint index, uint out[4])
+int Solver::getSymmetricIndices(int index, int out[4])
 {
 	int which = 0; // TODO replace this with another flag
 	
@@ -173,7 +173,7 @@ uint Solver::getSymmetry(uint index, uint out[4])
 	return 1;
 }
 
-int Solver::solve(const Q3ValueVector<uint>& puzzle, uint maxSolutions) {
+int Solver::solve(const Q3ValueVector<int>& puzzle, int maxSolutions) {
 	// I got constant values in this method by trial and error
 	
 	SolverState state(m_graph->size, m_graph->order);
@@ -182,8 +182,7 @@ int Solver::solve(const Q3ValueVector<uint>& puzzle, uint maxSolutions) {
 	ProcessState result;
 	
 	// Do 20 tries to solve the puzzle, this should be enough in most cases
-	uint i;
-	for(i = 0; i < 20; ++i) {
+	for(int i = 0; i < 20; ++i) {
 		// TODO This might change whith an evolved internal solver algorithmn
 		
 		// If no solutions were found after size*8 forks, than there 
@@ -220,7 +219,7 @@ ProcessState Solver::solveByLastFlag(SolverState& state) {
 	int index = state.optimalSolvingIndex();
 	if(index < 0) {
 		m_result.resize(m_graph->size);
-		for(uint i = 0; i < m_graph->size; ++i)
+		for(int i = 0; i < m_graph->size; ++i)
 			m_result[i] = state.value(i);
 		
 		if(m_solutionsLeft-- <= 1)
@@ -237,7 +236,7 @@ ProcessState Solver::solveByForks(SolverState& state) {
 	// Are there no more free fields?
 	if(index < 0) {
 		m_result.resize(m_graph->size);
-		for(uint i = 0; i < static_cast<uint>(m_graph->size); ++i)
+		for(int i = 0; i < static_cast<int>(m_graph->size); ++i)
 			m_result[i] = state.value(i);
 // 		if(puzzle) {
 // 			for(uint i = 0; i < static_cast<uint>(size); ++i) {
@@ -257,9 +256,9 @@ ProcessState Solver::solveByForks(SolverState& state) {
 	
 	
 // 	uint startValue = RANDOM(m_graph->order);
-	uint startValue = rand() % m_graph->order;
+	int startValue = rand() % m_graph->order;
 	bool restart = false;
-	uint value = state.possibleValue(index, startValue);
+	int value = state.possibleValue(index, startValue);
 	if(!value) {
 		restart = true;
 		value = state.possibleValue(index, 0);

@@ -32,7 +32,7 @@ public slots:
 signals:
 	void modified(bool isModified);
 	void completed(bool isCorrect, const QTime& required, bool withHelp);
-	void cellChange(uint index);
+	void cellChange(int index);
 	void fullChange();
 };
 
@@ -70,12 +70,12 @@ public:
 	
 	///convert coordinates in a puzzle to one index value
 	///no bound checks are performed for performance reason
-	uint index(uint x, uint y, uint z = 0) const;
+	int index(int x, int y, int z = 0) const;
 	
 	/**
 	 * The nubmer of cells of the puzzle
 	 */
-	uint size() const;
+	int size() const;
 	
 	/**
 	 * Checks wheter a set contains obvious errors
@@ -91,7 +91,7 @@ public:
 	 * @param[in] allValues Whether cells which allready have a value should also be hightlighted
 	 * @return A array of bools for each cell. True when the cell might not be used otherwise false.
 	 */
-	QBitArray highlightValueConnections(uint val, bool allValues = false) const;
+	QBitArray highlightValueConnections(int val, bool allValues = false) const;
 
 	///@return pointer to current puzzle
 	Puzzle* puzzle() const;
@@ -110,23 +110,23 @@ public:
 	
 	bool hasSolver();
 	
-	uint order() const;
+	int order() const;
 
-	bool marker(uint index, uint value) const;
-	inline bool marker(uint value, uint x, uint y, uint z = 0) const;
-	uint value(uint index) const;
-	inline uint value(uint x, uint y, uint z = 0) const;
-	bool given(uint index) const;
-	inline bool given(uint x, uint y, uint z = 0) const;
+	bool marker(int index, int value) const;
+	inline bool marker(int value, int x, int y, int z = 0) const;
+	int value(int index) const;
+	inline int value(int x, int y, int z = 0) const;
+	bool given(int index) const;
+	inline bool given(int x, int y, int z = 0) const;
 	
 	/**
 	 * Returns the state of a cell
 	 * @param[in] index The index of the cell
 	 */
-	ksudoku::ButtonState buttonState(uint index) const;
-	inline ksudoku::ButtonState buttonState(uint x, uint y, uint z = 0) const;
-	CellInfo cellInfo(uint index) const;
-	inline CellInfo cellInfo(uint x, uint y, uint z = 0) const;
+	ksudoku::ButtonState buttonState(int index) const;
+	inline ksudoku::ButtonState buttonState(int x, int y, int z = 0) const;
+	CellInfo cellInfo(int index) const;
+	inline CellInfo cellInfo(int x, int y, int z = 0) const;
 	
 	/**
 	 * Sets one marker in a cell
@@ -135,24 +135,24 @@ public:
 	 * @param[in] state Whether the marker shoudl be set or unset
 	 * @return Whether this function was executed succesfully
 	 */
-	bool setMarker(uint index, uint val, bool state);
-	inline bool setMarker(uint val, bool state, uint x, uint y, uint z = 0);
-	inline bool flipMarker(uint index, uint val);
-	inline bool flipMarker(uint val, uint x, uint y, uint z = 0);
+	bool setMarker(int index, int val, bool state);
+	inline bool setMarker(int val, bool state, int x, int y, int z = 0);
+	inline bool flipMarker(int index, int val);
+	inline bool flipMarker(int val, int x, int y, int z = 0);
 	
 	/**
 	 * @brief Sets the value of a cell
 	 * @param[in] index The index of the cell
 	 * @param[in] val   The new value of the cell
 	 */
-	void setValue(uint index, uint val);
-	inline void setValue(uint val, uint x, uint y, uint z = 0);
+	void setValue(int index, int val);
+	inline void setValue(int val, int x, int y, int z = 0);
 	
 	/**
 	 * Sets whether cell @p index is @p given (A given cell is not changeable by the player).
 	 */
-	void setGiven(uint index, bool given);
-	inline void setGiven(bool given, uint x, uint y, uint z = 0);
+	void setGiven(int index, bool given);
+	inline void setGiven(bool given, int x, int y, int z = 0);
 	
 	/**
 	 * Gets the all current values of the game
@@ -162,7 +162,7 @@ public:
 	/**
 	 * @see ksudoku::Puzzle::value2Char
 	 */
-	QChar value2Char(uint value) const;
+	QChar value2Char(int value) const;
 	
 	/**
 	 * @see ksudoku::Puzzle:char2Value
@@ -222,12 +222,12 @@ public:
 	/**
 	 * Returns count of history events
 	 */
-	uint historyLength() const;
+	int historyLength() const;
 	
 	/**
 	 * Returns the hitory event at position @p i
 	 */
-	HistoryEvent historyEvent(uint i) const;
+	HistoryEvent historyEvent(int i) const;
 	
 	
 private:
@@ -242,43 +242,43 @@ private:
 	Private* m_private;
 };
 
-inline bool Game::marker(uint val, uint x, uint y, uint z) const {
+inline bool Game::marker(int val, int x, int y, int z) const {
 	return marker(index(x, y, z), val);
 }
 
-inline bool Game::setMarker(uint val, bool state, uint x, uint y, uint z) {
+inline bool Game::setMarker(int val, bool state, int x, int y, int z) {
 	return setMarker(index(x, y, z), val, state);
 }
 
-inline bool Game::flipMarker(uint index, uint val) {
+inline bool Game::flipMarker(int index, int val) {
 	return setMarker(index, val, !marker(index, val));
 }
 
-inline bool Game::flipMarker(uint val, uint x, uint y, uint z) {
+inline bool Game::flipMarker(int val, int x, int y, int z) {
 	return flipMarker(index(x, y, z), val);
 }
 
-inline uint Game::value(uint x, uint y, uint z) const {
+inline int Game::value(int x, int y, int z) const {
 	return value(index(x, y, z));
 }
 
-inline void Game::setValue(uint val, uint x, uint y, uint z) {
+inline void Game::setValue(int val, int x, int y, int z) {
 	setValue(index(x, y, z), val);
 }
 
-inline bool Game::given(uint x, uint y, uint z) const {
+inline bool Game::given(int x, int y, int z) const {
 	return given(index(x, y, z));
 }
 
-inline void Game::setGiven(bool given, uint x, uint y, uint z) {
+inline void Game::setGiven(bool given, int x, int y, int z) {
 	setGiven(index(x, y, z), given);
 }
 
-inline ksudoku::ButtonState Game::buttonState(uint x, uint y, uint z) const {
+inline ksudoku::ButtonState Game::buttonState(int x, int y, int z) const {
 	return buttonState(index(x, y, z));
 }
 
-inline CellInfo Game::cellInfo(uint x, uint y, uint z) const {
+inline CellInfo Game::cellInfo(int x, int y, int z) const {
 	return cellInfo(index(x, y, z));
 }
 

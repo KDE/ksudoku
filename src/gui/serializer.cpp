@@ -55,7 +55,7 @@ Game Serializer::deserializeGame(QDomElement element) {
 	game.setUserHadHelp(hadHelp);
 	
 	if(hasHistory) {
-		for(uint i = 0; i < history.count(); ++i)
+		for(int i = 0; i < history.count(); ++i)
 			game.doEvent(history[i]);
 	}
 	
@@ -104,11 +104,11 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	}
 	
 	if(!solver) return 0;
-	if(valuesStr.length() != static_cast<uint>(solver->g->size)) {
+	if(valuesStr.length() != solver->g->size) {
 		delete solver;
 		return 0;
 	}
-	if(solutionStr.length() != 0 && solutionStr.length() != static_cast<uint>(solver->g->size)) {
+	if(solutionStr.length() != 0 && solutionStr.length() != solver->g->size) {
 		delete solver;
 		return 0;
 	}
@@ -117,7 +117,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	
 	QByteArray values;
 	values.resize(solver->g->size);
-	for(uint i = 0; i < static_cast<uint>(solver->g->size); ++i) {
+	for(int i = 0; i < solver->g->size; ++i) {
 		if(valuesStr[i] == '_')
 			values[i] = 0;
 		else
@@ -127,7 +127,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	QByteArray solution;
 	if(solutionStr.length() != 0) {
 		solution.resize(solver->g->size);
-		for(uint i = 0; i < static_cast<uint>(solver->g->size); ++i) {
+		for(int i = 0; i < solver->g->size; ++i) {
 			if(solutionStr[i] == '_')
 				solution[i] = 0;
 			else
@@ -139,14 +139,14 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	return puzzle;
 }
 
-static uint readUInt(QDomElement element, QString name, int* err)
+static int readInt(QDomElement element, QString name, int* err)
 { //out of class, cannot be static
 	*err = 1;
 	QString Str = element.attribute(name);
 	if(Str.isNull())
 		return 0;
 	bool noFailure = true;
-	uint num = Str.toUInt(&noFailure, 0);
+	int num = Str.toInt(&noFailure, 0);
 	if(!noFailure)
 		return 0;
 	*err = 0;
@@ -159,7 +159,7 @@ SKSolver* Serializer::deserializeGraph(QDomElement element) {
 	QString orderStr = element.attribute("order");
 	if(orderStr.isNull())
 		return 0;
-	uint order = orderStr.toUInt(&noFailure, 0);
+	int order = orderStr.toInt(&noFailure, 0);
 	if(!noFailure)
 		return 0;
 	
@@ -173,10 +173,10 @@ SKSolver* Serializer::deserializeGraph(QDomElement element) {
 	else if(type == "custom")
 	{
 		int err=0;
-		int ncliques = readUInt(element,"ncliques", &err);
-		int sizeX = readUInt(element,"sizeX",&err);
-		int sizeY = readUInt(element,"sizeY",&err);
-		int sizeZ = readUInt(element,"sizeZ",&err);
+		int ncliques = readInt(element,"ncliques", &err);
+		int sizeX = readInt(element,"sizeX",&err);
+		int sizeY = readInt(element,"sizeY",&err);
+		int sizeZ = readInt(element,"sizeZ",&err);
 		//int size = sizeX*sizeY*sizeZ;
 
 		QString name = element.attribute("name");;
@@ -236,7 +236,7 @@ HistoryEvent Serializer::deserializeSimpleHistoryEvent(QDomElement element) {
 	bool given = element.attribute("given") == "true";
 	bool noFailure = true;
 	
-	uint index = indexStr.toUInt(&noFailure, 0);
+	int index = indexStr.toInt(&noFailure, 0);
 	if(!noFailure)
 		return HistoryEvent();
 	
@@ -247,12 +247,12 @@ HistoryEvent Serializer::deserializeSimpleHistoryEvent(QDomElement element) {
 	
 	if(!markerStr.isNull()) {
 		QBitArray markers(markerStr.length());
-		for(uint i = 0; i < markerStr.length(); ++i)
+		for(int i = 0; i < markerStr.length(); ++i)
 			markers[i] = markerStr[i] != '0';
 		
 		return HistoryEvent(index, CellInfo(markers));
 	} else {
-		uint value = valueStr.toUInt(&noFailure, 0);
+		int value = valueStr.toInt(&noFailure, 0);
 		if(!noFailure)
 			return HistoryEvent();
 
@@ -266,7 +266,8 @@ HistoryEvent Serializer::deserializeSimpleHistoryEvent(QDomElement element) {
 	return HistoryEvent();
 }
 
-HistoryEvent Serializer::deserializeComplexHistoryEvent(QDomElement element) {
+HistoryEvent Serializer::deserializeComplexHistoryEvent(QDomElement /*element*/) {
+	// TODO implement this
 	return HistoryEvent();
 }
 
@@ -334,7 +335,7 @@ Game Serializer::load(const KUrl& url, QWidget* window, QString *errorMsg) {
 		return Game();
 	}
 	
-#warning there is no use in this variable - it's constant and creates dead code below	
+	// used to ensure, that there is only one game
 	bool hasGame = false;
 	Game game;
 	
@@ -346,6 +347,7 @@ Game Serializer::load(const KUrl& url, QWidget* window, QString *errorMsg) {
 					return Game();
 				
 				game = deserializeGame(child.toElement());
+				hasGame = true;
 			}
 		}
 		child = child.nextSibling();
@@ -388,7 +390,7 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 	QDomElement element = doc.createElement("puzzle");
 	serializeGraph(element, puzzle->solver());
 	
-	for(uint i = 0; i < puzzle->size(); ++i) {
+	for(int i = 0; i < puzzle->size(); ++i) {
 		if(puzzle->value(i) == 0)
 			contentStr += '_';
 		else
@@ -401,7 +403,7 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 	
 	if(puzzle->hasSolution()) {
 		contentStr = QString();
-		for(uint i = 0; i < puzzle->size(); ++i) {
+		for(int i = 0; i < puzzle->size(); ++i) {
 			if(puzzle->solution(i) == 0)
 				contentStr += '_';
 			else
@@ -432,13 +434,13 @@ bool Serializer::serializeGraph(QDomElement& parent, const SKSolver* puzzle) {
 		element.setAttribute("sizeY", g->sizeY());
 		element.setAttribute("sizeZ", g->sizeZ());
 
-		for(uint i=0; i<g->cliques.size(); i++)
+		for(int i=0; i<g->cliques.size(); i++)
 		{
 			QDomElement clique = parent.ownerDocument().createElement("clique");
 			clique.setAttribute("size",  (int) g->cliques[i].size());
 			//serialize clique
 			QString contentStr = "";
-			for(uint j=0; j<g->cliques[i].size(); j++)
+			for(int j=0; j<g->cliques[i].size(); j++)
 			{
 				contentStr += QString::number(g->cliques[i][j]) + " ";
 			}
@@ -454,7 +456,7 @@ bool Serializer::serializeGraph(QDomElement& parent, const SKSolver* puzzle) {
 bool Serializer::serializeHistory(QDomElement& parent, const Game& game) {
 	QDomElement element = parent.ownerDocument().createElement("history");
 	
-	for(uint i = 0; i < game.historyLength(); ++i) {
+	for(int i = 0; i < game.historyLength(); ++i) {
 		if(!serializeHistoryEvent(element, game.historyEvent(i)))
 			return false;
 	}
@@ -466,7 +468,7 @@ bool Serializer::serializeHistory(QDomElement& parent, const Game& game) {
 bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& event) {
 	QDomElement element;
 	 
-	const QVector<uint>& indices = event.cellIndices();
+	const QVector<int>& indices = event.cellIndices();
 	const QVector<CellInfo>& changes = event.cellChanges();
 	
 	if(indices.count() == 0) {
@@ -489,7 +491,7 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 				QString str;
 				
 				QBitArray markers = changes[0].markers();
-				for(uint j = 0; j < markers.size(); ++j) {
+				for(int j = 0; j < markers.size(); ++j) {
 					str += markers[j] ? '1' : '0';
 				}
 				
@@ -498,7 +500,7 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 		}
 	} else {
 		element = parent.ownerDocument().createElement("complex-event");
-		for(uint i = 0; i < indices.count(); ++i) {
+		for(int i = 0; i < indices.count(); ++i) {
 			QDomElement subElement = parent.ownerDocument().createElement("simple-event");
 			
 			subElement.setAttribute("index", indices[i]);
@@ -516,7 +518,7 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 					QString str;
 					
 					QBitArray markers = changes[i].markers();
-					for(uint j = 0; j < markers.size(); ++j) {
+					for(int j = 0; j < markers.size(); ++j) {
 						str += markers[i] ? '1' : '0';
 					}
 					
@@ -532,7 +534,7 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 	return true;
 }
 
-bool Serializer::store(const Game& game, const KUrl& url, QWidget* window) {
+bool Serializer::store(const Game& game, const KUrl& /*url*/, QWidget* /*window*/) {
 	QDomDocument doc( "ksudoku" );
 	QDomElement root = doc.createElement( "ksudoku" );
 	doc.appendChild( root );	
@@ -547,7 +549,7 @@ bool Serializer::store(const Game& game, const KUrl& url, QWidget* window) {
 	return true;
 }
 
-bool Serializer::storeCustomShape(const SKSolver* solver, const KUrl& url, QWidget* window) {
+bool Serializer::storeCustomShape(const SKSolver* solver, const KUrl& /*url*/, QWidget* /*window*/) {
 	QDomDocument doc( "ksudoku-graph" );
 	QDomElement root = doc.createElement( "ksudoku-graph" );
 	doc.appendChild( root );	

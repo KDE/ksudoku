@@ -190,9 +190,9 @@ int SKSolver::get_simmetric(int order, int size, int type, int idx, int which, i
 	return 1;
 }
 
-uint SKSolver::getSymmetry(uint flags, uint index, uint out[4])
+uint SKSolver::getSymmetry(uint flags, int index, int out[4])
 {
-	return ksudoku::Solver(g, flags).getSymmetry(index, out);
+	return ksudoku::Solver(g, flags).getSymmetricIndices(index, out);
 // 	int which = 0; // TODO replace this with another flag
 // 	
 // 	out[0] = index;
@@ -546,12 +546,12 @@ uint SKSolver::removeValueCompletely(Q3ValueVector<uint>& puzzle, uint value, ui
 }
 
 uint SKSolver::removeAtIndex(Q3ValueVector<uint>& puzzle, uint index, uint flags) {
-	uint indices[4];
-	uint oldValues[4];
-	uint count;
+	int indices[4];
+	int oldValues[4];
+	int count;
 	
 	count = getSymmetry(flags, index, indices);
-	for(uint i = 0; i < count; ++i) {
+	for(int i = 0; i < count; ++i) {
 		oldValues[i] = puzzle[indices[i]];
 		puzzle[indices[i]] = 0;
 	}
@@ -568,13 +568,13 @@ uint SKSolver::removeAtIndex(Q3ValueVector<uint>& puzzle, uint index, uint flags
 		return count;
 	}
 	
-	for(uint i = 0; i < count; ++i) {
+	for(int i = 0; i < count; ++i) {
 		puzzle[indices[i]] = oldValues[i];
 	}
 	return 0;
 }
 
-int SKSolver:: solve(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solutions, int* forks) {
+int SKSolver:: solve(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solutions, int* /*forks*/) {
 // 	return solve2(puzzle, max_solutions, out_solutions, forks);
 	
 	if(puzzle->order != order) return -1;
@@ -611,7 +611,7 @@ int SKSolver:: solve(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solution
 // 	}
 // 	if(forks) *forks = size*8 - mySolver.m_forksLeft;
 	
-	Q3ValueVector<uint> v(size);
+	Q3ValueVector<int> v(size);
 	
 	for(int i = 0; i < size; ++i)
 		v[i] = puzzle->numbers[i];
@@ -620,7 +620,7 @@ int SKSolver:: solve(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solution
 	if(ret < 1) return -3;
 	
 	if(out_solutions) {
-		Q3ValueVector<uint> values = mySolver.result();
+		Q3ValueVector<int> values = mySolver.result();
 		for(uint i = 0; i < (uint)size; ++i)
 			out_solutions->numbers[i] = values[i];
 	}

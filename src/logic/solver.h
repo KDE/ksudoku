@@ -61,15 +61,15 @@ public:
 	
 // 	bool createNewPuzzle();
 	
-	int solve(const Q3ValueVector<uint>& puzzle, uint maxSolutions = 1);
+	int solve(const Q3ValueVector<int>& puzzle, int maxSolutions = 1);
 // 	bool removeNumbers(const QValueVector<uint>& puzzle);
 	
-	Q3ValueVector<uint> result() const { return m_result; }
+	Q3ValueVector<int> result() const { return m_result; }
 	
 private:
 	friend class ::SKSolver;
 	// TODO add this to the new graph class
-	uint getSymmetry(uint index, uint out[4]);
+	int getSymmetricIndices(int index, int out[4]);
 	
 	// Solve Methods
 	ProcessState solveByLastFlag(SolverState& state);
@@ -78,11 +78,11 @@ private:
 	
 private:
 	// The use of members in SKSolver is only temporal, there is no need for a accessors
-	uint m_solutionsLeft;
-	uint m_forksLeft;
+	int m_solutionsLeft;
+	int m_forksLeft;
 	Graph* m_graph;
 	uint m_flags;
-	Q3ValueVector<uint> m_result;
+	Q3ValueVector<int> m_result;
 };
 
 }
