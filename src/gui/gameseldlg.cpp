@@ -37,6 +37,11 @@ GameSelectionGroup::GameSelectionGroup(const QString& text, QWidget* parent)
 	m_mainLayout->addLayout(m_gridLayout);
 }
 
+GameSelectionGroup::~GameSelectionGroup() {
+	qDeleteAll(m_buttons);
+	m_buttons.clear();
+}
+
 GameSelectionButton* GameSelectionGroup::addButton(const QString& id, const QString& text) {
 	GameSelectionButton* button = new GameSelectionButton(text, this, id);
 	m_buttons.append(button);
@@ -47,10 +52,14 @@ GameSelectionButton* GameSelectionGroup::addButton(const QString& id, const QStr
 
 bool GameSelectionGroup::removeButton(const QString& id) {
 	GameSelectionButton *button;
-    for(button = m_buttons.first(); button; button = m_buttons.next()) {
+// 	 for(button = m_buttons.first(); button; button = m_buttons.next()) {
+	QMutableListIterator<GameSelectionButton *> it(m_buttons);
+	while (it.hasNext()) {
+		button = it.next();
 		if(button->id() == id) {
-			m_buttons.remove();
 			delete button;
+			it.remove();
+
 			updateColumnCount();
 			updateLayout();
 			return true;
@@ -88,11 +97,12 @@ void GameSelectionGroup::setColumns(uint cols) {
 
 void GameSelectionGroup::updateLayout() {
 	//m_gridLayout->expand(1, 4); //TODO PORT
-	GameSelectionButton* button;
 	uint pos = 0;
 
-	for(button = m_buttons.first(); button; button = m_buttons.next(), pos++) {
-		m_gridLayout->addWidget(button, pos / m_usedCols, pos % m_usedCols);
+	QListIterator<GameSelectionButton*> it(m_buttons);
+	while(it.hasNext()) {
+		m_gridLayout->addWidget(it.next(), pos / m_usedCols, pos % m_usedCols);
+		pos++;
 	}
 }
 
@@ -110,15 +120,19 @@ GameSelectionDialog::GameSelectionDialog(QWidget* parent) : QWidget(parent) {
 }
 
 GameSelectionDialog::~GameSelectionDialog() {
+	qDeleteAll(m_groups);
+	m_groups.clear();
 }
 
-void GameSelectionDialog::addEntry(const QString& name, const QString& text, const QString& groupText) {
+void GameSelectionDialog::addEntry(const QString& name, const QString& text, const QString& groupTitle) {
 	GameSelectionGroup* group = 0;
-	for(group = m_groups.first(); group; group = m_groups.next()) {
-		if(group->text() == groupText) break;
+	QListIterator<GameSelectionGroup*> it(m_groups);
+	while(it.hasNext()) {
+		group = it.next();
+		if(group->text() == groupTitle) break;
 	}
 	if(!group) {
-		group = new GameSelectionGroup(groupText, this);
+		group = new GameSelectionGroup(groupTitle, this);
 		m_mainLayout->addWidget(group);
 		m_groups.append(group);
 		connect(group, SIGNAL(idealColumnCountChanged(uint)), this, SLOT(updateColumnCount()));
@@ -131,8 +145,9 @@ void GameSelectionDialog::addEntry(const QString& name, const QString& text, con
 }
 
 bool GameSelectionDialog::removeEntry(const QString& name) {
-	for(GameSelectionGroup* group = m_groups.first(); group; group = m_groups.next()) {
-		if(group->removeButton(name))
+	QListIterator<GameSelectionGroup*> it(m_groups);
+	while(it.hasNext()) {
+		if(it.next()->removeButton(name))
 			return true;
 	}
 	return false;
@@ -148,14 +163,14 @@ void GameSelectionDialog::UPDATE()
 }
 
 void GameSelectionDialog::updateColumnCount() {
-	uint columns = 1;
-	for(GameSelectionGroup* group = m_groups.first(); group; group = m_groups.next()) {
-		if(group->idealColumns() > columns)
-			columns = group->idealColumns();
+	int columns = 1;
+	QListIterator<GameSelectionGroup*> it(m_groups);
+	while(it.hasNext()) {
+		int groupColumns = it.next()->idealColumns();
+		if(groupColumns > columns)
+			columns = groupColumns;
 	}
 	emit columnCountChanged(columns);
-	printf("ColCount: %d\n", columns);
-	
 }
 
 }

@@ -1,7 +1,6 @@
 #ifndef _KSUDOKUGAMESELECTIONDIALOG_H_
 #define _KSUDOKUGAMESELECTIONDIALOG_H_
 
-#include <q3ptrvector.h>
 #include <qmap.h>
 #include <qpushbutton.h>
 #include <qradiobutton.h>
@@ -9,16 +8,13 @@
 //#include <qhbuttongroup.h>
 #include <qpushbutton.h>
 //Added by qt3to4:
-#include <QVBoxLayout>
-#include <QGridLayout>
 #include <Q3PtrList>
 #include <QLabel>
 
 class QPushButton;
-class Q3VBoxLayout;
 class QSignalMapper;
-class Q3GridLayout;
-class Q3VBoxLayout;
+class QGridLayout;
+class QVBoxLayout;
 class QLabel;
 namespace ksudoku {
 
@@ -39,6 +35,7 @@ class GameSelectionGroup : public QWidget {
 Q_OBJECT
 public:
 	GameSelectionGroup(const QString& text, QWidget* parent);
+	~GameSelectionGroup();
 	
 	GameSelectionButton* addButton(const QString& id, const QString& text);
 	bool removeButton(const QString& id);
@@ -62,7 +59,7 @@ private:
 	QString m_text;
 	QGridLayout* m_gridLayout;
 	QVBoxLayout* m_mainLayout;
-	Q3PtrList<GameSelectionButton> m_buttons;
+	QList<GameSelectionButton*> m_buttons;
 	uint m_usedCols;
 	uint m_idealCols;
 };
@@ -75,7 +72,7 @@ class GameSelectionDialog : public QWidget {
 		
 		void UPDATE();
 // 		void showOptions();
-		void addEntry(const QString& name, const QString& text, const QString& groupText = QString());
+		void addEntry(const QString& name, const QString& text, const QString& groupTitle = QString());
 		bool removeEntry(const QString& name);
 	
 	signals:
@@ -89,7 +86,7 @@ class GameSelectionDialog : public QWidget {
 	private:
 		QVBoxLayout* m_mainLayout;
 		QSignalMapper* m_signalMapper;
-		Q3PtrList<GameSelectionGroup> m_groups;
+		QList<GameSelectionGroup*> m_groups;
 };
 
 }

@@ -66,7 +66,7 @@ public:
 		return KSS_SUCCESS;
 	}
 	
-	inline ProcessState fill(const Q3ValueVector<int>& values, SKGraph* graph) {
+	inline ProcessState fill(const QVector<int>& values, SKGraph* graph) {
 		for(int i = 0; i < m_size; ++i) {
 			if(values[i] == 0) continue;
 			if(setValue(i, values[i], graph) != KSS_SUCCESS)
@@ -116,8 +116,8 @@ public:
 private:
 	int                      m_size;
 	int                      m_order;
-	Q3ValueVector<int>       m_values;
-	Q3ValueVector<QBitArray> m_flags; // I don't know whether this is fast enough
+	QVector<int>       m_values;
+	QVector<QBitArray> m_flags; // I don't know whether this is fast enough
 	GroupLookup              m_remaining;
 };
 
@@ -173,7 +173,7 @@ int Solver::getSymmetricIndices(int index, int out[4])
 	return 1;
 }
 
-int Solver::solve(const Q3ValueVector<int>& puzzle, int maxSolutions) {
+int Solver::solve(const QVector<int>& puzzle, int maxSolutions) {
 	// I got constant values in this method by trial and error
 	
 	SolverState state(m_graph->size, m_graph->order);

@@ -2,13 +2,14 @@
 
 #include "ksudoku.h"
 
-#include <q3dragobject.h>
 #include <qpainter.h>
-#include <q3paintdevicemetrics.h>
 //Added by qt3to4:
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <ksavefile.h>
+
+#include <QVBoxLayout>
+#include <QHBoxLayout>
 
 #include <KLocale>
 #include <KApplication>
@@ -47,8 +48,6 @@
 #include <qdir.h>
 #include <kstandarddirs.h>
 #include <kio/job.h>
-
-#include <q3vbox.h>
 
 // bool guidedMode;
 

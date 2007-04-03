@@ -20,8 +20,8 @@
 #define _KSUDOKUSOLVER_H_
 
 #include "skgraph.h"
-#include <q3valuevector.h>
-#include <qbitarray.h> // TODO Remove (only needed by SolverState)
+#include <QVector>
+#include <QBitArray> // TODO Remove (only needed by SolverState)
 #include "grouplookup.h" // TODO Remove (only needed by SolverState)
 		
 class SKSolver;
@@ -61,10 +61,10 @@ public:
 	
 // 	bool createNewPuzzle();
 	
-	int solve(const Q3ValueVector<int>& puzzle, int maxSolutions = 1);
+	int solve(const QVector<int>& puzzle, int maxSolutions = 1);
 // 	bool removeNumbers(const QValueVector<uint>& puzzle);
 	
-	Q3ValueVector<int> result() const { return m_result; }
+	QVector<int> result() const { return m_result; }
 	
 private:
 	friend class ::SKSolver;
@@ -82,7 +82,7 @@ private:
 	int m_forksLeft;
 	Graph* m_graph;
 	uint m_flags;
-	Q3ValueVector<int> m_result;
+	QVector<int> m_result;
 };
 
 }

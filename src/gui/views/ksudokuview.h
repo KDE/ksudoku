@@ -8,8 +8,6 @@
 
 //#include "ksudokuiface.h"
 #include "qsudokubutton.h"
-#include <q3valuestack.h>
-#include <q3ptrvector.h>
 //Added by qt3to4:
 #include <QResizeEvent>
 
@@ -90,7 +88,7 @@ private slots:
 private:
 	void setGame(const Game& game);
 	
-	Q3PtrVector<QSudokuButton> m_buttons;
+	QVector<QSudokuButton*> m_buttons;
 
 	bool puzzle_mark_wrong;
 	int  highlighted;

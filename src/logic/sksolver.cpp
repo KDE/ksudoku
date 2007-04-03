@@ -12,7 +12,6 @@ SKPuzzle stack[625+1];
 
 // #include <qtextstream.h>
 #include <qbitarray.h>
-#include <q3valuevector.h>
 
 #ifdef DEBUG
 	#include <iostream>
@@ -104,11 +103,11 @@ public:
 	}
 	
 private:
-	uint                    m_size;
-	uint                    m_order;
-	Q3ValueVector<uint>      m_values;
-	Q3ValueVector<QBitArray> m_flags; // I don't know whether this is fast enough
-	GroupLookup             m_remaining;
+	uint               m_size;
+	uint               m_order;
+	QVector<uint>      m_values;
+	QVector<QBitArray> m_flags; // I don't know whether this is fast enough
+	GroupLookup        m_remaining;
 };
 
 
@@ -358,7 +357,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 {
 // 	return 0;
-	Q3ValueVector<uint> numbers(size);
+	QVector<uint> numbers(size);
 	
 	for(uint i = 0; i < (uint)size; ++i)
 		numbers[i] = p->numbers[i];
@@ -415,8 +414,8 @@ int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 	
 }
 
-uint SKSolver::removeValuesSimple(Q3ValueVector<uint>& puzzle, uint hints, uint flags) {
-	Q3ValueVector<uint> local(puzzle);
+uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags) {
+	QVector<uint> local(puzzle);
 	int cellsLeft = size;
 	
 	// completely remove all occurences of a random value
@@ -483,8 +482,8 @@ uint SKSolver::removeValuesSimple(Q3ValueVector<uint>& puzzle, uint hints, uint 
 	
 }
 
-int SKSolver::removeValues(Q3ValueVector<uint>& puzzle, uint count, uint flags) {
-	Q3ValueVector<uint> local(puzzle);
+int SKSolver::removeValues(QVector<uint>& puzzle, uint count, uint flags) {
+	QVector<uint> local(puzzle);
 	int removesLeft = count;
 	
 	if(flags && KSS_REM_1VALUE) {
@@ -529,8 +528,8 @@ int SKSolver::removeValues(Q3ValueVector<uint>& puzzle, uint count, uint flags) 
 	return 1;
 }
 
-uint SKSolver::removeValueCompletely(Q3ValueVector<uint>& puzzle, uint value, uint flags) {
-	Q3ValueVector<uint> local(puzzle);
+uint SKSolver::removeValueCompletely(QVector<uint>& puzzle, uint value, uint flags) {
+	QVector<uint> local(puzzle);
 	uint count = 0;
 	
 	for(uint i = 0; i < (uint)size; ++i) {
@@ -545,7 +544,7 @@ uint SKSolver::removeValueCompletely(Q3ValueVector<uint>& puzzle, uint value, ui
 	return count;
 }
 
-uint SKSolver::removeAtIndex(Q3ValueVector<uint>& puzzle, uint index, uint flags) {
+uint SKSolver::removeAtIndex(QVector<uint>& puzzle, uint index, uint flags) {
 	int indices[4];
 	int oldValues[4];
 	int count;
@@ -611,7 +610,7 @@ int SKSolver:: solve(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solution
 // 	}
 // 	if(forks) *forks = size*8 - mySolver.m_forksLeft;
 	
-	Q3ValueVector<int> v(size);
+	QVector<int> v(size);
 	
 	for(int i = 0; i < size; ++i)
 		v[i] = puzzle->numbers[i];
@@ -620,7 +619,7 @@ int SKSolver:: solve(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solution
 	if(ret < 1) return -3;
 	
 	if(out_solutions) {
-		Q3ValueVector<int> values = mySolver.result();
+		QVector<int> values = mySolver.result();
 		for(uint i = 0; i < (uint)size; ++i)
 			out_solutions->numbers[i] = values[i];
 	}

@@ -1,7 +1,6 @@
 #ifndef _KSUDOKUPUZZLE_H_
 #define _KSUDOKUPUZZLE_H_
 
-#include <q3cstring.h>
 #include "sudoku_solver.h"
 #include "ksudoku_types.h"
 

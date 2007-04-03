@@ -24,7 +24,7 @@ ksudokuView::ksudokuView(QWidget *parent, const Game& game, bool customd)
 	
 	custom = customd;
 	m_color0 = 0;
-	m_buttons.setAutoDelete(true);
+// 	m_buttons.setAutoDelete(true);
 	
 	m_guidedMode = true;
 	current_selected_number = 0;
@@ -41,7 +41,10 @@ ksudokuView::ksudokuView(QWidget *parent, const Game& game, bool customd)
 
 ksudokuView::~ksudokuView()
 {
-
+	for(int i = 0; i < m_buttons.size(); ++i) {
+		delete m_buttons[i];
+		m_buttons[i] = 0;
+	}
 }
 
 QString ksudokuView::status() const
@@ -185,6 +188,9 @@ void ksudokuView::btn_leave(int /*x*/, int /*y*/)
 {}
 
 void ksudokuView::setGame(const ksudoku::Game& game) {
+	// TODO change this member so that its code can only be executed once
+	// the best way might be removeing this member and move the oce somewhere else
+	
 // 	if(m_game.interface()) {
 // 		disconnect(m_game.interface(), SIGNAL(cellChange(uint)), this, SLOT(onCellChange(uint)));
 // 		disconnect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(onFullChange()));
@@ -210,7 +216,7 @@ void ksudokuView::setGame(const ksudoku::Game& game) {
 				
 			connect(btn, SIGNAL(beginHighlight(int)), this, SLOT(beginHighlight(int)));
 			connect(btn, SIGNAL(finishHighlight()), this, SLOT(finishHighlight()));
-			m_buttons.insert(i, btn);
+			m_buttons[i] = btn;
 		}
 	}
 	else
@@ -235,7 +241,7 @@ void ksudokuView::setGame(const ksudoku::Game& game) {
 			{
 				btn->setConnected(false);
 			}
-			m_buttons.insert(i, btn);
+			m_buttons[i] = btn;
 		}
 		
 	

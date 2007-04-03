@@ -27,15 +27,12 @@
 // #define SUDOKU  0
 // #define ROXDOKU 1
 
-#include <q3valuevector.h>
+#include <QVector>
 
 #include "solver.h"
 
 
 using namespace ksudoku;
-
-class Q3TextStream;
-
 
 typedef unsigned int uint;
 
@@ -82,13 +79,13 @@ public:
 	 * A simple and slow method for removing values from a completed puzzle.
 	 * This method behaves essentialy like the implementation of version 0.3
 	 */
-	uint removeValuesSimple(Q3ValueVector<uint>& puzzle, uint hints, uint flags);
+	uint removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags);
 	
 	/**
 	 * A simple and fast method for removing values from a completed puzzle.
 	 * It removes @p count values from puzzle according to @p flags.
 	 */
-	int removeValues(Q3ValueVector<uint>& puzzle, uint count, uint flags);
+	int removeValues(QVector<uint>& puzzle, uint count, uint flags);
 
 private:
 	/**
@@ -96,14 +93,14 @@ private:
 	 * This method only changes @p puzzle when it remains solveable.
 	 * @returns count of removed values or 0 if the puzzle con't be solved afterwards.
 	 */
-	uint removeValueCompletely(Q3ValueVector<uint>& puzzle, uint value, uint flags);
+	uint removeValueCompletely(QVector<uint>& puzzle, uint value, uint flags);
 	
 	/**
 	 * Resets value at @p index (and its symmetric complements) to 0.
 	 * This method only changes @p puzzle when it remains solveable.
 	 * @returns count of removed values or 0 if the puzzle can't be solved afterwards.
 	 */
-	uint removeAtIndex(Q3ValueVector<uint>& puzzle, uint index, uint flags);
+	uint removeAtIndex(QVector<uint>& puzzle, uint index, uint flags);
 	
 	ProcessState solveEngine(::SolverState& state, SKPuzzle* puzzle, uint* solutionsLeft, uint* forksLeft);
 	
