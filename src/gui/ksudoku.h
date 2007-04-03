@@ -14,7 +14,9 @@
 #include <QDropEvent>
 #include <QDragEnterEvent>
 #include <kurl.h>
+#if 0
 #include <knewstuff/knewstuff.h>
+#endif
 
 #include "ksudokuview.h"
 #include "roxdokuview.h"
@@ -45,6 +47,7 @@ class GameOptionsDialog;
 
 class KSudoku;
 
+#if 0
 class KSudokuNewStuff : public KNewStuff
 {
 public:
@@ -54,6 +57,7 @@ public:
 	bool install( const QString &fileName );
 	bool createUploadFile( const QString &fileName );
 };
+#endif
 
 
 class KSudoku : public KMainWindow

@@ -392,8 +392,10 @@ void KSudoku::selectGameType(const QString& type) {
 		typev = 1;
 		dub = true;
 	} else if(type == "shape-download") {
+#if 0
 		KSudokuNewStuff* mNewStuff = new KSudokuNewStuff( this );
 		mNewStuff->download();
+#endif
 		return;
 	} else if(type == "shape-load") {
 		loadCustomShapeFromPath();
@@ -1148,7 +1150,7 @@ void KSudoku::loadCustomShapeFromPath()
 	updateCustomShapesList();
 }
 
-
+#if 0
 KSudokuNewStuff::KSudokuNewStuff( KSudoku* v ) :
         KNewStuff( "ksudoku", (QWidget*) v )
 {
@@ -1177,6 +1179,7 @@ bool KSudokuNewStuff::createUploadFile( const QString &/*fileName*/ )
 {
 	return true;
 }
+#endif
 
 
 
