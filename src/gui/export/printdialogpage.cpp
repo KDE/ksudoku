@@ -13,12 +13,9 @@
 #include "print.h"
 
 #include <klocale.h>
-#include <q3paintdevicemetrics.h>
 
 #include <qlayout.h>
 #include <qstring.h>
-#include <q3frame.h>
-//Added by qt3to4:
 #include <QVBoxLayout>
 #include <QPaintEvent>
 

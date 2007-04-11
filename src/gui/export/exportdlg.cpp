@@ -27,11 +27,9 @@
 //#include <kprogress.h>
 #include <kprinter.h>
 
-#include <q3paintdevicemetrics.h>
 #include <qcheckbox.h>
 #include <qlayout.h>
 #include <qstring.h>
-#include <q3frame.h>
 #include <qpainter.h>
 #include <qlabel.h>
 #include <qimage.h>
@@ -208,11 +206,10 @@ void ExportDlg::print(){
 
 	if (printer.setup())
 	{
-		Q3PaintDeviceMetrics metrics(&printer);
 
 		QPainter p;
 		p.begin(&printer);
-		draw(p, metrics.height(), metrics.width());
+		draw(p, printer->height(), printer->width());
 		p.end();
 	}
 }
