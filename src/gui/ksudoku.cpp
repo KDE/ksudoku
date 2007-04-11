@@ -541,7 +541,7 @@ void KSudoku::checkForUpdates()
 		KMessageBox::information(this, "Your program is at the latest version");
 	else
 	{
-		QString msg = i18n("Your program version is %1, the latest version is %1.\nDo you want to update?", myVer, buf);
+		QString msg = i18n("Your program version is %1, the latest version is %2.\nDo you want to update?", myVer, buf);
 		if(KMessageBox::questionYesNo(this, msg) == KMessageBox::Yes)
 			KRun::runUrl (KUrl("http://ksudoku.sourceforge.net/3.htm"), "text/html", this);
 	}

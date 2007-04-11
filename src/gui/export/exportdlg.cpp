@@ -281,7 +281,7 @@ void ExportDlg::updateProgressBar()
 		currCount = 0;
 	}
 	else{
-		status = i18n("generating puzzle %1 of %2").arg(currCount).arg(currSize);
+		status = i18n("generating puzzle %1 of %2", currCount,currSize);
 	}
 	kProgress->setTotalSteps(currSize);
 	kProgress->setFormat(status);
