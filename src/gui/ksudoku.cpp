@@ -146,7 +146,7 @@ KSudoku::KSudoku()
 	QMainWindow::setCentralWidget(wrapper);
 	wrapper->show();
 
-	m_gameSelDlg = new GameSelectionDialog(wrapper);	
+	m_gameSelDlg = new GameSelectionDialog(0);	
 // 	m_tabs->insertTab(m_gameSelDlg, "Welcome");
 // 	m_gameSelDlg->show();
 // 	setCentralWidget(m_gameSelDlg);
@@ -172,7 +172,6 @@ KSudoku::KSudoku()
 // 	m_gameSelDlg->showOptions();
 	connect( m_gameSelDlg, SIGNAL( gameSelected(const QString&) ), this, SLOT( dlgSelectedGame(const QString&) ));
 	connect(m_gameSelDlg, SIGNAL(gameSelected(const QString&)), this, SLOT(selectGameType(const QString&)));
- 
 
 	setCentralWidget(m_gameSelDlg, false);
 	
@@ -367,6 +366,7 @@ void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
 	
 	//QMainWindow::setCentralWidget(widget);
 	//((QMainWindowLayout*)layout())->setCentralWidget(widget);
+	widget->show();
 	wrapper->layout()->addWidget(widget);
 	activeWidget = widget;
 	//widget->show();
