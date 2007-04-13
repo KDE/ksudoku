@@ -49,6 +49,7 @@
 #include <kstandarddirs.h>
 #include <kio/job.h>
 
+
 // bool guidedMode;
 
 void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) {
@@ -117,18 +118,20 @@ KSudoku::KSudoku()
 // 	m_tabs->hide();
 // 	setCentralWidget(m_tabs);
 	
-    // then, setup our actions
+	// then, setup our actions
 	readProperties( KGlobal::config().data());
 	setupActions();
 
-    // and a status bar
+	// and a status bar
 	statusBar()->show();
+	setupGUI();
 
 	// Apply the create the main window and ask the mainwindow to
 	// automatically save settings if changed: window size, toolbar
 	// position, icon size, etc.  Also to add actions for the statusbar
 	// toolbar, and keybindings if necessary.
-	setupGUI();
+//	QGridLayout* top_layout = new QGridLayout(this);
+
 
 // 	newGame();
 
@@ -137,7 +140,13 @@ KSudoku::KSudoku()
 	// Setup Welcome Screen
 // 	m_tabs->insertTab(new QLabel("Welcome to KSudoku (FAKE WELCOME)", this), "Welcome");
 // <<<<<<< .mine
-	m_gameSelDlg = new GameSelectionDialog(this);
+	wrapper = new QWidget();
+       	QGridLayout* l = new QGridLayout(wrapper);
+	activeWidget = 0;
+	QMainWindow::setCentralWidget(wrapper);
+	wrapper->show();
+
+	m_gameSelDlg = new GameSelectionDialog(wrapper);	
 // 	m_tabs->insertTab(m_gameSelDlg, "Welcome");
 // 	m_gameSelDlg->show();
 // 	setCentralWidget(m_gameSelDlg);
@@ -163,10 +172,10 @@ KSudoku::KSudoku()
 // 	m_gameSelDlg->showOptions();
 	connect( m_gameSelDlg, SIGNAL( gameSelected(const QString&) ), this, SLOT( dlgSelectedGame(const QString&) ));
 	connect(m_gameSelDlg, SIGNAL(gameSelected(const QString&)), this, SLOT(selectGameType(const QString&)));
-	
+ 
+
 	setCentralWidget(m_gameSelDlg, false);
 	
-
 	QTimer *timer = new QTimer( this );
 	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
 	updateStatusBar();
@@ -261,7 +270,6 @@ void KSudoku::addGame(const Game& game) {
 // 	m_tabs->insertTab(view, "Test");
 // 	m_tabs->showPage(view);
 	setCentralWidget(view->widget(), true);
-    printf("out\n");
 }
 
 void KSudoku::dlgSelectedGame(const QString& /*name*/)
@@ -352,16 +360,19 @@ void KSudoku::loadGame(const KUrl& Url) {
 }
 
 void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
-	QWidget* oldWidget = centralWidget();
+	QWidget* oldWidget = activeWidget;
 	if(oldWidget) oldWidget->hide();
 	if(m_autoDelCentralWidget) delete oldWidget; //moving up here fixes a roxdoku window bug
 	m_autoDelCentralWidget = autoDel;
-
-	QMainWindow::setCentralWidget(widget);
-	widget->show();
+	
+	//QMainWindow::setCentralWidget(widget);
+	//((QMainWindowLayout*)layout())->setCentralWidget(widget);
+	wrapper->layout()->addWidget(widget);
+	activeWidget = widget;
+	//widget->show();
 
 	//TODO PORT
-	readProperties( KGlobal::config().data()); //correct order: otherwise settings are not loaded
+	readProperties(KGlobal::config().data()); //correct order: otherwise settings are not loaded
 	adaptActions2View();
 }
 
@@ -370,7 +381,6 @@ void KSudoku::showWelcomeScreen() {
 	setCentralWidget(m_gameSelDlg, false);
 }
 
-// <<<<<<< .mine
 void KSudoku::selectGameType(const QString& type) {
 	// TODO do this in an integrated dialog
 	int typev = 0;
@@ -417,14 +427,13 @@ void KSudoku::selectGameType(const QString& type) {
 	QWidget *page = new QWidget;
 	QVBoxLayout *layout = new QVBoxLayout;
 	page->setLayout(layout);
-
+     
 	GameOptionsDialog* options = new GameOptionsDialog(page, dub, typev);
 	options->setShapeName(shapeName);
 	if(noSymmetry) options->setSymmetry(-1);
 	if(order != 0) options->setOrder(order);
 	m_gameOptionsDlg = options;
 	QPushButton* btnBack = new QPushButton(i18n("To Welcomescreen"), this);
-
 	QPushButton* btnStart = 0;
 	if(dub) {
 		btnStart = new QPushButton(i18n("Edit Game"), this);
@@ -438,12 +447,10 @@ void KSudoku::selectGameType(const QString& type) {
 
 	buttonsl->addWidget(btnBack);
 	buttonsl->addWidget(btnStart);
-printf("r1\n");
+
 	connect(btnBack, SIGNAL(clicked()), this, SLOT(showWelcomeScreen()));
-printf("r2\n");
 	connect(btnStart, SIGNAL(clicked()), this, SLOT(startSelectedGame()));
-printf("r3\n");
-	
+
 	setCentralWidget(page, true);
 }
 
@@ -740,8 +747,7 @@ void KSudoku::setupActions()
 	connect(a, SIGNAL(triggered(bool)),this,  SLOT(mouseOnlySuperscript()));
 	actionCollection()->addAction("mouseOnlySuperscript", a);
 	a->setChecked(false);
-	a->setEnabled(false);
-	
+	a->setEnabled(false);	
 	a=new KToggleAction(i18n("Guided mode (mark wrong red)"),  this);
 	connect(a, SIGNAL(triggered(bool)),this,  SLOT(setGuidedMode()));
 	actionCollection()->addAction("guidedMode", a);
@@ -1105,7 +1111,10 @@ ksudoku::KsView* KSudoku::currentView() const{
 	
 	// TODO this might cause trouble as the central widget don't have to be a
 	// KsView instance
-	return dynamic_cast<KsView*>(centralWidget());
+//	if(activeWidget)
+	if(centralWidget() == 0) return 0;
+
+	return dynamic_cast<KsView*>(activeWidget);
 }
 
 void KSudoku::loadCustomShapeFromPath()
