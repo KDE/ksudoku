@@ -364,14 +364,10 @@ void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
 	if(m_autoDelCentralWidget) delete oldWidget; //moving up here fixes a roxdoku window bug
 	m_autoDelCentralWidget = autoDel;
 	
-	//QMainWindow::setCentralWidget(widget);
-	//((QMainWindowLayout*)layout())->setCentralWidget(widget);
 	widget->show();
 	wrapper->layout()->addWidget(widget);
 	activeWidget = widget;
-	//widget->show();
 
-	//TODO PORT
 	readProperties(KGlobal::config().data()); //correct order: otherwise settings are not loaded
 	adaptActions2View();
 }

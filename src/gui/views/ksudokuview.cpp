@@ -111,7 +111,7 @@ void ksudokuView::btn_enter(int x, int y)
 	if(x > max_x) x = 0;
 	if(y > max_y) y = 0;
 
-	m_buttons[m_game.index(y,x)]->setFocus();
+	m_buttons[m_game.index(x,y)]->setFocus();
 
 	isWaitingForNumber = -1;
 
