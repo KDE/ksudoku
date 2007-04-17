@@ -8,7 +8,7 @@
 #endif
 
 #include <kapplication.h>
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include <qdatetime.h>
 //Added by qt3to4:
 #include <QDropEvent>
@@ -60,7 +60,7 @@ public:
 #endif
 
 
-class KSudoku : public KMainWindow
+class KSudoku : public KXmlGuiWindow
 {
     Q_OBJECT
 

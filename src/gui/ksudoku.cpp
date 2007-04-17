@@ -107,7 +107,7 @@ void KSudoku::updateStatusBar()
 // }
 
 KSudoku::KSudoku()
-	: KMainWindow()
+	: KXmlGuiWindow()
 // 	, m_tabs(0)
 	, m_autoDelCentralWidget(false)
 {
