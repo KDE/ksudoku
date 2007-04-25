@@ -198,10 +198,11 @@ void GameOptionsDialog::setShapeName(const QString& name) {
 
 void GameOptionsDialog::readSettings()
 {
-	setDifficulty(m_config.readNumEntry("difficulty", 1));
-	setType      (m_config.readNumEntry("type"      , 0));
-	setSymmetry  (m_config.readNumEntry("Symmetry"  , 0));
-	setOrder     (m_config.readNumEntry("order"     , 9));
+	KConfigGroup group = m_config.group("ksudoku Game General");
+	setDifficulty(group.readEntry("difficulty", 1));
+	setType      (group.readEntry("type"      , 0));
+	setSymmetry  (group.readEntry("Symmetry"  , 0));
+	setOrder     (group.readEntry("order"     , 9));
 }
 
 void GameOptionsDialog::writeSettings()
@@ -209,10 +210,11 @@ void GameOptionsDialog::writeSettings()
 // 	if(!m_success)
 // 		return; //do not write settings
 // 
-	m_config.writeEntry("difficulty", difficulty());
-	m_config.writeEntry("type"      , type()      );
-	m_config.writeEntry("Symmetry"  , symmetry()  );
-	m_config.writeEntry("order"     , order()     );
+	KConfigGroup group = m_config.group("ksudoku Game General");
+	group.writeEntry("difficulty", difficulty());
+	group.writeEntry("type"      , type()      );
+	group.writeEntry("Symmetry"  , symmetry()  );
+	group.writeEntry("order"     , order()     );
 }
 
 

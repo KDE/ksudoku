@@ -8,7 +8,7 @@ set(ksudoku_SRCS
 	history.cpp
 	symbols.cpp
 	gameseldlg.cpp
-# 	welcomewidget.cpp
+#	welcomescreen.cpp
 )
 
 INCLUDE_DIRECTORIES( views ksudoku_export)

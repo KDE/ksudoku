@@ -141,7 +141,8 @@ KSudoku::KSudoku()
 // 	m_tabs->insertTab(new QLabel("Welcome to KSudoku (FAKE WELCOME)", this), "Welcome");
 // <<<<<<< .mine
 	wrapper = new QWidget();
-       	QGridLayout* l = new QGridLayout(wrapper);
+	(void) new QVBoxLayout(wrapper);
+	
 	activeWidget = 0;
 	QMainWindow::setCentralWidget(wrapper);
 	wrapper->show();
@@ -894,19 +895,16 @@ void KSudoku::saveProperties(KConfig *config)
     // the 'config' object points to the session managed
     // config file.  anything you write here will be available
     // later when this app is restored
-
-// 	config->writeEntry("lastUrl", (type == 0) ? m_view->currentUrl() : "");
-// 	QWidget* current = m_tabs->currentPage();
-//	QWidget* current = (QWidget*) currentView();
+	KConfigGroup group = config->group("ksudoku General");
+	
 	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
-		config->writeEntry("guidedMode", QVariant(view->guidedMode()));
-		config->writeEntry("mouseOnlySuperscript",  QVariant(view->mouseOnlySuperscript));
-		config->writeEntry("showTracker", QVariant(view->showTracker ));
+		group.writeEntry("guidedMode", QVariant(view->guidedMode()));
+		group.writeEntry("mouseOnlySuperscript",  QVariant(view->mouseOnlySuperscript));
+		group.writeEntry("showTracker", QVariant(view->showTracker ));
 	} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
-		config->writeEntry("guidedMode", QVariant(view->guidedMode()));
+		group.writeEntry("guidedMode", QVariant(view->guidedMode()));
 	}
 
-	config->writeEntry("FIRSTRUN0.3", QVariant(1));
 	config->sync();
 }
 
@@ -916,32 +914,16 @@ void KSudoku::readProperties(KConfig *config)
     // config file.  this function is automatically called whenever
     // the app is being restored.  read in here whatever you wrote
     // in 'saveProperties'
+	KConfigGroup group = config->group("ksudoku General");
 
-    QString Url = config->readEntry("lastUrl");
-	if(config->readEntry("FIRSTRUN0.3") == QString("true")) //TODO PORT, DEPRECATED (default values make this useless)
-	{	
-// 		QWidget* current = m_tabs->currentPage();
-//		QWidget* current = (QWidget*) currentView();
-		if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
-			view->setGuidedMode(true);
-			view->mouseOnlySuperscript = true;
-			view->showTracker = true;
-		} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
-			view->setGuidedMode(true);
-		}
-		saveProperties(config);
-		return;
-	}
-
-// 	QWidget* current = m_tabs->currentPage();
-//	QWidget* current = (QWidget*) currentView();
-//kDebug(1000) << "guided mode=" << config->readEntry("guidedMode", QVariant(1)) << ";" << endl;
+    QString Url = group.readEntry("lastUrl", "");
+	
 	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
-		view->setGuidedMode(config->readEntry("guidedMode", true)); //TODO PORT
-		view->showTracker = config->readEntry("showTracker", true); //TODO PORT
-   		view->mouseOnlySuperscript = config->readEntry("mouseOnlySuperscript",true); //TODO PORT
+		view->setGuidedMode(group.readEntry("guidedMode", true));
+		view->showTracker = group.readEntry("showTracker", true);
+   		view->mouseOnlySuperscript = group.readEntry("mouseOnlySuperscript", true);
 	} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
-		view->setGuidedMode(config->readEntry("guidedMode", true)); //TODO PORT
+		view->setGuidedMode(group.readEntry("guidedMode", true));
 	}
 }
 

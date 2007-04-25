@@ -114,7 +114,7 @@ GameSelectionDialog::GameSelectionDialog(QWidget* parent) : QWidget(parent) {
 	m_signalMapper = new QSignalMapper(this);
 	connect(m_signalMapper, SIGNAL(mapped(const QString&)), this, SLOT(onButtonPressed(const QString&)));
 	
-	m_mainLayout->addWidget (new QLabel("<center><h1>"+i18n("Welcome to KSudoku")+"</h1></center>", this));		
+	m_mainLayout->addWidget (new QLabel("<center><h1>"+i18n("Welcome to KSudoku")+"</h1></center>", this));
 }
 
 GameSelectionDialog::~GameSelectionDialog() {
@@ -128,6 +128,7 @@ void GameSelectionDialog::addEntry(const QString& name, const QString& text, con
 	while(it.hasNext()) {
 		group = it.next();
 		if(group->text() == groupTitle) break;
+		group = 0;
 	}
 	if(!group) {
 		group = new GameSelectionGroup(groupTitle, this);
