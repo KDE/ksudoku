@@ -79,7 +79,6 @@ public:
      */
 	virtual ~KSudoku();
 	
-	void addGame(const Game& game);
 	void newGame();
 	void loadGame(const KUrl& url);
 	
@@ -120,6 +119,8 @@ public slots:
 	void selectGameType(const QString& type);
 	void startSelectedGame();
 
+	void addGame(const Game& game);
+	
 private slots:
 	void dlgSelectedGame(const QString& name);
 	void fileNew();

@@ -147,7 +147,7 @@ KSudoku::KSudoku()
 	QMainWindow::setCentralWidget(wrapper);
 	wrapper->show();
 
-	m_gameSelDlg = new GameSelectionDialog(0);	
+	m_gameSelDlg = new GameSelectionDialog(this);
 // 	m_tabs->insertTab(m_gameSelDlg, "Welcome");
 // 	m_gameSelDlg->show();
 // 	setCentralWidget(m_gameSelDlg);

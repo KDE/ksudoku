@@ -8,12 +8,15 @@ set(ksudoku_SRCS
 	history.cpp
 	symbols.cpp
 	gameseldlg.cpp
-#	welcomescreen.cpp
+	gamevariants.cpp
+	welcomescreen.cpp
 )
 
 INCLUDE_DIRECTORIES( views ksudoku_export)
 
 qt4_automoc( ${ksudoku_SRCS} )
+
+kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui)
 
 kde4_add_library(ksudoku_gui ${ksudoku_SRCS})
 #constrains on build order:

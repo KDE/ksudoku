@@ -1,0 +1,111 @@
+#ifndef _KSUDOKUGAMEVARIANTS_H_
+#define _KSUDOKUGAMEVARIANTS_H_
+
+#include <QObject>
+#include <QList>
+#include <KUrl>
+
+class SKSolver;
+namespace ksudoku {
+
+class KsView;
+class Game;
+class GameVariantCollection;
+class GameVariant {
+public:
+	GameVariant(const QString& name, GameVariantCollection* collection=0);
+	virtual ~GameVariant() {}
+
+public:
+	QString name() const { return m_name; }
+	
+	/// This method returs whether the variant has an configure option
+	virtual bool canConfigure() const = 0;
+	
+	/// Shows a configure dialog and changes the settings
+	virtual bool configure() = 0;
+	
+	/// Creates a instance of this game variant
+	virtual Game createGame(int difficulty) const = 0;
+	
+	/// Creates the correct view for the game.
+	/// Game needs to be compatible with this GameVariant
+	virtual KsView* createView(const Game& game) const = 0;
+
+private:
+	QString m_name;
+};
+
+class GameVariantCollection : public QObject {
+friend class GameVariant;
+Q_OBJECT
+public:
+	GameVariantCollection(QObject* parent, bool autoDel);
+	~GameVariantCollection();
+		
+public:
+	void addVariant(GameVariant* variant);
+
+signals:
+	void newVariant(GameVariant* variant);
+	
+public:
+	QList<GameVariant*> m_variants;
+	bool m_autoDelete;
+};
+
+class SudokuGame : public GameVariant {
+public:
+	SudokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
+	
+public:
+	bool canConfigure() const;
+	bool configure();
+	Game createGame(int difficulty) const;
+	KsView* createView(const Game& game) const;
+	
+private:
+	uint m_order;
+	uint m_symmetry;
+	
+	mutable SKSolver* m_solver;
+};
+
+class RoxdokuGame : public GameVariant {
+public:
+	RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
+	
+public:
+	bool canConfigure() const;
+	bool configure();
+	Game createGame(int difficulty) const;
+	KsView* createView(const Game& game) const;
+	
+private:
+	uint m_order;
+	uint m_symmetry;
+	
+	mutable SKSolver* m_solver;
+};
+
+class CustomGame : public GameVariant {
+private:
+	CustomGame(const QString& name, GameVariantCollection* collection);
+	
+public:
+	static CustomGame* loadGame(const KUrl& url, GameVariantCollection* collection);
+	
+public:
+	bool canConfigure() const;
+	bool configure();
+	Game createGame(int difficulty) const;
+	KsView* createView(const Game& game) const;
+	
+private:
+	KUrl& url;
+	SKSolver* m_solver;
+};
+
+}
+
+#endif
