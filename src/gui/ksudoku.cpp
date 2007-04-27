@@ -18,6 +18,9 @@
 #include <KStandardAction>
 #include <KToggleAction>
 
+#include <KCmdLineArgs>
+#include <KAboutData>
+
 #include <QDomDocument>
 #include <kmessagebox.h>
 #include <kglobal.h>
@@ -48,6 +51,9 @@
 #include <qdir.h>
 #include <kstandarddirs.h>
 #include <kio/job.h>
+
+#include "gamevariants.h"
+#include "welcomescreen.h"
 
 
 // bool guidedMode;
@@ -107,9 +113,7 @@ void KSudoku::updateStatusBar()
 // }
 
 KSudoku::KSudoku()
-	: KXmlGuiWindow()
-// 	, m_tabs(0)
-	, m_autoDelCentralWidget(false)
+	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true)), m_autoDelCentralWidget(false)
 {
 	setObjectName("ksudoku");
 // 	m_tabs = new KTabWidget(this);
@@ -147,7 +151,7 @@ KSudoku::KSudoku()
 	QMainWindow::setCentralWidget(wrapper);
 	wrapper->show();
 
-	m_gameSelDlg = new GameSelectionDialog(this);
+// 	m_gameSelDlg = new GameSelectionDialog(this);
 // 	m_tabs->insertTab(m_gameSelDlg, "Welcome");
 // 	m_gameSelDlg->show();
 // 	setCentralWidget(m_gameSelDlg);
@@ -155,26 +159,26 @@ KSudoku::KSudoku()
 // 	gameSelDlg = new GameSelectionDialog(this);
 // 	m_tabs->insertTab(gameSelDlg, "Welcome");
 // >>>>>>> .r110
-	QString title = i18n("Start a Game");
-	m_gameSelDlg->addEntry("play-sudoku", i18n("Sudoku"), title);
-	m_gameSelDlg->addEntry("play-roxdoku", i18n("Roxdoku (3D)"), title);
 
-	//KGlobal::dirs()->addResourceType("shapes", KStandardDirs::kde_default("data") + QString::fromLatin1("ksudoku/"));
+	
+	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
+	connect(m_welcomeScreen, SIGNAL(newGameStarted(const Game&,GameVariant*)), this, SLOT(addGame(const Game&)));
+	
+	setCentralWidget(m_welcomeScreen, false);
+	
+	(void) new SudokuGame("Sudoku Standard (9x9)", 9, m_gameVariants);
+	(void) new SudokuGame("Sudoku 16x16", 16, m_gameVariants);
+	(void) new SudokuGame("Sudoku 25x25", 25, m_gameVariants);
+	(void) new RoxdokuGame("Roxdoku 9 (3x3x3)", 9, m_gameVariants);
+	(void) new RoxdokuGame("Roxdoku 16 (4x4x5)", 16, m_gameVariants);
+	(void) new RoxdokuGame("Roxdoku 25 (5x5x5)", 25, m_gameVariants);
+	
+	
+	// Reigster the gamevariants resource
+    KGlobal::dirs()->addResourceType ("gamevariant", KStandardDirs::kde_default("data") +
+		KCmdLineArgs::aboutData()->appName() + "/");
+	
 	updateCustomShapesList();
-
-	title = i18n("Create your own Game");
-	m_gameSelDlg->addEntry("edit-sudoku", i18n("Sudoku"), title);
-	m_gameSelDlg->addEntry("edit-roxdoku", i18n("Roxdoku (3D)"), title);
-// 	gameSelDlg->addEntry("edit-sudoku", i18n("Sudoku"), title);
-// 	gameSelDlg->addEntry("edit-roxdoku", i18n("Roxdoku (3D)"), title);
-	title = i18n("MORE GAMES");
-	m_gameSelDlg->addEntry("shape-download", i18n("Download new shapes"), title);
-	m_gameSelDlg->addEntry("shape-load", i18n("Load shapes manually"), title);
-// 	m_gameSelDlg->showOptions();
-	connect( m_gameSelDlg, SIGNAL( gameSelected(const QString&) ), this, SLOT( dlgSelectedGame(const QString&) ));
-	connect(m_gameSelDlg, SIGNAL(gameSelected(const QString&)), this, SLOT(selectGameType(const QString&)));
-
-	setCentralWidget(m_gameSelDlg, false);
 	
 	QTimer *timer = new QTimer( this );
 	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
@@ -182,59 +186,27 @@ KSudoku::KSudoku()
 	timer->start( 1000); //TODO PORT, false ); // 2 seconds single-shot timer
 }
 
-//This is only a testing stub
-QString KSudoku::getShapeName(QString path)
-{
-	int left  = path.lastIndexOf('/');
-	int right = path.lastIndexOf('.');
-	int len = right - left;
-	return path.mid(left+1, len-1);
-}
-
 void KSudoku::updateCustomShapesList()
 {
-	QString title = i18n( "Start a Game" );
-	QStringList mdirs = KGlobal::dirs()->findDirs("data", "ksudoku/");//, KStandardDirs::NoDuplicates);
+    QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
 
-	if ( mdirs.isEmpty() ) return;
-	QStringList files;
-
-	for (int i = 0; i < mdirs.size(); ++i)
-	{
-	        kDebug(11000) << "dir " << mdirs.at(i) << endl;
-		QDir dir(mdirs.at(i));
-		//printf("%s\n", (mdirs.at(i)).toLatin1());
-		QStringList temp;
-		temp += dir.entryList(QDir::Files, QDir::Name );
-		for(int j=0; j < temp.size(); j++)
-			if(temp.at(j) != QString( "ksudokuui.rc"))files += dir.absoluteFilePath( temp.at(j) );
-	}
-
-	for (int i = 0; i < files.size(); ++i)
-	{
-		if( !m_shapes.contains(getShapeName(files.at(i))) )
-		{
-			QString err;
-			KUrl Url;
-			Url.setPath(files.at(i));
-			//SKSolver* sol = ksudoku::GraphCustom::createCustomSolver((*it));
-			SKSolver* sol = ksudoku::Serializer::loadCustomShape(Url, this, 0);
-
-			if(sol != NULL)
-			{
-				kDebug(11000) << "insert " << files.at(i) << endl;
-				m_shapes.insert(getShapeName(files.at(i)),  sol);
-				m_gameSelDlg->addEntry( "custom-"+getShapeName(files.at(i)), getShapeName(files.at(i)), title );
-			}
-			else
-			{
-				//printf("Error: file %s is not a valid shape file.\n", (files.at(i)).toLatin1());
-				//TODO Error Message?
-			}
-		}
-	}
-	emit m_gameSelDlg->UPDATE();
+	QString variantName;
+	QString variantDescr;
+	QString variantDataPath;
 	
+    foreach(QString filepath, filepaths) {
+		KConfig variantConfig(filepath, KConfig::OnlyLocal);
+		KConfigGroup group = variantConfig.group ("KSudokuVariant");
+		
+		variantName = group.readEntry("Name", "Missing Name"); // Translated.
+		variantDescr = group.readEntry("Description", ""); // Translated.
+		variantDataPath = group.readEntry("FileName", "");
+		if(variantDataPath == "") continue;
+		variantDataPath = filepath.left(filepath.lastIndexOf("/")+1) + variantDataPath;
+		
+		// TODO check whether this variant is allready on the list
+		(void) new CustomGame(variantName, variantDataPath, m_gameVariants);
+	}
 }
 
 KSudoku::~KSudoku()
@@ -375,7 +347,7 @@ void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
 
 void KSudoku::showWelcomeScreen() {
 	m_gameOptionsDlg = 0;
-	setCentralWidget(m_gameSelDlg, false);
+	setCentralWidget(m_welcomeScreen, false);
 }
 
 void KSudoku::selectGameType(const QString& type) {

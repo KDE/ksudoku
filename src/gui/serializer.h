@@ -35,7 +35,6 @@ public:
 	
 	static bool store(const Game& game, const KUrl& url, QWidget* window);
 	static bool storeCustomShape(const SKSolver* solver, const KUrl& url, QWidget* window);
-
 };
 
 }

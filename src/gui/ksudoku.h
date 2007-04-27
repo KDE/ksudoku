@@ -34,6 +34,8 @@ class KTabWidget;
 namespace ksudoku {
 class GameSelectionDialog;
 class GameOptionsDialog;
+class GameVariantCollection;
+class WelcomeScreen;
 }
 
 /**
@@ -192,7 +194,6 @@ public:
 	void updateCustomShapesList();
 	void loadCustomShapeFromPath();
 	void createCustomShape();
-	QString getShapeName(QString path);
 
 private:
 	QWidget* wrapper;
@@ -207,7 +208,10 @@ private:
 private:
 // 	KTabWidget* m_tabs;
 	
-	GameSelectionDialog* m_gameSelDlg;
+// 	GameSelectionDialog* m_gameSelDlg;
+	
+	GameVariantCollection* m_gameVariants;
+	WelcomeScreen* m_welcomeScreen;
 	
 	bool m_autoDelCentralWidget;
 	

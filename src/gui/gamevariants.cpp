@@ -1,5 +1,6 @@
 #include "gamevariants.h"
 #include "ksudokugame.h"
+#include "serializer.h"
 
 #include <QtDebug>
 #include <QMessageBox>
@@ -73,7 +74,7 @@ Game SudokuGame::createGame(int difficulty) const {
 	return Game(puzzle);
 }
 
-KsView* SudokuGame::createView(const Game& game) const {
+KsView* SudokuGame::createView(const Game& /*game*/) const {
 	qDebug() << "KsView* ksudoku::SudokuGame::createView()";
 	return 0;
 }
@@ -110,8 +111,43 @@ Game RoxdokuGame::createGame(int difficulty) const {
 	return Game(puzzle);
 }
 
-KsView* RoxdokuGame::createView(const Game& game) const {
+KsView* RoxdokuGame::createView(const Game& /*game*/) const {
 	qDebug() << "KsView* ksudoku::RoxdokuGame::createView()";
+	return 0;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// class CustomGame
+///////////////////////////////////////////////////////////////////////////////
+
+CustomGame::CustomGame(const QString& name, const KUrl& url,
+                       GameVariantCollection* collection)
+	: GameVariant(name, collection), m_url(url), m_solver(0)
+{ }
+
+bool CustomGame::canConfigure() const {
+	return false;
+}
+
+bool CustomGame::configure() {
+	return false;
+}
+
+Game CustomGame::createGame(int difficulty) const {
+	if(!m_solver) {
+		m_solver = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+		
+		if(!m_solver) return Game();
+	}
+	
+	Puzzle* puzzle = new Puzzle(m_solver, true);
+	puzzle->init(difficulty, 1);
+	
+	return Game(puzzle);
+}
+
+KsView* CustomGame::createView(const Game& /*game*/) const {
+	qDebug() << "KsView* ksudoku::CustomGame::createView()";
 	return 0;
 }
 

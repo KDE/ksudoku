@@ -89,11 +89,8 @@ private:
 };
 
 class CustomGame : public GameVariant {
-private:
-	CustomGame(const QString& name, GameVariantCollection* collection);
-	
 public:
-	static CustomGame* loadGame(const KUrl& url, GameVariantCollection* collection);
+	CustomGame(const QString& name, const KUrl& url, GameVariantCollection* collection=0);
 	
 public:
 	bool canConfigure() const;
@@ -102,8 +99,8 @@ public:
 	KsView* createView(const Game& game) const;
 	
 private:
-	KUrl& url;
-	SKSolver* m_solver;
+	KUrl m_url;
+	mutable SKSolver* m_solver;
 };
 
 }
