@@ -35,7 +35,6 @@
 #include <krun.h>
 #include <kurlrequesterdialog.h>
 
-#include "gameopt.h"
 //#include "print.h" //TODO PORT
 //#include "exportdlg.h"
 #include "puzzlefactory.h"
@@ -90,37 +89,10 @@ void KSudoku::updateStatusBar()
 	statusBar()->showMessage(m);
 }
 
-// KSudoku::KSudoku(ksudoku::Game* game)
-// 	: KMainWindow(0,"ksudoku"), m_tabs(0)
-// {
-// 	m_tabs = new KTabWidget(this);
-// 	m_tabs->setHoverCloseButton(true);
-// 	m_tabs->show();
-// 	setCentralWidget(m_tabs);
-// 	
-// 	readProperties( KApplication::kApplication()->config());
-// 	setupActions();
-// 	
-// 	statusBar()->show();
-// 	
-// 	setupGUI();
-// 	
-// 	addGame(game);
-// 	
-// 	QTimer *timer = new QTimer( this );
-//     connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
-//     timer->start( 1000, false ); // 2 seconds single-shot timer	
-// }
-
 KSudoku::KSudoku()
 	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true)), m_autoDelCentralWidget(false)
 {
 	setObjectName("ksudoku");
-// 	m_tabs = new KTabWidget(this);
-// 	m_tabs->setHoverCloseButton(true);
-// 	m_tabs->show();
-// 	m_tabs->hide();
-// 	setCentralWidget(m_tabs);
 	
 	// then, setup our actions
 	readProperties( KGlobal::config().data());
@@ -130,20 +102,6 @@ KSudoku::KSudoku()
 	statusBar()->show();
 	setupGUI();
 
-	// Apply the create the main window and ask the mainwindow to
-	// automatically save settings if changed: window size, toolbar
-	// position, icon size, etc.  Also to add actions for the statusbar
-	// toolbar, and keybindings if necessary.
-//	QGridLayout* top_layout = new QGridLayout(this);
-
-
-// 	newGame();
-
-// 	connect(this, SIGNAL(currentChanged(QWidget*)), this, SLOT(adaptActions2View(QWidget*)));
-
-	// Setup Welcome Screen
-// 	m_tabs->insertTab(new QLabel("Welcome to KSudoku (FAKE WELCOME)", this), "Welcome");
-// <<<<<<< .mine
 	wrapper = new QWidget();
 	(void) new QVBoxLayout(wrapper);
 	
@@ -151,20 +109,28 @@ KSudoku::KSudoku()
 	QMainWindow::setCentralWidget(wrapper);
 	wrapper->show();
 
-// 	m_gameSelDlg = new GameSelectionDialog(this);
-// 	m_tabs->insertTab(m_gameSelDlg, "Welcome");
-// 	m_gameSelDlg->show();
-// 	setCentralWidget(m_gameSelDlg);
-// =======
-// 	gameSelDlg = new GameSelectionDialog(this);
-// 	m_tabs->insertTab(gameSelDlg, "Welcome");
-// >>>>>>> .r110
-
 	
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
-	connect(m_welcomeScreen, SIGNAL(newGameStarted(const Game&,GameVariant*)), this, SLOT(addGame(const Game&)));
+	connect(m_welcomeScreen, SIGNAL(newGameStarted(const Game&,GameVariant*)), this, SLOT(startGame(const Game&)));
 	
 	setCentralWidget(m_welcomeScreen, false);
+	
+	// Reigster the gamevariants resource
+    KGlobal::dirs()->addResourceType ("gamevariant", KStandardDirs::kde_default("data") +
+		KCmdLineArgs::aboutData()->appName() + "/");
+	
+	updateShapesList();
+	
+	
+	QTimer *timer = new QTimer( this );
+	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
+	updateStatusBar();
+	timer->start( 1000); //TODO PORT, false ); // 2 seconds single-shot timer
+}
+
+void KSudoku::updateShapesList()
+{
+	// TODO clear the list
 	
 	(void) new SudokuGame("Sudoku Standard (9x9)", 9, m_gameVariants);
 	(void) new SudokuGame("Sudoku 16x16", 16, m_gameVariants);
@@ -173,21 +139,6 @@ KSudoku::KSudoku()
 	(void) new RoxdokuGame("Roxdoku 16 (4x4x5)", 16, m_gameVariants);
 	(void) new RoxdokuGame("Roxdoku 25 (5x5x5)", 25, m_gameVariants);
 	
-	
-	// Reigster the gamevariants resource
-    KGlobal::dirs()->addResourceType ("gamevariant", KStandardDirs::kde_default("data") +
-		KCmdLineArgs::aboutData()->appName() + "/");
-	
-	updateCustomShapesList();
-	
-	QTimer *timer = new QTimer( this );
-	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
-	updateStatusBar();
-	timer->start( 1000); //TODO PORT, false ); // 2 seconds single-shot timer
-}
-
-void KSudoku::updateCustomShapesList()
-{
     QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
 
 	QString variantName;
@@ -204,7 +155,6 @@ void KSudoku::updateCustomShapesList()
 		if(variantDataPath == "") continue;
 		variantDataPath = filepath.left(filepath.lastIndexOf("/")+1) + variantDataPath;
 		
-		// TODO check whether this variant is allready on the list
 		(void) new CustomGame(variantName, variantDataPath, m_gameVariants);
 	}
 }
@@ -213,7 +163,7 @@ KSudoku::~KSudoku()
 {
 }
 
-void KSudoku::addGame(const Game& game) {
+void KSudoku::startGame(const Game& game) {
 	GameType type = game.puzzle()->gameType(); //game solver()->g->sizeZ() > 1) ? 1 : 0;
 	KsView* view = 0;
 
@@ -244,82 +194,6 @@ void KSudoku::addGame(const Game& game) {
 	setCentralWidget(view->widget(), true);
 }
 
-void KSudoku::dlgSelectedGame(const QString& /*name*/)
-{
-// 	int order =  m_gameSelDlg->order;
-// 	int difficulty = m_gameSelDlg->difficulty;
-// 	int symmetry = m_gameSelDlg->symmetry;
-// 
-// 	if( name == QString("play-sudoku") )
-// 	{
-// 		stateChanged("dubbing", StateReverse);
-// 		Game game = Game(PuzzleFactory().create_instance(sudoku, order, difficulty, symmetry));
-// 		addGame(game);
-// 	}
-// 	else if( name == QString("play-roxdoku") )
-// 	{
-// 		stateChanged("dubbing", StateReverse);
-// 		Game game = Game(PuzzleFactory().create_instance(roxdoku, order, difficulty, 1));
-// 		addGame(game);
-// 	}
-// 	else if( name == QString("edit-sudoku") )
-// 	{
-// 		stateChanged("dubbing");
-// 		Game game(PuzzleFactory().create_instance(sudoku, order, 0, 0, true));
-// 		addGame(game);
-// 	}
-// 	else if( name == QString("edit-roxdoku") )
-// 	{
-// 		stateChanged("dubbing");
-// 		Game game(PuzzleFactory().create_instance(sudoku, order, 0, 0, true));
-// 		addGame(game);
-// 	}
-// 	else if( name == QString("shape-download") )
-// 	{
-// // 		KSudokuNewStuff* mNewStuff = new KSudokuNewStuff( this );
-// // 		mNewStuff->download();
-// 	}
-// 	else if( name == QString("shape-load") )
-// 	{
-// // 		loadCustomShapeFromPath();
-// 	}
-// 	else
-// 	{
-// 		int l = name.find('-');
-// 		if(l==-1) return; //error
-// 		QString shape = name.right(name.length()-l-1);
-// 
-// 		if(m_shapes.contains(shape))
-// 		{
-// 			if(m_shapes[shape] != NULL)
-// 			{
-// 				stateChanged("dubbing", StateReverse);
-// 				Game game(PuzzleFactory().create_instance(custom, 0, difficulty, 1, false, m_shapes[shape]));
-// 				addGame(game);
-// 			}
-// 			else
-// 			{
-// 				//TODO error
-// 				printf("error1\n");
-// 				return;
-// 			}
-// 		}
-// 		else
-// 		{
-// 			//TODO error
-// 			printf("error2\n");
-// 			return;
-// 		}
-// 
-// 		
-// 	}
-}
-
-// TODO will be deprecated
-void KSudoku::newGame() {
-	selectGameType(m_defaultAction);
-}
-
 void KSudoku::loadGame(const KUrl& Url) {
 	QString errorMsg;
 	Game game = ksudoku::Serializer::load(Url, this, &errorMsg);
@@ -328,7 +202,7 @@ void KSudoku::loadGame(const KUrl& Url) {
 		return;
 	}
 	
-	addGame(game);
+	startGame(game);
 }
 
 void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
@@ -348,110 +222,6 @@ void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
 void KSudoku::showWelcomeScreen() {
 	m_gameOptionsDlg = 0;
 	setCentralWidget(m_welcomeScreen, false);
-}
-
-void KSudoku::selectGameType(const QString& type) {
-	// TODO do this in an integrated dialog
-	int typev = 0;
-	int order = 0;
-	bool noSymmetry = false;
-	bool dub = false;
-	QString shapeName;
-	
-	if(type == "play-sudoku") {
-		typev = 0;
-	} else if(type == "play-roxdoku") {
-		typev = 1;
-		noSymmetry = true;
-	} else if(type == "edit-sudoku") {
-		typev = 0;
-		dub = true;
-	} else if(type == "edit-roxdoku") {
-		typev = 1;
-		dub = true;
-	} else if(type == "shape-download") {
-#if 0
-		KSudokuNewStuff* mNewStuff = new KSudokuNewStuff( this );
-		mNewStuff->download();
-#endif
-		return;
-	} else if(type == "shape-load") {
-		loadCustomShapeFromPath();
-		return;
-	} else if(type.startsWith("custom-")) {
-		shapeName = type.mid(QString("custom-").length());
-		if(m_shapes.contains(shapeName) && m_shapes[shapeName]) {
-			typev = 2;
-			order = -1;
-			noSymmetry = true;
-		} else {
-			shapeName =  QString();
-		}
-	} else {
-		return;
-	}
-	
-	m_defaultAction = type;
-	
-	QWidget *page = new QWidget;
-	QVBoxLayout *layout = new QVBoxLayout;
-	page->setLayout(layout);
-     
-	GameOptionsDialog* options = new GameOptionsDialog(page, dub, typev);
-	options->setShapeName(shapeName);
-	if(noSymmetry) options->setSymmetry(-1);
-	if(order != 0) options->setOrder(order);
-	m_gameOptionsDlg = options;
-	QPushButton* btnBack = new QPushButton(i18n("To Welcomescreen"), this);
-	QPushButton* btnStart = 0;
-	if(dub) {
-		btnStart = new QPushButton(i18n("Edit Game"), this);
-		m_optionEnterOwnGame = true;
-	} else {
-		btnStart = new QPushButton(i18n("Start Game"), this);
-		m_optionEnterOwnGame = false;
-	}
-	QHBoxLayout* buttonsl = new QHBoxLayout;
-	layout->addLayout(buttonsl);
-
-	buttonsl->addWidget(btnBack);
-	buttonsl->addWidget(btnStart);
-
-	connect(btnBack, SIGNAL(clicked()), this, SLOT(showWelcomeScreen()));
-	connect(btnStart, SIGNAL(clicked()), this, SLOT(startSelectedGame()));
-
-	setCentralWidget(page, true);
-}
-
-void KSudoku::startSelectedGame() {
-	uint order = m_gameOptionsDlg->order();
-	int difficulty = m_gameOptionsDlg->difficulty();
-	uint type = m_gameOptionsDlg->type();
-	uint symmetry = m_gameOptionsDlg->symmetry();
-	QString shapeName = m_gameOptionsDlg->shapeName();
-
-	if(m_optionEnterOwnGame) {
-		stateChanged("dubbing", StateReverse);
-		if(type == 0) {
-			Game game(PuzzleFactory().create_instance(sudoku, order, 0, 0, true));
-			addGame(game);
-		} else if(type == 1) {
-			Game game(PuzzleFactory().create_instance(roxdoku, order, 0, 0, true));
-			addGame(game);
-		}
-	} else {
-		stateChanged("dubbing");
-		if(type == 0) {
-			Game game(PuzzleFactory().create_instance(sudoku, order, difficulty, symmetry));
-			addGame(game);
-		} else if(type == 1) {
-			Game game(PuzzleFactory().create_instance(roxdoku, order, difficulty, SIMMETRY_NONE));
-			addGame(game);
-		} else if(type == 2) {
-			Game game(PuzzleFactory().create_instance(custom, 0, difficulty, 1, false, m_shapes[shapeName]));
-			addGame(game);
-		}
-	}
 }
 
 void KSudoku::mouseOnlySuperscript()
@@ -494,34 +264,6 @@ void KSudoku::support()
 void KSudoku::sendComment()
 {
 	KRun::runUrl (KUrl("http://ksudoku.sourceforge.net/newcomment.php"), "text/html", this);
-}
-
-void KSudoku::checkForUpdates()
-{
-	QString name;
-	QString version;
-	QString myVer = "0.3";
-	KIO::NetAccess::download(KUrl("http://ksudoku.sourceforge.net/latest.php"), name, this);
-
-	QFile file(name);
-	if (!file.open(QIODevice::ReadOnly)) 
-	{
-		KMessageBox::information(this, "Could not get the response from server.");
-		return;
-	}
-
-	QByteArray tmpbuf = file.readLine();
-	QString buf = QString::fromAscii(tmpbuf);
-	file.close();
-	if(buf == myVer)
-		KMessageBox::information(this, "Your program is at the latest version");
-	else
-	{
-		QString msg = i18n("Your program version is %1, the latest version is %2.\nDo you want to update?", myVer, buf);
-		if(KMessageBox::questionYesNo(this, msg) == KMessageBox::Yes)
-			KRun::runUrl (KUrl("http://ksudoku.sourceforge.net/3.htm"), "text/html", this);
-	}
-	KIO::NetAccess::removeTempFile( name );
 }
 
 void KSudoku::giveHint()
@@ -568,7 +310,7 @@ void KSudoku::dubPuzzle()
 		ksudoku::Game* newGame = new ksudoku::Game(puzzle);
 			
 	// 		(new KSudoku(newGame))->show();
-		addGame(*newGame);
+		startGame(*newGame);
 		delete newGame;
 	}
 	else
@@ -705,7 +447,6 @@ void KSudoku::setupActions()
 	KDE3Action(i18n("Check"),  this, SLOT(dubPuzzle()), "move_dub_puzzle");
 
 	//WEB
-	KDE3Action(i18n("Check for updates"), this, SLOT(checkForUpdates()), "checkForUpdates");
 	KDE3Action(i18n("Home page"), this, SLOT(homepage()), "Home_page");
 	KDE3Action(i18n("Support this project"), this, SLOT(support()), "support");
 	KDE3Action(i18n("Send comment"), this, SLOT(sendComment()), "SendComment");
@@ -924,7 +665,7 @@ void KSudoku::dropEvent(QDropEvent *event)
 // 		if(game)
 // 			(new KSudoku(game))->show();
 		if(game.isValid())
-			addGame(game);
+			startGame(game);
 // 		delete game;
     }
  
@@ -936,11 +677,13 @@ void KSudoku::fileNew()
     // the New shortcut is pressed (usually CTRL+N) or the New toolbar
     // button is clicked
 
+	if(!currentView()) return;
+	
 	// TODO onyl show this when there is a game running
 	if(KMessageBox::questionYesNo(this, i18n("Do you really want to end this game in order to start a new one")) != KMessageBox::Yes)
 		return;
 	
-	newGame();
+	showWelcomeScreen();
 }
 
 void KSudoku::fileOpen()
@@ -961,7 +704,7 @@ void KSudoku::fileOpen()
 		
 		game.setUrl(Url);
 // 		(new KSudoku(game))->show();
-		addGame(game);
+		startGame(game);
 // 		delete game;
 	}	
 }
@@ -1105,7 +848,7 @@ void KSudoku::loadCustomShapeFromPath()
 	}
 
 	KIO::NetAccess::removeTempFile(tmpFile);
-	updateCustomShapesList();
+	updateShapesList();
 }
 
 #if 0
@@ -1129,7 +872,7 @@ bool KSudokuNewStuff::install( const QString &fileName )
 	archiveDir->copyTo(destDir);
 	archive.close();
 	//find custom shapes
-	parent->updateCustomShapesList();
+	parent->updateShapesList();
 	return true;
 }
 

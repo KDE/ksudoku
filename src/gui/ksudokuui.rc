@@ -61,7 +61,6 @@
 		<Action name="y" />
   </Menu>
 	<Menu name="Web"><text>&amp;Web</text>
-		<Action name="checkForUpdates" />
 		<Action name="Home_page" />
 		<Action name="support" />
 		<Action name="sendComment" />

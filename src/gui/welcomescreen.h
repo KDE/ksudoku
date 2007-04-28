@@ -22,6 +22,8 @@ public:
 private slots:
 	void onNewVariant(GameVariant* variant);
 	
+	void onCurrentVariantChange();
+	
 	void getNewVariant();
 	void createNewVariant();
 	void configureVariant();

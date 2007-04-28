@@ -21,6 +21,8 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	connect(createNewGameButton, SIGNAL(clicked(bool)), this, SLOT(createNewVariant()));
 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
 	connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));
+	
+	connect(gameListWidget, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this, SLOT(onCurrentVariantChange()));
 }
 
 GameVariant* WelcomeScreen::selectedVariant() const {
@@ -40,6 +42,18 @@ void WelcomeScreen::setDifficulty(int difficulty) {
 void WelcomeScreen::onNewVariant(GameVariant* variant) {
 	QListWidgetItem* item = new QListWidgetItem(variant->name(), gameListWidget);
 	item->setData(Qt::UserRole, qVariantFromValue(variant));
+}
+
+void WelcomeScreen::onCurrentVariantChange() {
+	GameVariant* variant = selectedVariant();
+	if(!variant) {
+		configureGameButton->setEnabled(false);
+		playGameButton->setEnabled(false);
+		return;
+	}
+	
+	configureGameButton->setEnabled(variant->canConfigure());
+	playGameButton->setEnabled(true);
 }
 
 void WelcomeScreen::getNewVariant() {

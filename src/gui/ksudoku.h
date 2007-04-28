@@ -21,8 +21,6 @@
 #include "ksudokuview.h"
 #include "roxdokuview.h"
 
-#include "gameseldlg.h"
-
 //#include "skgraph.h"
 //#include "sksolver.h"
 
@@ -70,18 +68,13 @@ public:
     /**
      * Default Constructor
      */
-		KSudoku();
-// 	/**
-// 	 * Creates a new KSudoku-Window for a existing Game 
-// 	 */
-// 	KSudoku(ksudoku::Game* game);
+	KSudoku();
 
     /**
      * Default Destructor
      */
 	virtual ~KSudoku();
 	
-	void newGame();
 	void loadGame(const KUrl& url);
 	
 	Game             currentGame() const;
@@ -118,13 +111,10 @@ public slots:
 	void onCompleted(bool isCorrect, const QTime& required, bool withHelp = false);
 	
 	void showWelcomeScreen();
-	void selectGameType(const QString& type);
-	void startSelectedGame();
 
-	void addGame(const Game& game);
+	void startGame(const Game& game);
 	
 private slots:
-	void dlgSelectedGame(const QString& name);
 	void fileNew();
 	void fileOpen();
 	void fileSave();
@@ -178,7 +168,6 @@ private slots:
 	void changeCaption(const QString& text);
 
 	//web
-	void checkForUpdates();
 	void homepage();
 	void support();
 	void sendComment();
@@ -191,7 +180,7 @@ private slots:
 	void onModified(bool isModified);
 	
 public:
-	void updateCustomShapesList();
+	void updateShapesList();
 	void loadCustomShapeFromPath();
 	void createCustomShape();
 

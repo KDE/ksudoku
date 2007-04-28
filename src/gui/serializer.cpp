@@ -367,7 +367,7 @@ Game Serializer::load(const KUrl& url, QWidget* window, QString *errorMsg) {
 		url.setPath(path);
 
 		Serializer::storeCustomShape( sk, url ,window );
-		p->updateCustomShapesList();
+		p->updateShapesList();
 		
 	}
 

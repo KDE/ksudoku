@@ -1,13 +1,11 @@
 
 
 set(ksudoku_SRCS
-	gameopt.cpp
 	ksudoku.cpp
 	ksudokugame.cpp
 	serializer.cpp
 	history.cpp
 	symbols.cpp
-	gameseldlg.cpp
 	gamevariants.cpp
 	welcomescreen.cpp
 )
