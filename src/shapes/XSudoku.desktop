@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Encoding=UTF-8
 Name=XSudoku
+Name[sv]=Xsudoku
 Description=XSudoku shape puzzle
+Description[pt]=Puzzle com formato do XSudoku
+Description[pt_BR]=Puzzle com formato do XSudoku
+Description[sv]=Xsudoku-format spel
 Author=Francesco Rossi
 FileName=XSudoku.xml

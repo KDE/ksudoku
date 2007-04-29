@@ -2,5 +2,8 @@
 Encoding=UTF-8
 Name=Samurai
 Description=Samurai shape puzzle
+Description[pt]=Puzzle com formato de samurai
+Description[pt_BR]=Puzzle com formato de samurai
+Description[sv]=Samurai-format spel
 Author=Francesco Rossi
 FileName=Samurai.xml
