@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
- *   Copyright 2006      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -57,7 +57,7 @@ public:
 	///If @arg height and or @arg width are given, @arg type is set to Custum
 	///If @arg height or @arg width is less than 1, its value is ignored
 	///@warning @arg type is not checked for validity => make sure it makes sense
-	void setOutputSize(QString type, int height, int width);
+	void setOutputSize(const QString& type, int height, int width);
 
 public slots:
 	///reimplemented from qwidget
@@ -146,12 +146,12 @@ void ExportDlg::setOutputType(const QString& type)
 
 void ExportDlg::setOutputHeight(int height)
 {
-	setOutputSize(QString::null,height,-1);
+	setOutputSize(QString(), height, -1);
 }
 
 void ExportDlg::setOutputWidth(int width)
 {
-	setOutputSize(QString::null,-1,width);
+	setOutputSize(QString(), -1, width);
 }
 
 

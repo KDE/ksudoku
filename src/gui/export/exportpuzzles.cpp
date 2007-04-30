@@ -75,7 +75,7 @@ void ExportPuzzles::run()
 	GenerateEvent* ge = new GenerateEvent(ksudoku::puzzleChanged);
 	KApplication::postEvent( &m_eventReceiver , ge );  // Qt will delete it when done;
 		//above event shouldn't be there, but cant hurt, can it?
-		//atleast it solves the missing update when
+		//at least it solves the missing update when
 		//1 puzzle has to be generated at when saving (and
 		//no puzzle was generated before)
 }

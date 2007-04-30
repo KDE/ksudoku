@@ -40,12 +40,12 @@ Symbols::~Symbols()
 QChar Symbols::numberGenerator(int index)
 
 {
-	///@TODO fix this for internationalisation
+	///@TODO fix this for internationalization
 	return QChar(index + '1');
 }
 QChar Symbols::letterGenerator(int index)
 {
-	///@TODO fix this for internationalisation
+	///@TODO fix this for internationalization
 	return QChar(index + 'a');
 }
 

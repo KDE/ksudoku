@@ -17,12 +17,9 @@
 /**                                                         **/
 /*************************************************************/
 
-#include <GL/gl.h>												// Header File For The OpenGL32 Library
-#include <GL/glu.h>												// Header File For The GLu32 Library
-#include <stdio.h>
-
-#include "math.h"                                               // Needed for sqrtf
 #include "ArcBall.h"                                            // ArcBall header
+
+#include <stdio.h>
 
 //Arcball sphere constants:
 //Diameter is       2.0f
@@ -34,7 +31,7 @@ void ArcBall_t::_mapToSphere(const Point2fT* NewPt, Vector3fT* NewVec) const
     Point2fT TempPt;
     GLfloat length;
 
-    //Copy paramter into temp point
+    //Copy parameter into temp point
     TempPt = *NewPt;
 
     //Adjust point coords and scale down to range of [-1 ... 1]

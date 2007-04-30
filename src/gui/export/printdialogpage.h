@@ -47,7 +47,7 @@ class DrawBase;
 class PrintDialogPage : public KPrintDialogPage
 {
 public:
-	PrintDialogPage(Print const& print, QWidget *parent = 0, const char *name = 0 );
+	explicit PrintDialogPage(Print const& print, QWidget *parent = 0, const char *name = 0 );
 	~PrintDialogPage();
 	
 	///reimplemented from KPrintDialogPage

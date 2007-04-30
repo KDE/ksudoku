@@ -160,7 +160,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	return puzzle;
 }
 
-static int readInt(QDomElement element, QString name, int* err)
+static int readInt(QDomElement element, const QString& name, int* err)
 { //out of class, cannot be static
 	*err = 1;
 	QString Str = element.attribute(name);
@@ -213,7 +213,7 @@ SKSolver* Serializer::deserializeGraph(QDomElement element) {
 			{
 				QString sz = child.toElement().attribute("size");
 				if(sz.isNull()) return 0;
-				cliques += sz + " " + child.toElement().text();
+				cliques += sz + ' ' + child.toElement().text();
 			}
 			child = child.nextSibling();
 		}
@@ -463,7 +463,7 @@ bool Serializer::serializeGraph(QDomElement& parent, const SKSolver* puzzle) {
 			QString contentStr = "";
 			for(int j=0; j<g->cliques[i].size(); j++)
 			{
-				contentStr += QString::number(g->cliques[i][j]) + " ";
+				contentStr += QString::number(g->cliques[i][j]) + ' ';
 			}
 			clique.appendChild(parent.ownerDocument().createTextNode(contentStr));
 			element.appendChild(clique);

@@ -19,8 +19,9 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
-#include "sudoku_solver.h"
 #include "ksudokuview.h"
+
+#include "sudoku_solver.h"
 
 #include <qpainter.h>
 //Added by qt3to4:

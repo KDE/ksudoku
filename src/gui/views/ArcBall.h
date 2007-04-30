@@ -20,6 +20,11 @@
 #ifndef _ArcBall_h
 #define _ArcBall_h
 
+#include <GL/gl.h>												// Header File For The OpenGL32 Library
+#include <GL/glu.h>												// Header File For The GLu32 Library
+
+#include "math.h"                                               // Needed for sqrtf
+
 // 8<--Snip here if you have your own math types/funcs-->8 
 
 //Only support assertions in debug builds

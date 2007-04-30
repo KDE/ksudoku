@@ -22,7 +22,7 @@
 #include "serializer.h"
 
 #include <QtDebug>
-#include <QMessageBox>
+#include <KMessageBox>
 
 #include "gamevariants.moc"
 
@@ -77,7 +77,7 @@ bool SudokuGame::canConfigure() const {
 }
 
 bool SudokuGame::configure() {
-	QMessageBox::information(0, "", "Configuration not yet implemented");
+	KMessageBox::information(0, "", "Configuration not yet implemented");
 	return false;
 }
 
@@ -114,7 +114,7 @@ bool RoxdokuGame::canConfigure() const {
 }
 
 bool RoxdokuGame::configure() {
-	QMessageBox::information(0, "", "Configuration not yet implemented");
+	KMessageBox::information(0, "", "Configuration not yet implemented");
 	return false;
 }
 

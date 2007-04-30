@@ -34,7 +34,7 @@ public:
 	unsigned char numbers[625];
 	unsigned char flags[625][26];
 
-	SKPuzzle(int oi=9, int typef = 0, int sized=-1) : SKBase(oi,typef,sized )
+	explicit SKPuzzle(int oi=9, int typef = 0, int sized=-1) : SKBase(oi,typef,sized )
 	{
 		/*numbers = new (unsigned char ) [size+1];
 		flags   = new (unsigned char*) [size];

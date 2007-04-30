@@ -45,7 +45,7 @@ public:
 	///@returns the index of the first occurrence of the value x. Returns -1 if no item matched.
 	int index(QString const& name) const { return m_nameList.indexOf(name); }
 
-	///@return a QRect describing the heigth and width of @c name
+	///@return a QRect describing the height and width of @c name
 	QSize size(QString const& name) const;
 	///over loaded from function above
 	///@arg index to a pageSize in m_nameList

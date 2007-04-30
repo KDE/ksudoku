@@ -19,13 +19,13 @@
  *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
  ***************************************************************************/
 
+#include "ksudokugame.h"
+
 #include "sudoku_solver.h"
 
-#include "ksudokugame.h"
 #include "ksudokuview.h"
 #include "puzzle.h"
 
-#include "sudoku_solver.h"
 #include "history.h"
 #include "symbols.h"
 
@@ -310,7 +310,7 @@ bool Game::setMarker(int index, int val, bool state) {
 		doEvent(HistoryEvent(index, CellInfo(markers)));
 	}
 	
-	// allmost every time this function will change the cell
+	// almost every time this function will change the cell
 	m_private->emitCellChange(index);
 	m_private->emitModified(true);
 	

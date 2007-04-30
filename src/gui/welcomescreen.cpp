@@ -21,7 +21,7 @@
 #include <QListWidget>
 #include <QVBoxLayout>
 #include <QtDebug>
-#include <QMessageBox>
+#include <KMessageBox>
 
 #include "ksudokugame.h"
 
@@ -75,11 +75,11 @@ void WelcomeScreen::onCurrentVariantChange() {
 }
 
 void WelcomeScreen::getNewVariant() {
-	QMessageBox::information(this, "", "GetNewVariant not implemented");
+	KMessageBox::information(this, "", "GetNewVariant not implemented");
 }
 
 void WelcomeScreen::createNewVariant() {
-	QMessageBox::information(this, "", "CreateNewVariant not implemented");
+	KMessageBox::information(this, "", "CreateNewVariant not implemented");
 }
 
 void WelcomeScreen::configureVariant() {

@@ -1,7 +1,7 @@
 /***************************************************************************
  *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
- *   Copyright 2006      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -61,7 +61,7 @@ ExportDlg::ExportDlg(Puzzle const& currPuzzle, Symbols const& symbols)
 {
 	m_drawer = DrawFactory().create_instance(m_currPuzzle, m_currSymbols);
 	if(!m_drawer){
-		KMessageBox::information(0, i18n("Sorry. I can't export this puzzle type (yet)"));
+		KMessageBox::information(0, i18n("Sorry. I am not able to export this puzzle type (yet)"));
 		done(QDialog::Rejected); //return rejected
 	}
 
@@ -120,7 +120,7 @@ ExportDlg::~ExportDlg()
 void ExportDlg::polish()
 {
 	setSettings(); //restore saved settings
-	m_puzzleList.resize(1); //there is atleast 1 puzzle visable
+	m_puzzleList.resize(1); //there is at least 1 puzzle visable
 	if(m_expDlgSettings.generatePreviewGame())
 		createPuzzles();
 	updatePreview();
@@ -378,7 +378,7 @@ void ExportDlg::reCreatePuzzles()
 	m_puzzleList.regenerate();
 }
 
-void ExportDlg::setOutputSize(QString type, int height, int width)
+void ExportDlg::setOutputSize(const QString& type, int height, int width)
 {
 	//prevent changes made here to cause an emit
 	kisbVres->blockSignals(true);

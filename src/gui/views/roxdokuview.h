@@ -52,7 +52,7 @@ class RoxdokuView : public QGLWidget, public ksudoku::KsView
 Q_OBJECT
 public:
 //	RoxdokuView(QWidget *parent = 0, const char *name = 0, int order=9, int difficulty=1, int simmetry=0, bool dub=0);
-	RoxdokuView(ksudoku::Game game, QWidget *parent = 0, const char* name = 0);
+	explicit RoxdokuView(ksudoku::Game game, QWidget *parent = 0, const char* name = 0);
 	~RoxdokuView();
 public:
 	///(re)implemented from KsView

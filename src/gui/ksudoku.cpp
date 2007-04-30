@@ -134,9 +134,9 @@ KSudoku::KSudoku()
 	
 	setCentralWidget(m_welcomeScreen, false);
 	
-	// Reigster the gamevariants resource
+	// Register the gamevariants resource
     KGlobal::dirs()->addResourceType ("gamevariant", KStandardDirs::kde_default("data") +
-		KCmdLineArgs::aboutData()->appName() + "/");
+		KCmdLineArgs::aboutData()->appName() + '/');
 	
 	updateShapesList();
 	
@@ -385,7 +385,7 @@ void KSudoku::set23 () { selectNumber(23); }
 void KSudoku::set24 () { selectNumber(24); }
 void KSudoku::set25 () { selectNumber(25); }
 
-void KSudoku::KDE3Action(QString text, QWidget* object, const char* slot, QString name)
+void KSudoku::KDE3Action(const QString& text, QWidget* object, const char* slot, const QString& name)
 {
 	KAction* a = new KAction(text, object);
 	connect(a, SIGNAL(triggered(bool)),object, slot);
@@ -711,13 +711,13 @@ void KSudoku::fileOpen()
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
 	// button is clicked
 	// standard filedialog
-	KUrl Url = KFileDialog::getOpenUrl(KUrl(), QString::null, this, i18n("Open Location"));
+	KUrl Url = KFileDialog::getOpenUrl(KUrl(), QString(), this, i18n("Open Location"));
 	
 	if (!Url.isEmpty() && Url.isValid())
 	{
 		Game game = ksudoku::Serializer::load(Url, this);
 		if(!game.isValid()) {
-			KMessageBox::error(this, i18n("Couldn't load game."));
+			KMessageBox::error(this, i18n("Could not load game."));
 			return;
 		}
 		
@@ -831,7 +831,7 @@ ksudoku::KsView* KSudoku::currentView() const{
 
 void KSudoku::loadCustomShapeFromPath()
 {
-	KUrl Url = KFileDialog::getOpenUrl( KUrl(), QString::null, this, i18n("Open Location") );
+	KUrl Url = KFileDialog::getOpenUrl( KUrl(), QString(), this, i18n("Open Location") );
 	
 	if ( Url.isEmpty() || !Url.isValid() )
 	{

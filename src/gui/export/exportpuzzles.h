@@ -104,7 +104,7 @@ private:
 
 	///mutex used by @ref run
 	QMutex m_mutex;
-	///QMutex used by controling deletion of data
+	///QMutex used by controlling deletion of data
 	QMutex m_deletionLock;
 
 	///the object where the events should go (qt 3.3 can't handle threaded signals/slots)

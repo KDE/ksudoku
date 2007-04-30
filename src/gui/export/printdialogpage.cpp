@@ -40,7 +40,7 @@ public:
 	, m_print(print)
 	, m_pdp(pdp)
 	{
-		setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding); //not realy needed
+		setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding); //not really needed
 	}
 
 protected:

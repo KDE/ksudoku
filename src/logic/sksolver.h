@@ -66,9 +66,9 @@ class SolverState;
 
 class SKSolver{
 public:
-	SKSolver(int n=9, bool threedimensionalf = false);
+	explicit SKSolver(int n=9, bool threedimensionalf = false);
 	~SKSolver();
-	SKSolver(SKGraph* gr);
+	explicit SKSolver(SKGraph* gr);
 public:
 	SKGraph* g       ;
 	int      base    ;
@@ -109,7 +109,7 @@ public:
 
 private:
 	/**
-	 * Completly resets all occurences of @p value (and their symmetric complements) to 0.
+	 * Completly resets all occurrences of @p value (and their symmetric complements) to 0.
 	 * This method only changes @p puzzle when it remains solveable.
 	 * @returns count of removed values or 0 if the puzzle con't be solved afterwards.
 	 */

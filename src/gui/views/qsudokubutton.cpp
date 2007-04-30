@@ -244,7 +244,7 @@ void QSudokuButton::draw(QPainter& qpainter)
 	{
 // 		Graph2d* g = dynamic_cast<m_ksView.game().puzzle()->solver()->g;
 // 		int connections=0;
-// 		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesnt work with coordinates
+// 		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesn't work with coordinates
 		QPen pen(QColor(0xff888a85));
 		pen.setWidth(1);
 
@@ -357,7 +357,7 @@ void QSudokuButton::drawValue(QPainter& qpainter)
 			marker = true;
 		break;
 		default:
-			KMessageBox::information(this, i18n("BUG: No default color defined, but it's apparently needed"));
+			KMessageBox::information(this, i18n("BUG: No default color defined, but it is apparently needed"));
 	}
 	
 	QFont f; 

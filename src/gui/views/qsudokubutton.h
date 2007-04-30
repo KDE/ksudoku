@@ -67,7 +67,7 @@ private:
 	QSudokuButton& operator=(QSudokuButton const& other);
 
 public:
-	QSudokuButton(ksudokuView *parent = 0, int x=0, int y=0);
+	explicit QSudokuButton(ksudokuView *parent = 0, int x=0, int y=0);
 	~QSudokuButton();
 
 	void resize();

@@ -86,7 +86,7 @@ public:
 	
 	/**
 	 * Sets all values for which only one flag is left
-	 * Returns wheter it failed due to conflicts.
+	 * Returns whether it failed due to conflicts.
 	 */
 	ProcessState setAllDefindedValues(skGraph* graph) {
 		int index;
@@ -438,7 +438,7 @@ uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags)
 	QVector<uint> local(puzzle);
 	int cellsLeft = size;
 	
-	// completely remove all occurences of a random value
+	// completely remove all occurrences of a random value
 	if(flags && KSS_REM_1VALUE) {
 		uint startValue = RANDOM(order)+1;
 		uint i;

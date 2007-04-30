@@ -32,7 +32,7 @@ class Game;
 class GameVariantCollection;
 class GameVariant {
 public:
-	GameVariant(const QString& name, GameVariantCollection* collection=0);
+	explicit GameVariant(const QString& name, GameVariantCollection* collection=0);
 	virtual ~GameVariant() {}
 
 public:

@@ -78,14 +78,14 @@ public:
 	
 	/**
 	 * Sets all values for which only one flag is left
-	 * Returns wheter it failed due to conflicts.
+	 * Returns whether it failed due to conflicts.
 	 */
 	ProcessState setAllDefindedValues(SKGraph* graph) {
 		int index;
 		ProcessState state;
 		while((index = m_remaining.firstIndexWithValue(1)) >= 0) {
 			for(int i = 0; ; ++i) {
-				// Check whethere there wasn't a flag left
+				// Check whether there wasn't a flag left
 				if(i >= m_order) return KSS_CRITICAL;
 				
 				if(m_flags[i][index]) {
@@ -184,7 +184,7 @@ int Solver::solve(const QVector<int>& puzzle, int maxSolutions) {
 	
 	// Do 20 tries to solve the puzzle, this should be enough in most cases
 	for(int i = 0; i < 20; ++i) {
-		// TODO This might change whith an evolved internal solver algorithmn
+		// TODO This might change with an evolved internal solver algorithmn
 		
 		// If no solutions were found after size*8 forks, than there 
 		// will probably be no solution in a near range, and a restart of the

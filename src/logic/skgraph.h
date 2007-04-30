@@ -82,7 +82,7 @@ public:
 	
 	//unsigned int optimized_sc;
 
-	SKGraph(int o=9, bool threedimensionalf = false) : SKBase(o, threedimensionalf)
+	explicit SKGraph(int o=9, bool threedimensionalf = false) : SKBase(o, threedimensionalf)
 	{
 		ITERATE(i,size)
 		{
@@ -113,7 +113,7 @@ namespace ksudoku {
 	
 class Graph2d : public SKGraph {
 public:
-	Graph2d(int o=9) : SKGraph(o, false) {}
+	explicit Graph2d(int o=9) : SKGraph(o, false) {}
 	
 	inline bool hasLeftBorder(int x, int y) {
 		return m_borderLeft[cellIndex(x,y,0)];
@@ -142,14 +142,14 @@ protected:
 
 class GraphSudoku : public Graph2d {
 	public:
-		GraphSudoku(int o=9) : Graph2d(o) {}
+		explicit GraphSudoku(int o=9) : Graph2d(o) {}
 	public:
 		void init();
 };
 
 class GraphRoxdoku : public SKGraph {
 	public:
-		GraphRoxdoku(int o=9) : SKGraph(o, true) {}
+		explicit GraphRoxdoku(int o=9) : SKGraph(o, true) {}
 	public:
 		void init();
 };
@@ -167,7 +167,7 @@ public:
 	char* name;
 	bool valid;
 
-	std::vector<std::vector<int> > cliques; //or chars? dont remove SPACE
+	std::vector<std::vector<int> > cliques; //or chars? don't remove SPACE
 private:
 // // 	int maxConnections;
 // 	std::vector<int> linksUp;
@@ -197,7 +197,7 @@ public:
 // 	}
 public:
 	GraphCustom();
-	GraphCustom(const char* filenamed);
+	explicit GraphCustom(const char* filenamed);
 	static SKSolver* createCustomSolver(const char* path);
 public:
 	void init() {}

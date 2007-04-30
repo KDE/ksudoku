@@ -35,7 +35,7 @@ public:
 	* @param[in] sovler       The solver used for this puzzle (the GameType) (not deleted when Puzzle is deleted)
 	* @param[in] withSolution Whether a the solution for this puzzle should be stored
 	*/
-	Puzzle(SKSolver* solver, bool withSolution = true);
+	explicit Puzzle(SKSolver* solver, bool withSolution = true);
 	
 	/**
 	* @todo Delete puzzle and solver when this class is not only used for puzzle creation

@@ -99,7 +99,7 @@ public:
 	int size() const;
 	
 	/**
-	 * Checks wheter a set contains obvious errors
+	 * Checks whether a set contains obvious errors
 	 *
 	 * @returns True when no error against the rules of the graph exists. This doesn't mean,
 	 *          that the values are suitable to solve the puzzle.
@@ -109,7 +109,7 @@ public:
 	/**
 	 * Use this to show which cells might not be used for a value.
 	 * @param[in] val       The value against which the puzzle should be highlighted
-	 * @param[in] allValues Whether cells which allready have a value should also be hightlighted
+	 * @param[in] allValues Whether cells which already have a value should also be hightlighted
 	 * @return A array of bools for each cell. True when the cell might not be used otherwise false.
 	 */
 	QBitArray highlightValueConnections(int val, bool allValues = false) const;
@@ -154,7 +154,7 @@ public:
 	 * @param[in] index The index of the cell
 	 * @param[in] val   The value of the marker
 	 * @param[in] state Whether the marker shoudl be set or unset
-	 * @return Whether this function was executed succesfully
+	 * @return Whether this function was executed successfully
 	 */
 	bool setMarker(int index, int val, bool state);
 	inline bool setMarker(int val, bool state, int x, int y, int z = 0);
@@ -191,7 +191,7 @@ public:
 	int char2Value(QChar c) const;
 	
 	/**
-	 * Gives one value in a randomly choosen cell.
+	 * Gives one value in a randomly chosen cell.
 	 */
 	bool giveHint();
 	
