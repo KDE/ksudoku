@@ -16,13 +16,15 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
 #include "puzzle.h"
 #include <cstdlib>
 #include <time.h>
 #include <qstring.h>
+
+#include <QtDebug>
 
 namespace ksudoku {
 
@@ -68,7 +70,8 @@ bool Puzzle::init(int difficulty, int symmetry) {
 	if(!puzzle)
 		return false;
 	
-	printf("init %d %d\n", difficulty, symmetry);
+// 	printf("init %d %d\n", difficulty, symmetry);
+	qDebug() << QString("Init a new game (difficulty %1, symmetry %2)").arg(difficulty).arg(symmetry);
 
 //	std::srand( time(0) );
 	m_solver->solve(puzzle, 1, puzzle);

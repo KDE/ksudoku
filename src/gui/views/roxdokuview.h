@@ -16,7 +16,7 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
 #ifndef GLWINDOW_H
@@ -51,7 +51,6 @@ class RoxdokuView : public QGLWidget, public ksudoku::KsView
 {
 Q_OBJECT
 public:
-//	RoxdokuView(QWidget *parent = 0, const char *name = 0, int order=9, int difficulty=1, int simmetry=0, bool dub=0);
 	explicit RoxdokuView(ksudoku::Game game, QWidget *parent = 0, const char* name = 0);
 	~RoxdokuView();
 public:

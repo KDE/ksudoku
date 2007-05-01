@@ -16,13 +16,13 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
 #include "sudoku_solver.h"
 
-#include <stdio.h>
-#include <cstdlib>
+// #include <stdio.h>
+// #include <cstdlib>
 
 #include <time.h>
 
@@ -336,7 +336,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	
 	
 	int numberOfNumbersToAdd = (7*level*(((type!=1) ? ((int) sqrt(p->size)) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
-	printf("%d\n", numberOfNumbersToAdd);
+// 	printf("%d\n", numberOfNumbersToAdd);
 
 	ITERATE(i, numberOfNumbersToAdd)
 	{
@@ -413,23 +413,23 @@ int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 	
 	
 	// Solver Benchmark !!!! TODO: remove this
-	printf("Do benchmark!\n");
+// 	printf("Do benchmark!\n");
 	QTime time;
 	time.start();
 	for(uint i = 100; i != 0; --i) {
 		solve2(p);
-		printf("%d\n", i);
+// 		printf("%d\n", i);
 	}
 	uint oldT = time.elapsed();
 	
 	time.start();
 	for(uint i = 100; i != 0; --i) {
 		solve(p);
-		printf("%d\n", i);
+// 		printf("%d\n", i);
 	}
 	uint newT = time.elapsed();
-	printf("Test old: %d\n", oldT);
-	printf("Test new: %d\n", newT);
+// 	printf("Test old: %d\n", oldT);
+// 	printf("Test new: %d\n", newT);
 	return 1;
 	
 }
@@ -479,7 +479,7 @@ uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags)
 		} else {
 			++failures;
 		}
-		printf("Failures: %d - %d\n", cellsLeft, failures);
+// 		printf("Failures: %d - %d\n", cellsLeft, failures);
 	}
 	
 	// give initial hints
@@ -751,7 +751,7 @@ int SKSolver:: solve2(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solutio
 		ITERATE(i,puzzle->size) puzzle->numbers[i] = 0;
 		solve(puzzle, 1, puzzle,0);
 	}
-	if(forks) printf("%d\n", *forks);
+// 	if(forks) printf("%d\n", *forks);
 	
 	return solutions_d;
 }

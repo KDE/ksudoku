@@ -14,7 +14,7 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
 #include "gamevariants.h"
@@ -23,6 +23,7 @@
 
 #include <QtDebug>
 #include <KMessageBox>
+#include <KLocale>
 
 #include "gamevariants.moc"
 
@@ -77,7 +78,7 @@ bool SudokuGame::canConfigure() const {
 }
 
 bool SudokuGame::configure() {
-	KMessageBox::information(0, "", "Configuration not yet implemented");
+	KMessageBox::information(0, "", i18n("Configuration not yet implemented"));
 	return false;
 }
 
@@ -114,7 +115,7 @@ bool RoxdokuGame::canConfigure() const {
 }
 
 bool RoxdokuGame::configure() {
-	KMessageBox::information(0, "", "Configuration not yet implemented");
+	KMessageBox::information(0, "", i18n("Configuration not yet implemented"));
 	return false;
 }
 

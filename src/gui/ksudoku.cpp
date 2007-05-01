@@ -16,7 +16,7 @@
  *   You should have received a copy of the GNU General Public License     *
  *   along with this program; if not, write to the                         *
  *   Free Software Foundation, Inc.,                                       *
- *   59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.             *
+ *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
 #include "ksudoku.h"
@@ -151,12 +151,12 @@ void KSudoku::updateShapesList()
 {
 	// TODO clear the list
 	
-	(void) new SudokuGame("Sudoku Standard (9x9)", 9, m_gameVariants);
-	(void) new SudokuGame("Sudoku 16x16", 16, m_gameVariants);
-	(void) new SudokuGame("Sudoku 25x25", 25, m_gameVariants);
-	(void) new RoxdokuGame("Roxdoku 9 (3x3x3)", 9, m_gameVariants);
-	(void) new RoxdokuGame("Roxdoku 16 (4x4x5)", 16, m_gameVariants);
-	(void) new RoxdokuGame("Roxdoku 25 (5x5x5)", 25, m_gameVariants);
+	(void) new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
+	(void) new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
+	(void) new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
+	(void) new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
+	(void) new RoxdokuGame(i18n("Roxdoku 16 (4x4x5)"), 16, m_gameVariants);
+	(void) new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
 	
     QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
 
@@ -168,7 +168,7 @@ void KSudoku::updateShapesList()
 		KConfig variantConfig(filepath, KConfig::OnlyLocal);
 		KConfigGroup group = variantConfig.group ("KSudokuVariant");
 		
-		variantName = group.readEntry("Name", "Missing Name"); // Translated.
+		variantName = group.readEntry("Name", i18n("Missing Variant Name")); // Translated.
 		variantDescr = group.readEntry("Description", ""); // Translated.
 		variantDataPath = group.readEntry("FileName", "");
 		if(variantDataPath == "") continue;
