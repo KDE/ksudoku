@@ -44,8 +44,8 @@ private slots:
 	void onCurrentVariantChange();
 	
 	void getNewVariant();
-	void createNewVariant();
 	void configureVariant();
+	void startEmptyGame();
 	void playVariant();
 	
 signals:

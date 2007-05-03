@@ -108,6 +108,8 @@ private:
 	void setGame(const Game& game);
 	
 	QVector<QSudokuButton*> m_buttons;
+	
+	QVector<int> m_highlightUpdate;
 
 	bool puzzle_mark_wrong;
 	int  highlighted;

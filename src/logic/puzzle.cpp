@@ -52,7 +52,7 @@ bool Puzzle::init() {
 	if(m_withSolution)
 		return false;
 
-	m_puzzle = new SKPuzzle(m_solver->g->order, m_solver->g->type);
+	m_puzzle = new SKPuzzle(m_solver->g->order, m_solver->g->type, m_solver->g->size);
 
 	for(int i = 0; i < m_puzzle->size; ++i)
 		m_puzzle->numbers[i] = 0;

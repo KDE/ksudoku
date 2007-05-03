@@ -135,8 +135,12 @@ void ksudokuView::btn_enter(int x, int y)
 
 	isWaitingForNumber = -1;
 
+	if(m_highlightUpdate.size() != m_game.size())
+		m_highlightUpdate.resize(m_game.size());
+	
 	for(int i = 0; i < m_game.size(); ++i) {
-		m_buttons[i]->setHighlight(HighlightBaseMask, HighlightNone);
+// 		m_buttons[i]->setHighlight(HighlightBaseMask, HighlightNone);
+		m_highlightUpdate[i] = HighlightNone;
 	}
 	
 
@@ -147,11 +151,14 @@ void ksudokuView::btn_enter(int x, int y)
 		{
 	// 		uint base = m_game.userPuzzle()->base;
 			int base = static_cast<int>(sqrt(m_game.puzzle()->order()));
-			m_buttons[m_game.index(i, y)]->setHighlight(HighlightRow);
-			m_buttons[m_game.index(x, i)]->setHighlight(HighlightColumn);
+// 			m_buttons[m_game.index(i, y)]->setHighlight(HighlightRow);
+// 			m_buttons[m_game.index(x, i)]->setHighlight(HighlightColumn);
+			m_highlightUpdate[m_game.index(i, y)] |= HighlightRow;
+			m_highlightUpdate[m_game.index(x, i)] |= HighlightColumn;
 			int sx = (x/base) * base;
 			int sy = (y/base) * base;
-			m_buttons[m_game.index(i/base+sx, sy+(i%base))]->setHighlight(HighlightClique);
+// 			m_buttons[m_game.index(i/base+sx, sy+(i%base))]->setHighlight(HighlightClique);
+			m_highlightUpdate[m_game.index(i/base+sx,i%base+sy)] |= HighlightClique;
 		}
 	}
 	else
@@ -191,7 +198,8 @@ void ksudokuView::btn_enter(int x, int y)
 					}
 					for(int k=0; k<g->cliques[i].size(); k++)
 					{
-						m_buttons[g->cliques[i][k]]->setHighlight(mask);
+// 						m_buttons[g->cliques[i][k]]->setHighlight(mask);
+						m_highlightUpdate[g->cliques[i][k]] |= mask;
 					}
 					count = (count+1)%3;
 					break;
@@ -199,8 +207,10 @@ void ksudokuView::btn_enter(int x, int y)
 			}
 		}
 	}
-	for(int i = 0; i < m_game.size(); ++i)
-		m_buttons[i]->update();
+	
+	for(int i = 0; i < m_game.size(); ++i) {
+		m_buttons[i]->setHighlight(HighlightBaseMask, m_highlightUpdate[i]);
+	}
 }
 
 

@@ -78,8 +78,24 @@ bool SudokuGame::canConfigure() const {
 }
 
 bool SudokuGame::configure() {
-	KMessageBox::information(0, "", i18n("Configuration not yet implemented"));
+	KMessageBox::information(0, i18n("Configuration not yet implemented"), "");
 	return false;
+}
+
+bool SudokuGame::canStartEmpty() const {
+	return true;
+}
+
+Game SudokuGame::startEmpty() const {
+	if(!m_solver) {
+		m_solver = new SKSolver(m_order, false);
+		m_solver->init();
+	}
+	
+	Puzzle* puzzle = new Puzzle(m_solver, false);
+	puzzle->init();
+	
+	return Game(puzzle);
 }
 
 Game SudokuGame::createGame(int difficulty) const {
@@ -115,8 +131,24 @@ bool RoxdokuGame::canConfigure() const {
 }
 
 bool RoxdokuGame::configure() {
-	KMessageBox::information(0, "", i18n("Configuration not yet implemented"));
+	KMessageBox::information(0, i18n("Configuration not yet implemented"), "");
 	return false;
+}
+
+bool RoxdokuGame::canStartEmpty() const {
+	return true;
+}
+
+Game RoxdokuGame::startEmpty() const {
+	if(!m_solver) {
+		m_solver = new SKSolver(m_order, true);
+		m_solver->init();
+	}
+	
+	Puzzle* puzzle = new Puzzle(m_solver, false);
+	puzzle->init();
+	
+	return Game(puzzle);
 }
 
 Game RoxdokuGame::createGame(int difficulty) const {
@@ -151,6 +183,23 @@ bool CustomGame::canConfigure() const {
 
 bool CustomGame::configure() {
 	return false;
+}
+
+bool CustomGame::canStartEmpty() const {
+	return true;
+}
+
+Game CustomGame::startEmpty() const {
+	if(!m_solver) {
+		m_solver = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+		
+		if(!m_solver) return Game();
+	}
+	
+	Puzzle* puzzle = new Puzzle(m_solver, false);
+	puzzle->init();
+	
+	return Game(puzzle);
 }
 
 Game CustomGame::createGame(int difficulty) const {

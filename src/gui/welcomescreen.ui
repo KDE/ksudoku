@@ -32,13 +32,6 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="createNewGameButton" >
-          <property name="text" >
-           <string>New</string>
-          </property>
-         </widget>
-        </item>
-        <item>
          <spacer>
           <property name="orientation" >
            <enum>Qt::Horizontal</enum>
@@ -55,6 +48,13 @@
          <widget class="QPushButton" name="configureGameButton" >
           <property name="text" >
            <string>Configure</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="startEmptyButton" >
+          <property name="text" >
+           <string>Start Empty</string>
           </property>
          </widget>
         </item>

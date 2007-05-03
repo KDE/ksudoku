@@ -36,8 +36,8 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	
 	setupUi(this);
 	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
-	connect(createNewGameButton, SIGNAL(clicked(bool)), this, SLOT(createNewVariant()));
 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
+	connect(startEmptyButton, SIGNAL(clicked(bool)), this, SLOT(startEmptyGame()));
 	connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));
 	
 	connect(gameListWidget, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this, SLOT(onCurrentVariantChange()));
@@ -71,15 +71,12 @@ void WelcomeScreen::onCurrentVariantChange() {
 	}
 	
 	configureGameButton->setEnabled(variant->canConfigure());
+	startEmptyButton->setEnabled(variant->canStartEmpty());
 	playGameButton->setEnabled(true);
 }
 
 void WelcomeScreen::getNewVariant() {
-	KMessageBox::information(this, "", i18n("GetNewVariant not implemented"));
-}
-
-void WelcomeScreen::createNewVariant() {
-	KMessageBox::information(this, "", i18n("CreateNewVariant not implemented"));
+	KMessageBox::information(this, i18n("GetNewVariant not implemented"), "");
 }
 
 void WelcomeScreen::configureVariant() {
@@ -87,6 +84,15 @@ void WelcomeScreen::configureVariant() {
 	if(!variant) return;
 	
 	variant->configure();
+}
+
+void WelcomeScreen::startEmptyGame() {
+	GameVariant* variant = selectedVariant();
+	if(!variant) return;
+	
+	Game game = variant->startEmpty();
+	
+	emit newGameStarted(game, variant);
 }
 
 void WelcomeScreen::playVariant() {

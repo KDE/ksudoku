@@ -44,6 +44,12 @@ public:
 	/// Shows a configure dialog and changes the settings
 	virtual bool configure() = 0;
 	
+	/// Whether this variant can be started without any values in the grid
+	virtual bool canStartEmpty() const = 0;
+	
+	/// Creates a game without a puzzle but with an empty grid
+	virtual Game startEmpty() const = 0;
+	
 	/// Creates a instance of this game variant
 	virtual Game createGame(int difficulty) const = 0;
 	
@@ -80,6 +86,8 @@ public:
 public:
 	bool canConfigure() const;
 	bool configure();
+	bool canStartEmpty() const;
+	Game startEmpty() const;
 	Game createGame(int difficulty) const;
 	KsView* createView(const Game& game) const;
 	
@@ -97,6 +105,8 @@ public:
 public:
 	bool canConfigure() const;
 	bool configure();
+	bool canStartEmpty() const;
+	Game startEmpty() const;
 	Game createGame(int difficulty) const;
 	KsView* createView(const Game& game) const;
 	
@@ -114,6 +124,8 @@ public:
 public:
 	bool canConfigure() const;
 	bool configure();
+	bool canStartEmpty() const;
+	Game startEmpty() const;
 	Game createGame(int difficulty) const;
 	KsView* createView(const Game& game) const;
 	

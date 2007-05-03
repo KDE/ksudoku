@@ -425,11 +425,19 @@ bool QSudokuButton::hasHighlight(int mask) const {
 }
 
 void QSudokuButton::setHighlight(int value) {
+	int oldValue = m_highlights;
 	m_highlights |= value;
+	
+	if(highlightColors[m_highlights & HighlightMask] != highlightColors[oldValue & HighlightMask])
+		update();
 }
 
 void QSudokuButton::setHighlight(int mask, int value) {
+	int oldValue = m_highlights;
 	m_highlights = m_highlights & (HighlightMask ^ mask) | value;
+
+	if(highlightColors[m_highlights & HighlightMask] != highlightColors[oldValue & HighlightMask])
+		update();
 }
 
 
