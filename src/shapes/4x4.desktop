@@ -2,9 +2,6 @@
 Encoding=UTF-8
 Name=4x4
 Description=4x4 shape puzzle
-Description[pt]=Puzzle com formato 4x4
-Description[pt_BR]=Puzzle com formato 4x4
-Description[sv]=4x4-format spel
 Author=Francesco Rossi
 FileName=4x4.xml
 
