@@ -286,7 +286,7 @@ void ExportDlg::updateProgressBar()
 	uint currSize  = m_puzzleList.size ();
 	QString status;
 	if( ( ! cbGenPrevGame->isChecked()) ||(currCount == currSize)){
-		status = i18n("1 puzzle available","%n puzzles available",currCount);
+		status = i18np("1 puzzle available","%1 puzzles available",currCount);
 		//set currCount to 0 so progress bar is empty
 		currCount = 0;
 	}
