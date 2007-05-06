@@ -2,5 +2,7 @@
 Encoding=UTF-8
 Name=Jigsaw
 Description=Jigsaw shape puzzle
+Description[pt]=Puzzle com formato serra
+Description[pt_BR]=Puzzle com formato serra
 Author=Francesco Rossi
 FileName=Jigsaw.xml
