@@ -12,7 +12,7 @@ set(ksudoku_SRCS
 
 INCLUDE_DIRECTORIES( views ksudoku_export)
 
-qt4_automoc( ${ksudoku_SRCS} )
+kde4_automoc( ${ksudoku_SRCS} )
 
 kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui)
 

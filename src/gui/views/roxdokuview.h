@@ -19,8 +19,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef GLWINDOW_H
-#define GLWINDOW_H
+#ifndef ROXDOKUVIEW_h
+#define ROXDOKUVIEW_h
 
 #include <qgl.h>
 #include <qpixmap.h>

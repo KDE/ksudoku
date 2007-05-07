@@ -7,6 +7,6 @@ set(ksudoku_views_SRCS
 	qsudokubutton.cpp
 )
 
-qt4_automoc( ${ksudoku_views_SRCS} )
+kde4_automoc( ${ksudoku_views_SRCS} )
 kde4_add_library(ksudoku_views ${ksudoku_views_SRCS})
 
