@@ -59,9 +59,10 @@ Matrix3fT ThisRot     = {{  {1.0f},  {0.0f},  {0.0f},          // NEW: This Rota
                             {0.0f},  {0.0f},  {1.0f} }};
 
 
-RoxdokuView::RoxdokuView(ksudoku::Game game, QWidget *parent, const char* /*name*/)
+RoxdokuView::RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent, const char* /*name*/)
 	: QGLWidget(parent)
 	, KsView()
+	, m_symbols(symbols)
 	
 {
 	m_game = ksudoku::Game();
@@ -101,14 +102,17 @@ QString RoxdokuView::status() const
 	if(secs % 36 < 12)
 		m = i18n("Selected item %1, Time elapsed %2. DRAG to rotate. MOUSE WHEEL to zoom in/out.",
 		         m_game.value2Char((selected_number > 0) ? selected_number : 0),
+// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
 		         m_game.time().toString("hh:mm:ss"));
 	else  if(secs % 36 < 24)
 		m = i18n("Selected item %1, Time elapsed %2. DOUBLE CLICK on a cube to insert selected number.",
 		         m_game.value2Char((selected_number > 0) ? selected_number : 0),
+// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
 		         m_game.time().toString("hh:mm:ss"));
 	else
 		m = i18n("Selected item %1, Time elapsed %2. Type in a cell (zero to delete) to place that number in it.",
 		         m_game.value2Char((selected_number > 0) ? selected_number : 0),
+// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
 		         m_game.time().toString("hh:mm:ss"));
 
 	return m;

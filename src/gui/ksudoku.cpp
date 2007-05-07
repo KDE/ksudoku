@@ -36,6 +36,7 @@
 #include <KActionCollection>
 #include <KStandardAction>
 #include <KToggleAction>
+#include <KConfigDialog>
 
 #include <KCmdLineArgs>
 #include <KAboutData>
@@ -72,6 +73,9 @@
 
 #include "gamevariants.h"
 #include "welcomescreen.h"
+
+#include "settings.h"
+#include "config.h"
 
 
 // bool guidedMode;
@@ -113,6 +117,13 @@ KSudoku::KSudoku()
 {
 	setObjectName("ksudoku");
 	
+	m_selectValueMapper = new QSignalMapper(this);
+	connect(m_selectValueMapper, SIGNAL(mapped(int)), this, SLOT(selectValue(int)));
+	m_enterValueMapper = new QSignalMapper(this);
+	connect(m_enterValueMapper, SIGNAL(mapped(int)), this, SLOT(enterValue(int)));
+	m_markValueMapper = new QSignalMapper(this);
+	connect(m_markValueMapper, SIGNAL(mapped(int)), this, SLOT(markValue(int)));
+	
 	// then, setup our actions
 	readProperties( KGlobal::config().data());
 	setupActions();
@@ -139,6 +150,8 @@ KSudoku::KSudoku()
 		KCmdLineArgs::aboutData()->appName() + '/');
 	
 	updateShapesList();
+	
+	m_symbols.setEnabledTables(Settings::symbols());
 	
 	
 	QTimer *timer = new QTimer( this );
@@ -188,18 +201,18 @@ void KSudoku::startGame(const Game& game) {
 
 	switch(type){
 		case sudoku: { //cUrly braces needed to avoid "crosses initialization" compile error
-			ksudokuView* v = new ksudokuView(this, game, false);
+			ksudokuView* v = new ksudokuView(this, game, &m_symbols, false);
 // 			v->setup(game);
 			connect( v, SIGNAL(changedSelectedNum()), this, SLOT(updateStatusBar()) );
 			view = v;
 			break;     }
 		case roxdoku: {
-			view = new RoxdokuView(game, this, "ksudoku-3dwnd");
+			view = new RoxdokuView(game, &m_symbols, this, "ksudoku-3dwnd");
 			break;      }
 		case custom:{
 // 			SKPuzzle* puzzle = game.puzzle()->puzzle();
 			//GraphCustom* gc = game.puzzle()->solver()->g;
-			ksudokuView* v = new ksudokuView(this, game, true);
+			ksudokuView* v = new ksudokuView(this, game, &m_symbols, true);
 // 			v->setup(game);
 			connect( v, SIGNAL(changedSelectedNum()), this, SLOT(updateStatusBar()) );
 			view = v;
@@ -345,7 +358,7 @@ void KSudoku::genMultiple()
 	//KMessageBox::information(this, i18n("Sorry, this feature is under development."));
 }
 
-void KSudoku::selectNumber(uint value) {
+void KSudoku::selectValue(int value) {
 // 	QWidget* current = m_tabs->currentPage()<
 	if(ksudokuView* view = dynamic_cast<ksudokuView*>( currentView())) {
 		view->current_selected_number = value;
@@ -357,33 +370,11 @@ void KSudoku::selectNumber(uint value) {
 	updateStatusBar();
 }
 
-void KSudoku::set0 () { selectNumber(0); }
-void KSudoku::set1 () { selectNumber(1); }
-void KSudoku::set2 () { selectNumber(2); }
-void KSudoku::set3 () { selectNumber(3); }
-void KSudoku::set4 () { selectNumber(4); }
-void KSudoku::set5 () { selectNumber(5); }
-void KSudoku::set6 () { selectNumber(6); }
-void KSudoku::set7 () { selectNumber(7); }
-void KSudoku::set8 () { selectNumber(8); }
-void KSudoku::set9 () { selectNumber(9); }
-void KSudoku::set10 () { selectNumber(10); }
-void KSudoku::set11 () { selectNumber(11); }
-void KSudoku::set12 () { selectNumber(12); }
-void KSudoku::set13 () { selectNumber(13); }
-void KSudoku::set14 () { selectNumber(14); }
-void KSudoku::set15 () { selectNumber(15); }
-void KSudoku::set16 () { selectNumber(16); }
+void KSudoku::enterValue(int value) {
+}
 
-void KSudoku::set17 () { selectNumber(17); }
-void KSudoku::set18 () { selectNumber(18); }
-void KSudoku::set19 () { selectNumber(19); }
-void KSudoku::set20 () { selectNumber(20); }
-void KSudoku::set21 () { selectNumber(21); }
-void KSudoku::set22 () { selectNumber(22); }
-void KSudoku::set23 () { selectNumber(23); }
-void KSudoku::set24 () { selectNumber(24); }
-void KSudoku::set25 () { selectNumber(25); }
+void KSudoku::markValue(int value) {
+}
 
 void KSudoku::KDE3Action(const QString& text, QWidget* object, const char* slot, const QString& name)
 {
@@ -407,57 +398,57 @@ void KSudoku::setupActions()
 
 	KDE3Action(i18n("&Export"), this, SLOT(fileExport()), "file_export");
 	
-	KDE3Action(i18n("del"), this, SLOT(set0()), "del");
-	KDE3Action(i18n("1"), this, SLOT(set1 ()), "1");
-	KDE3Action(i18n("2"), this, SLOT(set2 ()), "2");
-	KDE3Action(i18n("3"), this, SLOT(set3 ()), "3");
-	KDE3Action(i18n("4"), this, SLOT(set4 ()), "4");
-	KDE3Action(i18n("5"), this, SLOT(set5 ()), "5");
-	KDE3Action(i18n("6"), this, SLOT(set6 ()), "6");
-	KDE3Action(i18n("7"), this, SLOT(set7 ()), "7");
-	KDE3Action(i18n("8"), this, SLOT(set8 ()), "8");
-	KDE3Action(i18n("9"), this, SLOT(set9 ()), "9");
-	KDE3Action(i18n("j"), this, SLOT(set10()), "j");
-	KDE3Action(i18n("k"), this, SLOT(set11()), "k");
-	KDE3Action(i18n("l"), this, SLOT(set12()), "l");
-	KDE3Action(i18n("m"), this, SLOT(set13()), "m");
-	KDE3Action(i18n("n"), this, SLOT(set14()), "n");
-	KDE3Action(i18n("o"), this, SLOT(set15()), "o");
-	KDE3Action(i18n("p"), this, SLOT(set16()), "p");
-
-	KDE3Action(i18n("q"), this, SLOT(set17()), "q");
-	KDE3Action(i18n("r"), this, SLOT(set18()), "r");
-	KDE3Action(i18n("s"), this, SLOT(set19()), "s");
-	KDE3Action(i18n("t"), this, SLOT(set20()), "t");
-	KDE3Action(i18n("u"), this, SLOT(set21()), "u");
-	KDE3Action(i18n("v"), this, SLOT(set22()), "v");
-	KDE3Action(i18n("w"), this, SLOT(set23()), "w");
-	KDE3Action(i18n("y"), this, SLOT(set24()), "x");
-	KDE3Action(i18n("x"), this, SLOT(set25()), "y");
-
-	KDE3Action(i18n("a"), this, SLOT(set1()), "a");
-	KDE3Action(i18n("b"), this, SLOT(set2()), "b");
-	KDE3Action(i18n("c"), this, SLOT(set3()), "c");
-	KDE3Action(i18n("d"), this, SLOT(set4()), "d");
-	KDE3Action(i18n("e"), this, SLOT(set5()), "e");
-	KDE3Action(i18n("f"), this, SLOT(set6()), "f");
-	KDE3Action(i18n("g"), this, SLOT(set7()), "g");
-	KDE3Action(i18n("h"), this, SLOT(set8()), "h");
-	KDE3Action(i18n("i"), this, SLOT(set9()), "i");
+	for(int i = 0; i < 25; ++i) {
+		KAction* a = new KAction(this);
+		actionCollection()->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
+		a->setText(i18n("Select %1 (%2)", i+1, QChar('a'+i)));
+		KShortcut shortcut;
+		shortcut.setPrimary( Qt::ControlModifier | Qt::Key_A + i );
+		if(i < 9) {
+			shortcut.setAlternate( Qt::ControlModifier | Qt::Key_1 + i );
+		}
+		a->setShortcut(shortcut);
+		m_selectValueMapper->setMapping(a, i+1);
+		connect(a, SIGNAL(triggered(bool)), m_selectValueMapper, SLOT(map()));
+		addAction(a);
+		
+		a = new KAction(this);
+		actionCollection()->addAction(QString("val-enter%1").arg(i+1,2,10,QChar('0')), a);
+		a->setText(i18n("Enter %1 (%2)", i+1, QChar('a'+i)));
+		shortcut = a->shortcut();
+		shortcut.setPrimary( Qt::Key_A + i);
+		if(i < 9) {
+			shortcut.setAlternate( Qt::Key_1 + i);
+		}
+		a->setShortcut(shortcut);
+		m_enterValueMapper->setMapping(a, i+1);
+		connect(a, SIGNAL(triggered(bool)), m_enterValueMapper, SLOT(map()));
+		addAction(a);
+		
+		a = new KAction(this);
+		actionCollection()->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
+		a->setText(i18n("Mark %1 (%2)", i+1, QChar('a'+i)));
+		shortcut = a->shortcut();
+		shortcut.setPrimary( Qt::AltModifier | Qt::Key_A + i);
+		if(i < 9) {
+			shortcut.setAlternate( Qt::AltModifier | Qt::Key_1 + i);
+		}
+		a->setShortcut(shortcut);
+		m_markValueMapper->setMapping(a, i+1);
+		connect(a, SIGNAL(triggered(bool)), m_markValueMapper, SLOT(map()));
+		addAction(a);
+	}
 
 	//History
-	KStandardAction::undo   (this, SLOT(undo()),actionCollection());//, "move_undo");
-	KStandardAction::redo   (this, SLOT(redo()),actionCollection());//, "move_redo");
+	QAction* undoAct = actionCollection()->addAction("move_undo");
+	undoAct->setIcon(KIcon("edit-undo"));
+	undoAct->setText(i18n("Undo"));
+	connect(undoAct, SIGNAL(triggered(bool)), this, SLOT(undo()));
 
-	KAction* aa = new KAction(i18n("Push checkpoint (add)"), this);
-	aa->setShortcut( Qt::CTRL+Qt::Key_A);
-	connect(aa, SIGNAL(triggered(bool)),this, SLOT(push()));
-	actionCollection()->addAction("move_add_group",aa);
-	
-	aa = new KAction(i18n("Pop checkpoint (extract)"), this);
-	aa->setShortcut( Qt::CTRL+Qt::Key_E);
-	connect(aa, SIGNAL(triggered(bool)),this, SLOT(pop()));
-	actionCollection()->addAction("move_undo_group",aa);
+	QAction* redoAct = actionCollection()->addAction("move_redo");
+	redoAct->setIcon(KIcon("edit-redo"));
+	redoAct->setText(i18n("Redo"));
+	connect(redoAct, SIGNAL(triggered(bool)), this, SLOT(redo()));
 
 	// TODO replace this with KStdGameAction members when having libkdegames
 	KDE3Action(i18n("Give Hint!"), this, SLOT(giveHint()), "move_hint"); //DONE
@@ -543,10 +534,8 @@ void KSudoku::adaptActions2View() {
 		action("file_save")->setEnabled(true);
 		action("file_save_as")->setEnabled(true);
 		
-		action("edit_undo")->setEnabled(game.canUndo());
-		action("edit_undo")->setEnabled(game.canRedo());
-		action("move_add_group")->setEnabled(game.canAddCheckpoint());
-		action("move_undo_group")->setEnabled(game.canUndo2Checkpoint());
+		action("move_undo")->setEnabled(game.canUndo());
+		action("move_undo")->setEnabled(game.canRedo());
 		
 		action("move_hint")      ->setEnabled(   game.puzzle()->hasSolution());
 		action("move_solve")     ->setEnabled(   game.puzzle()->hasSolution());
@@ -554,10 +543,8 @@ void KSudoku::adaptActions2View() {
 	} else {
 		action("file_save")->setEnabled(false);
 		action("file_save_as")->setEnabled(false);
-		action("edit_undo")->setEnabled(false);
-		action("edit_redo")->setEnabled(false);
-		action("move_add_group")->setEnabled(false);
-		action("move_undo_group")->setEnabled(false);
+		action("move_undo")->setEnabled(false);
+		action("move_redo")->setEnabled(false);
 	
 		action("move_hint")->setEnabled(false);
 		action("move_solve")->setEnabled(false);
@@ -568,10 +555,8 @@ void KSudoku::adaptActions2View() {
 void KSudoku::onModified(bool /*isModified*/) {
 	Game game = currentGame();
 	if(game.isValid()) {
-		action("edit_undo")->setEnabled(game.canUndo());
-		action("edit_redo")->setEnabled(game.canRedo());
-		action("move_add_group")->setEnabled(game.canAddCheckpoint());
-		action("move_undo_group")->setEnabled(game.canUndo2Checkpoint());
+		action("move_undo")->setEnabled(game.canUndo());
+		action("move_redo")->setEnabled(game.canRedo());
 	}
 }
 
@@ -582,7 +567,7 @@ void KSudoku::undo() {
 	game.interface()->undo();
 	
 	if(!game.canUndo()) {
-		action("edit_undo")->setEnabled(false);
+		action("move_undo")->setEnabled(false);
 	}
 }
 
@@ -593,7 +578,7 @@ void KSudoku::redo() {
 	game.interface()->redo();
 	
 	if(!game.canRedo()) {
-		action("edit_redo")->setEnabled(false);
+		action("move_redo")->setEnabled(false);
 	}
 }
 
@@ -786,12 +771,19 @@ void KSudoku::fileExport()
 
 void KSudoku::optionsPreferences()
 {
-    // popup some sort of preference dialog, here
-/*    ksudokuPreferences dlg;
-    if (dlg.exec())
-    {
-        // redo your settings
-    }*/
+	if ( KConfigDialog::showDialog("settings") ) return;
+
+	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
+	
+	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
+	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "theme");
+	
+	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(settingsChanged()));
+    dialog->show();
+}
+
+void KSudoku::settingsChanged() {
+	m_symbols.setEnabledTables(Settings::symbols());
 }
 
 void KSudoku::changeStatusbar(const QString& text)

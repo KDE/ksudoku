@@ -25,11 +25,13 @@
 #include <kaboutdata.h>
 #include <kcmdlineargs.h>
 #include <klocale.h>
+#include <kconfigdialogmanager.h>
 #include "sudoku_solver.h"
 #include "serializer.h"
 
 #include <cstdlib>
 #include <time.h>
+
 
 static const char description[] =
     I18N_NOOP("A KDE Application");
@@ -58,6 +60,8 @@ int main(int argc, char **argv)
 
 	// register ourselves as a dcop client
 //	app.dcopClient()->registerAs(app.name(), false); //TODO PORT
+	
+	 KConfigDialogManager::changedMap()->insert("ksudoku::SymbolConfigListWidget", SIGNAL(itemChanged(QListWidgetItem*)));
 
 	// see if we are starting with session management
 	/*if (app.isRestored())

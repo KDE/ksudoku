@@ -35,6 +35,7 @@
 #include <kstandarddirs.h>
 
 #include "ksudoku.h"
+#include "symbols.h"
 
 namespace ksudoku {
 
@@ -139,20 +140,14 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	QByteArray values;
 	values.resize(solver->g->size);
 	for(int i = 0; i < solver->g->size; ++i) {
-		if(valuesStr[i] == '_')
-			values[i] = 0;
-		else
-			values[i] = (valuesStr[i].toAscii()) - 'a';
+		values[i] = Symbols::ioSymbol2Value(valuesStr[i]);
 	}
 	
 	QByteArray solution;
 	if(solutionStr.length() != 0) {
 		solution.resize(solver->g->size);
 		for(int i = 0; i < solver->g->size; ++i) {
-			if(solutionStr[i] == '_')
-				solution[i] = 0;
-			else
-				solution[i] = (valuesStr[i].toAscii()) - 'a';
+			solution[i] = Symbols::ioSymbol2Value(valuesStr[i]);
 		}
 	}
 	
@@ -410,10 +405,7 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 	serializeGraph(element, puzzle->solver());
 	
 	for(int i = 0; i < puzzle->size(); ++i) {
-		if(puzzle->value(i) == 0)
-			contentStr += '_';
-		else
-			contentStr += 'a' + puzzle->value(i);
+		contentStr += Symbols::ioValue2Symbol(puzzle->value(i));
 	}
 	
 	QDomElement content = doc.createElement("values");
@@ -423,10 +415,7 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 	if(puzzle->hasSolution()) {
 		contentStr = QString();
 		for(int i = 0; i < puzzle->size(); ++i) {
-			if(puzzle->solution(i) == 0)
-				contentStr += '_';
-			else
-				contentStr += 'a' + puzzle->solution(i); //->numbers[i]);
+			contentStr += Symbols::ioValue2Symbol(puzzle->value(i));
 		}
 		content = doc.createElement("solution");
 		content.appendChild(doc.createTextNode(contentStr));
@@ -553,18 +542,21 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 	return true;
 }
 
-bool Serializer::store(const Game& game, const KUrl& /*url*/, QWidget* /*window*/) {
+bool Serializer::store(const Game& game, const KUrl& url, QWidget* window) {
 	QDomDocument doc( "ksudoku" );
 	QDomElement root = doc.createElement( "ksudoku" );
 	doc.appendChild( root );	
 	
 	serializeGame(root, game);
 	
-	KTemporaryFile tmp;
-	//(*tmp.textStream()) << doc.toString(); //TODO PORT
-	tmp.close();
-	//KIO::NetAccess::upload(tmp.name(), url, window); //TODO PORT
-	//tmp.unlink(); //TODO PORT
+	KTemporaryFile file;
+	file.open();
+	
+	QTextStream stream(&file);
+	stream << doc.toString();
+	stream.flush();
+	
+	KIO::NetAccess::upload(file.fileName(), url, window);
 	return true;
 }
 

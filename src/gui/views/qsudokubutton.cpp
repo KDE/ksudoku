@@ -399,14 +399,14 @@ void QSudokuButton::updateData() {
 			if(!info.value()) {
 				m_text = "";
 			} else {
-				m_text = m_ksView.game().value2Char(info.value());
+				m_text = m_ksView.symbols()->value2Symbol(info.value(), m_ksView.game().order());
 			}
 			break;
 		case Marker:
 			m_text = "";
 			for(uint i = 0; i < m_ksView.game().order(); ++i) {
 				if(info.marker(i+1))
-					m_text += m_ksView.game().value2Char(i+1) + ' ';
+					m_text += m_ksView.symbols()->value2Symbol(i+1, m_ksView.game().order()) + ' ';
 			}
 			break;
 	}

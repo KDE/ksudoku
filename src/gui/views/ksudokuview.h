@@ -43,6 +43,7 @@ class KURL;
 namespace ksudoku {
 
 class QSudokuButton;
+class Symbols;
 
 
 /**
@@ -55,7 +56,7 @@ class ksudokuView : public QWidget, public KsView
 	friend class QSudokuButton;
 public:
 	/// Default constructor
-	ksudokuView(QWidget *parent, const Game& game, bool custom);
+	ksudokuView(QWidget *parent, const Game& game, Symbols* symbols, bool custom);
 	// Destructor
 	virtual ~ksudokuView();
 
@@ -71,6 +72,8 @@ public:
 	 * @TODO hide private members
 	 */
 	virtual void draw(QPainter& p, int height, int width) const;
+	
+	Symbols* symbols() const { return m_symbols; }
 
 signals:
 	void changedSelectedNum();
@@ -84,6 +87,10 @@ public:
 	int current_selected_number;
 
 	bool custom;
+	
+	void selectValue(int value);
+	void enterValue(int value);
+	void markValue(int value);
 
 protected:
 	void resizeEvent(QResizeEvent *);
@@ -109,11 +116,15 @@ private:
 	
 	QVector<QSudokuButton*> m_buttons;
 	
+	int m_currentCell;
+	
 	QVector<int> m_highlightUpdate;
 
 	bool puzzle_mark_wrong;
 	int  highlighted;
 	int m_color0;
+	
+	Symbols* m_symbols;
 };
 
 }

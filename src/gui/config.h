@@ -1,7 +1,5 @@
 /***************************************************************************
- *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
- *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
- *   Copyright 2006      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2007      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -19,40 +17,42 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "ksview.h"
+#ifndef _KSUDOKUCONFIG_H_
+#define _KSUDOKUCONFIG_H_
 
-#include "ksudokugame.h"
+#include <QWidget>
+#include <QList>
+#include <QListWidget>
 
-#include <qpixmap.h>
-#include <qpainter.h>
+namespace ksudoku {
 
-namespace ksudoku{
+class Symbols;
+class SymbolTable;
 
-KsView::KsView()
-	: m_game()
-{
+class SymbolConfigListWidget : public QListWidget {
+Q_OBJECT
+Q_PROPERTY(QStringList enabledTables READ enabledTables WRITE setEnabledTables USER true)
+
+public:
+	SymbolConfigListWidget(const QList<SymbolTable*>& tables, QWidget* parent = 0);
+	~SymbolConfigListWidget();
+
+public:
+	QStringList enabledTables() const;
+	void setEnabledTables(const QStringList& tables);
+};
+
+class SymbolConfig : public QWidget {
+Q_OBJECT
+public:
+	SymbolConfig(Symbols* symbols);
+	~SymbolConfig();
+	
+private:
+	SymbolConfigListWidget* m_symbolTableView;
+	Symbols* m_symbols;
+};
+
 }
 
-KsView::~KsView()
-{
-}
-
-void KsView::draw(QPainter& /*p*/, int /*height*/, int /*width*/) const
-{ ///@TODO improve performance (low priority)
-//	//get user view
-//	QPixmap const qp(const_cast< KsView* >(this)->renderPixmap(width, height, FALSE));
-//	//copy to QPainter
-//	p.drawPixmap(0,0,qp,-1,-1);
-
-}
-
-void KsView::selectValue(int value) {
-}
-
-void KsView::enterValue(int value) {
-}
-
-void KsView::markValue(int value) {
-}
-
-}
+#endif

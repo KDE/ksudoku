@@ -42,6 +42,7 @@ class KSudoku;
 namespace ksudoku{
 
 class Game;
+class Symbols;
 
 /**
  * Gui for a roxdoku puzzle
@@ -51,7 +52,7 @@ class RoxdokuView : public QGLWidget, public ksudoku::KsView
 {
 Q_OBJECT
 public:
-	explicit RoxdokuView(ksudoku::Game game, QWidget *parent = 0, const char* name = 0);
+	RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent = 0, const char* name = 0);
 	~RoxdokuView();
 public:
 	///(re)implemented from KsView
@@ -114,6 +115,9 @@ protected:
 		wheelmove += e->delta() * .02;
 		updateGL();
 	}
+	
+private:
+	Symbols* m_symbols;
 };
 
 }

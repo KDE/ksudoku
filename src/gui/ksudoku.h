@@ -40,6 +40,10 @@
 #include "ksudokuview.h"
 #include "roxdokuview.h"
 
+#include "symbols.h"
+
+#include <QSignalMapper>
+
 //#include "skgraph.h"
 //#include "sksolver.h"
 
@@ -151,37 +155,12 @@ private slots:
 	void dubPuzzle();
 	void genMultiple();
 
-	void selectNumber(uint value);
-
-	void set0();
-	void set1();
-	void set2();
-	void set3();
-	void set4();
-	void set5();
-	void set6();
-	void set7();
-	void set8();
-	void set9();
-	void set10();
-	void set11();
-	void set12();
-	void set13();
-	void set14();
-	void set15();
-	void set16();
-
-	void set17();
-	void set18();
-	void set19();
-	void set20();
-	void set21();
-	void set22();
-	void set23();
-	void set24();
-	void set25();
+	void selectValue(int value);
+	void enterValue(int value);
+	void markValue(int value);
 
 	void optionsPreferences();
+	void settingsChanged();
 	void setShowTracker();
 	void changeStatusbar(const QString& text);
 	void changeCaption(const QString& text);
@@ -218,6 +197,11 @@ private:
 	
 // 	GameSelectionDialog* m_gameSelDlg;
 	
+	QSignalMapper* m_selectValueMapper;
+	QSignalMapper* m_enterValueMapper;
+	QSignalMapper* m_markValueMapper;
+	
+	
 	GameVariantCollection* m_gameVariants;
 	WelcomeScreen* m_welcomeScreen;
 	
@@ -230,6 +214,8 @@ private:
 	QMap<QString, SKSolver*> m_shapes;
 	QStringList m_shapes_paths;
 	QString m_shape_save_path;
+	
+	Symbols m_symbols;
 };
 
 #endif // _KSUDOKU_H_

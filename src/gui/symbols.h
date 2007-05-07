@@ -24,11 +24,26 @@
 
 #include <QVector>
 #include <QString>
+#include <QObject>
 
 namespace ksudoku {
 
 typedef QVector<QChar> SymbolList;
 enum SymbolType { numbers, letters, none};
+
+struct SymbolTable {
+public:
+	SymbolTable(const QString& name, const QString& text, const QVector<QChar>& symbols);
+public:
+	int maxValue() const;
+	QChar symbolForValue(int i) const;
+	QString name() const;
+	QString text() const;
+private:
+	QString m_name;
+	QString m_text;
+	QVector<QChar> m_symbols;
+};
 
 /**
  * Provide (in a consistend way) the symbols for puzzles.
@@ -36,7 +51,8 @@ enum SymbolType { numbers, letters, none};
  * (eventually this class must provide in more symbols then the western
  *  alphanumeric characters)
  */
-class Symbols{
+class Symbols : public QObject {
+Q_OBJECT
 //default will copy memberpointer which will be ok => no need
 //	///prevent copy constructor
 //	Symbols(Symbols const& other);
@@ -82,6 +98,42 @@ public:
 	///return reference to current symbol list 
 	///(list may change while using the result)
 	SymbolList const& symbolList() const { return m_symbolList; }
+	
+	QList<SymbolTable*> possibleTables() const;
+	
+	QStringList enabledTables() const;
+	void setEnabledTables(const QStringList& tables);
+	
+	SymbolTable* selectTable(int maxValue) {
+		for(int i = 0; i < m_enabledTables.size(); ++i) {
+			SymbolTable* table = m_enabledTables[i];
+			if(table->maxValue() >= maxValue)
+				return table;
+		}
+		return 0;
+	}
+
+	QChar value2Symbol(int value, int maxValue) {
+		SymbolTable* table = selectTable(maxValue);
+		if(!table) return '\0';
+		return table->symbolForValue(value);
+	}
+
+	/// returns the symbol vor a value used for loading and saving
+	static QChar ioValue2Symbol(int value) {
+		if(value <= 0) return '_';
+		return 'a' + value;
+	}
+	
+	/// returns the number of the index
+	static int ioSymbol2Value(const QChar& symbol) {
+		char c = symbol.toAscii();
+		if(symbol == '_') return 0;
+		return c - 'a';
+	}
+
+signals:
+	void tablesChanged();
 
 private:
 	///symbol generator, generates numbers
@@ -102,6 +154,9 @@ private:
 	
 	///current symbol type
 	SymbolType m_symbolType;
+	
+	QList<SymbolTable*> m_possibleTables;
+	QList<SymbolTable*> m_enabledTables;
 };
 
 }

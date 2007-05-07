@@ -32,12 +32,15 @@
 #include <math.h>
 #include "puzzle.h"
 
+#include "symbols.h"
+
 
 namespace ksudoku {
 
-ksudokuView::ksudokuView(QWidget *parent, const Game& game, bool customd)
+ksudokuView::ksudokuView(QWidget *parent, const Game& game, Symbols* symbols, bool customd)
 	: QWidget(parent)
 	, KsView()
+	, m_symbols(symbols)
 {
 	isWaitingForNumber = -1;
 	highlighted = -1;
@@ -47,9 +50,11 @@ ksudokuView::ksudokuView(QWidget *parent, const Game& game, bool customd)
 // 	m_buttons.setAutoDelete(true);
 	
 	m_guidedMode = true;
-	current_selected_number = 0;
+	current_selected_number = 1;
 
 	setGame(game);
+	
+	connect(symbols, SIGNAL(tablesChanged()), SLOT(onFullChange()));
 }
 
 // void ksudokuView::setup(const ksudoku::Game& game)
@@ -74,15 +79,15 @@ QString ksudokuView::status() const
 	int secs = QTime(0,0).secsTo(m_game.time());
 	if(secs % 36 < 12)
 		m = i18n("Selected item %1, Time elapsed %2. Press SHIFT to highlight.",
-		         m_game.value2Char((current_selected_number > 0) ? current_selected_number : 0),
+				 m_symbols->value2Symbol(current_selected_number, m_game.order()),
 		         m_game.time().toString("hh:mm:ss"));
 	else if(secs % 36 < 24)
 		m = i18n("Selected item %1, Time elapsed %2. Use RMB to pencil-mark(superscript).",
-		         m_game.value2Char((current_selected_number > 0) ? current_selected_number : 0),
+				 m_symbols->value2Symbol(current_selected_number, m_game.order()),
 		         m_game.time().toString("hh:mm:ss"));
 	else
 		m = i18n("Selected item %1, Time elapsed %2. Type in a cell to replace that number in it.",
-		         m_game.value2Char((current_selected_number > 0) ? current_selected_number : 0),
+				 m_symbols->value2Symbol(current_selected_number, m_game.order()),
 		         m_game.time().toString("hh::mm::ss"));
 
 	return m;
@@ -143,6 +148,7 @@ void ksudokuView::btn_enter(int x, int y)
 		m_highlightUpdate[i] = HighlightNone;
 	}
 	
+	m_currentCell = m_game.index(x,y);
 
 	if(custom==0)
 	{
@@ -291,6 +297,22 @@ void ksudokuView::setGame(const ksudoku::Game& game) {
 	connect(m_game.interface(), SIGNAL(modified(bool)), parent(), SLOT(onModified(bool)));
 
 	//printf("DONE\n");
+}
+
+void ksudokuView::selectValue(int value) {
+	current_selected_number = value;
+}
+
+void ksudokuView::enterValue(int value) {
+	if(!m_game.given(m_currentCell)) {
+		m_game.flipMarker(value, m_currentCell);
+	}
+}
+
+void ksudokuView::markValue(int value) {
+	if(!m_game.given(m_currentCell)) {
+		m_game.flipMarker(value, m_currentCell);
+	}
 }
 
 void ksudokuView::beginHighlight(int val)

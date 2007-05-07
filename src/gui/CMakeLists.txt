@@ -1,6 +1,7 @@
 
 
 set(ksudoku_SRCS
+	config.cpp
 	ksudoku.cpp
 	ksudokugame.cpp
 	serializer.cpp
@@ -15,6 +16,8 @@ INCLUDE_DIRECTORIES( views ksudoku_export)
 kde4_automoc( ${ksudoku_SRCS} )
 
 kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui)
+
+kde4_add_kcfg_files(ksudoku_SRCS settings.kcfgc )
 
 kde4_add_library(ksudoku_gui ${ksudoku_SRCS})
 #constrains on build order:

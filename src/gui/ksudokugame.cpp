@@ -318,6 +318,7 @@ bool Game::setMarker(int index, int val, bool state) {
 
 void Game::setValue(int index, int val) {
 	if(!m_private) return;
+	if(val > order()) return;
 	
 	if(m_private->state.given(index)) return;
 	

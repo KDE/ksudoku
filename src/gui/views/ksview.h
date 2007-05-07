@@ -72,6 +72,10 @@ public:
 	virtual QString status() const =0;
 	
 	virtual QWidget* widget() = 0;
+	
+	virtual void selectValue(int value);
+	virtual void enterValue(int value);
+	virtual void markValue(int value);
 
 protected:
 	///pointer to external Game
