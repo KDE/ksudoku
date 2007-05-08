@@ -223,7 +223,13 @@ void KSudoku::startGame(const Game& game) {
 	}
 // 	m_tabs->insertTab(view, "Test");
 // 	m_tabs->showPage(view);
-	setCentralWidget(view->widget(), true);
+	QWidget* widget = view->widget(); 
+	setCentralWidget(widget, true);
+	
+	widget->addAction(m_moveUpAct);
+	widget->addAction(m_moveDownAct);
+	widget->addAction(m_moveLeftAct);
+	widget->addAction(m_moveRightAct);
 }
 
 void KSudoku::loadGame(const KUrl& Url) {
@@ -359,21 +365,60 @@ void KSudoku::genMultiple()
 }
 
 void KSudoku::selectValue(int value) {
-// 	QWidget* current = m_tabs->currentPage()<
-	if(ksudokuView* view = dynamic_cast<ksudokuView*>( currentView())) {
-		view->current_selected_number = value;
-	} else if (RoxdokuView* view = dynamic_cast<RoxdokuView*>( currentView())) {
-		view->selected_number = value;
-	/*} else if (ksudokuCustomView* view = dynamic_cast<ksudokuCustomView*>(current)) {
-		view->current_selected_number = value;*/
-	} else return;
+	KsView* view = currentView();
+	if(!view) return;
+	
+	view->selectValue(value);
 	updateStatusBar();
 }
 
 void KSudoku::enterValue(int value) {
+	KsView* view = currentView();
+	if(!view) return;
+	
+	view->enterValue(value);
 }
 
 void KSudoku::markValue(int value) {
+	KsView* view = currentView();
+	if(!view) return;
+	
+	view->markValue(value);
+}
+
+void KSudoku::moveUp() {
+	KsView* view = currentView();
+	if(!view) return;
+	
+	view->moveUp();
+}
+
+void KSudoku::moveDown() {
+	KsView* view = currentView();
+	if(!view) return;
+	
+	view->moveDown();
+}
+
+void KSudoku::moveLeft() {
+	KsView* view = currentView();
+	if(!view) return;
+	
+	view->moveLeft();
+}
+
+void KSudoku::moveRight() {
+	KsView* view = currentView();
+	if(!view) return;
+	
+	view->moveRight();
+}
+
+void KSudoku::clearCell() {
+	KsView* view = currentView();
+	if(!view) return;
+	
+	view->enterValue(0);
 }
 
 void KSudoku::KDE3Action(const QString& text, QWidget* object, const char* slot, const QString& name)
@@ -385,6 +430,8 @@ void KSudoku::KDE3Action(const QString& text, QWidget* object, const char* slot,
 
 void KSudoku::setupActions()
 {
+	KShortcut shortcut;
+	
 	setAcceptDrops(true);
 	
 	KStandardAction::openNew(this, SLOT(fileNew()),    actionCollection());
@@ -402,12 +449,6 @@ void KSudoku::setupActions()
 		KAction* a = new KAction(this);
 		actionCollection()->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Select %1 (%2)", i+1, QChar('a'+i)));
-		KShortcut shortcut;
-		shortcut.setPrimary( Qt::ControlModifier | Qt::Key_A + i );
-		if(i < 9) {
-			shortcut.setAlternate( Qt::ControlModifier | Qt::Key_1 + i );
-		}
-		a->setShortcut(shortcut);
 		m_selectValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_selectValueMapper, SLOT(map()));
 		addAction(a);
@@ -429,15 +470,49 @@ void KSudoku::setupActions()
 		actionCollection()->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Mark %1 (%2)", i+1, QChar('a'+i)));
 		shortcut = a->shortcut();
-		shortcut.setPrimary( Qt::AltModifier | Qt::Key_A + i);
+		shortcut.setPrimary( Qt::ShiftModifier | Qt::Key_A + i);
 		if(i < 9) {
-			shortcut.setAlternate( Qt::AltModifier | Qt::Key_1 + i);
+			shortcut.setAlternate( Qt::ShiftModifier | Qt::Key_1 + i);
 		}
 		a->setShortcut(shortcut);
 		m_markValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_markValueMapper, SLOT(map()));
 		addAction(a);
 	}
+	
+	m_moveUpAct = actionCollection()->addAction("move_up");
+	m_moveUpAct->setText(i18n("Move Up"));
+	m_moveUpAct->setShortcut(Qt::Key_Up);
+	connect(m_moveUpAct, SIGNAL(triggered(bool)), SLOT(moveUp()));
+// 	addAction(moveUpAct);
+	
+	m_moveDownAct = actionCollection()->addAction("move_down");
+	m_moveDownAct->setText(i18n("Move Down"));
+	m_moveDownAct->setShortcut(Qt::Key_Down);
+	connect(m_moveDownAct, SIGNAL(triggered(bool)), SLOT(moveDown()));
+// 	addAction(moveDownAct);
+	
+	m_moveLeftAct = actionCollection()->addAction("move_left");
+	m_moveLeftAct->setText(i18n("Move Left"));
+	m_moveLeftAct->setShortcut(Qt::Key_Left);
+	connect(m_moveLeftAct, SIGNAL(triggered(bool)), SLOT(moveLeft()));
+// 	addAction(moveLeftAct);
+	
+	m_moveRightAct = actionCollection()->addAction("move_right");
+	m_moveRightAct->setText(i18n("Move Right"));
+	m_moveRightAct->setShortcut(Qt::Key_Right);
+	connect(m_moveRightAct, SIGNAL(triggered(bool)), SLOT(moveRight()));
+// 	addAction(moveRightAct);
+	
+	KAction* clearCellAct = new KAction(this);
+	actionCollection()->addAction("move_clear_cell", clearCellAct);
+	clearCellAct->setText(i18n("Clear Cell"));
+	shortcut = clearCellAct->shortcut();
+	shortcut.setPrimary(Qt::Key_Backspace);
+	shortcut.setAlternate(Qt::Key_Delete);
+	clearCellAct->setShortcut(shortcut);
+	connect(clearCellAct, SIGNAL(triggered(bool)), SLOT(clearCell()));
+	addAction(clearCellAct);
 
 	//History
 	QAction* undoAct = actionCollection()->addAction("move_undo");

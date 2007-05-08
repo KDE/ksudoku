@@ -91,6 +91,10 @@ public:
 	void selectValue(int value);
 	void enterValue(int value);
 	void markValue(int value);
+	void moveUp();
+	void moveDown();
+	void moveLeft();
+	void moveRight();
 
 protected:
 	void resizeEvent(QResizeEvent *);

@@ -55,4 +55,17 @@ void KsView::enterValue(int value) {
 void KsView::markValue(int value) {
 }
 
+void KsView::moveUp() {
+}
+
+void KsView::moveDown() {
+}
+
+void KsView::moveLeft() {
+}
+
+void KsView::moveRight() {
+}
+
+
 }

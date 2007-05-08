@@ -158,6 +158,11 @@ private slots:
 	void selectValue(int value);
 	void enterValue(int value);
 	void markValue(int value);
+	void moveUp();
+	void moveDown();
+	void moveLeft();
+	void moveRight();
+	void clearCell();
 
 	void optionsPreferences();
 	void settingsChanged();
@@ -201,6 +206,10 @@ private:
 	QSignalMapper* m_enterValueMapper;
 	QSignalMapper* m_markValueMapper;
 	
+	QAction* m_moveUpAct;
+	QAction* m_moveDownAct;
+	QAction* m_moveLeftAct;
+	QAction* m_moveRightAct;
 	
 	GameVariantCollection* m_gameVariants;
 	WelcomeScreen* m_welcomeScreen;

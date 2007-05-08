@@ -116,8 +116,6 @@ public:
 
 	///@return pointer to current puzzle
 	Puzzle* puzzle() const;
-	///@return poiter to symbols used for current puzzle
-	Symbols const* symbols() const;
 	
 	/**
 	 * Gets the the interface of the game. Use this if for connecting to signals or
@@ -179,16 +177,6 @@ public:
 	 * Gets the all current values of the game
 	 */
 	const QByteArray allValues() const;
-	
-	/**
-	 * @see ksudoku::Puzzle::value2Char
-	 */
-	QChar value2Char(int value) const;
-	
-	/**
-	 * @see ksudoku::Puzzle:char2Value
-	 */
-	int char2Value(QChar c) const;
 	
 	/**
 	 * Gives one value in a randomly chosen cell.

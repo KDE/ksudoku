@@ -299,20 +299,56 @@ void ksudokuView::setGame(const ksudoku::Game& game) {
 	//printf("DONE\n");
 }
 
+}
+#include <QtDebug>
+namespace ksudoku {
+
 void ksudokuView::selectValue(int value) {
 	current_selected_number = value;
 }
 
 void ksudokuView::enterValue(int value) {
 	if(!m_game.given(m_currentCell)) {
-		m_game.flipMarker(value, m_currentCell);
+		m_game.setValue(m_currentCell, value);
 	}
 }
 
 void ksudokuView::markValue(int value) {
 	if(!m_game.given(m_currentCell)) {
-		m_game.flipMarker(value, m_currentCell);
+		m_game.flipMarker(m_currentCell, value);
 	}
+}
+
+void ksudokuView::moveUp() {
+	Graph* g = m_game.puzzle()->solver()->g;
+	int x = g->cellPosX(m_currentCell);
+	int y = g->cellPosY(m_currentCell);
+	if(--y < 0) y = g->sizeY()-1;
+	btn_enter(x,y);
+}
+
+void ksudokuView::moveDown() {
+	Graph* g = m_game.puzzle()->solver()->g;
+	int x = g->cellPosX(m_currentCell);
+	int y = g->cellPosY(m_currentCell);
+	if(++y >= g->sizeY()) y = 0;
+	btn_enter(x,y);
+}
+
+void ksudokuView::moveLeft() {
+	Graph* g = m_game.puzzle()->solver()->g;
+	int x = g->cellPosX(m_currentCell);
+	int y = g->cellPosY(m_currentCell);
+	if(--x < 0) x = g->sizeX()-1;
+	btn_enter(x,y);
+}
+
+void ksudokuView::moveRight() {
+	Graph* g = m_game.puzzle()->solver()->g;
+	int x = g->cellPosX(m_currentCell);
+	int y = g->cellPosY(m_currentCell);
+	if(++x >= g->sizeX()) x = 0;
+	btn_enter(x,y);
 }
 
 void ksudokuView::beginHighlight(int val)

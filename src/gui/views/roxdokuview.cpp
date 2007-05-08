@@ -101,18 +101,15 @@ QString RoxdokuView::status() const
 	int secs = QTime(0,0).secsTo(m_game.time());
 	if(secs % 36 < 12)
 		m = i18n("Selected item %1, Time elapsed %2. DRAG to rotate. MOUSE WHEEL to zoom in/out.",
-		         m_game.value2Char((selected_number > 0) ? selected_number : 0),
-// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+				 m_symbols->value2Symbol(selected_number, m_game.order()),
 		         m_game.time().toString("hh:mm:ss"));
 	else  if(secs % 36 < 24)
 		m = i18n("Selected item %1, Time elapsed %2. DOUBLE CLICK on a cube to insert selected number.",
-		         m_game.value2Char((selected_number > 0) ? selected_number : 0),
-// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+				 m_symbols->value2Symbol(selected_number, m_game.order()),
 		         m_game.time().toString("hh:mm:ss"));
 	else
 		m = i18n("Selected item %1, Time elapsed %2. Type in a cell (zero to delete) to place that number in it.",
-		         m_game.value2Char((selected_number > 0) ? selected_number : 0),
-// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+				 m_symbols->value2Symbol(selected_number, m_game.order()),
 		         m_game.time().toString("hh:mm:ss"));
 
 	return m;
@@ -278,32 +275,15 @@ void RoxdokuView::mouseMoveEvent ( QMouseEvent * e )
 	}
 }
 
-void RoxdokuView::keyReleaseEvent(QKeyEvent * e)
-{
-	for(;;){ //hack to avoid goto's to one lable
-	         //think about it and change your view on goto's !!
-	         //(the loop never loops, but he, no goto's)
-		if(selection == -1)
-			break; //goto passOn;
-		if(m_game.given(selection))
-			break; //goto passOn;
+void RoxdokuView::selectValue(int value) {
+	selected_number = value;
+}
+
+void RoxdokuView::enterValue(int value) {
+	if(selection < 0) return;
 	
-		//int n = e->ascii() - m_game->userPuzzle()->zerochar;
-		int n = m_game.char2Value(e->text()[0].toAscii());
-		//if(n >= 0 && n <= m_game->order())
-		if(n >= 0){
-			m_game.setValue(selection, n);
-			if(isDragging) releaseMouse();
-	// 		updateGL();
-		}
-		else
-			break; //goto passOn;
-
-		return; //key is processed, don't pass it on
-	}
-
-	//passOn: //jump to here when no more actions will be performed
-	e->ignore(); //pass on
+	if(isDragging) releaseMouse();
+	m_game.setValue(selection, value);
 }
 
 

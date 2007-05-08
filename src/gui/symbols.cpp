@@ -46,11 +46,7 @@ QString SymbolTable::text() const { return m_text; }
 // class Symbols
 ///////////////////////////////////////////////////////////////////////////////
 
-Symbols::Symbols(bool autoType)
-	: symbolGenerator(0)
-	, m_autoType(autoType)
-	, m_symbolType(none)
-{
+Symbols::Symbols() {
 	m_possibleTables << new SymbolTable("symbols", i18n("Simple Forms"), QVector<QChar>() << 0x2610 << 0x2606 << 0x2661 << 0x263E);
 	m_possibleTables << new SymbolTable("dices", i18n("Dices"), QVector<QChar>() << 0x2680 << 0x2681 << 0x2682 << 0x2683 << 0x2684 << 0x2685);
 	m_possibleTables << new SymbolTable("digits", i18n("Digits"), QVector<QChar>() << '1' << '2' << '3' << '4' << '5' << '6' << '7' << '8' << '9');
@@ -89,70 +85,6 @@ void Symbols::setEnabledTables(const QStringList& tables) {
 	}
 	
 	emit tablesChanged();
-}
-
-QChar Symbols::numberGenerator(int index)
-
-{
-	///@TODO fix this for internationalization
-	return QChar(index + '1');
-}
-QChar Symbols::letterGenerator(int index)
-{
-	///@TODO fix this for internationalization
-	return QChar(index + 'a');
-}
-
-void Symbols::setOrder(uint order)
-{
-	if(Symbols::order() == order)
-		return;
-
-	m_symbolList.resize(order);
-	if(m_autoType)
-		autoSetType();
-	fill();
-}
-
-void Symbols::setType(SymbolType symType)
-{
-	if(symType == m_symbolType)
-		return; //nothing to do
-
-	m_symbolType = symType;
-
-	switch(m_symbolType){
-		case numbers:
-			symbolGenerator = &Symbols::numberGenerator;
-		break;
-		case letters:
-			symbolGenerator = &Symbols::letterGenerator;
-		break;
-		default: //none
-			symbolGenerator = 0;
-	};
-
-	fill(); //(re)fill symbol list
-}
-
-void Symbols::autoSetType(){
-	if(order() < 10)
-		setType(numbers);
-	else
-		setType(letters);
-}
-
-void Symbols::fill()
-{
-	if(m_symbolType == none)
-		autoSetType(); //call setType(<SymbolType>) first
-		               //now just use autoSetTye as best practice
-
-	int capacity = m_symbolList.size();
-	m_symbolList.clear();
-	for( int i=0; i < capacity ; ++i){
-		m_symbolList.push_back((this->*symbolGenerator)(i));
-	}
 }
 
 }

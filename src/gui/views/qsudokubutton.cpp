@@ -143,75 +143,15 @@ void QSudokuButton::exitEvent (QEvent *)
 void QSudokuButton::keyPressEvent ( QKeyEvent * e ) 
 {
 	if(!isConnected()) return;
-	if(m_ksView.game().value(m_x,m_y) == 0) return;
-	if(e->modifiers() & Qt::ShiftModifier)
+	if(e->modifiers() & Qt::ControlModifier)
 		emit beginHighlight(m_ksView.game().value(m_x,m_y));
 	e->ignore(); //pass on
 }
 	
 void QSudokuButton::keyReleaseEvent ( QKeyEvent *e )
 {
-	if(!isConnected()) return;
-	for(;;){ //hack to avoid goto's to one lable
-	         //think about it and change your view on goto's !!
-	         //(the loop never loops, but he, no goto's)
-
-		emit finishHighlight();
-		int key = e->key();
-
-		switch(key){
-			//process move (arrow) keys
-			case Qt::Key_Left:
-				emit enter(m_x-1, m_y);
-				return;//key is processed, don't pass it on
-			break;
-			case Qt::Key_Up:
-				emit enter(m_x, m_y-1);
-				return;//key is processed, don't pass it on
-			break;
-			case Qt::Key_Right:
-				emit enter(m_x+1, m_y);
-				return;//key is processed, don't pass it on
-			break;
-			case Qt::Key_Down:
-				emit enter(m_x, m_y+1);
-				return;//key is processed, don't pass it on
-			default:
-				; //nothing, not processed (yet)
-		}
-
-		if(state() == GivenValue)
-			break; //goto passOn;
-
-		///@TODO make delete button user configurable
-		//delete user input, if delete or backspace pressed
-		if(key == Qt::Key_Delete || key == Qt::Key_Backspace){
-			m_ksView.game().setValue(0, m_x, m_y);
-			return; //key is processed, don't pass it on
-		}
-
-		int n = m_ksView.game().char2Value(e->text()[0].toAscii());
-		if(n < 0)
-			break; //goto passOn;
-
-		if(m_ksView.isWaitingForNumber == -1)
-		{
-			if(e->modifiers() & Qt::AltModifier)
-				m_ksView.game().setMarker(n, !m_ksView.game().marker(n, m_x, m_y), m_x, m_y);
-			else
-				m_ksView.game().setValue(n, m_x, m_y);
-		} 
-		else if(   m_ksView.isWaitingForNumber
-		        == static_cast<int>(m_ksView.game().index(m_x,m_y)))
-			m_ksView.game().setMarker(n, !m_ksView.game().marker(n, m_x, m_y), m_x, m_y);
-		else
-			break; //goto passOn;
-
-		return; //key is processed, don't pass it on
-	}
-
-	//passOn: //jump to here when no more actions will be performed
-	e->ignore();   //pass on
+	emit finishHighlight();
+	e->ignore();
 }
 
 void QSudokuButton::paintEvent (QPaintEvent *)
@@ -404,7 +344,7 @@ void QSudokuButton::updateData() {
 			break;
 		case Marker:
 			m_text = "";
-			for(uint i = 0; i < m_ksView.game().order(); ++i) {
+			for(int i = 0; i < m_ksView.game().order(); ++i) {
 				if(info.marker(i+1))
 					m_text += m_ksView.symbols()->value2Symbol(i+1, m_ksView.game().order()) + ' ';
 			}

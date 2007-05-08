@@ -76,6 +76,10 @@ public:
 	virtual void selectValue(int value);
 	virtual void enterValue(int value);
 	virtual void markValue(int value);
+	virtual void moveUp();
+	virtual void moveDown();
+	virtual void moveLeft();
+	virtual void moveRight();
 
 protected:
 	///pointer to external Game

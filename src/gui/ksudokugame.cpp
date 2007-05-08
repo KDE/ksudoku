@@ -67,10 +67,6 @@ public:
 	inline void emitFullChange() { emit fullChange(); }
 	
 public:
-	//use this to set order (multiple changes)
-	void setOrder(int o) { order = o; symbols.setOrder(o); }
-	int order;
-
 	PuzzleState state;
 	
 	bool hadHelp: 1;
@@ -80,9 +76,6 @@ public:
 	KUrl url;
 	QList<HistoryEvent> history;
 	int historyPos;
-
-	///@todo move this to proper place (or remove this todo)
-	Symbols symbols;
 };
 
 void Game::Private::undo() {
@@ -141,12 +134,9 @@ Game::Game(Puzzle* puzzle)
 	
 	m_private->puzzle = puzzle;
 	
-	m_private->setOrder(puzzle->order());
-// 	m_solver = puzzle->solver();
-	
 	m_private->hadHelp = false;
 	
-	m_private->state = PuzzleState(size(), m_private->order);
+	m_private->state = PuzzleState(size(), m_private->puzzle->order());
 	m_private->state.reset();
 
 	for(int i = 0; i < size(); i++) {
@@ -207,7 +197,7 @@ bool Game::simpleCheck() const {
 
 int Game::order() const {
 	if(!m_private) return 0;
-	return m_private->order;
+	return m_private->puzzle->order();
 }
 
 int Game::index(int x, int y, int z) const {
@@ -227,10 +217,6 @@ GameIFace* Game::interface() {
 Puzzle* Game::puzzle() const {
 	if(!m_private) return 0;
 	return m_private->puzzle;
-}
-Symbols const* Game::symbols() const {
-	if(!m_private) return 0;
-	return &m_private->symbols;
 }
 
 bool Game::hasSolver()
@@ -255,7 +241,7 @@ KUrl Game::getUrl() const {
 QBitArray Game::highlightValueConnections(int val, bool allValues) const {
 	if(!m_private) return QBitArray();
 		
-	if(val <= 0 || val > m_private->order)
+	if(val <= 0 || val > m_private->puzzle->order())
 		return QBitArray();
 	
 	QBitArray array(size());
@@ -291,7 +277,7 @@ void Game::setGiven(int index, bool given) {
 bool Game::setMarker(int index, int val, bool state) {
 	if(!m_private) return false;
 	
-	if(val == 0 || val > order())
+	if(val == 0 || val > m_private->puzzle->order())
 		return false;
 
 	if(m_private->state.given(index))
@@ -318,7 +304,7 @@ bool Game::setMarker(int index, int val, bool state) {
 
 void Game::setValue(int index, int val) {
 	if(!m_private) return;
-	if(val > order()) return;
+	if(val > m_private->puzzle->order()) return;
 	
 	if(m_private->state.given(index)) return;
 	
@@ -392,7 +378,7 @@ bool Game::autoSolve() {
 	
 	m_private->hadHelp = true;
 	
-	PuzzleState newState(size(), order());
+	PuzzleState newState(size(), m_private->puzzle->order());
 	newState.reset();
 	
 	for(int i = 0; i < size(); ++i) {
@@ -456,21 +442,6 @@ const QByteArray Game::allValues() const {
 	if(!m_private) return QByteArray();
 	
 	return m_private->state.allValues();
-}
-
-QChar Game::value2Char(int value) const {
-	if(!m_private || value == 0) return QChar('\0');
-	
-	//return m_private->puzzle->value2Char(value);
-	return m_private->symbols.symbol(value -1); //-1 due to use of 0 as special value
-}
-
-int Game::char2Value(QChar c) const {
-	if(!m_private) return -1;
-	
-	//return m_private->puzzle->char2Value(c);
-	int index = m_private->symbols.symbol2index(c);
-	return (index < 0) ? index : index+1; //+1 to prevent usage of 0, which is used for other purposes
 }
 
 QTime Game::time() const {

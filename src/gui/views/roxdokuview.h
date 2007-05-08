@@ -96,6 +96,9 @@ public:
 	}
 	
 	QWidget* widget() { return this; }
+	
+	void selectValue(int value);
+	void enterValue(int value);
 protected:
 	void paintGL();
 protected:
@@ -108,7 +111,6 @@ protected:
 	}	
 protected:
 	void myDrawCube(int n, GLfloat x, GLfloat y, GLfloat z, int texture);
-	void keyReleaseEvent(QKeyEvent* e);
 	void mouseMoveEvent(QMouseEvent* e) ;
 	void mouseDoubleClickEvent(QMouseEvent* e);
 	void wheelEvent (QWheelEvent* e){
