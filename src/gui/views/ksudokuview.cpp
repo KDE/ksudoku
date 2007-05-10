@@ -34,13 +34,13 @@
 
 #include "symbols.h"
 
+#include "valuelistwidget.h"
 
 namespace ksudoku {
 
-ksudokuView::ksudokuView(QWidget *parent, const Game& game, Symbols* symbols, bool customd)
+ksudokuView::ksudokuView(QWidget *parent, const Game& game, bool customd)
 	: QWidget(parent)
 	, KsView()
-	, m_symbols(symbols)
 {
 	isWaitingForNumber = -1;
 	highlighted = -1;
@@ -53,8 +53,6 @@ ksudokuView::ksudokuView(QWidget *parent, const Game& game, Symbols* symbols, bo
 	current_selected_number = 1;
 
 	setGame(game);
-	
-	connect(symbols, SIGNAL(tablesChanged()), SLOT(onFullChange()));
 }
 
 // void ksudokuView::setup(const ksudoku::Game& game)
@@ -75,19 +73,22 @@ ksudokuView::~ksudokuView()
 QString ksudokuView::status() const
 {
 	QString m;
+	
+	SymbolTable* table = symbolTable();
+	if(!table) return m;
 
 	int secs = QTime(0,0).secsTo(m_game.time());
 	if(secs % 36 < 12)
 		m = i18n("Selected item %1, Time elapsed %2. Press SHIFT to highlight.",
-				 m_symbols->value2Symbol(current_selected_number, m_game.order()),
+				 table->symbolForValue(current_selected_number),
 		         m_game.time().toString("hh:mm:ss"));
 	else if(secs % 36 < 24)
 		m = i18n("Selected item %1, Time elapsed %2. Use RMB to pencil-mark(superscript).",
-				 m_symbols->value2Symbol(current_selected_number, m_game.order()),
+				 table->symbolForValue(current_selected_number),
 		         m_game.time().toString("hh:mm:ss"));
 	else
 		m = i18n("Selected item %1, Time elapsed %2. Type in a cell to replace that number in it.",
-				 m_symbols->value2Symbol(current_selected_number, m_game.order()),
+				 table->symbolForValue(current_selected_number),
 		         m_game.time().toString("hh::mm::ss"));
 
 	return m;
@@ -292,16 +293,7 @@ void ksudokuView::setGame(const ksudoku::Game& game) {
 
 	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(onCellChange(int)));
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(onFullChange()));
-	
-	connect(m_game.interface(), SIGNAL(completed(bool,const QTime&,bool)), parent(), SLOT(onCompleted(bool,const QTime&,bool)));
-	connect(m_game.interface(), SIGNAL(modified(bool)), parent(), SLOT(onModified(bool)));
-
-	//printf("DONE\n");
 }
-
-}
-#include <QtDebug>
-namespace ksudoku {
 
 void ksudokuView::selectValue(int value) {
 	current_selected_number = value;
@@ -351,6 +343,10 @@ void ksudokuView::moveRight() {
 	btn_enter(x,y);
 }
 
+void ksudokuView::updateSymbols() {
+	onFullChange();
+}
+
 void ksudokuView::beginHighlight(int val)
 {
 	if( ! m_game.hasSolver()) return;
@@ -385,13 +381,21 @@ void ksudokuView::resizeEvent(QResizeEvent * /*event*/ )
 	for(int i = 0; i < m_buttons.size(); ++i)
 		m_buttons[i]->resize();
 }
+
+void ksudokuView::wheelEvent (QWheelEvent* e) {
+	int order = game().order();
+	int value = (current_selected_number - e->delta()/120) % order;
+	if(value <= 0) value = order - value;
+	current_selected_number = value;
+	emit valueSelected(value);
+}
 	
 void ksudokuView::slotHello(int x, int y)
 {
 	if(m_game.given(x,y))
 	{
 		current_selected_number = m_game.value(x,y);
-		emit changedSelectedNum();
+		emit valueSelected(current_selected_number);
 	}
 	else
 	{

@@ -38,18 +38,6 @@
 	</Menu>
   
 </MenuBar>
-<ToolBar noMerge="1" name="numberSelector" position="Left" iconText="textOnly">
-	<text>Number Selector</text>
-	<Action name="val-select01" />
-	<Action name="val-select02" />
-	<Action name="val-select03" />
-	<Action name="val-select04" />
-	<Action name="val-select05" />
-	<Action name="val-select06" />
-	<Action name="val-select07" />
-	<Action name="val-select08" />
-	<Action name="val-select09" />
-</ToolBar>
 
 <ToolBar noMerge="1" name="actionsToolbar" position="Top" iconText="textOnly" >
 	<text>Actions Toolbar</text>

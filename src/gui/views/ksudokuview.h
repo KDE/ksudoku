@@ -44,6 +44,7 @@ namespace ksudoku {
 
 class QSudokuButton;
 class Symbols;
+class SymbolTable;
 
 
 /**
@@ -56,7 +57,7 @@ class ksudokuView : public QWidget, public KsView
 	friend class QSudokuButton;
 public:
 	/// Default constructor
-	ksudokuView(QWidget *parent, const Game& game, Symbols* symbols, bool custom);
+	ksudokuView(QWidget *parent, const Game& game, bool custom);
 	// Destructor
 	virtual ~ksudokuView();
 
@@ -73,10 +74,8 @@ public:
 	 */
 	virtual void draw(QPainter& p, int height, int width) const;
 	
-	Symbols* symbols() const { return m_symbols; }
-
 signals:
-	void changedSelectedNum();
+	void valueSelected(int value);
 
 public:
 // 	void setup  (const Game& game);
@@ -88,7 +87,6 @@ public:
 
 	bool custom;
 	
-	void selectValue(int value);
 	void enterValue(int value);
 	void markValue(int value);
 	void moveUp();
@@ -96,9 +94,14 @@ public:
 	void moveLeft();
 	void moveRight();
 
+public slots:
+	void selectValue(int value);
+	
 protected:
 	void resizeEvent(QResizeEvent *);
-	//void paintEvent(QPaintEvent *);
+	void wheelEvent(QWheelEvent* e);
+	
+	void updateSymbols();
 
 private slots:
 	void slotHello(int x, int y);
@@ -127,8 +130,6 @@ private:
 	bool puzzle_mark_wrong;
 	int  highlighted;
 	int m_color0;
-	
-	Symbols* m_symbols;
 };
 
 }

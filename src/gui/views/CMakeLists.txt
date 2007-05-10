@@ -5,6 +5,7 @@ set(ksudoku_views_SRCS
 	roxdokuview.cpp
 	ksudokuview.cpp
 	qsudokubutton.cpp
+	valuelistwidget.cpp
 )
 
 kde4_automoc( ${ksudoku_views_SRCS} )

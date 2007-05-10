@@ -1,6 +1,7 @@
 /***************************************************************************
  *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2007      Mick Kappenburg <ksudoku@kappendburg.net>         *
+ *   Copyright 2007      Johannes Bergmeier <Johannes.Bergmeier@gmx.net>   +
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *

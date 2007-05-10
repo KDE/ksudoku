@@ -71,12 +71,12 @@ RoxdokuView::RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent, 
 	order = m_game.order();
 	base = (int) sqrt(order);
 	size = base*order;
-	connect(m_game.interface(), SIGNAL(cellChange(uint)), this, SLOT(updateGL()));
-	connect(m_game.interface(), SIGNAL(completed(bool,const QTime&,bool)), parent, SLOT(onCompleted(bool,const QTime&,bool)));
+	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(updateGL()));
+	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(updateGL()));
 
 	wheelmove = 0.0f;
 	dist = 5.3f;
-	selected_number = -1;
+	selected_number = 1;
 
 	m_guidedMode = false;
 

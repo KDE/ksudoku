@@ -330,6 +330,12 @@ void QSudokuButton::mousePressEvent (QMouseEvent *mouseevent)
 void QSudokuButton::updateData() {
 	CellInfo info = m_ksView.game().cellInfo(m_x,m_y);
 
+	if(!m_ksView.symbolTable()) {
+		m_state = ObviouslyWrong;
+		m_text = "?";
+		return;
+	}
+	
 	m_state = info.state();
 	switch(info.state()) {
 		case GivenValue:
@@ -337,16 +343,16 @@ void QSudokuButton::updateData() {
 		case WrongValue:
 		case ObviouslyWrong:
 			if(!info.value()) {
-				m_text = "";
+				m_text = QString();
 			} else {
-				m_text = m_ksView.symbols()->value2Symbol(info.value(), m_ksView.game().order());
+				m_text = m_ksView.symbolTable()->symbolForValue(info.value());
 			}
 			break;
 		case Marker:
 			m_text = "";
 			for(int i = 0; i < m_ksView.game().order(); ++i) {
 				if(info.marker(i+1))
-					m_text += m_ksView.symbols()->value2Symbol(i+1, m_ksView.game().order()) + ' ';
+					m_text += m_ksView.symbolTable()->symbolForValue(i+1) + ' ';
 			}
 			break;
 	}

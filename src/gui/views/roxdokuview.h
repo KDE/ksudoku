@@ -97,8 +97,10 @@ public:
 	
 	QWidget* widget() { return this; }
 	
+public slots:
 	void selectValue(int value);
 	void enterValue(int value);
+	
 protected:
 	void paintGL();
 protected:

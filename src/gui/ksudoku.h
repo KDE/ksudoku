@@ -44,6 +44,8 @@
 
 #include <QSignalMapper>
 
+#include <QListWidget>
+
 //#include "skgraph.h"
 //#include "sksolver.h"
 
@@ -56,6 +58,7 @@ namespace ksudoku {
 class GameSelectionDialog;
 class GameOptionsDialog;
 class GameVariantCollection;
+class ValueListWidget;
 class WelcomeScreen;
 }
 
@@ -81,7 +84,6 @@ public:
 	bool createUploadFile( const QString &fileName );
 };
 #endif
-
 
 class KSudoku : public KXmlGuiWindow
 {
@@ -214,10 +216,12 @@ private:
 	GameVariantCollection* m_gameVariants;
 	WelcomeScreen* m_welcomeScreen;
 	
+	QWidget* m_gameWidget;
+	ValueListWidget* m_valueListWidget;
+
 	bool m_autoDelCentralWidget;
 	
 	QString m_defaultAction;
-	GameOptionsDialog* m_gameOptionsDlg;
 	bool m_optionEnterOwnGame;
 	
 	QMap<QString, SKSolver*> m_shapes;

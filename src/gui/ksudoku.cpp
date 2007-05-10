@@ -73,6 +73,7 @@
 
 #include "gamevariants.h"
 #include "welcomescreen.h"
+#include "valuelistwidget.h"
 
 #include "settings.h"
 #include "config.h"
@@ -133,17 +134,24 @@ KSudoku::KSudoku()
 	setupGUI();
 
 	wrapper = new QWidget();
-	(void) new QVBoxLayout(wrapper);
+	(void) new QHBoxLayout(wrapper);
 	
 	activeWidget = 0;
 	QMainWindow::setCentralWidget(wrapper);
 	wrapper->show();
 
+	m_gameWidget = 0;
+	
+	
+	// Create ValueListWidget
+	m_valueListWidget = new ValueListWidget(wrapper);
+	wrapper->layout()->addWidget(m_valueListWidget);
+// 	m_valueListWidget->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Minimum);
+	m_valueListWidget->setFixedWidth(60);
 	
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
 	connect(m_welcomeScreen, SIGNAL(newGameStarted(const Game&,GameVariant*)), this, SLOT(startGame(const Game&)));
-	
-	setCentralWidget(m_welcomeScreen, false);
+	showWelcomeScreen();
 	
 	// Register the gamevariants resource
     KGlobal::dirs()->addResourceType ("gamevariant", KStandardDirs::kde_default("data") +
@@ -201,35 +209,61 @@ void KSudoku::startGame(const Game& game) {
 
 	switch(type){
 		case sudoku: { //cUrly braces needed to avoid "crosses initialization" compile error
-			ksudokuView* v = new ksudokuView(this, game, &m_symbols, false);
+			ksudokuView* v = new ksudokuView(wrapper, game, false);
 // 			v->setup(game);
-			connect( v, SIGNAL(changedSelectedNum()), this, SLOT(updateStatusBar()) );
+			connect(v, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
 			view = v;
+			connect(v, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
+			connect(m_valueListWidget, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
 			break;     }
 		case roxdoku: {
-			view = new RoxdokuView(game, &m_symbols, this, "ksudoku-3dwnd");
+			RoxdokuView* v = new RoxdokuView(game, &m_symbols, wrapper, "ksudoku-3dwnd");
+			connect(m_valueListWidget, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
+			view = v;
 			break;      }
 		case custom:{
 // 			SKPuzzle* puzzle = game.puzzle()->puzzle();
 			//GraphCustom* gc = game.puzzle()->solver()->g;
-			ksudokuView* v = new ksudokuView(this, game, &m_symbols, true);
+			ksudokuView* v = new ksudokuView(wrapper, game, true);
 // 			v->setup(game);
-			connect( v, SIGNAL(changedSelectedNum()), this, SLOT(updateStatusBar()) );
+			connect(v, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
 			view = v;
+			connect(v, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
+			connect(m_valueListWidget, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
 		}
 		default:
 			///@todo if here, BUG => throw exception (??)
 			break;
 	}
-// 	m_tabs->insertTab(view, "Test");
-// 	m_tabs->showPage(view);
+	view->setSymbolTable(m_symbols.selectTable(view->game().order()));
+
+	m_welcomeScreen->hide();
+	
 	QWidget* widget = view->widget(); 
-	setCentralWidget(widget, true);
+	
+	Game game2(game);
+	connect(game2.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
+	connect(game2.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
+	
+	widget->show();
+	wrapper->layout()->addWidget(widget);
+	activeWidget = widget;
+	m_autoDelCentralWidget = true;
+	adaptActions2View();
+	
+	QSizePolicy policy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+	policy.setHorizontalStretch(1);
+	policy.setVerticalStretch(1);
+	widget->setSizePolicy(policy);
 	
 	widget->addAction(m_moveUpAct);
 	widget->addAction(m_moveDownAct);
 	widget->addAction(m_moveLeftAct);
 	widget->addAction(m_moveRightAct);
+	
+	m_valueListWidget->setCurrentTable(m_symbols.selectTable(view->game().	order()), view->game().order());
+	m_valueListWidget->selectValue(1);
+	m_valueListWidget->show();
 }
 
 void KSudoku::loadGame(const KUrl& Url) {
@@ -258,7 +292,8 @@ void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
 }
 
 void KSudoku::showWelcomeScreen() {
-	m_gameOptionsDlg = 0;
+	m_valueListWidget->hide();
+	
 	setCentralWidget(m_welcomeScreen, false);
 }
 
@@ -275,18 +310,13 @@ void KSudoku::mouseOnlySuperscript()
 
 void KSudoku::setGuidedMode()
 {
-// 	QWidget* current = m_tabs->currentPage();
-//	QWidget* current = (QWidget*) currentView();
-	
-	if(KsView* view = dynamic_cast<ksudokuView*>(currentView())) {
-		((ksudokuView*)view)->toggleGuided();
-		((ksudokuView*)view)->update();
-		
-	//	/// TODO fix this (rerender through reinit); ???
-	//	view->setGame(view->game());
+	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
+		view->toggleGuided();
+		view->update();
+	} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
+		view->toggleGuided();
+		view->update();
 	}
-	else
-		return;
 
 	saveProperties( KGlobal::config().data());
 }
@@ -859,6 +889,14 @@ void KSudoku::optionsPreferences()
 
 void KSudoku::settingsChanged() {
 	m_symbols.setEnabledTables(Settings::symbols());
+	
+	KsView* view = currentView();
+	if(view) {
+		int order = view->game().order();
+		SymbolTable* table = m_symbols.selectTable(order);
+		view->setSymbolTable(table);
+		m_valueListWidget->setCurrentTable(table, order);
+	}
 }
 
 void KSudoku::changeStatusbar(const QString& text)

@@ -31,6 +31,7 @@ namespace ksudoku{
 KsView::KsView()
 	: m_game()
 {
+	m_symbolTable = 0;
 }
 
 KsView::~KsView()
@@ -43,7 +44,6 @@ void KsView::draw(QPainter& /*p*/, int /*height*/, int /*width*/) const
 //	QPixmap const qp(const_cast< KsView* >(this)->renderPixmap(width, height, FALSE));
 //	//copy to QPainter
 //	p.drawPixmap(0,0,qp,-1,-1);
-
 }
 
 void KsView::selectValue(int value) {
@@ -67,5 +67,16 @@ void KsView::moveLeft() {
 void KsView::moveRight() {
 }
 
+SymbolTable* KsView::symbolTable() const {
+	return m_symbolTable;
+}
+
+void KsView::setSymbolTable(SymbolTable* table) {
+	m_symbolTable = table;
+	updateSymbols();
+}
+
+void KsView::updateSymbols() {
+}
 
 }

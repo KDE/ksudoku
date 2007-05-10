@@ -30,6 +30,7 @@
 namespace ksudoku {
 
 class Game;
+class SymbolTable;
 
 /**
  * Interface for all views
@@ -80,13 +81,22 @@ public:
 	virtual void moveDown();
 	virtual void moveLeft();
 	virtual void moveRight();
+	
+	SymbolTable* symbolTable() const;
+	void setSymbolTable(SymbolTable* table);
+	
+protected:
+	virtual void updateSymbols();
 
+	
 protected:
 	///pointer to external Game
 	Game m_game;
 
 	///whether wrong entries (by user) should be visable color marked
 	bool m_guidedMode;
+	
+	SymbolTable* m_symbolTable;
 };
 
 }
