@@ -104,7 +104,8 @@ void QSudokuButton::resize()
 
 	//m_qpixmap = m_qpixmap.scaled(size()); //TODO destroy old one //TODO PORT
 	m_needRedraw = true;//draw();
-	update();
+	
+	updateData();
 }
 
 void QSudokuButton::enterEvent (QEvent *)
@@ -300,19 +301,27 @@ void QSudokuButton::drawValue(QPainter& qpainter)
 			KMessageBox::information(this, i18n("BUG: No default color defined, but it is apparently needed"));
 	}
 	
-	QFont f; 
-	Qt::AlignmentFlag align;
+	QTextOption textOption(Qt::AlignCenter);
+	
 	if(marker) 
 	{
-		f.setPointSizeF(2.85*rect().height()/10);
-		align = Qt::AlignRight;
-	} else {
-		f.setPointSizeF(4.0*rect().height()/10);
-		align = Qt::AlignCenter;
+		if(m_cols > 0) {
+			QFontMetrics fm(m_font);
+			uint cwidth = fm.width(QChar('0'));
+			
+			QList<qreal> tabs;
+			for(int i = 0; i < m_cols; ++i) {
+				tabs.append((i+1)*rect().width()/(m_cols+1) -cwidth/2);
+			}
+			textOption.setTabArray(tabs);
+			textOption.setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+		} else {
+			textOption.setAlignment(Qt::AlignRight);
+		}
 	}
 	
-	qpainter.setFont(f);
-	qpainter.drawText( rect(), align, m_text );
+	qpainter.setFont(m_font);
+	qpainter.drawText( rect(), m_text, textOption);
 }
 
 
@@ -336,24 +345,83 @@ void QSudokuButton::updateData() {
 		return;
 	}
 	
+	int width = rect().width();
+	int height = rect().height();
+	
 	m_state = info.state();
 	switch(info.state()) {
 		case GivenValue:
 		case CorrectValue:
 		case WrongValue:
 		case ObviouslyWrong:
+			if(rect().height() <= 2) {
+				m_text = QString();
+				break;
+			}
+			
 			if(!info.value()) {
 				m_text = QString();
 			} else {
 				m_text = m_ksView.symbolTable()->symbolForValue(info.value());
 			}
+			
+			m_font.setPointSizeF(qMin(0.4 * height, 0.4*width));
 			break;
 		case Marker:
-			m_text = "";
-			for(int i = 0; i < m_ksView.game().order(); ++i) {
-				if(info.marker(i+1))
-					m_text += m_ksView.symbolTable()->symbolForValue(i+1) + ' ';
+			m_text = QString();
+			if(rect().height() <= 4) break;
+			
+			// Returns the width
+			int order = m_ksView.game().order();
+			int entries = order;
+			if(order > 16) entries = info.markers().count(true);
+			m_cols = qMax(2, int(sqrt(entries-1))+1);
+			m_rows = qMax(2, (entries-1) / width +1);
+			
+			if(entries == order) {
+				// Align markers in a grid. Each value has its own cell
+				// not depending on whether it has a marker
+				
+				for(int i = 0; i < order; ++i) {
+					m_text += '\t';
+					if(info.marker(i+1))
+						m_text += m_ksView.symbolTable()->symbolForValue(i+1);
+					else
+						m_text += ' ';
+					
+					if(!((i+1) % m_cols) && (i+1 != order)) {
+						m_text += '\n';
+					}
+				}
+				
+				m_font.setPointSizeF(qMin(0.35 * height/m_rows, 0.6 * width/m_cols));
+			} else if (m_cols <= 4) {
+				// Align markers in a grid. Only markers get a cell
+				int count = 0;
+				for(int i = 0; i < order; ++i) {
+					if(info.marker(i+1)) {
+						m_text += '\t';
+						m_text += m_ksView.symbolTable()->symbolForValue(i+1);
+						if(!(++count % m_cols) && (count != entries)) {
+							m_text += '\n';
+						}
+					}
+				}
+				
+				m_font.setPointSizeF(qMin(0.35 * height/m_rows, 0.6 * width/m_cols));
+			} else {
+				// Try to show markers as free text
+				
+				m_cols = -1;
+				// TODO implement this
 			}
+			
+			
+// 			m_text = "";
+// 			for(int i = 0; i < m_ksView.game().order(); ++i) {
+// 				if(info.marker(i+1))
+// 					m_text += m_ksView.symbolTable()->symbolForValue(i+1) + ' ';
+// 			}
 			break;
 	}
 	

@@ -148,7 +148,10 @@ private:
 	QString m_text;
 	bool m_connected;
 	bool m_custom;
+	QFont m_font;
 	ksudoku::ButtonState m_state;
+	
+	int m_rows, m_cols;
 
 	///QPixmap for buffering the content 
 	///(contend is redrawn on resizeEvent and ??
