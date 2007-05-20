@@ -51,12 +51,9 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="Q3GroupBox" name="groupBox3_2" >
+         <widget class="QGroupBox" name="groupBox3_2" >
           <property name="title" >
            <string>Game Count</string>
-          </property>
-          <property name="orientation" >
-           <enum>Qt::Vertical</enum>
           </property>
           <layout class="QVBoxLayout" >
            <property name="margin" >
@@ -101,12 +98,9 @@
          </widget>
         </item>
         <item>
-         <widget class="Q3GroupBox" name="Spacing" >
+         <widget class="QGroupBox" name="Spacing" >
           <property name="title" >
            <string>Spacing</string>
-          </property>
-          <property name="orientation" >
-           <enum>Qt::Vertical</enum>
           </property>
           <layout class="QVBoxLayout" >
            <property name="margin" >
@@ -151,7 +145,7 @@
          </widget>
         </item>
         <item>
-         <widget class="Q3GroupBox" name="groupBox4v" >
+         <widget class="QGroupBox" name="groupBox4v" >
           <property name="sizePolicy" >
            <sizepolicy>
             <hsizetype>1</hsizetype>
@@ -162,9 +156,6 @@
           </property>
           <property name="title" >
            <string>Output Size (Save only)</string>
-          </property>
-          <property name="orientation" >
-           <enum>Qt::Vertical</enum>
           </property>
           <layout class="QVBoxLayout" >
            <property name="margin" >
@@ -177,12 +168,9 @@
             <widget class="KComboBox" name="kcbPageSize" />
            </item>
            <item>
-            <widget class="Q3GroupBox" name="Spacing_2" >
+            <widget class="QGroupBox" name="Spacing_2" >
              <property name="title" >
               <string>Custom Size (mm)</string>
-             </property>
-             <property name="orientation" >
-              <enum>Qt::Vertical</enum>
              </property>
              <layout class="QVBoxLayout" >
               <property name="margin" >
@@ -430,12 +418,6 @@
    <class>KPushButton</class>
    <extends>QWidget</extends>
    <header>kpushbutton.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>Q3GroupBox</class>
-   <extends>QGroupBox</extends>
-   <header>Qt3Support/Q3GroupBox</header>
    <container>1</container>
   </customwidget>
   <customwidget>
