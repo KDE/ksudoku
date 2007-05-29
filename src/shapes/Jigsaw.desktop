@@ -1,19 +1,6 @@
 [KSudokuVariant]
 Encoding=UTF-8
 Name=Jigsaw
-Name[et]=Pusle
-Name[ja]=ジグソー
-Name[nl]=Puzzel
-Name[sv]=Pussel
 Description=Jigsaw shape puzzle
-Description[de]=Jigsaw-Formpuzzle
-Description[es]=puzle de tipo Jigsaw
-Description[et]=Puslekujuline mõistatus
-Description[it]=Puzzle Jigsaw
-Description[ja]=ジグソー型パズル
-Description[nl]=Puzzelvormig spelbord
-Description[pt]=Puzzle com formato serra
-Description[pt_BR]=Puzzle com formato serra
-Description[sv]=Pusselformat spel
 Author=Francesco Rossi
 FileName=Jigsaw.xml
