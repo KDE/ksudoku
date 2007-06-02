@@ -1,6 +1,8 @@
 [KSudokuVariant]
 Encoding=UTF-8
 Name=Samurai
+Name[ja]=サムライ
 Description=Samurai shape puzzle
+Description[ja]=サムライ型パズル
 Author=Francesco Rossi
 FileName=Samurai.xml
