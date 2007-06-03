@@ -50,13 +50,11 @@
 //#include "sksolver.h"
 
 class ksudoku::KsView;
-class KPrinter;
 class KUrl;
 class KTabWidget;
 
 namespace ksudoku {
 class GameSelectionDialog;
-class GameOptionsDialog;
 class GameVariantCollection;
 class ValueListWidget;
 class WelcomeScreen;

@@ -29,9 +29,7 @@
 
 namespace ksudoku {
 
-class PrintPreview;
 class Print;
-class DrawBase;
 
 #define SCALE     "kde-ksudoku-scale"
 #define ASPECT    "kde-ksudoku-DesiredAspectRatio"

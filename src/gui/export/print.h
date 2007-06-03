@@ -23,13 +23,10 @@
 #include <qpainter.h>
 
 
-class KConfig;
 
 namespace ksudoku {
 
 class KsView;
-class PrintDialogPage;
-class DrawBase;
 
 /**
  * export to printer

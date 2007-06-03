@@ -37,14 +37,12 @@ using namespace ksudoku;
 
 
 class QPainter;
-class KURL;
 
 
 namespace ksudoku {
 
 class QSudokuButton;
 class Symbols;
-class SymbolTable;
 
 
 /**

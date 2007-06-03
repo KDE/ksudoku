@@ -37,7 +37,6 @@
 #include "ksview.h"
 
 
-class KSudoku;
 
 namespace ksudoku{
 

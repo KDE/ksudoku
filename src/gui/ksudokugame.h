@@ -27,14 +27,11 @@
 #include "history.h"
 
 
-class SKPuzzle;
-class SKSolver;
 class KUrl;
 
 namespace ksudoku {
 
 class Puzzle ;
-class Symbols;
 
 /**
  * The interface of a game. Since the game itself is a shared class you cannot connect to
