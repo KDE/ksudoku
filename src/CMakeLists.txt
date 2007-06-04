@@ -1,3 +1,4 @@
+find_package(OpenGL REQUIRED)
 
 ########### next target ###############
 
@@ -11,6 +12,7 @@ include_directories(
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export/draw
 #        ${CMAKE_CURRENT_BINARY_DIR}/logic
+	${OPENGL_INCLUDE_DIR}
 )
 
 set(ksudoku_SRCS
@@ -23,7 +25,7 @@ kde4_add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
 	ksudoku_gui ksudoku_views ksudoku_logic
-	${KDE4_KDEUI_LIBS} ${QT_QTOPENGL_LIBRARY} ${KDE4_KDEPRINT_LIBS} ${KDE4_KIO_LIBS} GL GLU ${KDE4_KNEWSTUFF2_LIBRARY}
+	${KDE4_KDEUI_LIBS} ${QT_QTOPENGL_LIBRARY} ${KDE4_KDEPRINT_LIBS} ${KDE4_KIO_LIBS} ${OPENGL_LIBRARIES} ${KDE4_KNEWSTUFF2_LIBRARY}
 ) #ksudoku_export ksudoku_draw
 
 install(TARGETS ksudoku  DESTINATION ${BIN_INSTALL_DIR} )
