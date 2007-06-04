@@ -185,9 +185,9 @@ void ksudokuView::btn_enter(int x, int y)
 		//printf("(%d %d) %d\n", y, x, index);
 		int count = 0;
 
-		for(int i=0; i<g->cliques.size(); i++)
+		for(uint i=0; i<g->cliques.size(); i++)
 		{
-			for(int j=0; j<g->cliques[i].size(); j++)
+			for(uint j=0; j<g->cliques[i].size(); j++)
 			{
 				if(g->cliques[i][j]==index)
 				{
@@ -203,7 +203,7 @@ void ksudokuView::btn_enter(int x, int y)
 							mask = HighlightClique;
 							break;
 					}
-					for(int k=0; k<g->cliques[i].size(); k++)
+					for(uint k=0; k<g->cliques[i].size(); k++)
 					{
 // 						m_buttons[g->cliques[i][k]]->setHighlight(mask);
 						m_highlightUpdate[g->cliques[i][k]] |= mask;

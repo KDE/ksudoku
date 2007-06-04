@@ -47,12 +47,15 @@ void KsView::draw(QPainter& /*p*/, int /*height*/, int /*width*/) const
 }
 
 void KsView::selectValue(int value) {
+    Q_UNUSED( value );
 }
 
 void KsView::enterValue(int value) {
+    Q_UNUSED( value );
 }
 
 void KsView::markValue(int value) {
+    Q_UNUSED( value );
 }
 
 void KsView::moveUp() {
