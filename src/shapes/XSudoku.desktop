@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Name=XSudoku
 Description=XSudoku shape puzzle
+Description[el]=Παζλ σχήματος XSudoku
 Description[ja]=対角線型パズル
 Author=Francesco Rossi
 FileName=XSudoku.xml
