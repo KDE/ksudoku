@@ -32,7 +32,7 @@ namespace ksudoku {
 enum ViewFlag {
 	ShowErrors        = 0x01,
 	ShowObviousErrors = 0x02,
-	ShowTracker       = 0x04,
+	ShowTracker       = 0x04
 };
 
 typedef QFlags<ViewFlag> ViewFlags;
