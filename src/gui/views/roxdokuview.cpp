@@ -61,11 +61,9 @@ Matrix3fT ThisRot     = {{  {1.0f},  {0.0f},  {0.0f},          // NEW: This Rota
 
 RoxdokuView::RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent, const char* /*name*/)
 	: QGLWidget(parent)
-	, KsView()
 	, m_symbols(symbols)
 	
 {
-	m_game = ksudoku::Game();
 	m_game = game;
 	
 	order = m_game.order();
@@ -286,6 +284,12 @@ void RoxdokuView::enterValue(int value) {
 	m_game.setValue(selection, value);
 }
 
+void RoxdokuView::setFlags(ViewFlags flags) {
+	m_guidedMode = flags.testFlag(ShowErrors);
+	updateGL();
+}
+
+
 
 void RoxdokuView::myDrawCube(int name, GLfloat x, GLfloat y, GLfloat z, int /*texturef*/)
 {
@@ -308,7 +312,7 @@ void RoxdokuView::myDrawCube(int name, GLfloat x, GLfloat y, GLfloat z, int /*te
 				break;
 			case ksudoku::ObviouslyWrong:
 			case ksudoku::WrongValue:
-				if(m_guidedMode && game().puzzle()->hasSolution())
+				if(m_guidedMode && m_game.puzzle()->hasSolution())
 					glColor3f(0.75f,0.25f,0.25f);
 				else
 					glColor3f(0.5f+s,0.5f+s,1.0f+s);
@@ -327,7 +331,7 @@ void RoxdokuView::myDrawCube(int name, GLfloat x, GLfloat y, GLfloat z, int /*te
 				break;
 			case ksudoku::ObviouslyWrong:
 			case ksudoku::WrongValue:
-				if(m_guidedMode && game().puzzle()->hasSolution())
+				if(m_guidedMode && m_game.puzzle()->hasSolution())
 	 				glColor3f(0.75f,0.25f,0.25f);
 				else
 					glColor3f(0.5f+s,0.5f+s,1.0f+s);

@@ -47,7 +47,7 @@ class Symbols;
  * Gui for a roxdoku puzzle
  * @TODO hide private members (now public)
  */
-class RoxdokuView : public QGLWidget, public ksudoku::KsView
+class RoxdokuView : public QGLWidget
 {
 Q_OBJECT
 public:
@@ -75,6 +75,8 @@ public:
 	float wheelmove;
 
 	GLuint  texture[2][26];
+	
+	bool m_guidedMode;
 
 public:
 	void initializeGL();
@@ -99,6 +101,7 @@ public:
 public slots:
 	void selectValue(int value);
 	void enterValue(int value);
+	void setFlags(ViewFlags flags);
 	
 protected:
 	void paintGL();
@@ -121,6 +124,7 @@ protected:
 	
 private:
 	Symbols* m_symbols;
+	Game m_game;
 };
 
 }

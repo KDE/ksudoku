@@ -28,16 +28,24 @@
 #include "ksudokugame.h"
 
 namespace ksudoku {
+	
+enum ViewFlag {
+	ShowErrors        = 0x01,
+	ShowObviousErrors = 0x02,
+	ShowTracker       = 0x04,
+};
 
+typedef QFlags<ViewFlag> ViewFlags;
+	
 class Game;
 class SymbolTable;
 
 /**
  * Interface for all views
  */
-class KsView // : public QWidget
+class KsView : public QObject
 {
-//	Q_OBJECT
+	Q_OBJECT
 private:
 	///prevent copy constructor (not implemented)
 	KsView(KsView const& other);
@@ -45,7 +53,7 @@ private:
 	KsView& operator=(KsView const& other);
 
 public:
-	KsView();
+	KsView(const Game& game, QObject* parent = 0);
 	virtual ~KsView();
 
 	///draw content to external qpainter (use for printing etc.)
@@ -53,50 +61,50 @@ public:
 	/// used (renderPixmap) and then copy it to a qpainter)
 	virtual void draw(QPainter& p, int height, int width) const;
 
-	//setters
-	///@TODO document me
-	virtual void setGame(const Game& game) =0;
-	///set guidedMode. @see m_guidedMode
-	void setGuidedMode(bool const mode) { m_guidedMode = mode; }
-
-	///change guided state state (mark wrong entries red)
-	void toggleGuided() { m_guidedMode = !m_guidedMode; }
-
-	///@see m_guidedMode
-	bool const guidedMode() const { return m_guidedMode; }
-
 	//getters
 	///return game used by the view
 	Game game() const { return m_game; }
 
-	///return some info on current status (can be used for status bar)
-	virtual QString status() const =0;
+	QWidget* widget() const { return m_viewWidget; }
+	void setWidget(QWidget* viewWidget);
 	
-	virtual QWidget* widget() = 0;
-	
-	virtual void selectValue(int value);
-	virtual void enterValue(int value);
-	virtual void markValue(int value);
-	virtual void moveUp();
-	virtual void moveDown();
-	virtual void moveLeft();
-	virtual void moveRight();
 	
 	SymbolTable* symbolTable() const;
 	void setSymbolTable(SymbolTable* table);
 	
-protected:
-	virtual void updateSymbols();
-
+	ViewFlags flags() const { return m_flags; }
+	void setFlags(ViewFlags flags) {
+		m_flags = flags;
+		emit flagsChanged(flags);
+	}
+	
+public slots:
+	void setCursor(int cell);
+	void selectValue(int value);
+	void enterValue(int value);
+	void markValue(int value);
+	void moveUp();
+	void moveDown();
+	void moveLeft();
+	void moveRight();
+	
+signals:
+	void flagsChanged(ViewFlags flags);
+	void symbolsChanged(SymbolTable* table);
+	void cursorMoved(int cell);
+	void valueSelected(int value);
 	
 protected:
 	///pointer to external Game
 	Game m_game;
 
-	///whether wrong entries (by user) should be visable color marked
-	bool m_guidedMode;
-	
 	SymbolTable* m_symbolTable;
+	ViewFlags m_flags;
+	
+	QWidget* m_viewWidget;
+	
+	int m_currentValue;
+	int m_currentCell;
 };
 
 }

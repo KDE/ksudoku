@@ -216,6 +216,8 @@ private:
 	
 	QWidget* m_gameWidget;
 	ValueListWidget* m_valueListWidget;
+	
+	KsView* m_gameUI;
 
 	bool m_autoDelCentralWidget;
 	

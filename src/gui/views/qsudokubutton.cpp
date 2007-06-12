@@ -111,12 +111,6 @@ void QSudokuButton::resize()
 void QSudokuButton::enterEvent (QEvent *)
 {
 	if(!isConnected()) return;
-	if(((ksudokuView*) &m_ksView)->getHighlighted() != -1)
-	{
-		emit finishHighlight();
-		emit beginHighlight(m_ksView.game().value(m_x,m_y));
-	}
-	//printf(" (%d %d) %d %d - ", m_x, m_y, m_ksView.game().index(m_x,m_y),  ((GraphCustom*)m_ksView.game().puzzle()->solver()->g)->index(m_x, m_y));
 	emit enter(m_x,m_y);
 	m_mousein = true;
 }
@@ -339,7 +333,7 @@ void QSudokuButton::mousePressEvent (QMouseEvent *mouseevent)
 void QSudokuButton::updateData() {
 	CellInfo info = m_ksView.game().cellInfo(m_x,m_y);
 
-	if(!m_ksView.symbolTable()) {
+	if(m_ksView.symbol(1) == '\0') {
 		m_state = ObviouslyWrong;
 		m_text = "?";
 		return;
@@ -362,7 +356,7 @@ void QSudokuButton::updateData() {
 			if(!info.value()) {
 				m_text = QString();
 			} else {
-				m_text = m_ksView.symbolTable()->symbolForValue(info.value());
+				m_text = m_ksView.symbol(info.value());
 			}
 			
 			m_font.setPointSizeF(qMin(0.4 * height, 0.4*width));
@@ -385,7 +379,7 @@ void QSudokuButton::updateData() {
 				for(int i = 0; i < order; ++i) {
 					m_text += '\t';
 					if(info.marker(i+1))
-						m_text += m_ksView.symbolTable()->symbolForValue(i+1);
+						m_text += m_ksView.symbol(i+1);
 					else
 						m_text += ' ';
 					
@@ -401,7 +395,7 @@ void QSudokuButton::updateData() {
 				for(int i = 0; i < order; ++i) {
 					if(info.marker(i+1)) {
 						m_text += '\t';
-						m_text += m_ksView.symbolTable()->symbolForValue(i+1);
+						m_text += m_ksView.symbol(i+1);
 						if(!(++count % m_cols) && (count != entries)) {
 							m_text += '\n';
 						}
@@ -415,13 +409,6 @@ void QSudokuButton::updateData() {
 				m_cols = -1;
 				// TODO implement this
 			}
-			
-			
-// 			m_text = "";
-// 			for(int i = 0; i < m_ksView.game().order(); ++i) {
-// 				if(info.marker(i+1))
-// 					m_text += m_ksView.symbolTable()->symbolForValue(i+1) + ' ';
-// 			}
 			break;
 	}
 	

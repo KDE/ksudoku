@@ -49,7 +49,7 @@ class Symbols;
  * Gui for a sudoku puzzle
  * @TODO rename ksudokuView to sudokuView
  */
-class ksudokuView : public QWidget, public KsView
+class ksudokuView : public QWidget
 {
 	Q_OBJECT
 	friend class QSudokuButton;
@@ -73,11 +73,10 @@ public:
 	virtual void draw(QPainter& p, int height, int width) const;
 	
 signals:
+	void mouseOverCell(int cell);
 	void valueSelected(int value);
 
 public:
-// 	void setup  (const Game& game);
-
 	bool mouseOnlySuperscript;
 	bool showTracker;
 	int  isWaitingForNumber;
@@ -85,22 +84,24 @@ public:
 
 	bool custom;
 	
-	void enterValue(int value);
-	void markValue(int value);
-	void moveUp();
-	void moveDown();
-	void moveLeft();
-	void moveRight();
-
+	
+	Game game() { return m_game; }
+	QChar symbol(int value) const;
 public slots:
+	void setCursor(int cell);
 	void selectValue(int value);
+	void setSymbols(SymbolTable* table);
+	void setFlags(ViewFlags flags);
+	
+	/// call this to update the view
+	/// if @p cell is a positive value only the according
+	/// cell will be updated
+	void update(int cell = -1);
 	
 protected:
 	void resizeEvent(QResizeEvent *);
 	void wheelEvent(QWheelEvent* e);
 	
-	void updateSymbols();
-
 private slots:
 	void slotHello(int x, int y);
 	void btn_enter(int x, int y);
@@ -111,8 +112,6 @@ private slots:
 	void beginHighlight(int val);
 	void finishHighlight();
 
-	void onCellChange(int index);
-	void onFullChange();
 	
 	QWidget* widget() { return this; }
 
@@ -128,6 +127,11 @@ private:
 	bool puzzle_mark_wrong;
 	int  highlighted;
 	int m_color0;
+	
+	bool m_guidedMode;
+	
+	Game m_game;
+	SymbolTable* m_symbolTable;
 };
 
 }

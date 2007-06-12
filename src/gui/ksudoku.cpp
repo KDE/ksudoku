@@ -107,8 +107,10 @@ void KSudoku::updateStatusBar()
 // 	QWidget* current = m_tabs->currentPage();
 // 	if(KsView* view = dynamic_cast<KsView*>(current))
 // 		m = view->status();
-	if(currentView())
-		m = currentView()->status();
+// 	if(currentView())
+// 		m = currentView()->status();
+	
+	// TODO fix this: add new status bar generation code
 
 	statusBar()->showMessage(m);
 }
@@ -117,6 +119,10 @@ KSudoku::KSudoku()
 	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true)), m_autoDelCentralWidget(false)
 {
 	setObjectName("ksudoku");
+	
+	m_gameWidget = 0;
+	m_gameUI = 0;
+	activeWidget = 0;
 	
 	m_selectValueMapper = new QSignalMapper(this);
 	connect(m_selectValueMapper, SIGNAL(mapped(int)), this, SLOT(selectValue(int)));
@@ -132,16 +138,11 @@ KSudoku::KSudoku()
 	// and a status bar
 	statusBar()->show();
 	setupGUI();
-
+	
 	wrapper = new QWidget();
 	(void) new QHBoxLayout(wrapper);
-	
-	activeWidget = 0;
 	QMainWindow::setCentralWidget(wrapper);
 	wrapper->show();
-
-	m_gameWidget = 0;
-	
 	
 	// Create ValueListWidget
 	m_valueListWidget = new ValueListWidget(wrapper);
@@ -207,29 +208,42 @@ void KSudoku::startGame(const Game& game) {
 	GameType type = game.puzzle()->gameType(); //game solver()->g->sizeZ() > 1) ? 1 : 0;
 	KsView* view = 0;
 
+	view = new KsView(game, this);
+	connect(view, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
+	connect(m_valueListWidget, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
+	
 	switch(type){
 		case sudoku: { //cUrly braces needed to avoid "crosses initialization" compile error
 			ksudokuView* v = new ksudokuView(wrapper, game, false);
-// 			v->setup(game);
 			connect(v, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
-			view = v;
-			connect(v, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
-			connect(m_valueListWidget, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
+			connect(v, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
+			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
+			
+			view->setWidget(v);
+			connect(view, SIGNAL(flagsChanged(ViewFlags)), v, SLOT(setFlags(ViewFlags)));
+			connect(view, SIGNAL(symbolsChanged(SymbolTable*)), v, SLOT(setSymbols(SymbolTable*)));
+			connect(v, SIGNAL(mouseOverCell(int)), view, SLOT(setCursor(int)));
+			connect(view, SIGNAL(cursorMoved(int)), v, SLOT(setCursor(int)));
+			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
 			break;     }
 		case roxdoku: {
 			RoxdokuView* v = new RoxdokuView(game, &m_symbols, wrapper, "ksudoku-3dwnd");
-			connect(m_valueListWidget, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
-			view = v;
+			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
+			connect(view, SIGNAL(flagsChanged(ViewFlags)), v, SLOT(setFlags(ViewFlags)));
+			view->setWidget(v);
 			break;      }
 		case custom:{
-// 			SKPuzzle* puzzle = game.puzzle()->puzzle();
-			//GraphCustom* gc = game.puzzle()->solver()->g;
 			ksudokuView* v = new ksudokuView(wrapper, game, true);
-// 			v->setup(game);
 			connect(v, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
-			view = v;
-			connect(v, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
-			connect(m_valueListWidget, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
+			connect(v, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
+			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
+			
+			view->setWidget(v);
+			connect(view, SIGNAL(flagsChanged(ViewFlags)), v, SLOT(setFlags(ViewFlags)));
+			connect(view, SIGNAL(symbolsChanged(SymbolTable*)), v, SLOT(setSymbols(SymbolTable*)));
+			connect(v, SIGNAL(mouseOverCell(int)), view, SLOT(setCursor(int)));
+			connect(view, SIGNAL(cursorMoved(int)), v, SLOT(setCursor(int)));
+			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
 		}
 		default:
 			///@todo if here, BUG => throw exception (??)
@@ -240,6 +254,7 @@ void KSudoku::startGame(const Game& game) {
 	m_welcomeScreen->hide();
 	
 	QWidget* widget = view->widget(); 
+	m_gameUI = view;
 	
 	Game game2(game);
 	connect(game2.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
@@ -293,6 +308,8 @@ void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
 
 void KSudoku::showWelcomeScreen() {
 	m_valueListWidget->hide();
+	delete m_gameUI;
+	m_gameUI = 0;
 	
 	setCentralWidget(m_welcomeScreen, false);
 }
@@ -310,12 +327,8 @@ void KSudoku::mouseOnlySuperscript()
 
 void KSudoku::setGuidedMode()
 {
-	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
-		view->toggleGuided();
-		view->update();
-	} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
-		view->toggleGuided();
-		view->update();
+	if(KsView* view = currentView()) {
+		view->setFlags(view->flags() ^ ShowErrors);
 	}
 
 	saveProperties( KGlobal::config().data());
@@ -589,34 +602,11 @@ void KSudoku::setupActions()
 void KSudoku::adaptActions2View() {
 	// TODO This whole function is only a temporary hack, views should have their own UI
 	
-	
-	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
+	if(KsView* view = currentView()) {
 		KToggleAction* a;
-		if((a = dynamic_cast<KToggleAction*>(action("mouseOnlySuperscript")))) {
-			a->setEnabled(true);
-			a->setChecked(view->mouseOnlySuperscript);
-		}
 		if((a = dynamic_cast<KToggleAction*>(action("guidedMode")))) {
 			a->setEnabled(true);
-			a->setChecked(view->guidedMode());
-		}
-		if((a = dynamic_cast<KToggleAction*>(action("showTracker")))) {
-			a->setEnabled(true);
-			a->setChecked(view->showTracker);
-		}
-	} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
-		KToggleAction* a;
-		if((a = dynamic_cast<KToggleAction*>(action("mouseOnlySuperscript")))) {
-			a->setEnabled(false);
-			a->setChecked(false);
-		}
-		if((a = dynamic_cast<KToggleAction*>(action("guidedMode")))) {
-			a->setEnabled(true);
-			a->setChecked(view->guidedMode());
-		}
-		if((a = dynamic_cast<KToggleAction*>(action("showTracker")))) {
-			a->setEnabled(false);
-			a->setChecked(false);
+			a->setChecked(view->flags().testFlag(ShowErrors));
 		}
 	} else {
 		KToggleAction* a;
@@ -719,12 +709,9 @@ void KSudoku::saveProperties(KConfig *config)
     // later when this app is restored
 	KConfigGroup group = config->group("ksudoku General");
 	
-	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
-		group.writeEntry("guidedMode", QVariant(view->guidedMode()));
-		group.writeEntry("mouseOnlySuperscript",  QVariant(view->mouseOnlySuperscript));
-		group.writeEntry("showTracker", QVariant(view->showTracker ));
-	} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
-		group.writeEntry("guidedMode", QVariant(view->guidedMode()));
+	if(KsView* view = currentView()) {
+		group.writeEntry("guidedMode", QVariant(view->flags().testFlag(ShowErrors)));
+		group.writeEntry("showTracker", QVariant(view->flags().testFlag(ShowTracker)));
 	}
 
 	config->sync();
@@ -740,12 +727,11 @@ void KSudoku::readProperties(KConfig *config)
 
     QString Url = group.readEntry("lastUrl", "");
 	
-	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
-		view->setGuidedMode(group.readEntry("guidedMode", true));
-		view->showTracker = group.readEntry("showTracker", true);
-   		view->mouseOnlySuperscript = group.readEntry("mouseOnlySuperscript", true);
-	} else if(RoxdokuView* view = dynamic_cast<RoxdokuView*>(currentView())) {
-		view->setGuidedMode(group.readEntry("guidedMode", true));
+	if(KsView* view = currentView()) {
+		ViewFlags flags = view->flags();
+		if(flags.testFlag(ShowErrors) xor group.readEntry("guidedMode", true))
+			flags ^= ShowErrors;
+		view->setFlags(flags);
 	}
 }
 
@@ -929,9 +915,11 @@ ksudoku::KsView* KSudoku::currentView() const{
 	// TODO this might cause trouble as the central widget don't have to be a
 	// KsView instance
 //	if(activeWidget)
-	if(centralWidget() == 0) return 0;
+// 	if(centralWidget() == 0) return 0;
 
-	return dynamic_cast<KsView*>(activeWidget);
+// 	return dynamic_cast<KsView*>(activeWidget);
+	
+	return m_gameUI;
 }
 
 void KSudoku::loadCustomShapeFromPath()
