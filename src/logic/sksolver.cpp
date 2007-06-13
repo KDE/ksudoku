@@ -264,7 +264,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 //	std::srand(time(0));
 //	int  b;
 	int cnt=p->size;
-	int to=p->size*(4+6*(level==-1));
+	int to=p->size*(4+6*(level==4));
 	int solutions_d=0;
 
 	//SKPuzzle stack[257];
@@ -277,7 +277,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	SKPuzzle c(p->order);
 	copy(&c, p);
 	
-	if(level < 0)
+	if(level > 3)
 	{
 		//TOO BUGGY
 		//int val = RANDOM(p->order)+1;
@@ -335,7 +335,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	}
 	
 	
-	int numberOfNumbersToAdd = (7*level*(((type!=1) ? ((int) sqrt(p->size)) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
+	int numberOfNumbersToAdd = (7*(3-level)*(((type!=1) ? ((int) sqrt(p->size)) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
 // 	printf("%d\n", numberOfNumbersToAdd);
 
 	ITERATE(i, numberOfNumbersToAdd)
@@ -401,9 +401,9 @@ int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 			break;
 	}
 	
-	if(level == -1) flags |= KSS_REM_1VALUE;
+	if(level == 4) flags |= KSS_REM_1VALUE;
 	
-	int hints = level*(order+LEVINC-(order-2)*typeo);
+	int hints = (3-level)*(order+LEVINC-(order-2)*typeo);
 	removeValuesSimple(numbers, (hints>0) ? hints : 0, flags);
 	
 	for(uint i = 0; i < (uint)size; ++i)
