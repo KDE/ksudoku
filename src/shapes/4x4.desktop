@@ -5,6 +5,7 @@ Description=4x4 shape puzzle
 Description[el]=Παζλ μεγέθους 4x4
 Description[es]=Rompecabezas en forma de 4x4
 Description[ja]=4x4 型パズル
+Description[zh_TW]=4x4 簡易遊戲
 Author=Francesco Rossi
 FileName=4x4.xml
 

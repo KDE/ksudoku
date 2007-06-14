@@ -2,8 +2,10 @@
 Encoding=UTF-8
 Name=Jigsaw
 Name[ja]=ジグソー
+Name[zh_TW]=拼圖
 Description=Jigsaw shape puzzle
 Description[es]=Rompecabezas al estilo Jigsaw
 Description[ja]=ジグソー型パズル
+Description[zh_TW]=拼圖式遊戲
 Author=Francesco Rossi
 FileName=Jigsaw.xml
