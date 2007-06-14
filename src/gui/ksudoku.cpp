@@ -86,7 +86,7 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 		KMessageBox::information(this, i18n("Sorry the solution you entered is not correct.\nIf you want to see error check Options->Guided mode please."));
 		return;
 	}
-	
+
 	QString msg;
  	int secs = QTime(0,0).secsTo(required);
  	int mins = secs / 60;
@@ -98,7 +98,7 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 		msg = i18n("Congratulations!!!! You made it in %1 minutes and %2 seconds.", mins, secs);
 
 	KMessageBox::information(this, msg);
-	
+
 }
 
 void KSudoku::updateStatusBar()
@@ -109,7 +109,7 @@ void KSudoku::updateStatusBar()
 // 		m = view->status();
 // 	if(currentView())
 // 		m = currentView()->status();
-	
+
 	// TODO fix this: add new status bar generation code
 
 	statusBar()->showMessage(m);
@@ -119,18 +119,18 @@ KSudoku::KSudoku()
 	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true)), m_autoDelCentralWidget(false)
 {
 	setObjectName("ksudoku");
-	
+
 	m_gameWidget = 0;
 	m_gameUI = 0;
 	activeWidget = 0;
-	
+
 	m_selectValueMapper = new QSignalMapper(this);
 	connect(m_selectValueMapper, SIGNAL(mapped(int)), this, SLOT(selectValue(int)));
 	m_enterValueMapper = new QSignalMapper(this);
 	connect(m_enterValueMapper, SIGNAL(mapped(int)), this, SLOT(enterValue(int)));
 	m_markValueMapper = new QSignalMapper(this);
 	connect(m_markValueMapper, SIGNAL(mapped(int)), this, SLOT(markValue(int)));
-	
+
 	// then, setup our actions
 	readProperties( KGlobal::config().data());
 	setupActions();
@@ -138,31 +138,31 @@ KSudoku::KSudoku()
 	// and a status bar
 	statusBar()->show();
 	setupGUI();
-	
+
 	wrapper = new QWidget();
 	(void) new QHBoxLayout(wrapper);
 	QMainWindow::setCentralWidget(wrapper);
 	wrapper->show();
-	
+
 	// Create ValueListWidget
 	m_valueListWidget = new ValueListWidget(wrapper);
 	wrapper->layout()->addWidget(m_valueListWidget);
 // 	m_valueListWidget->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Minimum);
 	m_valueListWidget->setFixedWidth(60);
-	
+
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
 	connect(m_welcomeScreen, SIGNAL(newGameStarted(const Game&,GameVariant*)), this, SLOT(startGame(const Game&)));
 	showWelcomeScreen();
-	
+
 	// Register the gamevariants resource
-    KGlobal::dirs()->addResourceType ("gamevariant", KStandardDirs::kde_default("data") +
+    KGlobal::dirs()->addResourceType ("gamevariant", "data",
 		KCmdLineArgs::aboutData()->appName() + '/');
-	
+
 	updateShapesList();
-	
+
 	m_symbols.setEnabledTables(Settings::symbols());
-	
-	
+
+
 	QTimer *timer = new QTimer( this );
 	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
 	updateStatusBar();
@@ -172,30 +172,30 @@ KSudoku::KSudoku()
 void KSudoku::updateShapesList()
 {
 	// TODO clear the list
-	
+
 	(void) new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
 	(void) new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
 	(void) new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
 	(void) new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
 	(void) new RoxdokuGame(i18n("Roxdoku 16 (4x4x5)"), 16, m_gameVariants);
 	(void) new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
-	
+
     QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
 
 	QString variantName;
 	QString variantDescr;
 	QString variantDataPath;
-	
+
     foreach(QString filepath, filepaths) {
 		KConfig variantConfig(filepath, KConfig::OnlyLocal);
 		KConfigGroup group = variantConfig.group ("KSudokuVariant");
-		
+
 		variantName = group.readEntry("Name", i18n("Missing Variant Name")); // Translated.
 		variantDescr = group.readEntry("Description", ""); // Translated.
 		variantDataPath = group.readEntry("FileName", "");
 		if(variantDataPath == "") continue;
 		variantDataPath = filepath.left(filepath.lastIndexOf("/")+1) + variantDataPath;
-		
+
 		(void) new CustomGame(variantName, variantDataPath, m_gameVariants);
 	}
 }
@@ -211,14 +211,14 @@ void KSudoku::startGame(const Game& game) {
 	view = new KsView(game, this);
 	connect(view, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
 	connect(m_valueListWidget, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
-	
+
 	switch(type){
 		case sudoku: { //cUrly braces needed to avoid "crosses initialization" compile error
 			ksudokuView* v = new ksudokuView(wrapper, game, false);
 			connect(v, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
 			connect(v, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
 			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
-			
+
 			view->setWidget(v);
 			connect(view, SIGNAL(flagsChanged(ViewFlags)), v, SLOT(setFlags(ViewFlags)));
 			connect(view, SIGNAL(symbolsChanged(SymbolTable*)), v, SLOT(setSymbols(SymbolTable*)));
@@ -237,7 +237,7 @@ void KSudoku::startGame(const Game& game) {
 			connect(v, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
 			connect(v, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
 			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
-			
+
 			view->setWidget(v);
 			connect(view, SIGNAL(flagsChanged(ViewFlags)), v, SLOT(setFlags(ViewFlags)));
 			connect(view, SIGNAL(symbolsChanged(SymbolTable*)), v, SLOT(setSymbols(SymbolTable*)));
@@ -252,30 +252,30 @@ void KSudoku::startGame(const Game& game) {
 	view->setSymbolTable(m_symbols.selectTable(view->game().order()));
 
 	m_welcomeScreen->hide();
-	
-	QWidget* widget = view->widget(); 
+
+	QWidget* widget = view->widget();
 	m_gameUI = view;
-	
+
 	Game game2(game);
 	connect(game2.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
 	connect(game2.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
-	
+
 	widget->show();
 	wrapper->layout()->addWidget(widget);
 	activeWidget = widget;
 	m_autoDelCentralWidget = true;
 	adaptActions2View();
-	
+
 	QSizePolicy policy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 	policy.setHorizontalStretch(1);
 	policy.setVerticalStretch(1);
 	widget->setSizePolicy(policy);
-	
+
 	widget->addAction(m_moveUpAct);
 	widget->addAction(m_moveDownAct);
 	widget->addAction(m_moveLeftAct);
 	widget->addAction(m_moveRightAct);
-	
+
 	m_valueListWidget->setCurrentTable(m_symbols.selectTable(view->game().	order()), view->game().order());
 	m_valueListWidget->selectValue(1);
 	m_valueListWidget->show();
@@ -288,7 +288,7 @@ void KSudoku::loadGame(const KUrl& Url) {
 		KMessageBox::information(this, errorMsg);
 		return;
 	}
-	
+
 	startGame(game);
 }
 
@@ -297,7 +297,7 @@ void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
 	if(oldWidget) oldWidget->hide();
 	if(m_autoDelCentralWidget) delete oldWidget; //moving up here fixes a roxdoku window bug
 	m_autoDelCentralWidget = autoDel;
-	
+
 	widget->show();
 	wrapper->layout()->addWidget(widget);
 	activeWidget = widget;
@@ -310,7 +310,7 @@ void KSudoku::showWelcomeScreen() {
 	m_valueListWidget->hide();
 	delete m_gameUI;
 	m_gameUI = 0;
-	
+
 	setCentralWidget(m_welcomeScreen, false);
 }
 
@@ -360,13 +360,13 @@ void KSudoku::autoSolve()
 	if(!game.isValid()) return;
 	game.autoSolve();
 }
-	
+
 void KSudoku::dubPuzzle()
 {
 	Game game = currentGame();
-	
+
 	if(!game.isValid()) return;
-	
+
 	if(!game.simpleCheck()) {
 		KMessageBox::information(this, i18n("The puzzle you entered contains some errors."));
 		return;
@@ -375,7 +375,7 @@ void KSudoku::dubPuzzle()
 	int forks = 0;
 	ksudoku::Puzzle* puzzle = game.puzzle()->dubPuzzle();
 	int state = puzzle->init(game.allValues(), &forks);
-		
+
 	if(state <= 0) {
 		KMessageBox::information(this, i18n("Sorry, No solutions have been found."));
 		delete puzzle;
@@ -385,11 +385,11 @@ void KSudoku::dubPuzzle()
 	} else {
 		KMessageBox::information(this, i18n("The Puzzle you entered has multiple solutions."));
 	}
-	
+
 	if(KMessageBox::questionYesNo(this, i18n("Do you want to play the puzzle now?")) == 3)
 	{
 		ksudoku::Game* newGame = new ksudoku::Game(puzzle);
-			
+
 	// 		(new KSudoku(newGame))->show();
 		startGame(*newGame);
 		delete newGame;
@@ -398,10 +398,10 @@ void KSudoku::dubPuzzle()
 	{
 		delete puzzle;
 	}
-	
+
 	return;
 }
-	
+
 void KSudoku::genMultiple()
 {
 	//KMessageBox::information(this, i18n("Sorry, this feature is under development."));
@@ -410,7 +410,7 @@ void KSudoku::genMultiple()
 void KSudoku::selectValue(int value) {
 	KsView* view = currentView();
 	if(!view) return;
-	
+
 	view->selectValue(value);
 	updateStatusBar();
 }
@@ -418,49 +418,49 @@ void KSudoku::selectValue(int value) {
 void KSudoku::enterValue(int value) {
 	KsView* view = currentView();
 	if(!view) return;
-	
+
 	view->enterValue(value);
 }
 
 void KSudoku::markValue(int value) {
 	KsView* view = currentView();
 	if(!view) return;
-	
+
 	view->markValue(value);
 }
 
 void KSudoku::moveUp() {
 	KsView* view = currentView();
 	if(!view) return;
-	
+
 	view->moveUp();
 }
 
 void KSudoku::moveDown() {
 	KsView* view = currentView();
 	if(!view) return;
-	
+
 	view->moveDown();
 }
 
 void KSudoku::moveLeft() {
 	KsView* view = currentView();
 	if(!view) return;
-	
+
 	view->moveLeft();
 }
 
 void KSudoku::moveRight() {
 	KsView* view = currentView();
 	if(!view) return;
-	
+
 	view->moveRight();
 }
 
 void KSudoku::clearCell() {
 	KsView* view = currentView();
 	if(!view) return;
-	
+
 	view->enterValue(0);
 }
 
@@ -474,9 +474,9 @@ void KSudoku::KDE3Action(const QString& text, QWidget* object, const char* slot,
 void KSudoku::setupActions()
 {
 	KShortcut shortcut;
-	
+
 	setAcceptDrops(true);
-	
+
 	KStandardAction::openNew(this, SLOT(fileNew()),    actionCollection());
 	KStandardAction::open   (this, SLOT(fileOpen()),   actionCollection());
 	KStandardAction::save   (this, SLOT(fileSave()),   actionCollection());
@@ -487,7 +487,7 @@ void KSudoku::setupActions()
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
 
 	KDE3Action(i18n("&Export"), this, SLOT(fileExport()), "file_export");
-	
+
 	for(int i = 0; i < 25; ++i) {
 		KAction* a = new KAction(this);
 		actionCollection()->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
@@ -495,7 +495,7 @@ void KSudoku::setupActions()
 		m_selectValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_selectValueMapper, SLOT(map()));
 		addAction(a);
-		
+
 		a = new KAction(this);
 		actionCollection()->addAction(QString("val-enter%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Enter %1 (%2)", i+1, QChar('a'+i)));
@@ -508,7 +508,7 @@ void KSudoku::setupActions()
 		m_enterValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_enterValueMapper, SLOT(map()));
 		addAction(a);
-		
+
 		a = new KAction(this);
 		actionCollection()->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Mark %1 (%2)", i+1, QChar('a'+i)));
@@ -522,31 +522,31 @@ void KSudoku::setupActions()
 		connect(a, SIGNAL(triggered(bool)), m_markValueMapper, SLOT(map()));
 		addAction(a);
 	}
-	
+
 	m_moveUpAct = actionCollection()->addAction("move_up");
 	m_moveUpAct->setText(i18n("Move Up"));
 	m_moveUpAct->setShortcut(Qt::Key_Up);
 	connect(m_moveUpAct, SIGNAL(triggered(bool)), SLOT(moveUp()));
 // 	addAction(moveUpAct);
-	
+
 	m_moveDownAct = actionCollection()->addAction("move_down");
 	m_moveDownAct->setText(i18n("Move Down"));
 	m_moveDownAct->setShortcut(Qt::Key_Down);
 	connect(m_moveDownAct, SIGNAL(triggered(bool)), SLOT(moveDown()));
 // 	addAction(moveDownAct);
-	
+
 	m_moveLeftAct = actionCollection()->addAction("move_left");
 	m_moveLeftAct->setText(i18n("Move Left"));
 	m_moveLeftAct->setShortcut(Qt::Key_Left);
 	connect(m_moveLeftAct, SIGNAL(triggered(bool)), SLOT(moveLeft()));
 // 	addAction(moveLeftAct);
-	
+
 	m_moveRightAct = actionCollection()->addAction("move_right");
 	m_moveRightAct->setText(i18n("Move Right"));
 	m_moveRightAct->setShortcut(Qt::Key_Right);
 	connect(m_moveRightAct, SIGNAL(triggered(bool)), SLOT(moveRight()));
 // 	addAction(moveRightAct);
-	
+
 	KAction* clearCellAct = new KAction(this);
 	actionCollection()->addAction("move_clear_cell", clearCellAct);
 	clearCellAct->setText(i18n("Clear Cell"));
@@ -585,7 +585,7 @@ void KSudoku::setupActions()
 	connect(a, SIGNAL(triggered(bool)),this,  SLOT(mouseOnlySuperscript()));
 	actionCollection()->addAction("mouseOnlySuperscript", a);
 	a->setChecked(false);
-	a->setEnabled(false);	
+	a->setEnabled(false);
 	a=new KToggleAction(i18n("Guided mode (mark wrong red)"),  this);
 	connect(a, SIGNAL(triggered(bool)),this,  SLOT(setGuidedMode()));
 	actionCollection()->addAction("guidedMode", a);
@@ -601,7 +601,7 @@ void KSudoku::setupActions()
 
 void KSudoku::adaptActions2View() {
 	// TODO This whole function is only a temporary hack, views should have their own UI
-	
+
 	if(KsView* view = currentView()) {
 		KToggleAction* a;
 		if((a = dynamic_cast<KToggleAction*>(action("guidedMode")))) {
@@ -623,15 +623,15 @@ void KSudoku::adaptActions2View() {
 			a->setChecked(false);
 		}
 	}
-	
+
 	Game game = currentGame();
 	if(game.isValid()) {
 		action("file_save")->setEnabled(true);
 		action("file_save_as")->setEnabled(true);
-		
+
 		action("move_undo")->setEnabled(game.canUndo());
 		action("move_undo")->setEnabled(game.canRedo());
-		
+
 		action("move_hint")      ->setEnabled(   game.puzzle()->hasSolution());
 		action("move_solve")     ->setEnabled(   game.puzzle()->hasSolution());
 		action("move_dub_puzzle")->setEnabled( ! game.puzzle()->hasSolution());
@@ -640,7 +640,7 @@ void KSudoku::adaptActions2View() {
 		action("file_save_as")->setEnabled(false);
 		action("move_undo")->setEnabled(false);
 		action("move_redo")->setEnabled(false);
-	
+
 		action("move_hint")->setEnabled(false);
 		action("move_solve")->setEnabled(false);
 		action("move_dub_puzzle")->setEnabled(false);
@@ -658,9 +658,9 @@ void KSudoku::onModified(bool /*isModified*/) {
 void KSudoku::undo() {
 	Game game = currentGame();
 	if(!game.isValid()) return;
-	
+
 	game.interface()->undo();
-	
+
 	if(!game.canUndo()) {
 		action("move_undo")->setEnabled(false);
 	}
@@ -669,9 +669,9 @@ void KSudoku::undo() {
 void KSudoku::redo() {
 	Game game = currentGame();
 	if(!game.isValid()) return;
-	
+
 	game.interface()->redo();
-	
+
 	if(!game.canRedo()) {
 		action("move_redo")->setEnabled(false);
 	}
@@ -708,7 +708,7 @@ void KSudoku::saveProperties(KConfig *config)
     // config file.  anything you write here will be available
     // later when this app is restored
 	KConfigGroup group = config->group("ksudoku General");
-	
+
 	if(KsView* view = currentView()) {
 		group.writeEntry("guidedMode", QVariant(view->flags().testFlag(ShowErrors)));
 		group.writeEntry("showTracker", QVariant(view->flags().testFlag(ShowTracker)));
@@ -726,7 +726,7 @@ void KSudoku::readProperties(KConfig *config)
 	KConfigGroup group = config->group("ksudoku General");
 
     QString Url = group.readEntry("lastUrl", "");
-	
+
 	if(KsView* view = currentView()) {
 		ViewFlags flags = view->flags();
 		if(flags.testFlag(ShowErrors) xor group.readEntry("guidedMode", true))
@@ -738,10 +738,10 @@ void KSudoku::readProperties(KConfig *config)
 void KSudoku::dragEnterEvent(QDragEnterEvent */*event*/)
 {
     // accept uri drops only
-	
+
 	//TODO PORT
     //KUrl::List::fromMimeData( e->mimeData() )
-	
+
     //event->accept(KUrlDrag::canDecode(event));
 }
 
@@ -749,13 +749,13 @@ void KSudoku::dropEvent(QDropEvent *event)
 {
 	//TODO PORT
    KUrl::List Urls = KUrl::List::fromMimeData( event->mimeData() );
-  
 
-    if ( !Urls.isEmpty() ) 
+
+    if ( !Urls.isEmpty() )
     {
         // okay, we have a URI.. process it
         const KUrl &Url = Urls.first();
-		
+
 		Game game = ksudoku::Serializer::load(Url, this);
 // 		if(game)
 // 			(new KSudoku(game))->show();
@@ -763,7 +763,7 @@ void KSudoku::dropEvent(QDropEvent *event)
 			startGame(game);
 // 		delete game;
     }
- 
+
 }
 
 void KSudoku::fileNew()
@@ -773,11 +773,11 @@ void KSudoku::fileNew()
     // button is clicked
 
 	if(!currentView()) return;
-	
+
 	// TODO onyl show this when there is a game running
 	if(KMessageBox::questionYesNo(this, i18n("Do you really want to end this game in order to start a new one")) != KMessageBox::Yes)
 		return;
-	
+
 	showWelcomeScreen();
 }
 
@@ -788,7 +788,7 @@ void KSudoku::fileOpen()
 	// button is clicked
 	// standard filedialog
 	KUrl Url = KFileDialog::getOpenUrl(KUrl(), QString(), this, i18n("Open Location"));
-	
+
 	if (!Url.isEmpty() && Url.isValid())
 	{
 		Game game = ksudoku::Serializer::load(Url, this);
@@ -796,12 +796,12 @@ void KSudoku::fileOpen()
 			KMessageBox::error(this, i18n("Could not load game."));
 			return;
 		}
-		
+
 		game.setUrl(Url);
 // 		(new KSudoku(game))->show();
 		startGame(game);
 // 		delete game;
-	}	
+	}
 }
 
 void KSudoku::fileSave()
@@ -811,7 +811,7 @@ void KSudoku::fileSave()
     // button is clicked
 
     // save the current file
-	
+
 	Game game = currentGame();
 	if(!game.isValid()) return;
 
@@ -825,7 +825,7 @@ void KSudoku::fileSaveAs()
     // this slot is called whenever the File->Save As menu is selected,
 	Game game = currentGame();
 	if(!game.isValid()) return;
-	
+
 	game.setUrl(KFileDialog::getSaveUrl());
     if (!game.getUrl().isEmpty() && game.getUrl().isValid())
     	fileSave();
@@ -853,7 +853,7 @@ void KSudoku::fileExport()
 	/*
 	Game game = currentGame();
 	if(!game.isValid()) return;
-	
+
 	ksudoku::ExportDlg e(*game.puzzle(), *game.symbols() );
 
 	e.exec();
@@ -865,17 +865,17 @@ void KSudoku::optionsPreferences()
 	if ( KConfigDialog::showDialog("settings") ) return;
 
 	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
-	
+
 	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
 	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "theme");
-	
+
 	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(settingsChanged()));
     dialog->show();
 }
 
 void KSudoku::settingsChanged() {
 	m_symbols.setEnabledTables(Settings::symbols());
-	
+
 	KsView* view = currentView();
 	if(view) {
 		int order = view->game().order();
@@ -911,36 +911,36 @@ ksudoku::KsView* KSudoku::currentView() const{
 // 		return view;
 // 	else
 // 		return 0;
-	
+
 	// TODO this might cause trouble as the central widget don't have to be a
 	// KsView instance
 //	if(activeWidget)
 // 	if(centralWidget() == 0) return 0;
 
 // 	return dynamic_cast<KsView*>(activeWidget);
-	
+
 	return m_gameUI;
 }
 
 void KSudoku::loadCustomShapeFromPath()
 {
 	KUrl Url = KFileDialog::getOpenUrl( KUrl(), QString(), this, i18n("Open Location") );
-	
+
 	if ( Url.isEmpty() || !Url.isValid() )
 	{
 		//TODO ERROR
 		return;
-	}	
-	
+	}
+
 	QString tmpFile;
 // 	bool success = false;
 	QDomDocument doc;
-	if(!KIO::NetAccess::download( Url, tmpFile, this )) 
+	if(!KIO::NetAccess::download( Url, tmpFile, this ))
 	{
 		//TODO ERROR
-		return;	
+		return;
 	}
-	
+
 	KStandardDirs myStdDir;
 	const QString destDir = myStdDir.saveLocation( "data", /*kapp->instanceName() + TODO PORT */"ksudoku/", true );
 	KStandardDirs::makeDir( destDir );
