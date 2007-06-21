@@ -167,8 +167,7 @@ void QSudokuButton::draw(QPainter& qpainter)
 	qpainter.eraseRect(rect());
 
 	if(isConnected())
- 		if(m_ksView.isWaitingForNumber != static_cast<int>(m_ksView.game().index(m_x,m_y)))
-			paintHighlight(qpainter);
+		paintHighlight(qpainter);
 
 	//draw border
 	
@@ -280,8 +279,7 @@ void QSudokuButton::drawValue(QPainter& qpainter)
 		break;
 		case ObviouslyWrong:
 		case WrongValue:
-//		if(guidedMode == 1 && m_ksView.puzzle_mark_wrong) //else keep current pen
-			if(m_ksView.m_guidedMode && m_ksView.game().puzzle()->hasSolution())
+			if(m_ksView.m_flags.testFlag(ShowErrors))
 				qpainter.setPen(Qt::darkRed);
 		break;
 		case CorrectValue:

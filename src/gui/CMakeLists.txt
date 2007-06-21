@@ -15,7 +15,7 @@ INCLUDE_DIRECTORIES( views ksudoku_export)
 
 kde4_automoc( ${ksudoku_SRCS} )
 
-kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui)
+kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui configgame.ui)
 
 kde4_add_kcfg_files(ksudoku_SRCS settings.kcfgc )
 

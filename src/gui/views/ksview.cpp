@@ -22,6 +22,7 @@
 #include "ksview.h"
 
 #include "ksudokugame.h"
+#include "settings.h"
 
 #include <qpixmap.h>
 #include <qpainter.h>
@@ -33,6 +34,9 @@
 
 #include <QtDebug>
 
+#include "ksudokuview.h"
+#include "roxdokuview.h"
+
 namespace ksudoku{
 
 KsView::KsView(const Game& game, QObject* parent)
@@ -41,18 +45,43 @@ KsView::KsView(const Game& game, QObject* parent)
 	m_symbolTable = 0;
 	m_currentValue = 1;
 	m_currentCell = 0;
+	m_valueListWidget = 0;
 }
 
 KsView::~KsView()
 {
 }
 
-void KsView::draw(QPainter& /*p*/, int /*height*/, int /*width*/) const
-{ ///@TODO improve performance (low priority)
-//	//get user view
-//	QPixmap const qp(const_cast< KsView* >(this)->renderPixmap(width, height, FALSE));
-//	//copy to QPainter
-//	p.drawPixmap(0,0,qp,-1,-1);
+void KsView::createView() {
+	GameType type = m_game.puzzle()->gameType();
+	switch(type) {
+		case sudoku: {
+			setWidget(new ksudokuView(0, m_game, false));
+			break;
+		}
+		case custom: {
+			setWidget(new ksudokuView(0, m_game, true));
+			break;
+		}
+		case roxdoku: {
+			setWidget(new RoxdokuView(m_game, 0, 0, "ksudoku-3dwnd"));
+			break;
+		}
+		default:
+			// TODO this will not work
+			break;
+	}
+	
+	QObject* view = m_view->widget();
+	connect(view, SIGNAL(valueSelected(int)), SLOT(selectValue(int)));
+	connect(view, SIGNAL(cellHovered(int)), SLOT(setCursor(int)));
+	
+	connect(this, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
+	connect(this, SIGNAL(flagsChanged(ViewFlags)), view, SLOT(setFlags(ViewFlags)));
+	connect(this, SIGNAL(symbolsChanged(SymbolTable*)), view, SLOT(setSymbols(SymbolTable*)));
+	connect(this, SIGNAL(cursorMoved(int)), view, SLOT(setCursor(int)));
+	
+	settingsChanged();
 }
 
 void KsView::setCursor(int cell) {
@@ -61,6 +90,7 @@ void KsView::setCursor(int cell) {
 }
 
 void KsView::selectValue(int value) {
+	if(value == m_currentValue) return;
 	m_currentValue = value;
 	emit valueSelected(value);
 }
@@ -130,6 +160,15 @@ void KsView::setWidget(QWidget* widget) {
 	m_viewWidget = widget;
 	emit flagsChanged(m_flags);
 	emit symbolsChanged(m_symbolTable);
+	
+	m_view = dynamic_cast<ViewInterface*>(widget);
+}
+
+void KsView::settingsChanged() {
+	ViewFlags flags;
+	if(Settings::showErrors()) flags |= ShowErrors;
+	if(Settings::showHighlights()) flags |= ShowHighlights;
+	setFlags(flags);
 }
 
 }

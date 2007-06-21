@@ -1,0 +1,53 @@
+<ui version="4.0" >
+ <class>ConfigGame</class>
+ <widget class="QWidget" name="ConfigGame" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>300</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <item>
+    <widget class="QCheckBox" name="kcfg_ShowHighlights" >
+     <property name="whatsThis" >
+      <string>Highlight the current row, column and box in different colors</string>
+     </property>
+     <property name="text" >
+      <string>Show Highlights</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QCheckBox" name="kcfg_ShowErrors" >
+     <property name="whatsThis" >
+      <string>Highlight cells which values are against the rules in red</string>
+     </property>
+     <property name="text" >
+      <string>Show Errors</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation" >
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" >
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

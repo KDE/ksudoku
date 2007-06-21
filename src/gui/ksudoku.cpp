@@ -79,8 +79,6 @@
 #include "config.h"
 
 
-// bool guidedMode;
-
 void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) {
 	if(!isCorrect) {
 		KMessageBox::information(this, i18n("Sorry the solution you entered is not correct.\nIf you want to see error check Options->Guided mode please."));
@@ -132,7 +130,6 @@ KSudoku::KSudoku()
 	connect(m_markValueMapper, SIGNAL(mapped(int)), this, SLOT(markValue(int)));
 
 	// then, setup our actions
-	readProperties( KGlobal::config().data());
 	setupActions();
 
 	// and a status bar
@@ -156,7 +153,7 @@ KSudoku::KSudoku()
 
 	// Register the gamevariants resource
     KGlobal::dirs()->addResourceType ("gamevariant", "data",
-		KCmdLineArgs::aboutData()->appName() + '/');
+		KCmdLineArgs::aboutData()->appName());
 
 	updateShapesList();
 
@@ -205,57 +202,24 @@ KSudoku::~KSudoku()
 }
 
 void KSudoku::startGame(const Game& game) {
-	GameType type = game.puzzle()->gameType(); //game solver()->g->sizeZ() > 1) ? 1 : 0;
-	KsView* view = 0;
-
-	view = new KsView(game, this);
+	KsView* view = new KsView(game, this);
+	
+	view->setValueListWidget(m_valueListWidget);
+	view->createView();	
+	view->setSymbolTable(m_symbols.selectTable(view->game().order()));
+	
 	connect(view, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
 	connect(m_valueListWidget, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
+	connect(view, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
 
-	switch(type){
-		case sudoku: { //cUrly braces needed to avoid "crosses initialization" compile error
-			ksudokuView* v = new ksudokuView(wrapper, game, false);
-			connect(v, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
-			connect(v, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
-			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
-
-			view->setWidget(v);
-			connect(view, SIGNAL(flagsChanged(ViewFlags)), v, SLOT(setFlags(ViewFlags)));
-			connect(view, SIGNAL(symbolsChanged(SymbolTable*)), v, SLOT(setSymbols(SymbolTable*)));
-			connect(v, SIGNAL(mouseOverCell(int)), view, SLOT(setCursor(int)));
-			connect(view, SIGNAL(cursorMoved(int)), v, SLOT(setCursor(int)));
-			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
-			break;     }
-		case roxdoku: {
-			RoxdokuView* v = new RoxdokuView(game, &m_symbols, wrapper, "ksudoku-3dwnd");
-			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
-			connect(view, SIGNAL(flagsChanged(ViewFlags)), v, SLOT(setFlags(ViewFlags)));
-			view->setWidget(v);
-			break;      }
-		case custom:{
-			ksudokuView* v = new ksudokuView(wrapper, game, true);
-			connect(v, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
-			connect(v, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
-			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
-
-			view->setWidget(v);
-			connect(view, SIGNAL(flagsChanged(ViewFlags)), v, SLOT(setFlags(ViewFlags)));
-			connect(view, SIGNAL(symbolsChanged(SymbolTable*)), v, SLOT(setSymbols(SymbolTable*)));
-			connect(v, SIGNAL(mouseOverCell(int)), view, SLOT(setCursor(int)));
-			connect(view, SIGNAL(cursorMoved(int)), v, SLOT(setCursor(int)));
-			connect(view, SIGNAL(valueSelected(int)), v, SLOT(selectValue(int)));
-		}
-		default:
-			///@todo if here, BUG => throw exception (??)
-			break;
-	}
-	view->setSymbolTable(m_symbols.selectTable(view->game().order()));
 
 	m_welcomeScreen->hide();
 
 	QWidget* widget = view->widget();
 	m_gameUI = view;
 
+	wrapper->layout()->addWidget(widget);
+	
 	Game game2(game);
 	connect(game2.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
 	connect(game2.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
@@ -302,7 +266,6 @@ void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
 	wrapper->layout()->addWidget(widget);
 	activeWidget = widget;
 
-	readProperties(KGlobal::config().data()); //correct order: otherwise settings are not loaded
 	adaptActions2View();
 }
 
@@ -312,26 +275,6 @@ void KSudoku::showWelcomeScreen() {
 	m_gameUI = 0;
 
 	setCentralWidget(m_welcomeScreen, false);
-}
-
-void KSudoku::mouseOnlySuperscript()
-{
-// 	QWidget* current = m_tabs->currentPage();
-//	QWidget* current = (QWidget*)currentView();
-	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView()))
-		view->mouseOnlySuperscript = !view->mouseOnlySuperscript;
-	else return;
-
-	saveProperties( KGlobal::config().data());
-}
-
-void KSudoku::setGuidedMode()
-{
-	if(KsView* view = currentView()) {
-		view->setFlags(view->flags() ^ ShowErrors);
-	}
-
-	saveProperties( KGlobal::config().data());
 }
 
 void KSudoku::homepage()
@@ -578,52 +521,9 @@ void KSudoku::setupActions()
 	KDE3Action(i18n("Home page"), this, SLOT(homepage()), "Home_page");
 	KDE3Action(i18n("Support this project"), this, SLOT(support()), "support");
 	KDE3Action(i18n("Send comment"), this, SLOT(sendComment()), "SendComment");
-
-	//Settings
-	KToggleAction* a;
-  	a = new KToggleAction(i18n("Mouse-Only superscript mode"),this);
-	connect(a, SIGNAL(triggered(bool)),this,  SLOT(mouseOnlySuperscript()));
-	actionCollection()->addAction("mouseOnlySuperscript", a);
-	a->setChecked(false);
-	a->setEnabled(false);
-	a=new KToggleAction(i18n("Guided mode (mark wrong red)"),  this);
-	connect(a, SIGNAL(triggered(bool)),this,  SLOT(setGuidedMode()));
-	actionCollection()->addAction("guidedMode", a);
-	a->setChecked(false);
-	a->setEnabled(false);
-
-	a=new KToggleAction(i18n("Show tracker"), 0);
-	connect(a, SIGNAL(triggered(bool)),this,  SLOT(setShowTracker()));
-	actionCollection()->addAction("showTracker", a);
-	a->setChecked(true);
-	a->setEnabled(false);
 }
 
 void KSudoku::adaptActions2View() {
-	// TODO This whole function is only a temporary hack, views should have their own UI
-
-	if(KsView* view = currentView()) {
-		KToggleAction* a;
-		if((a = dynamic_cast<KToggleAction*>(action("guidedMode")))) {
-			a->setEnabled(true);
-			a->setChecked(view->flags().testFlag(ShowErrors));
-		}
-	} else {
-		KToggleAction* a;
-		if((a = dynamic_cast<KToggleAction*>(action("mouseOnlySuperscript")))) {
-			a->setEnabled(false);
-			a->setChecked(false);
-		}
-		if((a = dynamic_cast<KToggleAction*>(action("guidedMode")))) {
-			a->setEnabled(false);
-			a->setChecked(false);
-		}
-		if((a = dynamic_cast<KToggleAction*>(action("showTracker")))) {
-			a->setEnabled(false);
-			a->setChecked(false);
-		}
-	}
-
 	Game game = currentGame();
 	if(game.isValid()) {
 		action("file_save")->setEnabled(true);
@@ -689,50 +589,6 @@ void KSudoku::pop()
 	// TODO replace this with history
 // 	if(type == 0) {if(m_view)  m_view->pop(); return;}
 // 	if(glwin) glwin->pop();
-}
-
-void KSudoku::setShowTracker()
-{
-// 	QWidget* current = m_tabs->currentPage();
-//	QWidget* current = (QWidget*) currentView();
-	if(ksudokuView* view = dynamic_cast<ksudokuView*>(currentView())) {
-		view->showTracker = !view->showTracker;
-	} else return;
-
-	saveProperties((KConfig* )KGlobal::config().data());
-}
-
-void KSudoku::saveProperties(KConfig *config)
-{
-    // the 'config' object points to the session managed
-    // config file.  anything you write here will be available
-    // later when this app is restored
-	KConfigGroup group = config->group("ksudoku General");
-
-	if(KsView* view = currentView()) {
-		group.writeEntry("guidedMode", QVariant(view->flags().testFlag(ShowErrors)));
-		group.writeEntry("showTracker", QVariant(view->flags().testFlag(ShowTracker)));
-	}
-
-	config->sync();
-}
-
-void KSudoku::readProperties(KConfig *config)
-{
-    // the 'config' object points to the session managed
-    // config file.  this function is automatically called whenever
-    // the app is being restored.  read in here whatever you wrote
-    // in 'saveProperties'
-	KConfigGroup group = config->group("ksudoku General");
-
-    QString Url = group.readEntry("lastUrl", "");
-
-	if(KsView* view = currentView()) {
-		ViewFlags flags = view->flags();
-		if(flags.testFlag(ShowErrors) xor group.readEntry("guidedMode", true))
-			flags ^= ShowErrors;
-		view->setFlags(flags);
-	}
 }
 
 void KSudoku::dragEnterEvent(QDragEnterEvent */*event*/)
@@ -866,9 +722,12 @@ void KSudoku::optionsPreferences()
 
 	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
 
+	GameConfig* gameConfig = new GameConfig();
+	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), "game");
+			
 	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
 	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "theme");
-
+	
 	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(settingsChanged()));
     dialog->show();
 }
@@ -882,6 +741,8 @@ void KSudoku::settingsChanged() {
 		SymbolTable* table = m_symbols.selectTable(order);
 		view->setSymbolTable(table);
 		m_valueListWidget->setCurrentTable(table, order);
+		
+		view->settingsChanged();
 	}
 }
 

@@ -25,12 +25,6 @@
 		<Action name="move_dub_puzzle" />
 	</Menu>
 
-	<Menu name="settings"><text>&amp;Settings</text>
-		<Action name="showTracker" />
-		<Action name="guidedMode" />
-		<Action name="mouseOnlySuperscript" />
-	</Menu>
-
 	<Menu name="help"><text>&amp;Help</text>
 		<Action name="Home_page" />
 		<Action name="support" />

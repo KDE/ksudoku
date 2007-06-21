@@ -84,4 +84,10 @@ SymbolConfig::SymbolConfig(Symbols* symbols) : m_symbols(symbols) {
 SymbolConfig::~SymbolConfig() {
 }
 
+GameConfig::GameConfig(QWidget* parent)
+	: QWidget(parent)
+{
+	setupUi(this);
+}
+
 }

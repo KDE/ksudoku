@@ -116,20 +116,6 @@ protected:
 	virtual void dragEnterEvent(QDragEnterEvent *event);
 	virtual void dropEvent(QDropEvent *event);
 
-protected:
-    /**
-     * This function is called when it is time for the app to save its
-     * properties for session management purposes.
-     */
-    void saveProperties(KConfig *);
-
-    /**
-     * This function is called when this app is restored.  The KConfig
-     * object points to the session management config file that was saved
-     * with @ref saveProperties
-     */
-    void readProperties(KConfig *);
-	
 public slots:
 	void onCompleted(bool isCorrect, const QTime& required, bool withHelp = false);
 	
@@ -166,7 +152,6 @@ private slots:
 
 	void optionsPreferences();
 	void settingsChanged();
-	void setShowTracker();
 	void changeStatusbar(const QString& text);
 	void changeCaption(const QString& text);
 
@@ -174,9 +159,6 @@ private slots:
 	void homepage();
 	void support();
 	void sendComment();
-	//settings
-	void mouseOnlySuperscript();
-	void setGuidedMode();
 
 	void updateStatusBar();
 

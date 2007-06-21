@@ -49,7 +49,7 @@ class Symbols;
  * Gui for a sudoku puzzle
  * @TODO rename ksudokuView to sudokuView
  */
-class ksudokuView : public QWidget
+class ksudokuView : public QWidget, public ViewInterface
 {
 	Q_OBJECT
 	friend class QSudokuButton;
@@ -73,13 +73,10 @@ public:
 	virtual void draw(QPainter& p, int height, int width) const;
 	
 signals:
-	void mouseOverCell(int cell);
+	void cellHovered(int cell);
 	void valueSelected(int value);
 
 public:
-	bool mouseOnlySuperscript;
-	bool showTracker;
-	int  isWaitingForNumber;
 	int current_selected_number;
 
 	bool custom;
@@ -124,11 +121,9 @@ private:
 	
 	QVector<int> m_highlightUpdate;
 
-	bool puzzle_mark_wrong;
 	int  highlighted;
-	int m_color0;
 	
-	bool m_guidedMode;
+	ViewFlags m_flags;
 	
 	Game m_game;
 	SymbolTable* m_symbolTable;

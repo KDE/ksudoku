@@ -96,19 +96,19 @@ QString RoxdokuView::status() const
 {
 	QString m;
 
-	int secs = QTime(0,0).secsTo(m_game.time());
-	if(secs % 36 < 12)
-		m = i18n("Selected item %1, Time elapsed %2. DRAG to rotate. MOUSE WHEEL to zoom in/out.",
-				 m_symbols->value2Symbol(selected_number, m_game.order()),
-		         m_game.time().toString("hh:mm:ss"));
-	else  if(secs % 36 < 24)
-		m = i18n("Selected item %1, Time elapsed %2. DOUBLE CLICK on a cube to insert selected number.",
-				 m_symbols->value2Symbol(selected_number, m_game.order()),
-		         m_game.time().toString("hh:mm:ss"));
-	else
-		m = i18n("Selected item %1, Time elapsed %2. Type in a cell (zero to delete) to place that number in it.",
-				 m_symbols->value2Symbol(selected_number, m_game.order()),
-		         m_game.time().toString("hh:mm:ss"));
+// 	int secs = QTime(0,0).secsTo(m_game.time());
+// 	if(secs % 36 < 12)
+// 		m = i18n("Selected item %1, Time elapsed %2. DRAG to rotate. MOUSE WHEEL to zoom in/out.",
+// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+// 		         m_game.time().toString("hh:mm:ss"));
+// 	else  if(secs % 36 < 24)
+// 		m = i18n("Selected item %1, Time elapsed %2. DOUBLE CLICK on a cube to insert selected number.",
+// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+// 		         m_game.time().toString("hh:mm:ss"));
+// 	else
+// 		m = i18n("Selected item %1, Time elapsed %2. Type in a cell (zero to delete) to place that number in it.",
+// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+// 		         m_game.time().toString("hh:mm:ss"));
 
 	return m;
 }

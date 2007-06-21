@@ -24,6 +24,8 @@
 #include <QList>
 #include <QListWidget>
 
+#include "ui_configgame.h"
+
 namespace ksudoku {
 
 class Symbols;
@@ -51,6 +53,12 @@ public:
 private:
 	SymbolConfigListWidget* m_symbolTableView;
 	Symbols* m_symbols;
+};
+
+class GameConfig : public QWidget, private Ui::ConfigGame {
+Q_OBJECT
+public:
+	explicit GameConfig(QWidget* parent = 0);
 };
 
 }

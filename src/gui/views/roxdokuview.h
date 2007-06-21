@@ -47,7 +47,7 @@ class Symbols;
  * Gui for a roxdoku puzzle
  * @TODO hide private members (now public)
  */
-class RoxdokuView : public QGLWidget
+class RoxdokuView : public QGLWidget, public ViewInterface
 {
 Q_OBJECT
 public:
@@ -102,6 +102,21 @@ public slots:
 	void selectValue(int value);
 	void enterValue(int value);
 	void setFlags(ViewFlags flags);
+	
+public slots: // Temporary for a full interface
+	void setCursor(int /*cell*/) {
+		// TODO add this
+	}
+	void setSymbols(SymbolTable* /*table*/) {
+		// TODO RoxDokuView currently don't use the symboltable
+	}
+	void update(int /*cell*/) {
+		paintGL();
+	}
+	
+signals:
+	void valueSelected(int value); // Never used but connected to
+	void cellHovered(int cell);
 	
 protected:
 	void paintGL();

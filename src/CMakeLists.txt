@@ -36,6 +36,7 @@ ADD_SUBDIRECTORY( gui             )
 ADD_SUBDIRECTORY( gui/views       )
 #ADD_SUBDIRECTORY( gui/export      ) #TODO PORT
 #ADD_SUBDIRECTORY( gui/export/draw ) #TODO PORT
+ADD_SUBDIRECTORY( shapes )
 
 
 #set(ksudoku_client_SRCS
@@ -57,11 +58,6 @@ ADD_SUBDIRECTORY( gui/views       )
 install( FILES gui/ksudoku.desktop  DESTINATION  ${XDG_APPS_DIR} )
 install( FILES gui/ksudokuui.rc  DESTINATION  ${DATA_INSTALL_DIR}/ksudoku )
 install( FILES ksudokurc  DESTINATION ${CONFIG_INSTALL_DIR})
-
-
-install(FILES shapes/4x4.xml shapes/Jigsaw.xml shapes/XSudoku.xml shapes/Samurai.xml DESTINATION ${DATA_INSTALL_DIR}/ksudoku)
-
-
 
 kde4_install_icons(${ICON_INSTALL_DIR})
 

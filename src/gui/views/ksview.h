@@ -27,18 +27,39 @@
 
 #include "ksudokugame.h"
 
+class QWidget;
+
 namespace ksudoku {
 	
 enum ViewFlag {
 	ShowErrors        = 0x01,
 	ShowObviousErrors = 0x02,
-	ShowTracker       = 0x04
+	ShowHighlights    = 0x04
 };
 
 typedef QFlags<ViewFlag> ViewFlags;
 	
 class Game;
 class SymbolTable;
+class ValueListWidget;
+
+/**
+ * Every implementation of ViewInterface needs following signals:
+ *   void cellHovered(int cell);
+ *   void valueSelected(int value);
+ */
+class ViewInterface {
+public:
+	virtual ~ViewInterface() {}
+public:
+	virtual QWidget* widget() = 0;
+public: // SLOTS
+	virtual void setCursor(int cell) = 0;
+	virtual void selectValue(int value) = 0;
+	virtual void setSymbols(SymbolTable* table) = 0;
+	virtual void setFlags(ViewFlags flags) = 0;
+	virtual void update(int cell = -1) = 0;
+};
 
 /**
  * Interface for all views
@@ -56,11 +77,6 @@ public:
 	KsView(const Game& game, QObject* parent = 0);
 	virtual ~KsView();
 
-	///draw content to external qpainter (use for printing etc.)
-	///(if not reimplemented, a slow redraw to pixmap will be
-	/// used (renderPixmap) and then copy it to a qpainter)
-	virtual void draw(QPainter& p, int height, int width) const;
-
 	//getters
 	///return game used by the view
 	Game game() const { return m_game; }
@@ -68,6 +84,11 @@ public:
 	QWidget* widget() const { return m_viewWidget; }
 	void setWidget(QWidget* viewWidget);
 	
+	ValueListWidget* valueListWidget() const { return m_valueListWidget; }
+	// TODO make this own the valueListWidget
+	void setValueListWidget(ValueListWidget* widget) {
+		m_valueListWidget = widget;
+	}
 	
 	SymbolTable* symbolTable() const;
 	void setSymbolTable(SymbolTable* table);
@@ -88,11 +109,16 @@ public slots:
 	void moveLeft();
 	void moveRight();
 	
+	void settingsChanged();
+	
 signals:
 	void flagsChanged(ViewFlags flags);
 	void symbolsChanged(SymbolTable* table);
 	void cursorMoved(int cell);
 	void valueSelected(int value);
+	
+public:
+	void createView();
 	
 protected:
 	///pointer to external Game
@@ -101,7 +127,9 @@ protected:
 	SymbolTable* m_symbolTable;
 	ViewFlags m_flags;
 	
+	ViewInterface* m_view;
 	QWidget* m_viewWidget;
+	ValueListWidget* m_valueListWidget;
 	
 	int m_currentValue;
 	int m_currentCell;

@@ -5,6 +5,12 @@
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile/>
   <group name="Options">
+    <entry name="ShowHighlights" type="Bool" key="showHighlights">
+      <default>true</default>
+    </entry>
+    <entry name="ShowErrors" type="Bool" key="showErrors">
+      <default>true</default>
+    </entry>
   </group>
   <group name="Themes">
     <entry name="Symbols" type="StringList" key="symbols">
