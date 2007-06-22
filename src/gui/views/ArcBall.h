@@ -35,6 +35,10 @@
 #ifdef Q_WS_MAC
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
+#elif defined(Q_WS_WIN)
+#include <windows.h>
+#include <GL/gl.h>                                                                                             // Header File For The OpenGL32 Library
+#include <GL/glu.h>                                                                                            // Header File For The GLu32 Library
 #else
 #include <GL/gl.h>                                                                                             // Header File For The OpenGL32 Library
 #include <GL/glu.h>                                                                                            // Header File For The GLu32 Library

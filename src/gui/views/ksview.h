@@ -40,7 +40,7 @@ enum ViewFlag {
 typedef QFlags<ViewFlag> ViewFlags;
 	
 class Game;
-class SymbolTable;
+struct SymbolTable;
 class ValueListWidget;
 
 /**

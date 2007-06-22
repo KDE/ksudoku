@@ -29,7 +29,7 @@
 namespace ksudoku {
 
 class Symbols;
-class SymbolTable;
+struct SymbolTable;
 
 class SymbolConfigListWidget : public QListWidget {
 Q_OBJECT
