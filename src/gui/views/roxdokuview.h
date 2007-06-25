@@ -55,7 +55,7 @@ public:
 	~RoxdokuView();
 public:
 	///(re)implemented from KsView
-	virtual void setGame(const ksudoku::Game& /* game*/) { /* ///@todo fixme */ };
+	virtual void setGame(const ksudoku::Game& /* game*/) { /* ///@todo fixme */ }
 
 	///(re)implemented from KsView
 	virtual QString status() const;

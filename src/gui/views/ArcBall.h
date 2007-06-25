@@ -458,7 +458,7 @@
         public:
             //Create/Destroy
                     ArcBall_t(GLfloat NewWidth, GLfloat NewHeight);
-                   ~ArcBall_t() { /* nothing to do */ };
+                   ~ArcBall_t() { /* nothing to do */ }
 
             //Set new bounds
             inline

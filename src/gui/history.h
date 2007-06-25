@@ -133,7 +133,7 @@ public:
 	{
 		m_given.setBit(index, given);
 		m_values[index] = value;
-	};
+	}
 	inline bool given(int index) const
 	{
 		return m_given[index];

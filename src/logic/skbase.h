@@ -37,7 +37,7 @@ public:
 	int type;
 	void setorder(int k, int type = 0, int sized=-1);
 	explicit SKBase(int i=9, int typef = 0,int sized=-1)
-		{setorder(i, typef,sized); };
+		{setorder(i, typef,sized); }
 };
 
 #endif

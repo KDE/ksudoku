@@ -86,7 +86,7 @@ public:
 	void setConnected(bool b);
 	
 	bool isCustom(){return m_custom;}
-	void setCustom(bool b){m_custom=b;};
+	void setCustom(bool b){m_custom=b;}
 	
 
 	inline ksudoku::ButtonState state() const { return m_state; }
