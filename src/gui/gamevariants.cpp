@@ -47,7 +47,7 @@ GameVariant::GameVariant(const QString& name, GameVariantCollection* collection)
 ///////////////////////////////////////////////////////////////////////////////
 
 GameVariantCollection::GameVariantCollection(QObject* parent, bool autoDel)
-	: QObject(parent), m_autoDelete(autoDel)
+	: QAbstractListModel(parent), m_autoDelete(autoDel)
 {
 }
 
@@ -58,9 +58,48 @@ GameVariantCollection::~GameVariantCollection() {
 }
 
 void GameVariantCollection::addVariant(GameVariant* variant) {
+	int count = m_variants.count();
+	beginInsertRows(QModelIndex(), count, count);
 	m_variants.append(variant);
+	endInsertRows();
 	emit newVariant(variant);
 }
+
+int GameVariantCollection::rowCount(const QModelIndex& parent) const {
+	Q_UNUSED(parent);
+	return m_variants.count();
+}
+
+QModelIndex GameVariantCollection::index(int row, int column, const QModelIndex &parent) const {
+	Q_UNUSED(parent);
+	if ((row < 0) || (row >= m_variants.count()))
+		return QModelIndex();
+	return createIndex(row, column, m_variants[row]);
+}
+
+QVariant GameVariantCollection::data(const QModelIndex &index, int role) const {
+	if (!index.isValid() || index.row() >= m_variants.count())
+		return QVariant();
+
+	if (!index.internalPointer())
+		return QVariant();
+	
+	GameVariant* gameVariant = static_cast<GameVariant*>(index.internalPointer());
+
+	switch(role) {
+		case Qt::DisplayRole:
+			return gameVariant->name();
+		case Qt::DecorationRole:
+			return QVariant();
+	}
+	
+	return QVariant();
+}
+
+GameVariant* GameVariantCollection::variant(const QModelIndex& index) const {
+	return static_cast<GameVariant*>(index.internalPointer());
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // class SudokuGame

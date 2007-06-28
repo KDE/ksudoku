@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QList>
 #include <KUrl>
+#include <QAbstractListModel>
 
 class SKSolver;
 namespace ksudoku {
@@ -61,7 +62,7 @@ private:
 	QString m_name;
 };
 
-class GameVariantCollection : public QObject {
+class GameVariantCollection : public QAbstractListModel {
 friend class GameVariant;
 Q_OBJECT
 public:
@@ -70,6 +71,12 @@ public:
 		
 public:
 	void addVariant(GameVariant* variant);
+	
+public:
+	QVariant data(const QModelIndex &index, int role) const;
+	int rowCount(const QModelIndex&) const;
+	QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const;
+	GameVariant* variant(const QModelIndex&) const;
 
 signals:
 	void newVariant(GameVariant* variant);

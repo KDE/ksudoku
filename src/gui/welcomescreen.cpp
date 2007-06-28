@@ -32,21 +32,19 @@ namespace ksudoku {
 WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	: QFrame(parent), m_collection(collection)
 {
-	connect(collection, SIGNAL(newVariant(GameVariant*)), this, SLOT(onNewVariant(GameVariant*)));
-	
 	setupUi(this);
+	gameListWidget->setModel(m_collection);
+	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(const QModelIndex&,const QModelIndex&)), this, SLOT(onCurrentVariantChange()));
+	
 	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
 	connect(startEmptyButton, SIGNAL(clicked(bool)), this, SLOT(startEmptyGame()));
 	connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));
-	
-	connect(gameListWidget, SIGNAL(currentItemChanged(QListWidgetItem*,QListWidgetItem*)), this, SLOT(onCurrentVariantChange()));
 }
 
 GameVariant* WelcomeScreen::selectedVariant() const {
-	QListWidgetItem* item = gameListWidget->currentItem();
-	if(!item) return 0;
-	return qvariant_cast<GameVariant*>(item->data(Qt::UserRole));
+	QModelIndex index = gameListWidget->selectionModel()->currentIndex();
+	return m_collection->variant(index);
 }
 
 int WelcomeScreen::difficulty() const {
@@ -55,11 +53,6 @@ int WelcomeScreen::difficulty() const {
 
 void WelcomeScreen::setDifficulty(int difficulty) {
 	difficultySlider->setValue(difficulty);
-}
-
-void WelcomeScreen::onNewVariant(GameVariant* variant) {
-	QListWidgetItem* item = new QListWidgetItem(variant->name(), gameListWidget);
-	item->setData(Qt::UserRole, qVariantFromValue(variant));
 }
 
 void WelcomeScreen::onCurrentVariantChange() {

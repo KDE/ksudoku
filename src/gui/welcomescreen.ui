@@ -20,7 +20,7 @@
      </property>
      <layout class="QVBoxLayout" >
       <item>
-       <widget class="QListWidget" name="gameListWidget" />
+       <widget class="QListView" name="gameListWidget" />
       </item>
       <item>
        <layout class="QHBoxLayout" >

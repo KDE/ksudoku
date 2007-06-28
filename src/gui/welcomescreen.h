@@ -39,8 +39,6 @@ public:
 	void setDifficulty(int difficulty);
 
 private slots:
-	void onNewVariant(GameVariant* variant);
-	
 	void onCurrentVariantChange();
 	
 	void getNewVariant();
