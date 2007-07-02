@@ -38,23 +38,20 @@ static const char description[] =
 
 static const char version[] = "0.3";
 
-static KCmdLineOptions options[] =
-{
-    { "+[URL]", I18N_NOOP( "Document to open" ), 0 },
-    KCmdLineLastOption
-};
-
 
 int main(int argc, char **argv)
 {
 	std::srand(time(0));
 
-	KAboutData about("ksudoku", I18N_NOOP("ksudoku"), version, description
-	                 , KAboutData::License_GPL_V2, "(C) 2005 Francesco Rossi"
-	                 , 0, 0, "redsh@email.it");
-	about.addAuthor( "Francesco Rossi", 0, "redsh@email.it" );
-	about.addAuthor( I18N_NOOP("Thanks to NeHe for opengl tutorials"), 0, "nehe.gamedev.net");
+	KAboutData about("ksudoku", 0, ki18n("ksudoku"), version, ki18n(description)
+	                 , KAboutData::License_GPL_V2, ki18n("(C) 2005 Francesco Rossi")
+	                 , KLocalizedString(), 0, "redsh@email.it");
+	about.addAuthor( ki18n("Francesco Rossi"), KLocalizedString(), "redsh@email.it" );
+	about.addAuthor( ki18n("Thanks to NeHe for opengl tutorials"), KLocalizedString(), "nehe.gamedev.net");
 	KCmdLineArgs::init(argc, argv, &about);
+
+	KCmdLineOptions options;
+	options.add("+[URL]", ki18n( "Document to open" ));
 	KCmdLineArgs::addCmdLineOptions(options);
 	KApplication app;
 
