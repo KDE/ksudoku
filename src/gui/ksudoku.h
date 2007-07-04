@@ -188,6 +188,8 @@ private:
 	QSignalMapper* m_enterValueMapper;
 	QSignalMapper* m_markValueMapper;
 	
+	QAction* m_gameSave;
+	QAction* m_gameSaveAs;
 	QAction* m_moveUpAct;
 	QAction* m_moveDownAct;
 	QAction* m_moveLeftAct;

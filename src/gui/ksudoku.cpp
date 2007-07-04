@@ -70,6 +70,7 @@
 #include <qdir.h>
 #include <kstandarddirs.h>
 #include <kio/job.h>
+#include <kstandardgameaction.h>
 
 #include "gamevariants.h"
 #include "welcomescreen.h"
@@ -420,16 +421,19 @@ void KSudoku::setupActions()
 
 	setAcceptDrops(true);
 
-	KStandardAction::openNew(this, SLOT(fileNew()),    actionCollection());
-	KStandardAction::open   (this, SLOT(fileOpen()),   actionCollection());
-	KStandardAction::save   (this, SLOT(fileSave()),   actionCollection());
-	KStandardAction::saveAs (this, SLOT(fileSaveAs()), actionCollection());
-	KStandardAction::print  (this, SLOT(filePrint()),  actionCollection());
-	KStandardAction::quit   (kapp, SLOT(quit()),       actionCollection());
+	KStandardGameAction::gameNew(this, SLOT(fileNew()), actionCollection());
+	KStandardGameAction::load(this, SLOT(fileOpen()), actionCollection());
+	m_gameSave = KStandardGameAction::save(this, SLOT(fileSave()), actionCollection());
+	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
+	KStandardGameAction::print(this, SLOT(filePrint()), actionCollection());
+	KStandardGameAction::quit(this, SLOT(quit()), actionCollection());
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
 
-	KDE3Action(i18n("&Export"), this, SLOT(fileExport()), "file_export");
+	QAction* gameExport = actionCollection()->addAction("game_export");
+	gameExport->setText(i18n("&Export"));
+	connect(gameExport, SIGNAL(triggered(bool)), SLOT(fileExport()));
+
 
 	for(int i = 0; i < 25; ++i) {
 		KAction* a = new KAction(this);
@@ -525,10 +529,10 @@ void KSudoku::setupActions()
 
 void KSudoku::adaptActions2View() {
 	Game game = currentGame();
-	if(game.isValid()) {
-		action("file_save")->setEnabled(true);
-		action("file_save_as")->setEnabled(true);
 
+	m_gameSave->setEnabled(game.isValid());
+	m_gameSaveAs->setEnabled(game.isValid());
+	if(game.isValid()) {
 		action("move_undo")->setEnabled(game.canUndo());
 		action("move_undo")->setEnabled(game.canRedo());
 
@@ -536,8 +540,6 @@ void KSudoku::adaptActions2View() {
 		action("move_solve")     ->setEnabled(   game.puzzle()->hasSolution());
 		action("move_dub_puzzle")->setEnabled( ! game.puzzle()->hasSolution());
 	} else {
-		action("file_save")->setEnabled(false);
-		action("file_save_as")->setEnabled(false);
 		action("move_undo")->setEnabled(false);
 		action("move_redo")->setEnabled(false);
 
@@ -624,7 +626,7 @@ void KSudoku::dropEvent(QDropEvent *event)
 
 void KSudoku::fileNew()
 {
-    // this slot is called whenever the File->New menu is selected,
+    // this slot is called whenever the Game->New menu is selected,
     // the New shortcut is pressed (usually CTRL+N) or the New toolbar
     // button is clicked
 
@@ -639,7 +641,7 @@ void KSudoku::fileNew()
 
 void KSudoku::fileOpen()
 {
-	// this slot is called whenever the File->Open menu is selected,
+	// this slot is called whenever the Game->Open menu is selected,
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
 	// button is clicked
 	// standard filedialog
@@ -662,7 +664,7 @@ void KSudoku::fileOpen()
 
 void KSudoku::fileSave()
 {
-    // this slot is called whenever the File->Save menu is selected,
+    // this slot is called whenever the Game->Save menu is selected,
     // the Save shortcut is pressed (usually CTRL+S) or the Save toolbar
     // button is clicked
 
@@ -678,7 +680,7 @@ void KSudoku::fileSave()
 
 void KSudoku::fileSaveAs()
 {
-    // this slot is called whenever the File->Save As menu is selected,
+    // this slot is called whenever the Game->Save As menu is selected,
 	Game game = currentGame();
 	if(!game.isValid()) return;
 
@@ -690,7 +692,7 @@ void KSudoku::fileSaveAs()
 
 void KSudoku::filePrint()
 {
-    // this slot is called whenever the File->Print menu is selected,
+    // this slot is called whenever the Game->Print menu is selected,
     // the Print shortcut is pressed (usually CTRL+P) or the Print toolbar
     // button is clicked
 
