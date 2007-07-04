@@ -32,7 +32,6 @@
 
 #include <KLocale>
 #include <KApplication>
-#include <KAction>
 #include <KActionCollection>
 #include <KStandardAction>
 #include <KToggleAction>
@@ -183,7 +182,7 @@ void KSudoku::updateShapesList()
 	QString variantDescr;
 	QString variantDataPath;
 
-    foreach(QString filepath, filepaths) {
+	foreach(QString filepath, filepaths) {
 		KConfig variantConfig(filepath, KConfig::OnlyLocal);
 		KConfigGroup group = variantConfig.group ("KSudokuVariant");
 
@@ -407,11 +406,11 @@ void KSudoku::clearCell() {
 	view->enterValue(0);
 }
 
-void KSudoku::KDE3Action(const QString& text, QWidget* object, const char* slot, const QString& name)
+void KSudoku::createAction(const QString& text, const char* slot, const QString& name)
 {
-	KAction* a = new KAction(text, object);
-	connect(a, SIGNAL(triggered(bool)),object, slot);
-	actionCollection()->addAction(name, a);
+	QAction* a = actionCollection()->addAction(text);
+	a->setText(name);
+	connect(a, SIGNAL(triggered(bool)), slot);
 }
 
 void KSudoku::setupActions()
@@ -425,13 +424,10 @@ void KSudoku::setupActions()
 	m_gameSave = KStandardGameAction::save(this, SLOT(gameSave()), actionCollection());
 	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(gameSaveAs()), actionCollection());
 	KStandardGameAction::print(this, SLOT(gamePrint()), actionCollection());
-	KStandardGameAction::quit(this, SLOT(quit()), actionCollection());
+	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+	createAction("game_export", SLOT(gameExport()), i18n("Export"));
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
-
-	QAction* gameExport = actionCollection()->addAction("game_export");
-	gameExport->setText(i18n("&Export"));
-	connect(gameExport, SIGNAL(triggered(bool)), SLOT(fileExport()));
 
 
 	for(int i = 0; i < 25; ++i) {
@@ -504,26 +500,20 @@ void KSudoku::setupActions()
 	addAction(clearCellAct);
 
 	//History
-	QAction* undoAct = actionCollection()->addAction("move_undo");
-	undoAct->setIcon(KIcon("edit-undo"));
-	undoAct->setText(i18n("Undo"));
-	connect(undoAct, SIGNAL(triggered(bool)), this, SLOT(undo()));
+	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
+	KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
 
-	QAction* redoAct = actionCollection()->addAction("move_redo");
-	redoAct->setIcon(KIcon("edit-redo"));
-	redoAct->setText(i18n("Redo"));
-	connect(redoAct, SIGNAL(triggered(bool)), this, SLOT(redo()));
+	KStandardGameAction::hint(this, SLOT(giveHint()), actionCollection());
+	KStandardGameAction::solve(this, SLOT(autoSolve()), actionCollection());
 
-	// TODO replace this with KStdGameAction members when having libkdegames
-	KDE3Action(i18n("Give Hint!"), this, SLOT(giveHint()), "move_hint"); //DONE
-	KDE3Action(i18n("Solve!"), this, SLOT(autoSolve()), "move_solve");	//DONE
+	createAction("move_dub_puzzle", SLOT(dubPuzzle()), i18n("Check"));
+
 	//(void)new KAction(i18n("Generate Multiple"), 0, this, SLOT(genMultiple()), actionCollection(), "genMultiple");
-	KDE3Action(i18n("Check"),  this, SLOT(dubPuzzle()), "move_dub_puzzle");
 
 	//WEB
-	KDE3Action(i18n("Home page"), this, SLOT(homepage()), "Home_page");
-	KDE3Action(i18n("Support this project"), this, SLOT(support()), "support");
-	KDE3Action(i18n("Send comment"), this, SLOT(sendComment()), "SendComment");
+	createAction("Home_page", SLOT(homepage()), i18n("Home page"));
+	createAction("support", SLOT(support()), i18n("Support this project"));
+	createAction("sendComment", SLOT(sendComment()), i18n("Send comment"));
 }
 
 void KSudoku::adaptActions2View() {

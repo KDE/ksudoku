@@ -172,7 +172,7 @@ public:
 private:
 	QWidget* wrapper;
 	QWidget* activeWidget;
-	void KDE3Action(const QString& text, QWidget* object, const char* slot, const QString& name);
+	void createAction(const QString& text, const char* slot, const QString& name);
 	void setupAccel();
 	void setupActions();
 
