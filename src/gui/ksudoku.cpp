@@ -153,8 +153,7 @@ KSudoku::KSudoku()
 	showWelcomeScreen();
 
 	// Register the gamevariants resource
-    KGlobal::dirs()->addResourceType ("gamevariant", "data",
-		KCmdLineArgs::aboutData()->appName());
+	KGlobal::dirs()->addResourceType ("gamevariant", "data", KCmdLineArgs::aboutData()->appName());
 
 	updateShapesList();
 
@@ -421,11 +420,11 @@ void KSudoku::setupActions()
 
 	setAcceptDrops(true);
 
-	KStandardGameAction::gameNew(this, SLOT(fileNew()), actionCollection());
-	KStandardGameAction::load(this, SLOT(fileOpen()), actionCollection());
-	m_gameSave = KStandardGameAction::save(this, SLOT(fileSave()), actionCollection());
-	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(fileSaveAs()), actionCollection());
-	KStandardGameAction::print(this, SLOT(filePrint()), actionCollection());
+	KStandardGameAction::gameNew(this, SLOT(gameNew()), actionCollection());
+	KStandardGameAction::load(this, SLOT(gameOpen()), actionCollection());
+	m_gameSave = KStandardGameAction::save(this, SLOT(gameSave()), actionCollection());
+	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(gameSaveAs()), actionCollection());
+	KStandardGameAction::print(this, SLOT(gamePrint()), actionCollection());
 	KStandardGameAction::quit(this, SLOT(quit()), actionCollection());
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
@@ -624,7 +623,7 @@ void KSudoku::dropEvent(QDropEvent *event)
 
 }
 
-void KSudoku::fileNew()
+void KSudoku::gameNew()
 {
     // this slot is called whenever the Game->New menu is selected,
     // the New shortcut is pressed (usually CTRL+N) or the New toolbar
@@ -639,7 +638,7 @@ void KSudoku::fileNew()
 	showWelcomeScreen();
 }
 
-void KSudoku::fileOpen()
+void KSudoku::gameOpen()
 {
 	// this slot is called whenever the Game->Open menu is selected,
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
@@ -662,7 +661,7 @@ void KSudoku::fileOpen()
 	}
 }
 
-void KSudoku::fileSave()
+void KSudoku::gameSave()
 {
     // this slot is called whenever the Game->Save menu is selected,
     // the Save shortcut is pressed (usually CTRL+S) or the Save toolbar
@@ -678,7 +677,7 @@ void KSudoku::fileSave()
 		ksudoku::Serializer::store(game, game.getUrl(), this);
 }
 
-void KSudoku::fileSaveAs()
+void KSudoku::gameSaveAs()
 {
     // this slot is called whenever the Game->Save As menu is selected,
 	Game game = currentGame();
@@ -686,11 +685,11 @@ void KSudoku::fileSaveAs()
 
 	game.setUrl(KFileDialog::getSaveUrl());
     if (!game.getUrl().isEmpty() && game.getUrl().isValid())
-    	fileSave();
+    	gameSave();
 }
 
 
-void KSudoku::filePrint()
+void KSudoku::gamePrint()
 {
     // this slot is called whenever the Game->Print menu is selected,
     // the Print shortcut is pressed (usually CTRL+P) or the Print toolbar
@@ -705,7 +704,7 @@ void KSudoku::filePrint()
 	//else ??? give message noting to print with hint what is printable ??
 }
 
-void KSudoku::fileExport()
+void KSudoku::gameExport()
 {
 	//TODO PORT
 	/*

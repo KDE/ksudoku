@@ -124,12 +124,12 @@ public slots:
 	void startGame(const Game& game);
 	
 private slots:
-	void fileNew();
-	void fileOpen();
-	void fileSave();
-	void fileSaveAs();
-	void filePrint();
-	void fileExport();
+	void gameNew();
+	void gameOpen();
+	void gameSave();
+	void gameSaveAs();
+	void gamePrint();
+	void gameExport();
 
 	void undo();
 	void redo();
