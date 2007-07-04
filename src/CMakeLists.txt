@@ -3,6 +3,7 @@ find_package(OpenGL REQUIRED)
 ########### next target ###############
 
 include_directories(
+        ${CMAKE_SOURCE_DIR}/libkdegames
         ${CMAKE_CURRENT_SOURCE_DIR}
         ${CMAKE_CURRENT_SOURCE_DIR}/gui
         ${CMAKE_CURRENT_SOURCE_DIR}/gui/views
