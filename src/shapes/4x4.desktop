@@ -1,9 +1,11 @@
 [KSudokuVariant]
 Encoding=UTF-8
 Name=4x4
+Name[fa]=۴×۴
 Description=4x4 shape puzzle
 Description[el]=Παζλ μεγέθους 4x4
 Description[es]=Rompecabezas en forma de 4x4
+Description[fa]=معمای شکل ۴×۴
 Description[ja]=4x4 型パズル
 Description[pt]=Puzzle com formato 4x4
 Description[pt_BR]=Puzzle com formato 4x4
