@@ -20,7 +20,6 @@ set(ksudoku_SRCS
 	main.cpp
 )
 
-kde4_automoc( ${ksudoku_SRCS} )
 
 kde4_add_executable(ksudoku ${ksudoku_SRCS})
 

@@ -13,8 +13,6 @@ set(ksudoku_SRCS
 
 INCLUDE_DIRECTORIES( views ksudoku_export)
 
-kde4_automoc( ${ksudoku_SRCS} )
-
 kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui configgame.ui)
 
 kde4_add_kcfg_files(ksudoku_SRCS settings.kcfgc )
@@ -28,8 +26,6 @@ kde4_add_library(ksudoku_gui ${ksudoku_SRCS})
 set(ksudoku_client_SRCS
     ksudoku_client.cpp
 )
-
-#kde4_automoc( ${ksudoku_client_SRCS} )
 
 #kde4_add_executable(ksudoku_client ${ksudoku_client_SRCS})
 
