@@ -34,7 +34,7 @@
 
 
 static const char description[] =
-    I18N_NOOP("A KDE Application");
+    I18N_NOOP("Sudoku game for KDE");
 
 static const char version[] = "0.3";
 
