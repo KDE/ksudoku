@@ -47,7 +47,7 @@ int main(int argc, char **argv)
 	                 , KAboutData::License_GPL_V2, ki18n("(C) 2005 Francesco Rossi")
 	                 , KLocalizedString(), 0, "redsh@email.it");
 	about.addAuthor( ki18n("Francesco Rossi"), KLocalizedString(), "redsh@email.it" );
-	about.addAuthor( ki18n("Thanks to NeHe for opengl tutorials"), KLocalizedString(), "nehe.gamedev.net");
+	about.addAuthor( ki18n("Thanks to NeHe for OpenGL tutorials"), KLocalizedString(), "nehe.gamedev.net");
 	KCmdLineArgs::init(argc, argv, &about);
 
 	KCmdLineOptions options;

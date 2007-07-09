@@ -17,9 +17,6 @@
     <verstretch>0</verstretch>
    </sizepolicy>
   </property>
-  <property name="windowTitle" >
-   <string>Form1</string>
-  </property>
   <layout class="QHBoxLayout" >
    <property name="margin" >
     <number>11</number>

@@ -622,7 +622,7 @@ void KSudoku::gameNew()
 	if(!currentView()) return;
 
 	// TODO onyl show this when there is a game running
-	if(KMessageBox::questionYesNo(this, i18n("Do you really want to end this game in order to start a new one")) != KMessageBox::Yes)
+	if(KMessageBox::questionYesNo(this, i18n("Do you really want to end this game in order to start a new one?")) != KMessageBox::Yes)
 		return;
 
 	showWelcomeScreen();
