@@ -150,7 +150,7 @@ int Solver::getSymmetricIndices(int index, int out[4])
 		case KSS_SYM_FOURWAY:
 			bool b[3] = {1,1,1};
 			out[1] = out[2] = out[3] = 0;
-			if(m_graph->order & 0x1 == 1) {
+			if((m_graph->order & 0x1) == 0x1) {
 				if((index % m_graph->order) == (m_graph->order-1)/2) b[0] = b[2] = 0;
 				if((index / m_graph->order) == (m_graph->order-1)/2) b[1] = b[2] = 0;
 			}
