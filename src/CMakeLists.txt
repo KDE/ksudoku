@@ -56,7 +56,7 @@ ADD_SUBDIRECTORY( shapes )
 
 ########### install files ###############
 
-install( FILES gui/ksudoku.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES gui/ksudoku.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES gui/ksudokuui.rc  DESTINATION  ${DATA_INSTALL_DIR}/ksudoku )
 install( FILES ksudokurc  DESTINATION ${CONFIG_INSTALL_DIR})
 
