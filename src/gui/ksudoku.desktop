@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Name=ksudoku
 Name[sv]=Ksudoku
+Name[te]=కెసుడొకు
 Exec=ksudoku %i %m -caption "%c"
 Icon=ksudoku
 Type=Application
