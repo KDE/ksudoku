@@ -420,7 +420,7 @@ void QSudokuButton::setConnected(bool connected) {
 }
 
 bool QSudokuButton::hasHighlight(int mask) const {
-	return m_highlights & mask == mask;
+	return ((m_highlights & mask) == mask);
 }
 
 void QSudokuButton::setHighlight(int value) {
