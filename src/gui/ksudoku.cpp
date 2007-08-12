@@ -202,11 +202,11 @@ KSudoku::~KSudoku()
 
 void KSudoku::startGame(const Game& game) {
 	KsView* view = new KsView(game, this);
-	
+
 	view->setValueListWidget(m_valueListWidget);
-	view->createView();	
+	view->createView();
 	view->setSymbolTable(m_symbols.selectTable(view->game().order()));
-	
+
 	connect(view, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
 	connect(m_valueListWidget, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
 	connect(view, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
@@ -218,7 +218,7 @@ void KSudoku::startGame(const Game& game) {
 	m_gameUI = view;
 
 	wrapper->layout()->addWidget(widget);
-	
+
 	Game game2(game);
 	connect(game2.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
 	connect(game2.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
@@ -511,9 +511,9 @@ void KSudoku::setupActions()
 	//(void)new KAction(i18n("Generate Multiple"), 0, this, SLOT(genMultiple()), actionCollection(), "genMultiple");
 
 	//WEB
-	createAction("Home_page", SLOT(homepage()), i18n("Home page"));
-	createAction("support", SLOT(support()), i18n("Support this project"));
-	createAction("sendComment", SLOT(sendComment()), i18n("Send comment"));
+	createAction("Home_page", SLOT(homepage()), i18n("Home Page"));
+	createAction("support", SLOT(support()), i18n("Support This Project"));
+	createAction("sendComment", SLOT(sendComment()), i18n("Send Comment"));
 }
 
 void KSudoku::adaptActions2View() {
@@ -715,10 +715,10 @@ void KSudoku::optionsPreferences()
 
 	GameConfig* gameConfig = new GameConfig();
 	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), "game");
-			
+
 	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
 	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "theme");
-	
+
 	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(settingsChanged()));
     dialog->show();
 }
@@ -732,7 +732,7 @@ void KSudoku::settingsChanged() {
 		SymbolTable* table = m_symbols.selectTable(order);
 		view->setSymbolTable(table);
 		m_valueListWidget->setCurrentTable(table, order);
-		
+
 		view->settingsChanged();
 	}
 }

@@ -16,7 +16,7 @@
       <string>Highlight the current row, column and box in different colors</string>
      </property>
      <property name="text" >
-      <string>Show Highlights</string>
+      <string>Show highlights</string>
      </property>
     </widget>
    </item>
@@ -26,7 +26,7 @@
       <string>Highlight cells which values are against the rules in red</string>
      </property>
      <property name="text" >
-      <string>Show Errors</string>
+      <string>Show errors</string>
      </property>
     </widget>
    </item>
