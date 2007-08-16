@@ -171,7 +171,7 @@ void ExportDlg::setSettings()
 	                   ) )
 		setOutputType(m_expDlgSettings.pageSize());
 	else
-		setOutputSize(  QString::null
+		setOutputSize(  QString::null	//krazy:exclude=nullstrassign for old broken gcc
 		              , m_expDlgSettings.pSizeVRes()
 		              , m_expDlgSettings.pSizeHRes());
 	cbLockCustomSize->setChecked(m_expDlgSettings.pSizeLock());
@@ -232,7 +232,7 @@ void ExportDlg::save(){
 	QString mimeType;
 	bool noFilename = true;
 	while(noFilename){
-		filename = KFileDialog::getSaveFileName( QString::null
+		filename = KFileDialog::getSaveFileName( QString::null	//krazy:exclude=nullstrassign for old broken gcc
 		           , KImageIO::pattern(KImageIO::Writing),0,i18n("Export Ksudoku"));
 		if(filename.isNull())
 			return; //canceled
