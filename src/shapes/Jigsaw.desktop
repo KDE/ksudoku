@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Name=Jigsaw
 Name[ja]=ジグソー
+Name[ne]=जिग्स
 Name[sv]=Pussel
 Name[zh_TW]=拼圖
 Description=Jigsaw shape puzzle
@@ -9,6 +10,7 @@ Description[el]=Κανονικό παζλ
 Description[es]=Rompecabezas al estilo Jigsaw
 Description[fa]=معمای شکل Jigsaw
 Description[ja]=ジグソー型パズル
+Description[ne]=जिग्स आकार पजल
 Description[pt]=Puzzle com formato em serra
 Description[pt_BR]=Puzzle com formato em serra
 Description[sv]=Pusselformat spel

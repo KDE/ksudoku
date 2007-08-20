@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Encoding=UTF-8
 Name=XSudoku
+Name[ne]=एक्स सुडोकु
 Name[sv]=Xsudoku
 Name[te]=ఎక్స్ సుడొకు
 Description=XSudoku shape puzzle
@@ -8,6 +9,7 @@ Description[el]=Παζλ σχήματος XSudoku
 Description[es]=Rompecabezas al estilo XSudoku
 Description[fa]=معمای شکل XSudoku
 Description[ja]=対角線型パズル
+Description[ne]=एक्स सुडोकु आकार पजल
 Description[pt]=Puzzle com o formato do XSudoku
 Description[pt_BR]=Puzzle com o formato do XSudoku
 Description[sv]=Xsudoku-format spel

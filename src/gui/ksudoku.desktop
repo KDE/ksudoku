@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=ksudoku
+Name[ne]=केडीई सुडोकु
 Name[sv]=Ksudoku
 Name[te]=కెసుడొకు
 Exec=ksudoku %i -caption "%c"
@@ -12,6 +13,7 @@ Comment[el]=KSudoku, παιχνίδι Sudoku & άλλα για το KDE
 Comment[es]=KSudoku, juego Sudoku y más para KDE
 Comment[fa]=KSudoku، بازی Sudoku و بیشتر برای KDE
 Comment[ja]=KSudoku, KDE のための数独ゲーム
+Comment[ne]=केडीईका लागि केडीई सुडोकु, सुडोकु खेल र धेरै
 Comment[pt]=KSudoku, um jogo de Sudoku e mais para o KDE
 Comment[pt_BR]=KSudoku, um jogo de Sudoku e mais para o KDE
 Comment[sv]=Ksudoku, Sudoku-spel med mera för KDE
