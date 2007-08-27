@@ -10,6 +10,11 @@
 ** destructor.
 *****************************************************************************/
 
+#ifndef KSUDOKU_EXPORTDLGBASE_UI_H
+#define KSUDOKU_EXPORTDLGBASE_UI_H
+
 void ExportDlgBase::emitAValueChanged(){
     emit aValueChanged();
 }
+
+#endif // KSUDOKU_EXPORTDLGBASE_UI_H
