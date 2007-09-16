@@ -30,9 +30,6 @@
 	@author 
 */
 
-namespace ksudoku {
-	class Game;
-}
 class SKSolver;
 //class glWindow;
 class SKGraph  : public SKBase
