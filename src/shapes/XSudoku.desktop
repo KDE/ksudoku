@@ -14,6 +14,7 @@ Description[nl]=XSudoku-vormige puzzel
 Description[pt]=Puzzle com o formato do XSudoku
 Description[pt_BR]=Puzzle com o formato do XSudoku
 Description[sv]=Xsudoku-format spel
+Description[zh_CN]=XSudoku 谜题
 Description[zh_TW]=XSudoku 遊戲
 Author=Francesco Rossi
 FileName=XSudoku.xml
