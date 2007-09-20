@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY ksudoku "<application>ksudoku 0.2</application>">
+  <!ENTITY ksudoku "<application>ksudoku</application>">
   <!ENTITY kappname "&ksudoku;"><!-- Do *not* replace kappname-->
-  <!ENTITY package "kde-module"><!-- kdebase, kdeadmin, etc -->
+  <!ENTITY package "kdegames"><!-- kdebase, kdeadmin, etc -->
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE"><!-- change language only here -->
   
@@ -96,7 +96,6 @@ Please at least include KDE, the KDE package it is in, the name
 <keyword>KDE</keyword>
 <keyword>ksudoku</keyword>
 <keyword>sudoku</keyword>
-<keyword>linux</keyword>
 </keywordset>
 
 </bookinfo>
@@ -119,8 +118,8 @@ problems. Basically a long version of the abstract.  Don't include a
 revision history. (see installation appendix comment) -->
 
 <para>
-&ksudoku; is a sudoku game for linux/KDE. Please report
-any problems or feature requests to ksudoku.sf.net .
+&ksudoku; is a sudoku game for &kde;. Please report
+any problems or feature requests to ksudoku.sf.net.
 </para>
 </chapter>
 
@@ -186,6 +185,7 @@ distribution. -->
 Program copyright 2005 Francesco Rossi <email>redsh@email.it</email>
 Program icon by 
 </para>
+<!--
 <para>
 Contributors:
 <itemizedlist>
@@ -195,6 +195,7 @@ Contributors:
 </listitem>
 </itemizedlist>
 </para>
+-->
 
 <para>
 Documentation copyright 2005 Francesco Rossi <email>redsh@email.it</email>
