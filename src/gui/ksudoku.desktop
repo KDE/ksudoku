@@ -9,6 +9,7 @@ Exec=ksudoku %i -caption "%c"
 Icon=ksudoku
 Type=Application
 X-DocPath=ksudoku/ksudoku.html
+GenericName=Sudoku Game
 Comment=KSudoku, Sudoku game & more for KDE
 Comment[de]=KSudoku, Sudoku Spiel & mehr für KDE
 Comment[el]=KSudoku, παιχνίδι Sudoku & άλλα για το KDE
