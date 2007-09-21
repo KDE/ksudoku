@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Encoding=UTF-8
 Name=Jigsaw
+Name[de]=Stichsäge
 Name[ja]=ジグソー
 Name[ne]=जिग्स
 Name[nl]=Puzzel
@@ -8,6 +9,7 @@ Name[sv]=Pussel
 Name[zh_CN]=线锯
 Name[zh_TW]=拼圖
 Description=Jigsaw shape puzzle
+Description[de]=Stichsägenförmiges Rätsel
 Description[el]=Κανονικό παζλ
 Description[es]=Rompecabezas al estilo Jigsaw
 Description[fa]=معمای شکل Jigsaw
