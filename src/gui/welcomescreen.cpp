@@ -40,6 +40,7 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
 	connect(startEmptyButton, SIGNAL(clicked(bool)), this, SLOT(startEmptyGame()));
 	connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));
+	connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(playVariant()));
 }
 
 GameVariant* WelcomeScreen::selectedVariant() const {
