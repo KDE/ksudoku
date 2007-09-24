@@ -39,7 +39,7 @@ Puzzle* PuzzleFactory::create_instance(GameType type, int order, int difficulty,
 	SKSolver* solver = 0;
 
 	bool d3 = (type == roxdoku) ? 1 : 0; //3d or not 3d
-	
+
 	switch(order){
 		case  0:
 		case  9:

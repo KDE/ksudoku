@@ -70,11 +70,12 @@ bool Puzzle::init(int difficulty, int symmetry) {
 	if(!puzzle)
 		return false;
 	
-// 	printf("init %d %d\n", difficulty, symmetry);
 	qDebug() << QString("Init a new game (difficulty %1, symmetry %2)").arg(difficulty).arg(symmetry);
 
 //	std::srand( time(0) );
 	m_solver->solve(puzzle, 1, puzzle);
+
+	qDebug() << QString("Solved game (difficulty %1, symmetry %2)").arg(difficulty).arg(symmetry);
 
 	SKPuzzle* solution = 0;
 	if(m_withSolution) {

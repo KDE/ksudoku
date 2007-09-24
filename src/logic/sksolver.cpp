@@ -26,21 +26,19 @@
 
 #include <time.h>
 
-
 // SUDOKU PUZZLE SOLVER BASIC ALGORITHM - BY FRANCESCO ROSSI 2005 redsh@email.it
 SKPuzzle stack[625+1];
 
 // #include <qtextstream.h>
 #include <qbitarray.h>
 
-#ifdef DEBUG
-	#include <iostream>
-#endif
+#include <iostream>
 
 #include "grouplookup.h"
 #include "solver.h"
 
 using namespace ksudoku;
+using namespace std;
 
 class SolverState {
 public:
@@ -263,6 +261,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 			
 //	std::srand(time(0));
 //	int  b;
+	cout << level << "\n";
 	int cnt=p->size;
 	int to=p->size*(4+6*(level==4));
 	int solutions_d=0;
@@ -277,6 +276,13 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	SKPuzzle c(p->order);
 	copy(&c, p);
 	
+	if(simmetry == SIMMETRY_RANDOM) simmetry = RANDOM(3)+2;
+	int which = RANDOM(2);
+	//if(type == 1) simmetry = SIMMETRY_CENTRAL;
+	if(simmetry == SIMMETRY_FOURWAY && order == 16) to=to*1/2;
+	if(order >= 16) simmetry = SIMMETRY_NONE; // TOO SLOW
+	if(type != 0) simmetry = SIMMETRY_NONE;
+
 	if(level > 3)
 	{
 		//TOO BUGGY
@@ -286,16 +292,10 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 		simmetry = SIMMETRY_NONE;
 	}
 
-	if(simmetry == SIMMETRY_RANDOM) simmetry = RANDOM(3)+2;
-	int which = RANDOM(2);
-	//if(type == 1) simmetry = SIMMETRY_CENTRAL;
-	if(simmetry == SIMMETRY_FOURWAY && order == 16) to=to*1/2;
-	if(order == 25) simmetry = SIMMETRY_NONE; // TOO SLOW
-
 	ITERATE(q, to) 
 	{
 		int idx = RANDOM(p->size);  //2FIX
-//		printf("%d/%d\n", q,to);
+		printf("%d/%d\n", q,to);
 		int index [4]; //{idx, };
 		int index_d = get_simmetric(order, size,simmetry, idx, which, index);
 
@@ -304,7 +304,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 			go=false;
 		if(!go) 
 		{
-			//printf("unlinked node %d %d\n",index_d,simmetry); 
+			printf("unlinked node %d %d\n",index_d,simmetry); 
 			q--; 
 			continue;
 		}
@@ -336,7 +336,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	
 	
 	int numberOfNumbersToAdd = (7*(3-level)*(((type!=1) ? ((int) sqrt(p->size)) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
-// 	printf("%d\n", numberOfNumbersToAdd);
+ 	printf("%d\n", numberOfNumbersToAdd);
 
 	ITERATE(i, numberOfNumbersToAdd)
 	{
@@ -376,7 +376,6 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 
 int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 {
-// 	return 0;
 	QVector<uint> numbers(size);
 	
 	for(uint i = 0; i < (uint)size; ++i)
@@ -401,9 +400,14 @@ int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 			break;
 	}
 	
-	if(level == 4) flags |= KSS_REM_1VALUE;
+	if(level == 4)
+	{
+		flags |= KSS_REM_1VALUE;
+	}
 	
 	int hints = (3-level)*(order+LEVINC-(order-2)*typeo);
+	cout << "Hints" << hints <<"\n";
+
 	removeValuesSimple(numbers, (hints>0) ? hints : 0, flags);
 	
 	for(uint i = 0; i < (uint)size; ++i)
