@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Name=ksudoku
 Name[de]=KSudoku
+Name[fi]=Ksudoku
 Name[ne]=केडीई सुडोकु
 Name[sv]=Ksudoku
 Name[te]=కెసుడొకు
@@ -19,6 +20,7 @@ Comment[de]=KSudoku, Sudoku Spiel & mehr für KDE
 Comment[el]=KSudoku, παιχνίδι Sudoku & άλλα για το KDE
 Comment[es]=KSudoku, juego Sudoku y más para KDE
 Comment[fa]=KSudoku، بازی Sudoku و بیشتر برای KDE
+Comment[fi]=KSudoku, Sudoku-peli ja enemmän KDE:lle
 Comment[ja]=KSudoku, KDE のための数独ゲーム
 Comment[ne]=केडीईका लागि केडीई सुडोकु, सुडोकु खेल र धेरै
 Comment[nl]=KSudoku, sudoku-spel en meer voor KDE
