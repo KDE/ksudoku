@@ -168,13 +168,20 @@ KSudoku::KSudoku()
 void KSudoku::updateShapesList()
 {
 	// TODO clear the list
+	GameVariant* variant = 0;
 
-	(void) new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
-	(void) new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
-	(void) new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
-	(void) new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
-	(void) new RoxdokuGame(i18n("Roxdoku 16 (4x4x5)"), 16, m_gameVariants);
-	(void) new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
+	variant = new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
+	variant->setDescription(i18n("The classic and fashion game"));
+	variant = new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
+	variant->setDescription(i18n("Sudoku with 16 symbols"));
+	variant = new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
+	variant->setDescription(i18n("Sudoku with 25 symbols"));
+	variant = new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
+	variant->setDescription(i18n("The Rox 3D sudoku"));
+	variant = new RoxdokuGame(i18n("Roxdoku 16 (4x4x4)"), 16, m_gameVariants);
+	variant->setDescription(i18n("The Rox 3D sudoku with 16 symbols"));
+	variant = new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
+	variant->setDescription(i18n("The Rox 3D sudoku with 25 symbols"));
 
     QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
 
@@ -192,7 +199,8 @@ void KSudoku::updateShapesList()
 		if(variantDataPath == "") continue;
 		variantDataPath = filepath.left(filepath.lastIndexOf("/")+1) + variantDataPath;
 
-		(void) new CustomGame(variantName, variantDataPath, m_gameVariants);
+		variant = new CustomGame(variantName, variantDataPath, m_gameVariants);
+		variant->setDescription(variantDescr);
 	}
 }
 
@@ -362,6 +370,7 @@ void KSudoku::enterValue(int value) {
 	if(!view) return;
 
 	view->enterValue(value);
+	view->selectValue(value);
 }
 
 void KSudoku::markValue(int value) {
@@ -369,6 +378,7 @@ void KSudoku::markValue(int value) {
 	if(!view) return;
 
 	view->markValue(value);
+	view->selectValue(value);
 }
 
 void KSudoku::moveUp() {

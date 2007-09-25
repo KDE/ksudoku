@@ -23,6 +23,7 @@
 #include <QObject>
 #include <QList>
 #include <KUrl>
+#include <QItemDelegate>
 #include <QAbstractListModel>
 
 class SKSolver;
@@ -38,6 +39,8 @@ public:
 
 public:
 	QString name() const { return m_name; }
+	QString description() const { return m_description; }
+	void setDescription(const QString& descr);
 	
 	/// This method returs whether the variant has an configure option
 	virtual bool canConfigure() const = 0;
@@ -57,9 +60,10 @@ public:
 	/// Creates the correct view for the game.
 	/// Game needs to be compatible with this GameVariant
 	virtual KsView* createView(const Game& game) const = 0;
-
+	
 private:
 	QString m_name;
+	QString m_description;
 };
 
 class GameVariantCollection : public QAbstractListModel {
@@ -84,6 +88,28 @@ signals:
 public:
 	QList<GameVariant*> m_variants;
 	bool m_autoDelete;
+};
+
+class GameVariantDelegate : public QItemDelegate {
+Q_OBJECT
+public:
+	enum Roles {
+		Description = 33
+	};
+	
+public:
+	GameVariantDelegate(QObject* parent = 0);
+public:
+	QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
+	void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
+
+protected:
+	virtual bool eventFilter(QObject* watched, QEvent* event);
+
+public:
+	QString title(const QModelIndex& index) const;
+	QString description(const QModelIndex& index) const;
+	bool configurable(const QModelIndex& index) const;
 };
 
 class SudokuGame : public GameVariant {

@@ -32,8 +32,13 @@ namespace ksudoku {
 WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	: QFrame(parent), m_collection(collection)
 {
+	QItemDelegate* delegate = new GameVariantDelegate(this);
+	
 	setupUi(this);
 	gameListWidget->setModel(m_collection);
+	gameListWidget->setItemDelegate(delegate);
+    gameListWidget->setVerticalScrollMode(QListView::ScrollPerPixel);
+	
 	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(const QModelIndex&,const QModelIndex&)), this, SLOT(onCurrentVariantChange()));
 	
 	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
@@ -60,6 +65,9 @@ void WelcomeScreen::setDifficulty(int difficulty) {
 }
 
 void WelcomeScreen::onCurrentVariantChange() {
+	QItemSelectionModel* selection = gameListWidget->selectionModel();
+	selection->select(selection->currentIndex(), QItemSelectionModel::Select);
+	
 	GameVariant* variant = selectedVariant();
 	if(!variant) {
 		configureGameButton->setEnabled(false);

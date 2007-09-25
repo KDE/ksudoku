@@ -24,6 +24,9 @@
 #include <QtDebug>
 #include <KMessageBox>
 #include <KLocale>
+#include <QPainter>
+#include <KIconLoader>
+#include <QEvent>
 
 #include "gamevariants.moc"
 
@@ -40,6 +43,10 @@ GameVariant::GameVariant(const QString& name, GameVariantCollection* collection)
 {
 	if(collection)
 		collection->addVariant(this);
+}
+
+void GameVariant::setDescription(const QString& descr) {
+	m_description = descr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -91,6 +98,8 @@ QVariant GameVariantCollection::data(const QModelIndex &index, int role) const {
 			return gameVariant->name();
 		case Qt::DecorationRole:
 			return QVariant();
+		case GameVariantDelegate::Description:
+			return gameVariant->description();
 	}
 	
 	return QVariant();
@@ -100,6 +109,91 @@ GameVariant* GameVariantCollection::variant(const QModelIndex& index) const {
 	return static_cast<GameVariant*>(index.internalPointer());
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// class GameVariantDelegate
+////////////77/////////////////////////////////////////////////////////////////
+
+GameVariantDelegate::GameVariantDelegate(QObject* parent)
+	: QItemDelegate(parent)
+{
+}
+
+QSize GameVariantDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
+	Q_UNUSED(option);
+	Q_UNUSED(index);
+	return QSize(64, 64);
+}
+
+void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
+	int leftMargin = 16;
+	int rightMargin = 12;
+	int separatorPixels = 8;
+	int iconWidth = 48, iconHeight = 48;
+	
+	// show background
+	if (option.state & QStyle::State_Selected) {
+		painter->fillRect(option.rect, option.palette.color(QPalette::Highlight));
+	} else if(index.row() % 2) {
+		painter->fillRect(option.rect, option.palette.color(QPalette::AlternateBase));
+	} else {
+		painter->fillRect(option.rect, option.palette.color(QPalette::Base));
+	}
+	
+	QRect contentRect = option.rect.adjusted(leftMargin, separatorPixels, -rightMargin, -separatorPixels);
+	
+	// Show icon
+	QPixmap iconPixmap = KIcon("", KIconLoader::global()).pixmap(iconWidth, iconHeight);
+	painter->drawPixmap(contentRect.left(), (contentRect.height() - iconPixmap.height()) / 2 + contentRect.top(), iconPixmap);
+	contentRect.adjust(iconPixmap.width() + separatorPixels*2, 0, 0, 0);
+	
+// 	// Show configuration icon
+// 	if(configurable(index)) {
+// 		QPixmap configPixmap = KIcon("configure", KIconLoader::global()).pixmap(32, 32);
+// 		painter->drawPixmap(contentRect.right() - configPixmap.width(), (contentRect.height() - configPixmap.height()) / 2 + contentRect.top(), configPixmap);
+// 		contentRect.adjust(0, 0, -(configPixmap.width() + separatorPixels), 0);
+// 	}
+	
+	// Show Title
+	QFont titleFont(painter->font());
+	titleFont.setPointSize(titleFont.pointSize() + 2);
+	titleFont.setWeight(QFont::Bold);
+	
+	QFont previousFont(painter->font());
+	painter->setFont(titleFont);
+	QString titleStr = painter->fontMetrics().elidedText(title(index), Qt::ElideRight, contentRect.width());
+	painter->drawText(contentRect, titleStr);
+	contentRect.adjust(0, separatorPixels + painter->fontMetrics().height(), 0, 0);
+	painter->setFont(previousFont);
+	
+	// Show Description
+	QString descrStr = painter->fontMetrics().elidedText(description(index), Qt::ElideRight, contentRect.width());
+	painter->drawText(contentRect, descrStr);
+}
+
+QString GameVariantDelegate::title(const QModelIndex& index) const {
+	return index.model()->data(index, Qt::DisplayRole).toString();
+}
+
+QString GameVariantDelegate::description(const QModelIndex& index) const {
+	return index.model()->data(index, Description).toString();
+}
+
+bool GameVariantDelegate::configurable(const QModelIndex& index) const {
+	const GameVariantCollection* collection = dynamic_cast<const GameVariantCollection*>(index.model());
+	if(!collection) return false;
+	
+	return collection->variant(index)->canConfigure();
+}
+
+bool GameVariantDelegate::eventFilter(QObject* watched, QEvent* event) {
+	if(event->type() == QEvent::MouseButtonPress) {
+		return true;
+	}
+	
+	// TODO insert code for handling clicks on buttons in items.
+	
+	return QItemDelegate::eventFilter(watched, event);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // class SudokuGame
