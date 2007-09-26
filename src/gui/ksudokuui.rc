@@ -3,7 +3,7 @@
 <MenuBar>
 	<Menu noMerge="1" name="game" ><text>&amp;Game</text>
 		<Action group="game_merge" name="game_new"  />
-		<Action group="game_merge" name="game_open" />
+		<Action group="game_merge" name="game_load" />
 		<Separator group="game_merge" />
 		<Action group="save_merge" name="game_save" />
 		<Action group="save_merge" name="game_save_as" />

@@ -42,7 +42,8 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(const QModelIndex&,const QModelIndex&)), this, SLOT(onCurrentVariantChange()));
 	
 	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
-	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
+	// TODO disabled due to missing per-game config dialog
+// 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
 	connect(startEmptyButton, SIGNAL(clicked(bool)), this, SLOT(startEmptyGame()));
 	connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));
 	connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(playVariant()));
@@ -70,12 +71,14 @@ void WelcomeScreen::onCurrentVariantChange() {
 	
 	GameVariant* variant = selectedVariant();
 	if(!variant) {
-		configureGameButton->setEnabled(false);
+		// TODO disabled due to missing per-game config dialog
+// 		configureGameButton->setEnabled(false);
 		playGameButton->setEnabled(false);
 		return;
 	}
 	
-	configureGameButton->setEnabled(variant->canConfigure());
+	// TODO disabled due to missing per-game config dialog
+// 	configureGameButton->setEnabled(variant->canConfigure());
 	startEmptyButton->setEnabled(variant->canStartEmpty());
 	playGameButton->setEnabled(true);
 }

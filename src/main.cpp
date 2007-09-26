@@ -34,19 +34,25 @@
 
 
 static const char description[] =
-    I18N_NOOP("Sudoku game for KDE");
+    I18N_NOOP("KSudoku - Sudokus and more");
 
-static const char version[] = "0.3";
+static const char version[] = "0.5";
 
 
 int main(int argc, char **argv)
 {
 	std::srand(time(0));
 
-	KAboutData about("ksudoku", 0, ki18n("ksudoku"), version, ki18n(description)
-	                 , KAboutData::License_GPL_V2, ki18n("(C) 2005 Francesco Rossi")
-	                 , KLocalizedString(), 0, "redsh@email.it");
-	about.addAuthor( ki18n("Francesco Rossi"), KLocalizedString(), "redsh@email.it" );
+	KAboutData about("ksudoku", 0,
+	                 ki18n("KSudoku"),
+	                 version,
+	                 ki18n("KSudoku - Sudoku games and more"),
+	                 KAboutData::License_GPL_V2,
+	                 ki18n("(c) 2005-2007 The KSudoku Authors"),
+	                 KLocalizedString(), "http://ksudoku.sourceforge.net/");
+	about.addAuthor( ki18n("Francesco Rossi"), ki18n("KSudoku Author"), "redsh@email.it" );
+	about.addAuthor( ki18n("Johannes Bergmeier"), ki18n("Maintainer"), "Johannes.Bergmeier@gmx.net" );
+	about.addAuthor( ki18n("Mick Kappenburg"), ki18n("Printing and export of 0.4"), "ksudoku@kappendburg.net");
 	about.addAuthor( ki18n("Thanks to NeHe for OpenGL tutorials"), KLocalizedString(), "nehe.gamedev.net");
 	KCmdLineArgs::init(argc, argv, &about);
 

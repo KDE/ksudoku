@@ -41,13 +41,14 @@
           </property>
          </spacer>
         </item>
-        <item>
+        <!-- Configure is disalbed until a new config dialog for games exists -->
+<!--        <item>
          <widget class="QPushButton" name="configureGameButton" >
           <property name="text" >
            <string>Configure...</string>
           </property>
          </widget>
-        </item>
+        </item>-->
         <item>
          <widget class="QPushButton" name="startEmptyButton" >
           <property name="text" >

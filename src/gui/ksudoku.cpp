@@ -433,9 +433,11 @@ void KSudoku::setupActions()
 	KStandardGameAction::load(this, SLOT(gameOpen()), actionCollection());
 	m_gameSave = KStandardGameAction::save(this, SLOT(gameSave()), actionCollection());
 	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(gameSaveAs()), actionCollection());
-	KStandardGameAction::print(this, SLOT(gamePrint()), actionCollection());
+	// TODO Print and Export are disabled due to missing port to KDE4
+// 	KStandardGameAction::print(this, SLOT(gamePrint()), actionCollection());
 	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
-	createAction("game_export", SLOT(gameExport()), i18n("Export"));
+	// TODO Print and Export are disables due to missing port to KDE4
+// 	createAction("game_export", SLOT(gameExport()), i18n("Export"));
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
 
@@ -522,8 +524,8 @@ void KSudoku::setupActions()
 
 	//WEB
 	createAction("Home_page", SLOT(homepage()), i18n("Home Page"));
-	createAction("support", SLOT(support()), i18n("Support This Project"));
-	createAction("sendComment", SLOT(sendComment()), i18n("Send Comment"));
+// 	createAction("support", SLOT(support()), i18n("Support This Project"));
+// 	createAction("sendComment", SLOT(sendComment()), i18n("Send Comment"));
 }
 
 void KSudoku::adaptActions2View() {
