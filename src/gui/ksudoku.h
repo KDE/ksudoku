@@ -37,7 +37,7 @@
 #include <knewstuff/knewstuff.h>
 #endif
 
-#include "ksudokuview.h"
+#include "sudokuview.h"
 #include "roxdokuview.h"
 
 #include "symbols.h"

@@ -19,8 +19,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifndef _KSUDOKUVIEW_H_
-#define _KSUDOKUVIEW_H_
+#ifndef _SUDOKUVIEW_H_
+#define _SUDOKUVIEW_H_
 
 #include "ksview.h"
 
@@ -47,17 +47,16 @@ class Symbols;
 
 /**
  * Gui for a sudoku puzzle
- * @TODO rename ksudokuView to sudokuView
  */
-class ksudokuView : public QWidget, public ViewInterface
+class SudokuView : public QWidget, public ViewInterface
 {
 	Q_OBJECT
 	friend class QSudokuButton;
 public:
 	/// Default constructor
-	ksudokuView(QWidget *parent, const Game& game, bool custom);
+	SudokuView(QWidget *parent, const Game& game, bool custom);
 	// Destructor
-	virtual ~ksudokuView();
+	virtual ~SudokuView();
 
 	virtual QString status() const;
 	int getHighlighted(){return highlighted;}
@@ -131,4 +130,4 @@ private:
 
 }
 
-#endif // _KSUDOKUVIEW_H_
+#endif // _SUDOKUVIEW_H_

@@ -19,7 +19,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "ksudokuview.h"
+#include "sudokuview.h"
 
 #include "sudoku_solver.h"
 
@@ -38,7 +38,7 @@
 
 namespace ksudoku {
 
-ksudokuView::ksudokuView(QWidget *parent, const Game& game, bool customd)
+SudokuView::SudokuView(QWidget *parent, const Game& game, bool customd)
 	: QWidget(parent)
 {
 	m_symbolTable = 0;
@@ -51,14 +51,14 @@ ksudokuView::ksudokuView(QWidget *parent, const Game& game, bool customd)
 	setGame(game);
 }
 
-// void ksudokuView::setup(const ksudoku::Game& game)
+// void SudokuView::setup(const ksudoku::Game& game)
 // {
 // //	std::srand( time(0) );//srandom((unsigned)time( NULL ) );
 // //	puzzle_mark_wrong=true;
 // 	
 // }
 
-ksudokuView::~ksudokuView()
+SudokuView::~SudokuView()
 {
 	for(int i = 0; i < m_buttons.size(); ++i) {
 		delete m_buttons[i];
@@ -66,7 +66,7 @@ ksudokuView::~ksudokuView()
 	}
 }
 
-QString ksudokuView::status() const
+QString SudokuView::status() const
 {
 	QString m;
 	
@@ -89,14 +89,14 @@ QString ksudokuView::status() const
 	return m;
 }
 
-QChar ksudokuView::symbol(int value) const {
+QChar SudokuView::symbol(int value) const {
 	if(m_symbolTable == 0)
 		return '\0';
 	return m_symbolTable->symbolForValue(value);
 }
 
 
-void ksudokuView::draw(QPainter& p, int height, int width) const
+void SudokuView::draw(QPainter& p, int height, int width) const
 {
 	if(m_buttons.size() == 0)
 		return;
@@ -129,11 +129,11 @@ void ksudokuView::draw(QPainter& p, int height, int width) const
 }
 
 
-void ksudokuView::btn_enter(int x, int y) {
+void SudokuView::btn_enter(int x, int y) {
 	emit cellHovered(m_game.index(x,y));
 }
 
-void ksudokuView::setCursor(int cell) {
+void SudokuView::setCursor(int cell) {
 	m_buttons[cell]->setFocus();
 	m_currentCell = cell;
 	
@@ -196,10 +196,10 @@ void ksudokuView::setCursor(int cell) {
 }
 
 
-void ksudokuView::btn_leave(int /*x*/, int /*y*/)
+void SudokuView::btn_leave(int /*x*/, int /*y*/)
 {}
 
-void ksudokuView::setGame(const ksudoku::Game& game) {
+void SudokuView::setGame(const ksudoku::Game& game) {
 	// TODO change this member so that its code can only be executed once
 	// the best way might be removeing this member and move the oce somewhere else
 	
@@ -235,7 +235,7 @@ void ksudokuView::setGame(const ksudoku::Game& game) {
 	{
 		for(int i = 0; i < m_game.size(); ++i) {
 			bool notConnectedNode = ((GraphCustom*) m_game.puzzle()->solver()->g)->optimized_d[i] == 0;
-			QSudokuButton* btn = new QSudokuButton((ksudokuView*) this, 0, 0);
+			QSudokuButton* btn = new QSudokuButton(this, 0, 0);
 
 			btn->setCustom(1);
 
@@ -270,7 +270,7 @@ void ksudokuView::setGame(const ksudoku::Game& game) {
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(update()));
 }
 
-void ksudokuView::selectValue(int value) {
+void SudokuView::selectValue(int value) {
 	if(current_selected_number == value) return;
 	current_selected_number = value;
 
@@ -280,17 +280,17 @@ void ksudokuView::selectValue(int value) {
 	emit valueSelected(value);
 }
 
-void ksudokuView::setSymbols(SymbolTable* table) {
+void SudokuView::setSymbols(SymbolTable* table) {
 	m_symbolTable = table;
 	update();
 }
 
-void ksudokuView::setFlags(ViewFlags flags) {
+void SudokuView::setFlags(ViewFlags flags) {
 	m_flags = flags;
 	update();
 }
 
-void ksudokuView::beginHighlight(int val)
+void SudokuView::beginHighlight(int val)
 {
 	if( ! m_game.hasSolver()) return;
 
@@ -308,7 +308,7 @@ void ksudokuView::beginHighlight(int val)
 	}
 }
 
-void ksudokuView::finishHighlight()
+void SudokuView::finishHighlight()
 {
 	highlighted = -1;
 
@@ -319,13 +319,13 @@ void ksudokuView::finishHighlight()
 	}
 }
 	
-void ksudokuView::resizeEvent(QResizeEvent * /*event*/ )
+void SudokuView::resizeEvent(QResizeEvent * /*event*/ )
 {
 	for(int i = 0; i < m_buttons.size(); ++i)
 		m_buttons[i]->resize();
 }
 
-void ksudokuView::wheelEvent (QWheelEvent* e) {
+void SudokuView::wheelEvent (QWheelEvent* e) {
 	int order = m_game.order();
 	int value = (current_selected_number - e->delta()/120) % order;
 	if(value <= 0) value = order - value;
@@ -333,7 +333,7 @@ void ksudokuView::wheelEvent (QWheelEvent* e) {
 	selectValue(value);
 }
 	
-void ksudokuView::slotHello(int x, int y)
+void SudokuView::slotHello(int x, int y)
 {
 	if(m_game.given(x,y))
 	{
@@ -345,7 +345,7 @@ void ksudokuView::slotHello(int x, int y)
 	}
 }
 
-void  ksudokuView::slotRight(int x, int y)
+void  SudokuView::slotRight(int x, int y)
 {
 	if(!m_game.given(x,y))
 	{
@@ -353,7 +353,7 @@ void  ksudokuView::slotRight(int x, int y)
 	}
 }
 
-void ksudokuView::update(int cell) {
+void SudokuView::update(int cell) {
 	if(cell < 0) {
 		for(int i = 0; i < m_buttons.count(); i++)
 			m_buttons[i]->updateData();
@@ -367,4 +367,4 @@ void ksudokuView::update(int cell) {
 
 }
 
-#include "ksudokuview.moc"
+#include "sudokuview.moc"

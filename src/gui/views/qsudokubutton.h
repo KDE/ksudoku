@@ -38,7 +38,7 @@ class QPaintEvent;
 
 namespace ksudoku {
 
-class ksudokuView;
+class SudokuView;
 
 enum HighlightValues {
 	HighlightRow        = 0x01, // for rows
@@ -55,7 +55,7 @@ enum HighlightValues {
 };
 
 /**
- * QSudokuButton represents a tile in KSudokuView
+ * QSudokuButton represents a tile in SudokuView
  */
 class QSudokuButton : public QWidget
 {
@@ -67,7 +67,7 @@ private:
 	QSudokuButton& operator=(QSudokuButton const& other);
 
 public:
-	explicit QSudokuButton(ksudokuView *parent = 0, int x=0, int y=0);
+	explicit QSudokuButton(SudokuView *parent = 0, int x=0, int y=0);
 	~QSudokuButton();
 
 	void resize();
@@ -129,16 +129,16 @@ private:
 	void draw(QPainter& qpainter);
 	///responsable for expressing hightlighting (if needed)
 	void paintHighlight(QPainter& qpainter);
-	///responsable for creating the major grid lines
-	void drawMajorGrid(QPainter& qpainter);
+//	///responsable for creating the major grid lines
+// 	void drawMajorGrid(QPainter& qpainter);
 	///responsable for showing the value (if available)
 	void drawValue(QPainter& painter);
 
 
-	///reference to ksudokuView parent
+	///reference to SudokuView parent
 	///(could use parent, but this makes the code a bit
 	/// more readable)
-	ksudokuView& m_ksView;
+	SudokuView& m_ksView;
 
 	uint m_highlights;
 	

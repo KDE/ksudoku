@@ -23,11 +23,9 @@
 
 #include "sudoku_solver.h"
 
-#include "ksudokuview.h"
 #include "puzzle.h"
 
 #include "history.h"
-#include "symbols.h"
 
 //Added by qt3to4:
 #include <QList>

@@ -34,7 +34,7 @@
 
 #include <QtDebug>
 
-#include "ksudokuview.h"
+#include "sudokuview.h"
 #include "roxdokuview.h"
 
 namespace ksudoku{
@@ -56,11 +56,11 @@ void KsView::createView() {
 	GameType type = m_game.puzzle()->gameType();
 	switch(type) {
 		case sudoku: {
-			setWidget(new ksudokuView(0, m_game, false));
+			setWidget(new SudokuView(0, m_game, false));
 			break;
 		}
 		case custom: {
-			setWidget(new ksudokuView(0, m_game, true));
+			setWidget(new SudokuView(0, m_game, true));
 			break;
 		}
 		case roxdoku: {

@@ -26,9 +26,11 @@
 #include <QKeyEvent>
 #include <QEvent>
 
+#include <QLinearGradient>
+
 #include "ksudoku.h"
 #include "ksudokugame.h"
-#include "ksudokuview.h"
+#include "sudokuview.h"
 
 #include <kmessagebox.h>
 #include <klocale.h>
@@ -70,7 +72,7 @@ const uint highlightColors[] = {
 	0xff000000, 0xff000000, 0xff000000, 0xff000000,
 };
 
-QSudokuButton::QSudokuButton(ksudokuView *parent, int x, int y)
+QSudokuButton::QSudokuButton(SudokuView *parent, int x, int y)
 	: QWidget(parent)
 	, m_ksView(*parent)
 	, m_x(x)
@@ -179,28 +181,36 @@ void QSudokuButton::draw(QPainter& qpainter)
 // 		Graph2d* g = dynamic_cast<m_ksView.game().puzzle()->solver()->g;
 // 		int connections=0;
 // 		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesn't work with coordinates
-		QPen pen(QColor(0xff888a85));
-		pen.setWidth(1);
 
 		bool left = g->hasLeftBorder(m_x, m_y);
 		bool top = g->hasTopBorder(m_x, m_y);
 		bool right = g->hasRightBorder(m_x, m_y);
 		bool bottom = g->hasBottomBorder(m_x, m_y);
 		//LEFT
-		pen.setColor(QColor(0xff80b3ff));
-		pen.setWidth( 1 );
-		qpainter.setPen(pen);
-		if(!top) { qpainter.drawLine(0,0,width()-1,0); }
-		if(!left) { qpainter.drawLine(0,0,0,height()-1); }
-		if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
-		if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
-		pen.setWidth( 1 );
-		pen.setColor(QColor(0xff00316e));
-		qpainter.setPen(pen);
-		if(top) { qpainter.drawLine(0,0,width()-1,0); }
-		if(left) { qpainter.drawLine(0,0,0,height()-1); }
-		if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
-		if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
+		QPen pen(QColor(0xff888a85));
+		if(!(top && left && bottom && right)) {
+			pen.setWidth( 1 );
+			qpainter.setPen(pen);
+			if(!top) { qpainter.drawLine(0,0,width()-1,0); }
+			if(!left) { qpainter.drawLine(0,0,0,height()-1); }
+			if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
+			if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
+		}
+		
+		if(top || left) {
+			pen.setWidth( 4 );
+			pen.setColor(QColor(0x555753));
+			qpainter.setPen(pen);
+			if(top) { qpainter.drawLine(0,0,width()-1,0); }
+			if(left) { qpainter.drawLine(0,0,0,height()-1); }
+		}
+		if(bottom || right) {
+			pen.setWidth( 3 );
+			pen.setColor(QColor(0xeeeeec));
+			qpainter.setPen(pen);
+			if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
+			if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
+		}
 		
 		
 		
@@ -252,21 +262,26 @@ void QSudokuButton::draw(QPainter& qpainter)
 }
 
 void QSudokuButton::paintHighlight(QPainter& qpainter) {
+// 	QRect pos = rect();
+// 	QLinearGradient grad(pos.topLeft(), pos.bottomRight());
+// 	grad.setColorAt(0.0, 0xffffffff);
+// 	grad.setColorAt(1.0, highlightColors[m_highlights & HighlightMask]);
+// 	qpainter.fillRect(pos, grad);
 	qpainter.fillRect(rect(), QBrush(highlightColors[m_highlights & HighlightMask]));
 }
 
-void QSudokuButton::drawMajorGrid(QPainter& qpainter)
-{
-	QPen pen(QColor(0,0,0));
-	pen.setWidth(4);
-	qpainter.setPen(pen);
-
-	int puzzle_base = static_cast<int>(sqrt(m_ksView.game().order()));
-	if(m_x%puzzle_base == puzzle_base-1)
-		qpainter.drawLine(rect(). width(), 0, rect(). width(), rect().height());
-	if(m_y%puzzle_base == puzzle_base-1)
-		qpainter.drawLine(0, (int)rect().height(), (int)rect().width(), (int)rect().height());
-}
+// void QSudokuButton::drawMajorGrid(QPainter& qpainter)
+// {
+// 	QPen pen(QColor(0,0,0));
+// 	pen.setWidth(4);
+// 	qpainter.setPen(pen);
+// 
+// 	int puzzle_base = static_cast<int>(sqrt(m_ksView.game().order()));
+// 	if(m_x%puzzle_base == puzzle_base-1)
+// 		qpainter.drawLine(rect(). width(), 0, rect(). width(), rect().height());
+// 	if(m_y%puzzle_base == puzzle_base-1)
+// 		qpainter.drawLine(0, (int)rect().height(), (int)rect().width(), (int)rect().height());
+// }
 
 void QSudokuButton::drawValue(QPainter& qpainter)
 {

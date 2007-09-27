@@ -3,7 +3,7 @@ set(ksudoku_views_SRCS
 	ksview.cpp
 	ArcBall.cpp
 	roxdokuview.cpp
-	ksudokuview.cpp
+	sudokuview.cpp
 	qsudokubutton.cpp
 	valuelistwidget.cpp
 )
