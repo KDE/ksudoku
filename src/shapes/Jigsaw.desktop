@@ -2,6 +2,7 @@
 Encoding=UTF-8
 Name=Jigsaw
 Name[de]=Stichsäge
+Name[gl]=Quebracabezas
 Name[ja]=ジグソー
 Name[ne]=जिग्स
 Name[nl]=Puzzel
@@ -13,6 +14,7 @@ Description[de]=Stichsägenförmiges Rätsel
 Description[el]=Κανονικό παζλ
 Description[es]=Rompecabezas al estilo Jigsaw
 Description[fa]=معمای شکل Jigsaw
+Description[gl]=Forma de quebracabezas
 Description[ja]=ジグソー型パズル
 Description[ne]=जिग्स आकार पजल
 Description[nl]=Legpuzzel-vormige puzzel
