@@ -198,15 +198,16 @@ void QSudokuButton::draw(QPainter& qpainter)
 		}
 		
 		if(top || left) {
-			pen.setWidth( 4 );
+			pen.setWidth( 5 );
 			pen.setColor(QColor(0x555753));
 			qpainter.setPen(pen);
 			if(top) { qpainter.drawLine(0,0,width()-1,0); }
 			if(left) { qpainter.drawLine(0,0,0,height()-1); }
 		}
 		if(bottom || right) {
-			pen.setWidth( 3 );
-			pen.setColor(QColor(0xeeeeec));
+			pen.setWidth( 5 );
+// 			pen.setColor(QColor(0xeeeeec));
+			pen.setColor(QColor(0xffffff));
 			qpainter.setPen(pen);
 			if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
 			if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
@@ -239,7 +240,7 @@ void QSudokuButton::draw(QPainter& qpainter)
 // 				qpainter.drawLine(0,0,0,height());
 // 			}
 // 		}
-	} else {
+	} /*else {
 // 		Graph* g = (GraphCustom*)m_ksView.game().puzzle()->solver()->g;
 		
 		QPen pen(QColor(0xff888a85));
@@ -255,19 +256,27 @@ void QSudokuButton::draw(QPainter& qpainter)
 		if(left) { qpainter.drawLine(0,0,0,height()-1); }
 		if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
 		if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
-	}
+	}*/
 
 	if(isConnected())
 		drawValue    (qpainter);
 }
 
 void QSudokuButton::paintHighlight(QPainter& qpainter) {
-// 	QRect pos = rect();
-// 	QLinearGradient grad(pos.topLeft(), pos.bottomRight());
-// 	grad.setColorAt(0.0, 0xffffffff);
-// 	grad.setColorAt(1.0, highlightColors[m_highlights & HighlightMask]);
-// 	qpainter.fillRect(pos, grad);
-	qpainter.fillRect(rect(), QBrush(highlightColors[m_highlights & HighlightMask]));
+	Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
+	if(!g) return;
+	bool left = g->hasLeftBorder(m_x, m_y);
+	bool top = g->hasTopBorder(m_x, m_y);
+	bool right = g->hasRightBorder(m_x, m_y);
+	bool bottom = g->hasBottomBorder(m_x, m_y);
+	
+	QRect pos = rect();
+// 	QLinearGradient grad(pos.topLeft()+QPoint(0,-pos.height()), pos.bottomRight());
+	QLinearGradient grad(0,-pos.height(),pos.width(),pos.height());
+	grad.setColorAt(0.0, 0xffffffff);
+	grad.setColorAt(1.0, highlightColors[m_highlights & HighlightMask]);
+	qpainter.fillRect(pos.adjusted(left?3:1, top?3:1, right?-3:-1, bottom?-3:-1), grad);
+// 	qpainter.fillRect(rect(), QBrush(highlightColors[m_highlights & HighlightMask]));
 }
 
 // void QSudokuButton::drawMajorGrid(QPainter& qpainter)
