@@ -40,36 +40,68 @@
 
 namespace ksudoku {
 	
+enum GameColors {
+	// Standard background
+	HColorStd = 0xffbfd9ff,
 
+	// Pure highlights
+	HColorR = 0xff80b3ff, // Row highlight
+	HColorC = 0xfff082b0, // Column highlight
+	HColorB = 0xff00cc88, // Block highlight
 
+	// Combinations of highlights
+	HColorRC  = 0xffe8b7d7,
+	HColorRB  = 0xff6193cf,
+	HColorCB  = 0xffb3925d,
+	HColorRCB = 0xff888a85,
 
-// Highlights
+	// Special highlights
+	HColorSStd = HColorStd,
+	HColorSR   = HColorR,
+	HColorSC   = HColorC,
+	HColorSB   = HColorB,
+	HColorSRC  = HColorRC,
+	HColorSRB  = HColorRB,
+	HColorSCB  = HColorCB,
+	HColorSRCB = HColorRCB,
+
+	// Highlights for the helper 
+	HColorGood = 0xffbfffbf,
+	HColorBad  = 0xffffbfbf,
+ 
+	// Border colors
+	BColorDark   = 0xff555753,
+	BColorLight  = 0xffffffff, // 0xeeeeec
+	BColorSimple = 0xff888a85
+};
+
+// Lookup for Highlights
 // Bit 1: Horz clique highlight
 // Bit 2: Vert clique highlight
 // Bit 3: Other Clique highlight
 // Bit 4: Use Help Highlights
-// Bit 5: Help Highlight for "allowed"
+// Bit 5: Helper Highlight Good/Bad
 // Bit 6: Special highlights (e.g. cross in XSudoku)
 const uint highlightColors[] = {
-	0xffbfd9ff, 0xff80b3ff, 0xfff082b0, 0xffe8b7d7,
-	0xff00cc88, 0xff6193cf, 0xffb3925d, 0xff888a85,
-	0xffffbfbf, 0xffffbfbf, 0xffffbfbf, 0xffffbfbf,
-	0xffffbfbf, 0xffffbfbf, 0xffffbfbf, 0xffffbfbf,
+	HColorStd,  HColorR,    HColorC,    HColorRC,
+	HColorB,    HColorRB,   HColorCB,   HColorRCB,
+	HColorBad,  HColorBad,  HColorBad,  HColorBad,
+	HColorBad,  HColorBad,  HColorBad,  HColorBad,
 
-	0xffeeeeec, 0xffa4c0e4, 0xfffcd9b0, 0xfff9cade,
-	0xff99dcc6, 0xffa8dde0, 0xffd8e8c2, 0xffd3d7cf,
-	0xffbfffbf, 0xffbfffbf, 0xffbfffbf, 0xffbfffbf,
-	0xffbfffbf, 0xffbfffbf, 0xffbfffbf, 0xffbfffbf,
+	HColorStd,  HColorR,    HColorC,    HColorRC,
+	HColorB,    HColorRB,   HColorCB,   HColorRCB,
+	HColorGood, HColorGood, HColorGood, HColorGood,
+	HColorGood, HColorGood, HColorGood, HColorGood,
 
-	0xffeeeeec, 0xffa4c0e4, 0xfffcd9b0, 0xfff9cade,
-	0xff99dcc6, 0xffa8dde0, 0xffd8e8c2, 0xffd3d7cf,
-	0xff000000, 0xff000000, 0xff000000, 0xff000000,
-	0xff000000, 0xff000000, 0xff000000, 0xff000000,
+	HColorSStd, HColorSR,   HColorSC,   HColorSRC,
+	HColorSB,   HColorSRB,  HColorSCB,  HColorSRCB,
+	HColorBad,  HColorBad,  HColorBad,  HColorBad,
+	HColorBad,  HColorBad,  HColorBad,  HColorBad,
 
-	0xff000000, 0xff000000, 0xff000000, 0xff000000,
-	0xff000000, 0xff000000, 0xff000000, 0xff000000,
-	0xff000000, 0xff000000, 0xff000000, 0xff000000,
-	0xff000000, 0xff000000, 0xff000000, 0xff000000,
+	HColorSStd, HColorSR,   HColorSC,   HColorSRC,
+	HColorSB,   HColorSRB,  HColorSCB,  HColorSRCB,
+	HColorGood, HColorGood, HColorGood, HColorGood,
+	HColorGood, HColorGood, HColorGood, HColorGood,
 };
 
 QSudokuButton::QSudokuButton(SudokuView *parent, int x, int y)
@@ -88,8 +120,9 @@ QSudokuButton::QSudokuButton(SudokuView *parent, int x, int y)
 	m_text = " ";
 
 	setFocusPolicy(Qt::ClickFocus);
-	m_connected=true;
 	m_custom=false;
+	
+	setAttribute(Qt::WA_OpaquePaintEvent, true);
 }
 
 QSudokuButton::~QSudokuButton()
@@ -112,34 +145,29 @@ void QSudokuButton::resize()
 
 void QSudokuButton::enterEvent (QEvent *)
 {
-	if(!isConnected()) return;
 	emit enter(m_x,m_y);
 	m_mousein = true;
 }
 
 void QSudokuButton::focusOutEvent  (QEvent *) 
 {//TODO it does not work
-	if(!isConnected()) return;
 	emit finishHighlight();
 }
 
 void QSudokuButton::leaveEvent (QEvent *) 
 {
-	if(!isConnected()) return;
 	emit leave(m_x,m_y);
 	m_mousein = false;
 }
 
 void QSudokuButton::exitEvent (QEvent *) 
 {
-	if(!isConnected()) return;
 	m_mousein = false;
 	emit enter(m_x,m_y);
 }
 
 void QSudokuButton::keyPressEvent ( QKeyEvent * e ) 
 {
-	if(!isConnected()) return;
 	if(e->modifiers() & Qt::ControlModifier)
 		emit beginHighlight(m_ksView.game().value(m_x,m_y));
 	e->ignore(); //pass on
@@ -168,98 +196,45 @@ void QSudokuButton::draw(QPainter& qpainter)
 {
 	qpainter.eraseRect(rect());
 
-	if(isConnected())
-		paintHighlight(qpainter);
+	paintHighlight(qpainter);
 
-	//draw border
 	
 	Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
 	if(!g) return;
 	
-	if(isConnected())
-	{
-// 		Graph2d* g = dynamic_cast<m_ksView.game().puzzle()->solver()->g;
-// 		int connections=0;
-// 		int myIndex = g->cellIndex(m_x,m_y,0); //TODO m_x and m_y are swapped but there is definitely something that doesn't work with coordinates
-
-		bool left = g->hasLeftBorder(m_x, m_y);
-		bool top = g->hasTopBorder(m_x, m_y);
-		bool right = g->hasRightBorder(m_x, m_y);
-		bool bottom = g->hasBottomBorder(m_x, m_y);
-		//LEFT
-		QPen pen(QColor(0xff888a85));
-		if(!(top && left && bottom && right)) {
-			pen.setWidth( 1 );
-			qpainter.setPen(pen);
-			if(!top) { qpainter.drawLine(0,0,width()-1,0); }
-			if(!left) { qpainter.drawLine(0,0,0,height()-1); }
-			if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
-			if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
-		}
-		
-		if(top || left) {
-			pen.setWidth( 5 );
-			pen.setColor(QColor(0x555753));
-			qpainter.setPen(pen);
-			if(top) { qpainter.drawLine(0,0,width()-1,0); }
-			if(left) { qpainter.drawLine(0,0,0,height()-1); }
-		}
-		if(bottom || right) {
-			pen.setWidth( 5 );
-// 			pen.setColor(QColor(0xeeeeec));
-			pen.setColor(QColor(0xffffff));
-			qpainter.setPen(pen);
-			if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
-			if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
-		}
-		
-		
-		
-// 		if((m_y-1)>=0)
-// 		{
-// 			if(g->linksLeft[myIndex]!=0)
-// 			{
-// 				connections = 3-g->linksLeft[myIndex];
-// 				if(connections<0) connections = 0;
-// 				pen.setWidth( 1 + connections);
-// 				pen.setColor(QColor(90/(connections+1),90/(connections+1),90/(connections+1)));
-// 				qpainter.setPen(pen);
-// 				qpainter.drawLine(0,0,width(),0);
-// 			}
-// 		}
-// 		//TOP
-// 		if((m_x-1)>=0)
-// 		{
-// 			if(g->linksUp[myIndex]!=0)
-// 			{ 
-// 				connections = 3-g->linksUp[myIndex];
-// 				if(connections<0) connections = 0;
-// 				pen.setWidth(1 + connections);
-// 				pen.setColor(QColor(90/(connections+1),90/(connections+1),90/(connections+1)));
-// 				qpainter.setPen(pen);
-// 				qpainter.drawLine(0,0,0,height());
-// 			}
-// 		}
-	} /*else {
-// 		Graph* g = (GraphCustom*)m_ksView.game().puzzle()->solver()->g;
-		
-		QPen pen(QColor(0xff888a85));
-		pen.setWidth(1);
-		bool left = g->hasLeftBorder(m_x, m_y);
-		bool top = g->hasTopBorder(m_x, m_y);
-		bool right = g->hasRightBorder(m_x, m_y);
-		bool bottom = g->hasBottomBorder(m_x, m_y);
+	//draw border
+	bool left = g->hasLeftBorder(m_x, m_y);
+	bool top = g->hasTopBorder(m_x, m_y);
+	bool right = g->hasRightBorder(m_x, m_y);
+	bool bottom = g->hasBottomBorder(m_x, m_y);
+	//LEFT
+	QPen pen;
+	if(!(top && left && bottom && right)) {
 		pen.setWidth( 1 );
-		pen.setColor(QColor(0xff2e3436));
+		pen.setColor(QColor(BColorSimple));
+		qpainter.setPen(pen);
+		if(!top) { qpainter.drawLine(0,0,width()-1,0); }
+		if(!left) { qpainter.drawLine(0,0,0,height()-1); }
+		if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
+		if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
+	}
+		
+	if(top || left) {
+		pen.setWidth( 5 );
+		pen.setColor(QColor(BColorDark));
 		qpainter.setPen(pen);
 		if(top) { qpainter.drawLine(0,0,width()-1,0); }
 		if(left) { qpainter.drawLine(0,0,0,height()-1); }
+	}
+	if(bottom || right) {
+		pen.setWidth( 5 );
+		pen.setColor(QColor(BColorLight));
+		qpainter.setPen(pen);
 		if(bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
 		if(right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
-	}*/
+	}
 
-	if(isConnected())
-		drawValue    (qpainter);
+	drawValue    (qpainter);
 }
 
 void QSudokuButton::paintHighlight(QPainter& qpainter) {
@@ -271,26 +246,12 @@ void QSudokuButton::paintHighlight(QPainter& qpainter) {
 	bool bottom = g->hasBottomBorder(m_x, m_y);
 	
 	QRect pos = rect();
-// 	QLinearGradient grad(pos.topLeft()+QPoint(0,-pos.height()), pos.bottomRight());
 	QLinearGradient grad(0,-pos.height(),pos.width(),pos.height());
 	grad.setColorAt(0.0, 0xffffffff);
 	grad.setColorAt(1.0, highlightColors[m_highlights & HighlightMask]);
 	qpainter.fillRect(pos.adjusted(left?3:1, top?3:1, right?-3:-1, bottom?-3:-1), grad);
 // 	qpainter.fillRect(rect(), QBrush(highlightColors[m_highlights & HighlightMask]));
 }
-
-// void QSudokuButton::drawMajorGrid(QPainter& qpainter)
-// {
-// 	QPen pen(QColor(0,0,0));
-// 	pen.setWidth(4);
-// 	qpainter.setPen(pen);
-// 
-// 	int puzzle_base = static_cast<int>(sqrt(m_ksView.game().order()));
-// 	if(m_x%puzzle_base == puzzle_base-1)
-// 		qpainter.drawLine(rect(). width(), 0, rect(). width(), rect().height());
-// 	if(m_y%puzzle_base == puzzle_base-1)
-// 		qpainter.drawLine(0, (int)rect().height(), (int)rect().width(), (int)rect().height());
-// }
 
 void QSudokuButton::drawValue(QPainter& qpainter)
 {
@@ -343,7 +304,6 @@ void QSudokuButton::drawValue(QPainter& qpainter)
 
 void QSudokuButton::mousePressEvent (QMouseEvent *mouseevent)
 {
-	if(!isConnected()) return;
 	if(mouseevent->button() == Qt::LeftButton)
 		emit clicked2 (m_x,m_y);
 		
@@ -436,11 +396,6 @@ void QSudokuButton::updateData() {
 	
 	m_needRedraw = true;
 	update();
-}
-
-void QSudokuButton::setConnected(bool connected) {
-		m_connected = connected;
-		setAttribute(Qt::WA_OpaquePaintEvent, connected);
 }
 
 bool QSudokuButton::hasHighlight(int mask) const {

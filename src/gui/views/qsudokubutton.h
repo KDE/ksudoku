@@ -81,9 +81,6 @@ public:
 	void keyPressEvent  ( QKeyEvent* e );
 	
 	void updateData();
-
-	bool isConnected(){return m_connected;}
-	void setConnected(bool b);
 	
 	bool isCustom(){return m_custom;}
 	void setCustom(bool b){m_custom=b;}
@@ -146,7 +143,6 @@ private:
 	int  m_y;
 	bool m_mousein;
 	QString m_text;
-	bool m_connected;
 	bool m_custom;
 	QFont m_font;
 	ksudoku::ButtonState m_state;

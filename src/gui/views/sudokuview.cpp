@@ -111,6 +111,7 @@ void SudokuView::draw(QPainter& p, int height, int width) const
 	p.scale(scaleW,scaleH);
 
 	for(int i = 0; i < m_buttons.size(); ++i){
+		if(!m_buttons[i]) continue;
 		int x,y;
 		if(custom==0)
 		{
@@ -134,6 +135,8 @@ void SudokuView::btn_enter(int x, int y) {
 }
 
 void SudokuView::setCursor(int cell) {
+	if(!m_buttons[cell]) return;
+	
 	m_buttons[cell]->setFocus();
 	m_currentCell = cell;
 	
@@ -191,6 +194,7 @@ void SudokuView::setCursor(int cell) {
 	}
 	
 	for(int i = 0; i < m_game.size(); ++i) {
+		if(!m_buttons[i]) continue;
 		m_buttons[i]->setHighlight(HighlightBaseMask, m_highlightUpdate[i]);
 	}
 }
@@ -235,30 +239,30 @@ void SudokuView::setGame(const ksudoku::Game& game) {
 	{
 		for(int i = 0; i < m_game.size(); ++i) {
 			bool notConnectedNode = ((GraphCustom*) m_game.puzzle()->solver()->g)->optimized_d[i] == 0;
+			
+			if(notConnectedNode) {
+				m_buttons[i] = 0;
+				continue;
+			}
+
 			QSudokuButton* btn = new QSudokuButton(this, 0, 0);
 
 			btn->setCustom(1);
 
-			if(!notConnectedNode)
-			{
-				btn->setConnected(true);
-				connect(btn, SIGNAL(clicked2(int, int)), this, SLOT(slotHello(int, int)));
-				connect(btn, SIGNAL(rightclicked(int, int)), this, SLOT(slotRight(int, int)));
-				connect(btn, SIGNAL(enter(int,int)), this, SLOT(btn_enter(int,int)));
-				connect(btn, SIGNAL(leave(int,int)), this, SLOT(btn_leave(int,int)));
-				connect(btn, SIGNAL(beginHighlight(int)), this, SLOT(beginHighlight(int)));
-				connect(btn, SIGNAL(finishHighlight()), this, SLOT(finishHighlight()));
-			}
-			else
-			{
-				btn->setConnected(false);
-			}
+			connect(btn, SIGNAL(clicked2(int, int)), this, SLOT(slotHello(int, int)));
+			connect(btn, SIGNAL(rightclicked(int, int)), this, SLOT(slotRight(int, int)));
+			connect(btn, SIGNAL(enter(int,int)), this, SLOT(btn_enter(int,int)));
+			connect(btn, SIGNAL(leave(int,int)), this, SLOT(btn_leave(int,int)));
+			connect(btn, SIGNAL(beginHighlight(int)), this, SLOT(beginHighlight(int)));
+			connect(btn, SIGNAL(finishHighlight()), this, SLOT(finishHighlight()));
+				
 			m_buttons[i] = btn;
 		}
 		
 	
 	}
 	for(int i = 0; i < m_buttons.size(); ++i) {
+		if(!m_buttons[i]) continue;
 		m_buttons[i]->setY(g->cellPosY(i));
 		m_buttons[i]->setX(g->cellPosX(i));
 		m_buttons[i]->updateData();
@@ -303,6 +307,7 @@ void SudokuView::beginHighlight(int val)
 		return;
 	
 	for(int i = 0; i < m_game.size(); ++i) {
+		if(!m_buttons[i]) continue;
 		m_buttons[i]->setHighlight(HighlightHelpMask, highlightedBtns[i] ? HighlightShowHelp : HighlightHelpMask);
 		m_buttons[i]->update();
 	}
@@ -314,6 +319,7 @@ void SudokuView::finishHighlight()
 
 	for(int i = 0; i < m_game.size(); ++i)
 	{
+		if(!m_buttons[i]) continue;
 		m_buttons[i]->setHighlight(HighlightHelpMask, HighlightNone);
 		m_buttons[i]->update();
 	}
@@ -321,8 +327,10 @@ void SudokuView::finishHighlight()
 	
 void SudokuView::resizeEvent(QResizeEvent * /*event*/ )
 {
-	for(int i = 0; i < m_buttons.size(); ++i)
+	for(int i = 0; i < m_buttons.size(); ++i) {
+		if(!m_buttons[i]) continue;
 		m_buttons[i]->resize();
+	}
 }
 
 void SudokuView::wheelEvent (QWheelEvent* e) {
@@ -355,8 +363,10 @@ void  SudokuView::slotRight(int x, int y)
 
 void SudokuView::update(int cell) {
 	if(cell < 0) {
-		for(int i = 0; i < m_buttons.count(); i++)
+		for(int i = 0; i < m_buttons.count(); i++) {
+			if(!m_buttons[i]) continue;
 			m_buttons[i]->updateData();
+		}
 		return;
 	}
 	if(m_buttons[cell])
