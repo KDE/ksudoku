@@ -20,37 +20,34 @@
 #ifndef KSUDOKUGENERATEEVENT_H
 #define KSUDOKUGENERATEEVENT_H
 
-#include <qevent.h>
-//Added by qt3to4:
-#include <QCustomEvent>
+#include <QEvent>
 #include "ksudoku_types.h"
 
 namespace ksudoku {
 
-enum GEType { puzzleChanged, sizeChanged };
+enum GEType { puzzleChanged = QEvent::User + 1, sizeChanged = QEvent::User + 2 };
 
 /**
  * Class "needed" for communication between Qt threads
  */
-class GenerateEvent : public QCustomEvent{
+
+class GenerateEvent : public QEvent
+{
 public:
 	///constructor
 	inline GenerateEvent(GEType event);
-
 	///@return event type
 	inline GEType event() const;
-private:
-	GEType m_event;
 };
 
-GenerateEvent::GenerateEvent(GEType event)
-	: QCustomEvent( GENERATE_EVENT )
-	, m_event(event)
-{};
+GenerateEvent::GenerateEvent(GEType eventg)
+	: QEvent( (QEvent::Type) eventg )
+{
+};
 	
 GEType GenerateEvent::event() const
 {
-	return m_event;
+	return (GEType) type();
 }
 
 }

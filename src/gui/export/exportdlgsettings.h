@@ -69,7 +69,8 @@ public:
 	void setGameHCount(int val) { m_kconfig.writeEntry( EXPGAMEHCOUNT , val); }
 	void setGameVCount(int val) { m_kconfig.writeEntry( EXPGAMEVCOUNT , val); }
 	void setGameMargin(int val) { m_kconfig.writeEntry( EXPGAMEMARGIN , val); }
-	void setGameAspectRatio    (float val) { m_kconfig.writeEntry( EXPGAMEASPECTR , val); }
+	//TODO PORT
+	void setGameAspectRatio    (float val) { /*m_kconfig.writeEntry( EXPGAMEASPECTR , val);*/ }
 	void setGeneratePreviewGame(bool  val) { m_kconfig.writeEntry( EXPGENPREVIEW  , (val == 0)?0:1); }
 	void setUseCurrentGame     (bool  val) { m_kconfig.writeEntry( USECURRGAME    , (val == 0)?0:1); }
 

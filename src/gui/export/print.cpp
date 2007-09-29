@@ -77,7 +77,8 @@ void Print::drawUsingPrinterSettings(QPainter& p, float scale, float aspect, int
 	else
 		w = static_cast<int>(h* desiredAS);
 
-	m_view.draw(p, h, w);
+//TODO PORT
+//	m_view.draw(p, h, w);
 }
 
 

@@ -82,13 +82,13 @@ void ExportPuzzles::run()
 
 void ExportPuzzles::resize(uint newSize)
 {
-	m_otherActionRequired++;
+	m_otherActionRequired.acquire();
 
-	while(running())
+	while(isRunning())
 		msleep(50);
 
 	QMutexLocker locker(&m_mutex);
-	m_otherActionRequired--; //got lock => release interupt
+	m_otherActionRequired.release(); //got lock => release interupt
 	
 	m_size = newSize;
 	m_deletionLock.lock();
@@ -103,13 +103,13 @@ void ExportPuzzles::resize(uint newSize)
 
 void ExportPuzzles::regenerate()
 {
-	m_otherActionRequired++;
+	m_otherActionRequired.acquire();
 
-	while(running())
+	while(isRunning())
 		msleep(50);
 
 	QMutexLocker locker(&m_mutex);
-	m_otherActionRequired--; //got lock => release interupt
+	m_otherActionRequired.release(); //got lock => release interupt
 
 	m_deletionLock.lock();
 	destroy();

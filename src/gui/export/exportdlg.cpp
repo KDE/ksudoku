@@ -46,7 +46,7 @@
 
 #include <q3picture.h>
 //Added by qt3to4:
-#include <QCustomEvent>
+#include <QEvent>
 #include <QPixmap>
 #include <QVBoxLayout>
 
@@ -70,10 +70,12 @@ ExportDlg::ExportDlg(Puzzle const& currPuzzle, Symbols const& symbols)
 	QLayout* ql = fPreview->layout();
 	if(! ql)
 		ql = new QVBoxLayout(fPreview);
-	ql->add(m_qwPreview);
+
+	ql->addWidget (m_qwPreview);
 
 	//fill paper options
-	kcbPageSize->insertStringList(m_pageSize.pageSizeNames());
+	//TODO port
+//	kcbPageSize->insertStringList(m_pageSize.pageSizeNames());
 
 	///@TODO implement multiple output pages from same settings (feature)
 	kispPageCount->hide(); //hide for now
@@ -127,7 +129,7 @@ void ExportDlg::polish()
 	updateProgressBar();
 }
 
-void ExportDlg::customEvent(QCustomEvent* e)
+void ExportDlg::customEvent(QEvent* e)
 {
 	if(e->type() == GENERATE_EVENT){  // It must be a GenerateEvent
 		GenerateEvent* ge = dynamic_cast<GenerateEvent*>(e);
@@ -219,36 +221,39 @@ void ExportDlg::print(){
 
 		QPainter p;
 		p.begin(&printer);
-		draw(p, printer->height(), printer->width());
+		draw(p, printer.height(), printer.width());
 		p.end();
 	}
 }
 
 void ExportDlg::save(){
 	//get filename for saving
-	KImageIO::registerFormats(); ///@TODO only need to do this once ???, move to main
+
+//TODO PORT
+//	KImageIO::registerFormats(); ///@TODO only need to do this once ???, move to main
 
 	QString filename;
 	QString mimeType;
 	bool noFilename = true;
 	while(noFilename){
-		filename = KFileDialog::getSaveFileName( QString::null	//krazy:exclude=nullstrassign for old broken gcc
+		filename = KFileDialog::getSaveFileName( KUrl()	//krazy:exclude=nullstrassign for old broken gcc
 		           , KImageIO::pattern(KImageIO::Writing),0,i18n("Export Ksudoku"));
 		if(filename.isNull())
 			return; //canceled
 
 		//check if filename is valed etc.
-		mimeType = KImageIO::type(filename);
+//TODO PORT
+/*		mimeType = KImageIO::typeForMime(filename);
 		if( ! mimeType ){
 			KMessageBox::information(this, i18n("Sorry. I am not able to export to this filetype (filetype is guessed from filename suffix).\nHint: select a type from the filter bar instead"));
 			continue;
 		}
-		else{
+		else{*/
 			if(QFile::exists(filename))
 				if(KMessageBox::Yes != KMessageBox::questionYesNo(this, i18n("A document with this name already exists.\nDo you want to overwrite it?")))
 					continue;
 			noFilename = false; //filename given and correct
-		}
+//		}
 	}
 
 	//create the data to export
@@ -260,8 +265,10 @@ void ExportDlg::save(){
 
 	//make sure puzzles exists !!
 	createPuzzles();
-	while(m_puzzleList.running()) //consider running as puzzles not available
-		usleep(50000);
+
+//TODO PORT
+//	while(m_puzzleList.isRunning()) //consider running as puzzles not available
+//		 usleep(50000);
 
 	QPixmap pm(w,h);
 	QPainter p(&pm);
@@ -270,7 +277,8 @@ void ExportDlg::save(){
 	p.end();
 
 	//write the data to file
-	pm.save(filename, mimeType, -1);
+//TODO PORT
+//	pm.save(filename, mimeType, -1);
 }
 
 
@@ -293,9 +301,11 @@ void ExportDlg::updateProgressBar()
 	else{
 		status = i18n("generating puzzle %1 of %2", currCount,currSize);
 	}
-	kProgress->setTotalSteps(currSize);
-	kProgress->setFormat(status);
-	kProgress->setProgress(currCount);
+	//TODO PORT
+//had to use QProgressBar instead of KProgress
+//	kProgress->setTotalSteps(currSize);
+//	kProgress->setFormat(status);
+//	kProgress->setProgress(currCount);
 }
 
 void ExportDlg::draw(QPainter& qpainter, int height, int width) const
@@ -352,7 +362,8 @@ void ExportDlg::draw(QPainter& qpainter, int height, int width
 					}
 				}
 			}
-			qpainter.resetXForm();
+//TODO PORT
+//			qpainter.resetXForm();
 		}
 	}
 }
@@ -400,10 +411,13 @@ void ExportDlg::setOutputSize(const QString& type, int height, int width)
 				//return error
 
 		//set view to custom (expect it to be last entry)
-		kcbPageSize->setCurrentItem(kcbPageSize->count()-1);
+
+//TODO PORT
+//		kcbPageSize->setCurrentItem(kcbPageSize->count()-1);
 	}
 	else{
-		kcbPageSize->setCurrentItem(m_pageSize.index(type));
+//TODO PORT
+//		kcbPageSize->setCurrentItem(m_pageSize.index(type));
 		QSize size(m_pageSize.size(type)); ///@todo check what happens it type doesn't exist
 		kisbVres->setValue(size.height());
 		kisbHres->setValue(size.width ());

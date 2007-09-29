@@ -37,21 +37,23 @@ void ExportPreview::resizeEvent(QResizeEvent* event)
 
 void ExportPreview::paintEvent(QPaintEvent* /*event*/)
 {
-	bitBlt(this, 0, 0, &m_qpixmap,0,0,-1,-1);
+//TODO PORT
+//	bitBlt(this, 0, 0, &m_qpixmap,0,0,-1,-1);
 	//QWidget::paintEvent(event);
 }
 
 void ExportPreview::draw()
 {
 	QMutexLocker locker(&m_mutex);
-
-	m_qpixmap.resize(size());
+//TODO PORT
+//	m_qpixmap.resize(size());
 	m_qpixmap.fill(Qt::black);
 
 	m_qpainter.begin(&m_qpixmap);
 
 	QSize ps = m_eDlg->currentPageSize();
-	ps.scale(m_qpixmap.size(),QSize::ScaleMin);
+//TODO PORT
+//	ps.scale(m_qpixmap.size(),QSize::ScaleMin);
 	m_eDlg->draw(m_qpainter, ps.height(), ps.width());
 
 	m_qpainter.end();

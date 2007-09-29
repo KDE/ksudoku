@@ -20,11 +20,10 @@
 #ifndef KSUDOKUEXPORTPUZZLES_H
 #define KSUDOKUEXPORTPUZZLES_H
 
-#include <qthread.h>
-#include <qobject.h>
+#include <QThread>
 #include <q3valuelist.h>
-#include <qmutex.h>
-#include <q3semaphore.h>
+#include <QMutex>
+#include <QSemaphore>
 
 namespace ksudoku {
 
@@ -35,7 +34,7 @@ typedef Q3ValueList<Puzzle*> ListType;
 /**
  * Holds the games generated for export
  */
-class ExportPuzzles : public QObject, public QThread
+class ExportPuzzles : public QThread
 {
 	Q_OBJECT
 private:

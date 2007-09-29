@@ -27,12 +27,16 @@
 #include "pagesize.h"
 #include "exportpuzzles.h"
 
-#include <qobject.h>
-//Added by qt3to4:
-#include <QCustomEvent>
-
 //generated
 #include "ui_exportdlgbase.h"
+#include <QEvent>
+
+class MyCustomEvent : public QEvent
+{
+
+};
+
+using namespace Ui;
 
 namespace ksudoku {
 
@@ -93,7 +97,7 @@ signals:
 
 protected:
 	///reimplemented from QObject
-	virtual void customEvent(QCustomEvent* e);
+	virtual void customEvent(QEvent * e);
 	
 	///get visable and unvisavle values and store them
 	void getSettings();
@@ -126,7 +130,7 @@ private:
 	Symbols const& m_currSymbols;
 
 	///settings used for export
-	Ui_ExportDlgSettings m_expDlgSettings;
+	ExportDlgSettings m_expDlgSettings;
 
 	DrawBase* m_drawer;
 	ExportPreview*  m_qwPreview;
