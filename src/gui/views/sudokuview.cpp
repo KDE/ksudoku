@@ -223,7 +223,9 @@ void SudokuView::setGame(const ksudoku::Game& game) {
 	if(custom==0)
 	{
 		for(int i = 0; i < m_game.size(); ++i) {
-			QSudokuButton* btn = new QSudokuButton(this, 0, 0);
+			int x = g->cellPosX(i);
+			int y = g->cellPosY(i);
+			QSudokuButton* btn = new QSudokuButton(this, x, y);
 				
 			connect(btn, SIGNAL(clicked2(int, int)), this, SLOT(slotHello(int, int)));
 			connect(btn, SIGNAL(rightclicked(int, int)), this, SLOT(slotRight(int, int)));
@@ -245,7 +247,9 @@ void SudokuView::setGame(const ksudoku::Game& game) {
 				continue;
 			}
 
-			QSudokuButton* btn = new QSudokuButton(this, 0, 0);
+			int x = g->cellPosX(i);
+			int y = g->cellPosY(i);
+			QSudokuButton* btn = new QSudokuButton(this, x, y);
 
 			btn->setCustom(1);
 
@@ -263,8 +267,6 @@ void SudokuView::setGame(const ksudoku::Game& game) {
 	}
 	for(int i = 0; i < m_buttons.size(); ++i) {
 		if(!m_buttons[i]) continue;
-		m_buttons[i]->setY(g->cellPosY(i));
-		m_buttons[i]->setX(g->cellPosX(i));
 		m_buttons[i]->updateData();
 		m_buttons[i]->resize();
 		m_buttons[i]->show();

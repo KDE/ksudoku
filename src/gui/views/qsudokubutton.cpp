@@ -39,8 +39,9 @@
 #include <iostream>
 
 namespace ksudoku {
-	
-enum GameColors {
+
+// Colors of kde4.0alpha and first betas
+/* enum GameColors {
 	// Standard background
 	HColorStd = 0xffbfd9ff,
 
@@ -66,14 +67,110 @@ enum GameColors {
 	HColorSRCB = HColorRCB,
 
 	// Highlights for the helper 
-	HColorGood = 0xffbfffbf,
-	HColorBad  = 0xffffbfbf,
+	HColorGood  = 0xffbfffbf,
+	HColorBad   = 0xffffbfbf,
+ 	HColorSGood = HColorGood,
+	HColorSBad  = HColorBad,
  
 	// Border colors
 	BColorDark   = 0xff555753,
 	BColorLight  = 0xffffffff, // 0xeeeeec
-	BColorSimple = 0xff888a85
+	BColorSimple = 0xff888a85,
+	
+	// Font Colors
+	FColorStd    = 0xff646464,
+	FColorGiven  = 0xff000064,
+	FColorWrong  = 0xff800000,
+	FColorMarker = 0xff646464
+}; */
+
+// Almost Flat Strong colors
+enum GameColors {
+	// Standard background
+	HColorStd = 0xffffffff,
+
+	// Pure highlights
+	HColorR = 0xffff8080, // Row highlight
+	HColorC = 0xff6192cf, // Column highlight
+	HColorB = 0xfffff199, // Block highlight
+
+	// Combinations of highlights
+	HColorRC  = 0xffc173b0,
+	HColorRB  = 0xfff2bb88,
+	HColorCB  = 0xff00cc88,
+	HColorRCB = 0xffbabdb6,
+
+	// Special highlights
+	HColorSStd = 0xffd3d7cf,
+	HColorSR   = 0xffe85752,
+	HColorSC   = 0xff2c72c7,
+	HColorSB   = 0xffffeb55,
+	HColorSRC  = 0xffb14f9a,
+	HColorSRB  = 0xfff29b68,
+	HColorSCB  = 0xff00b377,
+	HColorSRCB = 0xff888a85,
+
+	// Highlights for the helper 
+	HColorGood  = 0xffbfffbf,
+	HColorBad   = 0xffffbfbf,
+	HColorSGood = 0xff80ff80,
+	HColorSBad  = 0xffff8080,
+ 
+	// Border colors
+	BColorDark   = 0xff555753,
+	BColorLight  = 0xff555753,
+	BColorSimple = 0xff555753,
+	
+	// Font Colors
+	FColorStd    = 0xff646464,
+	FColorGiven  = 0xff000064,
+	FColorWrong  = 0xff800000,
+	FColorMarker = 0xff646464
 };
+	
+// With 3D look
+/* enum GameColors {
+	// Standard background
+	HColorStd = 0xffdddddd,
+
+	// Pure highlights
+	HColorR = 0xffffbfbf, // Row highlight
+	HColorC = 0xffa4c0e4, // Column highlight
+	HColorB = 0xfffff6c8, // Block highlight
+
+	// Combinations of highlights
+	HColorRC  = 0xffe8b7d7,
+	HColorRB  = 0xfffcd8b0,
+	HColorCB  = 0xff99dcc6,
+	HColorRCB = 0xffbabdb6,
+
+	// Special highlights
+	HColorSStd = HColorStd,
+	HColorSR   = HColorR,
+	HColorSC   = HColorC,
+	HColorSB   = HColorB,
+	HColorSRC  = HColorRC,
+	HColorSRB  = HColorRB,
+	HColorSCB  = HColorCB,
+	HColorSRCB = HColorRCB,
+
+	// Highlights for the helper 
+	HColorGood  = 0xffbfffbf,
+	HColorBad   = 0xffffbfbf,
+ 	HColorSGood = HColorGood,
+	HColorSBad  = HColorBad,
+
+	// Border colors
+	BColorDark   = 0xff888a85,
+	BColorLight  = 0xffeeeeee, // 0xeeeeec
+	BColorSimple = 0xff888a85,
+	
+	// Font Colors
+	FColorStd    = 0xff646464,
+	FColorGiven  = 0xff000064,
+	FColorWrong  = 0xff800000,
+	FColorMarker = 0xff646464
+}; */
 
 // Lookup for Highlights
 // Bit 1: Horz clique highlight
@@ -83,25 +180,25 @@ enum GameColors {
 // Bit 5: Helper Highlight Good/Bad
 // Bit 6: Special highlights (e.g. cross in XSudoku)
 const uint highlightColors[] = {
-	HColorStd,  HColorR,    HColorC,    HColorRC,
-	HColorB,    HColorRB,   HColorCB,   HColorRCB,
-	HColorBad,  HColorBad,  HColorBad,  HColorBad,
-	HColorBad,  HColorBad,  HColorBad,  HColorBad,
+	HColorStd,   HColorR,     HColorC,     HColorRC,
+	HColorB,     HColorRB,    HColorCB,    HColorRCB,
+	HColorBad,   HColorBad,   HColorBad,   HColorBad,
+	HColorBad,   HColorBad,   HColorBad,   HColorBad,
 
-	HColorStd,  HColorR,    HColorC,    HColorRC,
-	HColorB,    HColorRB,   HColorCB,   HColorRCB,
-	HColorGood, HColorGood, HColorGood, HColorGood,
-	HColorGood, HColorGood, HColorGood, HColorGood,
+	HColorStd,   HColorR,     HColorC,     HColorRC,
+	HColorB,     HColorRB,    HColorCB,    HColorRCB,
+	HColorGood,  HColorGood,  HColorGood,  HColorGood,
+	HColorGood,  HColorGood,  HColorGood,  HColorGood,
 
-	HColorSStd, HColorSR,   HColorSC,   HColorSRC,
-	HColorSB,   HColorSRB,  HColorSCB,  HColorSRCB,
-	HColorBad,  HColorBad,  HColorBad,  HColorBad,
-	HColorBad,  HColorBad,  HColorBad,  HColorBad,
+	HColorSStd,  HColorSR,    HColorSC,    HColorSRC,
+	HColorSB,    HColorSRB,   HColorSCB,   HColorSRCB,
+	HColorSBad,  HColorSBad,  HColorSBad,  HColorSBad,
+	HColorSBad,  HColorSBad,  HColorSBad,  HColorSBad,
 
-	HColorSStd, HColorSR,   HColorSC,   HColorSRC,
-	HColorSB,   HColorSRB,  HColorSCB,  HColorSRCB,
-	HColorGood, HColorGood, HColorGood, HColorGood,
-	HColorGood, HColorGood, HColorGood, HColorGood,
+	HColorSStd,  HColorSR,    HColorSC,    HColorSRC,
+	HColorSB,    HColorSRB,   HColorSCB,   HColorSRCB,
+	HColorSGood, HColorSGood, HColorSGood, HColorSGood,
+	HColorSGood, HColorSGood, HColorSGood, HColorSGood,
 };
 
 QSudokuButton::QSudokuButton(SudokuView *parent, int x, int y)
@@ -116,6 +213,17 @@ QSudokuButton::QSudokuButton(SudokuView *parent, int x, int y)
 	m_state   = WrongValue;
 	
 	m_highlights = HighlightNone;
+	
+	// make cells surrounded with big borders special
+	Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
+	if(g &&
+	   g->hasLeftBorder(m_x, m_y) &&
+	   g->hasTopBorder(m_x, m_y) &&
+	   g->hasRightBorder(m_x, m_y) &&
+	   g->hasBottomBorder(m_x, m_y))
+	{
+		m_highlights = HighlightSpecial;
+	}
 
 	m_text = " ";
 
@@ -132,7 +240,6 @@ QSudokuButton::~QSudokuButton()
 
 void QSudokuButton::resize()
 {
-// 	if(m_ksView.game().userPuzzle()->order == 0) m_ksView.game().order() = 9;
 	int w = m_ksView.width () / m_ksView.game().puzzle()->solver()->g->sizeX();
 	int h = m_ksView.height() / m_ksView.game().puzzle()->solver()->g->sizeY();
 	setGeometry( m_x*(w), m_y*(h), w, h);
@@ -238,42 +345,44 @@ void QSudokuButton::draw(QPainter& qpainter)
 }
 
 void QSudokuButton::paintHighlight(QPainter& qpainter) {
-	Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
-	if(!g) return;
-	bool left = g->hasLeftBorder(m_x, m_y);
-	bool top = g->hasTopBorder(m_x, m_y);
-	bool right = g->hasRightBorder(m_x, m_y);
-	bool bottom = g->hasBottomBorder(m_x, m_y);
+	if(0xffffffff != highlightColors[m_highlights & HighlightMask]) {
+		Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
+		if(!g) return;
+		bool left = g->hasLeftBorder(m_x, m_y);
+		bool top = g->hasTopBorder(m_x, m_y);
+		bool right = g->hasRightBorder(m_x, m_y);
+		bool bottom = g->hasBottomBorder(m_x, m_y);
 	
-	QRect pos = rect();
-	QLinearGradient grad(0,-pos.height(),pos.width(),pos.height());
-	grad.setColorAt(0.0, 0xffffffff);
-	grad.setColorAt(1.0, highlightColors[m_highlights & HighlightMask]);
-	qpainter.fillRect(pos.adjusted(left?3:1, top?3:1, right?-3:-1, bottom?-3:-1), grad);
-// 	qpainter.fillRect(rect(), QBrush(highlightColors[m_highlights & HighlightMask]));
+		QRect pos = rect();
+		QLinearGradient grad(0,-pos.height(),pos.width(),pos.height());
+		grad.setColorAt(0.0, 0xffffffff);
+		grad.setColorAt(1.0, highlightColors[m_highlights & HighlightMask]);
+		qpainter.fillRect(pos.adjusted(left?3:1, top?3:1, right?-3:-1, bottom?-3:-1), grad);
+	} else {
+		qpainter.fillRect(rect(), QBrush(highlightColors[m_highlights & HighlightMask]));
+	}
 }
 
 void QSudokuButton::drawValue(QPainter& qpainter)
 {
 	bool marker = false;
 
-	qpainter.setPen(QColor(100,100,100));
+	qpainter.setPen(FColorStd);
 	switch(m_state) {
 		case GivenValue:
-			qpainter.setPen(QColor(0,0,100));
-		break;
+			qpainter.setPen(FColorGiven);
+			break;
 		case ObviouslyWrong:
 		case WrongValue:
 			if(m_ksView.m_flags.testFlag(ShowErrors))
-				qpainter.setPen(Qt::darkRed);
-		break;
+				qpainter.setPen(FColorWrong);
+			break;
 		case CorrectValue:
-			//keep current, qpainter.setPen(QColor(125,125,125));
-		break;
+			break;
 		case Marker:
-			//keep current, qpainter.setPen(QColor(125,125,125));
+			qpainter.setPen(FColorMarker);
 			marker = true;
-		break;
+			break;
 		default:
 			KMessageBox::information(this, i18n("BUG: No default color defined, but it is apparently needed"));
 	}
