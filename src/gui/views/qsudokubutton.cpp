@@ -276,7 +276,7 @@ void QSudokuButton::exitEvent (QEvent *)
 void QSudokuButton::keyPressEvent ( QKeyEvent * e ) 
 {
 	if(e->modifiers() & Qt::ControlModifier)
-		emit beginHighlight(m_ksView.game().value(m_x,m_y));
+		emit beginHighlight();
 	e->ignore(); //pass on
 }
 	

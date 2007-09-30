@@ -107,7 +107,7 @@ signals:
 	
 	void numberset(int,int,int);
 
-	void beginHighlight(int val);
+	void beginHighlight(int val=0);
 	void finishHighlight();
 
 public:

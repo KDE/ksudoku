@@ -99,12 +99,14 @@ void KsView::enterValue(int value) {
 	if(!m_game.given(m_currentCell)) {
 		m_game.setValue(m_currentCell, value);
 	}
+	selectValue(value);
 }
 
 void KsView::markValue(int value) {
 	if(!m_game.given(m_currentCell)) {
 		m_game.flipMarker(m_currentCell, value);
 	}
+	selectValue(value);
 }
 
 void KsView::moveUp() {
