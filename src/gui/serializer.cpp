@@ -27,6 +27,7 @@
 #include <qdom.h>
 //Added by qt3to4:
 #include <QList>
+#include <QTextStream>
 #include <kurl.h>
 #include <ktemporaryfile.h>
 #include <kio/netaccess.h>
