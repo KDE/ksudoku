@@ -35,7 +35,6 @@
 #include <kcombobox.h>
 #include <ksqueezedtextlabel.h>
 //#include <kprogress.h>
-#include <kprinter.h>
 
 #include <qcheckbox.h>
 #include <qlayout.h>
@@ -49,7 +48,8 @@
 #include <QEvent>
 #include <QPixmap>
 #include <QVBoxLayout>
-
+#include <QtGui/QPrinter>
+#include <QtGui/QPrintDialog>
 
 namespace ksudoku {
 
@@ -213,10 +213,12 @@ void ExportDlg::setAspectRatio()
 }
 
 void ExportDlg::print(){
-	KPrinter printer;
-	printer.removeStandardPage(1); //there is only 1 standard page
+	QPrinter printer;
+	//Not supported in Qt
+	//printer.removeStandardPage(1); //there is only 1 standard page
+	QPrintDialog printDialog(&printer, this);
 
-	if (printer.setup())
+	if (printDialog.exec()) {
 	{
 
 		QPainter p;

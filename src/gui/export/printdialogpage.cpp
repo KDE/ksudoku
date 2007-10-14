@@ -70,10 +70,10 @@ private:
 
 
 PrintDialogPage::PrintDialogPage(Print const& print, QWidget *parent, const char *name)
-	: KPrintDialogPage() //TODO PORT
+	: QWidget() //TODO PORT
 	, m_dlg()
 {
-	setTitle( i18n("KSudoku options"));
+	setWindowTitle( i18n("KSudoku options"));
 
 	//completion PrintDialogPageDLG
 	PrintPreview* pp = new PrintPreview(print, *this, m_dlg.previewFrame);
@@ -90,19 +90,6 @@ PrintDialogPage::PrintDialogPage(Print const& print, QWidget *parent, const char
 
 PrintDialogPage::~PrintDialogPage()
 {
-}
-
-
-void PrintDialogPage::getOptions( QMap<QString,QString>& opts, bool /*incldef*/ )
-{
-	opts[ SCALE     ] = QString::number(scale () );
-	opts[ ASPECT    ] = QString::number(aspect() );
-}
-
-void PrintDialogPage::setOptions( const QMap<QString,QString>& opts )
-{
-	m_dlg.sbScale   ->setValue((opts[ SCALE     ]).toInt  ());
-	m_dlg.kdspAspect->setValue((opts[ ASPECT    ]).toFloat());
 }
 
 bool PrintDialogPage::isValid( QString& /*msg*/)

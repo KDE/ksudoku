@@ -23,11 +23,13 @@
 #include "ksview.h"
 
 #include <kmessagebox.h>
-#include <kprinter.h>
 #include <q3paintdevicemetrics.h>
+#include <QtGui/QPrinter>
+#include <QtGui/QPrintDialog>
 
 #include <kapplication.h>
 #include <klocale.h>
+#include <kdeprintdialog.h>
 
 
 namespace ksudoku {
@@ -45,13 +47,14 @@ Print::~Print()
 
 
 void Print::toPrinter(){
-	KPrinter printer;
-	printer.removeStandardPage(1); //there is only 1 standard page
+	QPrinter printer;
+	//Not supported in Qt
+	//printer.removeStandardPage(1); //there is only 1 standard page
 
 	PrintDialogPage* pdp = new PrintDialogPage(*this);
-	printer.addDialogPage(pdp);
+	QPrintDialog *printDialog = KdePrint::createPrintDialog(&printer, QList<QWidget*>() << &pdp, this);
 
-	if (printer.setup())
+	if (printDialog->exec()) {
 	{
 		Q3PaintDeviceMetrics metrics(&printer);
 		float scale  = printer.option( SCALE ).toInt() / 100.0 ;

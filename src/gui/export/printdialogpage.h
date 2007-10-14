@@ -24,15 +24,11 @@
 #include "ui_printdialogpagedlg.h"
 
 #include <qspinbox.h>
-#include <kdeprint/kprintdialogpage.h>
 #include <knuminput.h>
 
 namespace ksudoku {
 
 class Print;
-
-#define SCALE     "kde-ksudoku-scale"
-#define ASPECT    "kde-ksudoku-DesiredAspectRatio"
 
 /**
 	Add Ksudoku options-tab to KPrinter dialog
@@ -42,25 +38,23 @@ class Print;
 	      available after the fat lady sings)
 
 */
-class PrintDialogPage : public KPrintDialogPage
+class PrintDialogPage : public QWidget
 {
 public:
 	explicit PrintDialogPage(Print const& print, QWidget *parent = 0, const char *name = 0 );
 	~PrintDialogPage();
 	
 	///reimplemented from KPrintDialogPage
-	void getOptions( QMap<QString,QString>& opts, bool incldef = false );
-	///reimplemented from KPrintDialogPage
-	void setOptions( const QMap<QString,QString>& opts );
-	///reimplemented from KPrintDialogPage
 	bool isValid( QString& msg );
 
 	//getters
 	int   scale () const { return m_dlg.sbScale   ->value(); }
+	void  setScale( int printScale ) { m_dlg.sbScale   ->setValue( printScale); }
 	float aspect() const { return m_dlg.kdspAspect->value(); }
+	void  setAspect( float printAspect ) { m_dlg.kdspAspect->setValue( printAspect ); }
 
 private:
-	///ksudoku print options tab, added to kprinter
+	///ksudoku print options tab, added to qprinter
 	Ui_PrintDialogPageDLG m_dlg;
 };
 
