@@ -727,10 +727,10 @@ void KSudoku::optionsPreferences()
 	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
 
 	GameConfig* gameConfig = new GameConfig();
-	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), "game");
+	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), "games-config-options");
 
 	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
-	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "theme");
+	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "games-config-theme");
 
 	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(settingsChanged()));
     dialog->show();
