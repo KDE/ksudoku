@@ -142,7 +142,7 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	QRect contentRect = option.rect.adjusted(leftMargin, separatorPixels, -rightMargin, -separatorPixels);
 	
 	// Show icon
-	QPixmap iconPixmap = KIcon("", KIconLoader::global()).pixmap(iconWidth, iconHeight);
+	QPixmap iconPixmap = KIcon("ksudoku", KIconLoader::global()).pixmap(iconWidth, iconHeight);
 	painter->drawPixmap(contentRect.left(), (contentRect.height() - iconPixmap.height()) / 2 + contentRect.top(), iconPixmap);
 	contentRect.adjust(iconPixmap.width() + separatorPixels*2, 0, 0, 0);
 	
