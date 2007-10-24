@@ -213,7 +213,7 @@
               <number>0</number>
              </property>
              <item>
-              <widget class="KDoubleSpinBox" name="kdsbAspectRatio" />
+              <widget class="QDoubleSpinBox" name="kdsbAspectRatio" />
              </item>
              <item>
               <widget class="KSqueezedTextLabel" name="kSqueezedTextLabel2" />
@@ -559,12 +559,6 @@
    <class>KComboBox</class>
    <extends>QComboBox</extends>
    <header>kcombobox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>KDoubleSpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>knuminput.h</header>
-   <container>1</container>
   </customwidget>
   <customwidget>
    <class>KIntSpinBox</class>

@@ -106,7 +106,7 @@
          </layout>
         </item>
         <item>
-         <widget class="KDoubleSpinBox" native="1" name="kdspAspect" />
+         <widget class="QDoubleSpinBox" native="1" name="kdspAspect" />
         </item>
        </layout>
       </widget>
@@ -164,12 +164,6 @@
    <class>Q3Frame</class>
    <extends>QFrame</extends>
    <header>Qt3Support/Q3Frame</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>KDoubleSpinBox</class>
-   <extends>QWidget</extends>
-   <header>kdoublespinbox.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
