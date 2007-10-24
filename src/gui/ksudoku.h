@@ -172,7 +172,7 @@ public:
 private:
 	QWidget* wrapper;
 	QWidget* activeWidget;
-	void createAction(const QString& text, const char* slot, const QString& name);
+	void createAction(const QString& text, const char* slot, const QString& name, const QString& icon);
 	void setupAccel();
 	void setupActions();
 

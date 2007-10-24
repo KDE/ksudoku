@@ -416,10 +416,11 @@ void KSudoku::clearCell() {
 	view->enterValue(0);
 }
 
-void KSudoku::createAction(const QString& text, const char* slot, const QString& name)
+void KSudoku::createAction(const QString& text, const char* slot, const QString& name, const QString& icon)
 {
 	QAction* a = actionCollection()->addAction(text);
 	a->setText(name);
+        a->setIcon(KIcon(icon));
 	connect(a, SIGNAL(triggered(bool)), slot);
 }
 
@@ -518,12 +519,12 @@ void KSudoku::setupActions()
 	KStandardGameAction::hint(this, SLOT(giveHint()), actionCollection());
 	KStandardGameAction::solve(this, SLOT(autoSolve()), actionCollection());
 
-	createAction("move_dub_puzzle", SLOT(dubPuzzle()), i18n("Check"));
+	createAction("move_dub_puzzle", SLOT(dubPuzzle()), i18n("Check"), QString("games-endturn"));
 
 	//(void)new KAction(i18n("Generate Multiple"), 0, this, SLOT(genMultiple()), actionCollection(), "genMultiple");
 
 	//WEB
-	createAction("Home_page", SLOT(homepage()), i18n("Home Page"));
+        createAction("Home_page", SLOT(homepage()), i18n("Home Page"), QString("network") );
 // 	createAction("support", SLOT(support()), i18n("Support This Project"));
 // 	createAction("sendComment", SLOT(sendComment()), i18n("Send Comment"));
 }
