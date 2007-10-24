@@ -190,7 +190,7 @@ void KSudoku::updateShapesList()
 	QString variantDataPath;
 
 	foreach(QString filepath, filepaths) {
-		KConfig variantConfig(filepath, KConfig::OnlyLocal);
+		KConfig variantConfig(filepath, KConfig::SimpleConfig);
 		KConfigGroup group = variantConfig.group ("KSudokuVariant");
 
 		variantName = group.readEntry("Name", i18n("Missing Variant Name")); // Translated.
