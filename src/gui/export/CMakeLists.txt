@@ -15,7 +15,6 @@ set(moc_SRCS
 	exportpreview.cpp
 	exportpuzzles.cpp
 )
-QT4_AUTOMOC( ${moc_SRCS} )
 
 set(ksudoku_ui_files
 	printdialogpagedlg.ui
