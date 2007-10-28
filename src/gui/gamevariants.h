@@ -41,6 +41,8 @@ public:
 	QString name() const { return m_name; }
 	QString description() const { return m_description; }
 	void setDescription(const QString& descr);
+	QString icon() const { return m_icon; }
+	void setIcon(const QString& icon);
 	
 	/// This method returs whether the variant has an configure option
 	virtual bool canConfigure() const = 0;
@@ -64,6 +66,7 @@ public:
 private:
 	QString m_name;
 	QString m_description;
+	QString m_icon;
 };
 
 class GameVariantCollection : public QAbstractListModel {
@@ -109,6 +112,7 @@ protected:
 public:
 	QString title(const QModelIndex& index) const;
 	QString description(const QModelIndex& index) const;
+	QString icon(const QModelIndex& index) const;
 	bool configurable(const QModelIndex& index) const;
 };
 

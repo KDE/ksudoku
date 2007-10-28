@@ -49,6 +49,10 @@ void GameVariant::setDescription(const QString& descr) {
 	m_description = descr;
 }
 
+void GameVariant::setIcon(const QString& icon) {
+	m_icon = icon;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // class GameVariantCollection
 ///////////////////////////////////////////////////////////////////////////////
@@ -97,7 +101,7 @@ QVariant GameVariantCollection::data(const QModelIndex &index, int role) const {
 		case Qt::DisplayRole:
 			return gameVariant->name();
 		case Qt::DecorationRole:
-			return QVariant();
+			return gameVariant->icon();
 		case GameVariantDelegate::Description:
 			return gameVariant->description();
 	}
@@ -142,7 +146,8 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	QRect contentRect = option.rect.adjusted(leftMargin, separatorPixels, -rightMargin, -separatorPixels);
 	
 	// Show icon
-	QPixmap iconPixmap = KIcon("ksudoku", KIconLoader::global()).pixmap(iconWidth, iconHeight);
+	
+	QPixmap iconPixmap = KIcon(icon(index), KIconLoader::global()).pixmap(iconWidth, iconHeight);
 	painter->drawPixmap(contentRect.left(), (contentRect.height() - iconPixmap.height()) / 2 + contentRect.top(), iconPixmap);
 	contentRect.adjust(iconPixmap.width() + separatorPixels*2, 0, 0, 0);
 	
@@ -176,6 +181,10 @@ QString GameVariantDelegate::title(const QModelIndex& index) const {
 
 QString GameVariantDelegate::description(const QModelIndex& index) const {
 	return index.model()->data(index, Description).toString();
+}
+
+QString GameVariantDelegate::icon(const QModelIndex& index) const {
+	return index.model()->data(index, Qt::DecorationRole).toString();
 }
 
 bool GameVariantDelegate::configurable(const QModelIndex& index) const {

@@ -172,22 +172,29 @@ void KSudoku::updateShapesList()
 
 	variant = new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The classic and fashion game"));
+	variant->setIcon("ksudoku-ksudoku_9x9");
 	variant = new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 16 symbols"));
+	variant->setIcon("ksudoku-ksudoku_16x16");
 	variant = new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 25 symbols"));
+	variant->setIcon("ksudoku-ksudoku_25x25");
 	variant = new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku"));
+	variant->setIcon("ksudoku-roxdoku_3x3x3");
 	variant = new RoxdokuGame(i18n("Roxdoku 16 (4x4x4)"), 16, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku with 16 symbols"));
+	variant->setIcon("ksudoku-roxdoku_4x4x4");
 	variant = new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku with 25 symbols"));
+	variant->setIcon("ksudoku-roxdoku_5x5x5");
 
     QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
 
 	QString variantName;
 	QString variantDescr;
 	QString variantDataPath;
+	QString variantIcon;
 
 	foreach(QString filepath, filepaths) {
 		KConfig variantConfig(filepath, KConfig::SimpleConfig);
@@ -195,12 +202,14 @@ void KSudoku::updateShapesList()
 
 		variantName = group.readEntry("Name", i18n("Missing Variant Name")); // Translated.
 		variantDescr = group.readEntry("Description", ""); // Translated.
+		variantIcon = group.readEntry("Icon", "ksudoku-ksudoku_9x9");
 		variantDataPath = group.readEntry("FileName", "");
 		if(variantDataPath == "") continue;
 		variantDataPath = filepath.left(filepath.lastIndexOf("/")+1) + variantDataPath;
 
 		variant = new CustomGame(variantName, variantDataPath, m_gameVariants);
 		variant->setDescription(variantDescr);
+		variant->setIcon(variantIcon);
 	}
 }
 
