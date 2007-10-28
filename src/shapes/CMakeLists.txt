@@ -5,3 +5,5 @@ install( FILES
 	XSudoku.desktop XSudoku.xml
 	DESTINATION  ${DATA_INSTALL_DIR}/ksudoku
 )
+
+kde4_install_icons(${DATA_INSTALL_DIR}/ksudoku/icons)
