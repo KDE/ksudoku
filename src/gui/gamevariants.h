@@ -43,26 +43,26 @@ public:
 	void setDescription(const QString& descr);
 	QString icon() const { return m_icon; }
 	void setIcon(const QString& icon);
-	
+
 	/// This method returs whether the variant has an configure option
 	virtual bool canConfigure() const = 0;
-	
+
 	/// Shows a configure dialog and changes the settings
 	virtual bool configure() = 0;
-	
+
 	/// Whether this variant can be started without any values in the grid
 	virtual bool canStartEmpty() const = 0;
-	
+
 	/// Creates a game without a puzzle but with an empty grid
 	virtual Game startEmpty() const = 0;
-	
+
 	/// Creates a instance of this game variant
 	virtual Game createGame(int difficulty) const = 0;
-	
+
 	/// Creates the correct view for the game.
 	/// Game needs to be compatible with this GameVariant
 	virtual KsView* createView(const Game& game) const = 0;
-	
+
 private:
 	QString m_name;
 	QString m_description;
@@ -75,10 +75,10 @@ Q_OBJECT
 public:
 	GameVariantCollection(QObject* parent, bool autoDel);
 	~GameVariantCollection();
-		
+
 public:
 	void addVariant(GameVariant* variant);
-	
+
 public:
 	QVariant data(const QModelIndex &index, int role) const;
 	int rowCount(const QModelIndex&) const;
@@ -87,7 +87,7 @@ public:
 
 signals:
 	void newVariant(GameVariant* variant);
-	
+
 public:
 	QList<GameVariant*> m_variants;
 	bool m_autoDelete;
@@ -99,7 +99,7 @@ public:
 	enum Roles {
 		Description = 33
 	};
-	
+
 public:
 	GameVariantDelegate(QObject* parent = 0);
 public:
@@ -114,12 +114,18 @@ public:
 	QString description(const QModelIndex& index) const;
 	QString icon(const QModelIndex& index) const;
 	bool configurable(const QModelIndex& index) const;
+private:
+	static const int m_iconWidth = 48;
+	static const int m_iconHeight = 48;
+	static const int m_leftMargin = 16;
+	static const int m_rightMargin = 12;
+	static const int m_separatorPixels = 8;
 };
 
 class SudokuGame : public GameVariant {
 public:
 	SudokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
-	
+
 public:
 	bool canConfigure() const;
 	bool configure();
@@ -127,18 +133,18 @@ public:
 	Game startEmpty() const;
 	Game createGame(int difficulty) const;
 	KsView* createView(const Game& game) const;
-	
+
 private:
 	uint m_order;
 	uint m_symmetry;
-	
+
 	mutable SKSolver* m_solver;
 };
 
 class RoxdokuGame : public GameVariant {
 public:
 	RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
-	
+
 public:
 	bool canConfigure() const;
 	bool configure();
@@ -146,18 +152,18 @@ public:
 	Game startEmpty() const;
 	Game createGame(int difficulty) const;
 	KsView* createView(const Game& game) const;
-	
+
 private:
 	uint m_order;
 	uint m_symmetry;
-	
+
 	mutable SKSolver* m_solver;
 };
 
 class CustomGame : public GameVariant {
 public:
 	CustomGame(const QString& name, const KUrl& url, GameVariantCollection* collection=0);
-	
+
 public:
 	bool canConfigure() const;
 	bool configure();
@@ -165,7 +171,7 @@ public:
 	Game startEmpty() const;
 	Game createGame(int difficulty) const;
 	KsView* createView(const Game& game) const;
-	
+
 private:
 	KUrl m_url;
 	mutable SKSolver* m_solver;

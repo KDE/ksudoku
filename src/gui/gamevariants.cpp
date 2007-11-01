@@ -32,6 +32,7 @@
 
 #include "puzzle.h"
 
+
 namespace ksudoku {
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -94,7 +95,7 @@ QVariant GameVariantCollection::data(const QModelIndex &index, int role) const {
 
 	if (!index.internalPointer())
 		return QVariant();
-	
+
 	GameVariant* gameVariant = static_cast<GameVariant*>(index.internalPointer());
 
 	switch(role) {
@@ -105,7 +106,7 @@ QVariant GameVariantCollection::data(const QModelIndex &index, int role) const {
 		case GameVariantDelegate::Description:
 			return gameVariant->description();
 	}
-	
+
 	return QVariant();
 }
 
@@ -125,15 +126,35 @@ GameVariantDelegate::GameVariantDelegate(QObject* parent)
 QSize GameVariantDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
 	Q_UNUSED(option);
 	Q_UNUSED(index);
-	return QSize(64, 64);
+	QSize size(m_leftMargin+m_iconWidth+m_rightMargin+m_separatorPixels*2, m_iconHeight+m_separatorPixels*2);
+
+	QRect contentRect = option.rect.adjusted(m_leftMargin, m_separatorPixels, -m_rightMargin, -m_separatorPixels);
+	contentRect.adjust(m_iconWidth + m_separatorPixels*2, 0, 0, 0);
+
+	QFont titleFont(option.font);
+	titleFont.setPointSize(titleFont.pointSize() + 2);
+	titleFont.setWeight(QFont::Bold);
+
+	QString titleStr = option.fontMetrics.elidedText(title(index), Qt::ElideRight, contentRect.width());
+	QSize titleSize = option.fontMetrics.size( Qt::TextSingleLine, titleStr );
+	contentRect.adjust(0, m_separatorPixels + option.fontMetrics.height(), 0, 0);
+
+	// Show Description
+	QString descrStr = option.fontMetrics.elidedText(description(index), Qt::ElideRight, contentRect.width());
+	QSize descrSize = option.fontMetrics.size( Qt::TextSingleLine, descrStr );
+
+	if( descrSize.width() > titleSize.width() )
+		size.setWidth(size.width() + descrSize.width());
+	else
+		size.setWidth(size.width() + titleSize.width());
+
+	if( titleSize.height()+descrSize.height()+m_separatorPixels*2 > m_iconWidth )
+		size.setHeight( titleSize.height()+option.fontMetrics.height()+descrSize.height()+m_separatorPixels*4 );
+	return size;
 }
 
 void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
-	int leftMargin = 16;
-	int rightMargin = 12;
-	int separatorPixels = 8;
-	int iconWidth = 48, iconHeight = 48;
-	
+
 	// show background
 	if (option.state & QStyle::State_Selected) {
 		painter->fillRect(option.rect, option.palette.color(QPalette::Highlight));
@@ -142,34 +163,34 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	} else {
 		painter->fillRect(option.rect, option.palette.color(QPalette::Base));
 	}
-	
-	QRect contentRect = option.rect.adjusted(leftMargin, separatorPixels, -rightMargin, -separatorPixels);
-	
+
+	QRect contentRect = option.rect.adjusted(m_leftMargin, m_separatorPixels, -m_rightMargin, -m_separatorPixels);
+
 	// Show icon
-	
-	QPixmap iconPixmap = KIcon(icon(index), KIconLoader::global()).pixmap(iconWidth, iconHeight);
+
+	QPixmap iconPixmap = KIcon(icon(index), KIconLoader::global()).pixmap(m_iconWidth, m_iconHeight);
 	painter->drawPixmap(contentRect.left(), (contentRect.height() - iconPixmap.height()) / 2 + contentRect.top(), iconPixmap);
-	contentRect.adjust(iconPixmap.width() + separatorPixels*2, 0, 0, 0);
-	
+	contentRect.adjust(iconPixmap.width() + m_separatorPixels*2, 0, 0, 0);
+
 // 	// Show configuration icon
 // 	if(configurable(index)) {
 // 		QPixmap configPixmap = KIcon("configure", KIconLoader::global()).pixmap(32, 32);
 // 		painter->drawPixmap(contentRect.right() - configPixmap.width(), (contentRect.height() - configPixmap.height()) / 2 + contentRect.top(), configPixmap);
 // 		contentRect.adjust(0, 0, -(configPixmap.width() + separatorPixels), 0);
 // 	}
-	
+
 	// Show Title
 	QFont titleFont(painter->font());
 	titleFont.setPointSize(titleFont.pointSize() + 2);
 	titleFont.setWeight(QFont::Bold);
-	
+
 	QFont previousFont(painter->font());
 	painter->setFont(titleFont);
 	QString titleStr = painter->fontMetrics().elidedText(title(index), Qt::ElideRight, contentRect.width());
 	painter->drawText(contentRect, titleStr);
-	contentRect.adjust(0, separatorPixels + painter->fontMetrics().height(), 0, 0);
+	contentRect.adjust(0, m_separatorPixels + painter->fontMetrics().height(), 0, 0);
 	painter->setFont(previousFont);
-	
+
 	// Show Description
 	QString descrStr = painter->fontMetrics().elidedText(description(index), Qt::ElideRight, contentRect.width());
 	painter->drawText(contentRect, descrStr);
@@ -190,7 +211,7 @@ QString GameVariantDelegate::icon(const QModelIndex& index) const {
 bool GameVariantDelegate::configurable(const QModelIndex& index) const {
 	const GameVariantCollection* collection = dynamic_cast<const GameVariantCollection*>(index.model());
 	if(!collection) return false;
-	
+
 	return collection->variant(index)->canConfigure();
 }
 
@@ -198,9 +219,9 @@ bool GameVariantDelegate::eventFilter(QObject* watched, QEvent* event) {
 	if(event->type() == QEvent::MouseButtonPress) {
 		return true;
 	}
-	
+
 	// TODO insert code for handling clicks on buttons in items.
-	
+
 	return QItemDelegate::eventFilter(watched, event);
 }
 
@@ -233,10 +254,10 @@ Game SudokuGame::startEmpty() const {
 		m_solver = new SKSolver(m_order, false);
 		m_solver->init();
 	}
-	
+
 	Puzzle* puzzle = new Puzzle(m_solver, false);
 	puzzle->init();
-	
+
 	return Game(puzzle);
 }
 
@@ -245,10 +266,10 @@ Game SudokuGame::createGame(int difficulty) const {
 		m_solver = new SKSolver(m_order, false);
 		m_solver->init();
 	}
-	
+
 	Puzzle* puzzle = new Puzzle(m_solver, true);
 	puzzle->init(difficulty, m_symmetry);
-	
+
 	return Game(puzzle);
 }
 
@@ -286,10 +307,10 @@ Game RoxdokuGame::startEmpty() const {
 		m_solver = new SKSolver(m_order, true);
 		m_solver->init();
 	}
-	
+
 	Puzzle* puzzle = new Puzzle(m_solver, false);
 	puzzle->init();
-	
+
 	return Game(puzzle);
 }
 
@@ -298,10 +319,10 @@ Game RoxdokuGame::createGame(int difficulty) const {
 		m_solver = new SKSolver(m_order, true);
 		m_solver->init();
 	}
-	
+
 	Puzzle* puzzle = new Puzzle(m_solver, true);
 	puzzle->init(difficulty, m_symmetry);
-	
+
 	return Game(puzzle);
 }
 
@@ -334,26 +355,26 @@ bool CustomGame::canStartEmpty() const {
 Game CustomGame::startEmpty() const {
 	if(!m_solver) {
 		m_solver = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-		
+
 		if(!m_solver) return Game();
 	}
-	
+
 	Puzzle* puzzle = new Puzzle(m_solver, false);
 	puzzle->init();
-	
+
 	return Game(puzzle);
 }
 
 Game CustomGame::createGame(int difficulty) const {
 	if(!m_solver) {
 		m_solver = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-		
+
 		if(!m_solver) return Game();
 	}
-	
+
 	Puzzle* puzzle = new Puzzle(m_solver, true);
 	puzzle->init(difficulty, 1);
-	
+
 	return Game(puzzle);
 }
 
