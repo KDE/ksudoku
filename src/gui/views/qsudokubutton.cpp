@@ -242,9 +242,7 @@ void QSudokuButton::resize()
 {
 	int w = m_ksView.width () / m_ksView.game().puzzle()->solver()->g->sizeX();
 	int h = m_ksView.height() / m_ksView.game().puzzle()->solver()->g->sizeY();
-	//the additional space vertically is needed so the markers are also visible
-	//under the thicker separation lines
-	setGeometry( m_x*(w), m_y*(h+4), w, h+8);
+	setGeometry( m_x*(w), m_y*(h), w, h);
 
 	//m_qpixmap = m_qpixmap.scaled(size()); //TODO destroy old one //TODO PORT
 	m_needRedraw = true;//draw();
