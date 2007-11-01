@@ -66,17 +66,17 @@ namespace ksudoku {
 	HColorSCB  = HColorCB,
 	HColorSRCB = HColorRCB,
 
-	// Highlights for the helper 
+	// Highlights for the helper
 	HColorGood  = 0xffbfffbf,
 	HColorBad   = 0xffffbfbf,
  	HColorSGood = HColorGood,
 	HColorSBad  = HColorBad,
- 
+
 	// Border colors
 	BColorDark   = 0xff555753,
 	BColorLight  = 0xffffffff, // 0xeeeeec
 	BColorSimple = 0xff888a85,
-	
+
 	// Font Colors
 	FColorStd    = 0xff646464,
 	FColorGiven  = 0xff000064,
@@ -110,24 +110,24 @@ enum GameColors {
 	HColorSCB  = 0xff00b377,
 	HColorSRCB = 0xff888a85,
 
-	// Highlights for the helper 
+	// Highlights for the helper
 	HColorGood  = 0xffbfffbf,
 	HColorBad   = 0xffffbfbf,
 	HColorSGood = 0xff80ff80,
 	HColorSBad  = 0xffff8080,
- 
+
 	// Border colors
 	BColorDark   = 0xff555753,
 	BColorLight  = 0xff555753,
 	BColorSimple = 0xff555753,
-	
+
 	// Font Colors
 	FColorStd    = 0xff646464,
 	FColorGiven  = 0xff000064,
 	FColorWrong  = 0xff800000,
 	FColorMarker = 0xff646464
 };
-	
+
 // With 3D look
 /* enum GameColors {
 	// Standard background
@@ -154,7 +154,7 @@ enum GameColors {
 	HColorSCB  = HColorCB,
 	HColorSRCB = HColorRCB,
 
-	// Highlights for the helper 
+	// Highlights for the helper
 	HColorGood  = 0xffbfffbf,
 	HColorBad   = 0xffffbfbf,
  	HColorSGood = HColorGood,
@@ -164,7 +164,7 @@ enum GameColors {
 	BColorDark   = 0xff888a85,
 	BColorLight  = 0xffeeeeee, // 0xeeeeec
 	BColorSimple = 0xff888a85,
-	
+
 	// Font Colors
 	FColorStd    = 0xff646464,
 	FColorGiven  = 0xff000064,
@@ -211,9 +211,9 @@ QSudokuButton::QSudokuButton(SudokuView *parent, int x, int y)
 
 	m_mousein = false;
 	m_state   = WrongValue;
-	
+
 	m_highlights = HighlightNone;
-	
+
 	// make cells surrounded with big borders special
 	Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
 	if(g &&
@@ -229,7 +229,7 @@ QSudokuButton::QSudokuButton(SudokuView *parent, int x, int y)
 
 	setFocusPolicy(Qt::ClickFocus);
 	m_custom=false;
-	
+
 	setAttribute(Qt::WA_OpaquePaintEvent, true);
 }
 
@@ -242,11 +242,13 @@ void QSudokuButton::resize()
 {
 	int w = m_ksView.width () / m_ksView.game().puzzle()->solver()->g->sizeX();
 	int h = m_ksView.height() / m_ksView.game().puzzle()->solver()->g->sizeY();
-	setGeometry( m_x*(w), m_y*(h), w, h);
+	//the additional space vertically is needed so the markers are also visible
+	//under the thicker separation lines
+	setGeometry( m_x*(w), m_y*(h+4), w, h+8);
 
 	//m_qpixmap = m_qpixmap.scaled(size()); //TODO destroy old one //TODO PORT
 	m_needRedraw = true;//draw();
-	
+
 	updateData();
 }
 
@@ -256,30 +258,30 @@ void QSudokuButton::enterEvent (QEvent *)
 	m_mousein = true;
 }
 
-void QSudokuButton::focusOutEvent  (QEvent *) 
+void QSudokuButton::focusOutEvent  (QEvent *)
 {//TODO it does not work
 	emit finishHighlight();
 }
 
-void QSudokuButton::leaveEvent (QEvent *) 
+void QSudokuButton::leaveEvent (QEvent *)
 {
 	emit leave(m_x,m_y);
 	m_mousein = false;
 }
 
-void QSudokuButton::exitEvent (QEvent *) 
+void QSudokuButton::exitEvent (QEvent *)
 {
 	m_mousein = false;
 	emit enter(m_x,m_y);
 }
 
-void QSudokuButton::keyPressEvent ( QKeyEvent * e ) 
+void QSudokuButton::keyPressEvent ( QKeyEvent * e )
 {
 	if(e->modifiers() & Qt::ControlModifier)
 		emit beginHighlight();
 	e->ignore(); //pass on
 }
-	
+
 void QSudokuButton::keyReleaseEvent ( QKeyEvent *e )
 {
 	emit finishHighlight();
@@ -305,10 +307,10 @@ void QSudokuButton::draw(QPainter& qpainter)
 
 	paintHighlight(qpainter);
 
-	
+
 	Graph2d* g = dynamic_cast<Graph2d*>(m_ksView.game().puzzle()->solver()->g);
 	if(!g) return;
-	
+
 	//draw border
 	bool left = g->hasLeftBorder(m_x, m_y);
 	bool top = g->hasTopBorder(m_x, m_y);
@@ -325,7 +327,7 @@ void QSudokuButton::draw(QPainter& qpainter)
 		if(!bottom) { qpainter.drawLine(0,height()-1,width()-1,height()-1); }
 		if(!right) { qpainter.drawLine(width()-1,0,width()-1,height()-1); }
 	}
-		
+
 	if(top || left) {
 		pen.setWidth( 5 );
 		pen.setColor(QColor(BColorDark));
@@ -352,7 +354,7 @@ void QSudokuButton::paintHighlight(QPainter& qpainter) {
 		bool top = g->hasTopBorder(m_x, m_y);
 		bool right = g->hasRightBorder(m_x, m_y);
 		bool bottom = g->hasBottomBorder(m_x, m_y);
-	
+
 		QRect pos = rect();
 		QLinearGradient grad(0,-pos.height(),pos.width(),pos.height());
 		grad.setColorAt(0.0, 0xffffffff);
@@ -386,15 +388,15 @@ void QSudokuButton::drawValue(QPainter& qpainter)
 		default:
 			KMessageBox::information(this, i18n("BUG: No default color defined, but it is apparently needed"));
 	}
-	
+
 	QTextOption textOption(Qt::AlignCenter);
-	
-	if(marker) 
+
+	if(marker)
 	{
 		if(m_cols > 0) {
 			QFontMetrics fm(m_font);
 			uint cwidth = fm.width(QChar('0'));
-			
+
 			QList<qreal> tabs;
 			for(int i = 0; i < m_cols; ++i) {
 				tabs.append((i+1)*rect().width()/(m_cols+1) -cwidth/2);
@@ -405,7 +407,7 @@ void QSudokuButton::drawValue(QPainter& qpainter)
 			textOption.setAlignment(Qt::AlignRight);
 		}
 	}
-	
+
 	qpainter.setFont(m_font);
 	qpainter.drawText( rect(), m_text, textOption);
 }
@@ -415,7 +417,7 @@ void QSudokuButton::mousePressEvent (QMouseEvent *mouseevent)
 {
 	if(mouseevent->button() == Qt::LeftButton)
 		emit clicked2 (m_x,m_y);
-		
+
 	if(mouseevent->button() == Qt::RightButton)
 		emit rightclicked (m_x,m_y);
 }
@@ -429,10 +431,10 @@ void QSudokuButton::updateData() {
 		m_text = "?";
 		return;
 	}
-	
+
 	int width = rect().width();
 	int height = rect().height();
-	
+
 	m_state = info.state();
 	switch(info.state()) {
 		case GivenValue:
@@ -443,42 +445,42 @@ void QSudokuButton::updateData() {
 				m_text = QString();
 				break;
 			}
-			
+
 			if(!info.value()) {
 				m_text = QString();
 			} else {
 				m_text = m_ksView.symbol(info.value());
 			}
-			
+
 			m_font.setPointSizeF(qMin(0.4 * height, 0.4*width));
 			break;
 		case Marker:
 			m_text = QString();
 			if(rect().height() <= 4) break;
-			
+
 			// Returns the width
 			int order = m_ksView.game().order();
 			int entries = order;
 			if(order > 16) entries = info.markers().count(true);
 			m_cols = qMax(2, int(sqrt(entries-1))+1);
 			m_rows = qMax(2, (entries-1) / width +1);
-			
+
 			if(entries == order) {
 				// Align markers in a grid. Each value has its own cell
 				// not depending on whether it has a marker
-				
+
 				for(int i = 0; i < order; ++i) {
 					m_text += '\t';
 					if(info.marker(i+1))
 						m_text += m_ksView.symbol(i+1);
 					else
 						m_text += ' ';
-					
+
 					if(!((i+1) % m_cols) && (i+1 != order)) {
 						m_text += '\n';
 					}
 				}
-				
+
 				m_font.setPointSizeF(qMin(0.35 * height/m_rows, 0.6 * width/m_cols));
 			} else if (m_cols <= 4) {
 				// Align markers in a grid. Only markers get a cell
@@ -492,17 +494,17 @@ void QSudokuButton::updateData() {
 						}
 					}
 				}
-				
+
 				m_font.setPointSizeF(qMin(0.35 * height/m_rows, 0.6 * width/m_cols));
 			} else {
 				// Try to show markers as free text
-				
+
 				m_cols = -1;
 				// TODO implement this
 			}
 			break;
 	}
-	
+
 	m_needRedraw = true;
 	update();
 }
@@ -514,7 +516,7 @@ bool QSudokuButton::hasHighlight(int mask) const {
 void QSudokuButton::setHighlight(int value) {
 	int oldValue = m_highlights;
 	m_highlights |= value;
-	
+
 	if(highlightColors[m_highlights & HighlightMask] != highlightColors[oldValue & HighlightMask])
 		update();
 }
