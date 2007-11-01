@@ -126,30 +126,13 @@ GameVariantDelegate::GameVariantDelegate(QObject* parent)
 QSize GameVariantDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
 	Q_UNUSED(option);
 	Q_UNUSED(index);
-	QSize size(m_leftMargin+m_iconWidth+m_rightMargin+m_separatorPixels*2, m_iconHeight+m_separatorPixels*2);
+	QSize size(m_leftMargin+m_iconWidth+m_rightMargin+m_separatorPixels*2, 0);
 
-	QRect contentRect = option.rect.adjusted(m_leftMargin, m_separatorPixels, -m_rightMargin, -m_separatorPixels);
-	contentRect.adjust(m_iconWidth + m_separatorPixels*2, 0, 0, 0);
-
-	QFont titleFont(option.font);
-	titleFont.setPointSize(titleFont.pointSize() + 2);
-	titleFont.setWeight(QFont::Bold);
-
-	QString titleStr = option.fontMetrics.elidedText(title(index), Qt::ElideRight, contentRect.width());
-	QSize titleSize = option.fontMetrics.size( Qt::TextSingleLine, titleStr );
-	contentRect.adjust(0, m_separatorPixels + option.fontMetrics.height(), 0, 0);
-
-	// Show Description
-	QString descrStr = option.fontMetrics.elidedText(description(index), Qt::ElideRight, contentRect.width());
-	QSize descrSize = option.fontMetrics.size( Qt::TextSingleLine, descrStr );
-
-	if( descrSize.width() > titleSize.width() )
-		size.setWidth(size.width() + descrSize.width());
+	if( m_iconHeight < option.fontMetrics.height()*3 )
+		size.setHeight( option.fontMetrics.height()*3 + m_separatorPixels*3);
 	else
-		size.setWidth(size.width() + titleSize.width());
+		size.setHeight( m_iconHeight+m_separatorPixels*2);
 
-	if( titleSize.height()+descrSize.height()+m_separatorPixels*2 > m_iconWidth )
-		size.setHeight( titleSize.height()+option.fontMetrics.height()+descrSize.height()+m_separatorPixels*4 );
 	return size;
 }
 
