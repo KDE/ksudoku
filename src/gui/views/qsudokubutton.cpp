@@ -28,6 +28,7 @@
 
 #include <QLinearGradient>
 
+#include <kdebug.h>
 #include "ksudoku.h"
 #include "ksudokugame.h"
 #include "sudokuview.h"
@@ -430,8 +431,8 @@ void QSudokuButton::updateData() {
 		return;
 	}
 
-	int width = rect().width();
-	int height = rect().height();
+	int width = rect().adjusted(8,8,-8,-8).width();
+	int height = rect().adjusted(8,8,-8,-8).height();
 
 	m_state = info.state();
 	switch(info.state()) {
