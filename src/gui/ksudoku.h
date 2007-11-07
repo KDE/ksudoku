@@ -51,10 +51,8 @@
 
 class ksudoku::KsView;
 class KUrl;
-class KTabWidget;
 
 namespace ksudoku {
-class GameSelectionDialog;
 class GameVariantCollection;
 class ValueListWidget;
 class WelcomeScreen;
