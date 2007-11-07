@@ -118,7 +118,7 @@ public:
 	 * Gets the the interface of the game. Use this if for connecting to signals or
 	 * slots of the game
 	 */
-	GameIFace* interface();
+	GameIFace* interface() const;
 	
 	Game& operator=(const Game& game);
 	

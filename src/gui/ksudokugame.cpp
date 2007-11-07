@@ -208,7 +208,7 @@ int Game::size() const {
 	return m_private->puzzle->size();
 }
 
-GameIFace* Game::interface() {
+GameIFace* Game::interface() const {
 	return m_private;
 }
 
@@ -418,7 +418,9 @@ ksudoku::ButtonState Game::buttonState(int index) const {
 		return GivenValue;
 	if(value(index) == 0)
 		return Marker;
-	if(value(index) != m_private->puzzle->solution(index))
+	if(value(index) == m_private->puzzle->solution(index))
+		return CorrectValue;
+	if(m_private->puzzle->solution(index))
 		return WrongValue;
 	return CorrectValue;
 }
@@ -431,7 +433,9 @@ CellInfo Game::cellInfo(int index) const {
 		return CellInfo(GivenValue, value(index));
 	if(value(index) == 0)
 		return CellInfo(m_private->state.markers(index));
-	if(value(index) != m_private->puzzle->solution(index))
+	if(value(index) == m_private->puzzle->solution(index))
+		return CellInfo(CorrectValue, value(index));
+	if(m_private->puzzle->solution(index))
 		return CellInfo(WrongValue, value(index));
 	return CellInfo(CorrectValue, value(index));
 }

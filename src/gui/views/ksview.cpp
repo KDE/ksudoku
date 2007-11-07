@@ -50,6 +50,7 @@ KsView::KsView(const Game& game, QObject* parent)
 
 KsView::~KsView()
 {
+	delete m_viewWidget;
 }
 
 void KsView::createView() {

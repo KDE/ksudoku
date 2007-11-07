@@ -103,12 +103,6 @@ public:
 	Game             currentGame() const;
 	ksudoku::KsView* currentView() const;
 
-	// override central Widget 
-	virtual void setCentralWidget(QWidget* widget) { setCentralWidget(widget, false); }
-	void setCentralWidget(QWidget* widget, bool autoDel);
-
-	QMap<QString, SKSolver*>& shapes(){return m_shapes;}
-
 protected:
     /**
      * Overridden virtuals for Qt drag 'n drop (XDND)
@@ -122,6 +116,7 @@ public slots:
 	void showWelcomeScreen();
 
 	void startGame(const Game& game);
+	void endCurrentGame();
 	
 private slots:
 	void gameNew();
@@ -170,8 +165,6 @@ public:
 	void createCustomShape();
 
 private:
-	QWidget* wrapper;
-	QWidget* activeWidget;
 	void createAction(const QString& text, const char* slot, const QString& name, const QString& icon);
 	void setupAccel();
 	void setupActions();
@@ -180,9 +173,7 @@ private:
 
 	
 private:
-// 	KTabWidget* m_tabs;
-	
-// 	GameSelectionDialog* m_gameSelDlg;
+	QWidget* wrapper;
 	
 	QSignalMapper* m_selectValueMapper;
 	QSignalMapper* m_enterValueMapper;
@@ -203,15 +194,6 @@ private:
 	
 	KsView* m_gameUI;
 
-	bool m_autoDelCentralWidget;
-	
-	QString m_defaultAction;
-	bool m_optionEnterOwnGame;
-	
-	QMap<QString, SKSolver*> m_shapes;
-	QStringList m_shapes_paths;
-	QString m_shape_save_path;
-	
 	Symbols m_symbols;
 };
 

@@ -114,13 +114,12 @@ void KSudoku::updateStatusBar()
 }
 
 KSudoku::KSudoku()
-	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true)), m_autoDelCentralWidget(false)
+	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true))
 {
 	setObjectName("ksudoku");
 
 	m_gameWidget = 0;
 	m_gameUI = 0;
-	activeWidget = 0;
 
 	m_selectValueMapper = new QSignalMapper(this);
 	connect(m_selectValueMapper, SIGNAL(mapped(int)), this, SLOT(selectValue(int)));
@@ -144,10 +143,10 @@ KSudoku::KSudoku()
 	// Create ValueListWidget
 	m_valueListWidget = new ValueListWidget(wrapper);
 	wrapper->layout()->addWidget(m_valueListWidget);
-// 	m_valueListWidget->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Minimum);
 	m_valueListWidget->setFixedWidth(60);
 
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
+	wrapper->layout()->addWidget(m_welcomeScreen);
 	connect(m_welcomeScreen, SIGNAL(newGameStarted(const Game&,GameVariant*)), this, SLOT(startGame(const Game&)));
 	showWelcomeScreen();
 
@@ -163,6 +162,11 @@ KSudoku::KSudoku()
 	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
 	updateStatusBar();
 	timer->start( 1000); //TODO PORT, false ); // 2 seconds single-shot timer
+}
+
+KSudoku::~KSudoku()
+{
+	endCurrentGame();
 }
 
 void KSudoku::updateShapesList()
@@ -213,11 +217,11 @@ void KSudoku::updateShapesList()
 	}
 }
 
-KSudoku::~KSudoku()
-{
-}
-
 void KSudoku::startGame(const Game& game) {
+	m_welcomeScreen->hide();
+	endCurrentGame();
+	
+	
 	KsView* view = new KsView(game, this);
 
 	view->setValueListWidget(m_valueListWidget);
@@ -228,22 +232,15 @@ void KSudoku::startGame(const Game& game) {
 	connect(m_valueListWidget, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
 	connect(view, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
 
-
-	m_welcomeScreen->hide();
-
 	QWidget* widget = view->widget();
 	m_gameUI = view;
 
 	wrapper->layout()->addWidget(widget);
-
-	Game game2(game);
-	connect(game2.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
-	connect(game2.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
-
 	widget->show();
-	wrapper->layout()->addWidget(widget);
-	activeWidget = widget;
-	m_autoDelCentralWidget = true;
+
+	connect(game.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
+	connect(game.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
+
 	adaptActions2View();
 
 	QSizePolicy policy(QSizePolicy::Expanding, QSizePolicy::Expanding);
@@ -261,6 +258,16 @@ void KSudoku::startGame(const Game& game) {
 	m_valueListWidget->show();
 }
 
+void KSudoku::endCurrentGame() {
+	m_valueListWidget->hide();
+	
+	delete m_gameUI;
+	m_gameUI = 0;
+	
+	adaptActions2View();
+
+}
+
 void KSudoku::loadGame(const KUrl& Url) {
 	QString errorMsg;
 	Game game = ksudoku::Serializer::load(Url, this, &errorMsg);
@@ -272,25 +279,10 @@ void KSudoku::loadGame(const KUrl& Url) {
 	startGame(game);
 }
 
-void KSudoku::setCentralWidget(QWidget* widget, bool autoDel) {
-	QWidget* oldWidget = activeWidget;
-	if(oldWidget) oldWidget->hide();
-	if(m_autoDelCentralWidget) delete oldWidget; //moving up here fixes a roxdoku window bug
-	m_autoDelCentralWidget = autoDel;
-
-	widget->show();
-	wrapper->layout()->addWidget(widget);
-	activeWidget = widget;
-
-	adaptActions2View();
-}
-
 void KSudoku::showWelcomeScreen() {
-	m_valueListWidget->hide();
-	delete m_gameUI;
-	m_gameUI = 0;
+	endCurrentGame();
 
-	setCentralWidget(m_welcomeScreen, false);
+	m_welcomeScreen->show();
 }
 
 void KSudoku::homepage()
@@ -347,11 +339,7 @@ void KSudoku::dubPuzzle()
 
 	if(KMessageBox::questionYesNo(this, i18n("Do you want to play the puzzle now?")) == 3)
 	{
-		ksudoku::Game* newGame = new ksudoku::Game(puzzle);
-
-	// 		(new KSudoku(newGame))->show();
-		startGame(*newGame);
-		delete newGame;
+		startGame(ksudoku::Game(puzzle));
 	}
 	else
 	{
@@ -781,18 +769,6 @@ Game KSudoku::currentGame() const {
 }
 
 ksudoku::KsView* KSudoku::currentView() const{
-// 	if(ksudoku::KsView* view = dynamic_cast<KsView*>(m_tabs->currentPage()))
-// 		return view;
-// 	else
-// 		return 0;
-
-	// TODO this might cause trouble as the central widget don't have to be a
-	// KsView instance
-//	if(activeWidget)
-// 	if(centralWidget() == 0) return 0;
-
-// 	return dynamic_cast<KsView*>(activeWidget);
-
 	return m_gameUI;
 }
 

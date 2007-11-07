@@ -368,23 +368,23 @@ Game Serializer::load(const KUrl& url, QWidget* window, QString *errorMsg) {
 		child = child.nextSibling();
 	}
 
-	SKSolver* sk = (SKSolver*) game.puzzle()->solver();
-	QString name    =  ((GraphCustom*)sk->g)->name;
-	KSudoku* p = (KSudoku*) window;
-	if(!p->shapes().contains(name))
-	{
-		KStandardDirs myStdDir;
-		const QString destDir = myStdDir.saveLocation("data", /* TODO PORT kapp->instanceName() +*/ "ksudoku/", true);
-		KStandardDirs::makeDir(destDir);
-
-		QString path = destDir + name + ".xml";
-		KUrl url;
-		url.setPath(path);
-
-		Serializer::storeCustomShape( sk, url ,window );
-		p->updateShapesList();
-		
-	}
+// 	SKSolver* sk = (SKSolver*) game.puzzle()->solver();
+// 	QString name    =  ((GraphCustom*)sk->g)->name;
+// 	KSudoku* p = (KSudoku*) window;
+// 	if(!p->shapes().contains(name))
+// 	{
+// 		KStandardDirs myStdDir;
+// 		const QString destDir = myStdDir.saveLocation("data", /* TODO PORT kapp->instanceName() +*/ "ksudoku/", true);
+// 		KStandardDirs::makeDir(destDir);
+// 
+// 		QString path = destDir + name + ".xml";
+// 		KUrl url;
+// 		url.setPath(path);
+// 
+// 		Serializer::storeCustomShape( sk, url ,window );
+// 		p->updateShapesList();
+// 		
+// 	}
 
 	return game;
 }
