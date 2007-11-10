@@ -41,74 +41,30 @@
 
 namespace ksudoku {
 
-// Colors of kde4.0alpha and first betas
-/* enum GameColors {
-	// Standard background
-	HColorStd = 0xffbfd9ff,
-
-	// Pure highlights
-	HColorR = 0xff80b3ff, // Row highlight
-	HColorC = 0xfff082b0, // Column highlight
-	HColorB = 0xff00cc88, // Block highlight
-
-	// Combinations of highlights
-	HColorRC  = 0xffe8b7d7,
-	HColorRB  = 0xff6193cf,
-	HColorCB  = 0xffb3925d,
-	HColorRCB = 0xff888a85,
-
-	// Special highlights
-	HColorSStd = HColorStd,
-	HColorSR   = HColorR,
-	HColorSC   = HColorC,
-	HColorSB   = HColorB,
-	HColorSRC  = HColorRC,
-	HColorSRB  = HColorRB,
-	HColorSCB  = HColorCB,
-	HColorSRCB = HColorRCB,
-
-	// Highlights for the helper
-	HColorGood  = 0xffbfffbf,
-	HColorBad   = 0xffffbfbf,
- 	HColorSGood = HColorGood,
-	HColorSBad  = HColorBad,
-
-	// Border colors
-	BColorDark   = 0xff555753,
-	BColorLight  = 0xffffffff, // 0xeeeeec
-	BColorSimple = 0xff888a85,
-
-	// Font Colors
-	FColorStd    = 0xff646464,
-	FColorGiven  = 0xff000064,
-	FColorWrong  = 0xff800000,
-	FColorMarker = 0xff646464
-}; */
-
 // Almost Flat Strong colors
 enum GameColors {
 	// Standard background
 	HColorStd = 0xffffffff,
 
 	// Pure highlights
-	HColorR = 0xffff8080, // Row highlight
-	HColorC = 0xff6192cf, // Column highlight
-	HColorB = 0xfffff199, // Block highlight
+	HColorR = 0xffd2e0f2, // Row highlight
+	HColorC = 0xffd2e0f2, // Column highlight
+	HColorB = 0xffffeb55, // Block highlight
 
 	// Combinations of highlights
 	HColorRC  = 0xffc173b0,
-	HColorRB  = 0xfff2bb88,
-	HColorCB  = 0xff00cc88,
-	HColorRCB = 0xffbabdb6,
+	HColorRB  = 0xffb0bf4b,
+	HColorCB  = 0xffb0bf4b,
+	HColorRCB = 0xff8bb300,
 
 	// Special highlights
 	HColorSStd = 0xffd3d7cf,
-	HColorSR   = 0xffe85752,
-	HColorSC   = 0xff2c72c7,
-	HColorSB   = 0xffffeb55,
-	HColorSRC  = 0xffb14f9a,
-	HColorSRB  = 0xfff29b68,
-	HColorSCB  = 0xff00b377,
+	HColorSR   = 0xffa4c0e4,
+	HColorSC   = 0xffa4c0e4,
+	HColorSB   = 0xffa4c0e4,
+	HColorSRC  = 0xff88aedb,
+	HColorSRB  = 0xff88aedb,
+	HColorSCB  = 0xff74a0d5,
 	HColorSRCB = 0xff888a85,
 
 	// Highlights for the helper
@@ -124,54 +80,10 @@ enum GameColors {
 
 	// Font Colors
 	FColorStd    = 0xff646464,
-	FColorGiven  = 0xff000064,
-	FColorWrong  = 0xff800000,
+	FColorGiven  = 0xff000000,
+	FColorWrong  = 0xffbf0000,
 	FColorMarker = 0xff646464
 };
-
-// With 3D look
-/* enum GameColors {
-	// Standard background
-	HColorStd = 0xffdddddd,
-
-	// Pure highlights
-	HColorR = 0xffffbfbf, // Row highlight
-	HColorC = 0xffa4c0e4, // Column highlight
-	HColorB = 0xfffff6c8, // Block highlight
-
-	// Combinations of highlights
-	HColorRC  = 0xffe8b7d7,
-	HColorRB  = 0xfffcd8b0,
-	HColorCB  = 0xff99dcc6,
-	HColorRCB = 0xffbabdb6,
-
-	// Special highlights
-	HColorSStd = HColorStd,
-	HColorSR   = HColorR,
-	HColorSC   = HColorC,
-	HColorSB   = HColorB,
-	HColorSRC  = HColorRC,
-	HColorSRB  = HColorRB,
-	HColorSCB  = HColorCB,
-	HColorSRCB = HColorRCB,
-
-	// Highlights for the helper
-	HColorGood  = 0xffbfffbf,
-	HColorBad   = 0xffffbfbf,
- 	HColorSGood = HColorGood,
-	HColorSBad  = HColorBad,
-
-	// Border colors
-	BColorDark   = 0xff888a85,
-	BColorLight  = 0xffeeeeee, // 0xeeeeec
-	BColorSimple = 0xff888a85,
-
-	// Font Colors
-	FColorStd    = 0xff646464,
-	FColorGiven  = 0xff000064,
-	FColorWrong  = 0xff800000,
-	FColorMarker = 0xff646464
-}; */
 
 // Lookup for Highlights
 // Bit 1: Horz clique highlight
