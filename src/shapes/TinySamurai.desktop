@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Encoding=UTF-8
 Name=Tiny Samurai
+Name[de]=Kleiner Samurai
 Name[el]=Μικροσκοπικό Σαμουράι
 Name[es]=Samurai pequeño
 Name[ga]=Samurai An-Bheag
@@ -11,6 +12,7 @@ Name[pt_BR]=Samurai Pequeno
 Name[sv]=Liten Samurai
 Name[x-test]=xxTiny Samuraixx
 Description=A smaller samurai puzzle
+Description[de]=Ein kleineres Samurai Rätsel
 Description[el]=Ένα μικρότερο παζλ Σαμουράι
 Description[es]=Un pequeño rompecabezas de samurai
 Description[ja]=小さいサイズのサムライ型パズル
