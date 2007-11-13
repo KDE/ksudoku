@@ -1,240 +1,439 @@
 <?xml version="1.0" ?>
-<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN"
-"dtd/kdex.dtd" [
-  <!ENTITY kappname "&ksudoku;">
-  <!ENTITY package "kdegames">
-  <!ENTITY % addindex "IGNORE">
-  <!ENTITY % English "INCLUDE"> <!-- change language only here -->
-
-  <!ENTITY ksudoku "<application>KSudoku</application>"> <!-- @TODO: move to general.entities -->
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
+<!ENTITY ksudoku "Ksudoku">
+<!ENTITY kappname "&ksudoku;"> 
+  <!ENTITY kappversion "0.5"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2007-10-03"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames">  <!-- do not change this! -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
-
-
-
-<book lang="&language;">
-
-<!-- This header contains all of the meta-information for the document such
-as Authors, publish date, the abstract, and Keywords -->
-
+ 
+<book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-<title>The &ksudoku; Handbook</title>
-
+	<title>The &kappname;  Handbook</title> <!-- This is the title of this docbook. -->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
- <author>
-  <firstname>Francesco </firstname>
-  <surname>Rossi</surname>
-  <affiliation>
-   <address><email>redsh@email.it</email></address>
-  </affiliation>
- </author>
-<!-- @TODO: are we (Johannes and Mick developer or  authors ?? -->
- <othercredit role="developer">
-  <firstname>Johannes</firstname>
-  <surname>Bergmeier</surname>
-  <affiliation>
-   <address><email>johannes.bergmeier@gmx.net</email></address>
-  </affiliation>
-  <contrib>Developer</contrib>
- </othercredit>
- <othercredit role="developer">
-  <firstname>Mick</firstname>
-  <surname>Kappenburg</surname>
-  <affiliation>
-   <address><email>ksudoku@kappenburg.net</email></address>
-  </affiliation>
-  <contrib>Developer</contrib>
- </othercredit>
+	<author>
+		<firstname>Mick</firstname>
+		<surname>Kappenburg</surname>
+		<affiliation><address><email>ksudoku@kappenburg.net</email></address></affiliation>
+	</author>
+	<author>
+		<firstname>Eugene</firstname>
+		<surname>Trounev</surname>
+		<affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
+	</author>
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
-
-<copyright> <!-- @TODO: copyright for doc or src or both (assumed for DOC only ?? -->
-<year>1999</year>
-<year>2005</year>
-<holder>Francesco Rossi</holder>
-</copyright>
 <copyright>
-<year>2006</year>
-<year>2007</year>
-<holder>Mick Kappenburg</holder>
+	<year>2007</year>
+	<holder>Mick Kappenburg</holder>
 </copyright>
-
-
-<legalnotice>&FDLNotice;</legalnotice>
-
-<!-- Date and version information of the documentation
-Don't forget to include this last date and this last revision number, we
-need them for translation coordination !
-Please respect the format of the date (YYYY-MM-DD) and of the version
-(V.MM.LL), it could be used by automation scripts.
-Do NOT change these in the translation. -->
-<date>2007-10-03</date>
-<releaseinfo>0.3</releaseinfo>
-
-<!-- Abstract about this handbook -->
-<abstract><para>
-&ksudoku; is a &kde; version of the sudoku game with many variants.
-</para></abstract>
-
-<!-- This is a set of Keywords for indexing by search engines.
-Please at least include KDE, the KDE package it is in, the name
- of your application, and a few relevant keywords. -->
+ 
+<date>&docupdate;</date><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
+<releaseinfo>&docversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para>This documentation describes the game of &kappname; version &kappversion;</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
 <keywordset>
-<keyword>KDE</keyword>
-<keyword>game</keyword>  <!-- @TODO: correct?? -->
-<keyword>sudoku</keyword>
+	<keyword>KDE</keyword> <!-- do not change this! -->
+	<keyword>kdegames</keyword> <!-- do not change this! -->
+	<keyword>game</keyword> <!-- do not change this! -->
+	<keyword>ksudoku</keyword><!--Application name goes here-->
+<!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword>logic</keyword>
+	<keyword>board</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword>one player</keyword>
+<!--All other relevant keywords-->
+	<keyword>puzzle</keyword>
 </keywordset>
-
 </bookinfo>
-
-<!-- The contents of the documentation begin here.  Label
-each chapter so with the id attribute. This is necessary for two reasons: it
-allows you to easily reference the chapter from other chapters of your
-document, and if there is no ID, the name of the generated HTML files will vary
-from time to time making it hard to manage for maintainers and for the CVS
-system. Any chapter labelled (OPTIONAL) may be left out at the author's
-discretion. Other chapters should not be left out in order to maintain a
-consistent documentation style across all KDE apps. -->
-
-<chapter id="introduction">
-<title>Introduction</title>
-
-<!-- The introduction chapter contains a brief introduction for the
-application that explains what it does and where to report
-problems. Basically a long version of the abstract.  Don't include a
-revision history. (see installation appendix comment) -->
-<para>&ksudoku; is a sudoku game for &kde; with many variants.</para>
-
-<para>Sudoku is a logic-based symbol placement puzzle. The objective is to fill a grid so that each column and each row contains contains each symbols exacly once. Mosty there are other constraints added.</para>
-
-<para>The most common sudoku game has a 9x9 grid and uses 1 to 9 as symbols. As extra constraint the grid is devided in 9 3x3 grids which has to contain all the symbols as well. This spesific variant is mostly refered to as sudoku.</para>  <!-- @TODO: Hm, last sentence sounds not correct-->
-
-<para>There are a lot of variants, and only one will be discused here. A variant is samurai. This game has 5 9x9 grids, each with 9 3x3 sub grids (so 5 times sudoku). One grid is in the middle and the other 4 are located at its corners, overlapping with the sub-grid located at each corner. The overlap imposes a new constaint because every corner is used twice in a sudoku each demanding the "all and only once" rule for each row and column</para>
-
+<!--Content begins here: -->
+<chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
+	<note><title>Gametype:</title><para>Logic, Board</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note><title>Number of possible players:</title><para>One</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 	<para>&kappname; is a logic-based symbol placement puzzle.</para>
+<para>The player has to fill a grid so that each column, row as well as each square block on the game field contains only one instance of each symbol.</para>
+<para>Depending on the preferences and the difficulty level some games start with a partially completed game field, while the others start with a blank one.</para>
+<para>There are hundreds of different variations of sudoku in existence. The most common variant of the game has a 9x9 squares grid and uses Arabic numerals for symbols. As en extra constraint, the grid is divided into 9 sectors of 3x3 squares. The problem is – each symbol can only be used once per row, column and sector.
+	</para>
+	<note>
+		<title>Note:</title>
+		<para>It takes a lot of time and concentration to complete each game. However, solving sudoku puzzles helps to increase the overall brain activity and therefore is highly recommended.</para>
+	</note>
 </chapter>
+ 
+<chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note><title>Objective:</title><para>Fill the grid so that each column, row as well as each square sector on the game field contains only one instance of each symbol.</para></note><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para>At the game start you are prompted to choose which game type you are interested in.</para>
+<note><title>Note:</title><para>The game experience may change slightly depending on the game type you choose.</para></note>
+<para>Take a look at left hand side of the game field. There is a selection list which contains all the symbols available for you to use in the current game.</para>
+<note><title>Note:</title><para>The set of symbols varies depending on the game type you choose.</para></note>
+<para>First, note the boundaries of the game field. The thick black lines outline the sectors. Every one of this sectors has to be completed using the symbols available, in such a way that each symbol is used within the sector area once and only once.</para>
+<para>Now you can start entering the symbols into the vacant squares on the game field. You can do that by selecting the symbol you wish to enter from the selection list on the left , and then using your mouse to click on the vacant square on the game field.</para>
+<para>Notice that the squares change color while you hover your mouse over them. It is done to help you keep up with the rules of &kappname;. Use the vertical and horizontal lines to check if the symbol, you are about to enter into the vacant spot, is already in use anywhere in the vertical or horizontal line that square is a part of. The coloring also highlights the sector which, if you remember, must also contain only one instance of each symbol.</para>
+<para>Keep entering the symbols in accordance with the riles until the whole game field is filled up. At this pint the application will check if all the entries are valid and either correct you, or except the solution.
+	</para>
+</chapter>
+ 
+<chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title>General Game Rules</title>
+		<para>The rules of &kappname; are quite simple.</para>
+		<itemizedlist>
+		<listitem><para>Depending on the size of the game board and the difficulty level chosen each individual &kappname; puzzle may take up to a few hours to solve.</para></listitem>
+		<listitem><para>Each square may hold one and only one symbol.</para></listitem>
+		<listitem><para>Each horizontal row (as defined by the game board) can contain each symbol exactly once.</para></listitem>
+		<listitem><para>Each vertical row (as defined by the game board) can contain each symbol exactly once.</para></listitem>
+		<listitem><para>Each subgrid or section (as defined by the game board) can contain each symbol exactly once</para></listitem>
+		</itemizedlist>
+		<note><title>Note:</title><para>The set of symbols varies depending on the game type you choose.</para></note>
+		<itemizedlist>
+			<listitem><para>Knowledge of mathematics, or language is not required to solve &kappname; puzzles.</para></listitem>
+			<listitem><para>Depending on the difficulty chosen the puzzles may appear partially solved. In such case the signs already on the game board can not be changed.</para></listitem>
+			<listitem><para>You can only modify the symbols you have previously entered.</para></listitem>
+			<listitem><para>&kappname; generated puzzles have one solution only.</para></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title>Strategies and Tips</title>
+		<itemizedlist>
+			<listitem><para>Take your time and do not rush. &kappname; is not a 'quick' game to play.</para></listitem>
+		<listitem><para>Pay attention to the row, column, and section colorings. They are here to aid you in the game.</para></listitem>
+		<listitem><para>Make sure that so duplicate symbol exists already in the row/column/section you are entering it to.</para></listitem>
+		<listitem><para>If in doubt, try to foresee if a square you are entering a symbol into maybe needed by some other symbol, which otherwise can not go anywhere else due to the row/column/section rule violation.</para></listitem>
+		<listitem><para>If you are having troubles, try to retrace your steps and see exactly where you have made an error.</para></listitem>
+		<listitem><para>Even though &kappname; provides a 'Hint' option for you, try not to use it often. Remember solving the puzzle all by yourself enhances your brain activity, while using the 'Hint' feature too often is cheating.</para></listitem>
+			<listitem><para>If you have much trouble solving a certain puzzle, and simply must use the 'Hint' feature, then maybe you should try to decrease the difficulty level, or try a simpler, more basic puzzle.</para></listitem>
+		<listitem><para>Some puzzle layouts feature very specific game board shapes. It is a good idea to have the coloring option enabled even if you consider yourself an experienced player.</para></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+ 
+ 
+<chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
+<sect1 id="game-menu">
+	<title>The <guimenu>Game</guimenu> Menu</title>
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>New</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Starts a new game.</action></para></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Load...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Loads a saved game.</action></para></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Save</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Saves</action> the current game as a default save file.</para></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term><menuchoice>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Save As...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Saves</action> the current game as a file of your choice.</para></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Quit</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Quits</action> &kappname;.</para></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title><guimenu>Move</guimenu> Menu</title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Undo</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Undo</action> your last move.</para></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Redo</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Redo</action> a move the was undone.</para></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term><menuchoice>
+					<shortcut><keysym>H</keysym></shortcut>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Hint</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Gives a Hint</action> by flashing a matching pair of tiles.</para></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term><menuchoice>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Solve</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Instantly solve</action> the puzzle.</para></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term><menuchoice>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Check</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Check</action> the entry for validity.</para></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title><guimenu>Settings</guimenu> Menu</title>
+		<variablelist>
+			<varlistentry>
+				<term><menuchoice>
+					<guimenu>Settings</guimenu>
+					<guisubmenu>Toolbars</guisubmenu>
+					<guimenuitem>Main Toolbar</guimenuitem>
+				</menuchoice></term>
+				<listitem><para>Shows or hides the Main Toolbar.</para></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-hide-matching">
+				<term><menuchoice>
+					<guimenu>Settings</guimenu>
+					<guisubmenu>Toolbars</guisubmenu>
+					<guimenuitem>Actions Toolbar</guimenuitem>
+				</menuchoice></term>
+				<listitem><para>Shows or hides the Actions Toolbar.</para></listitem>
+			</varlistentry>
 
+			<varlistentry id="settings-menu-statusbar">
+				<term><menuchoice>
+					<guimenu>Settings</guimenu>
+					<guimenuitem>Show Statusbar</guimenuitem>
+				</menuchoice></term>
+				<listitem><para>Shows or hides the Statusbar.</para></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-shortcuts">
+				<term><menuchoice>
+					<guimenu>Settings</guimenu>
+					<guimenuitem>Configure Shortcuts...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Displays a standard &kde; shortcut configuration dialog</action> to change the keyboard shortcuts for &kappname;.</para></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-toolbar">
+				<term><menuchoice>
+					<guimenu>Settings</guimenu>
+					<guimenuitem>Configure Toolbars...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para>Displays a standard &kde; dialog where you can configure the toolbar icons.</para></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-settings">
+				<term><menuchoice>
+					<guimenu>Settings</guimenu>
+					<guimenuitem>Configure &kappname;...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Opens a dialog to configure &kappname;.</action> See <link linkend="configuration">'Game Configuration'</link> section for details.</para></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
+<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+&help.menu.documentation;
+</sect1>
+</chapter>
+ 
+ 
+<chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+<question><para>Who made this game?</para></question>
+ <answer><para>The kdegames team. You can find their website here.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where can I get cheatcodes? </para></question>
+ <answer><para>You can't get cheatcodes for KDE games.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I start a new game? </para></question>
+ <answer><para>Explain how to start a new game here.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>How do I pause the game? </para></question>
+ <answer><para>&kappname; doe not have a 'Pause' feature.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the way this game looks. Can I? </para></question>
+ <answer><para>Sudoku games are traditionally played using square grid. Themes would not make much sense here. However, you can select the set of symbols used in game. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>  on menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I changed the symbols in the �Settings� and not my entire game board is filled with question marks. What�s the problem?</para></question>
+ <answer><para>Each set contains a limited number of possible symbols. If you have chosen the set which has less symbols then your current game requires, the application will complain by displaying question marks. Change the set to fix the problem.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have made a mistake. Can I undo? </para></question>
+ <answer><para>Yes. To undo use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut><guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice>.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Can I use keyboard? </para></question>
+ <answer><para>Yes. In &kappname; keyboard play is always enabled. Please use cursor keys to move the selection, numeric characters to enter the symbols and <keycap>&Shift;</keycap> key to apply markers.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I can't figure out what to do here! Are there hints? </para></question>
+ <answer><para>Yes. To access 'Hint' feature use <menuchoice><shortcut><keysym>H</keysym></shortcut><guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice> on the menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+  <answer><para>Yes. To access 'Save' feature use <menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Save</guimenuitem>
+				</menuchoice> on the menubar.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>Where are the highscores?</para></question>
+ <answer><para>&kappname; does not have this feature.</para></answer>
+</qandaentry>
+<qandaentry>
+ <question><para>I want to change the game configuration. Where do I go? </para></question>
+ <answer><para>To access the game settings use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice> on the menubar. See <link linkend="configuration">'Game Configuration'</link> section for details.</para></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
-<chapter id="how-to-play">
-<title>How to play</title>
-
-<sect1 id="starting-a-game">
-<title>Starting a game</title>
-
-<para>At startup you're presented a list of available sudoku variants. Just select one. Before you hit the play button to start the game, note the difficulty setting at the bottem. The more the slide is set to the right, the more diffucult the game will be.</para>
+<sect1 id="general-options"><title><guilabel>Game:</guilabel> options</title>
+	<variablelist>
+		<varlistentry>
+			<term><guilabel>Show Highlights</guilabel></term>
+			<listitem><para>Toggle the &kappname; highlight option.</para>
+					<note><title>Note:</title><para>Having this option enabled is remanded even for the most experienced players, as it helps to see the actual game board constraints.</para></note></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Show Errors</guilabel></term>
+			<listitem><para>Toggle the invalid entry highlight.</para></listitem>
+		</varlistentry>
+	</variablelist>
 </sect1>
 
-<sect1 id="filling-in-the-blanks">
-<title>Filling in the blanks</title>
-
-<para>Playing &ksudoku; means you have to insert the correct symbols at the blank squares. Symbol selection can be done with a left click on an symbol located in the grid or located at the sidebar. Inserting a symbol is then a simple right mouse click on a (origanaly) blank square. Or you can use the arrow-keys to move around and alfa-numeric to insert a symbol (the keys are translated to the correct symbol if possible). When inserting a symbol with the keyboard, that symbol will become the selected symbol.</para>
+<sect1 id="layout-options"><title><guilabel>Symbol Themes:</guilabel> options</title>
+	<variablelist>
+		<varlistentry>
+			<term><guilabel>Simple Forms</guilabel></term>
+			<listitem><para>Toggles on and off the use of simple forms for the ingame pictograms.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Dices</guilabel></term>
+			<listitem><para>Toggles on and off the use of dice for the ingame pictograms.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Digits</guilabel></term>
+			<listitem><para>Toggles on and off the use of Arabic numerals for the ingame pictograms.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Small Letters</guilabel></term>
+			<listitem><para>Toggles on and off the use of small Latin letters for the ingame pictograms.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Capital Letters</guilabel></term>
+			<listitem><para>Toggles on and off the use of capital Latin letters for the ingame pictograms.</para></listitem>
+		</varlistentry>
+	</variablelist>
+	<note><title>Note:</title><para>Each set contains a limited number of possible symbols. If you have chosen the set which has less symbols then your current game requires, the application will complain by displaying question marks. Change the set to fix the problem.</para></note>
 </sect1>
-
-<sect1 id="system-guides">
-<title>System guides</title>
-
-<para>The gui heighlights the column and row the input will go. This makes it easier to see if a symbol already is used. <!-- @TODO: this is configurable --></para>
-
-<para>When pressing ctrl squares are highlighted which could be a valid place for the current selected symbol. This of course takes a bit fun out of the game.</para>
-
-<para>If you make a mistake, the symbol will be colored red.
-<!-- @TODO: this is configurable --></para>
-
-<para>When you are complete stuck, you can ask for a hint. A blank square will be filled as if it was filled from the beginning.</para>
-
-<para>&ksudoku; keeps a history so you can undo and redo your moves. You can save and load your games and create your own puzzle and even your own sudoku variant!</para>
-</sect1>
-
 </chapter>
-
-
-<chapter id="CreatingPuzzle">
-<title>How to create your own puzzle</title>
-
-<para>Start with a empty puzzle. Insert symbols. When satisfied you can use "check" to find out if there are more than one, one, or no solutions.</para>
-
-</chapter>
-
-
-<chapter id="CreatingVariant">
-<title>How to create your own sudoku variant</title>
+ 
+<chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
 <para>
-</para>
-</chapter>
-
-
-<chapter id="PrintAndExportPuzzles">
-<title>Printing puzzles</title>
-<para>
-At the moment of writing, printing and exporting puzzles is not completed. If you want this feature you have to use the 0.4 version (written for KDE 3.5)
-</para>
-</chapter>
-
-<!--
-<sect1 id="">
-<title></title>
-<para></para>
-</sect1>
--->
-
-<!--<sect2 id="ksudoku-features">
-<title>More &ksudoku; features</title>
-
-<para>Boards supported: 9x9 and 16x16. GUI for playing, saving, printing, solving and dubbing puzzles. The program is fully expandable since the algorithm is extendible to any general graph coloring problem.</para>
-<para>
+&kappname;  <!-- do not change this! -->
 </para>
 
-</sect>-->
-
-
-
-
-<chapter id="credits">
-
-<!-- Include credits for the programmers, documentation writers, and
-contributors here. The license for your software should then be included below
-the credits with a reference to the appropriate license file included in the KDE
-distribution. -->
-
-<title>Credits and License</title>
-
+<!--List all the copyright holders here-->
 <para>
-&ksudoku;
+&kappname; copyright 2005-2007 Francesco Rossi <email>redsh@email.it</email>
 </para>
 <para>
-Program copyright 2005 Francesco Rossi <email>redsh@email.it</email>
+Copyright 2006-2007 Mick Kappenburg <email>ksudoku@kappenburg.net</email>, Johannes Bergmeier <email>johannes.bergmeier@gmx.net</email>
 </para>
-<!--
-<para>
-Contributors:
-<itemizedlist>
-<listitem><para>Konqui the KDE Dragon <email>konqui@kde.org</email></para>
-</listitem>
-<listitem><para>Tux the Linux Penguin <email>tux@linux.org</email></para>
-</listitem>
-</itemizedlist>
-</para>
--->
-
 <para>
 Documentation copyright 2005 Francesco Rossi <email>redsh@email.it</email>
 </para>
+<para>
+Documentation copyright 2007 Mick Kappenburg <email>ksudoku@kappenburg.net</email>, Euigene Trounev <email>eugene.trounev@gmail.com</email>
+</para>
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
-
-&underFDL;               <!-- FDL: do not remove -->
-
-<!-- Determine which license your application is licensed under, 
-     and delete all the remaining licenses below:
-
-     (NOTE:  All documentation are licensed under the FDL, 
-     regardless of what license the application uses) -->
-
-&underGPL;        	 <!-- GPL License -->
-&underBSDLicense;        <!-- BSD License -->
-&underArtisticLicense;   <!-- BSD Artistic License -->
-&underX11License;        <!-- X11 License  -->
-
+ 
+ 
+<!-- !!!do not change ANYTHING after this line!!!! -->
+&underFDL;
+&underGPL;
+ 
 </chapter>
-
-
-&documentation.index;
+ 
+ 
+<appendix id="installation">
+<title>Installation</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title>Compilation and Installation</title>
+ 
+&install.compile.documentation;
+ 
+</sect1>
+</appendix>
+ 
+&documentation.index; 
 </book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
