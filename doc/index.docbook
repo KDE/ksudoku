@@ -1,10 +1,10 @@
-﻿<?xml version="1.0" ?>
+<?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
 <!ENTITY ksudoku "Ksudoku">
 <!ENTITY kappname "&ksudoku;"> 
   <!ENTITY kappversion "0.5"><!--Applicaion version. Use this variable everywhere it's needed.-->
   <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
-  <!ENTITY docupdate "2007-10-03"><!--Document version. Use this variable everywhere it's needed.-->
+  <!ENTITY docupdate "2007-11-14"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
@@ -33,6 +33,7 @@
 	<year>2007</year>
 	<holder>Mick Kappenburg</holder>
 </copyright>
+<legalnotice>&FDLNotice;</legalnotice>
  
 <date>&docupdate;</date><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
 <releaseinfo>&docversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
@@ -72,7 +73,7 @@
 	</note>
 </chapter>
  
-<chapter id="howto"><title>How to play</title> <!-- do not change this! -->
+<chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
 <!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
 	<note><title>Objective:</title><para>Fill the grid so that each column, row as well as each square sector on the game field contains only one instance of each symbol.</para></note><!--Describe the objective of the game.-->
 <!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
@@ -102,7 +103,7 @@
 		<note><title>Note:</title><para>The set of symbols varies depending on the game type you choose.</para></note>
 		<itemizedlist>
 			<listitem><para>Knowledge of mathematics, or language is not required to solve &kappname; puzzles.</para></listitem>
-			<listitem><para>Depending on the difficulty chosen the puzzles may appear partially solved. In such case the signs already on the game board can not be changed.</para></listitem>
+			<listitem><para>Depending on the difficulty chosen the puzzles may appear partially solved. In such case the signs already on the game board cannot be changed.</para></listitem>
 			<listitem><para>You can only modify the symbols you have previously entered.</para></listitem>
 			<listitem><para>&kappname; generated puzzles have one solution only.</para></listitem>
 		</itemizedlist>
@@ -113,7 +114,7 @@
 			<listitem><para>Take your time and do not rush. &kappname; is not a 'quick' game to play.</para></listitem>
 		<listitem><para>Pay attention to the row, column, and section colorings. They are here to aid you in the game.</para></listitem>
 		<listitem><para>Make sure that so duplicate symbol exists already in the row/column/section you are entering it to.</para></listitem>
-		<listitem><para>If in doubt, try to foresee if a square you are entering a symbol into maybe needed by some other symbol, which otherwise can not go anywhere else due to the row/column/section rule violation.</para></listitem>
+		<listitem><para>If in doubt, try to foresee if a square you are entering a symbol into maybe needed by some other symbol, which otherwise cannot go anywhere else due to the row/column/section rule violation.</para></listitem>
 		<listitem><para>If you are having troubles, try to retrace your steps and see exactly where you have made an error.</para></listitem>
 		<listitem><para>Even though &kappname; provides a 'Hint' option for you, try not to use it often. Remember solving the puzzle all by yourself enhances your brain activity, while using the 'Hint' feature too often is cheating.</para></listitem>
 			<listitem><para>If you have much trouble solving a certain puzzle, and simply must use the 'Hint' feature, then maybe you should try to decrease the difficulty level, or try a simpler, more basic puzzle.</para></listitem>
@@ -169,7 +170,7 @@
 		</variablelist>
 </sect1>
 <sect1 id="move-menu">
-	<title><guimenu>Move</guimenu> Menu</title>
+	<title>The <guimenu>Move</guimenu> Menu</title>
 		<variablelist>
 			<varlistentry id="move-menu-undo">
 				<term><menuchoice>
@@ -185,7 +186,7 @@
 					<guimenu>Move</guimenu>
 					<guimenuitem>Redo</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Redo</action> a move the was undone.</para></listitem>
+				<listitem><para><action>Redo</action> a move that was undone.</para></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-hint">
 				<term><menuchoice>
@@ -212,7 +213,7 @@
 		</variablelist>
 </sect1>
 <sect1 id="settings-menu">
-	<title><guimenu>Settings</guimenu> Menu</title>
+	<title>The <guimenu>Settings</guimenu> Menu</title>
 		<variablelist>
 			<varlistentry>
 				<term><menuchoice>
@@ -257,12 +258,28 @@
 					<guimenu>Settings</guimenu>
 					<guimenuitem>Configure &kappname;...</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Opens a dialog to configure &kappname;.</action> See <link linkend="configuration">'Game Configuration'</link> section for details.</para></listitem>
+				<listitem><para><action>Opens a dialog to configure &kappname;.</action> See <link linkend="configuration">Game Configuration</link> section for details.</para></listitem>
 			</varlistentry>
 		</variablelist>
 </sect1>
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
 <title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<para>&kappname; has a default &kde; <guimenu>Help</guimenu> menu as described
+below, with one addition:</para>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice><guimenu>Help</guimenu>
+<guimenuitem>Home Page</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>Opens the &kappname; website on sourceforge.net in &konqueror;.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para>The default &kde; <guimenu>Help</guimenu> entries are:</para>
+
 &help.menu.documentation;
 </sect1>
 </chapter>
@@ -292,7 +309,7 @@
  <answer><para>Sudoku games are traditionally played using square grid. Themes would not make much sense here. However, you can select the set of symbols used in game. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>  on menubar.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I changed the symbols in the �Settings� and not my entire game board is filled with question marks. What�s the problem?</para></question>
+ <question><para>I changed the symbols in the configuration dialog and now my entire game board is filled with question marks. What is the problem?</para></question>
  <answer><para>Each set contains a limited number of possible symbols. If you have chosen the set which has less symbols then your current game requires, the application will complain by displaying question marks. Change the set to fix the problem.</para></answer>
 </qandaentry>
 <qandaentry>
@@ -304,11 +321,11 @@
  <answer><para>Yes. In &kappname; keyboard play is always enabled. Please use cursor keys to move the selection, numeric characters to enter the symbols and <keycap>&Shift;</keycap> key to apply markers.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I can't figure out what to do here! Are there hints? </para></question>
+ <question><para>I cannot figure out what to do here! Are there hints? </para></question>
  <answer><para>Yes. To access 'Hint' feature use <menuchoice><shortcut><keysym>H</keysym></shortcut><guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I have to quit the game now, but I'm not finished yet. Can I save my progress?</para></question>
+ <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
   <answer><para>Yes. To access 'Save' feature use <menuchoice>
 					<shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
 					<guimenu>Game</guimenu>
@@ -316,12 +333,12 @@
 				</menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>Where are the highscores?</para></question>
+ <question><para>Where are the high scores?</para></question>
  <answer><para>&kappname; does not have this feature.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I want to change the game configuration. Where do I go? </para></question>
- <answer><para>To access the game settings use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice> on the menubar. See <link linkend="configuration">'Game Configuration'</link> section for details.</para></answer>
+ <answer><para>To access the game settings use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice> on the menubar. See the <link linkend="configuration">Game Configuration</link> section for details.</para></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
  
@@ -331,7 +348,7 @@
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
-<sect1 id="general-options"><title><guilabel>Game:</guilabel> options</title>
+<sect1 id="general-options"><title><guilabel>Game</guilabel> Options</title>
 	<variablelist>
 		<varlistentry>
 			<term><guilabel>Show Highlights</guilabel></term>
@@ -345,7 +362,7 @@
 	</variablelist>
 </sect1>
 
-<sect1 id="layout-options"><title><guilabel>Symbol Themes:</guilabel> options</title>
+<sect1 id="layout-options"><title><guilabel>Symbol Themes</guilabel> Options</title>
 	<variablelist>
 		<varlistentry>
 			<term><guilabel>Simple Forms</guilabel></term>
