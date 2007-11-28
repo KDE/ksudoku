@@ -139,12 +139,16 @@ QSize GameVariantDelegate::sizeHint(const QStyleOptionViewItem& option, const QM
 void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
 
 	// show background
+	QColor bkgColor;
 	if (option.state & QStyle::State_Selected) {
-		painter->fillRect(option.rect, option.palette.color(QPalette::Highlight));
+		bkgColor = option.palette.color(QPalette::Highlight);
+		painter->fillRect(option.rect, bkgColor);
 	} else if(index.row() % 2) {
-		painter->fillRect(option.rect, option.palette.color(QPalette::AlternateBase));
+		bkgColor = option.palette.color(QPalette::AlternateBase);
+		painter->fillRect(option.rect, bkgColor);
 	} else {
-		painter->fillRect(option.rect, option.palette.color(QPalette::Base));
+		bkgColor = option.palette.color(QPalette::Base);
+		painter->fillRect(option.rect, bkgColor);
 	}
 
 	QRect contentRect = option.rect.adjusted(m_leftMargin, m_separatorPixels, -m_rightMargin, -m_separatorPixels);
@@ -167,6 +171,16 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	titleFont.setPointSize(titleFont.pointSize() + 2);
 	titleFont.setWeight(QFont::Bold);
 
+	QPen previousPen(painter->pen());
+	// TODO: don't we have a function for 'color1 similar color2'
+	if(previousPen.color() == bkgColor) {
+		QPen p(previousPen);
+		int color = bkgColor.rgb();
+		color = ~color | 0xff000000;
+		p.setColor(color);
+		painter->setPen(p);
+	}
+
 	QFont previousFont(painter->font());
 	painter->setFont(titleFont);
 	QString titleStr = painter->fontMetrics().elidedText(title(index), Qt::ElideRight, contentRect.width());
@@ -177,6 +191,8 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	// Show Description
 	QString descrStr = painter->fontMetrics().elidedText(description(index), Qt::ElideRight, contentRect.width());
 	painter->drawText(contentRect, descrStr);
+
+	painter->setPen(previousPen);
 }
 
 QString GameVariantDelegate::title(const QModelIndex& index) const {
