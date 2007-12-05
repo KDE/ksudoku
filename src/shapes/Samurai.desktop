@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Samurai
 Name[el]=Σαμουράι
+Name[eo]=Samurajo
 Name[ja]=サムライ
 Name[ko]=사무라이
 Name[ne]=सामुराइ
@@ -13,6 +14,7 @@ Description=Samurai shape puzzle
 Description[ca]=Trencaclosques amb forma de Samurai
 Description[de]=Samurai förmiges Rätsel
 Description[el]=Παζλ σχήματος Σαμουράι
+Description[eo]=Samuraja puzlo
 Description[es]=Rompecabezas al estilo Samurai
 Description[fa]=معمای شکل Samurai
 Description[fi]=Samurai-muotoinen pulma
