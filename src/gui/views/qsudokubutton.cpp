@@ -169,7 +169,7 @@ void QSudokuButton::enterEvent (QEvent *)
 	m_mousein = true;
 }
 
-void QSudokuButton::focusOutEvent  (QEvent *)
+void QSudokuButton::focusOutEvent  (QFocusEvent *)
 {//TODO it does not work
 	emit finishHighlight();
 }

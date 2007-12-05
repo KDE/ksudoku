@@ -77,7 +77,7 @@ public:
 	void exitEvent (QEvent*);
 	void leaveEvent(QEvent*);
 	void keyReleaseEvent( QKeyEvent* e );
-	void focusOutEvent  (QEvent *);
+	void focusOutEvent  (QFocusEvent *);
 	void keyPressEvent  ( QKeyEvent* e );
 	
 	void updateData();
