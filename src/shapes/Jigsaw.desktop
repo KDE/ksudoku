@@ -2,6 +2,7 @@
 Name=Jigsaw
 Name[ca]=Puzzle
 Name[de]=Stichsäge
+Name[et]=Pusle
 Name[gl]=Quebracabezas
 Name[it]=Puzzle
 Name[ja]=ジグソー
@@ -18,6 +19,7 @@ Description[ca]=Trencaclosques amb forma de puzzle
 Description[de]=Stichsägenförmiges Rätsel
 Description[el]=Κανονικό παζλ
 Description[es]=Rompecabezas al estilo Jigsaw
+Description[et]=Puslekujuline sudoku
 Description[fa]=معمای شکل Jigsaw
 Description[gl]=Forma de quebracabezas
 Description[ja]=ジグソー型パズル
