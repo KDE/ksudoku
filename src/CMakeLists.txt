@@ -1,5 +1,3 @@
-find_package(OpenGL REQUIRED)
-
 ########### next target ###############
 
 include_directories(
