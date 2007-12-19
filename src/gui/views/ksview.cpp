@@ -32,7 +32,6 @@
 #include "sudoku_solver.h"
 #include "puzzle.h"
 
-#include <QtDebug>
 
 #include "sudokuview.h"
 #include "roxdokuview.h"

@@ -18,9 +18,6 @@
  ***************************************************************************/
 #include "welcomescreen.h"
 
-#include <QListWidget>
-#include <QVBoxLayout>
-#include <QtDebug>
 #include <KMessageBox>
 
 #include "ksudokugame.h"

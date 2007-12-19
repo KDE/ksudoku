@@ -44,7 +44,6 @@
 
 #include <QSignalMapper>
 
-#include <QListWidget>
 
 //#include "skgraph.h"
 //#include "sksolver.h"

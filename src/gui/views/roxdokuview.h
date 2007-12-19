@@ -29,7 +29,6 @@
 //Added by qt3to4:
 #include <QWheelEvent>
 #include <QMouseEvent>
-#include <QKeyEvent>
 #include "sudoku_solver.h"
 #include "ArcBall.h"
 

@@ -27,7 +27,6 @@
 #include <QDropEvent>
 #include <ksavefile.h>
 
-#include <QVBoxLayout>
 #include <QHBoxLayout>
 
 #include <KLocale>

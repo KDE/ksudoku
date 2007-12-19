@@ -21,7 +21,6 @@
 
 #include "valuelistwidget.moc"
 
-#include <QDebug>
 #include <QGraphicsSimpleTextItem>
 #include <QWheelEvent>
 
