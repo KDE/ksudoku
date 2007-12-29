@@ -520,7 +520,7 @@ void KSudoku::setupActions()
 	//(void)new KAction(i18n("Generate Multiple"), 0, this, SLOT(genMultiple()), actionCollection(), "genMultiple");
 
 	//WEB
-        createAction("Home_page", SLOT(homepage()), i18n("Home Page"), QString("network") );
+        createAction("Home_page", SLOT(homepage()), i18n("Home Page"), QString("internet-web-browser") );
 // 	createAction("support", SLOT(support()), i18n("Support This Project"));
 // 	createAction("sendComment", SLOT(sendComment()), i18n("Send Comment"));
 }
