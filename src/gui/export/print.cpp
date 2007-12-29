@@ -23,7 +23,6 @@
 #include "ksview.h"
 
 #include <kmessagebox.h>
-#include <q3paintdevicemetrics.h>
 #include <QtGui/QPrinter>
 #include <QtGui/QPrintDialog>
 
@@ -56,13 +55,12 @@ void Print::toPrinter(){
 
 	if (printDialog->exec()) {
 	{
-		Q3PaintDeviceMetrics metrics(&printer);
 		float scale  = printer.option( SCALE ).toInt() / 100.0 ;
 		float aspect = printer.option( ASPECT ).toFloat();
 
 		QPainter p;
 		p.begin(&printer);
-		drawUsingPrinterSettings(p, scale, aspect, metrics.height(),metrics.width() );
+		drawUsingPrinterSettings(p, scale, aspect, printer.height(),printer.width() );
 		p.end();
 	}
 }
