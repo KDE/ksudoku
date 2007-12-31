@@ -17,12 +17,7 @@ set(ksudoku_SRCS
 	main.cpp
 )
 
-
-set(ksudoku_icons
-	${CMAKE_CURRENT_SOURCE_DIR}/hi16-app-ksudoku.png
-	${CMAKE_CURRENT_SOURCE_DIR}/hi32-app-ksudoku.png
-)
-kde4_add_win32_app_icon(ksudoku_SRCS ${ksudoku_icons})
+kde4_add_app_icon(ksudoku_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-ksudoku.png")
 kde4_add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
