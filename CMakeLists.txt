@@ -15,5 +15,5 @@ ENDIF(DEBUG)
 
 add_subdirectory( src )
 
-message(STATUS "ksudoku: DEBUG: ${DEBUG}")
-message(STATUS "ksudoku: install prefix: ${CMAKE_INSTALL_PREFIX}")
+#message(STATUS "ksudoku: DEBUG: ${DEBUG}")
+#message(STATUS "ksudoku: install prefix: ${CMAKE_INSTALL_PREFIX}")
