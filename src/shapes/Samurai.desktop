@@ -2,6 +2,7 @@
 Name=Samurai
 Name[el]=Σαμουράι
 Name[eo]=Samurajo
+Name[ga]=Samúraí
 Name[ja]=サムライ
 Name[ko]=사무라이
 Name[lv]=Samurajs
@@ -21,6 +22,8 @@ Description[es]=Rompecabezas al estilo Samurai
 Description[et]=Samuraikujuline sudoku
 Description[fa]=معمای شکل Samurai
 Description[fi]=Samurai-muotoinen pulma
+Description[fr]=Puzzle Samurai
+Description[ga]=Puzal ar dhéanamh samúraí
 Description[gl]=Quebracabezas con forma de Samurai
 Description[it]=Formato dello schema Samurai
 Description[ja]=サムライ型パズル
