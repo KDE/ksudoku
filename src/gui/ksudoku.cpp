@@ -199,7 +199,7 @@ void KSudoku::updateShapesList()
 	QString variantDataPath;
 	QString variantIcon;
 
-	foreach(QString filepath, filepaths) {
+	foreach(const QString &filepath, filepaths) {
 		KConfig variantConfig(filepath, KConfig::SimpleConfig);
 		KConfigGroup group = variantConfig.group ("KSudokuVariant");
 
