@@ -727,7 +727,7 @@ void KSudoku::optionsPreferences()
 
 	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
 	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "games-config-theme");
-
+        dialog->setHelp(QString(),"ksudoku");
 	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(settingsChanged()));
     dialog->show();
 }
