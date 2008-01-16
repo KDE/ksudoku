@@ -1,4 +1,4 @@
-
+ADD_SUBDIRECTORY( views )
 
 set(ksudoku_SRCS
 	config.cpp

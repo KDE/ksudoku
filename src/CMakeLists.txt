@@ -31,7 +31,6 @@ install(TARGETS ksudoku  DESTINATION ${BIN_INSTALL_DIR} )
 ########### next target ###############
 ADD_SUBDIRECTORY( logic  )
 ADD_SUBDIRECTORY( gui             )
-ADD_SUBDIRECTORY( gui/views       )
 #ADD_SUBDIRECTORY( gui/export      ) #TODO PORT
 #ADD_SUBDIRECTORY( gui/export/draw ) #TODO PORT
 ADD_SUBDIRECTORY( shapes )
