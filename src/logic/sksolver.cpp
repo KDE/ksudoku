@@ -443,7 +443,7 @@ uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags)
 	int cellsLeft = size;
 	
 	// completely remove all occurrences of a random value
-	if(flags && KSS_REM_1VALUE) {
+	if(flags & KSS_REM_1VALUE) {
 		uint startValue = RANDOM(order)+1;
 		uint i;
 		for(i = startValue; i <= (uint)order; ++i) {
@@ -510,7 +510,7 @@ int SKSolver::removeValues(QVector<uint>& puzzle, uint count, uint flags) {
 	QVector<uint> local(puzzle);
 	int removesLeft = count;
 	
-	if(flags && KSS_REM_1VALUE) {
+	if(flags & KSS_REM_1VALUE) {
 		uint startValue = RANDOM(order)+1;
 		uint i;
 		for(i = startValue; i <= (uint)order; ++i) {
