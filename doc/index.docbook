@@ -298,7 +298,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>How do I start a new game? </para></question>
- <answer><para>Explain how to start a new game here.</para></answer>
+ <answer><para>To start a new game use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> on the menubar or click the <guibutton>New</guibutton> buton on the toolbar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game? </para></question>
