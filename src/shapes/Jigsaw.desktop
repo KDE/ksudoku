@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Jigsaw
 Name[ca]=Puzzle
+Name[cs]=Puzzle
 Name[de]=Stichsäge
 Name[et]=Pusle
 Name[fi]=Palapeli
@@ -23,6 +24,7 @@ Name[zh_CN]=线锯
 Name[zh_TW]=拼圖
 Description=Jigsaw shape puzzle
 Description[ca]=Trencaclosques amb forma de puzzle
+Description[cs]=Hádanka ve tvaru puzzle
 Description[de]=Stichsägenförmiges Rätsel
 Description[el]=Κανονικό παζλ
 Description[es]=Rompecabezas al estilo Jigsaw

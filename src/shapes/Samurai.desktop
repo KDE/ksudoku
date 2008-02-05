@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Samurai
+Name[cs]=Samuraj
 Name[el]=Σαμουράι
 Name[eo]=Samurajo
 Name[ga]=Samúraí
@@ -15,6 +16,7 @@ Name[x-test]=xxSamuraixx
 Name[zh_CN]=侍
 Description=Samurai shape puzzle
 Description[ca]=Trencaclosques amb forma de Samurai
+Description[cs]=Hádanka ve tvaru samuraje
 Description[de]=Samurai förmiges Rätsel
 Description[el]=Παζλ σχήματος Σαμουράι
 Description[eo]=Samuraja puzlo
