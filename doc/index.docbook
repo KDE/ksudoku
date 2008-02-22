@@ -353,7 +353,7 @@ below, with one addition:</para>
 		<varlistentry>
 			<term><guilabel>Show Highlights</guilabel></term>
 			<listitem><para>Toggle the &kappname; highlight option.</para>
-					<note><title>Note:</title><para>Having this option enabled is remanded even for the most experienced players, as it helps to see the actual game board constraints.</para></note></listitem>
+					<note><title>Note:</title><para>Having this option enabled is recommended even for the most experienced players, as it helps to see the actual game board constraints.</para></note></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Show Errors</guilabel></term>
