@@ -65,7 +65,7 @@
  	<para>&kappname; is a logic-based symbol placement puzzle.</para>
 <para>The player has to fill a grid so that each column, row as well as each square block on the game field contains only one instance of each symbol.</para>
 <para>Depending on the preferences and the difficulty level some games start with a partially completed game field, while the others start with a blank one.</para>
-<para>There are hundreds of different variations of sudoku in existence. The most common variant of the game has a 9x9 squares grid and uses Arabic numerals for symbols. As en extra constraint, the grid is divided into 9 sectors of 3x3 squares. The problem is – each symbol can only be used once per row, column and sector.
+<para>There are hundreds of different variations of sudoku in existence. The most common variant of the game has a 9x9 squares grid and uses Arabic numerals for symbols. As an extra constraint, the grid is divided into 9 sectors of 3x3 squares. The problem is – each symbol can only be used once per row, column and sector.
 	</para>
 	<note>
 		<title>Note:</title>
