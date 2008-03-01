@@ -65,7 +65,7 @@
  	<para>&kappname; is a logic-based symbol placement puzzle.</para>
 <para>The player has to fill a grid so that each column, row as well as each square block on the game field contains only one instance of each symbol.</para>
 <para>Depending on the preferences and the difficulty level some games start with a partially completed game field, while the others start with a blank one.</para>
-<para>There are hundreds of different variations of sudoku in existence. The most common variant of the game has a 9x9 squares grid and uses Arabic numerals for symbols. As en extra constraint, the grid is divided into 9 sectors of 3x3 squares. The problem is – each symbol can only be used once per row, column and sector.
+<para>There are hundreds of different variations of sudoku in existence. The most common variant of the game has a 9x9 squares grid and uses Arabic numerals for symbols. As an extra constraint, the grid is divided into 9 sectors of 3x3 squares. The problem is – each symbol can only be used once per row, column and sector.
 	</para>
 	<note>
 		<title>Note:</title>
@@ -190,7 +190,7 @@
 			</varlistentry>
 			<varlistentry id="move-menu-hint">
 				<term><menuchoice>
-					<shortcut><keysym>H</keysym></shortcut>
+					<shortcut><keycap>H</keycap></shortcut>
 					<guimenu>Move</guimenu>
 					<guimenuitem>Hint</guimenuitem>
 				</menuchoice></term>
@@ -263,7 +263,7 @@
 		</variablelist>
 </sect1>
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<title>The <guimenu>Help</guimenu> Menu</title>
 <para>&kappname; has a default &kde; <guimenu>Help</guimenu> menu as described
 below, with one addition:</para>
 
@@ -298,7 +298,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>How do I start a new game? </para></question>
- <answer><para>To start a new game use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> on the menubar or click the <guibutton>New</guibutton> buton on the toolbar.</para></answer>
+ <answer><para>To start a new game use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> on the menubar or click the <guibutton>New</guibutton> button on the toolbar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>How do I pause the game? </para></question>
@@ -322,7 +322,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>I cannot figure out what to do here! Are there hints? </para></question>
- <answer><para>Yes. To access 'Hint' feature use <menuchoice><shortcut><keysym>H</keysym></shortcut><guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice> on the menubar.</para></answer>
+ <answer><para>Yes. To access 'Hint' feature use <menuchoice><shortcut><keycap>H</keycap></shortcut><guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
@@ -353,7 +353,7 @@ below, with one addition:</para>
 		<varlistentry>
 			<term><guilabel>Show Highlights</guilabel></term>
 			<listitem><para>Toggle the &kappname; highlight option.</para>
-					<note><title>Note:</title><para>Having this option enabled is remanded even for the most experienced players, as it helps to see the actual game board constraints.</para></note></listitem>
+					<note><title>Note:</title><para>Having this option enabled is recommended even for the most experienced players, as it helps to see the actual game board constraints.</para></note></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Show Errors</guilabel></term>
