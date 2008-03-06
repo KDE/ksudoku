@@ -318,7 +318,7 @@ below, with one addition:</para>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use keyboard? </para></question>
- <answer><para>Yes. In &kappname; keyboard play is always enabled. Please use cursor keys to move the selection, numeric characters to enter the symbols and <keycap>&Shift;</keycap> key to apply markers.</para></answer>
+ <answer><para>Yes. In &kappname; keyboard play is always enabled. Please use cursor keys to move the selection, numeric characters to enter the symbols and &Shift; key to apply markers.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>I cannot figure out what to do here! Are there hints? </para></question>
