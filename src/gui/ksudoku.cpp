@@ -80,7 +80,7 @@
 
 void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) {
 	if(!isCorrect) {
-		KMessageBox::information(this, i18n("Sorry the solution you entered is not correct.\nIf you want to see error check Options->Guided mode please."));
+		KMessageBox::information(this, i18n("Sorry, your solution contains mistakes.\n\nEnable \"Show errors\" in the settings to highlight them."));
 		return;
 	}
 
@@ -92,7 +92,7 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 	if(withHelp)
 		msg = i18n("Congratulations! You made it in %1 minutes and %2 seconds. With some tricks.", mins, secs);
 	else
-		msg = i18n("Congratulations!!!! You made it in %1 minutes and %2 seconds.", mins, secs);
+		msg = i18n("Congratulations! You made it in %1 minutes and %2 seconds.", mins, secs);
 
 	KMessageBox::information(this, msg);
 
