@@ -24,6 +24,7 @@
 
 #include <vector>
 #include <QBitArray>
+#include <QVector>
 #include "skbase.h"
 
 /**
@@ -112,21 +113,30 @@ class Graph2d : public SKGraph {
 public:
 	explicit Graph2d(int o=9) : SKGraph(o, false) {}
 	
-	inline bool hasLeftBorder(int x, int y) {
-		return m_borderLeft[cellIndex(x,y,0)];
+	inline bool hasLeftBorder(int x, int y, int z = 0) {
+		return m_borderLeft[cellIndex(x,y,z)];
 	}
-	inline bool hasTopBorder(int x, int y) {
-		return m_borderTop[cellIndex(x,y,0)];
+	inline bool hasTopBorder(int x, int y, int z = 0) {
+		return m_borderTop[cellIndex(x,y,z)];
 	}
-	inline bool hasRightBorder(int x, int y) {
-		return m_borderRight[cellIndex(x,y,0)];
+	inline bool hasRightBorder(int x, int y, int z = 0) {
+		return m_borderRight[cellIndex(x,y,z)];
 	}
-	inline bool hasBottomBorder(int x, int y) {
-		return m_borderBottom[cellIndex(x,y,0)];
+	inline bool hasBottomBorder(int x, int y, int z = 0) {
+		return m_borderBottom[cellIndex(x,y,z)];
+	}
+	inline bool hasFrontBorder(int x, int y, int z) {
+		return m_borderFront[cellIndex(x,y,z)];
+	}
+	inline bool hasBackBorder(int x, int y, int z) {
+		return m_borderBack[cellIndex(x,y,z)];
 	}
 	
-	void addClique(int count, int* data);
+	void addClique(QVector<int> data);
 	
+	int cliqueCount() { return m_cliques.count(); }
+
+	QVector<int> clique(int i) { return m_cliques[i]; }
 protected:
 	// borders are only used for 2d sudokus however QBitArrays don't require
 	// much space uninitialiced
@@ -135,6 +145,9 @@ protected:
 	QBitArray m_borderTop;
 	QBitArray m_borderRight;
 	QBitArray m_borderBottom;
+	QBitArray m_borderFront;
+	QBitArray m_borderBack;
+	QVector<QVector<int> > m_cliques;
 };
 
 class GraphSudoku : public Graph2d {
@@ -151,12 +164,6 @@ class GraphRoxdoku : public SKGraph {
 		void init();
 };
 
-class pos
-{
-public:
-	int x, y, z;
-};
-
 class GraphCustom : public Graph2d
 {
 public:
@@ -165,33 +172,6 @@ public:
 	bool valid;
 
 	std::vector<std::vector<int> > cliques; //or chars? don't remove SPACE
-private:
-// // 	int maxConnections;
-// 	std::vector<int> linksUp;
-// 	std::vector<int> linksLeft;//I use standard library because i want the core algorithm to be no dependent on qt/kde
-public:
-	//TODO use this one also in puzzle.h line 80
-// 	uint get_x(int index)
-// 	{
-// 		int y=get_y(index);
-// 		if(sizeX()==0) return 0;
-// 		index-=get_z(index);
-// 		index/=sizeZ();
-// 		index-=y;
-// 		return index/sizeY();
-// 	}
-// 	uint get_y(int index)
-// 	{
-// 		if(sizeY()==0) return 0;
-// 		index-=get_z(index);
-// 		index/=sizeZ();
-// 		return index%sizeY();
-// 	}
-// 	uint get_z(int index)
-// 	{
-// 		if(sizeZ()==0) return 0; //TODO error
-// 		return index%sizeZ();
-// 	}
 public:
 	GraphCustom();
 	explicit GraphCustom(const char* filenamed);

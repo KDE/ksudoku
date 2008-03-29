@@ -63,38 +63,35 @@ void ksudoku::GraphSudoku::init()
 	m_sizeY = order;
 	m_sizeZ = 1;
 	
-	
-	
-	int row, col, subsquare;
-	
-	ITERATE(i,size)
-	{
-		row       = i / order;
-		col       = i % order;
-		subsquare = col/base + (row/base)*base;
-		
-		optimized_d[i] = 0;
-		
-		ITERATE(j,order)
-		{
-			addConnection(i, j+row*order);
-			addConnection(i, j*order+col);
-			addConnection(i, ((subsquare/base)*base + j%base) * order + (subsquare%base)*base + j/base);
-		}
-	}
-	
-	// initialize borders
 	m_borderLeft.resize(size);
 	m_borderTop.resize(size);
 	m_borderRight.resize(size);
 	m_borderBottom.resize(size);
-	for(int i = 0; i < base; ++i) {
-		for(int j = 0; j < order; ++j) {
-			m_borderLeft.setBit(cellIndex(i*base, j, 0));
-			m_borderTop.setBit(cellIndex(j, i*base, 0));
-			m_borderRight.setBit(cellIndex((i+1)*base-1, j, 0));
-			m_borderBottom.setBit(cellIndex(j, (i+1)*base-1, 0));
+	m_borderFront.resize(size);
+	m_borderBack.resize(size);
+	
+	int row, col, subsquare;
+
+	ITERATE(i,size) {
+		optimized_d[i] = 0;
+	}
+
+	
+	QVector<int> rowc, colc, blockc;
+	ITERATE(i,order) {
+		rowc.clear();
+		colc.clear();
+		blockc.clear();
+		
+		ITERATE(j,order)
+		{
+			rowc << j+i*order;
+			colc << j*order+i;
+			blockc << ((i/base)*base + j%base) * order + (i%base)*base + j/base;
 		}
+		addClique(rowc);
+		addClique(colc);
+		addClique(blockc);
 	}
 }
 
@@ -141,14 +138,14 @@ ksudoku::GraphCustom::GraphCustom()
 
 }
 
-void ksudoku::Graph2d::addClique(int count, int* data) {
+void ksudoku::Graph2d::addClique(QVector<int> data) {
 	bool hasBorders = true;
 	
 	// check whether this clicque needs shown borders
 	bool horz = true, vert = true;
 	int x = cellPosX(data[0]);
 	int y = cellPosY(data[0]);
-	for(int i = 1; i < count; ++i) {
+	for(int i = 1; i < data.size(); ++i) {
 		if(x != cellPosX(data[i])) vert = false;
 		if(y != cellPosY(data[i])) horz = false;
 	}
@@ -156,38 +153,47 @@ void ksudoku::Graph2d::addClique(int count, int* data) {
 	
 	// addBorders
 	if(hasBorders) {
-		for(int i = 0; i < count; ++i) {
+		for(int i = 0; i < data.size(); ++i) {
 			int index = data[i];
 			char borders = 0;
 			int posX1 = cellPosX(index);
 			int posY1 = cellPosY(index);
-			for(int j = 0; j < count; ++j) {
+			int posZ1 = cellPosZ(index);
+			for(int j = 0; j < data.size(); ++j) {
 				int posX2 = cellPosX(data[j]);
 				int posY2 = cellPosY(data[j]);
-				if(posY1 == posY2) {
-					if(posX1 == posX2 +1) borders |= 0x1;
-					if(posX1 == posX2 -1) borders |= 0x2;
+				int posZ2 = cellPosZ(data[j]);
+				if(posY1 == posY2 && posZ1 == posZ2) {
+					if(posX1 == posX2 +1) borders |= 0x01;
+					if(posX1 == posX2 -1) borders |= 0x02;
 				}
-				if(posX1 == posX2) {
-					if(posY1 == posY2 +1) borders |= 0x4;
-					if(posY1 == posY2 -1) borders |= 0x8;
+				if(posX1 == posX2 && posZ1 == posZ2) {
+					if(posY1 == posY2 +1) borders |= 0x04;
+					if(posY1 == posY2 -1) borders |= 0x08;
+				}
+				if(posX1 == posX2 && posY1 == posY2) {
+					if(posX1 == posX2 +1) borders |= 0x10;
+					if(posX1 == posX2 -1) borders |= 0x20;
 				}
 			}
-			if(!(borders & 0x1)) m_borderLeft.setBit(index);
-			if(!(borders & 0x2)) m_borderRight.setBit(index);
-			if(!(borders & 0x4)) m_borderTop.setBit(index);
-			if(!(borders & 0x8)) m_borderBottom.setBit(index);
+			if(!(borders & 0x01)) m_borderLeft.setBit(index);
+			if(!(borders & 0x02)) m_borderRight.setBit(index);
+			if(!(borders & 0x04)) m_borderTop.setBit(index);
+			if(!(borders & 0x08)) m_borderBottom.setBit(index);
+			if(!(borders & 0x10)) m_borderFront.setBit(index);
+			if(!(borders & 0x20)) m_borderBack.setBit(index);
 		}
 	}
 	
 	// add connections to the graph
-	for(int i = 0; i < count; ++i) {
-		for(int j = 0; j < count; ++j) {
+	for(int i = 0; i < data.size(); ++i) {
+		for(int j = 0; j < data.size(); ++j) {
 			addConnection(data[i], data[j]);
 		}
 	}
 	
 	// add to the cliques list
+	m_cliques << data;
 }
 
 void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in)
@@ -222,120 +228,25 @@ void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int si
 	m_borderTop.resize(size);
 	m_borderRight.resize(size);
 	m_borderBottom.resize(size);
+	m_borderFront.resize(size);
+	m_borderBack.resize(size);
 	
+	QVector<int> data;
 	ITERATE(i, ncliques)
 	{
-		
-		cliques.push_back(std::vector<int>());
+		data.clear();
 		//read clique line
 		int n;
 		is >> n;
-		if(n>625) return;
-
-		int temp[625];
-		is >> temp[0];
-		
-// 		bool horz = true;
-// 		bool vert = true;
-// 		int x = cellPosX(temp[0]);
-// 		int y = cellPosY(temp[0]);
-		for(int j = 1; j < n; ++j) {
-			is >> temp[j];
-// 			if(x != cellPosX(temp[j])) vert = false;
-// 			if(y != cellPosY(temp[j])) horz = false;
+		for(; n > 0; --n) {
+			int temp;
+			is >> temp;
+			data << temp;
 		}
 		
-		addClique(n, temp);
-		
-// 		if(!(horz || vert)) {
-// 			for(int j = 0; j < n; ++j) {
-// 				bool left = true;
-// 				bool right = true;
-// 				bool top = true;
-// 				bool bottom = true;
-// 				for(int k = 0; k < n; ++k) {
-// 					if(cellPosY(temp[j]) == cellPosY(temp[k])) {
-// 						if(cellPosX(temp[j]) == cellPosX(temp[k]) +1)
-// 							left = false;
-// 						if(cellPosX(temp[j]) == cellPosX(temp[k]) -1)
-// 							right = false;
-// 					}
-// 					if(cellPosX(temp[j]) == cellPosX(temp[k])) {
-// 						if(cellPosY(temp[j]) == cellPosY(temp[k]) +1)
-// 							top = false;
-// 						if(cellPosY(temp[j]) == cellPosY(temp[k]) -1)
-// 							bottom = false;
-// 					}
-// // 					if(cellPosY(temp[j]) == cellPosY(temp[k]) +1)
-// // 						top == false;;
-// 				}
-// 				if(left) m_borderLeft.setBit(temp[j]);
-// 				if(right) m_borderRight.setBit(temp[j]);
-// 				if(top) m_borderTop.setBit(temp[j]);
-// 				if(bottom) m_borderBottom.setBit(temp[j]);
-// 			}
-// 		}
-
-		ITERATE(j,n)
-		{
-			int vv;
-// 			is >> vv; //TODO check errors
-			vv = temp[j];
-
-			std::vector<int>& clique = cliques.back();
-			clique.push_back(vv);
-// 			if(vv>max) max=vv; 
-
-// 			ITERATE(k,j)
-// 			{
-// 				addConnection(clique[j], clique[k]);
-// 				addConnection(clique[k], clique[j]);
-				
-// 				int jx,jy,kx,ky;
-// 				jx = cellPosX( clique[j] );
-// 				jy = cellPosY( clique[j] );
-// 				kx = cellPosX( clique[k] );
-// 				ky = cellPosY( clique[k] );
-
-// 				if(jx==kx && jy==ky+1) linksLeft[ clique[j] ]++;
-// 				if(jx==kx && jy==ky-1) linksLeft[ clique[k] ]++;
-// 				if(jy==ky && jx==kx-1) linksUp  [ clique[k] ]++;
-// 				if(jy==ky && jx==kx+1) linksUp  [ clique[j] ]++;
-				
-				//diagonal links -> disabled
-				//if(jx==kx+1 && jy==ky+1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
-				//if(jx==kx-1 && jy==ky-1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
-				//if(jx==kx+1 && jy==ky-1) {linksLeft[ clique[j] ]++; linksUp  [ clique[j] ]++;}
-				//if(jx==kx-1 && jy==ky+1) {linksLeft[ clique[k] ]++; linksUp  [ clique[k] ]++;}
-
-// 				if(linksUp  [ clique[k] ] > maxConnections) maxConnections = linksUp  [ clique[k] ];
-// 				if(linksLeft[ clique[k] ] > maxConnections) maxConnections = linksLeft[ clique[k] ];
-// 				if(linksUp  [ clique[j] ] > maxConnections) maxConnections = linksUp  [ clique[j] ];
-// 				if(linksLeft[ clique[j] ] > maxConnections) maxConnections = linksLeft[ clique[j] ];
-// 			}
-		}
-		
+		addClique(data);
 	}
 	
-	
-// 	// setup Borders
-// 	int connections;
-// 	m_borderLeft.resize(size);
-// 	m_borderTop.resize(size);
-// 	for(int i = 0; i < size; ++i) {
-// 		int x = cellPosX(i);
-// 		int y = cellPosY(i);
-// 		if(y > 0 && linksLeft[i]) {
-// 			connections = 3 - linksLeft[i];
-// 			if(connections >= 2) m_borderLeft.setBit(i);
-// 		}
-// 		if(x > 0 && linksUp[i]) {
-// 			connections = 3 - linksUp[i];
-// 			if(connections >= 2) m_borderTop.setBit(i);
-// 		}
-// 	}
-	
-	//printf("%d\n", size);
 	valid=true;
 	return;
 }

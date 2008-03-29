@@ -35,6 +35,7 @@
 
 #include "sudokuview.h"
 #include "roxdokuview.h"
+#include "view2d.h"
 
 namespace ksudoku{
 
@@ -56,11 +57,13 @@ void KsView::createView() {
 	GameType type = m_game.puzzle()->gameType();
 	switch(type) {
 		case sudoku: {
-			setWidget(new SudokuView(0, m_game, false));
+// 			setWidget(new SudokuView(0, m_game, false));
+			setWidget(new View2D(0, m_game));
 			break;
 		}
 		case custom: {
-			setWidget(new SudokuView(0, m_game, true));
+// 			setWidget(new SudokuView(0, m_game, true));
+			setWidget(new View2D(0, m_game));
 			break;
 		}
 		case roxdoku: {

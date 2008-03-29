@@ -34,6 +34,7 @@ ADD_SUBDIRECTORY( gui             )
 #ADD_SUBDIRECTORY( gui/export      ) #TODO PORT
 #ADD_SUBDIRECTORY( gui/export/draw ) #TODO PORT
 ADD_SUBDIRECTORY( shapes )
+add_subdirectory( themes )
 
 
 #set(ksudoku_client_SRCS
