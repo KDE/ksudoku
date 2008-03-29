@@ -61,7 +61,7 @@ private:
 	View2DScene* m_scene;
 };
 
-};
+}
 
 Q_DECLARE_OPERATORS_FOR_FLAGS(ksudoku::GroupTypes)
 
