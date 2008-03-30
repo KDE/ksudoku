@@ -32,6 +32,7 @@ public:
 	void setValues(QVector<ColoredValue> values);
 protected:
 	void hoverEnterEvent(QGraphicsSceneHoverEvent* event);
+	void mousePressEvent(QGraphicsSceneMouseEvent* event);
 private:
 	void updatePixmap();
 private:
@@ -68,6 +69,11 @@ void CellGraphicsItem::showCursor(QGraphicsItem* cursor) {
 void CellGraphicsItem::hoverEnterEvent(QGraphicsSceneHoverEvent* event) {
 	Q_UNUSED(event);
 	m_scene->hover(m_id);
+}
+
+void CellGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent* event) {
+	// TODO make action dependant on button
+	m_scene->press(m_id);
 }
 
 void CellGraphicsItem::setType(SpecialType type) {
@@ -309,6 +315,8 @@ View2DScene::~View2DScene() {
 }
 
 void View2DScene::init(const Game& game) {
+	m_selectedValue = 1;
+	
 	m_game = game;
 	
 	m_background = new QGraphicsPixmapItem();
@@ -337,6 +345,8 @@ void View2DScene::init(const Game& game) {
 			m_cells[i]->setType(SpecialCell);
 		if(game.value(i))
 			m_cells[i]->setValues(QVector<ColoredValue>() << ColoredValue(game.value(i),0));
+		else
+			m_cells[i]->setValues(QVector<ColoredValue>());
 	}
 	
 	Graph2d* g2 = dynamic_cast<Graph2d*>(g);
@@ -393,6 +403,10 @@ void View2DScene::hover(int cell) {
 	emit cellHovered(cell);
 }
 
+void View2DScene::press(int cell) {
+	m_game.setValue(cell, m_selectedValue);
+}
+
 void View2DScene::update(int cell) {
 	if(cell < 0) {
 		for(int i = 0; i < m_game.size(); ++i) {
@@ -400,9 +414,11 @@ void View2DScene::update(int cell) {
 			if(m_game.given(i))
 				m_cells[i]->setType(SpecialCellPreset);
 			else
-				m_cells[cell]->setType(SpecialCell);
+				m_cells[i]->setType(SpecialCell);
 			if(m_game.value(i))
 				m_cells[i]->setValues(QVector<ColoredValue>() << ColoredValue(m_game.value(i),0));
+			else
+				m_cells[i]->setValues(QVector<ColoredValue>());
 		}
 	} else {
 		if(m_game.given(cell))
@@ -411,7 +427,13 @@ void View2DScene::update(int cell) {
 			m_cells[cell]->setType(SpecialCell);
 		if(m_game.value(cell))
 			m_cells[cell]->setValues(QVector<ColoredValue>() << ColoredValue(m_game.value(cell),0));
+		else
+			m_cells[cell]->setValues(QVector<ColoredValue>());
 	}
+}
+
+void View2DScene::selectValue(int value) {
+	m_selectedValue = value;
 }
 
 View2D::View2D(QWidget *parent, const Game& game) : QGraphicsView(parent) {
@@ -431,7 +453,6 @@ View2D::View2D(QWidget *parent, const Game& game) : QGraphicsView(parent) {
 }
 
 View2D::~View2D() {
-	qDebug() << m_scene;
 	delete m_scene;
 }
 
@@ -442,10 +463,15 @@ void View2D::resizeEvent(QResizeEvent* e) {
 }
 
 void View2D::update(int cell) {
-	qDebug() << "update";
 	if(!m_scene) return;
 	
 	m_scene->update(cell);
+}
+
+void View2D::selectValue(int value) {
+	if(!m_scene) return;
+	
+	m_scene->selectValue(value);
 }
 
 }

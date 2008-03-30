@@ -25,7 +25,11 @@ public:
 	void setSceneSize(const QSize& size);
 
 	void hover(int cell);
+	void press(int cell);
 	void update(int cell = -1);
+
+	void selectValue(int val);
+
 signals:
 	void cellHovered(int cell);
 private:
@@ -36,6 +40,8 @@ private:
 	QVector<CellGraphicsItem*> m_cells;
 	QGraphicsPixmapItem* m_cursor;
 	Game m_game;
+
+	int m_selectedValue;
 };
 
 class View2D : public QGraphicsView, public ViewInterface {
@@ -48,7 +54,7 @@ public:
 	QWidget* widget() { return this; }
 public slots:
 	void setCursor(int cell) { Q_UNUSED(cell) }
-	void selectValue(int value) { Q_UNUSED(value) }
+	void selectValue(int value);
 	void setSymbols(SymbolTable* table) { Q_UNUSED(table) }
 	void setFlags(ViewFlags flags) { Q_UNUSED(flags) }
 	void update(int cell = -1);
