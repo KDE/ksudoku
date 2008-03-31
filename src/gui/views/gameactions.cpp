@@ -124,4 +124,4 @@ void GameActions::moveRight() {
 	emit move(+1, 0);
 }
 
-};
+}
