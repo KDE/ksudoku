@@ -21,8 +21,6 @@
 
 #include "ksudoku.h"
 
-#include <qpainter.h>
-//Added by qt3to4:
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <ksavefile.h>
@@ -30,42 +28,30 @@
 #include <QHBoxLayout>
 
 #include <KLocale>
-#include <KApplication>
 #include <KActionCollection>
 #include <KStandardAction>
-#include <KToggleAction>
+#include <KAction>
 #include <KConfigDialog>
 
 #include <KCmdLineArgs>
 #include <KAboutData>
 
-#include <QDomDocument>
 #include <kmessagebox.h>
-#include <kglobal.h>
 #include <klocale.h>
-#include <kiconloader.h>
-#include <kdeversion.h>
 #include <kstatusbar.h>
 #include <kio/netaccess.h>
 #include <kfiledialog.h>
-#include <kconfig.h>
-//#include <kactionclasses.h>
 #include <krun.h>
-#include <kurlrequesterdialog.h>
 
 //#include "print.h" //TODO PORT
 //#include "exportdlg.h"
-#include "puzzlefactory.h"
 #include "ksview.h"
-
-#include <kstandardshortcut.h>
+#include "gameactions.h"
 
 #include "puzzle.h" // TODO
 #include "serializer.h"
-#include <ktabwidget.h>
 
 #include <ktar.h>
-#include <qdir.h>
 #include <kstandarddirs.h>
 #include <kio/job.h>
 #include <kstandardgameaction.h>
@@ -120,12 +106,7 @@ KSudoku::KSudoku()
 	m_gameWidget = 0;
 	m_gameUI = 0;
 
-	m_selectValueMapper = new QSignalMapper(this);
-	connect(m_selectValueMapper, SIGNAL(mapped(int)), this, SLOT(selectValue(int)));
-	m_enterValueMapper = new QSignalMapper(this);
-	connect(m_enterValueMapper, SIGNAL(mapped(int)), this, SLOT(enterValue(int)));
-	m_markValueMapper = new QSignalMapper(this);
-	connect(m_markValueMapper, SIGNAL(mapped(int)), this, SLOT(markValue(int)));
+	m_gameActions = 0;
 
 	// then, setup our actions
 	setupActions();
@@ -146,7 +127,7 @@ KSudoku::KSudoku()
 
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
 	wrapper->layout()->addWidget(m_welcomeScreen);
-	connect(m_welcomeScreen, SIGNAL(newGameStarted(const Game&,GameVariant*)), this, SLOT(startGame(const Game&)));
+	connect(m_welcomeScreen, SIGNAL(newGameStarted(const ::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const ::ksudoku::Game&)));
 	showWelcomeScreen();
 
 	// Register the gamevariants resource
@@ -221,7 +202,7 @@ void KSudoku::startGame(const Game& game) {
 	endCurrentGame();
 	
 	
-	KsView* view = new KsView(game, this);
+	KsView* view = new KsView(game, m_gameActions, this);
 
 	view->setValueListWidget(m_valueListWidget);
 	view->createView();
@@ -229,7 +210,7 @@ void KSudoku::startGame(const Game& game) {
 
 	connect(view, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
 	connect(m_valueListWidget, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
-	connect(view, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
+// 	connect(view, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
 
 	QWidget* widget = view->widget();
 	m_gameUI = view;
@@ -246,11 +227,6 @@ void KSudoku::startGame(const Game& game) {
 	policy.setHorizontalStretch(1);
 	policy.setVerticalStretch(1);
 	widget->setSizePolicy(policy);
-
-	widget->addAction(m_moveUpAct);
-	widget->addAction(m_moveDownAct);
-	widget->addAction(m_moveLeftAct);
-	widget->addAction(m_moveRightAct);
 
 	m_valueListWidget->setCurrentTable(m_symbols.selectTable(view->game().	order()), view->game().order());
 	m_valueListWidget->selectValue(1);
@@ -287,14 +263,6 @@ void KSudoku::showWelcomeScreen() {
 void KSudoku::homepage()
 {
 	KRun::runUrl (KUrl("http://ksudoku.sourceforge.net/"), "text/html", this);
-}
-void KSudoku::support()
-{
-	KRun::runUrl (KUrl("http://sourceforge.net/project/project_donations.php?group_id=147876"), "text/html", this);
-}
-void KSudoku::sendComment()
-{
-	KRun::runUrl (KUrl("http://ksudoku.sourceforge.net/newcomment.php"), "text/html", this);
 }
 
 void KSudoku::giveHint()
@@ -353,75 +321,11 @@ void KSudoku::genMultiple()
 	//KMessageBox::information(this, i18n("Sorry, this feature is under development."));
 }
 
-void KSudoku::selectValue(int value) {
-	KsView* view = currentView();
-	if(!view) return;
-
-	view->selectValue(value);
-	updateStatusBar();
-}
-
-void KSudoku::enterValue(int value) {
-	KsView* view = currentView();
-	if(!view) return;
-
-	view->enterValue(value);
-	view->selectValue(value);
-}
-
-void KSudoku::markValue(int value) {
-	KsView* view = currentView();
-	if(!view) return;
-
-	view->markValue(value);
-	view->selectValue(value);
-}
-
-void KSudoku::moveUp() {
-	KsView* view = currentView();
-	if(!view) return;
-
-	view->moveUp();
-}
-
-void KSudoku::moveDown() {
-	KsView* view = currentView();
-	if(!view) return;
-
-	view->moveDown();
-}
-
-void KSudoku::moveLeft() {
-	KsView* view = currentView();
-	if(!view) return;
-
-	view->moveLeft();
-}
-
-void KSudoku::moveRight() {
-	KsView* view = currentView();
-	if(!view) return;
-
-	view->moveRight();
-}
-
-void KSudoku::clearCell() {
-	KsView* view = currentView();
-	if(!view) return;
-
-	view->enterValue(0);
-}
-
-void KSudoku::createAction(const QString& text, const char* slot, const QString& name, const QString& icon)
-{
-	QAction* a = actionCollection()->addAction(text);
-	a->setText(name);
-        a->setIcon(KIcon(icon));
-	connect(a, SIGNAL(triggered(bool)), slot);
-}
-
 void KSudoku::setupActions()
 {
+	m_gameActions = new ksudoku::GameActions(actionCollection());
+	m_gameActions->init();
+
 	KShortcut shortcut;
 
 	setAcceptDrops(true);
@@ -438,76 +342,6 @@ void KSudoku::setupActions()
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
 
-
-	for(int i = 0; i < 25; ++i) {
-		KAction* a = new KAction(this);
-		actionCollection()->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
-		a->setText(i18n("Select %1 (%2)", i+1, QChar('a'+i)));
-		m_selectValueMapper->setMapping(a, i+1);
-		connect(a, SIGNAL(triggered(bool)), m_selectValueMapper, SLOT(map()));
-		addAction(a);
-
-		a = new KAction(this);
-		actionCollection()->addAction(QString("val-enter%1").arg(i+1,2,10,QChar('0')), a);
-		a->setText(i18n("Enter %1 (%2)", i+1, QChar('a'+i)));
-		shortcut = a->shortcut();
-		shortcut.setPrimary( Qt::Key_A + i);
-		if(i < 9) {
-			shortcut.setAlternate( Qt::Key_1 + i);
-		}
-		a->setShortcut(shortcut);
-		m_enterValueMapper->setMapping(a, i+1);
-		connect(a, SIGNAL(triggered(bool)), m_enterValueMapper, SLOT(map()));
-		addAction(a);
-
-		a = new KAction(this);
-		actionCollection()->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
-		a->setText(i18n("Mark %1 (%2)", i+1, QChar('a'+i)));
-		shortcut = a->shortcut();
-		shortcut.setPrimary( Qt::ShiftModifier | Qt::Key_A + i);
-		if(i < 9) {
-			shortcut.setAlternate( Qt::ShiftModifier | Qt::Key_1 + i);
-		}
-		a->setShortcut(shortcut);
-		m_markValueMapper->setMapping(a, i+1);
-		connect(a, SIGNAL(triggered(bool)), m_markValueMapper, SLOT(map()));
-		addAction(a);
-	}
-
-	m_moveUpAct = actionCollection()->addAction("move_up");
-	m_moveUpAct->setText(i18n("Move Up"));
-	m_moveUpAct->setShortcut(Qt::Key_Up);
-	connect(m_moveUpAct, SIGNAL(triggered(bool)), SLOT(moveUp()));
-// 	addAction(moveUpAct);
-
-	m_moveDownAct = actionCollection()->addAction("move_down");
-	m_moveDownAct->setText(i18n("Move Down"));
-	m_moveDownAct->setShortcut(Qt::Key_Down);
-	connect(m_moveDownAct, SIGNAL(triggered(bool)), SLOT(moveDown()));
-// 	addAction(moveDownAct);
-
-	m_moveLeftAct = actionCollection()->addAction("move_left");
-	m_moveLeftAct->setText(i18n("Move Left"));
-	m_moveLeftAct->setShortcut(Qt::Key_Left);
-	connect(m_moveLeftAct, SIGNAL(triggered(bool)), SLOT(moveLeft()));
-// 	addAction(moveLeftAct);
-
-	m_moveRightAct = actionCollection()->addAction("move_right");
-	m_moveRightAct->setText(i18n("Move Right"));
-	m_moveRightAct->setShortcut(Qt::Key_Right);
-	connect(m_moveRightAct, SIGNAL(triggered(bool)), SLOT(moveRight()));
-// 	addAction(moveRightAct);
-
-	KAction* clearCellAct = new KAction(this);
-	actionCollection()->addAction("move_clear_cell", clearCellAct);
-	clearCellAct->setText(i18n("Clear Cell"));
-	shortcut = clearCellAct->shortcut();
-	shortcut.setPrimary(Qt::Key_Backspace);
-	shortcut.setAlternate(Qt::Key_Delete);
-	clearCellAct->setShortcut(shortcut);
-	connect(clearCellAct, SIGNAL(triggered(bool)), SLOT(clearCell()));
-	addAction(clearCellAct);
-
 	//History
 	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
 	KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
@@ -515,14 +349,19 @@ void KSudoku::setupActions()
 	KStandardGameAction::hint(this, SLOT(giveHint()), actionCollection());
 	KStandardGameAction::solve(this, SLOT(autoSolve()), actionCollection());
 
-	createAction("move_dub_puzzle", SLOT(dubPuzzle()), i18n("Check"), QString("games-endturn"));
-
-	//(void)new KAction(i18n("Generate Multiple"), 0, this, SLOT(genMultiple()), actionCollection(), "genMultiple");
+	KAction* a = new KAction(this);
+	actionCollection()->addAction("move_dub_puzzle", a);
+	a->setText(i18n("Check"));
+	a->setIcon(KIcon("games-endturn"));
+	connect(a, SIGNAL(triggered(bool)), SLOT(dubPuzzle()));
+	addAction(a);
 
 	//WEB
-        createAction("Home_page", SLOT(homepage()), i18n("Home Page"), QString("internet-web-browser") );
-// 	createAction("support", SLOT(support()), i18n("Support This Project"));
-// 	createAction("sendComment", SLOT(sendComment()), i18n("Send Comment"));
+	a = new KAction(this);
+	actionCollection()->addAction("home_page", a);
+	a->setText(i18n("Home Page"));
+	a->setIcon(KIcon("internet-web-browser"));
+	connect(a, SIGNAL(triggered(bool)), SLOT(homepage()));
 }
 
 void KSudoku::adaptActions2View() {
@@ -782,8 +621,6 @@ void KSudoku::loadCustomShapeFromPath()
 	}
 
 	QString tmpFile;
-// 	bool success = false;
-	QDomDocument doc;
 	if(!KIO::NetAccess::download( Url, tmpFile, this ))
 	{
 		//TODO ERROR

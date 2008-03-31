@@ -39,12 +39,11 @@
 
 namespace ksudoku{
 
-KsView::KsView(const Game& game, QObject* parent)
-	: QObject(parent), m_game(game), m_viewWidget(0)
+KsView::KsView(const Game& game, GameActions* gameActions, QObject* parent)
+	: QObject(parent), m_game(game), m_gameActions(gameActions), m_viewWidget(0)
 {
 	m_symbolTable = 0;
 	m_currentValue = 1;
-	m_currentCell = 0;
 	m_valueListWidget = 0;
 }
 
@@ -58,16 +57,16 @@ void KsView::createView() {
 	switch(type) {
 		case sudoku: {
 // 			setWidget(new SudokuView(0, m_game, false));
-			setWidget(new View2D(0, m_game));
+			setWidget(new View2D(0, m_game, m_gameActions));
 			break;
 		}
 		case custom: {
 // 			setWidget(new SudokuView(0, m_game, true));
-			setWidget(new View2D(0, m_game));
+			setWidget(new View2D(0, m_game, m_gameActions));
 			break;
 		}
 		case roxdoku: {
-			setWidget(new RoxdokuView(m_game, 0, 0, "ksudoku-3dwnd"));
+			setWidget(new RoxdokuView(m_game, 0, 0));
 			break;
 		}
 		default:
@@ -77,79 +76,18 @@ void KsView::createView() {
 	
 	QObject* view = m_view->widget();
 	connect(view, SIGNAL(valueSelected(int)), SLOT(selectValue(int)));
-	connect(view, SIGNAL(cellHovered(int)), SLOT(setCursor(int)));
 	
 	connect(this, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
 	connect(this, SIGNAL(flagsChanged(ViewFlags)), view, SLOT(setFlags(ViewFlags)));
 	connect(this, SIGNAL(symbolsChanged(SymbolTable*)), view, SLOT(setSymbols(SymbolTable*)));
-	connect(this, SIGNAL(cursorMoved(int)), view, SLOT(setCursor(int)));
 	
 	settingsChanged();
-}
-
-void KsView::setCursor(int cell) {
-	m_currentCell = cell;
-	emit cursorMoved(cell);
 }
 
 void KsView::selectValue(int value) {
 	if(value == m_currentValue) return;
 	m_currentValue = value;
 	emit valueSelected(value);
-}
-
-void KsView::enterValue(int value) {
-	if(!m_game.given(m_currentCell)) {
-		m_game.setValue(m_currentCell, value);
-	}
-	selectValue(value);
-}
-
-void KsView::markValue(int value) {
-	if(!m_game.given(m_currentCell)) {
-		m_game.flipMarker(m_currentCell, value);
-	}
-	selectValue(value);
-}
-
-void KsView::moveUp() {
-	Graph* g = m_game.puzzle()->solver()->g;
-	int x = g->cellPosX(m_currentCell);
-	int y = g->cellPosY(m_currentCell);
-	int z = g->cellPosZ(m_currentCell);
-	
-	if(--y < 0) y = g->sizeY()-1;
-	setCursor(m_game.index(x,y,z));
-}
-
-void KsView::moveDown() {
-	Graph* g = m_game.puzzle()->solver()->g;
-	int x = g->cellPosX(m_currentCell);
-	int y = g->cellPosY(m_currentCell);
-	int z = g->cellPosZ(m_currentCell);
-	
-	if(++y >= g->sizeY()) y = 0;
-	setCursor(m_game.index(x,y,z));
-}
-
-void KsView::moveLeft() {
-	Graph* g = m_game.puzzle()->solver()->g;
-	int x = g->cellPosX(m_currentCell);
-	int y = g->cellPosY(m_currentCell);
-	int z = g->cellPosZ(m_currentCell);
-	
-	if(--x < 0) x = g->sizeX()-1;
-	setCursor(m_game.index(x,y,z));
-}
-
-void KsView::moveRight() {
-	Graph* g = m_game.puzzle()->solver()->g;
-	int x = g->cellPosX(m_currentCell);
-	int y = g->cellPosY(m_currentCell);
-	int z = g->cellPosZ(m_currentCell);
-	
-	if(++x >= g->sizeX()) x = 0;
-	setCursor(m_game.index(x,y,z));
 }
 
 SymbolTable* KsView::symbolTable() const {

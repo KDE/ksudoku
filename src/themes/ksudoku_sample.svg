@@ -42,9 +42,9 @@
      bordercolor="#666666"
      pagecolor="#ffffff"
      id="base"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="295.70405"
-     inkscape:cy="173.95712"
+     inkscape:zoom="2.8284272"
+     inkscape:cx="270.82937"
+     inkscape:cy="19.323187"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:current-layer="svg2"
@@ -3128,7 +3128,7 @@
        fy="420"
        r="20"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="translate(40,-90)" />
+       gradientTransform="translate(10,-90)" />
     <radialGradient
        inkscape:collect="always"
        xlink:href="#linearGradient11954"
@@ -4580,7 +4580,7 @@
   <g
      id="background"
      inkscape:label="#g11059"
-     transform="matrix(1.6047942,0,0,1.6047942,-15.11497,-5.1164032)">
+     transform="matrix(1.6047942,0,0,1.6047942,-45.11497,-5.1164)">
     <rect
        id="ToneColor"
        style="fill:url(#radialGradient6762);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:32.94909668;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -5074,7 +5074,7 @@
   <g
      inkscape:label="#g6807"
      id="background2"
-     transform="matrix(0.9133022,0,0,0.9133022,436.02886,-163.92573)">
+     transform="matrix(0.9133022,0,0,0.9133022,406.02886,-163.92573)">
     <rect
        style="fill:url(#radialGradient5631);fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.50300002;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect6809"
@@ -7257,7 +7257,7 @@
   </g>
   <g
      id="cell"
-     transform="translate(40,-90)">
+     transform="translate(10,-90)">
     <path
        inkscape:tile-cy="300.37498"
        inkscape:tile-cx="19.5"
@@ -7277,7 +7277,7 @@
   <g
      id="cell_preset"
      inkscape:label="#g3986"
-     transform="translate(40,-90)">
+     transform="translate(10,-90)">
     <path
        inkscape:tile-cy="107.5"
        inkscape:tile-cx="-157.5"
@@ -7297,7 +7297,7 @@
   <g
      id="cell_mistake"
      inkscape:label="#g3992"
-     transform="translate(40,-90)">
+     transform="translate(10,-90)">
     <path
        d="M 73,435 C 73,434 73,406 73,405 C 73,404 74,403 75,403 C 76,403 104,403 105,403 C 106,403 107,404 107,405 C 107,406 107,434 107,435 C 107,436 106,437 105,437 C 104,437 76,437 75,437 C 74,437 73,436 73,435 L 73,435 L 73,435 L 73,435 z"
        style="fill:#f08682;fill-opacity:0.75294118;fill-rule:evenodd;stroke:#e85752;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.75294118"
@@ -7312,7 +7312,7 @@
   </g>
   <g
      id="g4702"
-     transform="translate(190,-90)">
+     transform="translate(160,-90)">
     <path
        inkscape:tile-cy="300.37498"
        inkscape:tile-cx="19.5"
@@ -7334,13 +7334,13 @@
      id="cursor"
      width="40"
      height="40"
-     x="160"
+     x="130"
      y="310"
      inkscape:label="#rect4708" />
   <g
      id="column_h_4"
      inkscape:label="#g4098"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="560"
        x="-30"
@@ -7360,7 +7360,7 @@
   <g
      id="column_h_2"
      inkscape:label="#g4093"
-     transform="translate(30,-440)">
+     transform="translate(0,-440)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        y="-30"
@@ -7381,7 +7381,7 @@
   <g
      id="column_h_3"
      inkscape:label="#g4103"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-50"
@@ -7402,7 +7402,7 @@
   <g
      id="column_h_1"
      inkscape:label="#g4088"
-     transform="translate(30,-440)">
+     transform="translate(0,-440)">
     <rect
        transform="scale(-1,-1)"
        y="-640"
@@ -7423,7 +7423,7 @@
   <g
      id="column_h_24"
      inkscape:label="#g4141"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4122"
@@ -7443,7 +7443,7 @@
   <g
      id="column_h_13"
      inkscape:label="#g4136"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7464,7 +7464,7 @@
   <g
      id="row_h_2"
      inkscape:label="#g4227"
-     transform="translate(30,-680)">
+     transform="translate(0,-680)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        y="50"
@@ -7485,7 +7485,7 @@
   <g
      id="row_h_1"
      inkscape:label="#g4217"
-     transform="translate(30,-680)">
+     transform="translate(0,-680)">
     <rect
        transform="scale(-1,-1)"
        y="-760"
@@ -7506,7 +7506,7 @@
   <g
      id="row_h_4"
      inkscape:label="#g4232"
-     transform="translate(30,-680)">
+     transform="translate(0,-680)">
     <rect
        y="680"
        x="50"
@@ -7526,7 +7526,7 @@
   <g
      id="row_h_3"
      inkscape:label="#g4212"
-     transform="translate(30,-680)">
+     transform="translate(0,-680)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-170"
@@ -7547,7 +7547,7 @@
   <g
      id="row_h_12"
      inkscape:label="#g4222"
-     transform="translate(30,-680)">
+     transform="translate(0,-680)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7568,7 +7568,7 @@
   <g
      id="row_h_34"
      inkscape:label="#g4237"
-     transform="translate(30,-680)">
+     transform="translate(0,-680)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7589,7 +7589,7 @@
   <g
      id="block_h_2"
      inkscape:label="#g4423"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        y="50"
@@ -7610,7 +7610,7 @@
   <g
      id="block_h_1"
      inkscape:label="#g4433"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        y="-680"
@@ -7631,7 +7631,7 @@
   <g
      id="block_h_4"
      inkscape:label="#g4413"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="560"
        x="50"
@@ -7651,7 +7651,7 @@
   <g
      id="block_h_3"
      inkscape:label="#g4398"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-170"
@@ -7672,7 +7672,7 @@
   <g
      id="block_h_12"
      inkscape:label="#g4428"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7693,7 +7693,7 @@
   <g
      id="block_h_34"
      inkscape:label="#g4408"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7714,7 +7714,7 @@
   <g
      id="block_h_24"
      inkscape:label="#g4418"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4292"
@@ -7734,7 +7734,7 @@
   <g
      id="block_h_13"
      inkscape:label="#g4403"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7755,7 +7755,7 @@
   <g
      id="block_h_123"
      inkscape:label="#g4528"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="50"
        x="-720"
@@ -7776,7 +7776,7 @@
   <g
      id="block_h_124"
      inkscape:label="#g4523"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="680"
        x="90"
@@ -7796,7 +7796,7 @@
   <g
      id="block_h_134"
      inkscape:label="#g4533"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="-760"
        x="-89.999985"
@@ -7817,7 +7817,7 @@
   <g
      id="block_h_234"
      inkscape:label="#g4518"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="-130"
        x="720"
@@ -7840,13 +7840,13 @@
      id="block_h_1234"
      width="40"
      height="40"
-     x="120"
+     x="90"
      y="120"
      inkscape:label="#rect4306" />
   <g
      id="block_2"
      inkscape:label="#g4227"
-     transform="translate(150,-560)">
+     transform="translate(120,-560)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        y="50"
@@ -7863,7 +7863,7 @@
   <g
      id="block_1"
      inkscape:label="#g4217"
-     transform="translate(150,-560)">
+     transform="translate(120,-560)">
     <rect
        transform="scale(-1,-1)"
        y="-760"
@@ -7880,7 +7880,7 @@
   <g
      id="block_4"
      inkscape:label="#g4232"
-     transform="translate(150,-600)">
+     transform="translate(120,-600)">
     <rect
        y="680"
        x="50"
@@ -7896,7 +7896,7 @@
   <g
      id="block_3"
      inkscape:label="#g4212"
-     transform="translate(150,-600)">
+     transform="translate(120,-600)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-170"
@@ -7913,7 +7913,7 @@
   <g
      id="block_12"
      inkscape:label="#g4222"
-     transform="translate(150,-560)">
+     transform="translate(120,-560)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7930,7 +7930,7 @@
   <g
      id="block_34"
      inkscape:label="#g4237"
-     transform="translate(150,-600)">
+     transform="translate(120,-600)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7947,7 +7947,7 @@
   <g
      id="block_24"
      inkscape:label="#g4141"
-     transform="translate(230,-480)">
+     transform="translate(200,-480)">
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4358"
@@ -7963,7 +7963,7 @@
   <g
      id="block_13"
      inkscape:label="#g4136"
-     transform="translate(270,-480)">
+     transform="translate(240,-480)">
     <rect
        transform="scale(-1,-1)"
        style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -7980,7 +7980,7 @@
   <g
      id="block_123"
      inkscape:label="#g4546"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        inkscape:label="#rect4494"
        y="170.00002"
@@ -7998,7 +7998,7 @@
   <g
      id="block_124"
      inkscape:label="#g4542"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="680"
        x="210.00002"
@@ -8014,7 +8014,7 @@
   <g
      id="block_134"
      inkscape:label="#g4550"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="-760"
        x="-210"
@@ -8031,7 +8031,7 @@
   <g
      id="block_234"
      inkscape:label="#g4538"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="-250.00002"
        x="720"
@@ -8048,7 +8048,7 @@
   <g
      id="special_2"
      inkscape:label="#g4975"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        y="290"
@@ -8069,7 +8069,7 @@
   <g
      id="special_1"
      inkscape:label="#g4965"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        y="-680"
@@ -8090,7 +8090,7 @@
   <g
      id="special_4"
      inkscape:label="#g4950"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="560"
        x="290"
@@ -8110,7 +8110,7 @@
   <g
      id="special_3"
      inkscape:label="#g4940"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-410"
@@ -8131,7 +8131,7 @@
   <g
      id="special_12"
      inkscape:label="#g4970"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -8152,7 +8152,7 @@
   <g
      id="special_34"
      inkscape:label="#g4945"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -8173,7 +8173,7 @@
   <g
      id="special_24"
      inkscape:label="#g4955"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4604"
@@ -8193,7 +8193,7 @@
   <g
      id="special_13"
      inkscape:label="#g4960"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -8214,7 +8214,7 @@
   <g
      id="special_123"
      inkscape:label="#g4980"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="290"
        x="-720"
@@ -8235,7 +8235,7 @@
   <g
      id="special_124"
      inkscape:label="#g4985"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="680"
        x="330"
@@ -8255,7 +8255,7 @@
   <g
      id="special_134"
      inkscape:label="#g5000"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="-760"
        x="-330"
@@ -8276,7 +8276,7 @@
   <g
      id="special_234"
      inkscape:label="#g4990"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="-370"
        x="720"
@@ -8297,7 +8297,7 @@
   <g
      id="special_14"
      inkscape:label="#g4933"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        y="-720"
@@ -8326,7 +8326,7 @@
   <g
      id="special_23"
      inkscape:label="#g4926"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-410"
@@ -8357,13 +8357,13 @@
      id="special_1234"
      width="40"
      height="40"
-     x="360"
+     x="330"
      y="120"
      inkscape:label="#rect4306" />
   <g
      id="special_h_2"
      inkscape:label="#g4886"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        y="410.00003"
@@ -8384,7 +8384,7 @@
   <g
      id="special_h_1"
      inkscape:label="#g4896"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        y="-680"
@@ -8405,7 +8405,7 @@
   <g
      id="special_h_4"
      inkscape:label="#g4911"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="560"
        x="410.00003"
@@ -8425,7 +8425,7 @@
   <g
      id="special_h_3"
      inkscape:label="#g4921"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-530"
@@ -8446,7 +8446,7 @@
   <g
      id="special_h_12"
      inkscape:label="#g4891"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,-1,1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -8467,7 +8467,7 @@
   <g
      id="special_h_34"
      inkscape:label="#g4916"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -8488,7 +8488,7 @@
   <g
      id="special_h_24"
      inkscape:label="#g4906"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect4794"
@@ -8508,7 +8508,7 @@
   <g
      id="special_h_13"
      inkscape:label="#g4901"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        style="fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
@@ -8529,7 +8529,7 @@
   <g
      id="special_h_123"
      inkscape:label="#g4852"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="410.00003"
        x="-720"
@@ -8550,7 +8550,7 @@
   <g
      id="special_h_124"
      inkscape:label="#g4857"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="680"
        x="450.00003"
@@ -8570,7 +8570,7 @@
   <g
      id="special_h_134"
      inkscape:label="#g4881"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="-760"
        x="-450.00003"
@@ -8591,7 +8591,7 @@
   <g
      id="special_h_234"
      inkscape:label="#g4876"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        y="-490.00003"
        x="720"
@@ -8614,13 +8614,13 @@
      id="special_h_1234"
      width="40"
      height="40"
-     x="480.00003"
+     x="450.00003"
      y="120"
      inkscape:label="#rect4306" />
   <g
      id="special_h_14"
      inkscape:label="#g4862"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="scale(-1,-1)"
        y="-720"
@@ -8649,7 +8649,7 @@
   <g
      id="special_h_23"
      inkscape:label="#g4869"
-     transform="translate(30,-480)">
+     transform="translate(0,-480)">
     <rect
        transform="matrix(0,1,-1,0,0,0)"
        y="-530"
@@ -8680,12 +8680,11 @@
      id="rect4490"
      width="95"
      height="50"
-     x="260"
+     x="230"
      y="305" />
   <g
      id="cell_symbol"
-     inkscape:label="#g4462"
-     transform="translate(40,-90)">
+     inkscape:label="#g4462">
     <rect
        style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="rect3613"
@@ -8693,7 +8692,7 @@
        height="40"
        x="-30"
        y="400"
-       transform="translate(200,0)" />
+       transform="translate(210,-90)" />
     <path
        id="path3611"
        style="fill:#babdb6;fill-opacity:0.50196078;fill-rule:evenodd;stroke:#888a85;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:0.75294118"
@@ -8702,10 +8701,9 @@
        inkscape:tile-h="35.00004"
        inkscape:tile-cx="19.5"
        inkscape:tile-cy="300.37498"
-       transform="translate(200,0)" />
+       transform="translate(210,-90)" />
     <g
        inkscape:label="#g3642"
-       transform="translate(200,-50)"
        id="symbol_1">
       <rect
          y="460"
@@ -8713,7 +8711,8 @@
          height="20"
          width="20"
          id="rect3622"
-         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         transform="translate(210,-140)" />
       <path
          inkscape:tile-cy="13.927869"
          inkscape:tile-cx="21.246839"
@@ -8721,12 +8720,13 @@
          inkscape:tile-w="4.617"
          id="path2379"
          d="M -9.0715,460.39459 L -5.76522,460.39459 L -5.76522,479.71297 L -9.75556,479.71297 L -9.75556,465.86985 L -15,468.65913 L -15,465.25 L -11.57971,463.49379 C -10.36361,462.59847 -9.52754,461.56541 -9.0715,460.39459 z"
-         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline" />
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+         transform="translate(210,-140)" />
     </g>
   </g>
   <g
      id="symbol_2"
-     transform="translate(240,-140)"
+     transform="translate(210,-140)"
      inkscape:label="#g3646">
     <rect
        y="445"
@@ -8746,7 +8746,7 @@
   </g>
   <g
      id="symbol_3"
-     transform="translate(240,-140)"
+     transform="translate(210,-140)"
      inkscape:label="#g3650">
     <rect
        y="445"
@@ -8766,7 +8766,7 @@
   </g>
   <g
      id="symbol_4"
-     transform="translate(240,-140)"
+     transform="translate(210,-140)"
      inkscape:label="#g3654">
     <rect
        y="445"
@@ -8782,7 +8782,7 @@
   </g>
   <g
      id="symbol_5"
-     transform="translate(240,-140)"
+     transform="translate(210,-140)"
      inkscape:label="#g3658">
     <rect
        y="445"
@@ -8798,7 +8798,7 @@
   </g>
   <g
      id="symbol_6"
-     transform="translate(240,-140)"
+     transform="translate(210,-140)"
      inkscape:label="#g3674">
     <rect
        y="475"
@@ -8814,7 +8814,7 @@
   </g>
   <g
      id="symbol_7"
-     transform="translate(240,-140)"
+     transform="translate(210,-140)"
      inkscape:label="#g3670">
     <rect
        y="475"
@@ -8830,7 +8830,7 @@
   </g>
   <g
      id="symbol_8"
-     transform="translate(240,-140)"
+     transform="translate(210,-140)"
      inkscape:label="#g3666">
     <rect
        y="475"
@@ -8846,7 +8846,7 @@
   </g>
   <g
      id="symbol_9"
-     transform="translate(240,-140)"
+     transform="translate(210,-140)"
      inkscape:label="#g3662">
     <rect
        y="475"

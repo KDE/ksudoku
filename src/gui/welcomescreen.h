@@ -47,7 +47,7 @@ private slots:
 	void playVariant();
 	
 signals:
-	void newGameStarted(const Game& game, GameVariant* variant);
+	void newGameStarted(const ::ksudoku::Game& game, GameVariant* variant);
 	
 private:
 	GameVariantCollection* m_collection;

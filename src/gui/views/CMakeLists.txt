@@ -2,6 +2,7 @@
 set(ksudoku_views_SRCS
 	ksview.cpp
 	ArcBall.cpp
+	gameactions.cpp
 	renderer.cpp
 	roxdokuview.cpp
 	sudokuview.cpp

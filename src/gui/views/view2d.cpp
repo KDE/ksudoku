@@ -9,6 +9,7 @@
 
 #include "sudoku_solver.h"
 #include "puzzle.h"
+#include "gameactions.h"
 
 namespace ksudoku {
 
@@ -286,12 +287,13 @@ void GroupGraphicsItem::resize(int gridSize) {
 	}
 }
 
-View2DScene::View2DScene() {
+View2DScene::View2DScene(GameActions* gameActions) {
+	m_gameActions = gameActions;
 	m_background = 0;
 	m_groupLayer = 0;
 	m_cellLayer = 0;
+	m_cursorPos = 0;
 	m_cursor = 0;
-	
 }
 
 View2DScene::~View2DScene() {
@@ -363,6 +365,12 @@ void View2DScene::init(const Game& game) {
 	
 	m_cursor = new QGraphicsPixmapItem();
 	addItem(m_cursor);
+	
+	hover(m_cursorPos);
+	
+	connect(m_gameActions, SIGNAL(selectValue(int)), this, SLOT(selectValue(int)));
+	connect(m_gameActions, SIGNAL(enterValue(int)), this, SLOT(enterValue(int)));
+	connect(m_gameActions, SIGNAL(move(int,int)), this, SLOT(moveCursor(int,int)));
 }
 
 void View2DScene::setSceneSize(const QSize& size) {
@@ -393,14 +401,13 @@ void View2DScene::setSceneSize(const QSize& size) {
 }
 
 void View2DScene::hover(int cell) {
+	m_cursorPos = cell;
 	QPoint pos(m_cells[cell]->pos());
 	foreach(GroupGraphicsItem* item, m_groups) {
 		item->setHighlight(pos);
 	}
 	
 	m_cells[cell]->showCursor(m_cursor);
-	
-	emit cellHovered(cell);
 }
 
 void View2DScene::press(int cell) {
@@ -436,17 +443,64 @@ void View2DScene::selectValue(int value) {
 	m_selectedValue = value;
 }
 
-View2D::View2D(QWidget *parent, const Game& game) : QGraphicsView(parent) {
+void View2DScene::enterValue(int value, int cell) {
+	if(value >= 0) {
+		if(cell >= 0) {
+			m_game.setValue(cell, value);
+		} else {
+			m_game.setValue(m_cursorPos, value);
+		}
+	} else {
+		if(cell >= 0) {
+			m_game.setValue(cell, m_selectedValue);
+		} else {
+			m_game.setValue(m_cursorPos, m_selectedValue);
+		}
+	}
+}
+
+void View2DScene::moveCursor(int dx, int dy) {
+	Graph* g = m_game.puzzle()->solver()->g;
+	QPoint oldPos = m_cells[m_cursorPos]->pos();
+	QPoint relPos;
+	int newCursorPos = -1;
+	if(dx < 0) relPos.setX(-1);
+	else if(dx > 0) relPos.setX(+1);
+	if(dy < 0) relPos.setY(-1);
+	else if(dy > 0) relPos.setY(+1);
+	
+	QPoint newPos = oldPos + relPos;
+	while(newPos != oldPos && newCursorPos == -1) { 
+		if(newPos.x() < 0) newPos.setX(g->sizeX()-1);
+		if(newPos.x() >= g->sizeX()) newPos.setX(0);
+		if(newPos.y() < 0) newPos.setY(g->sizeY()-1);
+		if(newPos.y() >= g->sizeY()) newPos.setY(0);
+		
+		for(int i = 0; i < m_game.size(); ++i) {
+			if(m_cells[i] == 0) continue;
+			if(m_cells[i]->pos() == newPos) {
+				newCursorPos = i;
+				break;
+			}
+		}
+		
+		newPos += relPos;
+	}
+	if(newCursorPos >= 0)
+		hover(newCursorPos);
+}
+
+View2D::View2D(QWidget *parent, const Game& game, GameActions* gameActions) : QGraphicsView(parent) {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setFrameStyle(QFrame::NoFrame);
 	setAlignment( Qt::AlignLeft | Qt::AlignTop );
 	
-	m_scene = new View2DScene();
+	m_scene = new View2DScene(gameActions);
 	m_scene->init(game);
 	setScene(m_scene);
-	
-	connect(m_scene, SIGNAL(cellHovered(int)), this, SIGNAL(cellHovered(int)));
+
+	gameActions->associateWidget(this);
 	
 	connect(game.interface(), SIGNAL(cellChange(int)), this, SLOT(update(int)));
 	connect(game.interface(), SIGNAL(fullChange()), this, SLOT(update()));

@@ -22,10 +22,8 @@
 #ifndef _KSVIEW_H_
 #define _KSVIEW_H_
 
-#include <qgl.h>
-#include <qstring.h>
-
 #include "ksudokugame.h"
+
 
 class QWidget;
 
@@ -42,10 +40,10 @@ typedef QFlags<ViewFlag> ViewFlags;
 class Game;
 struct SymbolTable;
 class ValueListWidget;
+class GameActions;
 
 /**
  * Every implementation of ViewInterface needs following signals:
- *   void cellHovered(int cell);
  *   void valueSelected(int value);
  */
 class ViewInterface {
@@ -54,7 +52,6 @@ public:
 public:
 	virtual QWidget* widget() = 0;
 public: // SLOTS
-	virtual void setCursor(int cell) = 0;
 	virtual void selectValue(int value) = 0;
 	virtual void setSymbols(SymbolTable* table) = 0;
 	virtual void setFlags(ViewFlags flags) = 0;
@@ -68,13 +65,13 @@ class KsView : public QObject
 {
 	Q_OBJECT
 private:
-	///prevent copy constructor (not implemented)
+	// prevent copy constructor (not implemented)
 	KsView(KsView const& other);
-	///prevent assignment (not implemented)
+	// prevent assignment (not implemented)
 	KsView& operator=(KsView const& other);
 
 public:
-	KsView(const Game& game, QObject* parent = 0);
+	KsView(const Game& game, GameActions* gameActions, QObject* parent = 0);
 	virtual ~KsView();
 
 	//getters
@@ -82,7 +79,6 @@ public:
 	Game game() const { return m_game; }
 
 	QWidget* widget() const { return m_viewWidget; }
-	void setWidget(QWidget* viewWidget);
 	
 	ValueListWidget* valueListWidget() const { return m_valueListWidget; }
 	// TODO make this own the valueListWidget
@@ -98,41 +94,38 @@ public:
 		m_flags = flags;
 		emit flagsChanged(flags);
 	}
+
+public:
+	void createView();
 	
 public slots:
-	void setCursor(int cell);
 	void selectValue(int value);
-	void enterValue(int value);
-	void markValue(int value);
-	void moveUp();
-	void moveDown();
-	void moveLeft();
-	void moveRight();
 	
 	void settingsChanged();
 	
 signals:
 	void flagsChanged(ViewFlags flags);
 	void symbolsChanged(SymbolTable* table);
-	void cursorMoved(int cell);
 	void valueSelected(int value);
 	
-public:
-	void createView();
-	
-protected:
+
+private:
+	void setWidget(QWidget* viewWidget);
+
+private:
 	///pointer to external Game
 	Game m_game;
 
 	SymbolTable* m_symbolTable;
 	ViewFlags m_flags;
+
+	GameActions* m_gameActions;
 	
 	ViewInterface* m_view;
 	QWidget* m_viewWidget;
 	ValueListWidget* m_valueListWidget;
 	
 	int m_currentValue;
-	int m_currentCell;
 };
 
 }

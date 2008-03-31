@@ -14,10 +14,12 @@ namespace ksudoku {
 
 class GroupGraphicsItem;
 class CellGraphicsItem;
+class GameActions;
+
 class View2DScene : public QGraphicsScene {
 	Q_OBJECT
 public:
-	View2DScene();
+	View2DScene(GameActions* gameActions);
 	~View2DScene();
 public:
 	void init(const Game& game);
@@ -28,10 +30,11 @@ public:
 	void press(int cell);
 	void update(int cell = -1);
 
+public slots:
 	void selectValue(int val);
+	void enterValue(int val, int cell=-1);
+	void moveCursor(int dx, int dy);
 
-signals:
-	void cellHovered(int cell);
 private:
 	QGraphicsPixmapItem* m_background;
 	QGraphicsItem* m_groupLayer;
@@ -41,25 +44,26 @@ private:
 	QGraphicsPixmapItem* m_cursor;
 	Game m_game;
 
+	GameActions* m_gameActions;
+
+	int m_cursorPos;
 	int m_selectedValue;
 };
 
 class View2D : public QGraphicsView, public ViewInterface {
 	Q_OBJECT
 public:
-	View2D(QWidget *parent, const Game& game);
+	View2D(QWidget* parent, const Game& game, GameActions* gameActions);
 	~View2D();
 
 public:
 	QWidget* widget() { return this; }
 public slots:
-	void setCursor(int cell) { Q_UNUSED(cell) }
 	void selectValue(int value);
 	void setSymbols(SymbolTable* table) { Q_UNUSED(table) }
 	void setFlags(ViewFlags flags) { Q_UNUSED(flags) }
 	void update(int cell = -1);
 signals:
-	void cellHovered(int cell);
 	void valueSelected(int value);
 protected:
 	virtual void resizeEvent(QResizeEvent* e);

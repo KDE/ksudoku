@@ -32,6 +32,8 @@
 #include <cstdlib>
 #include <time.h>
 
+#include <KUrl>
+
 
 static const char description[] =
     I18N_NOOP("KSudoku - Sudokus and more");

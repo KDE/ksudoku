@@ -50,7 +50,7 @@ class RoxdokuView : public QGLWidget, public ViewInterface
 {
 Q_OBJECT
 public:
-	RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent = 0, const char* name = 0);
+	RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent = 0);
 	~RoxdokuView();
 public:
 	///(re)implemented from KsView
@@ -103,9 +103,6 @@ public slots:
 	void setFlags(ViewFlags flags);
 	
 public slots: // Temporary for a full interface
-	void setCursor(int /*cell*/) {
-		// TODO add this
-	}
 	void setSymbols(SymbolTable* /*table*/) {
 		// TODO RoxDokuView currently don't use the symboltable
 	}
@@ -115,7 +112,6 @@ public slots: // Temporary for a full interface
 	
 signals:
 	void valueSelected(int value); // Never used but connected to
-	void cellHovered(int cell);
 	
 protected:
 	void paintGL();

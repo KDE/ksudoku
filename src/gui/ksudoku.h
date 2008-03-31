@@ -22,40 +22,24 @@
 #ifndef _KSUDOKU_H_
 #define _KSUDOKU_H_
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
-#include <kapplication.h>
 #include <kxmlguiwindow.h>
-#include <qdatetime.h>
-//Added by qt3to4:
-#include <QDropEvent>
-#include <QDragEnterEvent>
-#include <kurl.h>
 #if 0
 #include <knewstuff/knewstuff.h>
 #endif
 
-#include "sudokuview.h"
-#include "roxdokuview.h"
-
 #include "symbols.h"
 
-#include <QSignalMapper>
-
-
-//#include "skgraph.h"
-//#include "sksolver.h"
-
-class ksudoku::KsView;
 class KUrl;
 
 namespace ksudoku {
+class KsView;
+class GameActions;
 class GameVariantCollection;
 class ValueListWidget;
 class WelcomeScreen;
+class Game;
 }
+
 
 /**
  * This class serves as the main window for ksudoku.  It handles the
@@ -97,13 +81,15 @@ public:
 	
 	void loadGame(const KUrl& url);
 	
-	Game             currentGame() const;
+public:
+	void updateShapesList();
+	void loadCustomShapeFromPath();
+	void createCustomShape();
+
+	ksudoku::Game    currentGame() const;
 	ksudoku::KsView* currentView() const;
 
 protected:
-    /**
-     * Overridden virtuals for Qt drag 'n drop (XDND)
-     */
 	virtual void dragEnterEvent(QDragEnterEvent *event);
 	virtual void dropEvent(QDropEvent *event);
 
@@ -112,7 +98,7 @@ public slots:
 	
 	void showWelcomeScreen();
 
-	void startGame(const Game& game);
+	void startGame(const ::ksudoku::Game& game);
 	void endCurrentGame();
 	
 private slots:
@@ -133,37 +119,18 @@ private slots:
 	void dubPuzzle();
 	void genMultiple();
 
-	void selectValue(int value);
-	void enterValue(int value);
-	void markValue(int value);
-	void moveUp();
-	void moveDown();
-	void moveLeft();
-	void moveRight();
-	void clearCell();
-
 	void optionsPreferences();
 	void settingsChanged();
 	void changeStatusbar(const QString& text);
 	void changeCaption(const QString& text);
 
-	//web
 	void homepage();
-	void support();
-	void sendComment();
 
 	void updateStatusBar();
 
 	void onModified(bool isModified);
 	
-public:
-	void updateShapesList();
-	void loadCustomShapeFromPath();
-	void createCustomShape();
-
 private:
-	void createAction(const QString& text, const char* slot, const QString& name, const QString& icon);
-	void setupAccel();
 	void setupActions();
 
 	void adaptActions2View();
@@ -172,26 +139,20 @@ private:
 private:
 	QWidget* wrapper;
 	
-	QSignalMapper* m_selectValueMapper;
-	QSignalMapper* m_enterValueMapper;
-	QSignalMapper* m_markValueMapper;
-	
 	QAction* m_gameSave;
 	QAction* m_gameSaveAs;
-	QAction* m_moveUpAct;
-	QAction* m_moveDownAct;
-	QAction* m_moveLeftAct;
-	QAction* m_moveRightAct;
-	
-	GameVariantCollection* m_gameVariants;
-	WelcomeScreen* m_welcomeScreen;
+
+	ksudoku::GameVariantCollection* m_gameVariants;
+	ksudoku::WelcomeScreen* m_welcomeScreen;
 	
 	QWidget* m_gameWidget;
-	ValueListWidget* m_valueListWidget;
+	ksudoku::ValueListWidget* m_valueListWidget;
 	
-	KsView* m_gameUI;
+	ksudoku::KsView* m_gameUI;
 
-	Symbols m_symbols;
+	ksudoku::Symbols m_symbols;
+
+	ksudoku::GameActions* m_gameActions;
 };
 
 #endif // _KSUDOKU_H_
