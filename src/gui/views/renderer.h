@@ -79,4 +79,6 @@ private:
 
 }
 
+Q_DECLARE_OPERATORS_FOR_FLAGS(ksudoku::GroupTypes)
+
 #endif

@@ -31,6 +31,8 @@
 #include <QMouseEvent>
 #include <klocale.h>
 
+#include "settings.h"
+
 
 namespace ksudoku{
 
@@ -75,7 +77,7 @@ RoxdokuView::RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent)
 	dist = 5.3f;
 	selected_number = 1;
 
-	m_guidedMode = false;
+	loadSettings();
 
 	isClicked  = false;
 	isRClicked = false;	
@@ -283,8 +285,12 @@ void RoxdokuView::enterValue(int value) {
 	m_game.setValue(selection, value);
 }
 
-void RoxdokuView::setFlags(ViewFlags flags) {
-	m_guidedMode = flags.testFlag(ShowErrors);
+void RoxdokuView::loadSettings() {
+	m_guidedMode = Settings::showErrors();
+}
+
+void RoxdokuView::settingsChanged() {
+	loadSettings();
 	updateGL();
 }
 

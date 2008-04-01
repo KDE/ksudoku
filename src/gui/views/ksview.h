@@ -53,9 +53,6 @@ public:
 	virtual QWidget* widget() = 0;
 public: // SLOTS
 	virtual void selectValue(int value) = 0;
-	virtual void setSymbols(SymbolTable* table) = 0;
-	virtual void setFlags(ViewFlags flags) = 0;
-	virtual void update(int cell = -1) = 0;
 };
 
 /**

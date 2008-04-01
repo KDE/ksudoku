@@ -100,15 +100,7 @@ public:
 public slots:
 	void selectValue(int value);
 	void enterValue(int value);
-	void setFlags(ViewFlags flags);
-	
-public slots: // Temporary for a full interface
-	void setSymbols(SymbolTable* /*table*/) {
-		// TODO RoxDokuView currently don't use the symboltable
-	}
-	void update(int /*cell*/) {
-		paintGL();
-	}
+	void settingsChanged();
 	
 signals:
 	void valueSelected(int value); // Never used but connected to
@@ -131,6 +123,9 @@ protected:
 		wheelmove += e->delta() * .02;
 		updateGL();
 	}
+
+private:
+	void loadSettings();
 	
 private:
 	Symbols* m_symbols;

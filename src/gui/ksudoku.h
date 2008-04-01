@@ -120,7 +120,7 @@ private slots:
 	void genMultiple();
 
 	void optionsPreferences();
-	void settingsChanged();
+	void updateSettings();
 	void changeStatusbar(const QString& text);
 	void changeCaption(const QString& text);
 
@@ -129,7 +129,10 @@ private slots:
 	void updateStatusBar();
 
 	void onModified(bool isModified);
-	
+
+signals:
+	void settingsChanged();
+
 private:
 	void setupActions();
 

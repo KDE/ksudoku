@@ -33,7 +33,6 @@
 #include "puzzle.h"
 
 
-#include "sudokuview.h"
 #include "roxdokuview.h"
 #include "view2d.h"
 
@@ -78,8 +77,8 @@ void KsView::createView() {
 	connect(view, SIGNAL(valueSelected(int)), SLOT(selectValue(int)));
 	
 	connect(this, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
-	connect(this, SIGNAL(flagsChanged(ViewFlags)), view, SLOT(setFlags(ViewFlags)));
-	connect(this, SIGNAL(symbolsChanged(SymbolTable*)), view, SLOT(setSymbols(SymbolTable*)));
+
+	connect(parent(), SIGNAL(settingsChanged()), view, SLOT(settingsChanged()));
 	
 	settingsChanged();
 }

@@ -368,6 +368,8 @@ void View2DScene::init(const Game& game) {
 	
 	hover(m_cursorPos);
 	
+	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(update(int)));
+	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(update()));
 	connect(m_gameActions, SIGNAL(selectValue(int)), this, SLOT(selectValue(int)));
 	connect(m_gameActions, SIGNAL(enterValue(int)), this, SLOT(enterValue(int)));
 	connect(m_gameActions, SIGNAL(move(int,int)), this, SLOT(moveCursor(int,int)));
@@ -501,9 +503,6 @@ View2D::View2D(QWidget *parent, const Game& game, GameActions* gameActions) : QG
 	setScene(m_scene);
 
 	gameActions->associateWidget(this);
-	
-	connect(game.interface(), SIGNAL(cellChange(int)), this, SLOT(update(int)));
-	connect(game.interface(), SIGNAL(fullChange()), this, SLOT(update()));
 }
 
 View2D::~View2D() {
@@ -516,16 +515,13 @@ void View2D::resizeEvent(QResizeEvent* e) {
 	if(m_scene) m_scene->setSceneSize(size());
 }
 
-void View2D::update(int cell) {
-	if(!m_scene) return;
-	
-	m_scene->update(cell);
-}
-
 void View2D::selectValue(int value) {
 	if(!m_scene) return;
 	
 	m_scene->selectValue(value);
+}
+
+void View2D::settingsChanged() {
 }
 
 }

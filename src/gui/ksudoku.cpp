@@ -567,11 +567,11 @@ void KSudoku::optionsPreferences()
 	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
 	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "games-config-theme");
         dialog->setHelp(QString(),"ksudoku");
-	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(settingsChanged()));
+	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(updateSettings()));
     dialog->show();
 }
 
-void KSudoku::settingsChanged() {
+void KSudoku::updateSettings() {
 	m_symbols.setEnabledTables(Settings::symbols());
 
 	KsView* view = currentView();
@@ -583,6 +583,8 @@ void KSudoku::settingsChanged() {
 
 		view->settingsChanged();
 	}
+
+	emit settingsChanged();
 }
 
 void KSudoku::changeStatusbar(const QString& text)

@@ -28,12 +28,12 @@ public:
 
 	void hover(int cell);
 	void press(int cell);
-	void update(int cell = -1);
 
 public slots:
 	void selectValue(int val);
 	void enterValue(int val, int cell=-1);
 	void moveCursor(int dx, int dy);
+	void update(int cell = -1);
 
 private:
 	QGraphicsPixmapItem* m_background;
@@ -60,9 +60,7 @@ public:
 	QWidget* widget() { return this; }
 public slots:
 	void selectValue(int value);
-	void setSymbols(SymbolTable* table) { Q_UNUSED(table) }
-	void setFlags(ViewFlags flags) { Q_UNUSED(flags) }
-	void update(int cell = -1);
+	void settingsChanged();
 signals:
 	void valueSelected(int value);
 protected:
@@ -72,7 +70,5 @@ private:
 };
 
 }
-
-Q_DECLARE_OPERATORS_FOR_FLAGS(ksudoku::GroupTypes)
 
 #endif // _VIEW2D_H_ 

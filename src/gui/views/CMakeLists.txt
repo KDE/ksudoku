@@ -5,8 +5,6 @@ set(ksudoku_views_SRCS
 	gameactions.cpp
 	renderer.cpp
 	roxdokuview.cpp
-	sudokuview.cpp
-	qsudokubutton.cpp
 	valuelistwidget.cpp
 	view2d.cpp
 )
