@@ -129,7 +129,7 @@ private:
 	QVector<QBitArray> m_flags; // I don't know whether this is fast enough
 	GroupLookup        m_remaining;
 };
-
+}
 
 //
 // class SKSolver
