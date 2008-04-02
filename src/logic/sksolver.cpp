@@ -40,7 +40,9 @@ SKPuzzle stack[625+1];
 using namespace ksudoku;
 using namespace std;
 
-class ::SolverState {
+namespace ksudoku
+{
+class SolverState {
 public:
 	SolverState(uint size, uint order)
 		: m_size(size), m_order(order), m_values(size, 0), m_flags(order),
@@ -51,7 +53,7 @@ public:
 			m_flags[i].fill(true, size);
 		}
 	}
-	
+
 	SolverState(const SolverState& state)
 		: m_size(state.m_size), m_order(state.m_order), m_values(state.m_values),
 		  m_flags(state.m_flags), m_remaining(state.m_remaining)
@@ -60,9 +62,9 @@ public:
 			m_flags[i].detach();
 		}
 	}
-	
+
 	uint value(uint index) const { return m_values[index]; }
-	
+
 	inline ProcessState setValue(uint index, uint value, skGraph* graph) {
 		if(m_values[index] != 0) return KSS_CRITICAL;
 		m_remaining.setValue(index, 0);
@@ -81,7 +83,7 @@ public:
 		}
 		return KSS_SUCCESS;
 	}
-	
+
 	/**
 	 * Sets all values for which only one flag is left
 	 * Returns whether it failed due to conflicts.
@@ -93,7 +95,7 @@ public:
 			for(uint i = 0; ; ++i) {
 				// Chekc whetere there wasn't a flag left
 				if(i >= m_order) return KSS_CRITICAL;
-				
+
 				if(m_flags[i][index]) {
 					if((state = setValue(index, i+1, graph)) != KSS_SUCCESS) return state;
 					break;
@@ -102,7 +104,7 @@ public:
 		}
 		return KSS_SUCCESS;
 	}
-	
+
 	int optimalSolvingIndex() {
 		for(uint i = 2; i <= m_order; ++i) {
 			if(m_remaining.firstIndexWithValue(i) >= 0)
@@ -110,7 +112,7 @@ public:
 		}
 		return -1;
 	}
-	
+
 	uint possibleValue(uint index, uint startValue = 0) {
 		if(m_values[index] != 0) return 0;
 		for(uint i = startValue ? startValue-1 : 0; i < m_order; ++i) {
@@ -119,7 +121,7 @@ public:
 		}
 		return 0;
 	}
-	
+
 private:
 	uint               m_size;
 	uint               m_order;
@@ -127,7 +129,7 @@ private:
 	QVector<QBitArray> m_flags; // I don't know whether this is fast enough
 	GroupLookup        m_remaining;
 };
-
+};
 
 //
 // class SKSolver
@@ -198,9 +200,9 @@ int SKSolver::get_simmetric(int order, int size, int type, int idx, int which, i
 					out[3] = (order-1-idx/order)*order+idx%order;
 					c =4;
 				}
-				
-				/*printf("%d (%d %d) (%d %d) (%d %d) (%d %d)  - %d %d %d\n", c, idx%order, idx/order, 
-																		out[1]%order, out[1]/order, 
+
+				/*printf("%d (%d %d) (%d %d) (%d %d) (%d %d)  - %d %d %d\n", c, idx%order, idx/order,
+																		out[1]%order, out[1]/order,
 																		out[2]%order, out[2]/order, out[3]%order, out[3]/order, b[0],  b[1], b[2]);*/
 				return c;
 		}
@@ -211,7 +213,7 @@ uint SKSolver::getSymmetry(uint flags, int index, int out[4])
 {
 	return ksudoku::Solver(g, flags).getSymmetricIndices(index, out);
 // 	int which = 0; // TODO replace this with another flag
-// 	
+//
 // 	out[0] = index;
 // 	switch(flags & KSS_SYM_MASK) {
 // 		case KSS_SYM_NONE:
@@ -236,7 +238,7 @@ uint SKSolver::getSymmetry(uint flags, int index, int out[4])
 // 				if((index % order) == (order-1)/2) b[0] = b[2] = 0;
 // 				if((index / order) == (order-1)/2) b[1] = b[2] = 0;
 // 			}
-// 			
+//
 // 			int c = 1;
 // 			if(b[2] == 0) {
 // 				out[1] = (order-1-index/order)*order+order-1-index%order;
@@ -249,7 +251,7 @@ uint SKSolver::getSymmetry(uint flags, int index, int out[4])
 // 			}
 // 			return c;
 // 	}
-// 	
+//
 // // 	printf("Sym: WTF?\n");
 // 	return 1;
 }
@@ -258,7 +260,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 {
 	//if(type!=2) //not custom
 	//	return remove_numbers2(p, level, simmetry, type);
-			
+
 //	std::srand(time(0));
 //	int  b;
 	cout << level << "\n";
@@ -269,13 +271,13 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	//SKPuzzle stack[257];
 	bool done[625+1];
 	ITERATE(i,p->size+1){ stack[i].setorder(order); done[i]=false;};
-		
+
 	if(p->size>81) to = (p->size-32);
 	if(p->size>441) to = (p->size-32)/2;
 	//if(p->order>16) to = (p->size-32)/(2);
 	SKPuzzle c(p->order);
 	copy(&c, p);
-	
+
 	if(simmetry == SIMMETRY_RANDOM) simmetry = RANDOM(3)+2;
 	int which = RANDOM(2);
 	//if(type == 1) simmetry = SIMMETRY_CENTRAL;
@@ -292,7 +294,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 		simmetry = SIMMETRY_NONE;
 	}
 
-	ITERATE(q, to) 
+	ITERATE(q, to)
 	{
 		int idx = RANDOM(p->size);  //2FIX
 		printf("%d/%d\n", q,to);
@@ -300,22 +302,22 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 		int index_d = get_simmetric(order, size,simmetry, idx, which, index);
 
 		bool go=true;
-		ITERATE(i, index_d) if(g->optimized_d[index[i]]==0) 
+		ITERATE(i, index_d) if(g->optimized_d[index[i]]==0)
 			go=false;
-		if(!go) 
+		if(!go)
 		{
-			printf("unlinked node %d %d\n",index_d,simmetry); 
-			q--; 
+			printf("unlinked node %d %d\n",index_d,simmetry);
+			q--;
 			continue;
 		}
-		
+
 		int backup[4] = {0,0,0,0};
-		
+
 		int n_err = 0;
 		ITERATE(i, index_d)
 		{
 			backup[i] = p->numbers[index[i]];
-			if(backup[i] != 0 && done[index[i]] == false) 
+			if(backup[i] != 0 && done[index[i]] == false)
 			{
 				done[index[i]] = true;
 				solutions_d=0;
@@ -330,11 +332,11 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 		if(n_err > 0)
 			ITERATE(i, index_d)
 				p->numbers[index[i]] = backup[i];
-		else	
+		else
 			cnt-=index_d;
 	}
-	
-	
+
+
 	int numberOfNumbersToAdd = (7*(3-level)*(((type!=1) ? ((int) sqrt((double)(p->size))) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
  	printf("%d\n", numberOfNumbersToAdd);
 
@@ -342,7 +344,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	{
 		int idx = RANDOM(p->size);//2FIX
 		int orig = idx;
-		while(p->numbers[idx] != 0) 
+		while(p->numbers[idx] != 0)
 		{
 			idx=(idx+1) % p->size;
 			if(idx==orig) return cnt;
@@ -353,7 +355,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 		ITERATE(j, index_d)
 		{
 			p->numbers[index[j]] = c.numbers[index[j]];
-			i++;	
+			i++;
 			cnt++;
 		}
 	}
@@ -368,7 +370,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 			cnt--;
 		}
 	}*/
-	
+
 	return cnt;
 }
 
@@ -377,12 +379,12 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 {
 	QVector<uint> numbers(size);
-	
+
 	for(uint i = 0; i < (uint)size; ++i)
 		numbers[i] = p->numbers[i];
-	
+
 	uint flags = 0;
-	
+
 	if(typeo == 1) simmetry = SIMMETRY_CENTRAL;
 	switch(simmetry) {
 		case SIMMETRY_DIAGONAL:
@@ -399,23 +401,23 @@ int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 			flags |= KSS_SYM_NONE;
 			break;
 	}
-	
+
 	if(level == 4)
 	{
 		flags |= KSS_REM_1VALUE;
 	}
-	
+
 	int hints = (3-level)*(order+LEVINC-(order-2)*typeo);
 	cout << "Hints" << hints <<"\n";
 
 	removeValuesSimple(numbers, (hints>0) ? hints : 0, flags);
-	
+
 	for(uint i = 0; i < (uint)size; ++i)
 		p->numbers[i] = numbers[i];
-		
+
 	return 1;
-	
-	
+
+
 	// Solver Benchmark !!!! TODO: remove this
 // 	printf("Do benchmark!\n");
 	QTime time;
@@ -425,7 +427,7 @@ int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 // 		printf("%d\n", i);
 	}
 	uint oldT = time.elapsed();
-	
+
 	time.start();
 	for(uint i = 100; i != 0; --i) {
 		solve(p);
@@ -435,13 +437,13 @@ int SKSolver::remove_numbers2(SKPuzzle* p, int level, int simmetry, int typeo)
 // 	printf("Test old: %d\n", oldT);
 // 	printf("Test new: %d\n", newT);
 	return 1;
-	
+
 }
 
 uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags) {
 	QVector<uint> local(puzzle);
 	int cellsLeft = size;
-	
+
 	// completely remove all occurrences of a random value
 	if(flags & KSS_REM_1VALUE) {
 		uint startValue = RANDOM(order)+1;
@@ -465,7 +467,7 @@ uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags)
 				return 0;
 		}
 	}
-	
+
 	uint failures = 0;
 	// scanning until order instead of base might remove about 2-5 more values
 	while(failures < (uint)base) {
@@ -475,7 +477,7 @@ uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags)
 			if(local[index] != 0) break;
 			index = (index+1)%size;
 		} while(index != startIndex);
-		
+
 		uint remCount = removeAtIndex(local, index, flags);
 		if(remCount != 0) {
 			cellsLeft -= remCount;
@@ -485,7 +487,7 @@ uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags)
 		}
 // 		printf("Failures: %d - %d\n", cellsLeft, failures);
 	}
-	
+
 	// give initial hints
 	for(uint i = hints; i != 0; --i) {
 		uint startIndex = RANDOM(size);
@@ -499,17 +501,17 @@ uint SKSolver::removeValuesSimple(QVector<uint>& puzzle, uint hints, uint flags)
 		} while(index != startIndex);
 	}
 	cellsLeft += hints;
-	
+
 	puzzle = local;
-	
+
 	return cellsLeft;
-	
+
 }
 
 int SKSolver::removeValues(QVector<uint>& puzzle, uint count, uint flags) {
 	QVector<uint> local(puzzle);
 	int removesLeft = count;
-	
+
 	if(flags & KSS_REM_1VALUE) {
 		uint startValue = RANDOM(order)+1;
 		uint i;
@@ -532,7 +534,7 @@ int SKSolver::removeValues(QVector<uint>& puzzle, uint count, uint flags) {
 				return 0;
 		}
 	}
-	
+
 	while(removesLeft > 0) {
 		uint startIndex = RANDOM(size);
 		uint index = startIndex;
@@ -547,7 +549,7 @@ int SKSolver::removeValues(QVector<uint>& puzzle, uint count, uint flags) {
 			index = (index+1)%size;
 		} while(index != startIndex);
 	}
-	
+
 	puzzle = local;
 	return 1;
 }
@@ -555,7 +557,7 @@ int SKSolver::removeValues(QVector<uint>& puzzle, uint count, uint flags) {
 uint SKSolver::removeValueCompletely(QVector<uint>& puzzle, uint value, uint flags) {
 	QVector<uint> local(puzzle);
 	uint count = 0;
-	
+
 	for(uint i = 0; i < (uint)size; ++i) {
 		if(local[i] == value) {
 			uint remCount = removeAtIndex(local, i, flags);
@@ -563,7 +565,7 @@ uint SKSolver::removeValueCompletely(QVector<uint>& puzzle, uint value, uint fla
 			count += remCount;
 		}
 	}
-	
+
 	puzzle = local;
 	return count;
 }
@@ -572,25 +574,25 @@ uint SKSolver::removeAtIndex(QVector<uint>& puzzle, uint index, uint flags) {
 	int indices[4];
 	int oldValues[4];
 	int count;
-	
+
 	count = getSymmetry(flags, index, indices);
 	for(int i = 0; i < count; ++i) {
 		oldValues[i] = puzzle[indices[i]];
 		puzzle[indices[i]] = 0;
 	}
-	
-	::SolverState state(size, order);
+
+	SolverState state(size, order);
 	for(uint i = 0; i < static_cast<uint>(size); ++i) {
 		if(puzzle[i]) state.setValue(i, puzzle[i], g);
 	}
-	
+
 	uint forksLeft = size * 8;
 	uint solutionsLeft = 2;
 	solveEngine(state, 0, &solutionsLeft, &forksLeft);
 	if(solutionsLeft == 1) {
 		return count;
 	}
-	
+
 	for(int i = 0; i < count; ++i) {
 		puzzle[indices[i]] = oldValues[i];
 	}
@@ -599,66 +601,66 @@ uint SKSolver::removeAtIndex(QVector<uint>& puzzle, uint index, uint flags) {
 
 int SKSolver:: solve(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solutions, int* /*forks*/) {
 // 	return solve2(puzzle, max_solutions, out_solutions, forks);
-	
+
 	if(puzzle->order != order) return -1;
 	if(puzzle->size != size) return -1;
 	if(g == 0) return -2;
-	
+
 	ksudoku::Solver mySolver(g);
-	
+
 // // 	SolverState state(puzzle->size, puzzle->order);
 // 	ksudoku::SolverState state(puzzle->size, puzzle->order);
-// 	
+//
 // 	for(uint i = 0; i < static_cast<uint>(size); ++i) {
 // 		if(puzzle->numbers[i])
 // 			state.setValue(i, puzzle->numbers[i], g);
 // 	}
-// 	
+//
 // 	max_solutions = 10;
-// // 	
+// //
 // // 	uint forksLeft = size * 8;
 // // 	uint solutionsLeft = max_solutions;
-// 	
-// 	
+//
+//
 // 	for(uint i = 0; i < 20; ++i) {
 // // // 		printf("Try %d\n", i);
 // // 		forksLeft = size * 8;
 // // 		solutionsLeft = max_solutions;
-// // 		
+// //
 // // 		ProcessState ret = solveEngine(state, out_solutions, &solutionsLeft, &forksLeft);
 // 		mySolver.m_solutionsLeft = max_solutions;
 // 		mySolver.m_forksLeft = size*8;
-// 		
+//
 // 		ProcessState ret = mySolver.solveByForks(state);
 // 		if(ret != KSS_ENOUGH_FORKS) break;
 // 	}
 // 	if(forks) *forks = size*8 - mySolver.m_forksLeft;
-	
+
 	QVector<int> v(size);
-	
+
 	for(int i = 0; i < size; ++i)
 		v[i] = puzzle->numbers[i];
-	
+
 	int ret = mySolver.solve(v, max_solutions);
 	if(ret < 1) return -3;
-	
+
 	if(out_solutions) {
 		QVector<int> values = mySolver.result();
 		for(uint i = 0; i < (uint)size; ++i)
 			out_solutions->numbers[i] = values[i];
 	}
-		
-// 	
+
+//
 // 	return max_solutions - solutionsLeft;
 // 	return max_solutions - mySolver.m_solutionsLeft;
 	return ret;
-	
+
 }
 
-ProcessState SKSolver::solveEngine(::SolverState& state, SKPuzzle* puzzle, uint* solutionsLeft, uint* forksLeft) {
+ProcessState SKSolver::solveEngine(SolverState& state, SKPuzzle* puzzle, uint* solutionsLeft, uint* forksLeft) {
 	ProcessState ret;
 	if((ret = state.setAllDefindedValues(g)) != KSS_SUCCESS) return ret;
-	
+
 	int index = state.optimalSolvingIndex();
 	// Are there no more free fields?
 	if(index < 0) {
@@ -674,7 +676,7 @@ ProcessState SKSolver::solveEngine(::SolverState& state, SKPuzzle* puzzle, uint*
 			return KSS_ENOUGH_SOLUTIONS;
 		return KSS_SUCCESS;
 	}
-	
+
 	uint startValue = RANDOM(order);
 	bool restart = false;
 	uint value = state.possibleValue(index, startValue);
@@ -686,14 +688,14 @@ ProcessState SKSolver::solveEngine(::SolverState& state, SKPuzzle* puzzle, uint*
 	while(value) {
 		// Takes the next path
 		::SolverState localState(state);
-		
+
 		if((*forksLeft)-- == 0)
 			return KSS_ENOUGH_FORKS;
-		
+
 		// Setup the path
 // 		printf("Set Cell %d to Value %d\n", index, value);
 		if((ret = localState.setValue(index, value, g)) != KSS_SUCCESS) return ret;
-		
+
 		// Process the path
 		ret = solveEngine(localState, puzzle, solutionsLeft, forksLeft);
 		switch(ret) {
@@ -707,7 +709,7 @@ ProcessState SKSolver::solveEngine(::SolverState& state, SKPuzzle* puzzle, uint*
 			case KSS_FAILURE:
 				break;
 		}
-		
+
 		value = state.possibleValue(index, value+1);
 		if(!value && !restart) {
 			restart = true;
@@ -715,7 +717,7 @@ ProcessState SKSolver::solveEngine(::SolverState& state, SKPuzzle* puzzle, uint*
 		}
 		if(restart && value >= startValue) return KSS_SUCCESS;
 	}
-	
+
 	// This path finished
 	return KSS_SUCCESS;
 }
@@ -729,13 +731,13 @@ int SKSolver:: solve2(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solutio
 	if(puzzle->order != order) return -1;
 	if(g == 0) return -2;
 	int solutions_d=0;
-	
+
 	int ffs=0;
 	if(!forks) forks = &ffs;
 
 // 	if(puzzle->order == 25 && puzzle->threedimensional==0)
 // 		forks = &ffs;
-	
+
 	head = &stack[0];
 	ITERATE(i,puzzle->size+1)
 	{
@@ -743,7 +745,7 @@ int SKSolver:: solve2(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solutio
 		stack[i].size = puzzle->size;
 	}
 	ITERATE(i,puzzle->size)
-		if(g->optimized_d[i]==0) 
+		if(g->optimized_d[i]==0)
 			puzzle->numbers[i]=1;
 
 	copy(&stack[0], puzzle);
@@ -751,32 +753,32 @@ int SKSolver:: solve2(SKPuzzle* puzzle, int max_solutions, SKPuzzle* out_solutio
 	if(puzzle->order == 25 && puzzle->type==0 && *forks > MAX_FORKS)
 	{
 		if(max_solutions <= 1) return -3;
-		
+
 		ITERATE(i,puzzle->size) puzzle->numbers[i] = 0;
 		solve(puzzle, 1, puzzle,0);
 	}
 // 	if(forks) printf("%d\n", *forks);
-	
+
 	return solutions_d;
 }
 
 int SKSolver:: solve_engine(SKPuzzle *s,  int& solutions, SKPuzzle* solution_list, int maxsolutions, int last_add,	 int dynindex, int dynvalue, int* forks) //last_add for further optimizations
 {
 	if(forks && s->order == 25 && s->type==0)
-	{	
+	{
 		//printf("%d\n", *forks);
 		if((*forks) > MAX_FORKS)
 			return -1;
 	}
-	
+
 	if(maxsolutions>0 && solutions>=maxsolutions)	return 0;
-	
+
 	if(dynindex!=-1)if(dynvalue == s->numbers[dynindex])
 	{
 		solutions++;
 		return 1;
 	}
-	/*{//DEBUG 
+	/*{//DEBUG
 		printf("%d Solution found TC\n", solutions);
 		ITERATE(i,s->size)
 		{
@@ -790,13 +792,13 @@ int SKSolver:: solve_engine(SKPuzzle *s,  int& solutions, SKPuzzle* solution_lis
 	lowest_val = 0;
 
 	lowest = s->order+1;
-		
+
 	for(int i=last_add*(last_add != -1); i<(last_add+1)+s->size*(last_add == -1); i++)
 		if(s->numbers[i] != 0)
 			ITERATE(j,g->optimized_d[i])
 				if(s->numbers[g->optimized[i][j]] == 0)
 					s->flags[g->optimized[i][j]][s->numbers[i]] = 0;
-		
+
 	for(int q=0; (last_add==-1) ? q<s->size : q<g->optimized_d[last_add]; q++)
 	{
 		int i = (last_add==-1) ? q : g->optimized[last_add][q];
@@ -805,7 +807,7 @@ int SKSolver:: solve_engine(SKPuzzle *s,  int& solutions, SKPuzzle* solution_lis
 			int c=0;
 			ITERATE(j,s->order)
 				c+=s->flags[i][j+1];
-				
+
 			/*if(c==lowest) //otherwise i got problems with order = 25
 			{
 				if(RANDOM(++rr) == 0);
@@ -829,7 +831,7 @@ int SKSolver:: solve_engine(SKPuzzle *s,  int& solutions, SKPuzzle* solution_lis
 			}
 		}
 	}
-	
+
 	if(last_add != -1) return solve_engine(s, solutions, solution_list, maxsolutions, -1,-1,0,forks);
 	//check completed
 	int remaining=0;
@@ -837,12 +839,12 @@ int SKSolver:: solve_engine(SKPuzzle *s,  int& solutions, SKPuzzle* solution_lis
 
 	if(remaining == 0)
 	{
-	
-		if(solution_list) 
-			if(&solution_list[solutions]) 
+
+		if(solution_list)
+			if(&solution_list[solutions])
 				copy(&solution_list[solutions], s);
 		solutions++;
-	
+
 		/*{
 			printf("%d Solution found TC\n", solutions);
 			ITERATE(i,s->size)
@@ -853,17 +855,17 @@ int SKSolver:: solve_engine(SKPuzzle *s,  int& solutions, SKPuzzle* solution_lis
 		}*/
 		return 1;
 	}
-	
+
 	if(remaining == 1) return -1;
-	
+
 	//fork on lowest if not added
 	int positions[26]; //2fix
 	int positions_d = 0;
-	
+
 	ITERATE(i, s->order)
 		if(s->flags[lowest_pos][i+1])
 			positions[positions_d++] = i+1;
-			
+
 	while(positions_d>0)
 	{
 		copy(&s[1], s);
@@ -875,8 +877,8 @@ int SKSolver:: solve_engine(SKPuzzle *s,  int& solutions, SKPuzzle* solution_lis
 		for(int i=index; i<positions_d-1; i++) positions[i] = positions[i+1];
 		positions_d--;
 	}
-	
-	return -1;	
+
+	return -1;
 }
 
 inline void SKSolver::addConnection(int i, int j) {
@@ -899,13 +901,13 @@ int SKSolver:: init()
 
 	if(order>9) zerochar = 'a'-1;
 	else zerochar = '0';
-	
+
 	//findStronglyConnectedComponents
 	/*printf("Now fscc!\n");
 	bool done[625+1];
 	bool visited[625+1];
 
-		ITERATE(i,125) ITERATE(j,size) g->strongly_connected[i][j] = 0;	
+		ITERATE(i,125) ITERATE(j,size) g->strongly_connected[i][j] = 0;
 
 	g->sc_count=0;
 	ITERATE(i,size)
@@ -917,8 +919,8 @@ int SKSolver:: init()
 	printf("%d\n",g->sc_count);
 	int* optimized_sc_d = new int[g->sc_count];
 	int** optimized_sc   = new (int*)[g->sc_count];
-	
-	
+
+
 	ITERATE(i, g->sc_count)
 	{
 		optimized_sc_d[i] = 0;
@@ -936,9 +938,9 @@ int SKSolver:: init()
 
 		}
 			printf("\n");
-		
+
 	}*/
-		
+
 	return 0;
 }
 
@@ -948,14 +950,14 @@ int SKSolver:: init()
 // 	/*if(done[node]==1) return 0;
 // 	int cc=0;
 // 	ITERATE(i, size) if(mask[i] == 1) cc++;
-// 	if(cc == 0) return  0;	
-// 
+// 	if(cc == 0) return  0;
+//
 // 	visited[node] = 1;
-// 
-// 	int c=0;	
+//
+// 	int c=0;
 // 	bool* m = new bool[size];	//2FIX
 // 	//bool m[256];
-// 	
+//
 // 	ITERATE(i,size)
 // 		if(mask[i] == 1 && visited[i] == false)
 // 		{
@@ -963,9 +965,9 @@ int SKSolver:: init()
 // 			if(done[i] == false)
 // 			{
 // 				ITERATE(j,size) m[j] = mask[j] & g->graph[i][j];
-// 				c+=fscc(visited, done, m, i);	
+// 				c+=fscc(visited, done, m, i);
 // 			}
-// 		}	
+// 		}
 // 	if(c==0)
 // 	{
 // 		ITERATE(i, size){ g->strongly_connected[g->sc_count][i] = mask[i];}
@@ -1001,6 +1003,6 @@ void SKSolver::copy(SKPuzzle* dest, SKPuzzle* src)
 		ITERATE(j, src->order+1)
 			dest->flags[i][j] = 1;//src->flags[i][j];
 	}
-	
+
 }
 
