@@ -68,7 +68,7 @@ RoxdokuView::RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent)
 	m_game = game;
 	
 	order = m_game.order();
-	base = (int) sqrt(order);
+	base = (int) sqrt((double)order);
 	size = base*order;
 	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(updateGL()));
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(updateGL()));
