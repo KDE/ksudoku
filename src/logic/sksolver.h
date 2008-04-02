@@ -58,7 +58,7 @@ typedef unsigned int uint;
 
 #include <math.h>
 // SUDOKU PUZZLE SOLVER BASIC ALGORITHM - BY FRANCESCO ROSSI 2005 redsh@email.it
-class ksudoku::SolverState;
+class SolverState;
 
 /**
 @author Francesco Rossi
