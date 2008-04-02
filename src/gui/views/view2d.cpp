@@ -251,7 +251,7 @@ int GroupGraphicsItem::border(int tl, int tr, int bl, int br, int given) {
 }
 
 void GroupGraphicsItem::setHighlight(bool highlight) {
-	if(m_type & GroupHighlight == highlight) return;
+	if(((m_type & GroupHighlight) == GroupHighlight) == highlight) return;
 	
 	QVector<GroupGraphicItemSegment>::iterator segment;
 	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
