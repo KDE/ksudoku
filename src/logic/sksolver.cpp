@@ -40,7 +40,7 @@ SKPuzzle stack[625+1];
 using namespace ksudoku;
 using namespace std;
 
-class SolverState {
+class ::SolverState {
 public:
 	SolverState(uint size, uint order)
 		: m_size(size), m_order(order), m_values(size, 0), m_flags(order),
@@ -144,7 +144,7 @@ SKSolver::SKSolver(SKGraph* gr)
 
 SKSolver::SKSolver(int n, bool threedimensionalf)
 {
-	base = static_cast<int>(sqrt(n));
+	base = static_cast<int>(sqrt((double)n));
 	order=n;
 	m_type = threedimensionalf ? roxdoku : sudoku;
 	           ///@TODO fix above so more than 2
@@ -335,7 +335,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	}
 	
 	
-	int numberOfNumbersToAdd = (7*(3-level)*(((type!=1) ? ((int) sqrt(p->size)) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
+	int numberOfNumbersToAdd = (7*(3-level)*(((type!=1) ? ((int) sqrt((double)(p->size))) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
  	printf("%d\n", numberOfNumbersToAdd);
 
 	ITERATE(i, numberOfNumbersToAdd)
