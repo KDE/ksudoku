@@ -1,4 +1,4 @@
-ADD_SUBDIRECTORY( views )
+add_subdirectory( views )
 
 set(ksudoku_SRCS
 	config.cpp
@@ -11,7 +11,7 @@ set(ksudoku_SRCS
 	welcomescreen.cpp
 )
 
-INCLUDE_DIRECTORIES( views ksudoku_export)
+include_directories( views ksudoku_export)
 
 kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui configgame.ui)
 

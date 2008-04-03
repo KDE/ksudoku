@@ -29,11 +29,9 @@ target_link_libraries(ksudoku
 install(TARGETS ksudoku  DESTINATION ${BIN_INSTALL_DIR} )
 
 ########### next target ###############
-ADD_SUBDIRECTORY( logic  )
-ADD_SUBDIRECTORY( gui             )
-#ADD_SUBDIRECTORY( gui/export      ) #TODO PORT
-#ADD_SUBDIRECTORY( gui/export/draw ) #TODO PORT
-ADD_SUBDIRECTORY( shapes )
+add_subdirectory( logic  )
+add_subdirectory( gui             )
+add_subdirectory( shapes )
 add_subdirectory( themes )
 
 
@@ -59,50 +57,3 @@ install( FILES ksudokurc  DESTINATION ${CONFIG_INSTALL_DIR})
 
 kde4_install_icons(${ICON_INSTALL_DIR})
 
-
-########### the old Makefile.am #########
-
-# ## Makefile.am for ksudoku
-#
-# # this is the program that gets installed.  it's name is used for all
-# # of the other Makefile.am variables
-# bin_PROGRAMS = ksudoku ksudoku_client
-#
-# # set the include path for X, qt and KDE
-# INCLUDES         = $(all_includes)
-#
-# # the library search path.
-# ksudoku_LDFLAGS = $(KDE_RPATH) $(all_libraries)
-#
-# # the libraries to link against.
-# ksudoku_LDADD   = $(LIB_KFILE) $(LIB_KDEPRINT)  -lGL -lGLU
-#
-# # which sources should be compiled for ksudoku
-# ksudoku_SOURCES = main.cpp ksudoku.cpp ksudokuview.cpp ksudokuiface.skel \
-# 		qsudokubutton.cpp knewdlg.cpp sudoku_solver.cpp glwindow.cpp ArcBall.cpp
-#
-# # these are the headers for your project
-# noinst_HEADERS = ksudoku.h ksudokuview.h qsudokubutton.h knewdlg.h \
-# 		sudoku_solver.h glwindow.h
-#
-# # client stuff
-# ksudoku_client_LDFLAGS = $(KDE_RPATH) $(all_libraries)
-# ksudoku_client_LDADD   = $(LIB_KDECORE)
-# ksudoku_client_SOURCES = ksudoku_client.cpp
-#
-# # let automoc handle all of the meta source files (moc)
-# METASOURCES = AUTO
-#
-# messages: rc.cpp
-# 	$(EXTRACTRC) `find . -name \*.ui -o -name \*.rc` > rc.cpp
-# 	$(XGETTEXT) *.cpp -o $(podir)/ksudoku.pot
-#
-# KDE_ICON = AUTO
-#
-# # this is where the kdelnk file will go
-# kdelnkdir   = $(kde_appsdir)/Games
-# kdelnk_DATA = ksudoku.desktop
-#
-# # this is where the XML-GUI resource file goes
-# rcdir = $(kde_datadir)/ksudoku
-# rc_DATA = ksudokuui.rc
