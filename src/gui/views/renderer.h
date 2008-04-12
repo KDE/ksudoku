@@ -58,6 +58,9 @@ public:
 
 	QPixmap renderSymbol(int symbol, int size) const;
 	QPixmap renderSymbolOn(QPixmap pixmap, int symbol, int color) const;
+
+	QPixmap renderMarker(int symbol, int range, int size) const;
+	QPixmap renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const;
 private:
 	Renderer();
 	~Renderer();
@@ -73,6 +76,7 @@ private:
 	QVector<QString> m_borderNames;
 	QVector<QString> m_borderTypes;
 	QVector<QString> m_specialNames;
+	QVector<QString> m_markerNames;
 	KSvgRenderer* m_renderer;
 	KPixmapCache* m_cache;
 };

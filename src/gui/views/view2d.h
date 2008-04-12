@@ -27,14 +27,19 @@ public:
 	void setSceneSize(const QSize& size);
 
 	void hover(int cell);
-	void press(int cell);
+	void press(int cell, bool rightButton = false);
 
 public slots:
 	void selectValue(int val);
 	void enterValue(int val, int cell=-1);
+	void markValue(int val, int cell=-1, bool set=true);
+	void flipMarkValue(int val, int cell=-1);
 	void moveCursor(int dx, int dy);
 	void update(int cell = -1);
-
+signals:
+	void valueSelected(int val);
+protected:
+	void wheelEvent(QGraphicsSceneWheelEvent* event);
 private:
 	QGraphicsPixmapItem* m_background;
 	QGraphicsItem* m_groupLayer;

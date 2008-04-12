@@ -3,6 +3,7 @@
 #include "view2d.moc" 
 
 #include <QGraphicsPixmapItem>
+#include <QGraphicsSceneEvent>
 #include <QtDebug>
 // #include <QFile> // TODO only for debug
 // #include <QEvent> // TODO only for debug
@@ -43,6 +44,7 @@ private:
 	QVector<ColoredValue> m_values;
 	int m_id;
 	int m_size;
+	int m_range;
 };
 
 CellGraphicsItem::CellGraphicsItem(QPoint pos, int id, View2DScene* scene) {
@@ -53,6 +55,7 @@ CellGraphicsItem::CellGraphicsItem(QPoint pos, int id, View2DScene* scene) {
 	m_scene = scene;
 	m_id = id;
 	m_type = SpecialCell;
+	m_range = 9; // TODO change this hardcoded value
 }
 
 void CellGraphicsItem::resize(int gridSize) {
@@ -73,8 +76,16 @@ void CellGraphicsItem::hoverEnterEvent(QGraphicsSceneHoverEvent* event) {
 }
 
 void CellGraphicsItem::mousePressEvent(QGraphicsSceneMouseEvent* event) {
-	// TODO make action dependant on button
-	m_scene->press(m_id);
+	switch(event->button()) {
+		case Qt::LeftButton:
+			m_scene->press(m_id);
+			break;
+		case Qt::RightButton:
+			m_scene->press(m_id, true);
+			break;
+		default:
+			break;
+	}
 }
 
 void CellGraphicsItem::setType(SpecialType type) {
@@ -108,9 +119,11 @@ void CellGraphicsItem::updatePixmap() {
 				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, 0);
 			}
 			break;
-		case SpecialCellMarkers: 
-			// TODO add marker rendering
-			break;
+		case SpecialCellMarkers: {
+			for(int i = m_values.size()-1; i >= 0; --i) {
+				pic = Renderer::instance()->renderMarkerOn(pic, m_values[i].value, m_range, 0);
+			}
+			} break;
 		default: break; // TODO maybe assert as this is not allowed to occur
 	}
 	setPixmap(pic);
@@ -173,7 +186,7 @@ void GroupGraphicsItem::detectType() {
 		if(x != m_cells[i].x()) x = -1;
 		if(y != m_cells[i].y()) y = -1;
 	}
-	m_type = GroupHighlight;
+	m_type = GroupNone;
 	if(x==-1) m_type |= GroupRow;
 	if(y==-1) m_type |= GroupColumn;
 	
@@ -258,6 +271,7 @@ void GroupGraphicsItem::setHighlight(bool highlight) {
 		if(segment->highlighted) segment->highlighted->setVisible(highlight);
 		if(segment->standard) segment->standard->setVisible(!highlight);
 	}
+	m_type ^= GroupHighlight;
 }
 
 void GroupGraphicsItem::setHighlight(const QPoint& pos) {
@@ -412,33 +426,53 @@ void View2DScene::hover(int cell) {
 	m_cells[cell]->showCursor(m_cursor);
 }
 
-void View2DScene::press(int cell) {
-	m_game.setValue(cell, m_selectedValue);
+void View2DScene::press(int cell, bool rightButton) {
+	if(rightButton) {
+		m_game.flipMarker(cell, m_selectedValue);
+	} else {
+		m_game.setValue(cell, m_selectedValue);
+	}
+	
 }
 
 void View2DScene::update(int cell) {
 	if(cell < 0) {
 		for(int i = 0; i < m_game.size(); ++i) {
 			if(m_cells[i] == 0) continue;
-			if(m_game.given(i))
-				m_cells[i]->setType(SpecialCellPreset);
-			else
-				m_cells[i]->setType(SpecialCell);
-			if(m_game.value(i))
-				m_cells[i]->setValues(QVector<ColoredValue>() << ColoredValue(m_game.value(i),0));
-			else
-				m_cells[i]->setValues(QVector<ColoredValue>());
+			update(i);
 		}
 	} else {
-		if(m_game.given(cell))
-			m_cells[cell]->setType(SpecialCellPreset);
-		else
-			m_cells[cell]->setType(SpecialCell);
-		if(m_game.value(cell))
-			m_cells[cell]->setValues(QVector<ColoredValue>() << ColoredValue(m_game.value(cell),0));
-		else
-			m_cells[cell]->setValues(QVector<ColoredValue>());
-	}
+		if(m_cells[cell] == 0) return;
+		CellInfo cellInfo = m_game.cellInfo(cell);
+
+		QVector<ColoredValue> values;
+		switch(cellInfo.state()) {
+			case GivenValue:
+				m_cells[cell]->setType(SpecialCellPreset);
+				if(cellInfo.value()) values << ColoredValue(cellInfo.value(),0);
+				m_cells[cell]->setValues(values);
+				break;
+			case CorrectValue:
+				m_cells[cell]->setType(SpecialCell);
+				if(cellInfo.value()) values << ColoredValue(cellInfo.value(),0);
+				m_cells[cell]->setValues(values);
+				break;
+			case WrongValue:
+			case ObviouslyWrong:
+				m_cells[cell]->setType(SpecialCellMistake);
+				if(cellInfo.value()) values << ColoredValue(cellInfo.value(),0);
+				m_cells[cell]->setValues(values);
+				break;
+			case Marker: {
+				m_cells[cell]->setType(SpecialCellMarkers);
+				for(int i = 1; i <= m_game.size(); ++i) {
+					if(cellInfo.marker(i))
+						values << ColoredValue(i,0);
+				}
+				m_cells[cell]->setValues(values);
+			} break;
+		}
+}
 }
 
 void View2DScene::selectValue(int value) {
@@ -457,6 +491,38 @@ void View2DScene::enterValue(int value, int cell) {
 			m_game.setValue(cell, m_selectedValue);
 		} else {
 			m_game.setValue(m_cursorPos, m_selectedValue);
+		}
+	}
+}
+
+void View2DScene::markValue(int value, int cell, bool set) {
+	if(value >= 0) {
+		if(cell >= 0) {
+			m_game.setMarker(cell, value, set);
+		} else {
+			m_game.setMarker(m_cursorPos, value, set);
+		}
+	} else {
+		if(cell >= 0) {
+			m_game.setMarker(cell, m_selectedValue, set);
+		} else {
+			m_game.setMarker(m_cursorPos, m_selectedValue, set);
+		}
+	}
+}
+
+void View2DScene::flipMarkValue(int value, int cell) {
+	if(value >= 0) {
+		if(cell >= 0) {
+			m_game.flipMarker(cell, value);
+		} else {
+			m_game.flipMarker(m_cursorPos, value);
+		}
+	} else {
+		if(cell >= 0) {
+			m_game.flipMarker(cell, m_selectedValue);
+		} else {
+			m_game.flipMarker(m_cursorPos, m_selectedValue);
 		}
 	}
 }
@@ -492,6 +558,22 @@ void View2DScene::moveCursor(int dx, int dy) {
 		hover(newCursorPos);
 }
 
+void View2DScene::wheelEvent(QGraphicsSceneWheelEvent* event) {
+	if(event->orientation() != Qt::Vertical) return;
+	
+	if(event->delta() < 0) {
+		m_selectedValue++;
+		if(m_selectedValue > m_game.order())
+			m_selectedValue = 1;
+	} else if(event->delta() > 0) {
+		m_selectedValue--;
+		if(m_selectedValue < 1)
+			m_selectedValue = m_game.order();
+	}
+	emit valueSelected(m_selectedValue);
+}
+
+
 View2D::View2D(QWidget *parent, const Game& game, GameActions* gameActions) : QGraphicsView(parent) {
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -503,6 +585,8 @@ View2D::View2D(QWidget *parent, const Game& game, GameActions* gameActions) : QG
 	setScene(m_scene);
 
 	gameActions->associateWidget(this);
+	
+	connect(m_scene, SIGNAL(valueSelected(int)), this, SIGNAL(valueSelected(int)));
 }
 
 View2D::~View2D() {

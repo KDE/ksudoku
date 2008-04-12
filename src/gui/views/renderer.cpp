@@ -7,6 +7,8 @@
 #include <QPixmap>
 #include <QPainter>
 
+#include <QtDebug>
+
 namespace ksudoku {
 
 Renderer* Renderer::instance() {
@@ -66,6 +68,8 @@ void Renderer::fillNameHashes() {
 	m_specialNames << "cell";
 	m_specialNames << "cell_mistake";
 	m_specialNames << "cursor";
+	// TODO get this hardcoded values from the SVG file
+// 	m_markerName << "markers9" << "markers9" //...
 }
 
 QPixmap Renderer::renderBackground(const QSize& size) const {
@@ -156,6 +160,59 @@ QPixmap Renderer::renderSymbol(int symbol, int size) const {
 QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color) const {
 	int size = pixmap.width();
 	QPixmap symbolPixmap = renderSymbol(symbol, size);
+	if(color) {
+		QPainter p(&symbolPixmap);
+		p.setCompositionMode(QPainter::CompositionMode_Multiply);
+		p.setBrush(QBrush(QColor(128,128,128,255)));
+		p.drawRect(0, 0, size, size);
+		p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
+		p.drawPixmap(0, 0, pixmap);
+		p.end();
+		return symbolPixmap;
+	} else {
+		QPainter p(&pixmap);
+		p.drawPixmap(0, 0, symbolPixmap);
+		p.end();
+		return pixmap;
+	}
+}
+
+QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
+	if(!m_renderer->isValid() || size == 0) return QPixmap();
+
+	QString groupName = QString("markers%1").arg(range);
+	QString cacheName = QString("%1_%2_%3").arg(groupName).arg(symbol).arg(size);
+	QPixmap pix;
+	if(!m_cache->find(cacheName, pix)) {
+		qDebug() << cacheName;
+		pix = QPixmap(size, size);
+		pix.fill(Qt::transparent);
+		QPainter p(&pix);
+		
+		// NOTE fix for Qt's QSvgRenderer size reporting bug
+		QRectF r(m_renderer->boundsOnElement(QString("%1_%2").arg(groupName).arg(symbol)));
+		QRectF from(m_renderer->boundsOnElement(QString("cell_%1").arg(groupName)));
+		from.adjust(+0.5,+0.5,-0.5,-0.5); // << this is the fix
+		QRectF to(QRectF(0,0,size,size));
+
+		qDebug() << r << from << to;
+		
+		r.setTopLeft(fromRectToRect(r.topLeft(), from, to));
+		r.setBottomRight(fromRectToRect(r.bottomRight(), from, to));
+
+		qDebug() << r;
+		
+		m_renderer->render(&p, QString("symbol_%1").arg(symbol), r);
+		p.end();
+		m_cache->insert(cacheName, pix);
+	}
+
+    return pix;
+}
+
+QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const {
+	int size = pixmap.width();
+	QPixmap symbolPixmap = renderMarker(symbol, range, size);
 	if(color) {
 		QPainter p(&symbolPixmap);
 		p.setCompositionMode(QPainter::CompositionMode_Multiply);
