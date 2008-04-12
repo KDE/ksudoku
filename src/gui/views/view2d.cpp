@@ -430,7 +430,12 @@ void View2DScene::press(int cell, bool rightButton) {
 	if(rightButton) {
 		m_game.flipMarker(cell, m_selectedValue);
 	} else {
-		m_game.setValue(cell, m_selectedValue);
+		if(m_game.given(cell)) {
+			m_selectedValue = m_game.value(cell);
+			emit valueSelected(m_selectedValue);
+		} else {
+			m_game.setValue(cell, m_selectedValue);
+		}
 	}
 	
 }
