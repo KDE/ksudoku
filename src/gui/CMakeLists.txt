@@ -18,8 +18,6 @@ kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui configgame.ui)
 kde4_add_kcfg_files(ksudoku_SRCS settings.kcfgc )
 
 kde4_add_library(ksudoku_gui ${ksudoku_SRCS})
-#constrains on build order:
-#ADD_DEPENDENCIES(ksudoku_gui ksudoku_views ksudoku_export)
 
 ########### next target ###############
 
