@@ -80,6 +80,8 @@ public:
 
 	QPixmap renderMarker(int symbol, int range, int size) const;
 	QPixmap renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const;
+
+	QPixmap renderSpecial3D(SpecialType type, int size) const;
 private:
 	Renderer();
 	~Renderer();
@@ -95,6 +97,7 @@ private:
 	QVector<QString> m_borderNames;
 	QVector<QString> m_borderTypes;
 	QVector<QString> m_specialNames;
+	QVector<QString> m_special3dNames;
 	QVector<QString> m_markerNames;
 	KSvgRenderer* m_renderer;
 	KPixmapCache* m_cache;

@@ -42,12 +42,12 @@
      bordercolor="#666666"
      pagecolor="#ffffff"
      id="base"
-     inkscape:zoom="11.313709"
-     inkscape:cx="245.8467"
-     inkscape:cy="28.676153"
+     inkscape:zoom="1.4142136"
+     inkscape:cx="266.2731"
+     inkscape:cy="164.21556"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:current-layer="cell_markers9"
+     inkscape:current-layer="svg2"
      showgrid="true"
      inkscape:snap-global="true">
     <inkscape:grid
@@ -9034,6 +9034,85 @@
          style="fill:#ffffff;fill-opacity:1;stroke:none;stroke-opacity:1;display:inline"
          d="M 104.32634,475.1939 C 99.105136,475.69886 96.507998,481.97824 99.62768,485.63042 C 101.51114,488.27456 105.38138,488.47836 108.12464,487.04466 C 108.57133,488.65908 107.64758,491.49312 105.36824,491.74318 C 103.12083,491.63876 101.89705,488.3845 99.375,490.125 C 98.353774,491.96798 100.90713,494.1738 102.89832,494.61306 C 106.73408,495.64988 111.20519,493.37704 111.94476,489.78534 C 112.8768,486.52808 112.82999,483.00262 111.85161,479.76394 C 110.86293,476.88292 107.73198,474.78504 104.32634,475.1939 z M 104.46869,478.2931 C 107.65646,477.93046 108.87202,481.73288 107.7109,483.8689 C 106.17987,486.60714 101.92451,484.91896 102.30973,482.10462 C 102.16839,480.66146 102.79353,478.80128 104.46869,478.2931 z"
          id="path3505" />
+    </g>
+  </g>
+  <g
+     id="cell3d">
+    <g
+       id="g4267">
+      <rect
+         style="opacity:1;fill:#888a85;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4245"
+         width="40"
+         height="40"
+         x="280"
+         y="310" />
+    </g>
+    <path
+       inkscape:tile-cy="300.37498"
+       inkscape:tile-cx="19.5"
+       inkscape:tile-h="35.00004"
+       inkscape:tile-w="35"
+       d="M 283,345 C 283,344 283,315.99996 283,314.99996 C 283,313.99996 284,312.99996 285,312.99996 C 286,312.99996 314,312.99996 315,312.99996 C 316,312.99996 317,313.99996 317,314.99996 C 317,315.99996 317,344 317,345 C 317,346 316,347 315,347 C 314,347 286,347 285,347 C 284,347 283,346 283,345 z"
+       style="fill:#bbbeb7;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path4249" />
+    <rect
+       y="341"
+       x="292"
+       height="3"
+       width="17"
+       id="rect4265"
+       style="opacity:1;fill:#ffffff;fill-opacity:0.94117647;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  </g>
+  <g
+     id="cell3d_symbols">
+    <g
+       transform="translate(50,0)"
+       id="g4278">
+      <rect
+         style="opacity:1;fill:#888a85;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4280"
+         width="40"
+         height="40"
+         x="280"
+         y="310" />
+    </g>
+    <path
+       inkscape:tile-cy="300.37498"
+       inkscape:tile-cx="19.5"
+       inkscape:tile-h="35.00004"
+       inkscape:tile-w="35"
+       d="M 333,345 C 333,344 333,315.99996 333,314.99996 C 333,313.99996 334,312.99996 335,312.99996 C 336,312.99996 364,312.99996 365,312.99996 C 366,312.99996 367,313.99996 367,314.99996 C 367,315.99996 367,344 367,345 C 367,346 366,347 365,347 C 364,347 336,347 335,347 C 334,347 333,346 333,345 z"
+       style="fill:#bbbeb7;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="path4282" />
+    <rect
+       y="341"
+       x="342"
+       height="3"
+       width="17"
+       id="rect4285"
+       style="fill:#ffffff;fill-opacity:0.94117647;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+    <g
+       transform="translate(150,0)"
+       id="symbol3d_1"
+       inkscape:label="#g3642">
+      <rect
+         transform="translate(210,-140)"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:none;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         id="rect4261"
+         width="20"
+         height="20"
+         x="-20"
+         y="460" />
+      <path
+         transform="translate(210,-140)"
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;display:inline"
+         d="M -9.0715,460.39459 L -5.76522,460.39459 L -5.76522,479.71297 L -9.75556,479.71297 L -9.75556,465.86985 L -15,468.65913 L -15,465.25 L -11.57971,463.49379 C -10.36361,462.59847 -9.52754,461.56541 -9.0715,460.39459 z"
+         id="path4263"
+         inkscape:tile-w="4.617"
+         inkscape:tile-h="10.7525"
+         inkscape:tile-cx="21.246839"
+         inkscape:tile-cy="13.927869" />
     </g>
   </g>
 </svg>

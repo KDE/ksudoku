@@ -1,4 +1,4 @@
- #include "renderer.h"
+#include "renderer.h"
 
 #include <KSvgRenderer>
 #include <KStandardDirs>
@@ -68,6 +68,11 @@ void Renderer::fillNameHashes() {
 	m_specialNames << "cell";
 	m_specialNames << "cell_mistake";
 	m_specialNames << "cursor";
+	m_special3dNames << "cell3d";
+	m_special3dNames << "cell3d_preset";
+	m_special3dNames << "cell3d";
+	m_special3dNames << "cell3d_mistake";
+	m_special3dNames << "cursor";
 	// TODO get this hardcoded values from the SVG file
 // 	m_markerName << "markers9" << "markers9" //...
 }
@@ -75,18 +80,18 @@ void Renderer::fillNameHashes() {
 QPixmap Renderer::renderBackground(const QSize& size) const {
 	if(!m_renderer->isValid() || size.isEmpty()) return QPixmap();
 
-    QPixmap pix;
-    QString cacheName = QString("background_%1x%2").arg(size.width()).arg(size.height());
-    if(!m_cache->find(cacheName, pix))
-    {
-        pix = QPixmap(size);
-        pix.fill(Qt::transparent);
-        QPainter p(&pix);
-        m_renderer->render(&p, "background");
-        p.end();
-        m_cache->insert(cacheName, pix);
-    }
-    return pix;
+	QPixmap pix;
+	QString cacheName = QString("background_%1x%2").arg(size.width()).arg(size.height());
+	if(!m_cache->find(cacheName, pix))
+	{
+		pix = QPixmap(size);
+		pix.fill(Qt::transparent);
+		QPainter p(&pix);
+		m_renderer->render(&p, "background");
+		p.end();
+		m_cache->insert(cacheName, pix);
+	}
+	return pix;
 }
 
 /** Moves a point from its relative position to the base rect (0,0,1,1) to a relative position to rect @p to */
@@ -127,7 +132,7 @@ QPixmap Renderer::renderSpecial(SpecialType type, int size) const {
 		m_cache->insert(cacheName, pix);
 	}
 
-    return pix;
+	return pix;
 }
 
 QPixmap Renderer::renderSymbol(int symbol, int size) const {
@@ -154,7 +159,7 @@ QPixmap Renderer::renderSymbol(int symbol, int size) const {
 		m_cache->insert(cacheName, pix);
 	}
 
-    return pix;
+	return pix;
 }
 
 QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color) const {
@@ -207,7 +212,7 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 		m_cache->insert(cacheName, pix);
 	}
 
-    return pix;
+	return pix;
 }
 
 QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const {
@@ -248,6 +253,31 @@ QPixmap Renderer::renderBorder(int border, GroupTypes type, int size) const {
 		r.setBottomRight(fromRectToRect(r.bottomRight(), from, to));
 		
 		m_renderer->render(&p, QString("%1_%2").arg(m_borderTypes[type]).arg(m_borderNames[border]), r);
+		p.end();
+		m_cache->insert(cacheName, pix);
+	}
+
+	return pix;
+}
+
+QPixmap Renderer::renderSpecial3D(SpecialType type, int size) const {
+	if(!m_renderer->isValid() || size == 0) return QPixmap();
+
+	QString cacheName = QString("special_%1_%2").arg(m_special3dNames[type]).arg(size);
+	QPixmap pix;
+	if(!m_cache->find(cacheName, pix)) {
+		pix = QPixmap(size, size);
+		pix.fill(Qt::transparent);
+		QPainter p(&pix);
+		
+		// NOTE fix for Qt's QSvgRenderer size reporting bug
+		QRectF r(m_renderer->boundsOnElement(m_special3dNames[type]));
+		QRectF from(r.adjusted(+0.5,+0.5,-0.5,-0.5));
+		QRectF to(QRectF(0,0,size,size));
+		r.setTopLeft(fromRectToRect(r.topLeft(), from, to));
+		r.setBottomRight(fromRectToRect(r.bottomRight(), from, to));
+		
+		m_renderer->render(&p, m_special3dNames[type], r);
 		p.end();
 		m_cache->insert(cacheName, pix);
 	}

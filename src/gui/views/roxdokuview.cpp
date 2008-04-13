@@ -33,6 +33,8 @@
 
 #include "settings.h"
 
+#include "renderer.h"
+
 
 namespace ksudoku{
 
@@ -128,43 +130,22 @@ void RoxdokuView::initializeGL()
 
 	setMouseTracking(true);
 	
-	QPixmap* pixs; 
 	for(int o=0; o<2; o++) 
 		for(int i=0; i<=9+o*16; i++)
 		{
-			int sz = 32;
-			pixs = new QPixmap(sz,sz);
-
-			QPainter p(pixs);
-			QFont f;
-			f.setPointSizeF((sz * 80) / 128);
-			p.setFont(f);
-			p.fillRect(rect(), QColor(255,255,255));
-			if(i==0)
-				p.drawText(0,0,sz,sz, Qt::AlignCenter, QString(QChar(' ')));
-			else{
-				QString s = QChar('0'*(o==0) + ('a'-1)*(o==1) +i);
-				if(s == "9" || s == "6" || s == "b" || s == "d") s += '.';
-				p.drawText(0,0,sz,sz, Qt::AlignCenter, s);
+			int sz = 64;
+			QPixmap pic = Renderer::instance()->renderSpecial3D(SpecialCell, sz);
+			if(i != 0) {
+				pic = Renderer::instance()->renderSymbolOn(pic, i, 0);
 			}
-			p.setPen(QPen(QColor(0,0,0), 2));
-			p.drawRect ( 0, 0, sz, sz );	
-			p.end();
-			QImage pix = convertToGLFormat(pixs->toImage());
+			QImage pix = convertToGLFormat(pic.toImage());
 	
 			glGenTextures(1, &texture[o][i]);
 			glBindTexture(GL_TEXTURE_2D, texture[o][i]);
 			glTexImage2D(GL_TEXTURE_2D, 0,4, sz,sz, 0, GL_RGBA, GL_UNSIGNED_BYTE, (GLvoid*) pix.bits());
 			glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	// Linear Filtering
 			glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);	// Linear Filtering
-			delete pixs;
 		}
-	/*glEnable(GL_LIGHTING); //UNCOMMENT FOR LIGHTS
-	glLightfv(GL_LIGHT1, GL_AMBIENT, LightAmbient);
-	glLightfv(GL_LIGHT1, GL_DIFFUSE, LightDiffuse);	
-	glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);
-	glEnable(GL_LIGHT1);	
-	glEnable(GL_COLOR_MATERIAL);	*/
 }
 
 	void RoxdokuView::mouseDoubleClickEvent ( QMouseEvent * /*e*/ )
