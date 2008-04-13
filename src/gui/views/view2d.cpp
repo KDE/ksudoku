@@ -630,6 +630,7 @@ void View2D::selectValue(int value) {
 }
 
 void View2D::settingsChanged() {
+	m_scene->setSceneSize(size());
 }
 
 }

@@ -70,6 +70,8 @@ enum SupportFlag {
 public:
 	static Renderer* instance();
 
+	bool loadTheme(const QString& themeName);
+
 	QPixmap renderBackground(const QSize& size) const;
 	QPixmap renderSpecial(SpecialType type, int size) const;
 
@@ -99,6 +101,7 @@ private:
 	QVector<QString> m_specialNames;
 	QVector<QString> m_special3dNames;
 	QVector<QString> m_markerNames;
+	QString m_currentTheme;
 	KSvgRenderer* m_renderer;
 	KPixmapCache* m_cache;
 };

@@ -13,6 +13,9 @@
     </entry>
   </group>
   <group name="Themes">
+    <entry name="Theme" type="String" key="theme">
+      <label>The graphical theme to be used.</label>
+    </entry>
     <entry name="Symbols" type="StringList" key="symbols">
       <label>Select the themes you want to use</label>
       <default>digits,letters_lower</default>

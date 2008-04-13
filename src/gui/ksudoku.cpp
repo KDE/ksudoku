@@ -32,6 +32,7 @@
 #include <KStandardAction>
 #include <KAction>
 #include <KConfigDialog>
+#include <KGameThemeSelector>
 
 #include <KCmdLineArgs>
 #include <KAboutData>
@@ -47,6 +48,7 @@
 //#include "exportdlg.h"
 #include "ksview.h"
 #include "gameactions.h"
+#include "renderer.h"
 
 #include "puzzle.h" // TODO
 #include "serializer.h"
@@ -563,16 +565,19 @@ void KSudoku::optionsPreferences()
 
 	GameConfig* gameConfig = new GameConfig();
 	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), "games-config-options");
+	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
 
 	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
 	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "games-config-theme");
         dialog->setHelp(QString(),"ksudoku");
 	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(updateSettings()));
-    dialog->show();
+	dialog->show();
 }
 
 void KSudoku::updateSettings() {
 	m_symbols.setEnabledTables(Settings::symbols());
+
+	Renderer::instance()->loadTheme(Settings::theme());
 
 	KsView* view = currentView();
 	if(view) {

@@ -3,6 +3,9 @@
 #include <KSvgRenderer>
 #include <KStandardDirs>
 #include <kpixmapcache.h>
+#include <KGameTheme>
+
+#include "settings.h"
 
 #include <QPixmap>
 #include <QPainter>
@@ -17,16 +20,52 @@ Renderer* Renderer::instance() {
 }
 	
 Renderer::Renderer() {
+	m_renderer = new KSvgRenderer();
 	m_cache = new KPixmapCache("ksudoku-cache");
 	m_cache->setCacheLimit(3*1024);
 	
-	m_renderer = new KSvgRenderer(KStandardDirs::locate("appdata", "themes/ksudoku_sample.svg"));
-	fillNameHashes();
+	if(!loadTheme(Settings::theme()))
+		kDebug() << "Failed to load any game theme!";
 }
 
 Renderer::~Renderer() {
 	delete m_cache;
 	delete m_renderer;
+}
+
+bool Renderer::loadTheme(const QString& themeName) {
+	bool discardCache = !m_currentTheme.isEmpty();
+	
+	if(!m_currentTheme.isEmpty() && m_currentTheme == themeName) {
+		kDebug() << "Notice: loading the same theme";
+		return true; // this is not an error
+	}
+	
+	m_currentTheme = themeName;
+	
+	KGameTheme theme;
+	if(themeName.isEmpty() || !theme.load(themeName)) {
+		kDebug()<< "Failed to load theme" << Settings::theme();
+		kDebug() << "Trying to load default";
+		if(!theme.loadDefault())
+			return false;
+		
+		discardCache = true;
+		m_currentTheme = "default";
+	}
+	
+	bool res = m_renderer->load(theme.graphics());
+	kDebug() << "loading" << theme.graphics();
+	if(!res)
+		return false;
+	
+	if(discardCache) {
+		kDebug() << "discarding cache";
+		m_cache->discard();
+	}
+	
+	fillNameHashes();
+	return true;
 }
 
 void Renderer::fillNameHashes() {
