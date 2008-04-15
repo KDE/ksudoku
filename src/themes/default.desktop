@@ -1,9 +1,9 @@
 [KGameTheme]
-Name=Sample
-Description=KSudoku sample theme for KDE 4
+Name=Default
+Description=KSudoku Default theme for KDE 4
 VersionFormat=1
 Author=Johannes Bergmeier
 AuthorEmail=Johannes.Bergmeier@gmx.net
 Type=SVG
-FileName=ksudoku_sample.svg
+FileName=ksudoku_default.svg
 #Preview=sample_preview.png
