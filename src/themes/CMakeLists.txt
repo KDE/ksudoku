@@ -1,4 +1,4 @@
 install(
-	FILES ksudoku_sample.svg ksudoku_sample.desktop
+	FILES ksudoku_default.svg default.desktop
 	DESTINATION ${DATA_INSTALL_DIR}/ksudoku/themes
 )
