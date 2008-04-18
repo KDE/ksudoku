@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=ksudoku
 Name[de]=KSudoku
+Name[fa]=سودوکو
 Name[fi]=Ksudoku
 Name[ne]=केडीई सुडोकु
 Name[nn]=KSudoku
@@ -19,6 +20,7 @@ GenericName[el]=Παιχνίδι Sudoku
 GenericName[eo]=Ludo de sudoko
 GenericName[es]=Juego de Sudoku
 GenericName[et]=Sudoku mäng
+GenericName[fa]=بازی سودوکو
 GenericName[fi]=Sudoku-peli
 GenericName[fr]=Jeu de Sudoku
 GenericName[ga]=Cluiche Sudoku
