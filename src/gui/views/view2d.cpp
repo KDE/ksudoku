@@ -27,6 +27,8 @@
 // #include <QFile> // TODO only for debug
 // #include <QEvent> // TODO only for debug
 
+#include <kdebug.h>
+
 #include "sudoku_solver.h"
 #include "puzzle.h"
 #include "gameactions.h"
@@ -405,6 +407,7 @@ void View2DScene::init(const Game& game) {
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(update()));
 	connect(m_gameActions, SIGNAL(selectValue(int)), this, SLOT(selectValue(int)));
 	connect(m_gameActions, SIGNAL(enterValue(int)), this, SLOT(enterValue(int)));
+	connect(m_gameActions, SIGNAL(markValue(int)), this, SLOT(markValue(int)));
 	connect(m_gameActions, SIGNAL(move(int,int)), this, SLOT(moveCursor(int,int)));
 }
 
@@ -450,8 +453,7 @@ void View2DScene::press(int cell, bool rightButton) {
 		m_game.flipMarker(cell, m_selectedValue);
 	} else {
 		if(m_game.given(cell)) {
-			m_selectedValue = m_game.value(cell);
-			emit valueSelected(m_selectedValue);
+                        selectValue(m_game.value(cell));
 		} else {
 			m_game.setValue(cell, m_selectedValue);
 		}
@@ -500,7 +502,8 @@ void View2DScene::update(int cell) {
 }
 
 void View2DScene::selectValue(int value) {
-	m_selectedValue = value;
+ 	m_selectedValue = value;
+ 	emit valueSelected( value );
 }
 
 void View2DScene::enterValue(int value, int cell) {
