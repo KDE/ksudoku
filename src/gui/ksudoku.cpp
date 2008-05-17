@@ -165,6 +165,7 @@ void KSudoku::updateShapesList()
 	variant = new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 25 symbols"));
 	variant->setIcon("ksudoku-ksudoku_25x25");
+#ifdef QT_OPENGL_SUPPORT
 	variant = new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku"));
 	variant->setIcon("ksudoku-roxdoku_3x3x3");
@@ -174,6 +175,7 @@ void KSudoku::updateShapesList()
 	variant = new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku with 25 symbols"));
 	variant->setIcon("ksudoku-roxdoku_5x5x5");
+#endif
 
     QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
 

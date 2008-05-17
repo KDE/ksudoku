@@ -19,6 +19,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#ifdef QT_OPENGL_SUPPORT
+
 #include "roxdokuview.h"
 
 #include "puzzle.h"
@@ -418,3 +420,5 @@ void RoxdokuView::paintGL()
 }
 
 #include "roxdokuview.moc"
+
+#endif

@@ -64,10 +64,12 @@ void KsView::createView() {
 			setWidget(new View2D(0, m_game, m_gameActions));
 			break;
 		}
+#ifdef QT_OPENGL_SUPPORT
 		case roxdoku: {
 			setWidget(new RoxdokuView(m_game, 0, 0));
 			break;
 		}
+#endif
 		default:
 			// TODO this will not work
 			break;

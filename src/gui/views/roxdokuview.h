@@ -22,6 +22,8 @@
 #ifndef ROXDOKUVIEW_h
 #define ROXDOKUVIEW_h
 
+#ifdef QT_OPENGL_SUPPORT
+
 #include <qgl.h>
 #include <qpixmap.h>
 #include <qpainter.h>
@@ -133,5 +135,7 @@ private:
 };
 
 }
+
+#endif
 
 #endif
