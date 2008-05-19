@@ -1,0 +1,63 @@
+[KGameTheme]
+Name=Scrible
+Description=KSudoku Scrible theme for KDE 4
+VersionFormat=1
+Author=Johannes Bergmeier
+AuthorEmail=Johannes.Bergmeier@gmx.net
+Type=SVG
+FileName=ksudoku_scrible.svg
+#Preview=scrible_preview.png
+
+[Graphics]
+#### Background ####
+Background=background
+
+#### Cells ####
+Cell=cell
+Cell-Given=cell
+Cell-Mistake=cell_mistake1,cell_mistake2
+Cell-Marker=cell
+
+#### Cells3D ####
+Cell-3D=cell3d
+Cell-3D-Given=cell3d
+Cell-3D-Mistake=cell3d
+Cell-3D-Marker=cell3d
+
+#### Cursor ####
+Cursor=cursor
+
+#### Groups,Borders,Highlights ####
+# %1 gets replaced with the digits for the belonging neighbour-cells
+# if no
+Group-Column=
+Group-Column-Highlighted=column_h1_%1, column_h2_%1
+Group-Row=
+Group-Row-Highlighted=row_h1_%1, row_h2_%
+Group-Block=block_%1
+Group-Block-Highlighed=block_h1_%1, block_h2_%1, block_h3_%1
+Group-Special=special_%1
+Group-Special-Highlighted=special_h1_%1, special_h2_%1, special_h3_%1
+
+#### Positions of symbols ####
+# %1 for markers gets replaced with the value of the symbol to be positioned
+# %2 for markers gets replaced with the biggest number (=9 in normal sudoku)
+Symbol-Pos=symbol_1
+Symbol-PosRelativeTo=cell_symbol
+Marker-Pos=markers%2_%1
+Marker-PosRelativeTo=cell_markers%2
+Symbol-3D-Pos=symbol3d_1
+Symbol-3D-PosRelativeTo=cell3d_symbols
+Marker-3D-Pos=markers%2_%1
+Marker-3D-PosRelativeTo=cell_markers%2
+
+
+#### Symbols ####
+# %1 gets replaced by the symbol
+# %2 gets replaced by the symbol-theme-name
+Symbols=symbol_%2_%1_1,symbol_%2_%1_2,symbol_%2_%1_3
+Symbols-Mistake=symbol_%2_%1_1,symbol_%2_%1_2,symbol_%2_%1_3
+Symbols-Given=given_%2_%1
+Symbols-3D=symbol_%2_%1_1,symbol_%2_%1_2,symbol_%2_%1_3
+Symbols-3D-Mistake=(symbol_%2_%1_1,symbol_%2_%1_2,symbol_%2_%1_3
+Symbols-3D-Given=given_%2_%1
