@@ -418,7 +418,8 @@ void RoxdokuView::paintGL()
 }
 
 }
-
+#warning I AM A PUNK
 #include "roxdokuview.moc"
-
+#else
+#warning "Qt OpenGL support not found"
 #endif
