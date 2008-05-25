@@ -1,11 +1,14 @@
 [KGameTheme]
 Name=Scrible
+Name[sv]=Kladd
 Name[zh_CN]=草书
 Description=KSudoku Scrible theme for KDE 4
 Description[ga]=Téama Scrible KSudoku le haghaidh KDE 4
 Description[km]=ស្បែក KSudoku Scrible សម្រាប់ KDE 4
+Description[nds]=KSudoku-Scriblemuster för KDE 4
 Description[pt]=Tema do Scrible para o KSudoku do KDE 4
 Description[pt_BR]=Tema do Scrible para o KSudoku do KDE 4
+Description[sv]=Kladdtema för Ksudoku i KDE4
 Description[uk]=Тема Scrible KSudoku для KDE 4
 Description[zh_CN]=为 KDE 4 设计的 KSudoku 草书主题
 Description[zh_TW]=KSudoku 在 KDE4 的 Scrible 主題
