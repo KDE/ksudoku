@@ -27,7 +27,7 @@ target_link_libraries(ksudoku
 	${KDE4_KIO_LIBS} ${KDE4_KNEWSTUFF2_LIBRARY}
 )
 
-install(TARGETS ksudoku  DESTINATION ${BIN_INSTALL_DIR} )
+install(TARGETS ksudoku  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### next target ###############
 add_subdirectory( logic  )
@@ -48,7 +48,7 @@ add_subdirectory( themes )
 
 
 
-#install(TARGETS ksudoku_client  DESTINATION ${BIN_INSTALL_DIR} )
+#install(TARGETS ksudoku_client  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
