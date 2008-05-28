@@ -15,8 +15,9 @@ ENDIF(DEBUG)
 
 # enable OPENGL-support
 if(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
-	add_definitions(-DQT_OPENGL_SUPPORT)
-	set(KS_OBENGL_LIBS 	${QT_QTOPENGL_LIBRARY} ${OPENGL_LIBRARIES})
+	# commenting those two lines will remove OpenGL-based variants completely
+	set(OPENGL_SUPPORT true)
+	add_definitions(-DOPENGL_SUPPORT)
 endif(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
 
 add_subdirectory( src )

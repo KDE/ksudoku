@@ -99,7 +99,6 @@ public:
 	
 public slots:
 	void selectValue(int value);
-	void enterValue(int value);
 	void settingsChanged();
 	
 signals:

@@ -23,9 +23,14 @@ kde4_add_executable(ksudoku ${ksudoku_SRCS})
 target_link_libraries(ksudoku
 	ksudoku_gui ksudoku_views ksudoku_logic
 	kdegames
-	${KS_OBENGL_LIBS}
 	${KDE4_KIO_LIBS} ${KDE4_KNEWSTUFF2_LIBRARY}
 )
+
+if(OPENGL_SUPPORT)
+target_link_libraries(ksudoku
+	${QT_QTOPENGL_LIBRARY} ${OPENGL_LIBRARIES}
+)
+endif(OPENGL_SUPPORT)
 
 install(TARGETS ksudoku  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 

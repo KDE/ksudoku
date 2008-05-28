@@ -19,8 +19,6 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#ifdef QT_OPENGL_SUPPORT
-
 #include "roxdokuview.h"
 
 #include "puzzle.h"
@@ -261,13 +259,6 @@ void RoxdokuView::selectValue(int value) {
 	selected_number = value;
 }
 
-void RoxdokuView::enterValue(int value) {
-	if(selection < 0) return;
-	
-	if(isDragging) releaseMouse();
-	m_game.setValue(selection, value);
-}
-
 void RoxdokuView::loadSettings() {
 	m_guidedMode = Settings::showErrors();
 }
@@ -418,8 +409,5 @@ void RoxdokuView::paintGL()
 }
 
 }
-#warning I AM A PUNK
+
 #include "roxdokuview.moc"
-#else
-#warning "Qt OpenGL support not found"
-#endif

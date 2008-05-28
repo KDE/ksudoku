@@ -165,7 +165,7 @@ void KSudoku::updateShapesList()
 	variant = new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 25 symbols"));
 	variant->setIcon("ksudoku-ksudoku_25x25");
-#ifdef QT_OPENGL_SUPPORT
+#ifdef OPENGL_SUPPORT
 	variant = new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku"));
 	variant->setIcon("ksudoku-roxdoku_3x3x3");

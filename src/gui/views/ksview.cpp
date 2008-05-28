@@ -32,8 +32,10 @@
 #include "sudoku_solver.h"
 #include "puzzle.h"
 
-
+#ifdef OPENGL_SUPPORT
 #include "roxdokuview.h"
+#endif
+
 #include "view2d.h"
 
 namespace ksudoku{
@@ -64,7 +66,7 @@ void KsView::createView() {
 			setWidget(new View2D(0, m_game, m_gameActions));
 			break;
 		}
-#ifdef QT_OPENGL_SUPPORT
+#ifdef OPENGL_SUPPORT
 		case roxdoku: {
 			setWidget(new RoxdokuView(m_game, 0, 0));
 			break;
