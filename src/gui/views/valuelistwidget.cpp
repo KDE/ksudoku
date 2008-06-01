@@ -24,6 +24,7 @@
 #include <QGraphicsSimpleTextItem>
 #include <QWheelEvent>
 
+#include <KColorScheme>
 
 namespace ksudoku {
 	
@@ -31,6 +32,13 @@ SymbolGraphicsItem::SymbolGraphicsItem(const QChar& symbol, QGraphicsItem * pare
 	: QGraphicsItem(parent, scene)
 {
 	m_text = new QGraphicsSimpleTextItem(symbol, this, scene);
+
+///
+    KStatefulBrush stattefulBrush(KColorScheme::View, KColorScheme::NormalText);
+
+    m_text->setBrush(stattefulBrush.brush(QPalette::Active).color());
+///
+
 	setSize(10);
 }
 
@@ -94,6 +102,13 @@ ValueListWidget::ValueListWidget(QWidget* parent)
 	setScene(m_scene);
 	
 	m_selectionItem = new QGraphicsRectItem(-4.5, 0.5, 9, 9, 0, m_scene);
+
+///
+    KStatefulBrush stattefulBrush(KColorScheme::View, KColorScheme::NormalText);
+
+    dynamic_cast< QGraphicsRectItem* >(m_selectionItem)->setPen(stattefulBrush.brush(QPalette::Active).color());
+///
+
 	m_selectionItem->setPos(0, 0);
 	
 	m_maxValue = 1;
