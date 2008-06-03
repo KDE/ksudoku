@@ -23,26 +23,12 @@
 #include "skgraph.h"
 #include <QVector>
 #include <QBitArray> // TODO Remove (only needed by SolverState)
-#include "grouplookup.h" // TODO Remove (only needed by SolverState)
+
+#include "solverstate.h"
 		
 class SKSolver;
 
 namespace ksudoku {
-
-class SolverState;
-
-enum ProcessState {
-	/// An operation finished successfuly
-	KSS_SUCCESS          = 0,
-	/// An operation failed, this may (dependant on op) mean that there is no solution
-	KSS_FAILURE          = 1,
-	/// An operation stopped, as no more solutions are required
-	KSS_ENOUGH_SOLUTIONS = 2,
-	/// To count of maximum forks was exceeded
-	KSS_ENOUGH_FORKS     = 3,
-	/// There is an internal failure
-	KSS_CRITICAL         = 4
-};
 
 enum DifficultyFlags {
 	KSS_SYM_NONE     = 0,

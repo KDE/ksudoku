@@ -7,6 +7,7 @@ set(ksudoku_SRCS
 	puzzlefactory.cpp
 	puzzle.cpp
 	solver.cpp
+	solverstate.cpp
 )
 
 kde4_add_library(ksudoku_logic ${ksudoku_SRCS})

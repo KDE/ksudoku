@@ -22,105 +22,107 @@
 #include <qbitarray.h>
 #include "grouplookup.h"
 
+#include "solverstate.h"
 
 namespace ksudoku {
 
-class SolverState {
-public:
-	SolverState(int size, int order)
-		: m_size(size), m_order(order), m_values(size, 0), m_flags(order),
-		  m_remaining(size, order+1, order)
-	{
-		for(int i = order-1; i >= 0; --i) {
-			m_flags[i].detach();
-			m_flags[i].fill(true, size);
-		}
-	}
-	
-	SolverState(const SolverState& state)
-		: m_size(state.m_size), m_order(state.m_order), m_values(state.m_values),
-		  m_flags(state.m_flags), m_remaining(state.m_remaining)
-	{
-		for(int i = m_order-1; i >= 0; --i) {
-			m_flags[i].detach();
-		}
-	}
-	
-	int value(int index) const { return m_values[index]; }
-	
-	inline ProcessState setValue(int index, int value, SKGraph* graph) {
-		if(m_values[index] != 0) return KSS_CRITICAL;
-		m_remaining.setValue(index, 0);
-		m_values[index] = value;
-		for(int i = 0; i < graph->optimized_d[index]; ++i) {
-			int j = graph->optimized[index][i];
-			if(m_values[j] == 0) {
-				if(m_flags[value-1][j]) {
-					m_flags[value-1].clearBit(j);
-// 					if(m_remaining.value(j) == 8) printf("Aha\n");
-					int remaining = m_remaining.value(j);
-					if(remaining == 1) return KSS_FAILURE;
-					m_remaining.setValue(j, remaining-1);
-				}
-			}
-		}
-		return KSS_SUCCESS;
-	}
-	
-	inline ProcessState fill(const QVector<int>& values, SKGraph* graph) {
-		for(int i = 0; i < m_size; ++i) {
-			if(values[i] == 0) continue;
-			if(setValue(i, values[i], graph) != KSS_SUCCESS)
-				return KSS_FAILURE;
-		}
-		return KSS_SUCCESS;
-	}
-	
-	/**
-	 * Sets all values for which only one flag is left
-	 * Returns whether it failed due to conflicts.
-	 */
-	ProcessState setAllDefindedValues(SKGraph* graph) {
-		int index;
-		ProcessState state;
-		while((index = m_remaining.firstIndexWithValue(1)) >= 0) {
-			for(int i = 0; ; ++i) {
-				// Check whether there wasn't a flag left
-				if(i >= m_order) return KSS_CRITICAL;
-				
-				if(m_flags[i][index]) {
-					if((state = setValue(index, i+1, graph)) != KSS_SUCCESS) return state;
-					break;
-				}
-			}
-		}
-		return KSS_SUCCESS;
-	}
-	
-	int optimalSolvingIndex() {
-		for(int i = 2; i <= m_order; ++i) {
-			if(m_remaining.firstIndexWithValue(i) >= 0)
-				return m_remaining.firstIndexWithValue(i);
-		}
-		return -1;
-	}
-	
-	int possibleValue(int index, int startValue = 0) {
-		if(m_values[index] != 0) return 0;
-		for(int i = startValue ? startValue-1 : 0; i < m_order; ++i) {
-			if(m_flags[i][index])
-				return i+1;
-		}
-		return 0;
-	}
-	
-private:
-	int                      m_size;
-	int                      m_order;
-	QVector<int>       m_values;
-	QVector<QBitArray> m_flags; // I don't know whether this is fast enough
-	GroupLookup              m_remaining;
-};
+
+// class SolverState {
+// public:
+// 	SolverState(int size, int order)
+// 		: m_size(size), m_order(order), m_values(size, 0), m_flags(order),
+// 		  m_remaining(size, order+1, order)
+// 	{
+// 		for(int i = order-1; i >= 0; --i) {
+// 			m_flags[i].detach();
+// 			m_flags[i].fill(true, size);
+// 		}
+// 	}
+// 	
+// 	SolverState(const SolverState& state)
+// 		: m_size(state.m_size), m_order(state.m_order), m_values(state.m_values),
+// 		  m_flags(state.m_flags), m_remaining(state.m_remaining)
+// 	{
+// 		for(int i = m_order-1; i >= 0; --i) {
+// 			m_flags[i].detach();
+// 		}
+// 	}
+// 	
+// 	int value(int index) const { return m_values[index]; }
+// 	
+// 	inline ProcessState setValue(int index, int value, SKGraph* graph) {
+// 		if(m_values[index] != 0) return KSS_CRITICAL;
+// 		m_remaining.setValue(index, 0);
+// 		m_values[index] = value;
+// 		for(int i = 0; i < graph->optimized_d[index]; ++i) {
+// 			int j = graph->optimized[index][i];
+// 			if(m_values[j] == 0) {
+// 				if(m_flags[value-1][j]) {
+// 					m_flags[value-1].clearBit(j);
+// // 					if(m_remaining.value(j) == 8) printf("Aha\n");
+// 					int remaining = m_remaining.value(j);
+// 					if(remaining == 1) return KSS_FAILURE;
+// 					m_remaining.setValue(j, remaining-1);
+// 				}
+// 			}
+// 		}
+// 		return KSS_SUCCESS;
+// 	}
+// 	
+// 	inline ProcessState fill(const QVector<int>& values, SKGraph* graph) {
+// 		for(int i = 0; i < m_size; ++i) {
+// 			if(values[i] == 0) continue;
+// 			if(setValue(i, values[i], graph) != KSS_SUCCESS)
+// 				return KSS_FAILURE;
+// 		}
+// 		return KSS_SUCCESS;
+// 	}
+// 	
+// 	/**
+// 	 * Sets all values for which only one flag is left
+// 	 * Returns whether it failed due to conflicts.
+// 	 */
+// 	ProcessState setAllDefindedValues(SKGraph* graph) {
+// 		int index;
+// 		ProcessState state;
+// 		while((index = m_remaining.firstIndexWithValue(1)) >= 0) {
+// 			for(int i = 0; ; ++i) {
+// 				// Check whether there wasn't a flag left
+// 				if(i >= m_order) return KSS_CRITICAL;
+// 				
+// 				if(m_flags[i][index]) {
+// 					if((state = setValue(index, i+1, graph)) != KSS_SUCCESS) return state;
+// 					break;
+// 				}
+// 			}
+// 		}
+// 		return KSS_SUCCESS;
+// 	}
+// 	
+// 	int optimalSolvingIndex() {
+// 		for(int i = 2; i <= m_order; ++i) {
+// 			if(m_remaining.firstIndexWithValue(i) >= 0)
+// 				return m_remaining.firstIndexWithValue(i);
+// 		}
+// 		return -1;
+// 	}
+// 	
+// 	int possibleValue(int index, int startValue = 0) {
+// 		if(m_values[index] != 0) return 0;
+// 		for(int i = startValue ? startValue-1 : 0; i < m_order; ++i) {
+// 			if(m_flags[i][index])
+// 				return i+1;
+// 		}
+// 		return 0;
+// 	}
+// 	
+// private:
+// 	int                      m_size;
+// 	int                      m_order;
+// 	QVector<int>       m_values;
+// 	QVector<QBitArray> m_flags; // I don't know whether this is fast enough
+// 	GroupLookup              m_remaining;
+// };
 
 
 Solver::Solver(Graph* graph, uint flags) : m_graph(graph), m_flags(flags) {
