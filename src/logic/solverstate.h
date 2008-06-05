@@ -26,7 +26,7 @@ class SolverState {
 public:
 	SolverState(uint size, uint order);
 
-	SolverState(const SolverState& state);;
+	SolverState(const SolverState& state);
 
 	uint value(uint index) const { return m_values[index]; }
 
