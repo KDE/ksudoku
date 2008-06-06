@@ -407,7 +407,7 @@ void View2DScene::init(const Game& game) {
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(update()));
 	connect(m_gameActions, SIGNAL(selectValue(int)), this, SLOT(selectValue(int)));
 	connect(m_gameActions, SIGNAL(enterValue(int)), this, SLOT(enterValue(int)));
-	connect(m_gameActions, SIGNAL(markValue(int)), this, SLOT(markValue(int)));
+	connect(m_gameActions, SIGNAL(markValue(int)), this, SLOT(flipMarkValue(int)));
 	connect(m_gameActions, SIGNAL(move(int,int)), this, SLOT(moveCursor(int,int)));
 }
 
