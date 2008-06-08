@@ -17,7 +17,7 @@ set(ksudoku_SRCS
 	main.cpp
 )
 
-#kde4_add_app_icon(ksudoku_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/hi*-app-ksudoku.png")
+kde4_add_app_icon(ksudoku_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/ksudoku.png")
 kde4_add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
@@ -62,4 +62,5 @@ install( FILES gui/ksudokuui.rc  DESTINATION  ${DATA_INSTALL_DIR}/ksudoku )
 install( FILES ksudokurc  DESTINATION ${CONFIG_INSTALL_DIR})
 
 kde4_install_icons(${ICON_INSTALL_DIR})
+
 
