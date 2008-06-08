@@ -63,6 +63,7 @@ void Print::toPrinter(){
 		drawUsingPrinterSettings(p, scale, aspect, printer.height(),printer.width() );
 		p.end();
 	}
+	delete printDialog;
 }
 
 void Print::drawUsingPrinterSettings(QPainter& p, float scale, float aspect, int height, int width) const

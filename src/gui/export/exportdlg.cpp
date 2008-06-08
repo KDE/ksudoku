@@ -216,9 +216,9 @@ void ExportDlg::print(){
 	QPrinter printer;
 	//Not supported in Qt
 	//printer.removeStandardPage(1); //there is only 1 standard page
-	QPrintDialog printDialog(&printer, this);
+	QPrintDialog *printDialog = KdePrint::createPrintDialog(&printer, this);
 
-	if (printDialog.exec()) {
+	if (printDialog->exec()) {
 	{
 
 		QPainter p;
@@ -226,6 +226,7 @@ void ExportDlg::print(){
 		draw(p, printer.height(), printer.width());
 		p.end();
 	}
+	delete printDialog;
 }
 
 void ExportDlg::save(){
