@@ -21,7 +21,7 @@ kde4_add_app_icon(ksudoku_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/ksudoku.p
 kde4_add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
-	ksudoku_gui ksudoku_views ksudoku_logic
+	ksudoku_gui ksudoku_logic
 	kdegames
 	${KDE4_KIO_LIBS} ${KDE4_KNEWSTUFF2_LIBRARY}
 )
