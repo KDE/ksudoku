@@ -1,4 +1,4 @@
-add_subdirectory( views )
+include_directories( views )
 
 set(ksudoku_SRCS
 	config.cpp
@@ -11,14 +11,44 @@ set(ksudoku_SRCS
 	welcomescreen.cpp
 )
 
-include_directories( views ksudoku_export)
+set(ksudoku_views_SRCS
+	views/ksview.cpp
+	views/ArcBall.cpp
+	views/gameactions.cpp
+	views/renderer.cpp
+	views/valuelistwidget.cpp
+	views/view2d.cpp )
+
+if(OPENGL_SUPPORT)
+	set(ksudoku_views_SRCS
+		${ksudoku_views_SRCS}
+		views/roxdokuview.cpp )
+endif(OPENGL_SUPPORT)
+
 
 kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui configgame.ui)
 
 kde4_add_kcfg_files(ksudoku_SRCS settings.kcfgc )
 
-kde4_add_library(ksudoku_gui ${ksudoku_SRCS})
+kde4_add_library(ksudoku_gui ${ksudoku_SRCS} ${ksudoku_views_SRCS})
 
+target_link_libraries(ksudoku_gui 
+	ksudoku_logic
+    kdegames
+	${KDE4_KDEUI_LIBS} 
+	${KDE4_KDECORE_LIBS} 
+	${KDE4_KIO_LIBRARY}
+	${QT_QTCORE_LIBRARY} 
+	${QT_QTGUI_LIBRARY}
+	)
+
+if(OPENGL_SUPPORT)
+	target_link_libraries(ksudoku_gui 
+		${OPENGL_LIBRARIES}
+		${QT_QTOPENGL_LIBRARY})
+endif(OPENGL_SUPPORT)
+
+	
 ########### next target ###############
 
 set(ksudoku_client_SRCS

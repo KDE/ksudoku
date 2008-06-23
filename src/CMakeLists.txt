@@ -35,8 +35,8 @@ endif(OPENGL_SUPPORT)
 install(TARGETS ksudoku  ${INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### next target ###############
+add_subdirectory( gui )
 add_subdirectory( logic  )
-add_subdirectory( gui             )
 add_subdirectory( shapes )
 add_subdirectory( themes )
 

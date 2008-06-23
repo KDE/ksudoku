@@ -1,5 +1,4 @@
-
-set(ksudoku_SRCS
+set(ksudoku_logic_SRCS
 	skgraph.cpp
 	skbase.cpp
 	skpuzzle.cpp
@@ -10,6 +9,5 @@ set(ksudoku_SRCS
 	solverstate.cpp
 )
 
-kde4_add_library(ksudoku_logic ${ksudoku_SRCS})
-# make sure settings.h is available (created in ksudoku_gui)
-add_dependencies(ksudoku_logic ksudoku_gui)
+kde4_add_library(ksudoku_logic ${ksudoku_logic_SRCS})
+target_link_libraries(ksudoku_logic ${QT_QTCORE_LIBRARY})
