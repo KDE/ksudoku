@@ -31,8 +31,8 @@
     </rdf:RDF>
   </metadata>
   <sodipodi:namedview
-     inkscape:window-height="714"
-     inkscape:window-width="1200"
+     inkscape:window-height="712"
+     inkscape:window-width="1280"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      guidetolerance="10.0"
@@ -45,9 +45,9 @@
      inkscape:zoom="1.4142136"
      inkscape:cx="76.173474"
      inkscape:cy="94.3307"
-     inkscape:window-x="75"
-     inkscape:window-y="26"
-     inkscape:current-layer="background"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:current-layer="svg2"
      showgrid="true"
      inkscape:snap-global="true">
     <inkscape:grid
@@ -6853,7 +6853,7 @@
     </g>
   </g>
   <g
-     id="g4151"
+     id="symbol_2_edited"
      transform="translate(305,-435)"
      inkscape:label="#g3646">
     <rect
@@ -6870,7 +6870,7 @@
        transform="translate(-305,435)" />
   </g>
   <g
-     id="g4157"
+     id="symbol_3_edited"
      transform="translate(305,-435)"
      inkscape:label="#g3650">
     <rect
@@ -6887,7 +6887,7 @@
        transform="translate(-305,435)" />
   </g>
   <g
-     id="g4163"
+     id="symbol_4_edited"
      transform="translate(305,-435)"
      inkscape:label="#g3654">
     <rect
@@ -6911,7 +6911,7 @@
        sodipodi:nodetypes="cssc" />
   </g>
   <g
-     id="g4169"
+     id="symbol_5_edited"
      transform="translate(305,-435)"
      inkscape:label="#g3658">
     <rect
@@ -6933,7 +6933,7 @@
        transform="translate(-305,435)" />
   </g>
   <g
-     id="g4175"
+     id="symbol_6_edited"
      transform="translate(305,-435)"
      inkscape:label="#g3674">
     <rect
@@ -6950,7 +6950,7 @@
        transform="translate(-305,435)" />
   </g>
   <g
-     id="g4181"
+     id="symbol_7_edited"
      transform="translate(305,-435)"
      inkscape:label="#g3670">
     <rect
@@ -6967,7 +6967,7 @@
        transform="translate(-305,435)" />
   </g>
   <g
-     id="g4187"
+     id="symbol_8_edited"
      transform="translate(305,-435)"
      inkscape:label="#g3666">
     <rect
@@ -6984,7 +6984,7 @@
        transform="translate(-305,435)" />
   </g>
   <g
-     id="g4193"
+     id="symbol_9_edited"
      transform="translate(305,-435)"
      inkscape:label="#g3662">
     <rect
@@ -7002,7 +7002,7 @@
   </g>
   <g
      inkscape:label="#g3642"
-     id="g4213"
+     id="symbol_1_edited"
      transform="translate(110,-310)">
     <rect
        y="460"
