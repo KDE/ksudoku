@@ -174,10 +174,10 @@ QPixmap Renderer::renderSpecial(SpecialType type, int size) const {
 	return pix;
 }
 
-QPixmap Renderer::renderSymbol(int symbol, int size) const {
+QPixmap Renderer::renderSymbol(int symbol, int size, SymbolType type) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
 
-	QString cacheName = QString("symbol_%1_%2").arg(symbol).arg(size);
+	QString cacheName = QString("symbol_%1_%2_%3").arg(symbol).arg(size).arg(type);
 	QPixmap pix;
 	if(!m_cache->find(cacheName, pix)) {
 		pix = QPixmap(size, size);
@@ -193,7 +193,22 @@ QPixmap Renderer::renderSymbol(int symbol, int size) const {
 		r.setTopLeft(fromRectToRect(r.topLeft(), from, to));
 		r.setBottomRight(fromRectToRect(r.bottomRight(), from, to));
 		
-		m_renderer->render(&p, QString("symbol_%1").arg(symbol), r);
+		switch(type) {
+			case SymbolPreset:
+				if(m_renderer->elementExists(QString("symbol_%1_preset").arg(symbol))) {
+					m_renderer->render(&p, QString("symbol_%1_preset").arg(symbol), r);
+				} else {
+					m_renderer->render(&p, QString("symbol_%1").arg(symbol), r);
+				}
+				break;
+			case SymbolEdited:
+				if(m_renderer->elementExists(QString("symbol_%1_edited").arg(symbol))) {
+					m_renderer->render(&p, QString("symbol_%1_edited").arg(symbol), r);
+				} else {
+					m_renderer->render(&p, QString("symbol_%1").arg(symbol), r);
+				}
+				break;
+		}
 		p.end();
 		m_cache->insert(cacheName, pix);
 	}
@@ -201,10 +216,11 @@ QPixmap Renderer::renderSymbol(int symbol, int size) const {
 	return pix;
 }
 
-QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color) const {
+QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, SymbolType type) const {
 	int size = pixmap.width();
-	QPixmap symbolPixmap = renderSymbol(symbol, size);
+	QPixmap symbolPixmap = renderSymbol(symbol, size, type);
 	if(color) {
+		// TODO this does not work, need some other way, maybe hardcode color into NumberType
 		QPainter p(&symbolPixmap);
 		p.setCompositionMode(QPainter::CompositionMode_Multiply);
 		p.setBrush(QBrush(QColor(128,128,128,255)));
@@ -239,13 +255,9 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 		from.adjust(+0.5,+0.5,-0.5,-0.5); // << this is the fix
 		QRectF to(QRectF(0,0,size,size));
 
-		qDebug() << r << from << to;
-		
 		r.setTopLeft(fromRectToRect(r.topLeft(), from, to));
 		r.setBottomRight(fromRectToRect(r.bottomRight(), from, to));
 
-		qDebug() << r;
-		
 		m_renderer->render(&p, QString("symbol_%1").arg(symbol), r);
 		p.end();
 		m_cache->insert(cacheName, pix);

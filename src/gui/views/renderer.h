@@ -49,6 +49,11 @@ enum SpecialType {
 	SpecialCursor      = 0x04
 };
 
+enum SymbolType {
+	SymbolPreset	= 0x00,
+	SymbolEdited	= 0x01
+};
+
 Q_DECLARE_FLAGS(GroupTypes, GroupType)
 
 class Renderer {
@@ -77,8 +82,8 @@ public:
 
 	QPixmap renderBorder(int border, GroupTypes type, int size) const;
 
-	QPixmap renderSymbol(int symbol, int size) const;
-	QPixmap renderSymbolOn(QPixmap pixmap, int symbol, int color) const;
+	QPixmap renderSymbol(int symbol, int size, SymbolType type) const;
+	QPixmap renderSymbolOn(QPixmap pixmap, int symbol, int color, SymbolType type) const;
 
 	QPixmap renderMarker(int symbol, int range, int size) const;
 	QPixmap renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const;

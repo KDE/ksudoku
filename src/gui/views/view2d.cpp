@@ -132,12 +132,12 @@ void CellGraphicsItem::updatePixmap() {
 		case SpecialCell:
 		case SpecialCellMistake:
 			if(m_values.size() > 0) {
-				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, m_values[0].color);
+				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, m_values[0].color, SymbolEdited);
 			}
 			break;
 		case SpecialCellPreset:
 			if(m_values.size() > 0) {
-				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, 0);
+				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, 0, SymbolPreset);
 			}
 			break;
 		case SpecialCellMarkers: {
