@@ -22,7 +22,7 @@
 #include <qbitarray.h>
 #include "grouplookup.h"
 
-#include "solverstate.h"
+//#include "solverstate.h"
 
 namespace ksudoku {
 
