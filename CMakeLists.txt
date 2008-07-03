@@ -13,12 +13,10 @@ IF(DEBUG)
 	ADD_DEFINITIONS(-DDEBUG -ggdb -O)
 ENDIF(DEBUG)
 
-# enable OPENGL-support
-if(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
-	# commenting those two lines will remove OpenGL-based variants completely
-	set(OPENGL_SUPPORT true)
+# enable code depending on OPENGL-support
+if(OPENGL_SUPPORT)
 	add_definitions(-DOPENGL_SUPPORT)
-endif(OPENGL_FOUND AND QT_QTOPENGL_FOUND)
+endif(OPENGL_SUPPORT)
 
 add_subdirectory( src )
 
