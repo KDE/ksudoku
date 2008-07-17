@@ -144,3 +144,5 @@ void GameActions::moveRight() {
 }
 
 }
+
+#include "gameactions.moc"
