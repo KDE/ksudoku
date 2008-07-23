@@ -10,8 +10,11 @@ include_directories(
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export/draw
 #        ${CMAKE_CURRENT_BINARY_DIR}/logic
-	${OPENGL_INCLUDE_DIR}
 )
+
+if(OPENGL_SUPPORT)
+   include_directories(${OPENGL_INCLUDE_DIR})
+endif(OPENGL_SUPPORT)
 
 set(ksudoku_SRCS
 	main.cpp
