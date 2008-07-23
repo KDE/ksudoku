@@ -13,7 +13,6 @@ set(ksudoku_SRCS
 
 set(ksudoku_views_SRCS
 	views/ksview.cpp
-	views/ArcBall.cpp
 	views/gameactions.cpp
 	views/renderer.cpp
 	views/valuelistwidget.cpp
@@ -22,6 +21,7 @@ set(ksudoku_views_SRCS
 if(OPENGL_SUPPORT)
 	set(ksudoku_views_SRCS
 		${ksudoku_views_SRCS}
+		views/ArcBall.cpp
 		views/roxdokuview.cpp )
 endif(OPENGL_SUPPORT)
 
