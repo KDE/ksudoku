@@ -303,8 +303,7 @@ void KSudoku::dubPuzzle()
 		delete puzzle;
 		return;
 	} else if(state == 1) {
-		// TODO Remove the (Forks required: %1) after 4.1 The user couldn't care less about that
-		KMessageBox::information(this, i18n("The Puzzle you entered has only one solution. (Forks required: %1)",forks));
+		KMessageBox::information(this, i18n("The Puzzle you entered has only one solution."));
 	} else {
 		KMessageBox::information(this, i18n("The Puzzle you entered has multiple solutions."));
 	}
