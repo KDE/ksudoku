@@ -309,7 +309,7 @@ void KSudoku::dubPuzzle()
 		KMessageBox::information(this, i18n("The Puzzle you entered has multiple solutions."));
 	}
 
-	if(KMessageBox::questionYesNo(this, i18n("Do you want to play the puzzle now?")) == 3)
+	if(KMessageBox::questionYesNo(this, i18n("Do you want to play the puzzle now?"), i18n("Play Puzzle"), KGuiItem(i18n("Play")), KStandardGuiItem::cancel() ) == KMessageBox::Yes)
 	{
 		startGame(ksudoku::Game(puzzle));
 	}
@@ -475,7 +475,9 @@ void KSudoku::gameNew()
 	if(!currentView()) return;
 
 	// TODO onyl show this when there is a game running
-	if(KMessageBox::questionYesNo(this, i18n("Do you really want to end this game in order to start a new one?")) != KMessageBox::Yes)
+	if(KMessageBox::questionYesNo(this, 
+	                              i18n("Do you really want to end this game in order to start a new one?"),
+	                              i18n("Restart Game"), KGuiItem(i18n("Restart Game")), KStandardGuiItem::cancel() )  != KMessageBox::Yes)
 		return;
 
 	showWelcomeScreen();
