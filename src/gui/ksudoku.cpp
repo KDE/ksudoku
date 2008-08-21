@@ -476,7 +476,9 @@ void KSudoku::gameNew()
 	// TODO onyl show this when there is a game running
 	if(KMessageBox::questionYesNo(this, 
 	                              i18n("Do you really want to end this game in order to start a new one?"),
-	                              i18n("Restart Game"), KGuiItem(i18n("Restart Game")), KStandardGuiItem::cancel() )  != KMessageBox::Yes)
+	                              i18nc("window title", "Restart Game"),
+	                              KGuiItem(i18nc("button label", "Restart Game")),
+	                              KStandardGuiItem::cancel() ) != KMessageBox::Yes)
 		return;
 
 	showWelcomeScreen();
