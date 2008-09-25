@@ -115,7 +115,7 @@ public:
 	Puzzle* puzzle() const;
 	
 	/**
-	 * Gets the the interface of the game. Use this if for connecting to signals or
+	 * Gets the interface of the game. Use this if for connecting to signals or
 	 * slots of the game
 	 */
 	GameIFace* interface() const;
