@@ -67,9 +67,9 @@ void GameActions::init() {
 		m_collection->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Mark %1 (%2)", QChar('a'+i), i+1));
 		shortcut = a->shortcut();
-		shortcut.setPrimary( Qt::ShiftModifier | Qt::Key_A + i);
+		shortcut.setPrimary( QKeySequence(Qt::ShiftModifier | Qt::Key_A + i));
 		if(i < 9) {
-			shortcut.setAlternate( Qt::ShiftModifier | Qt::Key_1 + i);
+			shortcut.setAlternate( QKeySequence(Qt::ShiftModifier | Qt::Key_1 + i));
 		}
 		a->setShortcut(shortcut);
 		m_markValueMapper->setMapping(a, i+1);
