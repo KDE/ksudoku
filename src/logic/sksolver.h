@@ -77,7 +77,7 @@ public:
 	char     zerochar;
 	
 	//getters	
-	GameType const type() const { return m_type; }
+	GameType type() const { return m_type; }
 	
 	//setters
 	void setType(GameType const type) { m_type = type; }
