@@ -109,7 +109,7 @@ public:
 
 private:
 	/**
-	 * Completly resets all occurrences of @p value (and their symmetric complements) to 0.
+	 * Completely resets all occurrences of @p value (and their symmetric complements) to 0.
 	 * This method only changes @p puzzle when it remains solveable.
 	 * @returns count of removed values or 0 if the puzzle con't be solved afterwards.
 	 */

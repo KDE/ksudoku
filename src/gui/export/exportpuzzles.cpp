@@ -88,7 +88,7 @@ void ExportPuzzles::resize(uint newSize)
 		msleep(50);
 
 	QMutexLocker locker(&m_mutex);
-	m_otherActionRequired.release(); //got lock => release interupt
+	m_otherActionRequired.release(); // got lock => release interrupt
 	
 	m_size = newSize;
 	m_deletionLock.lock();
@@ -109,7 +109,7 @@ void ExportPuzzles::regenerate()
 		msleep(50);
 
 	QMutexLocker locker(&m_mutex);
-	m_otherActionRequired.release(); //got lock => release interupt
+	m_otherActionRequired.release(); // got lock => release interrupt
 
 	m_deletionLock.lock();
 	destroy();
