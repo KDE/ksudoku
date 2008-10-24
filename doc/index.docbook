@@ -82,9 +82,9 @@
 <para>Take a look at left hand side of the game field. There is a selection list which contains all the symbols available for you to use in the current game.</para>
 <note><title>Note:</title><para>The set of symbols varies depending on the game type you choose.</para></note>
 <para>First, note the boundaries of the game field. The thick black lines outline the sectors. Every one of this sectors has to be completed using the symbols available, in such a way that each symbol is used within the sector area once and only once.</para>
-<para>Now you can start entering the symbols into the vacant squares on the game field. You can do that by selecting the symbol you wish to enter from the selection list on the left , and then using your mouse to click on the vacant square on the game field.</para>
+<para>Now you can start entering the symbols into the vacant squares on the game field. You can do that by selecting the symbol you wish to enter from the selection list on the left, and then using your mouse to click on the vacant square on the game field.</para>
 <para>Notice that the squares change color while you hover your mouse over them. It is done to help you keep up with the rules of &kappname;. Use the vertical and horizontal lines to check if the symbol, you are about to enter into the vacant spot, is already in use anywhere in the vertical or horizontal line that square is a part of. The coloring also highlights the sector which, if you remember, must also contain only one instance of each symbol.</para>
-<para>Keep entering the symbols in accordance with the riles until the whole game field is filled up. At this pint the application will check if all the entries are valid and either correct you, or except the solution.
+<para>Keep entering the symbols in accordance with the rules until the whole game field is filled up. At this point the application will check if all the entries are valid and either correct you, or except the solution.
 	</para>
 </chapter>
  
@@ -103,7 +103,7 @@
 		<note><title>Note:</title><para>The set of symbols varies depending on the game type you choose.</para></note>
 		<itemizedlist>
 			<listitem><para>Knowledge of mathematics, or language is not required to solve &kappname; puzzles.</para></listitem>
-			<listitem><para>Depending on the difficulty chosen the puzzles may appear partially solved. In such case the signs already on the game board cannot be changed.</para></listitem>
+			<listitem><para>Depending on the difficulty chosen the puzzles may appear partially solved. In such case the symbols already on the game board cannot be changed.</para></listitem>
 			<listitem><para>You can only modify the symbols you have previously entered.</para></listitem>
 			<listitem><para>&kappname; generated puzzles have one solution only.</para></listitem>
 		</itemizedlist>
