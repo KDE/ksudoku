@@ -1,15 +1,5 @@
 [Desktop Entry]
 Name=KSudoku
-Name[cs]=KSudoku
-Name[de]=KSudoku
-Name[fa]=سودوکو
-Name[fi]=Ksudoku
-Name[hu]=KSudoku
-Name[ne]=केडीई सुडोकु
-Name[nn]=KSudoku
-Name[sv]=Ksudoku
-Name[te]=కెసుడొకు
-Name[x-test]=xxksudokuxx
 Exec=ksudoku %i -caption "%c"
 Icon=ksudoku
 Type=Application
