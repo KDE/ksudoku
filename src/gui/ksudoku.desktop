@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KSudoku
+Name[sv]=Ksudoku
 Exec=ksudoku %i -caption "%c"
 Icon=ksudoku
 Type=Application
