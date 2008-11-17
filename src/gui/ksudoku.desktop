@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KSudoku
 Name[sv]=Ksudoku
+Name[x-test]=xxKSudokuxx
 Exec=ksudoku %i -caption "%c"
 Icon=ksudoku
 Type=Application
@@ -24,6 +25,7 @@ GenericName[it]=Gioco del Sudoku
 GenericName[ja]=数字パズルゲーム
 GenericName[km]=ល្បែង Sudoku
 GenericName[ko]=스도쿠 게임
+GenericName[lt]=Sudoku žaidimas
 GenericName[lv]=Sudoku spēle
 GenericName[nds]=Sudoku-Speel
 GenericName[nl]=Sudoku-spel
