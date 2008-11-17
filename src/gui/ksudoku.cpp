@@ -73,14 +73,24 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 	}
 
 	QString msg;
- 	int secs = QTime(0,0).secsTo(required);
- 	int mins = secs / 60;
- 	secs = secs % 60;
+	int secs = QTime(0,0).secsTo(required);
+	int mins = secs / 60;
+	secs = secs % 60;
 
 	if(withHelp)
-		msg = i18n("Congratulations! You made it in %1 minutes and %2 seconds. With some tricks.", mins, secs);
+		if (mins == 0)
+			msg = i18np("Congratulations! You made it in 1 second. With some tricks.", "Congratulations! You made it in %1 seconds. With some tricks.", secs);
+		else if (secs == 0)
+			msg = i18np("Congratulations! You made it in 1 minute. With some tricks.", "Congratulations! You made it in %1 minutes. With some tricks.", mins);
+		else
+			msg = i18nc("The two parameters are strings like '2 minutes' or '1 second'.", "Congratulations! You made it in %1 and %2. With some tricks.", i18np("1 minute", "%1 minutes", mins), i18np("1 second", "%1 seconds", secs));
 	else
-		msg = i18n("Congratulations! You made it in %1 minutes and %2 seconds.", mins, secs);
+		if (mins == 0)
+			msg = i18np("Congratulations! You made it in 1 second. With some tricks.", "Congratulations! You made it in %1 seconds.", secs);
+		else if (secs == 0)
+			msg = i18np("Congratulations! You made it in 1 minute. With some tricks.", "Congratulations! You made it in %1 minutes.", mins);
+		else
+			msg = i18nc("The two parameters are strings like '2 minutes' or '1 second'.", "Congratulations! You made it in %1 and %2.", i18np("1 minute", "%1 minutes", mins), i18np("1 second", "%1 seconds", secs));
 
 	KMessageBox::information(this, msg);
 
