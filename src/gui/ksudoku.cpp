@@ -86,9 +86,9 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 			msg = i18nc("The two parameters are strings like '2 minutes' or '1 second'.", "Congratulations! You made it in %1 and %2. With some tricks.", i18np("1 minute", "%1 minutes", mins), i18np("1 second", "%1 seconds", secs));
 	else
 		if (mins == 0)
-			msg = i18np("Congratulations! You made it in 1 second. With some tricks.", "Congratulations! You made it in %1 seconds.", secs);
+			msg = i18np("Congratulations! You made it in 1 second.", "Congratulations! You made it in %1 seconds.", secs);
 		else if (secs == 0)
-			msg = i18np("Congratulations! You made it in 1 minute. With some tricks.", "Congratulations! You made it in %1 minutes.", mins);
+			msg = i18np("Congratulations! You made it in 1 minute.", "Congratulations! You made it in %1 minutes.", mins);
 		else
 			msg = i18nc("The two parameters are strings like '2 minutes' or '1 second'.", "Congratulations! You made it in %1 and %2.", i18np("1 minute", "%1 minutes", mins), i18np("1 second", "%1 seconds", secs));
 
