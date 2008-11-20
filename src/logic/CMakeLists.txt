@@ -9,5 +9,5 @@ set(ksudoku_logic_SRCS
 	solverstate.cpp
 )
 
-kde4_add_library(ksudoku_logic ${ksudoku_logic_SRCS})
+kde4_add_library(ksudoku_logic STATIC ${ksudoku_logic_SRCS})
 target_link_libraries(ksudoku_logic ${QT_QTCORE_LIBRARY})

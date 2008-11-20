@@ -30,7 +30,7 @@ kde4_add_ui_files(ksudoku_SRCS welcomescreen.ui configgame.ui)
 
 kde4_add_kcfg_files(ksudoku_SRCS settings.kcfgc )
 
-kde4_add_library(ksudoku_gui ${ksudoku_SRCS} ${ksudoku_views_SRCS})
+kde4_add_library(ksudoku_gui STATIC ${ksudoku_SRCS} ${ksudoku_views_SRCS})
 
 target_link_libraries(ksudoku_gui 
 	ksudoku_logic

@@ -24,4 +24,4 @@ KDE4_ADD_UI_FILES(ksudoku_SRCS ${ksudoku_ui_files})
 
 INCLUDE_DIRECTORIES( draw ../../logic)
 
-KDE4_ADD_LIBRARY(ksudoku_export ${ksudoku_SRCS})
+KDE4_ADD_LIBRARY(ksudoku_export STATIC ${ksudoku_SRCS})
