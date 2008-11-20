@@ -7,4 +7,4 @@ set(ksudoku_SRCS
 )
 
 
-KDE4_ADD_LIBRARY(ksudoku_draw ${ksudoku_SRCS})
+KDE4_ADD_LIBRARY(ksudoku_draw STATIC ${ksudoku_SRCS})
