@@ -151,7 +151,10 @@ QPointF fromRectToRect(const QPointF& p, const QRectF& from, const QRectF& to) {
 
 QPixmap Renderer::renderSpecial(SpecialType type, int size) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
-
+	
+	//only show the errors if the option has been set
+	if(!Settings::showErrors() && type == SpecialCellMistake ) type = SpecialCell;
+	
 	QString cacheName = QString("special_%1_%2").arg(m_specialNames[type]).arg(size);
 	QPixmap pix;
 	if(!m_cache->find(cacheName, pix)) {
@@ -288,7 +291,10 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 
 QPixmap Renderer::renderBorder(int border, GroupTypes type, int size) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
-
+	
+	//show highlights only if they are set
+	if(!Settings::showHighlights()) type &= ~GroupHighlight;
+	
 	QString cacheName = QString("contour_%1_%2_%3").arg(m_borderTypes[type]).arg(m_borderNames[border]).arg(size);
 	QPixmap pix;
 	if(!m_cache->find(cacheName, pix)) {
