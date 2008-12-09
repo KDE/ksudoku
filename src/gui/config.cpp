@@ -29,61 +29,6 @@
 
 namespace ksudoku {
 	
-SymbolConfigListWidget::SymbolConfigListWidget(const QList<SymbolTable*>& tables, QWidget* parent) : QListWidget(parent) {
-	for(int i = 0; i < tables.size(); ++i) {
-		SymbolTable* table = tables[i];
-		
-		QString chars;
-		for(int j = 1; j <= table->maxValue(); ++j)
-			chars += table->symbolForValue(j) + ' ';
-		
-		QListWidgetItem* li = new QListWidgetItem(table->text(), this);
-		li->setFlags(Qt::ItemIsSelectable | Qt::ItemIsUserCheckable | Qt::ItemIsEnabled);
-		
-		QString tooltip = i18ncp("list arg2 consists of arg1 symbols: arg3", "<html><h4>%2</h4>consists of 1 symbol:<br/>%3</html>", "<html><h4>%2</h4>consists of %1 symbols:<br/>%3</html>", table->maxValue(), table->text(), chars);
-		li->setData(Qt::ToolTipRole, tooltip);
-		li->setData(Qt::UserRole, table->name());
-		
-		li->setCheckState(Qt::Unchecked);
-	}
-}
-
-SymbolConfigListWidget::~SymbolConfigListWidget() {
-}
-
-QStringList SymbolConfigListWidget::enabledTables() const {
-	QStringList list;
-	
-	for(int i = 0; i < count(); ++i) {
-		QListWidgetItem* li = item(i);
-		if(li->checkState() == Qt::Checked)
-			list << li->data(Qt::UserRole).toString();
-	}
-	
-	return list;
-}
-
-void SymbolConfigListWidget::setEnabledTables(const QStringList& tables) {
-	for(int i = 0; i < count(); ++i) {
-		QListWidgetItem* li = item(i);
-		if(tables.contains(li->data(Qt::UserRole).toString()))
-			li->setCheckState(Qt::Checked);
-		else
-			li->setCheckState(Qt::Unchecked);
-	}
-}
-	
-
-SymbolConfig::SymbolConfig(Symbols* symbols) : m_symbols(symbols) {
-	QVBoxLayout* layout = new QVBoxLayout(this);
-	m_symbolTableView = new SymbolConfigListWidget(symbols->possibleTables(), this);
-	m_symbolTableView->setObjectName("kcfg_Symbols");
-	layout->addWidget(m_symbolTableView);
-}
-
-SymbolConfig::~SymbolConfig() {
-}
-
 GameConfig::GameConfig(QWidget* parent)
 	: QWidget(parent)
 {

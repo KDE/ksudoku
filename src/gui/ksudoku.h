@@ -27,8 +27,6 @@
 #include <knewstuff/knewstuff.h>
 #endif
 
-#include "symbols.h"
-
 class KUrl;
 
 namespace ksudoku {
@@ -152,8 +150,6 @@ private:
 	ksudoku::ValueListWidget* m_valueListWidget;
 	
 	ksudoku::KsView* m_gameUI;
-
-	ksudoku::Symbols m_symbols;
 
 	ksudoku::GameActions* m_gameActions;
 };

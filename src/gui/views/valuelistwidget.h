@@ -26,36 +26,23 @@
 
 #include "symbols.h"
 
-class QGraphicsSimpleTextItem;
+class QGraphicsPixmapItem;
 
 namespace ksudoku {
 
-class SymbolGraphicsItem : public QGraphicsItem {
-public:
-	SymbolGraphicsItem(const QChar& symbol,QGraphicsItem * parent = 0, QGraphicsScene * scene = 0);
-	~SymbolGraphicsItem();
-	
-public:
-	void setSize(double size);
-	void paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget = 0);
-	QRectF boundingRect() const;
-	
-private:
-	QGraphicsSimpleTextItem* m_text;
-	double m_size;
-};
-
-class SymbolSelectionItem;
+class SymbolItem;
+class SelectionItem;
 	
 class ValueListWidget : public QGraphicsView {
-friend class SymbolSelectionItem;
-Q_OBJECT
+	Q_OBJECT
+	friend class SymbolItem;
 public:
 	ValueListWidget(QWidget* parent = 0);
 	~ValueListWidget();
 	
-	SymbolTable* currentTable() const;
-	void setCurrentTable(SymbolTable* table, int maxValue);
+// 	SymbolTable* currentTable() const;
+// 	void setCurrentTable(SymbolTable* table, int maxValue);
+	void setMaxValue(int maxValue);
 	
 	void resizeEvent(QResizeEvent*);
 	
@@ -75,10 +62,10 @@ protected:
 	void wheelEvent (QWheelEvent* e);
 	
 private:
-	SymbolTable* m_table;
+// 	SymbolTable* m_table;
 	QGraphicsScene* m_scene;
-	QList<SymbolSelectionItem*> m_symbols;
-	QGraphicsItem* m_selectionItem;
+	QList<SymbolItem*> m_symbols;
+	SelectionItem *m_selectionItem;
 	int m_selectedValue;
 	int m_maxValue;
 };

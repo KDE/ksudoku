@@ -26,90 +26,104 @@
 
 #include <KColorScheme>
 
+#include "renderer.h"
+
 namespace ksudoku {
-	
-SymbolGraphicsItem::SymbolGraphicsItem(const QChar& symbol, QGraphicsItem * parent, QGraphicsScene * scene)
-	: QGraphicsItem(parent, scene)
-{
-	m_text = new QGraphicsSimpleTextItem(symbol, this, scene);
 
-///
-    KStatefulBrush stattefulBrush(KColorScheme::View, KColorScheme::NormalText);
-
-    m_text->setBrush(stattefulBrush.brush(QPalette::Active).color());
-///
-
-	setSize(10);
-}
-
-SymbolGraphicsItem::~SymbolGraphicsItem() {
-}
-
-void SymbolGraphicsItem::setSize(double size) {
-	m_size = size;
-	
-	QFont resizedFont = m_text->font();
-	resizedFont.setPixelSize(int(size*0.8));
-	m_text->setFont(resizedFont);
-
-	QRectF rect = m_text->boundingRect();
-	// TODO improve this or replace it
-	m_text->setPos(-rect.width()/2, -rect.height()/2 +0.7);
-}
-
-void SymbolGraphicsItem::paint(QPainter*, const QStyleOptionGraphicsItem*, QWidget*) {
-}
-
-QRectF SymbolGraphicsItem::boundingRect() const {
-	return QRectF(-m_size/2, -m_size/2, m_size, m_size);
-}
-
-
-
-
-class SymbolSelectionItem : public SymbolGraphicsItem {
+class SymbolItem : public QGraphicsPixmapItem {
 public:
-	SymbolSelectionItem(const QChar& symbol, int value, ValueListWidget* widget);
-	
-protected:
+	SymbolItem(int value, ValueListWidget* widget);
+public:
+	int value() const;
+	void setSize(double size);
 	void mousePressEvent(QGraphicsSceneMouseEvent* event);
-	
 private:
+	int m_value;
+	double m_size;
 	ValueListWidget* m_widget;
+};
+
+
+SymbolItem::SymbolItem(int value, ValueListWidget* widget)
+	: m_widget(widget)
+{
+	setShapeMode(QGraphicsPixmapItem::BoundingRectShape);
+	m_value = value;
+}
+
+int SymbolItem::value() const {
+	return m_value;
+}
+
+void SymbolItem::setSize(double size) {
+	QPixmap pic = Renderer::instance()->renderSpecial(SpecialListItem, size);
+	pic = Renderer::instance()->renderSymbolOn(pic, m_value, 0, SymbolPreset);
+
+	hide();
+	setPixmap(pic);
+	setOffset(-size*0.5, -size*0.5);
+	setPos(0, (m_value-1)*size);
+	show();
+}
+
+void SymbolItem::mousePressEvent(QGraphicsSceneMouseEvent*) {
+	m_widget->selectValueItem(value());
+}
+
+
+
+class SelectionItem : public QGraphicsPixmapItem {
+public:
+	SelectionItem();
+public:
+	void setSize(double size);
+	int selectedValue() const;
+	void selectValue(int value);
+public:
+	double m_size;
 	int m_value;
 };
 
-SymbolSelectionItem::SymbolSelectionItem(const QChar& symbol, int value, ValueListWidget* widget)
-	: SymbolGraphicsItem(symbol, 0, widget->scene()), m_widget(widget), m_value(value)
-{
+SelectionItem::SelectionItem() {
+	m_value = 0;
+	setShapeMode(QGraphicsPixmapItem::BoundingRectShape);
 }
 
-void SymbolSelectionItem::mousePressEvent(QGraphicsSceneMouseEvent*) {
-	m_widget->selectValueItem(m_value);
+void SelectionItem::setSize(double size) {
+	QPixmap pic = Renderer::instance()->renderSpecial(SpecialListCursor, size);
+	m_size = size;
+
+	hide();
+	setPixmap(pic);
+	setOffset(-size*0.5, -size*0.5);
+	setPos(0, (m_value-1) * m_size);
+	show();
 }
 
+int SelectionItem::selectedValue() const {
+	return m_value;
+}
 
+void SelectionItem::selectValue(int value) {
+	m_value = value;
+	setPos(0, (m_value-1) * m_size);
+}
 
 
 ValueListWidget::ValueListWidget(QWidget* parent)
 	: QGraphicsView(parent)
 {
-	m_table = 0;
+// 	m_table = 0;
 	
-	setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 	
 	m_scene = new QGraphicsScene(this);
 	setScene(m_scene);
 	
-	m_selectionItem = new QGraphicsRectItem(-4.5, 0.5, 9, 9, 0, m_scene);
-
-///
-    KStatefulBrush stattefulBrush(KColorScheme::View, KColorScheme::NormalText);
-
-    dynamic_cast< QGraphicsRectItem* >(m_selectionItem)->setPen(stattefulBrush.brush(QPalette::Active).color());
-///
-
-	m_selectionItem->setPos(0, 0);
+	m_selectionItem = new SelectionItem();
+	m_scene->addItem(m_selectionItem);
 	
 	m_maxValue = 1;
 	m_selectedValue = 1;
@@ -118,45 +132,50 @@ ValueListWidget::ValueListWidget(QWidget* parent)
 ValueListWidget::~ValueListWidget() {
 }
 
-SymbolTable* ValueListWidget::currentTable() const {
-	return m_table;
-}
+// SymbolTable* ValueListWidget::currentTable() const {
+// 	return m_table;
+// }
 
-void ValueListWidget::setCurrentTable(SymbolTable* table, int maxValue) {
-	m_table = table;
+// void ValueListWidget::setCurrentTable(SymbolTable* table, int maxValue) {
+void ValueListWidget::setMaxValue(int maxValue) {
 	m_maxValue = maxValue;
-	
-	SymbolSelectionItem* item;
-	while(!m_symbols.empty()) {
-		delete m_symbols.takeLast();
+
+	SymbolItem* item;
+	QList<SymbolItem*>::iterator it;
+	for(it = m_symbols.begin(); it != m_symbols.end(); ++it) {
+		delete *it;
 	}
+	m_symbols.clear();
 	
-	if(m_table) {
-		for(int i = 0; i < maxValue; ++i) {
-			item = new SymbolSelectionItem(m_table->symbolForValue(i+1), i+1, this);
-			item->setSize(10);
-			item->setPos(0, (i+0.5)*10);
-			m_symbols.append(item);
-		}
+	for(int i = 0; i < maxValue; ++i) {
+		item = new SymbolItem(i+1, this);
+		item->setSize(20);
+		item->setPos(0, (i+0.5)*20);
+		m_scene->addItem(item);
+		m_symbols.append(item);
 	}
-	m_scene->setSceneRect(-5, 0, 10, maxValue*10);
 	
 	if(m_selectedValue > m_maxValue) m_selectedValue = 1;
-	
-	m_scene->update();
-	
+
 	resizeEvent(0);
 }
 
 void ValueListWidget::resizeEvent(QResizeEvent*)
 {
-	fitInView(m_scene->sceneRect(), Qt::KeepAspectRatio);
+	QSize s = size();
+	// add -4 as a margin and for avoiding problems with the border
+	int size = qMin(s.width(), s.height()/m_maxValue) - 4;
+	for(int i = 0; i < m_maxValue; ++i) {
+		m_symbols[i]->setSize(size);
+	}
+	m_scene->setSceneRect(-size/2, -size/2, size, m_maxValue*size);
+	
+	m_selectionItem->setSize(size);
 }
 
 void ValueListWidget::selectValue(int value) {
 	m_selectedValue = value;
-	m_selectionItem->setPos(0, (value-1)*10);
-// 	m_scene->update();
+	m_selectionItem->selectValue(value);
 }
 
 void ValueListWidget::selectValueItem(int value) {
@@ -169,6 +188,5 @@ void ValueListWidget::wheelEvent (QWheelEvent* e) {
 	if(value <= 0) value = m_maxValue - value;
 	selectValueItem(value);
 }
-
 
 }

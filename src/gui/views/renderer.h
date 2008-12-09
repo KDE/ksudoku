@@ -46,7 +46,9 @@ enum SpecialType {
 	SpecialCellPreset  = 0x01,
 	SpecialCellMarkers = 0x02,
 	SpecialCellMistake = 0x03,
-	SpecialCursor      = 0x04
+	SpecialCursor      = 0x04,
+	SpecialListItem    = 0x05,
+	SpecialListCursor  = 0x06
 };
 
 enum SymbolType {

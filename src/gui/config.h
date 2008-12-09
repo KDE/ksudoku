@@ -31,30 +31,6 @@ namespace ksudoku {
 class Symbols;
 struct SymbolTable;
 
-class SymbolConfigListWidget : public QListWidget {
-Q_OBJECT
-Q_PROPERTY(QStringList enabledTables READ enabledTables WRITE setEnabledTables USER true)
-
-public:
-	SymbolConfigListWidget(const QList<SymbolTable*>& tables, QWidget* parent = 0);
-	~SymbolConfigListWidget();
-
-public:
-	QStringList enabledTables() const;
-	void setEnabledTables(const QStringList& tables);
-};
-
-class SymbolConfig : public QWidget {
-Q_OBJECT
-public:
-	SymbolConfig(Symbols* symbols);
-	~SymbolConfig();
-	
-private:
-	SymbolConfigListWidget* m_symbolTableView;
-	Symbols* m_symbols;
-};
-
 class GameConfig : public QWidget, private Ui::ConfigGame {
 Q_OBJECT
 public:

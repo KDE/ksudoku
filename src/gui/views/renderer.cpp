@@ -107,11 +107,15 @@ void Renderer::fillNameHashes() {
 	m_specialNames << "cell";
 	m_specialNames << "cell_mistake";
 	m_specialNames << "cursor";
+	m_specialNames << "valuelist_item";
+	m_specialNames << "valuelist_selector";
 	m_special3dNames << "cell3d";
 	m_special3dNames << "cell3d_preset";
 	m_special3dNames << "cell3d";
 	m_special3dNames << "cell3d_mistake";
 	m_special3dNames << "cursor";
+	m_special3dNames << "valuelist_item";
+	m_special3dNames << "valuelist_selector";
 	// TODO get this hardcoded values from the SVG file
 // 	m_markerName << "markers9" << "markers9" //...
 }

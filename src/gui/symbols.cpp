@@ -21,71 +21,21 @@
 
 #include "symbols.h"
 
-#include "symbols.moc"
-
-#include <KLocale>
+#include <QtCore/QChar>
 
 namespace ksudoku {
 
-///////////////////////////////////////////////////////////////////////////////
-// struct SymbolTable
-///////////////////////////////////////////////////////////////////////////////
-
-SymbolTable::SymbolTable(const QString& name, const QString& text, const QVector<QChar>& symbols)
-	: m_name(name), m_text(text), m_symbols(symbols)
-{ }
-
-int SymbolTable::maxValue() const { return m_symbols.size(); }
-QChar SymbolTable::symbolForValue(int i) const {
-	if(i <= 0 || i > maxValue()) return '\0';
-	return m_symbols[i-1];
-}
-QString SymbolTable::name() const { return m_name; }
-QString SymbolTable::text() const { return m_text; }
-
-///////////////////////////////////////////////////////////////////////////////
-// class Symbols
-///////////////////////////////////////////////////////////////////////////////
-
-Symbols::Symbols() {
-	m_possibleTables << new SymbolTable("symbols", i18n("Simple Forms"), QVector<QChar>() << 0x2610 << 0x2606 << 0x2661 << 0x263E);
-	m_possibleTables << new SymbolTable("dices", i18n("Dices"), QVector<QChar>() << 0x2680 << 0x2681 << 0x2682 << 0x2683 << 0x2684 << 0x2685);
-	m_possibleTables << new SymbolTable("digits", i18n("Digits"), QVector<QChar>() << '1' << '2' << '3' << '4' << '5' << '6' << '7' << '8' << '9');
-	m_possibleTables << new SymbolTable("letters_lower", i18n("Small Letters"), QVector<QChar>() << 'a' << 'b' << 'c' << 'd' << 'e' << 'f' << 'g' << 'h' << 'i' << 'j' << 'k' << 'l' << 'm' << 'n' << 'o' << 'p' << 'q' << 'r' << 's' << 't' << 'u' << 'v' << 'w' << 'x' << 'y' << 'z');
-	m_possibleTables << new SymbolTable("letters_upper", i18n("Capital Letters"), QVector<QChar>() << 'A' << 'B' << 'C' << 'D' << 'E' << 'F' << 'G' << 'H' << 'I' << 'J' << 'K' << 'L' << 'M' << 'N' << 'O' << 'P' << 'Q' << 'R' << 'S' << 'T' << 'U' << 'V' << 'W' << 'X' << 'Y' << 'Z');
-	
-	m_enabledTables = m_possibleTables;
+/// returns the symbol vor a value used for loading and saving
+QChar Symbols::ioValue2Symbol(int value) {
+	if(value <= 0) return '_';
+	return 'a' + value;
 }
 
-Symbols::~Symbols()
-{
-	qDeleteAll(m_possibleTables);
-}
-
-QList<SymbolTable*> Symbols::possibleTables() const {
-	return m_possibleTables;
-}
-
-QStringList Symbols::enabledTables() const {
-	QStringList tables;
-	
-	for(int i = 0; i < m_enabledTables.size(); ++i) {
-		tables << m_enabledTables[i]->name();
-	}
-	
-	return tables;
-}
-
-void Symbols::setEnabledTables(const QStringList& tables) {
-	m_enabledTables.clear();
-	
-	for(int i = 0; i < m_possibleTables.size(); ++i) {
-		SymbolTable* table = m_possibleTables[i];
-		if(tables.contains(table->name()))
-			m_enabledTables << table;
-	}
-	
-	emit tablesChanged();
+/// returns the number of the index
+int Symbols::ioSymbol2Value(const QChar& symbol) {
+	char c = symbol.toAscii();
+	if(symbol == '_') return 0;
+	return c - 'a';
 }
 
 }

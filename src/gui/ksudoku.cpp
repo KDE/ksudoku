@@ -147,8 +147,6 @@ KSudoku::KSudoku()
 
 	updateShapesList();
 
-	m_symbols.setEnabledTables(Settings::symbols());
-
 
 	QTimer *timer = new QTimer( this );
 	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
@@ -220,7 +218,6 @@ void KSudoku::startGame(const Game& game) {
 
 	view->setValueListWidget(m_valueListWidget);
 	view->createView();
-	view->setSymbolTable(m_symbols.selectTable(view->game().order()));
 
 	connect(view, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
 	connect(m_valueListWidget, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
@@ -242,7 +239,7 @@ void KSudoku::startGame(const Game& game) {
 	policy.setVerticalStretch(1);
 	widget->setSizePolicy(policy);
 
-	m_valueListWidget->setCurrentTable(m_symbols.selectTable(view->game().	order()), view->game().order());
+	m_valueListWidget->setMaxValue(view->game().order());
 	m_valueListWidget->selectValue(1);
 	m_valueListWidget->show();
 }
@@ -583,24 +580,18 @@ void KSudoku::optionsPreferences()
 	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), "games-config-options");
 	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
 
-	SymbolConfig* symbolConfig = new SymbolConfig(&m_symbols);
-	dialog->addPage(symbolConfig, i18n("Symbol Themes"), "games-config-theme");
-        dialog->setHelp(QString(),"ksudoku");
+    dialog->setHelp(QString(),"ksudoku");
 	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(updateSettings()));
 	dialog->show();
 }
 
 void KSudoku::updateSettings() {
-	m_symbols.setEnabledTables(Settings::symbols());
-
 	Renderer::instance()->loadTheme(Settings::theme());
 
 	KsView* view = currentView();
 	if(view) {
 		int order = view->game().order();
-		SymbolTable* table = m_symbols.selectTable(order);
-		view->setSymbolTable(table);
-		m_valueListWidget->setCurrentTable(table, order);
+		m_valueListWidget->setMaxValue(order);
 
 		view->settingsChanged();
 	}
