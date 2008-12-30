@@ -30,10 +30,8 @@ target_link_libraries(ksudoku
 )
 
 if(OPENGL_SUPPORT)
-# libGL needs dlopen() and friends from the dl library
-find_library(DL_LIBRARY dl)
 target_link_libraries(ksudoku
-	${QT_QTOPENGL_LIBRARY} ${OPENGL_LIBRARIES} ${DL_LIBRARY}
+	${QT_QTOPENGL_LIBRARY} ${OPENGL_LIBRARIES} ${CMAKE_DL_LIBS}
 )
 endif(OPENGL_SUPPORT)
 
