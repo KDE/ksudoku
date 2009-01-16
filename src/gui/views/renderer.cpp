@@ -181,10 +181,17 @@ QPixmap Renderer::renderSpecial(SpecialType type, int size) const {
 	return pix;
 }
 
-QPixmap Renderer::renderSymbol(int symbol, int size, SymbolType type) const {
+QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
 
-	QString cacheName = QString("symbol_%1_%2_%3").arg(symbol).arg(size).arg(type);
+	QString set;
+	if(max <= 9) {
+		set = "symbol";
+	} else {
+		set = "symbol25";
+	}
+
+	QString cacheName = QString("%1_%2_%3_%4").arg(set).arg(symbol).arg(size).arg(type);
 	QPixmap pix;
 	if(!m_cache->find(cacheName, pix)) {
 		pix = QPixmap(size, size);
@@ -202,17 +209,17 @@ QPixmap Renderer::renderSymbol(int symbol, int size, SymbolType type) const {
 		
 		switch(type) {
 			case SymbolPreset:
-				if(m_renderer->elementExists(QString("symbol_%1_preset").arg(symbol))) {
-					m_renderer->render(&p, QString("symbol_%1_preset").arg(symbol), r);
+				if(m_renderer->elementExists(QString("%1_%2_preset").arg(set).arg(symbol))) {
+					m_renderer->render(&p, QString("%1_%2_preset").arg(set).arg(symbol), r);
 				} else {
-					m_renderer->render(&p, QString("symbol_%1").arg(symbol), r);
+					m_renderer->render(&p, QString("%1_%2").arg(set).arg(symbol), r);
 				}
 				break;
 			case SymbolEdited:
-				if(m_renderer->elementExists(QString("symbol_%1_edited").arg(symbol))) {
-					m_renderer->render(&p, QString("symbol_%1_edited").arg(symbol), r);
+				if(m_renderer->elementExists(QString("%1_%2_edited").arg(set).arg(symbol))) {
+					m_renderer->render(&p, QString("%1_%2_edited").arg(set).arg(symbol), r);
 				} else {
-					m_renderer->render(&p, QString("symbol_%1").arg(symbol), r);
+					m_renderer->render(&p, QString("%1_%2").arg(set).arg(symbol), r);
 				}
 				break;
 		}
@@ -223,9 +230,9 @@ QPixmap Renderer::renderSymbol(int symbol, int size, SymbolType type) const {
 	return pix;
 }
 
-QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, SymbolType type) const {
+QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, int max, SymbolType type) const {
 	int size = pixmap.width();
-	QPixmap symbolPixmap = renderSymbol(symbol, size, type);
+	QPixmap symbolPixmap = renderSymbol(symbol, size, max, type);
 	if(color) {
 		// TODO this does not work, need some other way, maybe hardcode color into NumberType
 		QPainter p(&symbolPixmap);
@@ -246,6 +253,23 @@ QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, SymbolTy
 
 QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
+	
+	QString set;
+	if(range <= 9) {
+		set = "symbol";
+	} else {
+		set = "symbol25";
+	}
+	
+	// TODO this is a hardcoded list of possible marker-groupings
+	// replace it with a test for possible markers
+	if(range <= 9) {
+		range = 9;
+	} else if(range <= 16) {
+		range = 16;
+	} else {
+		range = 25;
+	}
 
 	QString groupName = QString("markers%1").arg(range);
 	QString cacheName = QString("%1_%2_%3").arg(groupName).arg(symbol).arg(size);
@@ -265,7 +289,7 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 		r.setTopLeft(fromRectToRect(r.topLeft(), from, to));
 		r.setBottomRight(fromRectToRect(r.bottomRight(), from, to));
 
-		m_renderer->render(&p, QString("symbol_%1").arg(symbol), r);
+		m_renderer->render(&p, QString("%1_%2").arg(set).arg(symbol), r);
 		p.end();
 		m_cache->insert(cacheName, pix);
 	}
@@ -274,6 +298,8 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 }
 
 QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const {
+	// TODO maybe it would be good to directly integrate the renderMarker implementation and
+	// make renderMarker be based on this method. (same for renderSymbol and renderSymbolOn)
 	int size = pixmap.width();
 	QPixmap symbolPixmap = renderMarker(symbol, range, size);
 	if(color) {

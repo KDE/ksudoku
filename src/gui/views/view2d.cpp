@@ -76,7 +76,7 @@ CellGraphicsItem::CellGraphicsItem(QPoint pos, int id, View2DScene* scene) {
 	m_scene = scene;
 	m_id = id;
 	m_type = SpecialCell;
-	m_range = 9; // TODO change this hardcoded value
+	m_range = scene->maxValue();
 }
 
 void CellGraphicsItem::resize(int gridSize) {
@@ -132,12 +132,12 @@ void CellGraphicsItem::updatePixmap() {
 		case SpecialCell:
 		case SpecialCellMistake:
 			if(m_values.size() > 0) {
-				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, m_values[0].color, SymbolEdited);
+				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, m_values[0].color, m_range, SymbolEdited);
 			}
 			break;
 		case SpecialCellPreset:
 			if(m_values.size() > 0) {
-				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, 0, SymbolPreset);
+				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, 0, m_range, SymbolPreset);
 			}
 			break;
 		case SpecialCellMarkers: {
