@@ -48,6 +48,8 @@ public:
 	void hover(int cell);
 	void press(int cell, bool rightButton = false);
 
+	inline int maxValue() const { return m_game.order(); }
+
 public slots:
 	void selectValue(int val);
 	void enterValue(int val, int cell=-1);

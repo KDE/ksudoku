@@ -32,23 +32,26 @@ namespace ksudoku {
 
 class SymbolItem : public QGraphicsPixmapItem {
 public:
-	SymbolItem(int value, ValueListWidget* widget);
+	SymbolItem(int value, int maxValue, ValueListWidget* widget);
 public:
 	int value() const;
+	int maxValue() const;
 	void setSize(double size);
 	void mousePressEvent(QGraphicsSceneMouseEvent* event);
 private:
 	int m_value;
+	int m_maxValue;
 	double m_size;
 	ValueListWidget* m_widget;
 };
 
 
-SymbolItem::SymbolItem(int value, ValueListWidget* widget)
+SymbolItem::SymbolItem(int value, int maxValue, ValueListWidget* widget)
 	: m_widget(widget)
 {
 	setShapeMode(QGraphicsPixmapItem::BoundingRectShape);
 	m_value = value;
+	m_maxValue = maxValue;
 }
 
 int SymbolItem::value() const {
@@ -57,7 +60,7 @@ int SymbolItem::value() const {
 
 void SymbolItem::setSize(double size) {
 	QPixmap pic = Renderer::instance()->renderSpecial(SpecialListItem, size);
-	pic = Renderer::instance()->renderSymbolOn(pic, m_value, 0, SymbolPreset);
+	pic = Renderer::instance()->renderSymbolOn(pic, m_value, 0, m_maxValue, SymbolPreset);
 
 	hide();
 	setPixmap(pic);
@@ -113,8 +116,6 @@ void SelectionItem::selectValue(int value) {
 ValueListWidget::ValueListWidget(QWidget* parent)
 	: QGraphicsView(parent)
 {
-// 	m_table = 0;
-	
 	setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
@@ -132,11 +133,6 @@ ValueListWidget::ValueListWidget(QWidget* parent)
 ValueListWidget::~ValueListWidget() {
 }
 
-// SymbolTable* ValueListWidget::currentTable() const {
-// 	return m_table;
-// }
-
-// void ValueListWidget::setCurrentTable(SymbolTable* table, int maxValue) {
 void ValueListWidget::setMaxValue(int maxValue) {
 	m_maxValue = maxValue;
 
@@ -148,7 +144,7 @@ void ValueListWidget::setMaxValue(int maxValue) {
 	m_symbols.clear();
 	
 	for(int i = 0; i < maxValue; ++i) {
-		item = new SymbolItem(i+1, this);
+		item = new SymbolItem(i+1, maxValue, this);
 		item->setSize(20);
 		item->setPos(0, (i+0.5)*20);
 		m_scene->addItem(item);

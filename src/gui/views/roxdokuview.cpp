@@ -136,7 +136,7 @@ void RoxdokuView::initializeGL()
 			int sz = 64;
 			QPixmap pic = Renderer::instance()->renderSpecial3D(SpecialCell, sz);
 			if(i != 0) {
-				pic = Renderer::instance()->renderSymbolOn(pic, i, 0, SymbolPreset);
+				pic = Renderer::instance()->renderSymbolOn(pic, i, 0, 9+o*16, SymbolPreset);
 			}
 			QImage pix = convertToGLFormat(pic.toImage());
 	
