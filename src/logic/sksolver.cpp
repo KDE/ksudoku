@@ -21,7 +21,7 @@
 
 #include "sudoku_solver.h"
 
-// #include <stdio.h>
+#include <stdio.h>
 // #include <cstdlib>
 
 #include <time.h>
@@ -207,7 +207,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 	ITERATE(q, to)
 	{
 		int idx = RANDOM(p->size);  //2FIX
-		printf("%d/%d\n", q,to);
+		//printf("%d/%d\n", q,to);
 		int index [4]; //{idx, };
 		int index_d = get_simmetric(order, size,simmetry, idx, which, index);
 
@@ -216,7 +216,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 			go=false;
 		if(!go)
 		{
-			printf("unlinked node %d %d\n",index_d,simmetry);
+			//printf("unlinked node %d %d\n",index_d,simmetry);
 			q--;
 			continue;
 		}
@@ -248,7 +248,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int simmetry, int type)
 
 
 	int numberOfNumbersToAdd = (7*(3-level)*(((type!=1) ? ((int) sqrt((double)(p->size))) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
- 	printf("%d\n", numberOfNumbersToAdd);
+ 	//printf("%d\n", numberOfNumbersToAdd);
 
 	ITERATE(i, numberOfNumbersToAdd)
 	{
