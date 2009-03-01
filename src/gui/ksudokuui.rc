@@ -1,5 +1,11 @@
-<!DOCTYPE kpartgui SYSTEM "kpartgui.dtd">
-<kpartgui name="ksudoku" version="4">
+<?xml version="1.0" encoding="UTF-8"?>
+<gui name="ksudoku"
+     version="4"
+     xmlns="http://www.kde.org/standards/kxmlgui/1.0"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
+                         http://www.kde.org/standards/kxmlgui/1.0/kxmlgui.xsd">
+
 <MenuBar>
 	<Menu noMerge="1" name="game" ><text>&amp;Game</text>
 		<Action group="game_merge" name="game_new"  />
@@ -37,7 +43,7 @@
 	<Action name="game_new" />
 </ToolBar>
 
-<ToolBar noMerge="1" name="actionsToolbar" position="Top">
+<ToolBar noMerge="1" name="actionsToolbar" position="top">
 	<text>Actions Toolbar</text>
 	<Action name="move_hint" />
 	<Action name="move_solve" />
@@ -54,4 +60,4 @@
 	</disable>
 </State>
 
-</kpartgui>
+</gui>
