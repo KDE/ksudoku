@@ -3,8 +3,6 @@
 <!ENTITY ksudoku "Ksudoku">
 <!ENTITY kappname "&ksudoku;"> 
   <!ENTITY kappversion "0.5"><!--Applicaion version. Use this variable everywhere it's needed.-->
-  <!ENTITY docversion "1.0"><!--Document version. Use this variable everywhere it's needed.-->
-  <!ENTITY docupdate "2007-11-14"><!--Document version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
@@ -35,8 +33,8 @@
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
  
-<date>&docupdate;</date><!-- Date of (re)writing, ro update. Use the variable definitions within header to change this value.-->
-<releaseinfo>&docversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+<date>2007-11-14</date><!-- Date of (re)writing, or update.-->
+<releaseinfo>&kappversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
  
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
@@ -49,7 +47,7 @@
 	<keyword>kdegames</keyword> <!-- do not change this! -->
 	<keyword>game</keyword> <!-- do not change this! -->
 	<keyword>ksudoku</keyword><!--Application name goes here-->
-<!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<keyword>logic</keyword>
 	<keyword>board</keyword>
 <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
@@ -60,7 +58,7 @@
 </bookinfo>
 <!--Content begins here: -->
 <chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
-	<note><title>Gametype:</title><para>Logic, Board</para></note><!-- Game genre. use as many as necessary.Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note><title>Gametype:</title><para>Logic, Board</para></note><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
 	<note><title>Number of possible players:</title><para>One</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
  	<para>&kappname; is a logic-based symbol placement puzzle.</para>
 <para>The player has to fill a grid so that each column, row as well as each square block on the game field contains only one instance of each symbol.</para>
@@ -289,22 +287,6 @@ below, with one addition:</para>
 <qandaset>
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
-<question><para>Who made this game?</para></question>
- <answer><para>The kdegames team. You can find their website <ulink url="http://games.kde.org">here</ulink>.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>Where can I get cheatcodes? </para></question>
- <answer><para>You cannot get cheatcodes for &kde; games.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>How do I start a new game? </para></question>
- <answer><para>To start a new game use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut><guimenu>Game</guimenu><guimenuitem>New</guimenuitem></menuchoice> on the menubar or click the <guibutton>New</guibutton> button on the toolbar.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>How do I pause the game? </para></question>
- <answer><para>&kappname; does not have a 'Pause' feature.</para></answer>
-</qandaentry>
-<qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
  <answer><para>Sudoku games are traditionally played using square grid. Themes would not make much sense here. However, you can select the set of symbols used in game. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>  on menubar.</para></answer>
 </qandaentry>
@@ -313,32 +295,12 @@ below, with one addition:</para>
  <answer><para>Each set contains a limited number of possible symbols. If you have chosen the set which has less symbols then your current game requires, the application will complain by displaying question marks. Change the set to fix the problem.</para></answer>
 </qandaentry>
 <qandaentry>
- <question><para>I have made a mistake. Can I undo? </para></question>
- <answer><para>Yes. To undo use <menuchoice><shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut><guimenu>Move</guimenu><guimenuitem>Undo</guimenuitem></menuchoice>.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>Can I use keyboard? </para></question>
+ <question><para>Can I use the keyboard to play this game? </para></question>
  <answer><para>Yes. In &kappname; keyboard play is always enabled. Please use cursor keys to move the selection, numeric characters to enter the symbols and &Shift; key to apply markers.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>I cannot figure out what to do here! Are there hints? </para></question>
- <answer><para>Yes. To access 'Hint' feature use <menuchoice><shortcut><keycap>H</keycap></shortcut><guimenu>Move</guimenu><guimenuitem>Hint</guimenuitem></menuchoice> on the menubar.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>I have to quit the game now, but I am not finished yet. Can I save my progress?</para></question>
-  <answer><para>Yes. To access 'Save' feature use <menuchoice>
-					<shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
-					<guimenu>Game</guimenu>
-					<guimenuitem>Save</guimenuitem>
-				</menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
  <answer><para>&kappname; does not have this feature.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>I want to change the game configuration. Where do I go? </para></question>
- <answer><para>To access the game settings use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice> on the menubar. See the <link linkend="configuration">Game Configuration</link> section for details.</para></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
  
