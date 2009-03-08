@@ -1,5 +1,6 @@
 [Desktop Entry]
 Name=KSudoku
+Name[hne]=के-सुडोकु
 Name[sv]=Ksudoku
 Name[x-test]=xxKSudokuxx
 Exec=ksudoku %i -caption "%c"
@@ -20,6 +21,7 @@ GenericName[fi]=Sudoku-peli
 GenericName[fr]=Jeu de Sudoku
 GenericName[ga]=Cluiche Sudoku
 GenericName[gl]=Xogo de Sudokus
+GenericName[hne]=सुडोकु खेल
 GenericName[hu]=Számkirakós
 GenericName[it]=Gioco del Sudoku
 GenericName[ja]=数字パズルゲーム
@@ -56,6 +58,7 @@ Comment[fi]=KSudoku, Sudoku-peli ja enemmän KDE:lle
 Comment[fr]=KSudoku, jeu de Sodoku et plus pour KDE
 Comment[ga]=KSudoku, Cluiche Sudoku KDE agus tuilleadh
 Comment[gl]=KSudoku, o xogo do sudoku, e máis, para KDE
+Comment[hne]=के-सुडोकु, सुडोकु खेल अउ केडीई बर अधिक
 Comment[hu]=KSudoku, egy KDE-alapú szúdoku
 Comment[it]=KSudoku, gioco del Sudoku ed altri per KDE
 Comment[ja]=KSudoku, KDE の数字パズルゲーム
