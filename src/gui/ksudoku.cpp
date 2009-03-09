@@ -165,7 +165,7 @@ void KSudoku::updateShapesList()
 	GameVariant* variant = 0;
 
 	variant = new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
-	variant->setDescription(i18n("The classic and fashion game"));
+	variant->setDescription(i18n("The classic and fashionable game"));
 	variant->setIcon("ksudoku-ksudoku_9x9");
 	variant = new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 16 symbols"));
@@ -306,7 +306,7 @@ void KSudoku::dubPuzzle()
 	int state = puzzle->init(game.allValues(), &forks);
 
 	if(state <= 0) {
-		KMessageBox::information(this, i18n("Sorry, No solutions have been found."));
+		KMessageBox::information(this, i18n("Sorry, no solutions have been found."));
 		delete puzzle;
 		return;
 	} else if(state == 1) {
