@@ -1,0 +1,9 @@
+[KGameTheme]
+Name=ksudoku_egyptian
+Description=KSudoku egyptian style theme
+VersionFormat=1
+Author=Sean Wilson
+AuthorEmail=suseux@gmail.com
+Type=SVG
+FileName=ksudoku_egyptian.svg
+Preview=egyptian_preview.png
