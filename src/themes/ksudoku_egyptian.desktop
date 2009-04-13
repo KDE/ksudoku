@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=ksudoku_egyptian
+Name[sv]=Egyptisk Ksoduku
 Description=KSudoku egyptian style theme
+Description[sv]=Ksudoku-tema med egyptisk stil
+Description[uk]=KSudoku, тема у єгипетському стилі
+Description[zh_TW]=KSudoku，埃及風格
 VersionFormat=1
 Author=Sean Wilson
 AuthorEmail=suseux@gmail.com
