@@ -1,6 +1,8 @@
 [Desktop Entry]
 Name=KSudoku
 Name[hne]=के-सुडोकु
+Name[sr]=К‑судоку
+Name[sr@latin]=K‑sudoku
 Name[sv]=Ksudoku
 Name[x-test]=xxKSudokuxx
 Exec=ksudoku %i -caption "%c"
@@ -38,6 +40,8 @@ GenericName[pt_BR]=Jogo Lógico Sudoku
 GenericName[ro]=Joc sudoku
 GenericName[ru]=Игра Судоку
 GenericName[sl]=Igra Sudokuja
+GenericName[sr]=Игра „судоку“
+GenericName[sr@latin]=Igra „sudoku“
 GenericName[sv]=Sudoku-spel
 GenericName[tr]=Sudoku Oyunu
 GenericName[uk]=Гра у Судоку
@@ -75,6 +79,8 @@ Comment[pt_BR]=KSudoku, Jogo Sudoku e variações para KDE
 Comment[ro]=KSudoku, joc de sudoku și altele pentru KDE
 Comment[ru]=KSudoku — больше, чем судоку для KDE
 Comment[sl]=KSudoku, igra Sudoku in ostale za KDE
+Comment[sr]=К‑судоку, судоку и још штошта за КДЕ
+Comment[sr@latin]=K‑sudoku, sudoku i još štošta za KDE
 Comment[sv]=Ksudoku, Sudoku-spel med mera för KDE
 Comment[tr]=KDE için sudoku oyunu
 Comment[uk]=KSudoku, Гра у судоку і інше для KDE

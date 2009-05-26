@@ -2,6 +2,8 @@
 Name=XSudoku
 Name[hne]=एक्स-सुडोकु
 Name[ne]=एक्स सुडोकु
+Name[sr]=Икс‑судоку
+Name[sr@latin]=X‑sudoku
 Name[sv]=Xsudoku
 Name[te]=ఎక్స్ సుడొకు
 Name[x-test]=xxXSudokuxx
@@ -34,6 +36,8 @@ Description[pt]=Puzzle com o formato do XSudoku
 Description[pt_BR]=Quebra-cabeça em formato XSudoku
 Description[ru]=Головоломка в форме X
 Description[sl]=Uganka v obliki XSudoku
+Description[sr]=Судоку загонетка за Икс
+Description[sr@latin]=Sudoku zagonetka za X
 Description[sv]=Xsudoku-format spel
 Description[uk]=XSudoku — головоломка з частинок
 Description[x-test]=xxXSudoku shape puzzlexx
