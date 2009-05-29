@@ -1,10 +1,12 @@
 [KGameTheme]
 Name=ksudoku_egyptian
+Name[da]=ksudoku_egyptisk
 Name[sr]=Египатски
 Name[sr@latin]=Egipatski
 Name[sv]=Egyptisk Ksoduku
 Name[x-test]=xxksudoku_egyptianxx
 Description=KSudoku egyptian style theme
+Description[da]=KSudoku-tema i egyptisk stil
 Description[el]=KSudoku αιγυπτιακό θέμα στυλ
 Description[et]=KSudoku Egiptuse stiilis teema
 Description[pt]=Tema de estilo Egípcio para o KSudoku
