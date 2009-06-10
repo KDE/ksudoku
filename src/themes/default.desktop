@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=ksudoku_egyptian
+Name[ca]=ksudoku_egipci
 Name[da]=ksudoku_egyptisk
 Name[de]=Ägyptisch
 Name[sr]=Египатски
@@ -7,6 +8,7 @@ Name[sr@latin]=Egipatski
 Name[sv]=Egyptisk Ksoduku
 Name[x-test]=xxksudoku_egyptianxx
 Description=KSudoku egyptian style theme
+Description[ca]=Tema d'estil egipci pel KSudoku
 Description[da]=KSudoku-tema i egyptisk stil
 Description[de]=Das ägyptische Design für KSudoku.
 Description[el]=KSudoku αιγυπτιακό θέμα στυλ
