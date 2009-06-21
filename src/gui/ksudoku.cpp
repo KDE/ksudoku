@@ -497,7 +497,7 @@ void KSudoku::gameOpen()
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
 	// button is clicked
 	// standard filedialog
-	KUrl Url = KFileDialog::getOpenUrl(KUrl(), QString(), this, i18n("Open Location"));
+	KUrl Url = KFileDialog::getOpenUrl(KUrl("kfiledialog:///ksudoku"), QString(), this, i18n("Open Location"));
 
 	if (!Url.isEmpty() && Url.isValid())
 	{
@@ -525,7 +525,7 @@ void KSudoku::gameSave()
 	Game game = currentGame();
 	if(!game.isValid()) return;
 
-	if(game.getUrl().isEmpty()) game.setUrl(KFileDialog::getSaveUrl());
+	if(game.getUrl().isEmpty()) game.setUrl(KFileDialog::getSaveUrl(KUrl("kfiledialog:///ksudoku")));
  	if (!game.getUrl().isEmpty() && game.getUrl().isValid())
 		ksudoku::Serializer::store(game, game.getUrl(), this);
 }
@@ -536,7 +536,7 @@ void KSudoku::gameSaveAs()
 	Game game = currentGame();
 	if(!game.isValid()) return;
 
-	game.setUrl(KFileDialog::getSaveUrl());
+	game.setUrl(KFileDialog::getSaveUrl(KUrl("kfiledialog:///ksudoku")));
     if (!game.getUrl().isEmpty() && game.getUrl().isValid())
     	gameSave();
 }
