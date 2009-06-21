@@ -382,7 +382,7 @@ void KSudoku::adaptActions2View() {
 	m_gameSaveAs->setEnabled(game.isValid());
 	if(game.isValid()) {
 		action("move_undo")->setEnabled(game.canUndo());
-		action("move_undo")->setEnabled(game.canRedo());
+		action("move_redo")->setEnabled(game.canRedo());
 
 		action("move_hint")      ->setEnabled(   game.puzzle()->hasSolution());
 		action("move_solve")     ->setEnabled(   game.puzzle()->hasSolution());
