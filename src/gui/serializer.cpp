@@ -148,7 +148,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	if(solutionStr.length() != 0) {
 		solution.resize(solver->g->size);
 		for(int i = 0; i < solver->g->size; ++i) {
-			solution[i] = Symbols::ioSymbol2Value(valuesStr[i]);
+			solution[i] = Symbols::ioSymbol2Value(solutionStr[i]);
 		}
 	}
 	
@@ -416,7 +416,7 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 	if(puzzle->hasSolution()) {
 		contentStr = QString();
 		for(int i = 0; i < puzzle->size(); ++i) {
-			contentStr += Symbols::ioValue2Symbol(puzzle->value(i));
+			contentStr += Symbols::ioValue2Symbol(puzzle->solution(i));
 		}
 		content = doc.createElement("solution");
 		content.appendChild(doc.createTextNode(contentStr));
