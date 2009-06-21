@@ -96,19 +96,19 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 
 }
 
-void KSudoku::updateStatusBar()
-{
-	QString m="";
-// 	QWidget* current = m_tabs->currentPage();
-// 	if(KsView* view = dynamic_cast<KsView*>(current))
-// 		m = view->status();
-// 	if(currentView())
-// 		m = currentView()->status();
-
-	// TODO fix this: add new status bar generation code
-
-	statusBar()->showMessage(m);
-}
+// void KSudoku::updateStatusBar()
+// {
+// 	QString m="";
+// // 	QWidget* current = m_tabs->currentPage();
+// // 	if(KsView* view = dynamic_cast<KsView*>(current))
+// // 		m = view->status();
+// // 	if(currentView())
+// // 		m = currentView()->status();
+// 
+// 	// TODO fix this: add new status bar generation code
+// 
+// 	statusBar()->showMessage(m);
+// }
 
 KSudoku::KSudoku()
 	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true))
@@ -123,9 +123,7 @@ KSudoku::KSudoku()
 	// then, setup our actions
 	setupActions();
 
-	// and a status bar
-	statusBar()->show();
-	setupGUI();
+	setupGUI(ToolBar | Keys | Save | Create);
 
 	wrapper = new QWidget();
 	(void) new QHBoxLayout(wrapper);
@@ -147,11 +145,10 @@ KSudoku::KSudoku()
 
 	updateShapesList();
 
-
-	QTimer *timer = new QTimer( this );
-	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
-	updateStatusBar();
-	timer->start( 1000); //TODO PORT, false ); // 2 seconds single-shot timer
+// 	QTimer *timer = new QTimer( this );
+// 	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
+// 	updateStatusBar();
+// 	timer->start( 1000); //TODO PORT, false ); // 2 seconds single-shot timer
 }
 
 KSudoku::~KSudoku()
@@ -599,11 +596,11 @@ void KSudoku::updateSettings() {
 	emit settingsChanged();
 }
 
-void KSudoku::changeStatusbar(const QString& text)
-{
-    // display the text on the statusbar
-    statusBar()->showMessage(text);
-}
+// void KSudoku::changeStatusbar(const QString& text)
+// {
+//     // display the text on the statusbar
+//     statusBar()->showMessage(text);
+// }
 
 void KSudoku::changeCaption(const QString& text)
 {

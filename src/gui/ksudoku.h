@@ -119,12 +119,12 @@ private slots:
 
 	void optionsPreferences();
 	void updateSettings();
-	void changeStatusbar(const QString& text);
 	void changeCaption(const QString& text);
+//  void updateStatusBar();
+//  void changeStatusbar(const QString& text);
 
 	void homepage();
 
-	void updateStatusBar();
 
 	void onModified(bool isModified);
 
