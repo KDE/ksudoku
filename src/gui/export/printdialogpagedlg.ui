@@ -88,7 +88,7 @@
            </widget>
           </item>
           <item>
-           <widget class="QSpinBox" name="sbScale" >
+           <widget class="KIntSpinBox" name="sbScale" >
             <property name="suffix" >
              <string>%</string>
             </property>
@@ -165,9 +165,13 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <includes>
-  <include location="local" >knuminput.h</include>
- </includes>
+ <customwidgets>
+  <customwidget>
+   <class>KIntSpinBox</class>
+   <extends>QSpinBox</extends>
+   <header>knuminput.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections>
   <connection>
