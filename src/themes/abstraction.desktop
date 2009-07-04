@@ -1,0 +1,9 @@
+[KGameTheme]
+Name=Abstraction
+Description=A ksudoku theme with abstract artwork.
+VersionFormat=1
+Author=Johannes Bergmeier
+AuthorEmail=Johannes.Bergmeier@gmx.net
+Type=SVG
+FileName=abstraction.svg
+#Preview=sample_preview.png
