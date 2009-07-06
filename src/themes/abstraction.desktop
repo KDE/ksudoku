@@ -1,6 +1,16 @@
 [KGameTheme]
 Name=Abstraction
+Name[pt]=Abstracção
+Name[pt_BR]=Abstração
+Name[sv]=Abstraktion
+Name[uk]=Абстракція
+Name[zh_TW]=抽象
 Description=A ksudoku theme with abstract artwork.
+Description[pt]=Um tema do Sudoku com arte abstracta.
+Description[pt_BR]=Um tema do KSudoku com uma arte abstrata.
+Description[sv]=Ett tema för Ksudoku med abstrakt konst.
+Description[uk]=Тема ksudoku у дусі абстрактного мистецтва.
+Description[zh_TW]=抽象式的 ksudoku 外觀主題。
 VersionFormat=1
 Author=Johannes Bergmeier
 AuthorEmail=Johannes.Bergmeier@gmx.net
