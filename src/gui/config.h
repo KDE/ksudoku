@@ -28,7 +28,6 @@
 
 namespace ksudoku {
 
-class Symbols;
 struct SymbolTable;
 
 class GameConfig : public QWidget, private Ui::ConfigGame {

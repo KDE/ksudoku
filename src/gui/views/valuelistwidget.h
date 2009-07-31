@@ -26,7 +26,6 @@
 
 #include "symbols.h"
 
-class QGraphicsPixmapItem;
 
 namespace ksudoku {
 
