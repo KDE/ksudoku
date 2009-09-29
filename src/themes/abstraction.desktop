@@ -2,6 +2,7 @@
 Name=Abstraction
 Name[de]=Abstrakt
 Name[es]=Abstracción
+Name[et]=Abstraktne
 Name[gl]=Abstracción
 Name[nds]=Afstrakschoon
 Name[nn]=Abstrakt
@@ -17,6 +18,7 @@ Name[zh_TW]=抽象
 Description=A ksudoku theme with abstract artwork.
 Description[de]=Ein Design für Ksudoku mit abstrakter Kunst.
 Description[es]=Un tema de KSudoku con gráficos abstractos.
+Description[et]=Ksudoku abstraktse kunsti teema
 Description[gl]=Un tema de ksudoku cun deseño abstracto.
 Description[nds]=En KSudoku-Muster mit afstrakt Billerwark
 Description[nn]=Tema med abstrakte former.
