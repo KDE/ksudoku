@@ -1,6 +1,7 @@
 [KGameTheme]
 Name=Abstraction
 Name[de]=Abstrakt
+Name[en_GB]=Abstraction
 Name[es]=Abstracción
 Name[et]=Abstraktne
 Name[gl]=Abstracción
@@ -17,6 +18,7 @@ Name[x-test]=xxAbstractionxx
 Name[zh_TW]=抽象
 Description=A ksudoku theme with abstract artwork.
 Description[de]=Ein Design für Ksudoku mit abstrakter Kunst.
+Description[en_GB]=A ksudoku theme with abstract artwork.
 Description[es]=Un tema de KSudoku con gráficos abstractos.
 Description[et]=Ksudoku abstraktse kunsti teema
 Description[gl]=Un tema de ksudoku cun deseño abstracto.
