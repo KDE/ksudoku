@@ -3,10 +3,7 @@ set(ksudoku_logic_SRCS
 	skbase.cpp
 	skpuzzle.cpp
 	sksolver.cpp
-	puzzlefactory.cpp
 	puzzle.cpp
-	solver.cpp
-	solverstate.cpp
 )
 
 kde4_add_library(ksudoku_logic STATIC ${ksudoku_logic_SRCS})

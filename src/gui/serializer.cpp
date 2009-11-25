@@ -127,11 +127,11 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	}
 	
 	if(!solver) return 0;
-	if(valuesStr.length() != solver->g->size) {
+	if(valuesStr.length() != solver->g->size()) {
 		delete solver;
 		return 0;
 	}
-	if(solutionStr.length() != 0 && solutionStr.length() != solver->g->size) {
+	if(solutionStr.length() != 0 && solutionStr.length() != solver->g->size()) {
 		delete solver;
 		return 0;
 	}
@@ -139,15 +139,15 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	Puzzle* puzzle = new Puzzle(solver, hasSolution);
 	
 	QByteArray values;
-	values.resize(solver->g->size);
-	for(int i = 0; i < solver->g->size; ++i) {
+	values.resize(solver->g->size());
+	for(int i = 0; i < solver->g->size(); ++i) {
 		values[i] = Symbols::ioSymbol2Value(valuesStr[i]);
 	}
 	
 	QByteArray solution;
 	if(solutionStr.length() != 0) {
-		solution.resize(solver->g->size);
-		for(int i = 0; i < solver->g->size; ++i) {
+		solution.resize(solver->g->size());
+		for(int i = 0; i < solver->g->size(); ++i) {
 			solution[i] = Symbols::ioSymbol2Value(solutionStr[i]);
 		}
 	}
@@ -185,10 +185,17 @@ SKSolver* Serializer::deserializeGraph(QDomElement element) {
 		return 0;
 	
 	bool d3 = false;
-	if(type == "roxdoku")
-		d3 = true;
-	else if(type == "custom")
-	{
+	if(type == "sudoku") {
+		GraphSudoku *graph = new GraphSudoku(order);
+		graph->init();
+		SKSolver *solver = new SKSolver(graph);
+		return solver;
+	} else if(type == "roxdoku") {
+		GraphRoxdoku *graph = new GraphRoxdoku(order);
+		graph->init();
+		SKSolver *solver = new SKSolver(graph);
+		return solver;
+	} else if(type == "custom") {
 		int err=0;
 		int ncliques = readInt(element,"ncliques", &err);
 		int sizeX = readInt(element,"sizeX",&err);
@@ -219,14 +226,10 @@ SKSolver* Serializer::deserializeGraph(QDomElement element) {
 		if(gc->valid==false) return 0;
 		
 		SKSolver* solver = new SKSolver(gc);
-		solver->setType(custom);
 		return solver;
 	}
 	
-
-	SKSolver* solver = new SKSolver(order, d3);
-	solver->init();
-	return solver;
+	return 0;
 }
 
 QList<HistoryEvent> Serializer::deserializeHistory(QDomElement element) {
@@ -429,12 +432,12 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 
 bool Serializer::serializeGraph(QDomElement& parent, const SKSolver* puzzle) {
 	QDomElement element = parent.ownerDocument().createElement("graph");
-	element.setAttribute("order", puzzle->order);
+	element.setAttribute("order", puzzle->g->order());
 	//element.setAttribute("size", puzzle->size());
 	
-	GameType type = puzzle->type();
-	element.setAttribute("type" , (type == sudoku) ? "sudoku" : (type == roxdoku) ? "roxdoku" : "custom");
-	if(type == custom)
+	GameType type = puzzle->g->type();
+	element.setAttribute("type" , (type == TypeSudoku) ? "sudoku" : (type == TypeRoxdoku) ? "roxdoku" : "custom");
+	if(type == TypeCustom)
 	{
 		GraphCustom* g = (GraphCustom*) puzzle->g;
 		element.setAttribute("ncliques", (int) g->cliques.size());

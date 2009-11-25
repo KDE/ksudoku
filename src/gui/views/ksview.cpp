@@ -56,18 +56,18 @@ KsView::~KsView()
 void KsView::createView() {
 	GameType type = m_game.puzzle()->gameType();
 	switch(type) {
-		case sudoku: {
+		case TypeSudoku: {
 // 			setWidget(new SudokuView(0, m_game, false));
 			setWidget(new View2D(0, m_game, m_gameActions));
 			break;
 		}
-		case custom: {
+		case TypeCustom: {
 // 			setWidget(new SudokuView(0, m_game, true));
 			setWidget(new View2D(0, m_game, m_gameActions));
 			break;
 		}
 #ifdef OPENGL_SUPPORT
-		case roxdoku: {
+		case TypeRoxdoku: {
 			setWidget(new RoxdokuView(m_game, 0, 0));
 			break;
 		}

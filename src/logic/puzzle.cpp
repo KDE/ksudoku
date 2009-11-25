@@ -25,6 +25,7 @@
 #include <qstring.h>
 
 #include <QtDebug>
+#include <choiceitem.h>
 
 namespace ksudoku {
 
@@ -52,7 +53,7 @@ bool Puzzle::init() {
 	if(m_withSolution)
 		return false;
 
-	m_puzzle = new SKPuzzle(m_solver->g->order, m_solver->g->type, m_solver->g->size);
+	m_puzzle = new SKPuzzle(m_solver->g->order(), m_solver->g->oldtype, m_solver->g->size());
 
 	for(int i = 0; i < m_puzzle->size; ++i)
 		m_puzzle->numbers[i] = 0;
@@ -61,68 +62,142 @@ bool Puzzle::init() {
 	return true;
 }
 
-bool Puzzle::init(int difficulty, int symmetry) {
-	if(m_puzzle)
-		return false;
-	
-	SKPuzzle* puzzle = new SKPuzzle(m_solver->g->order, m_solver->g->type, m_solver->g->size);
-	
-	if(!puzzle)
-		return false;
-	
-	qDebug() << QString("Init a new game (difficulty %1, symmetry %2)").arg(difficulty).arg(symmetry);
-
-//	std::srand( time(0) );
-	m_solver->solve(puzzle, 1, puzzle);
-
-	qDebug() << QString("Solved game (difficulty %1, symmetry %2)").arg(difficulty).arg(symmetry);
-
-	SKPuzzle* solution = 0;
-	if(m_withSolution) {
-		solution = new SKPuzzle(m_solver->g->order, m_solver->g->type);
-		
-		if(!solution) {
-			delete puzzle;
-			return false;
+bool Puzzle::createPartial(Solver *solver)
+{
+	// TODO after finding a solution try to find simpler ones
+	const Ruleset *ruleset = m_solver->g->rulset();
+	const ItemBoard *board = m_solver->g->board();
+	for(;;) {
+		ChoiceItem *choiceItem;
+		for(;;) {
+			int x = rand() % board->size(0);
+			int y = rand() % board->size(1);
+			int z = rand() % board->size(2);
+			Item *item = board->itemAt(x, y, z);
+			if(!item) continue;
+			choiceItem = static_cast<ChoiceItem*>(item);
+			if(choiceItem->value(&solver->state())) continue;
+			break;
 		}
-		
-		m_solver->copy(solution, puzzle);
+		// TODO don't iterate from the minimum to the maximum
+		// this will create relative easy puzzles with concentration of low values and almost no to none 9
+		// TODO prepare the state to speedup deeper tries
+		int min = choiceItem->minValue();
+		int max = choiceItem->maxValue();
+		int range = choiceItem->maxValue() - min + 1;
+		int start = rand() % range;
+		// count from start downward and continuing with max after min
+		for(int i = range+start; i > start; --i) {
+			int val = min + i % range;
+			
+			if(!choiceItem->marker(&solver->state(), val)) continue;
+
+			solver->push();
+			choiceItem->setValue(&solver->state(), val);
+			solver->push();
+			solver->solve();
+			int count = solver->results().count();
+			if(count == 1) 
+				m_solver->problemToPuzzle(m_solution, &solver->results()[0]);
+			solver->pop();
+			
+			if(count == 1) {
+				m_solver->problemToPuzzle(m_puzzle, &solver->state());
+				return true;
+			} else if(count > 1) {
+				if(createPartial(solver))
+					return true;
+			}
+			
+			solver->pop();
+		}
 	}
-	
-	m_solver->remove_numbers(puzzle, difficulty, symmetry, m_solver->g->type); //why was it 1?
-	m_difficulty = difficulty;
-	m_symmetry   = symmetry  ;
-	
-	m_puzzle   = puzzle  ;
-	m_solution = solution;
-	return true;
+	return false;
+}
+
+bool Puzzle::init(int difficulty, int symmetry) {
+	m_solution = new SKPuzzle(m_solver->g->order(), m_solver->g->oldtype, m_solver->g->size());
+	m_puzzle = new SKPuzzle(m_solver->g->order(), m_solver->g->oldtype, m_solver->g->size());
+
+	Solver solver;
+	solver.setLimit(2);
+	solver.loadEmpty(m_solver->g->rulset());
+
+	if(createPartial(&solver)) {
+		return true;
+	}
+
+// 	if(m_puzzle)
+// 		return false;
+// 	
+// 	SKPuzzle* puzzle = new SKPuzzle(m_solver->g->order(), m_solver->g->oldtype, m_solver->g->size());
+// 	
+// 	if(!puzzle)
+// 		return false;
+// 	
+// 	qDebug() << QString("Init a new game (difficulty %1, symmetry %2)").arg(difficulty).arg(symmetry);
+// 
+// 	Solver solver;
+// 	solver.setLimit(1);
+// 	solver.loadEmpty(m_solver->g->rulset());
+// 	solver.solve();
+// 	m_solver->problemToPuzzle(puzzle, &solver.results()[0]);
+// 
+// 	qDebug() << QString("Solved game (difficulty %1, symmetry %2)").arg(difficulty).arg(symmetry);
+// 
+// 	SKPuzzle* solution = 0;
+// 	if(m_withSolution) {
+// 		solution = new SKPuzzle(m_solver->g->order(), m_solver->g->oldtype);
+// 		
+// 		if(!solution) {
+// 			delete puzzle;
+// 			return false;
+// 		}
+// 		
+// 		m_solver->copy(solution, puzzle);
+// 	}
+// 	
+// 	m_solver->remove_numbers(puzzle, difficulty, symmetry, m_solver->g->oldtype); //why was it 1?
+// 	m_difficulty = difficulty;
+// 	m_symmetry   = symmetry  ;
+// 	
+// 	m_puzzle   = puzzle  ;
+// 	m_solution = solution;
+// 	return true;
 }
 
 int Puzzle::init(const QByteArray& values, int* forks) {
 	if(m_puzzle)
 		return -1;
 	
-	SKPuzzle* puzzle   = new SKPuzzle(m_solver->g->order, m_solver->type());
-	SKPuzzle* solution = new SKPuzzle(m_solver->g->order, m_solver->type());
+	SKPuzzle* puzzle   = new SKPuzzle(m_solver->g->order(), m_solver->g->type());
+	SKPuzzle* solution = new SKPuzzle(m_solver->g->order(), m_solver->g->type());
 	
 	if(!(puzzle && solution))
 		return -1;
 	
-	for(int i = 0; i < m_solver->g->size; ++i)
+	for(int i = 0; i < m_solver->g->size(); ++i)
 		puzzle->numbers[i] = values[i];
 // 		puzzle->setValue(i, values[i]);
 	
 // 	m_solver->copy(solution, puzzle);
-	
-	int success = m_solver->solve(puzzle, 1, solution, forks);
+
+	Problem problem;
+	m_solver->puzzleToProblem(&problem, puzzle);
+	Solver solver;
+	solver.setLimit(2);
+	solver.loadProblem(&problem);
+	solver.solve();
+// 	int success = m_solver->solve(problem, 2, solution, forks);
+	int success = solver.results().count();
 	if(success == 0) {
 		delete puzzle;
 		delete solution;
 		return 0;
+	} else {
+		m_solver->problemToPuzzle(solution, &solver.results()[0]);
 	}
-	
-	success = m_solver->solve(puzzle, 2);
-	
+
 	m_puzzle = puzzle;
 	if(m_withSolution)
 		m_solution = solution;
@@ -137,22 +212,22 @@ bool Puzzle::init(const QByteArray& values, const QByteArray& solutionValues) {
 		return false;
 	
 	
-	SKPuzzle* puzzle = new SKPuzzle(m_solver->g->order, m_solver->type());
+	SKPuzzle* puzzle = new SKPuzzle(m_solver->g->order(), m_solver->g->type());
 	if(!puzzle)
 		return false;
 	
-	for(int i = 0; i < m_solver->g->size; ++i)
+	for(int i = 0; i < m_solver->g->size(); ++i)
 		puzzle->numbers[i] = values[i];
 // 		puzzle->setValue(i, values[i]);
 	
 	if(solutionValues.count() != 0) {
-		SKPuzzle* solution = new SKPuzzle(m_solver->g->order, m_solver->type());
+		SKPuzzle* solution = new SKPuzzle(m_solver->g->order(), m_solver->g->type());
 		if(!solution) {
 			delete puzzle;
 			return false;
 		}
 		
-		for(int i = 0; i < m_solver->g->size; ++i)
+		for(int i = 0; i < m_solver->g->size(); ++i)
 			solution->numbers[i] = solutionValues[i];
 // 			solution->setValue(i, solutionValues[i]);
 		

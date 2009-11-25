@@ -67,7 +67,7 @@ void ExportPuzzles::run()
 		int order      = m_currPuzzle->order     ();
 		int difficulty = m_currPuzzle->difficulty();
 		int symmetry   = m_currPuzzle->symmetry  ();
-		m_puzzleList.push_back(PuzzleFactory().create_instance(sudoku, order, difficulty, symmetry, false));
+		m_puzzleList.push_back(PuzzleFactory().create_instance(TypeSudoku, order, difficulty, symmetry, false));
 
 		GenerateEvent* ge = new GenerateEvent(ksudoku::puzzleChanged);
 		KApplication::postEvent( &m_eventReceiver , ge );  // Qt will delete it when done

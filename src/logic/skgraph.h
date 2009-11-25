@@ -27,13 +27,16 @@
 #include <QVector>
 #include "skbase.h"
 
+#include "ksudoku_types.h"
+
 /**
 	@author 
 */
 
+class ItemBoard;
+class Ruleset;
 class SKSolver;
-//class glWindow;
-class SKGraph  : public SKBase
+class SKGraph
 {
 	friend class SKSolver;
 
@@ -42,10 +45,11 @@ public:
 	inline int sizeY() { return m_sizeY; }
 	inline int sizeZ() { return m_sizeZ; }
 
+	inline int size() { return m_sizeX * m_sizeY * m_sizeZ; }
+
 	inline void setSizeX(int n) { m_sizeX = n; }
 	inline void setSizeY(int n) { m_sizeY = n; }
 	inline void setSizeZ(int n) { m_sizeZ = n; }
-	inline void setSize (int n) { size = n; }
 	
 	inline int cellIndex(uint x, uint y, uint z = 0) 
 	{
@@ -73,22 +77,12 @@ public:
 	virtual ~SKGraph();
 			
 public:
-	//int optimized_sc_d;
-	//int optimized_sc[25*5][625];
-//	bool strongly_connected[125][625];
-	int  sc_count;
-	
-	//unsigned int optimized_sc;
+	explicit SKGraph(int o=9, bool threedimensionalf = false);
 
-	explicit SKGraph(int o=9, bool threedimensionalf = false) : SKBase(o, threedimensionalf)
-	{
-		ITERATE(i,size)
-		{
-//			ITERATE(j,size) graph[i][j]=0; 
-			optimized_d[i]=0;
-		}
-	}
-	
+public:
+	inline int order() const { return m_order; }
+	int oldtype;
+
 public:
 	/**
 	 * @brief Searches for existing connections.
@@ -99,12 +93,20 @@ public:
 
 public:
 	virtual void init() = 0;
+	virtual ksudoku::GameType type() const = 0;
 
+public:
+	const Ruleset *rulset() const { return m_ruleset; }
+	const ItemBoard *board() const { return m_board; }
 protected:
 	void addConnection(int i, int j);
 	
 protected:
+	int m_order;
 	int m_sizeX, m_sizeY, m_sizeZ;
+protected:
+	Ruleset *m_ruleset;
+	ItemBoard *m_board;
 };
 
 namespace ksudoku {
@@ -113,40 +115,12 @@ class Graph2d : public SKGraph {
 public:
 	explicit Graph2d(int o=9) : SKGraph(o, false) {}
 	
-	inline bool hasLeftBorder(int x, int y, int z = 0) {
-		return m_borderLeft[cellIndex(x,y,z)];
-	}
-	inline bool hasTopBorder(int x, int y, int z = 0) {
-		return m_borderTop[cellIndex(x,y,z)];
-	}
-	inline bool hasRightBorder(int x, int y, int z = 0) {
-		return m_borderRight[cellIndex(x,y,z)];
-	}
-	inline bool hasBottomBorder(int x, int y, int z = 0) {
-		return m_borderBottom[cellIndex(x,y,z)];
-	}
-	inline bool hasFrontBorder(int x, int y, int z) {
-		return m_borderFront[cellIndex(x,y,z)];
-	}
-	inline bool hasBackBorder(int x, int y, int z) {
-		return m_borderBack[cellIndex(x,y,z)];
-	}
-	
 	void addClique(QVector<int> data);
 	
 	int cliqueCount() { return m_cliques.count(); }
 
 	QVector<int> clique(int i) { return m_cliques[i]; }
 protected:
-	// borders are only used for 2d sudokus however QBitArrays don't require
-	// much space uninitialiced
-	bool m_withBorders;
-	QBitArray m_borderLeft;
-	QBitArray m_borderTop;
-	QBitArray m_borderRight;
-	QBitArray m_borderBottom;
-	QBitArray m_borderFront;
-	QBitArray m_borderBack;
 	QVector<QVector<int> > m_cliques;
 };
 
@@ -155,6 +129,7 @@ class GraphSudoku : public Graph2d {
 		explicit GraphSudoku(int o=9) : Graph2d(o) {}
 	public:
 		void init();
+		ksudoku::GameType type() const { return TypeSudoku; }
 };
 
 class GraphRoxdoku : public SKGraph {
@@ -162,6 +137,7 @@ class GraphRoxdoku : public SKGraph {
 		explicit GraphRoxdoku(int o=9) : SKGraph(o, true) {}
 	public:
 		void init();
+		ksudoku::GameType type() const { return TypeRoxdoku; }
 };
 
 class GraphCustom : public Graph2d
@@ -178,6 +154,7 @@ public:
 	static SKSolver* createCustomSolver(const char* path);
 public:
 	void init() {}
+	ksudoku::GameType type() const { return TypeCustom; }
 	void init(const char* name, int order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in);
 };
 

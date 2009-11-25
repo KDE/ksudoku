@@ -42,6 +42,8 @@ public:
 	*/
 	~Puzzle();
 	
+	bool createPartial(Solver* graph);
+
 	/**
 	* Creates a puzzle without any content
 	*/
@@ -86,7 +88,8 @@ public:
 	* Return game type
 	*/
 	GameType gameType() const {
-		return (m_solver->g->type==0) ? sudoku : (m_solver->g->type==1 ? roxdoku : custom); 
+// 		return (m_solver->g->oldtype==0) ? TypeSudoku : (m_solver->g->oldtype==1 ? TypeRoxdoku : TypeCustom);
+		return m_solver->g->type();
 	}
 
 // 		inline uint value(uint index) const { return m_puzzle ? m_puzzle->value(index) : 0; }
@@ -105,7 +108,7 @@ public:
 	}
 
 	///@return order of game
-	int order() const { return m_solver->g->order; }
+	int order() const { return m_solver->g->order(); }
 	
 	///@return total elements in puzzle
 	int size() const { 
@@ -142,7 +145,7 @@ private:
 	SKSolver* m_solver;
 
 	int m_difficulty;
-	int m_symmetry  ;
+	int m_symmetry;
 };
 
 }

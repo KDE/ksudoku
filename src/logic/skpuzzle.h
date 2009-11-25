@@ -36,23 +36,14 @@ public:
 
 	explicit SKPuzzle(int oi=9, int typef = 0, int sized=-1) : SKBase(oi,typef,sized )
 	{
-		/*numbers = new (unsigned char ) [size+1];
-		flags   = new (unsigned char*) [size];
-		ITERATE(j,size) flags[j] = new unsigned char[order+1];*/
-
-		ITERATE(i,size)
+ 		ITERATE(i,size)
 		{
-			numbers[i]=0; 
+			numbers[i]=0;
 			ITERATE(j,order+1) flags[i][j]=1;
 		}
-		
+
 	}
-	~SKPuzzle()
-	{
-		/*delete numbers;
-		delete []  flags;*/
-		
-	}
+
 };
 
 #endif

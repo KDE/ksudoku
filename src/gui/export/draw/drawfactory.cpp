@@ -37,10 +37,10 @@ DrawFactory::~DrawFactory()
 DrawBase* DrawFactory::create_instance(Puzzle const& puzzle, Symbols const& symbols) const
 {
 	switch(puzzle.gameType()){
-		case sudoku:
+		case TypeSudoku:
 			return new SudokuDraw(puzzle, symbols);
 			break;
-		case roxdoku:
+		case TypeRoxdoku:
 			///@TODO enable roxdoku prints or give warning
 			return 0;//new RoxdokuDraw(puzzle, symbols);
 			break;

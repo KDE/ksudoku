@@ -366,8 +366,9 @@ void View2DScene::init(const Game& game) {
 	m_cellLayer->setHandlesChildEvents(false);
 	addItem(m_cellLayer);
 	
-	Graph* g = m_game.puzzle()->solver()->g;
+	SKGraph* g = m_game.puzzle()->solver()->g;
 	m_cells.resize(m_game.size());
+	m_cursorPos = -1;
 	for(int i = 0; i < m_game.size(); ++i) {
 		bool notConnectedNode = ((GraphCustom*) m_game.puzzle()->solver()->g)->optimized_d[i] == 0;			
 		if(notConnectedNode) {
@@ -384,6 +385,7 @@ void View2DScene::init(const Game& game) {
 			m_cells[i]->setValues(QVector<ColoredValue>() << ColoredValue(game.value(i),0));
 		else
 			m_cells[i]->setValues(QVector<ColoredValue>());
+		if(m_cursorPos < 0) m_cursorPos = i;
 	}
 	
 	Graph2d* g2 = dynamic_cast<Graph2d*>(g);
@@ -414,7 +416,7 @@ void View2DScene::init(const Game& game) {
 void View2DScene::setSceneSize(const QSize& size) {
 	m_background->setPixmap(Renderer::instance()->renderBackground(size));
 	
-	Graph* g = m_game.puzzle()->solver()->g;
+	SKGraph* g = m_game.puzzle()->solver()->g;
 	setSceneRect(QRectF(0, 0, size.width(), size.height()));
 	
 	int width = size.width() / (g->sizeX()+1);
@@ -440,6 +442,7 @@ void View2DScene::setSceneSize(const QSize& size) {
 
 void View2DScene::hover(int cell) {
 	m_cursorPos = cell;
+// 	qDebug() << "hover cell" << cell << m_cells[cell];
 	QPoint pos(m_cells[cell]->pos());
 	foreach(GroupGraphicsItem* item, m_groups) {
 		item->setHighlight(pos);
@@ -555,7 +558,7 @@ void View2DScene::flipMarkValue(int value, int cell) {
 }
 
 void View2DScene::moveCursor(int dx, int dy) {
-	Graph* g = m_game.puzzle()->solver()->g;
+	SKGraph* g = m_game.puzzle()->solver()->g;
 	QPoint oldPos = m_cells[m_cursorPos]->pos();
 	QPoint relPos;
 	int newCursorPos = -1;

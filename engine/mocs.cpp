@@ -1,0 +1,5 @@
+#include "choiceitem.moc"
+#include "constraint.moc"
+#include "item.moc"
+#include "ruleset.moc"
+#include "sudokuconstraint.moc"

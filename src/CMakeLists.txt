@@ -10,6 +10,7 @@ include_directories(
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export/draw
 #        ${CMAKE_CURRENT_BINARY_DIR}/logic
+        ${CMAKE_CURRENT_SOURCE_DIR}/../engine
 )
 
 if(OPENGL_SUPPORT)
@@ -26,6 +27,7 @@ kde4_add_executable(ksudoku ${ksudoku_SRCS})
 target_link_libraries(ksudoku
 	ksudoku_gui ksudoku_logic
 	kdegames
+	logine loscript
 	${KDE4_KIO_LIBS} ${KDE4_KNEWSTUFF2_LIBRARY}
 )
 

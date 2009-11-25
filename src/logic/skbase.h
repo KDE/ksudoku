@@ -30,10 +30,8 @@
 class SKBase
 {
 public:
-	int base;
 	int order;
 	int size;
-	char zerochar;
 	int type;
 	void setorder(int k, int type = 0, int sized=-1);
 	explicit SKBase(int i=9, int typef = 0,int sized=-1)

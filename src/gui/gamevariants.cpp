@@ -250,8 +250,9 @@ bool SudokuGame::canStartEmpty() const {
 
 Game SudokuGame::startEmpty() const {
 	if(!m_solver) {
-		m_solver = new SKSolver(m_order, false);
-		m_solver->init();
+		GraphSudoku *graph = new GraphSudoku(m_order);
+		graph->init();
+		m_solver = new skSolver(graph);
 	}
 
 	Puzzle* puzzle = new Puzzle(m_solver, false);
@@ -262,8 +263,9 @@ Game SudokuGame::startEmpty() const {
 
 Game SudokuGame::createGame(int difficulty) const {
 	if(!m_solver) {
-		m_solver = new SKSolver(m_order, false);
-		m_solver->init();
+		GraphSudoku *graph = new GraphSudoku(m_order);
+		graph->init();
+		m_solver = new skSolver(graph);
 	}
 
 	Puzzle* puzzle = new Puzzle(m_solver, true);
@@ -303,8 +305,9 @@ bool RoxdokuGame::canStartEmpty() const {
 
 Game RoxdokuGame::startEmpty() const {
 	if(!m_solver) {
-		m_solver = new SKSolver(m_order, true);
-		m_solver->init();
+		GraphRoxdoku *graph = new GraphRoxdoku(m_order);
+		graph->init();
+		m_solver = new skSolver(graph);
 	}
 
 	Puzzle* puzzle = new Puzzle(m_solver, false);
@@ -315,8 +318,9 @@ Game RoxdokuGame::startEmpty() const {
 
 Game RoxdokuGame::createGame(int difficulty) const {
 	if(!m_solver) {
-		m_solver = new SKSolver(m_order, true);
-		m_solver->init();
+		GraphRoxdoku *graph = new GraphRoxdoku(m_order);
+		graph->init();
+		m_solver = new skSolver(graph);
 	}
 
 	Puzzle* puzzle = new Puzzle(m_solver, true);
