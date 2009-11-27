@@ -278,4 +278,5 @@ bool SKSolver::problemToPuzzle(SKPuzzle* dest, Problem* source) const {
 			}
 		}
 	}
+    return true;
 }
