@@ -163,7 +163,8 @@ bool Puzzle::init(int difficulty, int symmetry) {
 // 	
 // 	m_puzzle   = puzzle  ;
 // 	m_solution = solution;
-// 	return true;
+
+	return true;
 }
 
 int Puzzle::init(const QByteArray& values, int* forks) {
