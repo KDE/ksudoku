@@ -78,7 +78,7 @@ bool SudokuConstraint::LastInGroupHelper::apply(Problem* problem) const {
 		int c = 0;
 		ChoiceItem *item = 0;
 		QVector<ChoiceItem*>::const_iterator it;
-		for(it = items.begin(); it != items.end(); ++it) {
+		for(it = items.constBegin(); it != items.constEnd(); ++it) {
 			if((*it)->minValue() > m || (*it)->maxValue() < m) continue;
 			if((*it)->marker(problem, m)) {
 				++c;
@@ -106,10 +106,10 @@ bool SudokuConstraint::ClearGroupHelper::apply(Problem* problem) const {
 	QVector<ChoiceItem*> &items = m_constraint->m_items;
 	for(int m = m_constraint->m_minValue; m <= m_constraint->m_maxValue; ++m) {
 		QVector<ChoiceItem*>::const_iterator it;
-		for(it = items.begin(); it != items.end(); ++it) {
+		for(it = items.constBegin(); it != items.constEnd(); ++it) {
 			if((*it)->value(problem) == m) {
 				QVector<ChoiceItem*>::const_iterator it2;
-				for(it2 = items.begin(); it2 != items.end(); ++it2) {
+				for(it2 = items.constBegin(); it2 != items.constEnd(); ++it2) {
 					if(it == it2) continue;
 					if((*it2)->value(problem) == m) {
 						// Value exists twice: against the rules

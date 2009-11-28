@@ -24,7 +24,7 @@ Problem::Problem(const Ruleset *rules) {
 
 Problem::Problem(const Problem &problem) {
 	QVector<Storage::Instance*>::const_iterator it;
-	for(it = problem.m_storages.begin(); it != problem.m_storages.end(); ++it) {
+	for(it = problem.m_storages.constBegin(); it != problem.m_storages.constEnd(); ++it) {
 		m_storages << (*it)->clone();
 	}
 	
@@ -33,7 +33,7 @@ Problem::Problem(const Problem &problem) {
 
 Problem::~Problem() {
 	QVector<Storage::Instance*>::const_iterator it;
-	for(it = m_storages.begin(); it != m_storages.end(); ++it) {
+	for(it = m_storages.constBegin(); it != m_storages.constEnd(); ++it) {
 		delete *it;
 	}
 }
