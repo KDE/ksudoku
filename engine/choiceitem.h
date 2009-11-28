@@ -38,7 +38,7 @@ public:
 	};
 public:
 	ChoiceStorage();
-	~ChoiceStorage();
+	virtual ~ChoiceStorage();
 public:
 	Storage::Instance *create() const;
 	static const char *name() { return "value-items"; }
