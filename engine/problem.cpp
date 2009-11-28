@@ -46,14 +46,14 @@ Problem &Problem::operator=(const Problem &other) {
 		if(other.m_rules) {
 			Q_ASSERT(m_rules == other.m_rules);
 			QVector<Storage::Instance*>::const_iterator src, dest;
-			for(src = other.m_storages.begin(), dest = m_storages.begin();
-				src != other.m_storages.end(); ++src, ++dest)
+			for(src = other.m_storages.constBegin(), dest = m_storages.constBegin();
+				src != other.m_storages.constEnd(); ++src, ++dest)
 			{
 				(*dest)->clone(*src);
 			}
 		} else {
 			QVector<Storage::Instance*>::const_iterator it;
-			for(it = m_storages.begin(); it != m_storages.end(); ++it) {
+			for(it = m_storages.constBegin(); it != m_storages.constEnd(); ++it) {
 				delete *it;
 			}
 			m_storages.resize(0);
@@ -62,7 +62,7 @@ Problem &Problem::operator=(const Problem &other) {
 	} else {
 		if(other.m_rules) {
 			QVector<Storage::Instance*>::const_iterator src;
-			for(src = other.m_storages.begin(); src != other.m_storages.end(); ++src) {
+			for(src = other.m_storages.constBegin(); src != other.m_storages.constEnd(); ++src) {
 				m_storages << (*src)->clone();
 			}
 			m_rules = other.m_rules;
