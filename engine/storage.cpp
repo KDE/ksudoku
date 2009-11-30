@@ -22,6 +22,9 @@ Storage::Storage() {
 	m_storageId = -1;
 }
 
+Storage::~Storage() {
+}
+
 int Storage::storageId() const {
 	return m_storageId;
 }

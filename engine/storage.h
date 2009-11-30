@@ -7,6 +7,7 @@ public:
 	class Instance;
 public:
 	Storage();
+	virtual ~Storage();
 public:
 	virtual Instance *create() const = 0;
 	int storageId() const;
