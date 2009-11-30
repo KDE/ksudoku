@@ -46,7 +46,7 @@ public:
 protected:
 	EliminationStoragePrivate *d_ptr;
 private:
-	Q_DECLARE_PRIVATE(EliminationStorage);
+	Q_DECLARE_PRIVATE(EliminationStorage)
 };
 
 #endif

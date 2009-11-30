@@ -9,7 +9,7 @@
 
 #include "objectmanager.h"
 
-Q_DECLARE_METATYPE(ItemClass*);
+Q_DECLARE_METATYPE(ItemClass*)
 
 ItemClass::ItemClass(QScriptEngine *engine, ObjectManager *objectManager)
 	: QObject(engine), QScriptClass(engine)

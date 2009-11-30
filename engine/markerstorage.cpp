@@ -16,7 +16,7 @@ private:
 };
 
 class MarkerStoragePrivate {
-	Q_DECLARE_PUBLIC(MarkerStorage);
+	Q_DECLARE_PUBLIC(MarkerStorage)
 	friend class MarkerStorage::Entry;
 public:
 	MarkerStoragePrivate(MarkerStorage *storage);

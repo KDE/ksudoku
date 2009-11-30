@@ -36,7 +36,7 @@ public:
 protected:
 	MarkerStoragePrivate *d_ptr;
 private:
-	Q_DECLARE_PRIVATE(MarkerStorage);
+	Q_DECLARE_PRIVATE(MarkerStorage)
 };
 
 #endif

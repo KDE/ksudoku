@@ -11,7 +11,7 @@ class Problem;
 
 class ConstraintHelperStoragePrivate;
 class ConstraintHelperStorage : public Storage {
-	Q_DECLARE_PRIVATE(ConstraintHelperStorage);
+	Q_DECLARE_PRIVATE(ConstraintHelperStorage)
 public:
 	class Instance;
 	class Entry {

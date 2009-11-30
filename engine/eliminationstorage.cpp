@@ -17,7 +17,7 @@ private:
 };
 
 class EliminationStoragePrivate {
-	Q_DECLARE_PUBLIC(EliminationStorage);
+	Q_DECLARE_PUBLIC(EliminationStorage)
 	friend class EliminationStorage::Entry;
 public:
 	EliminationStoragePrivate(EliminationStorage *storage);

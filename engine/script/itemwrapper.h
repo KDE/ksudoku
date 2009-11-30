@@ -14,7 +14,7 @@ private:
 		QtType,
 		ItemType,
 		ItemVectorType,
-		BoardType,
+		BoardType
 	};
 	struct PropertyEntry {
 		PropertyType type;
@@ -41,6 +41,6 @@ private:
 	QString m_name;
 };
 
-Q_DECLARE_METATYPE(ItemWrapper*);
+Q_DECLARE_METATYPE(ItemWrapper*)
 
 #endif // _KSUDOKU_ITEMWRAPPER_H_

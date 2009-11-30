@@ -45,7 +45,7 @@ public:
 protected:
 	ChoiceStoragePrivate *d_ptr;
 private:
-	Q_DECLARE_PRIVATE(ChoiceStorage);
+	Q_DECLARE_PRIVATE(ChoiceStorage)
 };
 
 class ChoiceItem : public Item, public IVariableItem {

@@ -15,8 +15,8 @@
 
 #include <QDebug>
 
-Q_DECLARE_METATYPE(QScriptValue);
-Q_DECLARE_METATYPE(QVector<QScriptValue>);
+Q_DECLARE_METATYPE(QScriptValue)
+Q_DECLARE_METATYPE(QVector<QScriptValue>)
 
 class ScriptedRulesetPrivate {
 	Q_DECLARE_PUBLIC(ScriptedRuleset)

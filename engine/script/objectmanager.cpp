@@ -7,8 +7,8 @@
 
 #include "item.h"
 
-Q_DECLARE_METATYPE(Item*);
-Q_DECLARE_METATYPE(QVector<Item*>);
+Q_DECLARE_METATYPE(Item*)
+Q_DECLARE_METATYPE(QVector<Item*>)
 
 ObjectManager::ObjectManager() {
 	qRegisterMetaType<Item*>();

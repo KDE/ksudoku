@@ -7,7 +7,7 @@
 #include "boardprototype.h"
 #include "boardwrapper.h"
 
-Q_DECLARE_METATYPE(BoardClass*);
+Q_DECLARE_METATYPE(BoardClass*)
 
 BoardClass::BoardClass(QScriptEngine *engine)
 	: QObject(engine), QScriptClass(engine)

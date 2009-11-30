@@ -12,9 +12,9 @@
 
 #include "itemclass.h"
 
-Q_DECLARE_METATYPE(Item*);
-Q_DECLARE_METATYPE(QVector<Item*>);
-Q_DECLARE_METATYPE(QVector<QScriptValue>);
+Q_DECLARE_METATYPE(Item*)
+Q_DECLARE_METATYPE(QVector<Item*>)
+Q_DECLARE_METATYPE(QVector<QScriptValue>)
 
 ItemWrapper::ItemWrapper(Item* item, const QString &name, QScriptEngine *engine) {
 	m_item = item;

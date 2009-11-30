@@ -155,7 +155,7 @@ void ChoiceStorage::Instance::clone(const Storage::Instance *other) {
 
 
 class ChoiceStoragePrivate {
-	Q_DECLARE_PUBLIC(ChoiceStorage);
+	Q_DECLARE_PUBLIC(ChoiceStorage)
 	friend class ChoiceStorage::Entry;
 public:
 	ChoiceStoragePrivate(ChoiceStorage *p);

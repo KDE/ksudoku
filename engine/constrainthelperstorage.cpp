@@ -22,7 +22,7 @@ private:
 };
 
 class ConstraintHelperStoragePrivate {
-	Q_DECLARE_PUBLIC(ConstraintHelperStorage);
+	Q_DECLARE_PUBLIC(ConstraintHelperStorage)
 public:
 	ConstraintHelperStoragePrivate(ConstraintHelperStorage *storage);
 protected:

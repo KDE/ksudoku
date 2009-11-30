@@ -23,6 +23,6 @@ private:
 	ItemBoard *m_board;
 };
 
-Q_DECLARE_METATYPE(BoardWrapper*);
+Q_DECLARE_METATYPE(BoardWrapper*)
 
 #endif // _KSUDOKU_BOARDWRAPPER_H_

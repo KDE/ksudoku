@@ -7,7 +7,7 @@
 
 #include "boardwrapper.h"
 
-Q_DECLARE_METATYPE(QVector<QScriptValue>);
+Q_DECLARE_METATYPE(QVector<QScriptValue>)
 
 BoardPrototype::BoardPrototype(QObject *parent)
 	: QObject(parent)
