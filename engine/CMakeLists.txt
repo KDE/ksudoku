@@ -25,6 +25,8 @@ add_library(logine ${liblogine_SRCS})
 
 target_link_libraries(logine
 	${QT_LIBRARIES}
+	${QT_QTCORE_LIBRARY}
+	${QT_QTSCRIPT_LIBRARY}
 )
 
 add_subdirectory(script)
