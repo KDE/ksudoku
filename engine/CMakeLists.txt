@@ -1,6 +1,7 @@
 include_directories(
 	${CMAKE_CURRENT_BINARY_DIR}
 	${CMAKE_CURRENT_SOURCE_DIR}
+	${QT_QTCORE_INCLUDE_DIR}
 )
 
 set(liblogine_SRCS
@@ -21,12 +22,10 @@ set(liblogine_SRCS
 
 qt4_automoc(${liblogine_SRCS})
 
-add_library(logine ${liblogine_SRCS})
+kde4_add_library(logine STATIC ${liblogine_SRCS})
 
 target_link_libraries(logine
-	${QT_LIBRARIES}
 	${QT_QTCORE_LIBRARY}
-	${QT_QTSCRIPT_LIBRARY}
 )
 
 add_subdirectory(script)
