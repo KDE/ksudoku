@@ -130,3 +130,5 @@ bool SudokuConstraint::ClearGroupHelper::apply(Problem* problem) const {
 	}
 	return true;
 }
+
+#include "sudokuconstraint.moc"

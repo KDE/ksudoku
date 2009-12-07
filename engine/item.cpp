@@ -162,3 +162,5 @@ void ItemBoard::init(Ruleset *rules) {
 		}
 	}
 }
+
+#include "item.moc"

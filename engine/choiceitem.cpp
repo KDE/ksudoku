@@ -227,3 +227,5 @@ bool LastValueInNodeHelper::apply(Problem* problem) const {
 	}
 	return true;
 }
+
+#include "choiceitem.moc"

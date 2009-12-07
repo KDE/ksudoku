@@ -11,7 +11,6 @@ set(liblogine_SRCS
 	eliminationstorage.cpp
 	item.cpp
 	markerstorage.cpp
-	mocs.cpp
 	problem.cpp
 	ruleset.cpp
 	solver.cpp

@@ -108,3 +108,5 @@ bool Constraint::reallyAffectsItem(const Item *item, Problem *puzzle) const {
 void Constraint::init(Ruleset *rules) {
 	Q_UNUSED(rules);
 }
+
+#include "constraint.moc"

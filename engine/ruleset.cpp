@@ -133,3 +133,5 @@ int Ruleset::regStorage(const QByteArray &name, Storage *storage) {
 	storage->setStorageId(id);
 	return id;
 }
+
+#include "ruleset.moc"
