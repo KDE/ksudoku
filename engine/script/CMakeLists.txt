@@ -17,8 +17,6 @@ set(loscript_SRCS
 	scriptedruleset.cpp
 )
 
-qt4_automoc(${loscript_SRCS})
-
 kde4_add_library(loscript STATIC ${loscript_SRCS})
 
 target_link_libraries(loscript

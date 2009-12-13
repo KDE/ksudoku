@@ -19,8 +19,6 @@ set(liblogine_SRCS
 	sudokuconstraint.cpp
 )
 
-qt4_automoc(${liblogine_SRCS})
-
 kde4_add_library(logine STATIC ${liblogine_SRCS})
 
 target_link_libraries(logine
