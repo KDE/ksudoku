@@ -104,3 +104,5 @@ QScriptValue BoardPrototype::split(int x, int y, int z, int w) {
 
 	return engine()->toScriptValue(blocks);
 }
+
+#include "boardprototype.moc"

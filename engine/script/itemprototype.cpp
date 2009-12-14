@@ -19,3 +19,5 @@ QString ItemPrototype::toString() const {
 	ItemWrapper *wrapper = thisItem();
 	return QString("[object logine.Item(%1)]").arg(wrapper->name());
 }
+
+#include "itemprototype.moc"

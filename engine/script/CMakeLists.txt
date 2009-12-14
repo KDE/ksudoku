@@ -12,7 +12,6 @@ set(loscript_SRCS
 	itemclass.cpp
 	itemprototype.cpp
 	itemwrapper.cpp
-	mocs.cpp
 	objectmanager.cpp
 	scriptedruleset.cpp
 )

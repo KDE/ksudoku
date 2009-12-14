@@ -96,3 +96,5 @@ QString ItemClass::name() const {
 ItemWrapper *ItemClass::valueToWrapper(const QScriptValue& value) {
 	return value.data().toVariant().value<ItemWrapper*>();
 }
+
+#include "itemclass.moc"
