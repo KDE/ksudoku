@@ -76,7 +76,7 @@ inline void SKGraph::addConnection(int i, int j)
 
 void ksudoku::GraphSudoku::init()
 {
-	int base = static_cast<int>(sqrt(m_order));
+	int base = static_cast<int>(sqrt((float)m_order));
 	
 	m_ruleset = new Ruleset();
 	ItemBoard *board = new ItemBoard(m_order, m_order);
@@ -146,7 +146,7 @@ void ksudoku::GraphSudoku::init()
 
 void ksudoku::GraphRoxdoku::init()
 {
-	int base = static_cast<int>(sqrt(m_order));
+	int base = static_cast<int>(sqrt((float)m_order));
 	
 	m_ruleset = new Ruleset();
 	ItemBoard *board = new ItemBoard(base, base, base);
