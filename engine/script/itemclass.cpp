@@ -98,3 +98,4 @@ ItemWrapper *ItemClass::valueToWrapper(const QScriptValue& value) {
 }
 
 #include "itemclass.moc"
+

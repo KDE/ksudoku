@@ -106,3 +106,4 @@ QScriptValue BoardPrototype::split(int x, int y, int z, int w) {
 }
 
 #include "boardprototype.moc"
+

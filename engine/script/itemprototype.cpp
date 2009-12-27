@@ -21,3 +21,4 @@ QString ItemPrototype::toString() const {
 }
 
 #include "itemprototype.moc"
+
