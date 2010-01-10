@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=KSudoku
 Name[ca]=KSudoku
+Name[ca@valencia]=KSudoku
 Name[cs]=KSudoku
 Name[da]=KSudoku
 Name[de]=KSudoku
@@ -43,6 +44,7 @@ Type=Application
 X-DocPath=ksudoku/index.html
 GenericName=Sudoku Game
 GenericName[ca]=Joc de Sudoku
+GenericName[ca@valencia]=Joc de Sudoku
 GenericName[cs]=Sudoku hra
 GenericName[da]=Sudoku-spil
 GenericName[de]=„Sudoku“-Spiel
@@ -85,6 +87,7 @@ GenericName[zh_CN]=数独游戏
 GenericName[zh_TW]=Sudoku 數獨遊戲
 Comment=KSudoku, Sudoku game & more for KDE
 Comment[ca]=KSudoku, joc de Sudoku per KDE
+Comment[ca@valencia]=KSudoku, joc de Sudoku per KDE
 Comment[cs]=KSudoku, Sudoku hra pro KDE
 Comment[da]=KSudoku, sudoku-spil med mere til KDE
 Comment[de]=KSudoku, Sudoku-Spiel & mehr für KDE

@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Samurai
 Name[ca]=Samurai
+Name[ca@valencia]=Samurai
 Name[cs]=Samuraj
 Name[da]=Samurai
 Name[de]=Samurai
@@ -45,6 +46,7 @@ Name[zh_CN]=侍
 Name[zh_TW]=Samurai
 Description=Samurai shape puzzle
 Description[ca]=Trencaclosques amb forma de Samurai
+Description[ca@valencia]=Trencaclosques amb forma de Samurai
 Description[cs]=Hádanka ve tvaru samuraje
 Description[da]=Samurai-formet puslespil
 Description[de]=Ein Samurai-förmiges Rätsel.

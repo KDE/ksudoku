@@ -2,6 +2,7 @@
 Name=Jigsaw
 Name[br]=Jigsaw
 Name[ca]=Puzzle
+Name[ca@valencia]=Puzzle
 Name[cs]=Puzzle
 Name[da]=Jigsaw
 Name[de]=Stichsäge
@@ -43,6 +44,7 @@ Name[zh_CN]=线锯
 Name[zh_TW]=拼圖
 Description=Jigsaw shape puzzle
 Description[ca]=Trencaclosques amb forma de puzzle
+Description[ca@valencia]=Trencaclosques amb forma de puzzle
 Description[cs]=Hádanka ve tvaru puzzle
 Description[da]=Jigsaw-formet puslespil
 Description[de]=Ein Stichsägen-förmiges Rätsel.
