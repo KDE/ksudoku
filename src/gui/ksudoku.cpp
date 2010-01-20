@@ -477,13 +477,15 @@ void KSudoku::gameNew()
 
 	if(!currentView()) return;
 
-	// TODO onyl show this when there is a game running
-	if(KMessageBox::questionYesNo(this, 
+	// only show question when the current game hasn't been finished until now
+	if(!m_gameUI->game().wasFinished()) {
+		if(KMessageBox::questionYesNo(this,
 	                              i18n("Do you really want to end this game in order to start a new one?"),
 	                              i18nc("window title", "Restart Game"),
 	                              KGuiItem(i18nc("button label", "Restart Game")),
 	                              KStandardGuiItem::cancel() ) != KMessageBox::Yes)
-		return;
+			return;
+	}
 
 	showWelcomeScreen();
 }

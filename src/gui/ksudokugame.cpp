@@ -67,7 +67,8 @@ public:
 public:
 	PuzzleState state;
 	
-	bool hadHelp: 1;
+	bool hadHelp : 1;
+	bool wasFinished : 1;
 	
 	Puzzle* puzzle;
 	QTime time;
@@ -133,6 +134,7 @@ Game::Game(Puzzle* puzzle)
 	m_private->puzzle = puzzle;
 	
 	m_private->hadHelp = false;
+	m_private->wasFinished = false;
 	
 	m_private->state = PuzzleState(size(), m_private->puzzle->order());
 	m_private->state.reset();
@@ -329,6 +331,7 @@ void Game::checkCompleted() {
 			return;
 		}
 	}
+	m_private->wasFinished = true;
 	m_private->emitCompleted(true, time(), m_private->hadHelp);
 }
 
@@ -389,7 +392,8 @@ bool Game::autoSolve() {
 	
 	m_private->emitFullChange();
 	m_private->emitModified(true);
-	
+
+	m_private->wasFinished = true;
 	m_private->emitCompleted(true, time(), true);
 	
 	return true;
@@ -503,6 +507,11 @@ bool Game::canUndo2Checkpoint() const {
 bool Game::userHadHelp() const {
 	if(!m_private) return false;
 	return m_private->hadHelp;
+}
+
+bool Game::wasFinished() const {
+	if(!m_private) return false;
+	return m_private->wasFinished;
 }
 
 void Game::setUserHadHelp(bool hadHelp) {

@@ -205,6 +205,11 @@ public:
 	 * @see giveHint(), autoSolve()
 	 */
 	bool userHadHelp() const;
+
+	/**
+	 * Returns whether the game was allready solved.
+	 */
+	bool wasFinished() const;
 	
 	/**
 	 * Sets whether the user had requested some hint.
