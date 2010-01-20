@@ -225,6 +225,7 @@ void KSudoku::startGame(const Game& game) {
 
 	wrapper->layout()->addWidget(widget);
 	widget->show();
+	widget->setFocus();
 
 	connect(game.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
 	connect(game.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
