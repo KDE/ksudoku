@@ -31,6 +31,7 @@ public:
 	int regStorage(const QByteArray &name, Storage *storage);
 
 	void addItem(Item *item);
+	QVector<Item*> itemList() const { return m_items; }
 private:
 	void addHelper(ConstraintHelper* helper);
 

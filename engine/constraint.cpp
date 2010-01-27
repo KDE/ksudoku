@@ -68,6 +68,12 @@ bool ConstraintHelper::resolve(Problem *problem) const {
 	return noerror;
 }
 
+/**
+ * Returns whether the constraint waits for solving.
+ */
+bool ConstraintHelper::isPending(Problem* problem) const {
+	return m_entry.isPending(problem);
+}
 
 /**
  * \class Constraint

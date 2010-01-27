@@ -114,3 +114,7 @@ void ConstraintHelperStorage::Entry::resolve(Problem* problem) const {
 	storage->states.setState(m_index, HelperIdle);
 }
 
+bool ConstraintHelperStorage::Entry::isPending(Problem* problem) const {
+	Instance *storage = static_cast<Instance*>(problem->storage(m_storage));
+	return storage->states.state(m_index) == HelperActive;
+}

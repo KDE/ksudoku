@@ -20,6 +20,7 @@ public:
 	void setup(Ruleset *ruleset);
     void itemChanged(Problem* problem, const Item* item) const;
 	bool resolve(Problem *problem) const;
+	bool isPending(Problem *problem) const;
 protected:
 	virtual bool apply(Problem* problem) const = 0;
 public:

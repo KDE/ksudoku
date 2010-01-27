@@ -21,6 +21,7 @@ public:
 			void setup(Ruleset *rules);
 			void activate(Problem *problem) const;
 			void resolve(Problem* problem) const;
+			bool isPending(Problem *problem) const;
 		private:
 			ConstraintHelperStorage *m_storage;
 			ConstraintHelper *m_helper;
