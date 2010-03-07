@@ -167,11 +167,10 @@ void Solver::logicalSolve(Problem& problem) {
 		if(m_state == Failure) {
 			return;
 		}
-		if(storage->isFinished(&problem)) {
-			// TODO specify that this problem is a minimalistic problem
-			m_results << problem;
-			m_state = Success;
-			return;
-		}
+	}
+	if(storage->isFinished(&problem)) {
+		// TODO specify that this problem is a minimalistic problem
+		m_results << problem;
+		m_state = Success;
 	}
 }
