@@ -84,7 +84,7 @@ Author=Johannes Bergmeier
 AuthorEmail=Johannes.Bergmeier@gmx.net
 Type=SVG
 FileName=ksudoku_scrible.svg
-#Preview=scrible_preview.png
+Preview=scribble_preview.png
 
 [Graphics]
 #### Background ####
