@@ -44,7 +44,7 @@ SKGraph::SKGraph(int o, bool threedimensionalf)
 
 	m_ruleset = 0;
 	m_board = 0;
-	ITERATE(i,size)
+	for(int i = 0; i < size; ++i)
 	{
 		optimized_d[i]=0;
 	}
@@ -56,7 +56,7 @@ SKGraph::~SKGraph()
 }
 
 bool SKGraph::hasConnection(int i, int j) const {
-	ITERATE(k,optimized_d[i])
+	for(int k = 0; k < optimized_d[i]; ++k)
 	{
 		if(optimized[i][k] == j)
 			return true;
@@ -66,7 +66,7 @@ bool SKGraph::hasConnection(int i, int j) const {
 
 inline void SKGraph::addConnection(int i, int j)
 {
-	ITERATE(k,optimized_d[i])
+	for(int k = 0; k < optimized_d[i]; ++k)
 	{
 		if(optimized[i][k] == j)
 			return;
@@ -121,18 +121,18 @@ void ksudoku::GraphSudoku::init()
 
 	int row, col, subsquare;
 
-	ITERATE(i, size()) {
+	for(int i = 0; i < size(); ++i) {
 		optimized_d[i] = 0;
 	}
 
 	
 	QVector<int> rowc, colc, blockc;
-	ITERATE(i,m_order) {
+	for(int i = 0; i < m_order; ++i) {
 		rowc.clear();
 		colc.clear();
 		blockc.clear();
 		
-		ITERATE(j,m_order)
+		for(int j = 0; j < m_order; ++j)
 		{
 			rowc << j+i*m_order;
 			colc << j*m_order+i;
@@ -188,7 +188,7 @@ void ksudoku::GraphRoxdoku::init()
 	
 	
 	int faces[3];
-	ITERATE(i, size())
+	for(int i = 0; i < size(); ++i)
 	{
 		faces[0] = i / m_order;
 		faces[1] = i % base;
@@ -196,7 +196,7 @@ void ksudoku::GraphRoxdoku::init()
 		
 		optimized_d[i] = 0;
 		
-		ITERATE(j, size())
+		for(int j = 0; j < size(); ++j)
 		{
 			if(j / m_order == faces[0]) addConnection(i, j);
 			if(j % base == faces[1]) addConnection(i, j);
@@ -210,14 +210,14 @@ ksudoku::GraphCustom::GraphCustom(const char* filenamed)
 	filename=filenamed; //TODO fix
 	oldtype = 2;
 	m_order = 0;
-	ITERATE(i,625)	optimized_d[i]=0;
+	for(int i = 0; i < 625; ++i)	optimized_d[i]=0;
 }
 
 ksudoku::GraphCustom::GraphCustom()
 {
 	oldtype = 2;
 	m_order = 0;
-	ITERATE(i,625)	optimized_d[i]=0;
+	for(int i = 0; i < 625; ++i)	optimized_d[i]=0;
 
 }
 
@@ -251,7 +251,7 @@ void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int si
 	std::istringstream is(in);
 
 	QVector<int> data;
-	ITERATE(i, ncliques)
+	for(int i = 0; i < ncliques; ++i)
 	{
 		data.clear();
 

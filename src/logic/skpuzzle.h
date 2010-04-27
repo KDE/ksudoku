@@ -22,8 +22,6 @@
 #ifndef SKPUZZLE_H
 #define SKPUZZLE_H
 
-#define ITERATE(i,s) for(int ((i))=0; ((i))<((s)); ++((i)))
-
 /**
 	@author 
 */

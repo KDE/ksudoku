@@ -34,9 +34,9 @@ SKPuzzle::SKPuzzle(int oi, int typef, int sized)
 	else size = (typef==1) ?  base*base*base :  (order*order) ;
 
   
-    ITERATE(i, size)
+    for(int i = 0; i < size; ++i)
     {
         numbers[i]=0;
-        ITERATE(j, order+1) flags[i][j]=1;
+        for(int j = 0; j < order+1; ++j) flags[i][j]=1;
     }
 }

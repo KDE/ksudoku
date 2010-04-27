@@ -185,7 +185,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int symmetry, int type)
 	int numberOfNumbersToAdd = (7*(3-level)*(((type!=1) ? ((int) sqrt((double)(p->size))) : p->order )+LEVINC-(p->order-2)*(type==1)))/10;
  	//printf("%d\n", numberOfNumbersToAdd);
 
-	ITERATE(i, numberOfNumbersToAdd)
+	for(int i = 0; i < numberOfNumbersToAdd; ++i)
 	{
 		int idx = RANDOM(p->size);//2FIX
 		int orig = idx;
@@ -197,7 +197,7 @@ int SKSolver::remove_numbers(SKPuzzle* p, int level, int symmetry, int type)
 		p->numbers[idx] = solution.numbers[idx];
 		int index[4];
 		int index_d = get_simmetric(g->order(), g->size(), symmetry, idx, symmetryAxis, index);
-		ITERATE(j, index_d)
+		for(int j = 0; j < index_d; ++j)
 		{
 			p->numbers[index[j]] = solution.numbers[index[j]];
 			i++;
@@ -238,10 +238,10 @@ void SKSolver::copy(SKPuzzle* dest, SKPuzzle* src)
 	dest->order = src->order;
 	dest->size  = src->size;
 
-	ITERATE(i, src->size)
+	for(int i = 0; i < src->size; ++i)
 	{
 		dest->numbers[i] = src->numbers[i];
-		ITERATE(j, src->order+1)
+		for(int j = 0; j < src->order+1; ++j)
 			dest->flags[i][j] = 1;//src->flags[i][j];
 	}
 
