@@ -22,13 +22,21 @@
 
 #include "skpuzzle.h"
 
-//SKPuzzle::SKPuzzle()
-//{
-//}
+#include <math.h>
 
+SKPuzzle::SKPuzzle(int oi, int typef, int sized)
+// 	: SKBase(oi,typef,sized )
+{
+	order = oi; 
+	int base = (int) sqrt((double)order);
+	
+	if(sized!=-1) size=sized;
+	else size = (typef==1) ?  base*base*base :  (order*order) ;
 
-//SKPuzzle::~SKPuzzle()
-//{
-//}
-
-
+  
+    ITERATE(i, size)
+    {
+        numbers[i]=0;
+        ITERATE(j, order+1) flags[i][j]=1;
+    }
+}

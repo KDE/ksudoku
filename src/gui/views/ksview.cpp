@@ -29,7 +29,7 @@
 
 #include "ksview.moc"
 
-#include "sudoku_solver.h"
+#include "sksolver.h"
 #include "puzzle.h"
 
 #ifdef OPENGL_SUPPORT

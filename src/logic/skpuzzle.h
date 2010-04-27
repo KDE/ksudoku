@@ -22,28 +22,22 @@
 #ifndef SKPUZZLE_H
 #define SKPUZZLE_H
 
-#include "skbase.h"
+#define ITERATE(i,s) for(int ((i))=0; ((i))<((s)); ++((i)))
 
 /**
 	@author 
 */
 
-class SKPuzzle : public SKBase
+class SKPuzzle
 {
 public:
+	int order;
+	int size;
+  
 	unsigned char numbers[625];
 	unsigned char flags[625][26];
 
-	explicit SKPuzzle(int oi=9, int typef = 0, int sized=-1) : SKBase(oi,typef,sized )
-	{
- 		ITERATE(i,size)
-		{
-			numbers[i]=0;
-			ITERATE(j,order+1) flags[i][j]=1;
-		}
-
-	}
-
+	explicit SKPuzzle(int oi=9, int typef = 0, int sized=-1);
 };
 
 #endif

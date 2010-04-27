@@ -22,7 +22,7 @@
 #ifndef _KSUDOKUPUZZLE_H_
 #define _KSUDOKUPUZZLE_H_
 
-#include "sudoku_solver.h"
+#include "sksolver.h"
 #include "ksudoku_types.h"
 
 class QChar;

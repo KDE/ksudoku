@@ -26,7 +26,7 @@
 #include <kcmdlineargs.h>
 #include <klocale.h>
 #include <kconfigdialogmanager.h>
-#include "sudoku_solver.h"
+#include "sksolver.h"
 #include "serializer.h"
 
 #include <cstdlib>

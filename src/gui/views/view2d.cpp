@@ -29,7 +29,7 @@
 
 #include <kdebug.h>
 
-#include "sudoku_solver.h"
+#include "sksolver.h"
 #include "puzzle.h"
 #include "gameactions.h"
 

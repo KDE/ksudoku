@@ -25,7 +25,6 @@
 #include <vector>
 #include <QBitArray>
 #include <QVector>
-#include "skbase.h"
 
 #include "ksudoku_types.h"
 
