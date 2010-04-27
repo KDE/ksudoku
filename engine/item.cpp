@@ -29,7 +29,7 @@ void Item::init(Ruleset *rules) {
 	m_helperStorage = storage<ConstraintHelperStorage>(m_rules);
 }
 
-QDebug Item::debug(QDebug dbg, Problem *problem) {
+QDebug Item::debug(QDebug dbg, Problem *problem) const {
 	Q_UNUSED(problem);
 	return dbg;
 }
@@ -88,7 +88,7 @@ ItemList ItemMap::itemsAt(int pos0, int pos1, int pos2, int pos3) const {
 	return items;
 }
 
-QDebug ItemMap::debug(QDebug dbg, Problem *problem) {
+QDebug ItemMap::debug(QDebug dbg, Problem *problem) const {
 	for(int i3 = 0; i3 < size(3); ++i3) {
 		if(i3 != 0) dbg.nospace() << "----------------------------------------\n";
 		for(int i2 = 0; i2 < size(2); ++i2) {

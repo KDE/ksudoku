@@ -79,9 +79,11 @@ void Solver::loadProblem(const Problem *problem) {
 	// TODO specify that this problem is a solver problem
 	m_stack.top() = *problem;
 	// NOTE resets to solver-specific storages
-	storage<const MarkerStorage>(m_stack.top().ruleset())->reset(&m_stack.top());
-	storage<const EliminationStorage>(m_stack.top().ruleset())->reset(&m_stack.top());
-	storage<const ConstraintHelperStorage>(m_stack.top().ruleset())->reset(&m_stack.top());
+	// NOTE requires valid problems. I don't know a possibility to make them valid at this point.
+	// storage->reset would not be enough
+// 	storage<const MarkerStorage>(m_stack.top().ruleset())->reset(&m_stack.top());
+// 	storage<const EliminationStorage>(m_stack.top().ruleset())->reset(&m_stack.top());
+// 	storage<const ConstraintHelperStorage>(m_stack.top().ruleset())->reset(&m_stack.top());
 }
 
 QVector<Problem> Solver::results() const {

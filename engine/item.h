@@ -20,7 +20,7 @@ public:
 public:
 	bool isInitialized() const;
 	virtual void init(Ruleset *rules);
-	virtual QDebug debug(QDebug dbg, Problem *problem);
+	virtual QDebug debug(QDebug dbg, Problem *problem) const;
 	void addAffectingHelper(ConstraintHelper *helper);
 	QVector<const ConstraintHelper *> affectingHelpers() const;
 
@@ -70,7 +70,7 @@ public:
 	Q_INVOKABLE virtual void setItem(Item *item, int pos0 = 0, int pos1 = 0, int pos2 = 0, int pos3 = 0) = 0;
 	Q_INVOKABLE virtual int size(int dim) const = 0;
 public:
-	virtual QDebug debug(QDebug dbg, Problem *problem);
+	virtual QDebug debug(QDebug dbg, Problem *problem) const;
 public:
 	QString m_name;
 };
@@ -106,4 +106,4 @@ inline int ItemBoard::size(int dim) const {
 	return m_size[dim];
 }
 
-#endif
+#endif 

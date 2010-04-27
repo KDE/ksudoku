@@ -103,7 +103,7 @@ void ChoiceItem::init(Ruleset *rules) {
 	m_markers.setup(rules);
 }
 
-QDebug ChoiceItem::debug(QDebug dbg, Problem *problem)
+QDebug ChoiceItem::debug(QDebug dbg, Problem *problem) const
 {
 	int value = m_value.value(problem);
 	dbg.nospace();

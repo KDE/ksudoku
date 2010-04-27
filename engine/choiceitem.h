@@ -65,7 +65,7 @@ public:
 public:
 	void init(Ruleset *graph);
 	
-	QDebug debug(QDebug dbg, Problem *problem);
+	QDebug debug(QDebug dbg, Problem *problem) const;
 public slots:
 	int value(const Problem *problem) const;
 	void setValue(Problem *problem, int value) const;
