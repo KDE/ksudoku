@@ -20,7 +20,6 @@
  ***************************************************************************/
 
 #include "serializer.h"
-//#include "sksolver.h"
 #include "ksudokugame.h"
 #include "puzzle.h"
 
@@ -86,8 +85,8 @@ Game Serializer::deserializeGame(QDomElement element) {
 }
 
 Puzzle* Serializer::deserializePuzzle(QDomElement element) {
-	bool hasSolver = false;
-	SKSolver* solver = 0;
+	bool hasGraph = false;
+	SKGraph* graph = 0;
 	bool hasValues = false;
 	QString valuesStr;
 	bool hasSolution = false;
@@ -98,16 +97,16 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	while (!child.isNull()) {
 		if(child.isElement()) {
 			if(child.nodeName() == "graph") {
-				if(hasSolver) {
-					delete solver;
+				if(hasGraph) {
+					delete graph;
 					return 0;
 				}
 					
-				solver = deserializeGraph(child.toElement());
-				hasSolver = true;
+				graph = deserializeGraph(child.toElement());
+				hasGraph = true;
 			} else if(child.nodeName() == "values") {
 				if(hasValues) {
-					delete solver;
+					delete graph;
 					return 0;
 				}
 				
@@ -116,7 +115,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 			} else if(child.nodeName() == "solution") {
 				// TODO remove deserialization of solution, it is no longer required
 				if(hasSolution) {
-					delete solver;
+					delete graph;
 					return 0;
 				}
 				
@@ -127,30 +126,30 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 		child = child.nextSibling();
 	}
 	
-	if(!solver) return 0;
-	if(valuesStr.length() != solver->g->size()) {
-		delete solver;
+	if(!graph) return 0;
+	if(valuesStr.length() != graph->size()) {
+		delete graph;
 		return 0;
 	}
 	// TODO remove deserialization of solution, it is no longer required
-	if(solutionStr.length() != 0 && solutionStr.length() != solver->g->size()) {
-		delete solver;
+	if(solutionStr.length() != 0 && solutionStr.length() != graph->size()) {
+		delete graph;
 		return 0;
 	}
 	
-	Puzzle* puzzle = new Puzzle(solver, hasSolution);
+	Puzzle* puzzle = new Puzzle(graph, hasSolution);
 	
 	QByteArray values;
-	values.resize(solver->g->size());
-	for(int i = 0; i < solver->g->size(); ++i) {
+	values.resize(graph->size());
+	for(int i = 0; i < graph->size(); ++i) {
 		values[i] = Symbols::ioSymbol2Value(valuesStr[i]);
 	}
 	
 	// TODO remove deserialization of solution, it is no longer required
 	QByteArray solution;
 	if(solutionStr.length() != 0) {
-		solution.resize(solver->g->size());
-		for(int i = 0; i < solver->g->size(); ++i) {
+		solution.resize(graph->size());
+		for(int i = 0; i < graph->size(); ++i) {
 			solution[i] = Symbols::ioSymbol2Value(solutionStr[i]);
 		}
 	}
@@ -173,7 +172,7 @@ static int readInt(QDomElement element, const QString& name, int* err)
 	return num;
 }
 
-SKSolver* Serializer::deserializeGraph(QDomElement element) {
+SKGraph* Serializer::deserializeGraph(QDomElement element) {
 	bool noFailure = true;
 	
 	QString orderStr = element.attribute("order");
@@ -191,13 +190,11 @@ SKSolver* Serializer::deserializeGraph(QDomElement element) {
 	if(type == "sudoku") {
 		GraphSudoku *graph = new GraphSudoku(order);
 		graph->init();
-		SKSolver *solver = new SKSolver(graph);
-		return solver;
+		return graph;
 	} else if(type == "roxdoku") {
 		GraphRoxdoku *graph = new GraphRoxdoku(order);
 		graph->init();
-		SKSolver *solver = new SKSolver(graph);
-		return solver;
+		return graph;
 	} else if(type == "custom") {
 		int err=0;
 		int ncliques = readInt(element,"ncliques", &err);
@@ -224,12 +221,10 @@ SKSolver* Serializer::deserializeGraph(QDomElement element) {
 			child = child.nextSibling();
 		}
 		
-		GraphCustom* gc = new GraphCustom();
-		gc->init(name.toLatin1(), order, sizeX, sizeY, sizeZ, ncliques, cliques.toLatin1());
-		if(gc->valid==false) return 0;
-		
-		SKSolver* solver = new SKSolver(gc);
-		return solver;
+		GraphCustom* graph = new GraphCustom();
+		graph->init(name.toLatin1(), order, sizeX, sizeY, sizeZ, ncliques, cliques.toLatin1());
+		if(graph->valid==false) return 0;
+		return graph;
 	}
 	
 	return 0;
@@ -294,7 +289,7 @@ HistoryEvent Serializer::deserializeComplexHistoryEvent(QDomElement /*element*/)
 	return HistoryEvent();
 }
 
-SKSolver* Serializer::loadCustomShape(const KUrl& url, QWidget* window, QString *errorMsg) {
+SKGraph *Serializer::loadCustomShape(const KUrl &url, QWidget* window, QString *errorMsg) {
 	if ( url.isEmpty() ) return 0;
 	QString tmpFile;
 	bool success = false;
@@ -374,24 +369,6 @@ Game Serializer::load(const KUrl& url, QWidget* window, QString *errorMsg) {
 		child = child.nextSibling();
 	}
 
-// 	SKSolver* sk = (SKSolver*) game.puzzle()->solver();
-// 	QString name    =  ((GraphCustom*)sk->g)->name;
-// 	KSudoku* p = (KSudoku*) window;
-// 	if(!p->shapes().contains(name))
-// 	{
-// 		KStandardDirs myStdDir;
-// 		const QString destDir = myStdDir.saveLocation("data", /* TODO PORT kapp->instanceName() +*/ "ksudoku/", true);
-// 		KStandardDirs::makeDir(destDir);
-// 
-// 		QString path = destDir + name + ".xml";
-// 		KUrl url;
-// 		url.setPath(path);
-// 
-// 		Serializer::storeCustomShape( sk, url ,window );
-// 		p->updateShapesList();
-// 		
-// 	}
-
 	return game;
 }
 
@@ -409,7 +386,7 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 	
 	QDomDocument doc = parent.ownerDocument();
 	QDomElement element = doc.createElement("puzzle");
-	serializeGraph(element, puzzle->solver());
+	serializeGraph(element, puzzle->graph());
 	
 	for(int i = 0; i < puzzle->size(); ++i) {
 		contentStr += Symbols::ioValue2Symbol(puzzle->value(i));
@@ -433,16 +410,16 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 	return true;
 }
 
-bool Serializer::serializeGraph(QDomElement& parent, const SKSolver* puzzle) {
+bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph) {
 	QDomElement element = parent.ownerDocument().createElement("graph");
-	element.setAttribute("order", puzzle->g->order());
+	element.setAttribute("order", graph->order());
 	//element.setAttribute("size", puzzle->size());
 	
-	GameType type = puzzle->g->type();
+	GameType type = graph->type();
 	element.setAttribute("type" , (type == TypeSudoku) ? "sudoku" : (type == TypeRoxdoku) ? "roxdoku" : "custom");
 	if(type == TypeCustom)
 	{
-		GraphCustom* g = (GraphCustom*) puzzle->g;
+		GraphCustom* g = (GraphCustom*) graph;
 		element.setAttribute("ncliques", (int) g->cliques.size());
 		element.setAttribute("name", g->name);
 		element.setAttribute("sizeX", g->sizeX());
@@ -564,21 +541,6 @@ bool Serializer::store(const Game& game, const KUrl& url, QWidget* window) {
 	stream.flush();
 	
 	KIO::NetAccess::upload(file.fileName(), url, window);
-	return true;
-}
-
-bool Serializer::storeCustomShape(const SKSolver* solver, const KUrl& /*url*/, QWidget* /*window*/) {
-	QDomDocument doc( "ksudoku-graph" );
-	QDomElement root = doc.createElement( "ksudoku-graph" );
-	doc.appendChild( root );	
-	
-	serializeGraph(root, solver);
-	
-	KTemporaryFile tmp;
-	//(*tmp.textStream()) << doc.toString(); //TODO PORT
-	tmp.close();
-	//KIO::NetAccess::upload(tmp.name(), url, window); //TODO PORT
-	//tmp.unlink(); //TODO PORT
 	return true;
 }
 

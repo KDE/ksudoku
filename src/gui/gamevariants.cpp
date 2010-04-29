@@ -229,7 +229,7 @@ bool GameVariantDelegate::eventFilter(QObject* watched, QEvent* event) {
 ///////////////////////////////////////////////////////////////////////////////
 
 SudokuGame::SudokuGame(const QString& name, uint order, GameVariantCollection* collection)
-	: GameVariant(name, collection), m_order(order), m_solver(0)
+	: GameVariant(name, collection), m_order(order), m_graph(0)
 {
 	// TODO load from settings
 	m_symmetry = 0;
@@ -249,26 +249,24 @@ bool SudokuGame::canStartEmpty() const {
 }
 
 Game SudokuGame::startEmpty() const {
-	if(!m_solver) {
-		GraphSudoku *graph = new GraphSudoku(m_order);
-		graph->init();
-		m_solver = new SKSolver(graph);
+	if(!m_graph) {
+		m_graph = new GraphSudoku(m_order);
+		m_graph->init();
 	}
 
-	Puzzle* puzzle = new Puzzle(m_solver, false);
+	Puzzle* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
 }
 
 Game SudokuGame::createGame(int difficulty) const {
-	if(!m_solver) {
-		GraphSudoku *graph = new GraphSudoku(m_order);
-		graph->init();
-		m_solver = new SKSolver(graph);
+	if(!m_graph) {
+		m_graph = new GraphSudoku(m_order);
+		m_graph->init();
 	}
-
-	Puzzle* puzzle = new Puzzle(m_solver, true);
+	
+	Puzzle* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, m_symmetry);
 
 	return Game(puzzle);
@@ -284,7 +282,7 @@ KsView* SudokuGame::createView(const Game& /*game*/) const {
 ///////////////////////////////////////////////////////////////////////////////
 
 RoxdokuGame::RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection)
-	: GameVariant(name, collection), m_order(order), m_solver(0)
+	: GameVariant(name, collection), m_order(order), m_graph(0)
 {
 	// TODO load from settings
 	m_symmetry = 0;
@@ -304,26 +302,24 @@ bool RoxdokuGame::canStartEmpty() const {
 }
 
 Game RoxdokuGame::startEmpty() const {
-	if(!m_solver) {
-		GraphRoxdoku *graph = new GraphRoxdoku(m_order);
-		graph->init();
-		m_solver = new SKSolver(graph);
+	if(!m_graph) {
+		m_graph = new GraphRoxdoku(m_order);
+		m_graph->init();
 	}
 
-	Puzzle* puzzle = new Puzzle(m_solver, false);
+	Puzzle* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
 }
 
 Game RoxdokuGame::createGame(int difficulty) const {
-	if(!m_solver) {
-		GraphRoxdoku *graph = new GraphRoxdoku(m_order);
-		graph->init();
-		m_solver = new SKSolver(graph);
+	if(!m_graph) {
+		m_graph = new GraphRoxdoku(m_order);
+		m_graph->init();
 	}
 
-	Puzzle* puzzle = new Puzzle(m_solver, true);
+	Puzzle* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, m_symmetry);
 
 	return Game(puzzle);
@@ -340,7 +336,7 @@ KsView* RoxdokuGame::createView(const Game& /*game*/) const {
 
 CustomGame::CustomGame(const QString& name, const KUrl& url,
                        GameVariantCollection* collection)
-	: GameVariant(name, collection), m_url(url), m_solver(0)
+	: GameVariant(name, collection), m_url(url), m_graph(0)
 { }
 
 bool CustomGame::canConfigure() const {
@@ -356,26 +352,24 @@ bool CustomGame::canStartEmpty() const {
 }
 
 Game CustomGame::startEmpty() const {
-	if(!m_solver) {
-		m_solver = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-
-		if(!m_solver) return Game();
+	if(!m_graph) {
+		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+		if(!m_graph) return Game();
 	}
 
-	Puzzle* puzzle = new Puzzle(m_solver, false);
+	Puzzle* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
 }
 
 Game CustomGame::createGame(int difficulty) const {
-	if(!m_solver) {
-		m_solver = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-
-		if(!m_solver) return Game();
+	if(!m_graph) {
+		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+		if(!m_graph) return Game();
 	}
 
-	Puzzle* puzzle = new Puzzle(m_solver, true);
+	Puzzle* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, 1);
 
 	return Game(puzzle);

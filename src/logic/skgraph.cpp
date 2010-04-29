@@ -23,8 +23,7 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-
-#include "sksolver.h"
+#include <cmath>
 
 #include <ruleset.h>
 #include <choiceitem.h>

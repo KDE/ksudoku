@@ -29,7 +29,6 @@
 
 #include "ksview.moc"
 
-#include "sksolver.h"
 #include "puzzle.h"
 
 #ifdef OPENGL_SUPPORT

@@ -29,23 +29,23 @@
 
 namespace ksudoku {
 
-Puzzle::Puzzle(SKSolver* solver, bool withSolution)
+Puzzle::Puzzle(SKGraph *graph, bool withSolution)
 	: m_withSolution(withSolution)
-	, m_solver(solver)
+	, m_graph(graph)
 	, m_difficulty(0)
 	, m_symmetry(0)
 	, m_initialized(false)
 { }
 
 int Puzzle::value(int x, int y, int z) const {
-	Item *item = m_solver->g->board()->itemAt(x, y, z);
+	Item *item = m_graph->board()->itemAt(x, y, z);
 	if(item && m_puzzle2.ruleset())
 		return static_cast<ChoiceItem*>(item)->value(&m_puzzle2);
 	return 0;
 }
 
 int Puzzle::solution(int x, int y, int z) const {
-	Item *item = m_solver->g->board()->itemAt(x, y, z);
+	Item *item = m_graph->board()->itemAt(x, y, z);
 	if(item && m_solution2.ruleset())
 		return static_cast<ChoiceItem*>(item)->value(&m_solution2);
 	return 0;
@@ -57,14 +57,14 @@ bool Puzzle::init() {
 	if(m_withSolution)
 		return false;
 
-	m_puzzle2 = Problem(m_solver->g->rulset());
+	m_puzzle2 = Problem(m_graph->rulset());
 
 	return true;
 }
 
 bool Puzzle::createPartial(Solver *solver) {
 	// TODO after finding a solution try to find simpler ones
-	const ItemBoard *board = m_solver->g->board();
+	const ItemBoard *board = m_graph->board();
 	for(;;) {
 		ChoiceItem *choiceItem;
 		for(;;) {
@@ -117,7 +117,7 @@ bool Puzzle::init(int difficulty, int symmetry) {
 	if(m_initialized) return false;
 	Solver solver;
 	solver.setLimit(2);
-	solver.loadEmpty(m_solver->g->rulset());
+	solver.loadEmpty(m_graph->rulset());
 
 	if(createPartial(&solver)) {
 		return true;
@@ -129,12 +129,12 @@ bool Puzzle::init(int difficulty, int symmetry) {
 int Puzzle::init(const QByteArray& values) {
 	if(m_initialized) return -1;
 	
-	m_puzzle2 = Problem(m_solver->g->rulset());
-	for(int x = 0; x < m_solver->g->sizeX(); ++x) {
-		for(int y = 0; y < m_solver->g->sizeY(); ++y) {
-			for(int z = 0; z < m_solver->g->sizeZ(); ++z) {
-				int value = values[m_solver->g->cellIndex(x, y, z)];
-				Item *item = m_solver->g->board()->itemAt(x, y, z);
+	m_puzzle2 = Problem(m_graph->rulset());
+	for(int x = 0; x < m_graph->sizeX(); ++x) {
+		for(int y = 0; y < m_graph->sizeY(); ++y) {
+			for(int z = 0; z < m_graph->sizeZ(); ++z) {
+				int value = values[m_graph->cellIndex(x, y, z)];
+				Item *item = m_graph->board()->itemAt(x, y, z);
 				if(item && value)
 					static_cast<ChoiceItem*>(item)->setValue(&m_puzzle2, value);
 			}

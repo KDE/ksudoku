@@ -34,11 +34,8 @@
 
 class ItemBoard;
 class Ruleset;
-class SKSolver;
 class SKGraph
 {
-	friend class SKSolver;
-
 public:
 	inline int sizeX() { return m_sizeX; }
 	inline int sizeY() { return m_sizeY; }
@@ -150,7 +147,6 @@ public:
 public:
 	GraphCustom();
 	explicit GraphCustom(const char* filenamed);
-	static SKSolver* createCustomSolver(const char* path);
 public:
 	void init() {}
 	ksudoku::GameType type() const { return TypeCustom; }

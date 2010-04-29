@@ -22,8 +22,8 @@
 #ifndef _KSUDOKUPUZZLE_H_
 #define _KSUDOKUPUZZLE_H_
 
-#include "sksolver.h"
-#include "ksudoku_types.h"
+#include "solver.h"
+#include "skgraph.h"
 
 class QChar;
 
@@ -35,8 +35,8 @@ public:
 	* @param[in] sovler       The solver used for this puzzle (the GameType) (not deleted when Puzzle is deleted)
 	* @param[in] withSolution Whether a the solution for this puzzle should be stored
 	*/
-	explicit Puzzle(SKSolver* solver, bool withSolution = true);
-	
+	explicit Puzzle(SKGraph* graph, bool withSolution = true);
+
 public:
 	/**
 	* Creates a puzzle without any content
@@ -44,9 +44,8 @@ public:
 	bool init();
 	/**
 	* Creates a new puzzle based on the solver
-	* @param[in] difficulty The difficulty of the new game (for valid values see
-	*                       code of @c SKSolver)
-	* @param[in] symmetry   The symmetry (for valid values see code of @c SKSolver)
+	* @param[in] difficulty The difficulty of the new game.
+	* @param[in] symmetry   The symmetry
 	*/
 	bool init(int difficulty, int symmetry);
 	/**
@@ -62,43 +61,39 @@ public:
 	* Return game type
 	*/
 	GameType gameType() const {
-// 		return (m_solver->g->oldtype==0) ? TypeSudoku : (m_solver->g->oldtype==1 ? TypeRoxdoku : TypeCustom);
-		return m_solver->g->type();
+		return m_graph->type();
 	}
 
 	int value(int x, int y, int z = 0) const;
-	inline int value(int index) const { return value(m_solver->g->cellPosX(index), m_solver->g->cellPosY(index), m_solver->g->cellPosZ(index)); }
+	inline int value(int index) const { return value(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index)); }
 	int solution(int x, int y, int z = 0) const;
-	inline int solution(int index) const { return solution(m_solver->g->cellPosX(index), m_solver->g->cellPosY(index), m_solver->g->cellPosZ(index)); }
+	inline int solution(int index) const { return solution(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index)); }
 
 	inline bool hasSolution() const { return m_withSolution && m_solution2.ruleset(); }
 
 	///convert coordinates in a puzzle to one index value
 	int index(int x, int y, int z = 0) const {
-		if(!m_solver) return 0;
-		return m_solver->g->cellIndex(x, y, z);
+		if(!m_graph) return 0;
+		return m_graph->cellIndex(x, y, z);
 	}
 
 	///@return order of game
-	int order() const { return m_solver->g->order(); }
+	int order() const { return m_graph->order(); }
 	
 	///@return total elements in puzzle
 	int size() const { 
-		return m_solver->g->sizeX() * m_solver->g->sizeY() * m_solver->g->sizeZ(); 
+		return m_graph->sizeX() * m_graph->sizeY() * m_graph->sizeZ(); 
 		}
 
-	int optimized_d(int index) const { return m_solver->g->optimized_d[index]; }
-	int optimized(int indX, int indY) const { return m_solver->g->optimized[indX][indY]; }
-	bool hasConnection(int i, int j) const { return m_solver->g->hasConnection(i,j); }
-
-	///@return if Puzzle has a solver or not
-	bool hasSolver() { return (m_solver == 0) ? false : true; }
+	int optimized_d(int index) const { return m_graph->optimized_d[index]; }
+	int optimized(int indX, int indY) const { return m_graph->optimized[indX][indY]; }
+	bool hasConnection(int i, int j) const { return m_graph->hasConnection(i,j); }
 
 	///create new Puzzle with same solver and set withSolution to true
-	Puzzle* dubPuzzle() { return new Puzzle(m_solver,true) ; }
+	Puzzle* dubPuzzle() { return new Puzzle(m_graph, true) ; }
 
 public:
-	inline SKSolver* solver  () const { return m_solver  ; }
+	inline SKGraph *graph() const { return m_graph; }
 
 	///return value used for difficulty setting.
 	///@WARNING only valid after init(int difficulty, int symmetry)
@@ -114,7 +109,7 @@ private:
 
 private:
 	bool m_withSolution;
-	SKSolver* m_solver;
+	SKGraph *m_graph;
 	
 	Problem m_puzzle2;
 	Problem m_solution2;

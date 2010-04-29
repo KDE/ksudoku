@@ -21,8 +21,6 @@
 
 #include "ksudokugame.h"
 
-#include "sksolver.h"
-
 #include "puzzle.h"
 
 #include "history.h"
@@ -219,13 +217,6 @@ Puzzle* Game::puzzle() const {
 	return m_private->puzzle;
 }
 
-bool Game::hasSolver()
-{
-	if(!m_private)
-		return 0;
-	return m_private->puzzle->hasSolver();
-}
-
 void Game::setUrl(const KUrl& url) {
 	if(!m_private) return;
 	
@@ -351,7 +342,7 @@ bool Game::giveHint() {
 // 		i = RANDOM(size());
 // 	} while (m_private->isGiven(i));
 	
-	int start = RANDOM(size());
+	int start = rand() % size();
 	int i;
 	for(i = start; i < size(); ++i)
 		if(!given(i))

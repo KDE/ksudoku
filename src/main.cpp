@@ -26,8 +26,6 @@
 #include <kcmdlineargs.h>
 #include <klocale.h>
 #include <kconfigdialogmanager.h>
-#include "sksolver.h"
-#include "serializer.h"
 
 #include <cstdlib>
 #include <time.h>

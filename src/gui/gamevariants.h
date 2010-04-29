@@ -26,7 +26,7 @@
 #include <QItemDelegate>
 #include <QAbstractListModel>
 
-class SKSolver;
+class SKGraph;
 namespace ksudoku {
 
 class KsView;
@@ -138,7 +138,7 @@ private:
 	uint m_order;
 	uint m_symmetry;
 
-	mutable SKSolver* m_solver;
+	mutable SKGraph *m_graph;
 };
 
 class RoxdokuGame : public GameVariant {
@@ -157,7 +157,7 @@ private:
 	uint m_order;
 	uint m_symmetry;
 
-	mutable SKSolver* m_solver;
+	mutable SKGraph* m_graph;
 };
 
 class CustomGame : public GameVariant {
@@ -174,7 +174,7 @@ public:
 
 private:
 	KUrl m_url;
-	mutable SKSolver* m_solver;
+	mutable SKGraph* m_graph;
 };
 
 }

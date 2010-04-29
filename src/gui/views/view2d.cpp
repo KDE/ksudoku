@@ -29,7 +29,6 @@
 
 #include <kdebug.h>
 
-#include "sksolver.h"
 #include "puzzle.h"
 #include "gameactions.h"
 
@@ -366,11 +365,11 @@ void View2DScene::init(const Game& game) {
 	m_cellLayer->setHandlesChildEvents(false);
 	addItem(m_cellLayer);
 	
-	SKGraph* g = m_game.puzzle()->solver()->g;
+	SKGraph* g = m_game.puzzle()->graph();
 	m_cells.resize(m_game.size());
 	m_cursorPos = -1;
 	for(int i = 0; i < m_game.size(); ++i) {
-		bool notConnectedNode = ((GraphCustom*) m_game.puzzle()->solver()->g)->optimized_d[i] == 0;			
+		bool notConnectedNode = ((GraphCustom*) m_game.puzzle()->graph())->optimized_d[i] == 0;			
 		if(notConnectedNode) {
 			m_cells[i] = 0;
 			continue;
@@ -416,7 +415,7 @@ void View2DScene::init(const Game& game) {
 void View2DScene::setSceneSize(const QSize& size) {
 	m_background->setPixmap(Renderer::instance()->renderBackground(size));
 	
-	SKGraph* g = m_game.puzzle()->solver()->g;
+	SKGraph* g = m_game.puzzle()->graph();
 	setSceneRect(QRectF(0, 0, size.width(), size.height()));
 	
 	int width = size.width() / (g->sizeX()+1);
@@ -558,7 +557,7 @@ void View2DScene::flipMarkValue(int value, int cell) {
 }
 
 void View2DScene::moveCursor(int dx, int dy) {
-	SKGraph* g = m_game.puzzle()->solver()->g;
+	SKGraph* g = m_game.puzzle()->graph();
 	QPoint oldPos = m_cells[m_cursorPos]->pos();
 	QPoint relPos;
 	int newCursorPos = -1;

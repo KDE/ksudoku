@@ -65,6 +65,7 @@
 #include "settings.h"
 #include "config.h"
 
+using namespace ksudoku;
 
 void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) {
 	if(!isCorrect) {

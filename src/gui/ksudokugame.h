@@ -123,9 +123,6 @@ public:
 	Game& operator=(const Game& game);
 	
 public:
-	
-	bool hasSolver();
-	
 	int order() const;
 
 	bool marker(int index, int value) const;

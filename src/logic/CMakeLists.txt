@@ -1,6 +1,5 @@
 set(ksudoku_logic_SRCS
 	skgraph.cpp
-	sksolver.cpp
 	puzzle.cpp
 )
 
