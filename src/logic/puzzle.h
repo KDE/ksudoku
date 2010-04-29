@@ -37,13 +37,7 @@ public:
 	*/
 	explicit Puzzle(SKSolver* solver, bool withSolution = true);
 	
-	/**
-	* @todo Delete puzzle and solver when this class is not only used for puzzle creation
-	*/
-	~Puzzle();
-	
-	bool createPartial(Solver* graph);
-
+public:
 	/**
 	* Creates a puzzle without any content
 	*/
@@ -71,19 +65,6 @@ public:
 	*/
 	bool init(const QByteArray& values, const QByteArray& solutionValues);
 	
-//		/**
-// 		 * Gets the corresponding character for a @p value
-// 		 * @note This method can be called before @c init was called
-// 		 */
-// 		QChar value2Char(uint value) const;
-
-// 		/**
-// 		 * Gets the value for a character @p c.
-// 		 * If @p c has no corresponding value a value < 0 will be returned.
-// 		 * @note This method can be called before @c init was called
-// 		 */
-// 		int char2Value(QChar c) const;
-
 	/**
 	* Return game type
 	*/
@@ -92,19 +73,17 @@ public:
 		return m_solver->g->type();
 	}
 
-// 		inline uint value(uint index) const { return m_puzzle ? m_puzzle->value(index) : 0; }
-// 		inline uint value(uint x, uint y, uint z = 0) const { return value(index(x,y,z)); }
-// 		inline uint solution(uint index) const { return m_solution ? m_solution->value(index) : 0; }
-	inline int value(int index) const { return m_puzzle ? m_puzzle->numbers[index] : 0; }
-	inline int value(int x, int y, int z = 0) const { return value(index(x,y,z)); }
-	inline int solution(int index) const { return m_solution ? m_solution->numbers[index] : 0; }
-	
-	inline bool hasSolution() const { return m_withSolution && m_solution; }
+	int value(int x, int y, int z = 0) const;
+	inline int value(int index) const { return value(m_solver->g->cellPosX(index), m_solver->g->cellPosY(index), m_solver->g->cellPosZ(index)); }
+	int solution(int x, int y, int z = 0) const;
+	inline int solution(int index) const { return solution(m_solver->g->cellPosX(index), m_solver->g->cellPosY(index), m_solver->g->cellPosZ(index)); }
+
+	inline bool hasSolution() const { return m_withSolution && m_solution2.ruleset(); }
 
 	///convert coordinates in a puzzle to one index value
 	int index(int x, int y, int z = 0) const {
 		if(!m_solver) return 0;
-		return (x*m_solver->g->sizeY() + y)*m_solver->g->sizeZ() + z;
+		return m_solver->g->cellIndex(x, y, z);
 	}
 
 	///@return order of game
@@ -126,8 +105,6 @@ public:
 	Puzzle* dubPuzzle() { return new Puzzle(m_solver,true) ; }
 
 public:
-	inline SKPuzzle* puzzle()   const { return m_puzzle  ; }
-	inline SKPuzzle* solution() const { return m_solution; }
 	inline SKSolver* solver  () const { return m_solver  ; }
 
 	///return value used for difficulty setting.
@@ -138,14 +115,21 @@ public:
 	///@WARNING only valid after init(int difficulty, int symmetry)
 	///         has been called
 	inline int symmetry() const { return m_symmetry; }
+
+private:
+	bool createPartial(Solver* graph);
+
 private:
 	bool m_withSolution;
-	SKPuzzle* m_puzzle;
-	SKPuzzle* m_solution;
 	SKSolver* m_solver;
+	
+	Problem m_puzzle2;
+	Problem m_solution2;
 
 	int m_difficulty;
 	int m_symmetry;
+
+	bool m_initialized;
 };
 
 }

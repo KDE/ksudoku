@@ -24,7 +24,6 @@
 #include <iostream>
 #include <sstream>
 
-#include "skpuzzle.h"
 #include "sksolver.h"
 
 #include <ruleset.h>

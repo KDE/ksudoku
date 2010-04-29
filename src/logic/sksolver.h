@@ -22,7 +22,6 @@
 #ifndef SKSolver_H
 #define SKSolver_H
 
-#include "skpuzzle.h"
 #include "skgraph.h"
 
 #include "ksudoku_types.h"
@@ -60,17 +59,6 @@ public:
 	explicit SKSolver(SKGraph* gr);
 public:
 	SKGraph* g;
-public:
-	int remove_numbers (SKPuzzle* p, int difficulty, int simmetry, int type);
-	int solve (const Problem &problem,  int max_solutions = 1, SKPuzzle* out_solutions = 0, int* forks=0);
-
-	void copy(SKPuzzle* dest, SKPuzzle* src);
-
-	bool puzzleToProblem(Problem *dest, SKPuzzle *source) const;
-	bool problemToPuzzle(SKPuzzle *dest, Problem *source) const;
-	
-private:
-	int get_simmetric(int order, int size, int type, int idx, int which, int out[4]);
 };
 
 #endif
