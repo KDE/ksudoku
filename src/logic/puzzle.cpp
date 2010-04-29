@@ -126,7 +126,7 @@ bool Puzzle::init(int difficulty, int symmetry) {
 	return false;
 }
 
-int Puzzle::init(const QByteArray& values, int* forks) {
+int Puzzle::init(const QByteArray& values) {
 	if(m_initialized) return -1;
 	
 	m_puzzle2 = Problem(m_solver->g->rulset());
@@ -152,38 +152,6 @@ int Puzzle::init(const QByteArray& values, int* forks) {
 	}
 	
 	return success;
-}
-
-bool Puzzle::init(const QByteArray& values, const QByteArray& solutionValues) {
-	if(m_initialized) return false;
-	
-	m_puzzle2 = Problem(m_solver->g->rulset());
-	for(int x = 0; x < m_solver->g->sizeX(); ++x) {
-		for(int y = 0; y < m_solver->g->sizeY(); ++y) {
-			for(int z = 0; z < m_solver->g->sizeZ(); ++z) {
-				int value = values[m_solver->g->cellIndex(x, y, z)];
-				Item *item = m_solver->g->board()->itemAt(x, y, z);
-				if(item && value)
-					static_cast<ChoiceItem*>(item)->setValue(&m_puzzle2, value);
-			}
-		}
-	}
-	
-	if(solutionValues.count() != 0) {
-		m_solution2 = Problem(m_solver->g->rulset());
-		for(int x = 0; x < m_solver->g->sizeX(); ++x) {
-			for(int y = 0; y < m_solver->g->sizeY(); ++y) {
-				for(int z = 0; z < m_solver->g->sizeZ(); ++z) {
-					int value = solutionValues[m_solver->g->cellIndex(x, y, z)];
-					Item *item = m_solver->g->board()->itemAt(x, y, z);
-					if(item && value)
-						static_cast<ChoiceItem*>(item)->setValue(&m_solution2, value);
-				}
-			}
-		}
-	}
-	
-	return true;
 }
 
 }

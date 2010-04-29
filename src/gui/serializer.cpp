@@ -114,6 +114,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 				valuesStr = child.toElement().text();
 				hasValues = true;
 			} else if(child.nodeName() == "solution") {
+				// TODO remove deserialization of solution, it is no longer required
 				if(hasSolution) {
 					delete solver;
 					return 0;
@@ -131,6 +132,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 		delete solver;
 		return 0;
 	}
+	// TODO remove deserialization of solution, it is no longer required
 	if(solutionStr.length() != 0 && solutionStr.length() != solver->g->size()) {
 		delete solver;
 		return 0;
@@ -144,6 +146,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 		values[i] = Symbols::ioSymbol2Value(valuesStr[i]);
 	}
 	
+	// TODO remove deserialization of solution, it is no longer required
 	QByteArray solution;
 	if(solutionStr.length() != 0) {
 		solution.resize(solver->g->size());
@@ -152,7 +155,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 		}
 	}
 	
-	puzzle->init(values, solution);
+	puzzle->init(values);
 	return puzzle;
 }
 

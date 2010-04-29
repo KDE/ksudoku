@@ -56,14 +56,7 @@ public:
 	* @return <0 on error, 0 for no solutions, 1 for exactly one solution and
 	* 2 for more than 1 solutions. For return value <= 0 the init failed.
 	*/
-	int init(const QByteArray& values, int* forks = 0);
-	/**
-	* Create a puzzle based on complete data
-	* @param[in] values   The values used for the new puzzle
-	* @param[in] solution The values used for the solution of the new puzzle
-	* @note If you don't need a solution simply pass QByteArray() as solution.
-	*/
-	bool init(const QByteArray& values, const QByteArray& solutionValues);
+	int init(const QByteArray& values);
 	
 	/**
 	* Return game type

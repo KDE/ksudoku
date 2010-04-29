@@ -299,9 +299,8 @@ void KSudoku::dubPuzzle()
 		return;
 	}
 
-	int forks = 0;
 	ksudoku::Puzzle* puzzle = game.puzzle()->dubPuzzle();
-	int state = puzzle->init(game.allValues(), &forks);
+	int state = puzzle->init(game.allValues());
 
 	if(state <= 0) {
 		KMessageBox::information(this, i18n("Sorry, no solutions have been found."));
