@@ -37,15 +37,15 @@ Puzzle::Puzzle(SKGraph *graph, bool withSolution)
 	, m_initialized(false)
 { }
 
-int Puzzle::value(int x, int y, int z) const {
-	Item *item = m_graph->board()->itemAt(x, y, z);
+int Puzzle::value(int index) const {
+	Item *item = m_graph->board()->itemAt(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index));
 	if(item && m_puzzle2.ruleset())
 		return static_cast<ChoiceItem*>(item)->value(&m_puzzle2);
 	return 0;
 }
 
-int Puzzle::solution(int x, int y, int z) const {
-	Item *item = m_graph->board()->itemAt(x, y, z);
+int Puzzle::solution(int index) const {
+	Item *item = m_graph->board()->itemAt(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index));
 	if(item && m_solution2.ruleset())
 		return static_cast<ChoiceItem*>(item)->value(&m_solution2);
 	return 0;

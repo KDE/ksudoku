@@ -86,10 +86,6 @@ public:
 	// TODO improve this
 	inline bool isValid() const { return static_cast<bool>(m_private); }
 	
-	///convert coordinates in a puzzle to one index value
-	///no bound checks are performed for performance reason
-	int index(int x, int y, int z = 0) const;
-	
 	/**
 	 * The nubmer of cells of the puzzle
 	 */
@@ -103,14 +99,6 @@ public:
 	 */
 	bool simpleCheck() const;
 	
-	/**
-	 * Use this to show which cells might not be used for a value.
-	 * @param[in] val       The value against which the puzzle should be highlighted
-	 * @param[in] allValues Whether cells which already have a value should also be hightlighted
-	 * @return A array of bools for each cell. True when the cell might not be used otherwise false.
-	 */
-	QBitArray highlightValueConnections(int val, bool allValues = false) const;
-
 	///@return pointer to current puzzle
 	Puzzle* puzzle() const;
 	
@@ -126,20 +114,15 @@ public:
 	int order() const;
 
 	bool marker(int index, int value) const;
-	inline bool marker(int value, int x, int y, int z = 0) const;
 	int value(int index) const;
-	inline int value(int x, int y, int z = 0) const;
 	bool given(int index) const;
-	inline bool given(int x, int y, int z = 0) const;
 	
 	/**
 	 * Returns the state of a cell
 	 * @param[in] index The index of the cell
 	 */
 	ksudoku::ButtonState buttonState(int index) const;
-	inline ksudoku::ButtonState buttonState(int x, int y, int z = 0) const;
 	CellInfo cellInfo(int index) const;
-	inline CellInfo cellInfo(int x, int y, int z = 0) const;
 	
 	/**
 	 * Sets one marker in a cell
@@ -149,9 +132,7 @@ public:
 	 * @return Whether this function was executed successfully
 	 */
 	bool setMarker(int index, int val, bool state);
-	inline bool setMarker(int val, bool state, int x, int y, int z = 0);
 	inline bool flipMarker(int index, int val);
-	inline bool flipMarker(int val, int x, int y, int z = 0);
 	
 	/**
 	 * @brief Sets the value of a cell
@@ -159,13 +140,11 @@ public:
 	 * @param[in] val   The new value of the cell
 	 */
 	void setValue(int index, int val);
-	inline void setValue(int val, int x, int y, int z = 0);
 	
 	/**
 	 * Sets whether cell @p index is @p given (A given cell is not changeable by the player).
 	 */
 	void setGiven(int index, bool given);
-	inline void setGiven(bool given, int x, int y, int z = 0);
 	
 	/**
 	 * Gets the all current values of the game
@@ -219,8 +198,6 @@ public:
 	
 	bool canUndo() const;
 	bool canRedo() const;
-	bool canAddCheckpoint() const;
-	bool canUndo2Checkpoint() const;
 	
 	/**
 	 * Adds an event to the history and performs it
@@ -250,44 +227,8 @@ private:
 	Private* m_private;
 };
 
-inline bool Game::marker(int val, int x, int y, int z) const {
-	return marker(index(x, y, z), val);
-}
-
-inline bool Game::setMarker(int val, bool state, int x, int y, int z) {
-	return setMarker(index(x, y, z), val, state);
-}
-
 inline bool Game::flipMarker(int index, int val) {
 	return setMarker(index, val, !marker(index, val));
-}
-
-inline bool Game::flipMarker(int val, int x, int y, int z) {
-	return flipMarker(index(x, y, z), val);
-}
-
-inline int Game::value(int x, int y, int z) const {
-	return value(index(x, y, z));
-}
-
-inline void Game::setValue(int val, int x, int y, int z) {
-	setValue(index(x, y, z), val);
-}
-
-inline bool Game::given(int x, int y, int z) const {
-	return given(index(x, y, z));
-}
-
-inline void Game::setGiven(bool given, int x, int y, int z) {
-	setGiven(index(x, y, z), given);
-}
-
-inline ksudoku::ButtonState Game::buttonState(int x, int y, int z) const {
-	return buttonState(index(x, y, z));
-}
-
-inline CellInfo Game::cellInfo(int x, int y, int z) const {
-	return cellInfo(index(x, y, z));
 }
 
 }

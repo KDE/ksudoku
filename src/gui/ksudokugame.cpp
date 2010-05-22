@@ -198,11 +198,6 @@ int Game::order() const {
 	return m_private->puzzle->order();
 }
 
-int Game::index(int x, int y, int z) const {
-	if(!m_private) return 0;
-	return m_private->puzzle->index(x,y,z);
-}
-
 int Game::size() const {
 	if(!m_private) return 0;
 	return m_private->puzzle->size();
@@ -228,28 +223,6 @@ KUrl Game::getUrl() const {
 	return m_private->url;
 }
 
-
-QBitArray Game::highlightValueConnections(int val, bool allValues) const {
-	if(!m_private) return QBitArray();
-		
-	if(val <= 0 || val > m_private->puzzle->order())
-		return QBitArray();
-	
-	QBitArray array(size());
-	for(int i = 0; i < size(); i++)
-		array.clearBit(i);
-	
-	for(int i = 0; i < size(); i++) {
-		if(allValues && value(i))
-			array.setBit(i);
-		if(value(i) == val) {
-			for(int j = 0; j < m_private->puzzle->optimized_d(i); j++)
-				array.setBit(m_private->puzzle->optimized(i,j));
-		}
-	}
-
-	return array;
-}
 
 void Game::setGiven(int index, bool given) {
 	if(!m_private) return;
@@ -485,14 +458,6 @@ bool Game::canUndo() const {
 bool Game::canRedo() const {
 	if(!m_private) return false;
 	return m_private->historyPos != m_private->history.count();
-}
-
-bool Game::canAddCheckpoint() const {
-	return false;
-}
-
-bool Game::canUndo2Checkpoint() const {
-	return false;
 }
 
 bool Game::userHadHelp() const {

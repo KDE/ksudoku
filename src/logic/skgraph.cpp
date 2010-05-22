@@ -33,11 +33,9 @@
 SKGraph::SKGraph(int o, bool threedimensionalf)
 {
 	// <<< implementation of SKBase::setorder
-	oldtype = threedimensionalf;
 	m_order = o;
 	int base = (int) sqrt((double)o);
-
-	int size = (oldtype==1) ?  base*base*base :  (m_order*m_order) ;
+	int size = (threedimensionalf == 1) ? base*base*base : (m_order*m_order);
 	// >>>
 
 	m_ruleset = 0;
@@ -206,14 +204,12 @@ void ksudoku::GraphRoxdoku::init()
 ksudoku::GraphCustom::GraphCustom(const char* filenamed)
 {
 	filename=filenamed; //TODO fix
-	oldtype = 2;
 	m_order = 0;
 	for(int i = 0; i < 625; ++i)	optimized_d[i]=0;
 }
 
 ksudoku::GraphCustom::GraphCustom()
 {
-	oldtype = 2;
 	m_order = 0;
 	for(int i = 0; i < 625; ++i)	optimized_d[i]=0;
 

@@ -64,18 +64,10 @@ public:
 		return m_graph->type();
 	}
 
-	int value(int x, int y, int z = 0) const;
-	inline int value(int index) const { return value(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index)); }
-	int solution(int x, int y, int z = 0) const;
-	inline int solution(int index) const { return solution(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index)); }
+	int value(int index) const;
+	int solution(int index) const;
 
 	inline bool hasSolution() const { return m_withSolution && m_solution2.ruleset(); }
-
-	///convert coordinates in a puzzle to one index value
-	int index(int x, int y, int z = 0) const {
-		if(!m_graph) return 0;
-		return m_graph->cellIndex(x, y, z);
-	}
 
 	///@return order of game
 	int order() const { return m_graph->order(); }
@@ -94,15 +86,6 @@ public:
 
 public:
 	inline SKGraph *graph() const { return m_graph; }
-
-	///return value used for difficulty setting.
-	///@WARNING only valid after init(int difficulty, int symmetry)
-	///         has been called
-	inline int difficulty() const { return m_difficulty; }
-	///return value used for symmetry setting.
-	///@WARNING only valid after init(int difficulty, int symmetry)
-	///         has been called
-	inline int symmetry() const { return m_symmetry; }
 
 private:
 	bool createPartial(Solver* graph);

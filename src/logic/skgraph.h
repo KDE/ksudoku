@@ -43,10 +43,6 @@ public:
 
 	inline int size() { return m_sizeX * m_sizeY * m_sizeZ; }
 
-	inline void setSizeX(int n) { m_sizeX = n; }
-	inline void setSizeY(int n) { m_sizeY = n; }
-	inline void setSizeZ(int n) { m_sizeZ = n; }
-	
 	inline int cellIndex(uint x, uint y, uint z = 0) 
 	{
 		return (x*sizeY() + y)*sizeZ() + z;
@@ -77,7 +73,6 @@ public:
 
 public:
 	inline int order() const { return m_order; }
-	int oldtype;
 
 public:
 	/**
