@@ -97,7 +97,7 @@ bool ItemWrapper::setProperty(const QScriptString& name, const QScriptValue& val
 			property.value = value;
  			QVector<QScriptValue> valueList = qscriptvalue_cast<QVector<QScriptValue> >(value);
 			QVector<Item*> itemList;
-			foreach(QScriptValue v, valueList) {
+			foreach(const QScriptValue& v, valueList) {
 				ItemWrapper *wrapper = ItemClass::valueToWrapper(v);
 				if(wrapper && wrapper->item()) itemList << wrapper->item();
 			}

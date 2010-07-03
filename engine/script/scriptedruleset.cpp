@@ -117,7 +117,7 @@ Item* ScriptedRuleset::getItem(const QString& name) {
 	Q_D(ScriptedRuleset);
 	QStringList parts = name.split('/');
 	QScriptValue value = d->items;
-	foreach(QString part, parts) {
+	foreach(const QString& part, parts) {
 		value = value.property(name);
 	}
 	if(!value.isValid()) return 0;
@@ -139,7 +139,7 @@ ItemBoard* ScriptedRuleset::getBoard(const QString& name) {
 	Q_D(ScriptedRuleset);
 	QStringList parts = name.split('/');
 	QScriptValue value = d->items;
-	foreach(QString part, parts) {
+	foreach(const QString& part, parts) {
 		value = value.property(name);
 	}
 	if(value.scriptClass() == d->logineBoardClass) {
