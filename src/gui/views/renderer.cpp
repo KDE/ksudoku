@@ -1,6 +1,6 @@
 #include "renderer.h"
 
-#include <KSvgRenderer>
+#include <QSvgRenderer>
 #include <KStandardDirs>
 #include <kpixmapcache.h>
 #include <KGameTheme>
@@ -20,7 +20,7 @@ Renderer* Renderer::instance() {
 }
 	
 Renderer::Renderer() {
-	m_renderer = new KSvgRenderer();
+	m_renderer = new QSvgRenderer();
 	m_cache = new KPixmapCache("ksudoku-cache");
 	m_cache->setCacheLimit(3*1024);
 	

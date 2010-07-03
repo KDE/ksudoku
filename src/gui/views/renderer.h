@@ -26,7 +26,7 @@
 
 class QPixmap;
 class QSize;
-class KSvgRenderer;
+class QSvgRenderer;
 class KPixmapCache;
 
 namespace ksudoku {
@@ -109,7 +109,7 @@ private:
 	QVector<QString> m_special3dNames;
 	QVector<QString> m_markerNames;
 	QString m_currentTheme;
-	KSvgRenderer* m_renderer;
+	QSvgRenderer* m_renderer;
 	KPixmapCache* m_cache;
 };
 
