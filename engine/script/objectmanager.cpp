@@ -16,12 +16,8 @@ ObjectManager::ObjectManager() {
 }
 
 ObjectManager::~ObjectManager() {
-	foreach(BoardWrapper *wrapper, m_boardWrappers) {
-		delete wrapper;
-	}
-	foreach(ItemWrapper *wrapper, m_itemWrappers) {
-		delete wrapper;
-	}
+	qDeleteAll(m_boardWrappers);
+	qDeleteAll(m_itemWrappers);
 }
 
 void ObjectManager::addItemType(const QString& name, ItemConstructor ctor) {
