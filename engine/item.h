@@ -78,7 +78,7 @@ public:
 class ItemBoard : public ItemMap {
 	Q_OBJECT
 public:
-	Q_INVOKABLE ItemBoard(int size0 = 1, int size1 = 1, int size2 = 1, int size3 = 1);
+	explicit Q_INVOKABLE ItemBoard(int size0 = 1, int size1 = 1, int size2 = 1, int size3 = 1);
 	~ItemBoard();
 public:
 	static ItemBoard *construct(const QVariantList &args);

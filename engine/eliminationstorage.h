@@ -15,7 +15,7 @@ public:
 	class Instance;
 	class Entry {
 		public:
-			Entry(IVariableItem *item = 0, int possibilities = 0);
+			explicit Entry(IVariableItem *item = 0, int possibilities = 0);
 		public:
 			int possibilities() const;
 			void setPossibilities(int possibilities);
