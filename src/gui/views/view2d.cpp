@@ -420,7 +420,7 @@ void View2DScene::setSceneSize(const QSize& size) {
 	
 	int width = size.width() / (g->sizeX()+1);
 	int height = size.height() / (g->sizeY()+1);
-	int grid = ((width < height) ? width : height) / 2;
+	int grid = qMin(width, height) / 2;
 	int offsetX = size.width()/2 - g->sizeX()*grid;
 	int offsetY = size.height()/2 - g->sizeY()*grid;
 

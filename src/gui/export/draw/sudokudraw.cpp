@@ -71,7 +71,7 @@ void SudokuDraw::drawValues(QPainter& p, int width, int height) const
 	height = hStep * m_puzzle.order(); // multiple of Step
 
 	QFont f;
-	float maxFS = ((height < width) ? height : width) / static_cast<float>(m_puzzle.order());
+	float maxFS = qMin(width, height) / static_cast<float>(m_puzzle.order());
 	f.setPointSizeFloat(maxFS * 0.7); //max 70% font size
 	p.setFont(f);
 
