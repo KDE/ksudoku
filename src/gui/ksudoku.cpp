@@ -114,7 +114,7 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 KSudoku::KSudoku()
 	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true))
 {
-	setObjectName("ksudoku");
+	setObjectName( QLatin1String("ksudoku" ));
 
 	m_gameWidget = 0;
 	m_gameUI = 0;
@@ -359,17 +359,17 @@ void KSudoku::setupActions()
 	KStandardGameAction::solve(this, SLOT(autoSolve()), actionCollection());
 
 	KAction* a = new KAction(this);
-	actionCollection()->addAction("move_dub_puzzle", a);
+	actionCollection()->addAction( QLatin1String( "move_dub_puzzle" ), a);
 	a->setText(i18n("Check"));
-	a->setIcon(KIcon("games-endturn"));
+	a->setIcon(KIcon( QLatin1String( "games-endturn" )));
 	connect(a, SIGNAL(triggered(bool)), SLOT(dubPuzzle()));
 	addAction(a);
 
 	//WEB
 	a = new KAction(this);
-	actionCollection()->addAction("home_page", a);
+	actionCollection()->addAction( QLatin1String( "home_page" ), a);
 	a->setText(i18n("Home Page"));
-	a->setIcon(KIcon("internet-web-browser"));
+	a->setIcon(KIcon( QLatin1String( "internet-web-browser" )));
 	connect(a, SIGNAL(triggered(bool)), SLOT(homepage()));
 }
 

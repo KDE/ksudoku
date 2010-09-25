@@ -161,7 +161,7 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 
 // 	// Show configuration icon
 // 	if(configurable(index)) {
-// 		QPixmap configPixmap = KIcon("configure", KIconLoader::global()).pixmap(32, 32);
+// 		QPixmap configPixmap = KIcon( QLatin1String( "configure" ), KIconLoader::global()).pixmap(32, 32);
 // 		painter->drawPixmap(contentRect.right() - configPixmap.width(), (contentRect.height() - configPixmap.height()) / 2 + contentRect.top(), configPixmap);
 // 		contentRect.adjust(0, 0, -(configPixmap.width() + separatorPixels), 0);
 // 	}
