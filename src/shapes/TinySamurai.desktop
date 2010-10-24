@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Tiny Samurai
+Name[ast]=Samurai pequeño
 Name[ca]=Petit samurai
 Name[ca@valencia]=Petit samurai
 Name[cs]=Malý samuraj
@@ -48,6 +49,7 @@ Name[x-test]=xxTiny Samuraixx
 Name[zh_CN]=小型侍
 Name[zh_TW]=Tiny Samurai
 Description=A smaller samurai puzzle
+Description[ast]=Un pequeñu frañetiestes de samurai
 Description[ca]=Un trencaclosques samurai petit
 Description[ca@valencia]=Un trencaclosques samurai petit
 Description[cs]=Hádanka ve tvaru samuraje
