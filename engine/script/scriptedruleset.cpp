@@ -16,8 +16,9 @@
 #include <QDebug>
 
 Q_DECLARE_METATYPE(QScriptValue)
+#ifndef KDE_USE_FINAL
 Q_DECLARE_METATYPE(QVector<QScriptValue>)
-
+#endif
 class ScriptedRulesetPrivate {
 	Q_DECLARE_PUBLIC(ScriptedRuleset)
 public:

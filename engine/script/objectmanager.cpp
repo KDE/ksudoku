@@ -7,9 +7,10 @@
 
 #include "item.h"
 
+#ifndef KDE_USE_FINAL
 Q_DECLARE_METATYPE(Item*)
 Q_DECLARE_METATYPE(QVector<Item*>)
-
+#endif
 ObjectManager::ObjectManager() {
 	qRegisterMetaType<Item*>();
 	qRegisterMetaType<QVector<Item*> >();

@@ -7,8 +7,9 @@
 
 #include "boardwrapper.h"
 
+#ifndef KDE_USE_FINAL
 Q_DECLARE_METATYPE(QVector<QScriptValue>)
-
+#endif
 BoardPrototype::BoardPrototype(QObject *parent)
 	: QObject(parent)
 {
