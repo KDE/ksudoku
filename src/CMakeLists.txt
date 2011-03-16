@@ -28,7 +28,7 @@ target_link_libraries(ksudoku
 	ksudoku_gui ksudoku_logic
 	kdegames
 	logine loscript
-	${KDE4_KIO_LIBS} ${KDE4_KNEWSTUFF2_LIBRARY}
+	${KDE4_KIO_LIBS}
 )
 
 if(OPENGL_SUPPORT)
