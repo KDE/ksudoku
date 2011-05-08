@@ -2,6 +2,7 @@
 Name=4x4
 Name[ast]=4x4
 Name[be]=4x4
+Name[bs]=4x4
 Name[ca]=4x4
 Name[ca@valencia]=4x4
 Name[cs]=4x4
@@ -56,6 +57,7 @@ Name[zh_CN]=4x4
 Name[zh_TW]=4x4
 Description=4x4 shape puzzle
 Description[ast]=Frañetiestes en forma de 4x4
+Description[bs]=4x4 oblik slagalice
 Description[ca]=Trencaclosques amb forma de 4x4
 Description[ca@valencia]=Trencaclosques amb forma de 4x4
 Description[cs]=Hádanka 4x4
