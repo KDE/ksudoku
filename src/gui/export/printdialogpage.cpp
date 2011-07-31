@@ -85,7 +85,7 @@ PrintDialogPage::PrintDialogPage(Print const& print, QWidget *parent, const char
 	ql->add(&m_dlg);
 	
 	connect(&m_dlg, SIGNAL(aValueChanged()) ,
-	        pp    , SLOT  (update       ()) );*/
+	        pp    , SLOT  (update()) );*/
 }
 
 PrintDialogPage::~PrintDialogPage()

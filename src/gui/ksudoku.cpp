@@ -138,7 +138,7 @@ KSudoku::KSudoku()
 
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
 	wrapper->layout()->addWidget(m_welcomeScreen);
-	connect(m_welcomeScreen, SIGNAL(newGameStarted(const ::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const ::ksudoku::Game&)));
+	connect(m_welcomeScreen, SIGNAL(newGameStarted(const::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const::ksudoku::Game&)));
 	showWelcomeScreen();
 
 	// Register the gamevariants resource
@@ -228,7 +228,7 @@ void KSudoku::startGame(const Game& game) {
 	widget->show();
 	widget->setFocus();
 
-	connect(game.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
+	connect(game.interface(), SIGNAL(completed(bool,QTime,bool)), SLOT(onCompleted(bool,QTime,bool)));
 	connect(game.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
 
 	adaptActions2View();
@@ -581,7 +581,7 @@ void KSudoku::optionsPreferences()
 	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
 
     dialog->setHelp(QString(),"ksudoku");
-	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(updateSettings()));
+	connect(dialog, SIGNAL(settingsChanged(QString)), SLOT(updateSettings()));
 	dialog->show();
 }
 

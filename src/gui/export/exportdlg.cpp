@@ -84,33 +84,33 @@ ExportDlg::ExportDlg(Puzzle const& currPuzzle, Symbols const& symbols)
 
 	//connect ExportDlgBase signals
 	//   connect buttons
-//	connect(kpbHelp    , SIGNAL(released()         )
-//	       ,this       , SLOT  (help    ()         ) );
-	connect(kpbCancel  , SIGNAL(released()         )
-	       ,this       , SLOT  (cancel  ()         ) );
-	connect(kpbPrint   , SIGNAL(released()         )
-	       ,this       , SLOT  (print   ()         ) );
-	connect(kpbExport  , SIGNAL(released()         )
-	       ,this       , SLOT  (save    ()         ) );
+//	connect(kpbHelp    , SIGNAL(released())
+//	       ,this       , SLOT  (help()) );
+	connect(kpbCancel  , SIGNAL(released())
+	       ,this       , SLOT  (cancel()) );
+	connect(kpbPrint   , SIGNAL(released())
+	       ,this       , SLOT  (print()) );
+	connect(kpbExport  , SIGNAL(released())
+	       ,this       , SLOT  (save()) );
 	//   connect others
-	connect(this       , SIGNAL(aValueChanged()    )
-	       ,this       , SLOT  (updatePreview()    ) );
+	connect(this       , SIGNAL(aValueChanged())
+	       ,this       , SLOT  (updatePreview()) );
 	//connect ExportDlg signals
-	connect(this       , SIGNAL(updatePreviewSig() )
-	       ,m_qwPreview, SLOT  (draw            () ) );
+	connect(this       , SIGNAL(updatePreviewSig())
+	       ,m_qwPreview, SLOT  (draw()) );
 
-	connect(kpbRegenerate, SIGNAL(clicked        ())
+	connect(kpbRegenerate, SIGNAL(clicked())
 	       ,this         , SLOT  (reCreatePuzzles()) );
 
 	// connect output size settings
-	connect(kcbPageSize, SIGNAL(activated    (const QString&) )
-	       ,this       , SLOT  (setOutputType(const QString&) ) );
-	connect(kisbHres   , SIGNAL(valueChanged   (int) )
-	       ,this       , SLOT  (setOutputWidth (int) ) );
-	connect(kisbVres   , SIGNAL(valueChanged   (int) )
-	       ,this       , SLOT  (setOutputHeight(int) ) );
-	connect(cbLockCustomSize, SIGNAL(stateChanged       (int) )
-	       ,this            , SLOT  (pageSizeLockChanged(int) ) );
+	connect(kcbPageSize, SIGNAL(activated(QString))
+	       ,this       , SLOT  (setOutputType(QString)) );
+	connect(kisbHres   , SIGNAL(valueChanged(int))
+	       ,this       , SLOT  (setOutputWidth(int)) );
+	connect(kisbVres   , SIGNAL(valueChanged(int))
+	       ,this       , SLOT  (setOutputHeight(int)) );
+	connect(cbLockCustomSize, SIGNAL(stateChanged(int))
+	       ,this            , SLOT  (pageSizeLockChanged(int)) );
 }
 
 ExportDlg::~ExportDlg()
