@@ -22,7 +22,7 @@
 #ifndef _KSUDOKUGAME_H_
 #define _KSUDOKUGAME_H_
 
-#include "ksudoku_types.h"
+// #include "ksudoku_types.h" // TODO: IDW, remove this -- now redundant.
 #include <qobject.h>
 #include "history.h"
 
@@ -113,9 +113,10 @@ public:
 public:
 	int order() const;
 
-	bool marker(int index, int value) const;
-	int value(int index) const;
+	int  value(int index) const;
+	int  solution(int index) const;
 	bool given(int index) const;
+	bool marker(int index, int value) const;
 	
 	/**
 	 * Returns the state of a cell
@@ -155,7 +156,7 @@ public:
 	 * Gives one value in a randomly chosen cell.
 	 */
 	bool giveHint();
-	
+
 	/**
 	 * Makes the whole puzzle given.
 	 */

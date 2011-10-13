@@ -20,6 +20,8 @@
 #ifndef _KSUDOKUGAMEVARIANTS_H_
 #define _KSUDOKUGAMEVARIANTS_H_
 
+#include "globals.h"
+
 #include <QObject>
 #include <QList>
 #include <KUrl>
@@ -39,6 +41,8 @@ public:
 
 public:
 	QString name() const { return m_name; }
+	SudokuType type() const { return m_type; }
+	void setType(SudokuType type) { m_type = type; }
 	QString description() const { return m_description; }
 	void setDescription(const QString& descr);
 	QString icon() const { return m_icon; }
@@ -57,11 +61,14 @@ public:
 	virtual Game startEmpty() const = 0;
 
 	/// Creates a instance of this game variant
-	virtual Game createGame(int difficulty) const = 0;
+	virtual Game createGame(int difficulty, bool alternateSolver = false) const = 0;
 
 	/// Creates the correct view for the game.
 	/// Game needs to be compatible with this GameVariant
 	virtual KsView* createView(const Game& game) const = 0;
+
+protected:
+	SudokuType m_type;
 
 private:
 	QString m_name;
@@ -131,7 +138,7 @@ public:
 	bool configure();
 	bool canStartEmpty() const;
 	Game startEmpty() const;
-	Game createGame(int difficulty) const;
+	Game createGame(int difficulty, bool alternateSolver = false) const;
 	KsView* createView(const Game& game) const;
 
 private:
@@ -150,7 +157,7 @@ public:
 	bool configure();
 	bool canStartEmpty() const;
 	Game startEmpty() const;
-	Game createGame(int difficulty) const;
+	Game createGame(int difficulty, bool alternateSolver = false) const;
 	KsView* createView(const Game& game) const;
 
 private:
@@ -169,10 +176,13 @@ public:
 	bool configure();
 	bool canStartEmpty() const;
 	Game startEmpty() const;
-	Game createGame(int difficulty) const;
+	Game createGame(int difficulty, bool alternateSolver = false) const;
 	KsView* createView(const Game& game) const;
 
 private:
+	uint m_order;
+	uint m_symmetry;
+
 	KUrl m_url;
 	mutable SKGraph* m_graph;
 };

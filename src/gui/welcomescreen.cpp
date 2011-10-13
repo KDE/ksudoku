@@ -20,6 +20,8 @@
 
 #include <KMessageBox>
 
+#include <QDebug>
+
 #include "ksudokugame.h"
 
 Q_DECLARE_METATYPE(ksudoku::GameVariant*)
@@ -36,13 +38,14 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	gameListWidget->setItemDelegate(delegate);
     gameListWidget->setVerticalScrollMode(QListView::ScrollPerPixel);
 	
-	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(onCurrentVariantChange()));
+	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(const QModelIndex&,const QModelIndex&)), this, SLOT(onCurrentVariantChange()));
 	
 	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
 	// TODO disabled due to missing per-game config dialog
 // 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
 	connect(startEmptyButton, SIGNAL(clicked(bool)), this, SLOT(startEmptyGame()));
 	connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));
+	connect(puzzleGeneratorButton, SIGNAL(clicked(bool)), this, SLOT(generatePuzzle()));
 	connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(playVariant()));
 
 	// GHNS is not implemented yet, so don't show an unuseful button
@@ -105,7 +108,19 @@ void WelcomeScreen::playVariant() {
 	if(!variant) return;
 	
 	Game game = variant->createGame(difficulty());
-	
+
+	emit newGameStarted(game, variant);
+}
+
+void WelcomeScreen::generatePuzzle() {
+	GameVariant* variant = selectedVariant();
+	if(!variant) return;
+
+	qDebug()<<"CLASS NAME"<<variant->name()<<"TYPE"<<variant->type();
+
+	bool alternateSolver = true;
+	Game game = variant->createGame(difficulty(), alternateSolver);
+
 	emit newGameStarted(game, variant);
 }
 

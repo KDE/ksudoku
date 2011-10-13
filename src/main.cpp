@@ -52,8 +52,10 @@ int main(int argc, char **argv)
 	                 KLocalizedString(), "http://ksudoku.sourceforge.net/");
 	about.addAuthor( ki18n("Francesco Rossi"), ki18n("KSudoku Author"), "redsh@email.it" );
 	about.addAuthor( ki18n("Johannes Bergmeier"), ki18n("Maintainer"), "Johannes.Bergmeier@gmx.net" );
+	about.addAuthor( ki18n("Ian Wadham"), ki18n("New puzzle generator and solver"), "iandw.au@gmail.com" );
 	about.addAuthor( ki18n("Mick Kappenburg"), ki18n("Printing and export of 0.4"), "ksudoku@kappendburg.net");
 	about.addAuthor( ki18n("Thanks to NeHe for OpenGL tutorials"), KLocalizedString(), "nehe.gamedev.net");
+	about.addCredit( ki18n("David Bau"), ki18n("Algorithms for new puzzle generator and solver at davidbau.com/archives/2006/09/04/sudoku_generator.html"), "");
 	KCmdLineArgs::init(argc, argv, &about);
 
 	KCmdLineOptions options;

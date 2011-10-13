@@ -24,6 +24,7 @@
 
 #include "solver.h"
 #include "skgraph.h"
+#include "globals.h"
 
 class QChar;
 
@@ -47,7 +48,8 @@ public:
 	* @param[in] difficulty The difficulty of the new game.
 	* @param[in] symmetry   The symmetry
 	*/
-	bool init(int difficulty, int symmetry);
+	bool init(int difficulty, int symmetry,
+		  bool alternateSolver = false, SudokuType type = Plain);
 	/**
 	* Tries to create a game on existing values
 	* @param[in]  values The values used for the new puzzle
@@ -67,7 +69,7 @@ public:
 	int value(int index) const;
 	int solution(int index) const;
 
-	inline bool hasSolution() const { return m_withSolution && m_solution2.ruleset(); }
+	inline bool hasSolution() const { return ((m_withSolution && m_solution2.ruleset()) || (m_alternateSolver && (m_solution.size() > 0))); }
 
 	///@return order of game
 	int order() const { return m_graph->order(); }
@@ -97,10 +99,17 @@ private:
 	Problem m_puzzle2;
 	Problem m_solution2;
 
+	bool m_alternateSolver;
+	QByteArray m_solution;
+
 	int m_difficulty;
 	int m_symmetry;
 
 	bool m_initialized;
+
+	void setValues(const QByteArray& values);
+	const QByteArray convertBoardContents(const BoardContents & values,
+					      int boardSize);
 };
 
 }

@@ -27,11 +27,17 @@
 #include <QtDebug>
 #include <choiceitem.h>
 
+#include "sudokuboard.h"
+#include "plainsudokuboard.h"
+#include "samuraiboard.h"
+#include "roxdokuboard.h"
+
 namespace ksudoku {
 
 Puzzle::Puzzle(SKGraph *graph, bool withSolution)
 	: m_withSolution(withSolution)
 	, m_graph(graph)
+	, m_alternateSolver(false)
 	, m_difficulty(0)
 	, m_symmetry(0)
 	, m_initialized(false)
@@ -45,6 +51,9 @@ int Puzzle::value(int index) const {
 }
 
 int Puzzle::solution(int index) const {
+	if (m_alternateSolver) {
+	    return ((index < m_solution.size()) ? m_solution.at(index) : 0);
+	}
 	Item *item = m_graph->board()->itemAt(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index));
 	if(item && m_solution2.ruleset())
 		return static_cast<ChoiceItem*>(item)->value(&m_solution2);
@@ -57,6 +66,7 @@ bool Puzzle::init() {
 	if(m_withSolution)
 		return false;
 
+	m_alternateSolver = false;
 	m_puzzle2 = Problem(m_graph->rulset());
 
 	return true;
@@ -113,13 +123,79 @@ bool Puzzle::createPartial(Solver *solver) {
 	return false;
 }
 
-bool Puzzle::init(int difficulty, int symmetry) {
+bool Puzzle::init(int difficulty, int symmetry,
+	          bool alternateSolver, SudokuType type) {
 	if(m_initialized) return false;
+
+	m_alternateSolver = alternateSolver;
+	if (alternateSolver) {
+	    int blockSize = 3;
+	    for (int n = 2; n <= 5; n++) {
+		if (m_graph->order() == n * n) {
+		    blockSize = n;
+		}
+	    }
+	    qDebug() << "Difficulty" << difficulty << "type" << type; 
+	    SudokuBoard * board = 0;
+	    QObject * owner = new QObject();	// Stands in for "this".
+	    // Generate a puzzle and solution of the required type.
+	    switch (type) {
+	    case Plain:
+		board = new PlainSudokuBoard (owner, type, blockSize);
+		break;
+	    case XSudoku:
+		board = new XSudokuBoard (owner, type, blockSize);
+		break;
+	    case Jigsaw:
+		board = new JigsawBoard (owner, type, blockSize);
+		break;
+	    case Samurai:
+		board = new SamuraiBoard (owner, type, blockSize);
+		break;
+	    case TinySamurai:
+		board = new TinySamuraiBoard (owner, type, blockSize);
+		break;
+	    case Roxdoku:
+		board = new RoxdokuBoard (owner, type, blockSize);
+		break;
+	    case EndSudokuTypes:
+		return false;
+		break;
+	    }
+	    board->setUpBoard();
+
+	    // Generate a puzzle and its solution.
+	    BoardContents puzzle;
+	    BoardContents solution;
+	    board->generatePuzzle (puzzle, solution,
+				   (Difficulty) difficulty, symmetry);
+	    int boardSize = board->boardSize();
+	    delete owner;			// And the SudokuBoard object.
+
+	    // Convert the puzzle and solution to KSudoku format.
+	    setValues(convertBoardContents(puzzle, boardSize));
+	    m_solution = convertBoardContents(solution, boardSize);
+
+	    return true;
+	}
+
 	Solver solver;
 	solver.setLimit(2);
 	solver.loadEmpty(m_graph->rulset());
 
 	if(createPartial(&solver)) {
+
+		QByteArray bytes;
+		for (int n = 0; n < size(); n++) {
+		    qDebug() << "Index" << n << "x =" << m_graph->cellPosX(n) <<
+						"y =" << m_graph->cellPosY(n) <<
+						"z =" << m_graph->cellPosZ(n) <<
+						"value" << (char) (value(n) + '0');
+		    bytes.append (value(n) + '0');
+		}
+
+		qDebug() << "ALL VALUES" << bytes;
+	
 		return true;
 	}
 
@@ -128,18 +204,9 @@ bool Puzzle::init(int difficulty, int symmetry) {
 
 int Puzzle::init(const QByteArray& values) {
 	if(m_initialized) return -1;
-	
-	m_puzzle2 = Problem(m_graph->rulset());
-	for(int x = 0; x < m_graph->sizeX(); ++x) {
-		for(int y = 0; y < m_graph->sizeY(); ++y) {
-			for(int z = 0; z < m_graph->sizeZ(); ++z) {
-				int value = values[m_graph->cellIndex(x, y, z)];
-				Item *item = m_graph->board()->itemAt(x, y, z);
-				if(item && value)
-					static_cast<ChoiceItem*>(item)->setValue(&m_puzzle2, value);
-			}
-		}
-	}
+
+	m_alternateSolver = false;
+	setValues(values);
 	
 	Solver solver;
 	solver.setLimit(2);
@@ -152,6 +219,42 @@ int Puzzle::init(const QByteArray& values) {
 	}
 	
 	return success;
+}
+
+void Puzzle::setValues(const QByteArray& values) {
+	qDebug() << "Puzzle::init, values size:" << values.size() << "XYZ size"
+	         << m_graph->sizeX() << m_graph->sizeY() << m_graph->sizeZ();
+	m_puzzle2 = Problem(m_graph->rulset());
+	for(int x = 0; x < m_graph->sizeX(); ++x) {
+		for(int y = 0; y < m_graph->sizeY(); ++y) {
+			for(int z = 0; z < m_graph->sizeZ(); ++z) {
+				int value = values[m_graph->cellIndex(x, y, z)];
+				Item *item = m_graph->board()->itemAt(x, y, z);
+				if(item && value) {
+					static_cast<ChoiceItem*>
+					    (item)->setValue(&m_puzzle2, value);
+				}
+			}
+		}
+	}
+}
+
+const QByteArray Puzzle::convertBoardContents(const BoardContents & values,
+					      int boardSize) {
+	// New solver stores by column within row and sets unused cells = -1.
+	// KSudoku stores values by row within column and sets unused cells = 0,
+	// e.g. the empty areas in a Samurai or Tiny Samurai puzzle layout.
+	QByteArray newValues;
+	char value = 0;
+	int index = 0;
+	for (int j = 0; j < boardSize; j++) {
+	    for (int i = 0; i < boardSize; i++) {
+		index = i * boardSize + j;
+		value = values.at(index) < 0 ? 0 : values.at(index);
+		newValues.append(value);
+	    }
+	}
+	return newValues;
 }
 
 }

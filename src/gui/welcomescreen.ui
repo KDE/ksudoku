@@ -69,6 +69,13 @@
           </property>
          </widget>
         </item>
+        <item>
+	 <widget class="QPushButton" name="puzzleGeneratorButton" >
+          <property name="text" >
+           <string>Generate Puzzle</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </item>
       <item>

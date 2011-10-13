@@ -11,6 +11,7 @@ include_directories(
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export/draw
 #        ${CMAKE_CURRENT_BINARY_DIR}/logic
         ${CMAKE_CURRENT_SOURCE_DIR}/../engine
+        ${CMAKE_CURRENT_SOURCE_DIR}/generator
 )
 
 if(OPENGL_SUPPORT)
@@ -19,6 +20,11 @@ endif(OPENGL_SUPPORT)
 
 set(ksudoku_SRCS
 	main.cpp
+	generator/sudokuboard.cpp
+	generator/plainsudokuboard.cpp
+	generator/roxdokuboard.cpp
+	generator/samuraiboard.cpp
+	generator/state.cpp
 )
 
 kde4_add_app_icon(ksudoku_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/ksudoku.png")

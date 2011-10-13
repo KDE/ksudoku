@@ -45,6 +45,8 @@ private slots:
 	void configureVariant();
 	void startEmptyGame();
 	void playVariant();
+
+	void generatePuzzle();
 	
 signals:
 	void newGameStarted(const ::ksudoku::Game& game, GameVariant* variant);

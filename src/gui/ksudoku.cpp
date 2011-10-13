@@ -138,7 +138,7 @@ KSudoku::KSudoku()
 
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
 	wrapper->layout()->addWidget(m_welcomeScreen);
-	connect(m_welcomeScreen, SIGNAL(newGameStarted(const::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const::ksudoku::Game&)));
+	connect(m_welcomeScreen, SIGNAL(newGameStarted(const ::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const ::ksudoku::Game&)));
 	showWelcomeScreen();
 
 	// Register the gamevariants resource
@@ -189,6 +189,7 @@ void KSudoku::updateShapesList()
 	QString variantDescr;
 	QString variantDataPath;
 	QString variantIcon;
+	SudokuType variantType;
 
 	foreach(const QString &filepath, filepaths) {
 		KConfig variantConfig(filepath, KConfig::SimpleConfig);
@@ -199,11 +200,25 @@ void KSudoku::updateShapesList()
 		variantIcon = group.readEntry("Icon", "ksudoku-ksudoku_9x9");
 		variantDataPath = group.readEntry("FileName", "");
 		if(variantDataPath == "") continue;
+
+		// TODO: IDW - Find a neater hack.
+		if (variantDataPath == "Samurai.xml")
+		    variantType = Samurai;
+		else if (variantDataPath == "TinySamurai.xml")
+		    variantType = TinySamurai;
+		else if (variantDataPath == "4x4.xml")
+		    variantType = Plain;
+		else if (variantDataPath == "Jigsaw.xml")
+		    variantType = Jigsaw;
+		else if (variantDataPath == "XSudoku.xml")
+		    variantType = XSudoku;
+
 		variantDataPath = filepath.left(filepath.lastIndexOf("/")+1) + variantDataPath;
 
 		variant = new CustomGame(variantName, variantDataPath, m_gameVariants);
 		variant->setDescription(variantDescr);
 		variant->setIcon(variantIcon);
+		variant->setType(variantType);
 	}
 }
 
@@ -228,7 +243,7 @@ void KSudoku::startGame(const Game& game) {
 	widget->show();
 	widget->setFocus();
 
-	connect(game.interface(), SIGNAL(completed(bool,QTime,bool)), SLOT(onCompleted(bool,QTime,bool)));
+	connect(game.interface(), SIGNAL(completed(bool,const QTime&,bool)), SLOT(onCompleted(bool,const QTime&,bool)));
 	connect(game.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
 
 	adaptActions2View();
@@ -289,6 +304,9 @@ void KSudoku::autoSolve()
 	game.autoSolve();
 }
 
+// Check the game setup, copy the puzzle, init and solve the copy and show the
+// result (i.e. implement the "Check" action). If the user agrees, start play.
+
 void KSudoku::dubPuzzle()
 {
 	Game game = currentGame();
@@ -300,7 +318,11 @@ void KSudoku::dubPuzzle()
 		return;
 	}
 
+	// Create a new Puzzle object, with same Graph and solution flag = true.
 	ksudoku::Puzzle* puzzle = game.puzzle()->dubPuzzle();
+
+	// Copy the given values of the puzzle, then run it through the solver.
+	// The solution, if valid, is saved in puzzle->m_solution2.
 	int state = puzzle->init(game.allValues());
 
 	if(state <= 0) {
@@ -581,7 +603,7 @@ void KSudoku::optionsPreferences()
 	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
 
     dialog->setHelp(QString(),"ksudoku");
-	connect(dialog, SIGNAL(settingsChanged(QString)), SLOT(updateSettings()));
+	connect(dialog, SIGNAL(settingsChanged(const QString&)), SLOT(updateSettings()));
 	dialog->show();
 }
 
