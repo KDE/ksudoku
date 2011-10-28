@@ -1,7 +1,8 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>WelcomeScreen</class>
- <widget class="QWidget" name="WelcomeScreen" >
-  <property name="geometry" >
+ <widget class="QWidget" name="WelcomeScreen">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
@@ -9,31 +10,31 @@
     <height>512</height>
    </rect>
   </property>
-  <layout class="QHBoxLayout" >
+  <layout class="QHBoxLayout">
    <item>
-    <widget class="QGroupBox" name="groupBox1" >
-     <property name="title" >
+    <widget class="QGroupBox" name="groupBox1">
+     <property name="title">
       <string>Choose your Game</string>
      </property>
-     <layout class="QVBoxLayout" >
+     <layout class="QVBoxLayout">
       <item>
-       <widget class="QListView" name="gameListWidget" />
+       <widget class="QListView" name="gameListWidget"/>
       </item>
       <item>
-       <layout class="QHBoxLayout" >
+       <layout class="QHBoxLayout">
         <item>
-         <widget class="QPushButton" name="getNewGameButton" >
-          <property name="text" >
+         <widget class="QPushButton" name="getNewGameButton">
+          <property name="text">
            <string>Get New</string>
           </property>
          </widget>
         </item>
         <item>
          <spacer>
-          <property name="orientation" >
+          <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
-          <property name="sizeHint" >
+          <property name="sizeHint" stdset="0">
            <size>
             <width>40</width>
             <height>20</height>
@@ -41,91 +42,34 @@
           </property>
          </spacer>
         </item>
-        <!-- Configure is disalbed until a new config dialog for games exists -->
-<!--        <item>
-         <widget class="QPushButton" name="configureGameButton" >
-          <property name="text" >
-           <string>Configure...</string>
-          </property>
-         </widget>
-        </item>-->
         <item>
-         <widget class="QPushButton" name="startEmptyButton" >
-          <property name="text" >
+         <widget class="QPushButton" name="startEmptyButton">
+          <property name="text">
            <string>Start Empty</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="playGameButton" >
-          <property name="text" >
+         <widget class="QPushButton" name="playGameButton">
+          <property name="text">
            <string>Play</string>
           </property>
-          <property name="autoDefault" >
+          <property name="autoDefault">
            <bool>false</bool>
           </property>
-          <property name="default" >
+          <property name="default">
            <bool>true</bool>
           </property>
          </widget>
         </item>
         <item>
-	 <widget class="QPushButton" name="puzzleGeneratorButton" >
-          <property name="text" >
+         <widget class="QPushButton" name="puzzleGeneratorButton">
+          <property name="text">
            <string>Generate Puzzle</string>
           </property>
          </widget>
         </item>
        </layout>
-      </item>
-      <item>
-       <widget class="QGroupBox" name="groupBox2" >
-        <property name="title" >
-         <string>Difficulty</string>
-        </property>
-        <layout class="QVBoxLayout" >
-         <item>
-          <widget class="QSlider" name="difficultySlider" >
-           <property name="maximum" >
-            <number>4</number>
-           </property>
-           <property name="pageStep" >
-            <number>1</number>
-           </property>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="tickPosition" >
-            <enum>QSlider::TicksBelow</enum>
-           </property>
-           <property name="tickInterval" >
-            <number>0</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" >
-           <item>
-            <widget class="QLabel" name="label1" >
-             <property name="text" >
-              <string>Easy</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="label2" >
-             <property name="text" >
-              <string>Hard</string>
-             </property>
-             <property name="alignment" >
-              <set>Qt::AlignAbsolute|Qt::AlignBottom|Qt::AlignCenter|Qt::AlignHCenter|Qt::AlignHorizontal_Mask|Qt::AlignJustify|Qt::AlignLeading|Qt::AlignLeft|Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing|Qt::AlignVCenter|Qt::AlignVertical_Mask</set>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
       </item>
      </layout>
     </widget>

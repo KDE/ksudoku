@@ -37,6 +37,8 @@ public:
 	GameVariant* selectedVariant() const;
 	int difficulty() const;
 	void setDifficulty(int difficulty);
+	int symmetry() const;
+	void setSymmetry(int symmetry);
 
 private slots:
 	void onCurrentVariantChange();
@@ -53,6 +55,8 @@ signals:
 	
 private:
 	GameVariantCollection* m_collection;
+	int m_difficulty;
+	int m_symmetry;
 };
 
 }

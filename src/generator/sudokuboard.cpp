@@ -74,13 +74,24 @@ void SudokuBoard::setSeed()
 
 void SudokuBoard::generatePuzzle (BoardContents & puzzle,
                                   BoardContents & solution,
-                                  Difficulty difficultyRequired, int symmetry)
+                                  Difficulty difficultyRequired,
+                                  Symmetry symmetry)
 {
     QTime t;
     t.start();
     setSeed();
     int count = 0;
-    // TODO: IDW - add a symmetry feature.
+
+    if (symmetry == RANDOM_SYM) {	// Choose a symmetry at random.
+        symmetry = (Symmetry) (qrand() % (int) LAST_CHOICE);
+    }
+    dbo "SYMMETRY IS %d\n", (int) symmetry);
+    if (symmetry == DIAGONAL_1) {
+	// If diagonal symmetry, choose between NW->SE and NE->SW diagonals.
+        symmetry = (qrand() % 2 == 0) ? DIAGONAL_1 : DIAGONAL_2;
+	dbo "Diagonal symmetry, choosing %s\n",
+            (symmetry == DIAGONAL_1) ? "DIAGONAL_1" : "DIAGONAL_2");
+    }
 
     while (true) {
         // Fill the board with values that satisfy the Sudoku rules but are
@@ -303,7 +314,7 @@ BoardContents & SudokuBoard::tryGuesses (GuessingMode gMode = Random)
 
 BoardContents SudokuBoard::insertValues (const BoardContents & solution,
                                          const Difficulty      required,
-                                               int             symmetry)
+                                         const Symmetry        symmetry)
 {
     BoardContents puzzle;
     BoardContents filled;
@@ -325,8 +336,9 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
         value = filled.at (cell);
         if (filled.at (cell) == 0) {
             index = n;
-            puzzle [cell] = solution.at (cell);
-            filled [cell] = solution.at (cell);
+            changeClues (puzzle, cell, symmetry, solution);
+            changeClues (filled, cell, symmetry, solution);
+
             dbo2 "CALL deduceValues():\n");
             deduceValues (filled, Random /* NotRandom */);
             dbo2 "BACK FROM deduceValues():\n");
@@ -336,6 +348,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
             }
         }
     }
+    print (puzzle); // IDW test.
 
     while (true) {
         // Check the difficulty of the puzzle.
@@ -345,11 +358,11 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
         if (m_stats.difficulty <= required) {
             break;	// The difficulty is as required or not enough yet.
         }
-        // The puzzle needs to be made easier.  Add a randomly-selected clue.
+        // The puzzle needs to be made easier.  Add randomly-selected clues.
         for (int n = index; n < m_boardArea; n++) {
             cell  = sequence.at (n);
             if (puzzle.at (cell) == 0) {
-                puzzle [cell] = solution.at (cell);
+                changeClues (puzzle, cell, symmetry, solution);
                 index = n;
                 break;
             }
@@ -365,7 +378,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
 BoardContents SudokuBoard::removeValues (const BoardContents & solution,
                                                BoardContents & puzzle,
                                          const Difficulty      required,
-                                               int             symmetry)
+                                         const Symmetry        symmetry)
 {
     // Make the puzzle harder by removing values at random, making sure at each
     // step that the puzzle has a solution, the correct solution and only one
@@ -374,10 +387,11 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
     // (random) selection of board values.
 
     // Remove values in random order, but put them back if the solution fails.
+    BoardContents vacant;
     QVector<int> sequence (m_boardArea);
     int          cell       = 0;
     int          value      = 0;
-    QList<Pair>  tailOfRemoved;
+    QList<int>   tailOfRemoved;
 
     // No guesses until this much of the puzzle, including clues, is filled in.
     float        guessLimit = 0.6;
@@ -387,6 +401,7 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
 
     dbo1 "Start REMOVING:\n");
     randomSequence (sequence);
+    clear (vacant);
 
     for (int n = 0; n < m_boardArea; n++) {
         cell  = sequence.at (n);
@@ -394,7 +409,8 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
         if ((value == 0) || (value == m_unusable)) {
             continue;			// Skip empty or unusable cells.
         }
-        puzzle [cell] = 0;		// Try removing this value.
+	// Try removing this clue and its symmetry partners (if any).
+	changeClues (puzzle, cell, symmetry, vacant);
         dbo1 "ITERATION %d: Removed %d from cell %d\n", n, value, cell);
 
         // Check the solution is still OK and calculate the difficulty roughly.
@@ -408,11 +424,11 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
             result = -4;
         }
 
-        // If the solution is not OK, replace the removed value.
+        // If the solution is not OK, replace the removed value(s).
         if (result < 0) {
             dbo1 "ITERATION %d: Replaced %d at cell %d, check returned %d\n",
                     n, value, cell, result);
-            puzzle [cell] = value;
+	    changeClues (puzzle, cell, symmetry, solution);
         }
 
         // If the solution is OK, check the difficulty (roughly).
@@ -421,8 +437,8 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
             dbo1 "CURRENT DIFFICULTY %d\n", m_stats.difficulty);
 
             if (m_stats.difficulty == required) {
-                // Save removed values while the difficulty is as required.
-                tailOfRemoved.append (setPair (cell, value));
+                // Save removed positions while the difficulty is as required.
+                tailOfRemoved.append (cell);
                 dbo1 "OVERSHOOT %d at sequence %d\n",
                         tailOfRemoved.count(), n);
             }
@@ -433,7 +449,8 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
                 dbe1 "BREAK on difficulty %d\n", m_stats.difficulty);
                 dbo1 "Replaced %d at cell %d, overshoot is %d\n",
                         value, cell, tailOfRemoved.count());
-                puzzle [cell] = value;	// Replace the value involved.
+                // Replace the value involved.
+	        changeClues (puzzle, cell, symmetry, solution);
                 break;
             }
         }
@@ -447,10 +464,9 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
     // required difficulty range.
     if ((required != Unlimited) && (tailOfRemoved.count() > 1)) {
         for (int k = 0; k < tailOfRemoved.count() / 2; k++) {
-            Pair r = tailOfRemoved.takeLast();
-            dbo1 "Replaced %d at cell %d\n",
-                    pairVal(r), pairPos(r));
-            puzzle [pairPos(r)] = pairVal(r);
+            cell = tailOfRemoved.takeLast();
+            dbo1 "Replaced clue(s) for cell %d\n", cell);
+            changeClues (puzzle, cell, symmetry, solution);
         }
     }
     return puzzle;
@@ -527,7 +543,7 @@ Difficulty SudokuBoard::calculateDifficulty (float rating)
     // These ranges of the rating were arrived at empirically by solving a few
     // dozen published puzzles and comparing SudokuBoard's rating value with the
     // description of difficulty given by the publisher, e.g. Diabolical or Evil
-    // puzzles gave ratings in the range 10.0 to 20.0, so became Expert level.
+    // puzzles gave ratings in the range 10.0 to 20.0, so became Diabolical.
 
     Difficulty d = Unlimited;
 
@@ -544,7 +560,7 @@ Difficulty SudokuBoard::calculateDifficulty (float rating)
         d = Hard;
     }
     else if (rating < 20.0) {
-        d = Expert;
+        d = Diabolical;
     }
 
     return d;
@@ -935,6 +951,96 @@ void SudokuBoard::markUnusable (BoardContents & boardValues,
             boardValues [index] = m_unusable;
         }
     }
+}
+
+void SudokuBoard::changeClues (BoardContents & to, int cell, Symmetry type,
+                               const BoardContents & from)
+{
+    int nSymm = 1;
+    int indices[4];
+    nSymm = getSymmetricIndices (m_boardSize, type, cell, indices);
+    for (int k = 0; k < nSymm; k++) {
+        cell = indices [k];
+        to [cell] = from.at (cell);
+    }
+}
+
+int SudokuBoard::getSymmetricIndices
+                (int size, Symmetry type, int index, int * out)
+{
+    int result = 1;
+    int row    = index / size;
+    int col    = index % size;
+    out[0]     = index;
+    bool b[3]  = {1, 1, 1};
+
+    switch (type) {
+        case NONE:
+            break;
+        case DIAGONAL_1:
+	    // Reflect a copy of the point around two central axes making its
+	    // reflection in the NW-SE diagonal the same as for NE-SW diagonal.
+            row = size - row - 1;
+            col = size - col - 1;
+            // No break; fall through to case DIAGONAL_2.
+        case DIAGONAL_2:
+            out[1] = (col * size) + row;	// Reflect in NW-SE diagonal.
+            result = (out[1] == out[0]) ? 1 : 2;
+            break;
+        case CENTRAL:
+            out[1] = (size * size) - index - 1;
+            result = (out[1] == out[0]) ? 1 : 2;
+            break;
+        case FOURWAY:
+	    /* This could be WHEEL, SWIRL, WHIRLPOOL or SPIRAL symmetry? */
+	    /*
+	    result = 4;
+            if(size % 2 == 1) {
+		if ((row == col) && (col == (size - 1)/2)) {	// Central cell.
+		    result = 1;
+		}
+	    }
+	    if (result == 4) {
+                out[1] = (size - row - 1) * size + size - col - 1;
+                out[2] = col * size + size - row - 1;
+                out[3] = (size - col - 1) * size + row;
+	    }
+	    */
+            out[1] = out[2] = out[3] = 0;
+            if(size % 2 == 1) {
+                if(col == (size - 1)/2) {
+                    b[0] = b[2] = 0;
+                }
+                if(row == (size - 1)/2) {
+                    b[1] = b[2] = 0;
+                }
+            }
+
+            if(b[2] == 0) {
+                out[1] = (size - row - 1) * size + size - col - 1;
+                if(out[1] != out[0]) {
+		    result++;
+		}
+            }
+            else {
+                out[1] = (size - row - 1) * size + (size - col - 1);
+                out[2] = row * size + (size - col - 1);
+                out[3] = (size - row - 1) * size + col;
+                result = 4;
+            }
+            break;
+        case LEFT_RIGHT:
+            out[1] = (size - 1 - row) * size + col;
+            result = (out[1] == out[0]) ? 1 : 2;
+            break;
+        case TOP_BOTTOM:
+	    out[1] = (row) * size + size - col - 1;
+            result = (out[1] == out[0]) ? 1 : 2;
+            break;
+        default:
+            break;
+    }
+    return result;
 }
 
 void SudokuBoard::sendToPrinter (const BoardContents & boardValues)

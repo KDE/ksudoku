@@ -26,6 +26,8 @@
 #include <ksavefile.h>
 
 #include <QHBoxLayout>
+#include <QLabel>
+#include <QComboBox>
 
 #include <KLocale>
 #include <KActionCollection>
@@ -124,7 +126,7 @@ KSudoku::KSudoku()
 	// then, setup our actions
 	setupActions();
 
-	setupGUI(ToolBar | Keys | Save | Create);
+	setupGUI(ToolBar | Keys | Save | Create | StatusBar);
 
 	wrapper = new QWidget();
 	(void) new QHBoxLayout(wrapper);
@@ -139,6 +141,9 @@ KSudoku::KSudoku()
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
 	wrapper->layout()->addWidget(m_welcomeScreen);
 	connect(m_welcomeScreen, SIGNAL(newGameStarted(const ::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const ::ksudoku::Game&)));
+
+	setupStatusBar();
+
 	showWelcomeScreen();
 
 	// Register the gamevariants resource
@@ -165,22 +170,10 @@ void KSudoku::updateShapesList()
 	variant = new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The classic and fashionable game"));
 	variant->setIcon("ksudoku-ksudoku_9x9");
-	variant = new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
-	variant->setDescription(i18n("Sudoku with 16 symbols"));
-	variant->setIcon("ksudoku-ksudoku_16x16");
-	variant = new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
-	variant->setDescription(i18n("Sudoku with 25 symbols"));
-	variant->setIcon("ksudoku-ksudoku_25x25");
 #ifdef OPENGL_SUPPORT
 	variant = new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
-	variant->setDescription(i18n("The Rox 3D sudoku"));
+	variant->setDescription(i18n("The Rox 3D Sudoku"));
 	variant->setIcon("ksudoku-roxdoku_3x3x3");
-	variant = new RoxdokuGame(i18n("Roxdoku 16 (4x4x4)"), 16, m_gameVariants);
-	variant->setDescription(i18n("The Rox 3D sudoku with 16 symbols"));
-	variant->setIcon("ksudoku-roxdoku_4x4x4");
-	variant = new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
-	variant->setDescription(i18n("The Rox 3D sudoku with 25 symbols"));
-	variant->setIcon("ksudoku-roxdoku_5x5x5");
 #endif
 
     QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
@@ -220,6 +213,22 @@ void KSudoku::updateShapesList()
 		variant->setIcon(variantIcon);
 		variant->setType(variantType);
 	}
+
+	// Put variants first and extra sizes last.
+	variant = new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
+	variant->setDescription(i18n("Sudoku with 16 symbols"));
+	variant->setIcon("ksudoku-ksudoku_16x16");
+	variant = new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
+	variant->setDescription(i18n("Sudoku with 25 symbols"));
+	variant->setIcon("ksudoku-ksudoku_25x25");
+#ifdef OPENGL_SUPPORT
+	variant = new RoxdokuGame(i18n("Roxdoku 16 (4x4x4)"), 16, m_gameVariants);
+	variant->setDescription(i18n("The Rox 3D sudoku with 16 symbols"));
+	variant->setIcon("ksudoku-roxdoku_4x4x4");
+	variant = new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
+	variant->setDescription(i18n("The Rox 3D sudoku with 25 symbols"));
+	variant->setIcon("ksudoku-roxdoku_5x5x5");
+#endif
 }
 
 void KSudoku::startGame(const Game& game) {
@@ -393,6 +402,46 @@ void KSudoku::setupActions()
 	a->setText(i18n("Home Page"));
 	a->setIcon(KIcon( QLatin1String( "internet-web-browser" )));
 	connect(a, SIGNAL(triggered(bool)), SLOT(homepage()));
+}
+
+void KSudoku::setupStatusBar()
+{
+	// Use the standard combo box for difficulty, from KDE Games library.
+	statusBar()->addPermanentWidget (new QLabel (i18n("Difficulty")));
+	KGameDifficulty::init (this, this,
+		SLOT (difficultyChanged(KGameDifficulty::standardLevel)),
+		SLOT (difficultyChanged(int)));
+	KGameDifficulty::addStandardLevel(KGameDifficulty::VeryEasy);
+	KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
+	KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
+	KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
+	KGameDifficulty::addCustomLevel(Diabolical,
+		i18nc("A level of difficulty in Sudoku puzzles", "Diabolical"));
+	KGameDifficulty::addCustomLevel(Unlimited,
+		i18nc("A level of difficulty in Sudoku puzzles", "Unlimited"));
+	KGameDifficulty::setRestartOnChange(KGameDifficulty::NoRestartOnChange);
+
+	// Set default value of difficulty.
+	KGameDifficulty::setLevel (KGameDifficulty::VeryEasy);
+	KGameDifficulty::setEnabled (true);
+
+	// Set up a combo box for symmetry of puzzle layout.
+	statusBar()->addPermanentWidget (new QLabel (i18n("Symmetry")));
+	QComboBox * symmetryBox = new QComboBox (this);
+	QObject::connect(symmetryBox, SIGNAL(activated(int)),
+		    		this, SLOT(symmetryChanged(int)));
+	symmetryBox->setToolTip(i18nc(
+		"Symmetry of layout of clues when puzzle starts", "Symmetry"));
+	symmetryBox->setWhatsThis(i18n(
+		"The symmetry of layout of the clues when the puzzle starts"));
+	statusBar()->addPermanentWidget (symmetryBox);
+	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Diagonal"));
+	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Central"));
+	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Four-Way"));
+	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Left-Right"));
+	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Top-Bottom"));
+	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Random Choice"));
+	symmetryBox->addItem(i18n("No Symmetry"));
 }
 
 void KSudoku::adaptActions2View() {
@@ -619,6 +668,44 @@ void KSudoku::updateSettings() {
 	}
 
 	emit settingsChanged();
+}
+
+void KSudoku::difficultyChanged (KGameDifficulty::standardLevel difficulty)
+{
+    // TODO - IDW: Use symbols from globals.h. 
+    qDebug() << "Set difficulty =" << difficulty;
+    int newDifficulty = VeryEasy;
+    switch (difficulty) {
+    case KGameDifficulty::VeryEasy:
+	newDifficulty = VeryEasy;
+	break;
+    case KGameDifficulty::Easy:
+	newDifficulty = Easy;
+	break;
+    case KGameDifficulty::Medium:
+	newDifficulty = Medium;
+	break;
+    case KGameDifficulty::Hard:
+	newDifficulty = Hard;
+	break;
+    default:
+	return;
+    }
+    qDebug() << "Set new difficulty =" << newDifficulty;
+    m_welcomeScreen->setDifficulty(newDifficulty);
+    return;
+}
+
+void KSudoku::difficultyChanged (int difficulty)
+{
+    qDebug() << "Set custom difficulty =" << difficulty;
+    m_welcomeScreen->setDifficulty(difficulty);
+}
+
+void KSudoku::symmetryChanged (int symmetry)
+{
+    qDebug() << "Set symmetry =" << symmetry;
+    m_welcomeScreen->setSymmetry(symmetry);
 }
 
 // void KSudoku::changeStatusbar(const QString& text)

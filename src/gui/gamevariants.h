@@ -61,7 +61,8 @@ public:
 	virtual Game startEmpty() const = 0;
 
 	/// Creates a instance of this game variant
-	virtual Game createGame(int difficulty, bool alternateSolver = false) const = 0;
+	virtual Game createGame(int difficulty, int symmetry,
+				bool alternateSolver = false) const = 0;
 
 	/// Creates the correct view for the game.
 	/// Game needs to be compatible with this GameVariant
@@ -138,7 +139,8 @@ public:
 	bool configure();
 	bool canStartEmpty() const;
 	Game startEmpty() const;
-	Game createGame(int difficulty, bool alternateSolver = false) const;
+	Game createGame(int difficulty, int symmetry,
+				bool alternateSolver = false) const;
 	KsView* createView(const Game& game) const;
 
 private:
@@ -157,7 +159,8 @@ public:
 	bool configure();
 	bool canStartEmpty() const;
 	Game startEmpty() const;
-	Game createGame(int difficulty, bool alternateSolver = false) const;
+	Game createGame(int difficulty, int symmetry,
+				bool alternateSolver = false) const;
 	KsView* createView(const Game& game) const;
 
 private:
@@ -176,7 +179,8 @@ public:
 	bool configure();
 	bool canStartEmpty() const;
 	Game startEmpty() const;
-	Game createGame(int difficulty, bool alternateSolver = false) const;
+	Game createGame(int difficulty, int symmetry,
+				bool alternateSolver = false) const;
 	KsView* createView(const Game& game) const;
 
 private:

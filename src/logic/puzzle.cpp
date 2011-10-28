@@ -168,7 +168,7 @@ bool Puzzle::init(int difficulty, int symmetry,
 	    BoardContents puzzle;
 	    BoardContents solution;
 	    board->generatePuzzle (puzzle, solution,
-				   (Difficulty) difficulty, symmetry);
+				  (Difficulty) difficulty, (Symmetry) symmetry);
 	    int boardSize = board->boardSize();
 	    delete owner;			// And the SudokuBoard object.
 

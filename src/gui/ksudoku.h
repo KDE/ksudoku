@@ -26,6 +26,7 @@
 #if 0
 #include <knewstuff/knewstuff.h>
 #endif
+#include <KGameDifficulty>
 
 class KUrl;
 
@@ -100,6 +101,10 @@ public slots:
 	void endCurrentGame();
 	
 private slots:
+	void difficultyChanged (KGameDifficulty::standardLevel difficulty);
+	void difficultyChanged (int difficulty); // IDW test.
+	void symmetryChanged   (int symmetry);
+
 	void gameNew();
 	void gameOpen();
 	void gameSave();
@@ -133,6 +138,7 @@ signals:
 
 private:
 	void setupActions();
+	void setupStatusBar();
 
 	void adaptActions2View();
 

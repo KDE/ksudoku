@@ -137,7 +137,7 @@ public:
     void                    generatePuzzle (BoardContents & puzzle,
                                             BoardContents & solution,
                                             Difficulty      difficulty,
-                                            int             symmetry);
+                                            Symmetry        symmetry);
 
     /**
      * Check that a puzzle is soluble, has the desired solution and has only one
@@ -390,7 +390,7 @@ private:
      */
     BoardContents           insertValues (const BoardContents & solution,
                                           const Difficulty      difficulty,
-                                                int             symmetry);
+                                          const Symmetry        symmetry);
 
     /**
      * Remove values from a partially generated puzzle, to make it more
@@ -423,7 +423,7 @@ private:
     BoardContents           removeValues (const BoardContents & solution,
                                                 BoardContents & puzzle,
                                           const Difficulty      difficulty,
-                                                int             symmetry);
+                                          const Symmetry        symmetry);
 
     /**
      * Compile statistics re solution moves and calculate a difficulty rating
@@ -444,6 +444,31 @@ private:
      *                      defined in file globals.h).
      */
     Difficulty              calculateDifficulty (float rating);
+
+    /**
+     * Add or clear one clue or more in a puzzle, depending on the symmetry.
+     *
+     * @param to            The puzzle grid to be changed.
+     * @param cell          The first cell to be changed.
+     * @param type          The type of symmetry.
+     * @param from          The grid from which the changes are taken.
+     */
+    void                    changeClues (BoardContents & to,
+                                         int cell, Symmetry type,
+                                         const BoardContents & from);
+    /**
+     * For a given cell, calculate the positions of cells that satisfy the
+     * current symmetry requirement.
+     *
+     * @param size          The size of one side of the board.
+     * @param type          The required type of symmetry (if any).
+     * @param cell          The position of a selected cell.
+     * @param out[4]        A set of up to four symmetrically placed cells.
+     *
+     * @return              The number of symmetrically placed cells.
+     */
+    int                     getSymmetricIndices (int size, Symmetry type,
+                                                 int cell, int * out);
 
     // Methods for packing two small integers into one and unpacking them.  Used
     // for speed and efficiency in the solver and other places.

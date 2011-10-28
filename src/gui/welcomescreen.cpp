@@ -58,11 +58,21 @@ GameVariant* WelcomeScreen::selectedVariant() const {
 }
 
 int WelcomeScreen::difficulty() const {
-	return difficultySlider->value();
+	// IDW test return difficultySlider->value();
+	return m_difficulty;
 }
 
 void WelcomeScreen::setDifficulty(int difficulty) {
-	difficultySlider->setValue(difficulty);
+	// IDW test difficultySlider->setValue(difficulty);
+	m_difficulty = difficulty;
+}
+
+int WelcomeScreen::symmetry() const {
+	return m_symmetry;
+}
+
+void WelcomeScreen::setSymmetry(int symmetry) {
+	m_symmetry = symmetry;
 }
 
 void WelcomeScreen::onCurrentVariantChange() {
@@ -107,7 +117,7 @@ void WelcomeScreen::playVariant() {
 	GameVariant* variant = selectedVariant();
 	if(!variant) return;
 	
-	Game game = variant->createGame(difficulty());
+	Game game = variant->createGame(difficulty(), 0);
 
 	emit newGameStarted(game, variant);
 }
@@ -119,7 +129,8 @@ void WelcomeScreen::generatePuzzle() {
 	qDebug()<<"CLASS NAME"<<variant->name()<<"TYPE"<<variant->type();
 
 	bool alternateSolver = true;
-	Game game = variant->createGame(difficulty(), alternateSolver);
+	Game game = variant->createGame(difficulty(), symmetry(),
+					alternateSolver);
 
 	emit newGameStarted(game, variant);
 }

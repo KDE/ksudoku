@@ -23,8 +23,11 @@
 enum SudokuType {Plain, XSudoku, Jigsaw, Samurai, TinySamurai, Roxdoku,
                  EndSudokuTypes};
 
-enum Difficulty {VeryEasy  = 0, Easy = 1, Medium = 2, Hard = 3, Expert = 4,
+enum Difficulty {VeryEasy  = 0, Easy = 1, Medium = 2, Hard = 3, Diabolical = 4,
                  Unlimited = 5};
+
+enum Symmetry   {DIAGONAL_1, CENTRAL, FOURWAY, LEFT_RIGHT, TOP_BOTTOM,
+                 RANDOM_SYM, LAST_CHOICE = RANDOM_SYM, NONE, DIAGONAL_2};
 
 typedef QVector<int>      BoardContents;
 
