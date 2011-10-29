@@ -45,27 +45,17 @@
         <item>
          <widget class="QPushButton" name="startEmptyButton">
           <property name="text">
-           <string>Start Empty</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="playGameButton">
-          <property name="text">
-           <string>Play</string>
-          </property>
-          <property name="autoDefault">
-           <bool>false</bool>
-          </property>
-          <property name="default">
-           <bool>true</bool>
+           <string>Enter In A Puzzle</string>
           </property>
          </widget>
         </item>
         <item>
          <widget class="QPushButton" name="puzzleGeneratorButton">
           <property name="text">
-           <string>Generate Puzzle</string>
+           <string>Generate A Puzzle</string>
+          </property>
+          <property name="default">
+           <bool>true</bool>
           </property>
          </widget>
         </item>

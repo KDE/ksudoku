@@ -43,10 +43,11 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
 	// TODO disabled due to missing per-game config dialog
 // 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
+	// connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));			// Disable old create-game code.
+	// connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(playVariant()));	// Disable old create-game code.
 	connect(startEmptyButton, SIGNAL(clicked(bool)), this, SLOT(startEmptyGame()));
-	connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));
 	connect(puzzleGeneratorButton, SIGNAL(clicked(bool)), this, SLOT(generatePuzzle()));
-	connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(playVariant()));
+	connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(generatePuzzle()));
 
 	// GHNS is not implemented yet, so don't show an unuseful button
 	getNewGameButton->hide();
@@ -83,14 +84,16 @@ void WelcomeScreen::onCurrentVariantChange() {
 	if(!variant) {
 		// TODO disabled due to missing per-game config dialog
 // 		configureGameButton->setEnabled(false);
-		playGameButton->setEnabled(false);
+		// playGameButton->setEnabled(false);
+		puzzleGeneratorButton->setEnabled(false);
 		return;
 	}
 	
 	// TODO disabled due to missing per-game config dialog
 // 	configureGameButton->setEnabled(variant->canConfigure());
 	startEmptyButton->setEnabled(variant->canStartEmpty());
-	playGameButton->setEnabled(true);
+	// playGameButton->setEnabled(true);
+	puzzleGeneratorButton->setEnabled(true);
 }
 
 void WelcomeScreen::getNewVariant() {
@@ -114,6 +117,7 @@ void WelcomeScreen::startEmptyGame() {
 }
 
 void WelcomeScreen::playVariant() {
+	return;		// Disable old game-creation code.
 	GameVariant* variant = selectedVariant();
 	if(!variant) return;
 	
