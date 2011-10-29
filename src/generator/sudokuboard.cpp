@@ -991,13 +991,11 @@ int SudokuBoard::getSymmetricIndices
             out[1] = (size * size) - index - 1;
             result = (out[1] == out[0]) ? 1 : 2;
             break;
-        case FOURWAY:
-	    /* This could be WHEEL, SWIRL, WHIRLPOOL or SPIRAL symmetry? */
-	    /*
+	case SPIRAL:
 	    result = 4;
             if(size % 2 == 1) {
-		if ((row == col) && (col == (size - 1)/2)) {	// Central cell.
-		    result = 1;
+		if ((row == col) && (col == (size - 1)/2)) {
+		    result = 1;		// This is the central cell.
 		}
 	    }
 	    if (result == 4) {
@@ -1005,7 +1003,8 @@ int SudokuBoard::getSymmetricIndices
                 out[2] = col * size + size - row - 1;
                 out[3] = (size - col - 1) * size + row;
 	    }
-	    */
+            break;
+        case FOURWAY:
             out[1] = out[2] = out[3] = 0;
             if(size % 2 == 1) {
                 if(col == (size - 1)/2) {
@@ -1030,11 +1029,7 @@ int SudokuBoard::getSymmetricIndices
             }
             break;
         case LEFT_RIGHT:
-            out[1] = (size - 1 - row) * size + col;
-            result = (out[1] == out[0]) ? 1 : 2;
-            break;
-        case TOP_BOTTOM:
-	    out[1] = (row) * size + size - col - 1;
+	    out[1] = row * size + size - col - 1;
             result = (out[1] == out[0]) ? 1 : 2;
             break;
         default:

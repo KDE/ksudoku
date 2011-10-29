@@ -437,9 +437,9 @@ void KSudoku::setupStatusBar()
 	statusBar()->addPermanentWidget (symmetryBox);
 	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Diagonal"));
 	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Central"));
-	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Four-Way"));
 	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Left-Right"));
-	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Top-Bottom"));
+	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Spiral"));
+	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Four-Way"));
 	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Random Choice"));
 	symmetryBox->addItem(i18n("No Symmetry"));
 }
@@ -672,7 +672,6 @@ void KSudoku::updateSettings() {
 
 void KSudoku::difficultyChanged (KGameDifficulty::standardLevel difficulty)
 {
-    // TODO - IDW: Use symbols from globals.h. 
     qDebug() << "Set difficulty =" << difficulty;
     int newDifficulty = VeryEasy;
     switch (difficulty) {
@@ -700,6 +699,14 @@ void KSudoku::difficultyChanged (int difficulty)
 {
     qDebug() << "Set custom difficulty =" << difficulty;
     m_welcomeScreen->setDifficulty(difficulty);
+    if (difficulty == Unlimited) {
+	KMessageBox::information (this,
+		i18n("Warning: The Unlimited difficulty level has no limit on "
+		     "how many guesses or branch points are required to solve "
+		     "the puzzle and there is no lower limit on how soon "
+		     "guessing becomes necessary."),
+		i18n("Warning"), "WarningReUnlimited");
+    }
 }
 
 void KSudoku::symmetryChanged (int symmetry)
