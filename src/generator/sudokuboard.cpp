@@ -21,6 +21,9 @@
 #include "sudokuboard.h"
 #include "state.h"
 
+#include <KLocale>
+#include <KMessageBox>
+
 #include <QMultiMap>
 #include <QPrinter>
 #include <QPainter>
@@ -81,6 +84,7 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     t.start();
     setSeed();
     int count = 0;
+    const int maxTries = 20;
 
     if (symmetry == RANDOM_SYM) {	// Choose a symmetry at random.
         symmetry = (Symmetry) (qrand() % (int) LAST_CHOICE);
@@ -121,8 +125,56 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
         dbe "CYCLE %d, achieved difficulty %d, required %d\n",
                          count, d, difficultyRequired);
 
-        if ((count >= 20) || (d >= difficultyRequired)) {
-            // Exit after max attempts or when required difficulty is reached.
+        if ((d >= difficultyRequired) || (count >= maxTries)) {
+            QWidget owner;
+	    if (m_accum.nGuesses == 0) {
+		KMessageBox::information (&owner,
+		       i18n("This puzzle can be solved by logic alone. No "
+			    "guessing is required.\n"
+			    "\n"
+			    "The internal difficulty rating is %1. There are "
+			    "%2 clues at the start and %3 moves to go.")
+		            .arg(m_accum.rating, 0, 'f', 1).arg(m_stats.nClues)
+			    .arg(m_stats.nCells - m_stats.nClues),
+		       i18n("Difficulty Level"),
+		       "ShowPuzzleStatistics_1");
+	    }
+	    else {
+		KMessageBox::information (&owner,
+		       i18n("This puzzle requires an average of %1 guesses "
+			    "or branch points and if you guess wrong, "
+			    "backtracking is necessary. The first guess comes "
+			    "after %2 moves.\n"
+			    "\n"
+			    "The internal difficulty rating is %3, there are "
+			    "%4 clues at the start and %5 moves to go.")
+		            .arg(((float) m_accum.nGuesses) / 5.0, 0, 'f', 1)
+			    .arg(m_stats.firstGuessAt)
+			    .arg(m_accum.rating, 0, 'f', 1).arg(m_stats.nClues)
+			    .arg(m_stats.nCells - m_stats.nClues),
+		       i18n("Difficulty Level"),
+		       "ShowPuzzleStatistics_2");
+	    }
+            if (d >= difficultyRequired) {
+                // Exit when the required difficulty is reached.
+                break;
+            }
+
+            // Exit after max attempts?
+            int ans = KMessageBox::questionYesNo (&owner,
+                      i18n("After %1 tries, the puzzle generator has not "
+                           "reached the difficulty level you requested. Do you "
+                           "wish to try again or accept the puzzle as is?\n"
+			   "\n"
+			   "If you accept the puzzle, it may help to change to "
+			   "No Symmetry or some low symmetry type and then "
+                           "generate another puzzle.").arg(maxTries),
+                      i18n("Difficulty Level"),
+                      KGuiItem(i18n("&Try Again")), KGuiItem(i18n("&Accept")));
+            if (ans == KMessageBox::Yes) {
+                count = 0;
+                continue;
+            }
             break;
         }
     }
