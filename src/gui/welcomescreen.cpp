@@ -36,7 +36,14 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	setupUi(this);
 	gameListWidget->setModel(m_collection);
 	gameListWidget->setItemDelegate(delegate);
-    gameListWidget->setVerticalScrollMode(QListView::ScrollPerPixel);
+	gameListWidget->setVerticalScrollMode(QListView::ScrollPerPixel);
+
+	// Get the previous puzzle configuiration.
+	KConfigGroup gameGroup (KGlobal::config(), "KSudokuGame");
+	int puzzleType   = gameGroup.readEntry("SudokuType", (int) Plain);
+	int gridSize     = gameGroup.readEntry("GridSize",         9);
+	    m_difficulty = gameGroup.readEntry("Difficulty", (int) VeryEasy);
+	    m_symmetry   = gameGroup.readEntry("Symmetry"  , (int) CENTRAL);
 	
 	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(const QModelIndex&,const QModelIndex&)), this, SLOT(onCurrentVariantChange()));
 	
@@ -59,12 +66,10 @@ GameVariant* WelcomeScreen::selectedVariant() const {
 }
 
 int WelcomeScreen::difficulty() const {
-	// IDW test return difficultySlider->value();
 	return m_difficulty;
 }
 
 void WelcomeScreen::setDifficulty(int difficulty) {
-	// IDW test difficultySlider->setValue(difficulty);
 	m_difficulty = difficulty;
 }
 
@@ -129,12 +134,19 @@ void WelcomeScreen::playVariant() {
 void WelcomeScreen::generatePuzzle() {
 	GameVariant* variant = selectedVariant();
 	if(!variant) return;
-
 	qDebug()<<"CLASS NAME"<<variant->name()<<"TYPE"<<variant->type();
 
 	bool alternateSolver = true;
 	Game game = variant->createGame(difficulty(), symmetry(),
 					alternateSolver);
+
+	// Save the selected puzzle configuration.
+	KConfigGroup gameGroup (KGlobal::config(), "KSudokuGame");
+	gameGroup.writeEntry("SudokuType", (int) variant->type());
+	gameGroup.writeEntry("GridSize",   game.order());
+	gameGroup.writeEntry("Difficulty", m_difficulty);
+	gameGroup.writeEntry("Symmetry"  , m_symmetry);
+	gameGroup.sync();		// Ensure that the entry goes to disk.
 
 	emit newGameStarted(game, variant);
 }

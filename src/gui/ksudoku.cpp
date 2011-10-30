@@ -142,7 +142,8 @@ KSudoku::KSudoku()
 	wrapper->layout()->addWidget(m_welcomeScreen);
 	connect(m_welcomeScreen, SIGNAL(newGameStarted(const ::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const ::ksudoku::Game&)));
 
-	setupStatusBar();
+	setupStatusBar(m_welcomeScreen->difficulty(),
+		       m_welcomeScreen->symmetry());
 
 	showWelcomeScreen();
 
@@ -404,9 +405,14 @@ void KSudoku::setupActions()
 	connect(a, SIGNAL(triggered(bool)), SLOT(homepage()));
 }
 
-void KSudoku::setupStatusBar()
+void KSudoku::setupStatusBar (int difficulty, int symmetry)
 {
 	// Use the standard combo box for difficulty, from KDE Games library.
+	const int nStandardLevels = 4;
+	const KGameDifficulty::standardLevel standardLevels[nStandardLevels] =
+			{KGameDifficulty::VeryEasy, KGameDifficulty::Easy,
+			 KGameDifficulty::Medium,   KGameDifficulty::Hard};
+
 	statusBar()->addPermanentWidget (new QLabel (i18n("Difficulty")));
 	KGameDifficulty::init (this, this,
 		SLOT (difficultyChanged(KGameDifficulty::standardLevel)),
@@ -422,7 +428,12 @@ void KSudoku::setupStatusBar()
 	KGameDifficulty::setRestartOnChange(KGameDifficulty::NoRestartOnChange);
 
 	// Set default value of difficulty.
-	KGameDifficulty::setLevel (KGameDifficulty::VeryEasy);
+	if (difficulty < nStandardLevels) {
+	    KGameDifficulty::setLevel (standardLevels[difficulty]);
+	}
+	else {
+	    KGameDifficulty::setLevelCustom (difficulty);
+	}
 	KGameDifficulty::setEnabled (true);
 
 	// Set up a combo box for symmetry of puzzle layout.
@@ -442,6 +453,7 @@ void KSudoku::setupStatusBar()
 	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Four-Way"));
 	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Random Choice"));
 	symmetryBox->addItem(i18n("No Symmetry"));
+	symmetryBox->setCurrentIndex (symmetry);
 }
 
 void KSudoku::adaptActions2View() {

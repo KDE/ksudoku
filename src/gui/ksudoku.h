@@ -138,7 +138,7 @@ signals:
 
 private:
 	void setupActions();
-	void setupStatusBar();
+	void setupStatusBar(int difficulty, int symmetry);
 
 	void adaptActions2View();
 
