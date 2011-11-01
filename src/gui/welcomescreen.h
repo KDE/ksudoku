@@ -35,6 +35,7 @@ public:
 	
 public:
 	GameVariant* selectedVariant() const;
+
 	int difficulty() const;
 	void setDifficulty(int difficulty);
 	int symmetry() const;
@@ -49,12 +50,19 @@ private slots:
 	void playVariant();
 
 	void generatePuzzle();
-	
+
+	// This slot is used to restore the user's previous selection of puzzle
+	// type and size when KSudoku starts up.  It has to be a slot because it
+	// needs a queued call, which executes after all the setup has finished,
+	// otherwise selection fails and no selection is shown.
+	void setSelectedVariant(int row);
+
 signals:
 	void newGameStarted(const ::ksudoku::Game& game, GameVariant* variant);
 	
 private:
 	GameVariantCollection* m_collection;
+	int m_selectedPuzzle;
 	int m_difficulty;
 	int m_symmetry;
 };

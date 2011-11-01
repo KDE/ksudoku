@@ -37,14 +37,21 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	gameListWidget->setModel(m_collection);
 	gameListWidget->setItemDelegate(delegate);
 	gameListWidget->setVerticalScrollMode(QListView::ScrollPerPixel);
+	gameListWidget->setSelectionBehavior(QAbstractItemView::SelectRows);
+	gameListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
-	// Get the previous puzzle configuiration.
+	// Get the previous puzzle configuration.
 	KConfigGroup gameGroup (KGlobal::config(), "KSudokuGame");
-	int puzzleType   = gameGroup.readEntry("SudokuType", (int) Plain);
-	int gridSize     = gameGroup.readEntry("GridSize",         9);
-	    m_difficulty = gameGroup.readEntry("Difficulty", (int) VeryEasy);
-	    m_symmetry   = gameGroup.readEntry("Symmetry"  , (int) CENTRAL);
-	
+	m_selectedPuzzle = gameGroup.readEntry("SelectedPuzzle", 0);
+	m_difficulty     = gameGroup.readEntry("Difficulty", (int) VeryEasy);
+	m_symmetry       = gameGroup.readEntry("Symmetry"  , (int) CENTRAL);
+
+	// This has to be a deferred call (presumably to allow the view's setup
+	// to complete), otherwise the selection fails to appear.
+	QMetaObject::invokeMethod (this, "setSelectedVariant",
+		                   Qt::QueuedConnection,
+				   Q_ARG (int, m_selectedPuzzle));
+
 	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(const QModelIndex&,const QModelIndex&)), this, SLOT(onCurrentVariantChange()));
 	
 	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
@@ -52,6 +59,7 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 // 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
 	// connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));			// Disable old create-game code.
 	// connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(playVariant()));	// Disable old create-game code.
+
 	connect(startEmptyButton, SIGNAL(clicked(bool)), this, SLOT(startEmptyGame()));
 	connect(puzzleGeneratorButton, SIGNAL(clicked(bool)), this, SLOT(generatePuzzle()));
 	connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(generatePuzzle()));
@@ -61,8 +69,12 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 }
 
 GameVariant* WelcomeScreen::selectedVariant() const {
-	QModelIndex index = gameListWidget->selectionModel()->currentIndex();
+	QModelIndex index = gameListWidget->currentIndex();
 	return m_collection->variant(index);
+}
+
+void WelcomeScreen::setSelectedVariant(int row) {
+	gameListWidget->setCurrentIndex(gameListWidget->model()->index(row,0));
 }
 
 int WelcomeScreen::difficulty() const {
@@ -82,9 +94,6 @@ void WelcomeScreen::setSymmetry(int symmetry) {
 }
 
 void WelcomeScreen::onCurrentVariantChange() {
-	QItemSelectionModel* selection = gameListWidget->selectionModel();
-	selection->select(selection->currentIndex(), QItemSelectionModel::Select);
-	
 	GameVariant* variant = selectedVariant();
 	if(!variant) {
 		// TODO disabled due to missing per-game config dialog
@@ -141,9 +150,11 @@ void WelcomeScreen::generatePuzzle() {
 					alternateSolver);
 
 	// Save the selected puzzle configuration.
+	QModelIndex index = gameListWidget->currentIndex();
+	m_selectedPuzzle = index.row();
+
 	KConfigGroup gameGroup (KGlobal::config(), "KSudokuGame");
-	gameGroup.writeEntry("SudokuType", (int) variant->type());
-	gameGroup.writeEntry("GridSize",   game.order());
+	gameGroup.writeEntry("SelectedPuzzle", m_selectedPuzzle);
 	gameGroup.writeEntry("Difficulty", m_difficulty);
 	gameGroup.writeEntry("Symmetry"  , m_symmetry);
 	gameGroup.sync();		// Ensure that the entry goes to disk.
