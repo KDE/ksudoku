@@ -185,10 +185,10 @@ bool Puzzle::init(int difficulty, int symmetry) {
 }
 
 int Puzzle::init(const QByteArray& values) {
+	if(m_initialized) return -1;
     QByteArray out = values; // IDW test.
     for (int i = 0; i < out.size(); i++) out[i] = out.at(i) + '0'; // IDW test.
     qDebug() << "Values" << out; // IDW test.
-	if(m_initialized) return -1;
 /*
 	m_alternateSolver = false;
 	setValues(values);
@@ -204,8 +204,42 @@ int Puzzle::init(const QByteArray& values) {
 	}
 	
 */
-	int success = 1; // TODO - IDW - Get SudokuBoard to check the solution.
-	return success;
+	QObject * owner = new QObject();	// Stands in for "this".
+	SudokuBoard * board = getBoard (owner);
+	if (board == 0) {
+	    return 0;
+	}
+
+	// The new solver stores by column within row.
+	// KSudoku stores values by row within column.
+	BoardContents puzzleValues;
+	int boardSize = board->boardSize();
+	for (int j = 0; j < boardSize; j++) {
+	    for (int i = 0; i < boardSize; i++) {
+		puzzleValues.append((int) values.at(i * boardSize + j));
+	    }
+	}
+	qDebug() << puzzleValues.size() << "puzzleValues" << puzzleValues;
+	board->print(puzzleValues);
+
+	// Save the puzzle values and SudokuBoard's solution (if any).
+	m_puzzle = values;
+	m_solution = convertBoardContents
+			(board->solveBoard(puzzleValues), boardSize);
+
+	// Get SudokuBoard to check the solution.
+	int result = board->checkPuzzle (puzzleValues);
+	if (result >= 0) {
+	    result = 1;		// There is one solution.
+	}
+	else if (result == -1) {
+	    result = 0;		// There is no solution.
+	}
+	else {
+	    result = 2;		// There is more than one solution.
+	}
+	delete owner;		// Also deletes the SudokuBoard object.
+	return result;
 }
 
 /*

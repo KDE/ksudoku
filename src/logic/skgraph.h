@@ -86,7 +86,7 @@ public:
 public:
 	virtual void init() = 0;
 	virtual ksudoku::GameType type() const = 0;
-	virtual SudokuType specificType() { return m_specificType; }
+	virtual SudokuType specificType() const { return m_specificType; }
 
 public:
 	const Ruleset *rulset() const { return m_ruleset; }

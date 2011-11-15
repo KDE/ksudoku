@@ -433,6 +433,16 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph) {
 	
 	GameType type = graph->type();
 	element.setAttribute("type" , (type == TypeSudoku) ? "sudoku" : (type == TypeRoxdoku) ? "roxdoku" : "custom");
+
+	int n = -1;
+	SudokuType puzzleType = graph->specificType();
+	for (n = 0; n < EndSudokuTypes; n++) {
+	    if (puzzleType == types [n]) {
+		break;
+	    }	
+	}
+	element.setAttribute("specific-type", (n < 0) ? "Plain" : typeNames[n]);
+
 	if(type == TypeCustom)
 	{
 		GraphCustom* g = (GraphCustom*) graph;
