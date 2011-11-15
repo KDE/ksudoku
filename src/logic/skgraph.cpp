@@ -25,12 +25,6 @@
 #include <sstream>
 #include <cmath>
 
-/*
-#include <ruleset.h>
-#include <choiceitem.h>
-#include <sudokuconstraint.h>
-*/
-
 SKGraph::SKGraph(int o, bool threedimensionalf)
 {
 	// <<< implementation of SKBase::setorder
@@ -38,10 +32,7 @@ SKGraph::SKGraph(int o, bool threedimensionalf)
 	int base = (int) sqrt((double)o);
 	int size = (threedimensionalf == 1) ? base*base*base : (m_order*m_order);
 	// >>>
-/*
-	m_ruleset = 0;
-	m_board = 0;
-*/
+
 	for(int i = 0; i < size; ++i)
 	{
 		optimized_d[i]=0;
@@ -50,9 +41,6 @@ SKGraph::SKGraph(int o, bool threedimensionalf)
 
 SKGraph::~SKGraph()
 {
-/*
-	delete m_ruleset;
-*/
 }
 
 bool SKGraph::hasConnection(int i, int j) const {
@@ -79,44 +67,7 @@ void ksudoku::GraphSudoku::init()
 	int base = static_cast<int>(sqrt((float)m_order));
 
 	m_specificType = Plain;
-/*	
-	m_ruleset = new Ruleset();
-	ItemBoard *board = new ItemBoard(m_order, m_order);
-	m_ruleset->addItem(board);
-	m_board = board;
-	
-	for(int x = 0; x < m_order; ++x) {
-		for(int y = 0; y < m_order; ++y) {
-			board->setItem(new ChoiceItem(1, m_order), x, y);
-		}
-	}
-	board->init(m_ruleset);
 
-	for(int i = 0; i < m_order; ++i) {
-		SudokuConstraint *row = new SudokuConstraint();
-		QVector<Item*> items = board->itemsAt(-1, i);
-		row->setItems(items);
-		row->init(m_ruleset);
-		m_ruleset->addItem(row);
-
-		SudokuConstraint *column = new SudokuConstraint();
-		column->setItems(board->itemsAt(i, -1));
-		column->init(m_ruleset);
-		m_ruleset->addItem(column);
-
-		SudokuConstraint *block = new SudokuConstraint();
-		int blockRow = i/base*base;
-		int blockCol = i%base*base;
-		for(int ibh = 0; ibh < base; ++ibh) {
-			for(int ibw = 0; ibw < base; ++ibw) {
-				block->addItem(board->itemAt(blockCol + ibw, blockRow + ibh));
-			}
-		}
-		block->init(m_ruleset);
-		m_ruleset->addItem(block);
-	}
-	// Finished initialization of ruleset
-*/
 	m_sizeX = m_order;
 	m_sizeY = m_order;
 	m_sizeZ = 1;
@@ -151,46 +102,11 @@ void ksudoku::GraphRoxdoku::init()
 	int base = static_cast<int>(sqrt((float)m_order));
 
 	m_specificType = Roxdoku;
-/*	
-	m_ruleset = new Ruleset();
-	ItemBoard *board = new ItemBoard(base, base, base);
-	m_ruleset->addItem(board);
-	m_board = board;
-	
-	for(int x = 0; x < base; ++x) {
-		for(int y = 0; y < base; ++y) {
-			for(int z = 0; z < base; ++z) {
-				board->setItem(new ChoiceItem(1, m_order), x, y, z);
-			}
-		}
-	}
-	board->init(m_ruleset);
-	
-	for(int i = 0; i < base; ++i) {
-		SudokuConstraint *constraint = new SudokuConstraint();
-		QVector<Item*> items = board->itemsAt(-1, -1, i);
-		constraint->setItems(items);
-		constraint->init(m_ruleset);
-		m_ruleset->addItem(constraint);
 
-		SudokuConstraint *constraint2 = new SudokuConstraint();
-		constraint2->setItems(board->itemsAt(-1, i, -1));
-		constraint2->init(m_ruleset);
-		m_ruleset->addItem(constraint2);
-
-		SudokuConstraint *constraint3 = new SudokuConstraint();
-		constraint3->setItems(board->itemsAt(i, -1, -1));
-		constraint3->init(m_ruleset);
-		m_ruleset->addItem(constraint3);
-	}
-	// Finished initialization of ruleset
-*/	
-	
 	m_sizeX = base;
 	m_sizeY = base;
 	m_sizeZ = base;
-	
-	
+
 	int faces[3];
 	for(int i = 0; i < size(); ++i)
 	{
@@ -235,7 +151,8 @@ void ksudoku::Graph2d::addClique(QVector<int> data) {
 	m_cliques << data;
 }
 
-void ksudoku::GraphCustom::init(const char* _name, SudokuType specificType, int _order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in)
+void ksudoku::GraphCustom::init(const char* _name, SudokuType specificType,
+				int _order, int sizeX, int sizeY, int sizeZ,					int ncliques, const char* in)
 {//TODO free in when done
 	name = new char[strlen(_name)+1];
 	strcpy(name, _name);
@@ -246,21 +163,14 @@ void ksudoku::GraphCustom::init(const char* _name, SudokuType specificType, int 
 	m_sizeX = sizeX;
 	m_sizeY = sizeY;
 	m_sizeZ = sizeZ;
-/*
-	m_ruleset = new Ruleset();
-	ItemBoard *board = new ItemBoard(m_sizeX, m_sizeY, m_sizeZ);
-	m_ruleset->addItem(board);
-	m_board = board;
-*/
+
 	std::istringstream is(in);
 
 	QVector<int> data;
 	for(int i = 0; i < ncliques; ++i)
 	{
 		data.clear();
-/*
-		SudokuConstraint *constraint = new SudokuConstraint();
-*/
+
 		//read clique line
 		int n;
 		is >> n;
@@ -269,25 +179,10 @@ void ksudoku::GraphCustom::init(const char* _name, SudokuType specificType, int 
 			is >> temp;
 			data << temp;
 		}
-/*
-			int x = cellPosX(temp), y = cellPosY(temp), z = cellPosZ(temp);
-			Item *item = board->itemAt(x, y, z);
-			if(!item) {
-				item = new ChoiceItem(1, m_order);
-				board->setItem(item, x, y, z);
-			}
-			constraint->addItem(item);
-		}
 
-		constraint->init(m_ruleset);
-		m_ruleset->addItem(constraint);
-*/
 		addClique(data);
 	}
-/*
-	board->init(m_ruleset);
-*/
-	
+
 	valid=true;
 	return;
 }

@@ -29,14 +29,6 @@
 #include "ksudoku_types.h"
 #include "globals.h"
 
-/**
-	@author 
-*/
-
-/*
-class ItemBoard;
-class Ruleset;
-*/
 class SKGraph
 {
 public:
@@ -62,15 +54,14 @@ public:
 		if(!(sizeX() && sizeY() && sizeZ())) return 0;
 		return i%sizeZ();
 	}
-	
-	
+
 public:
 	int optimized_d[625];
 	int optimized[625][625]; //pointer-style list of connected nodes
 
 public:
 	virtual ~SKGraph();
-			
+
 public:
 	explicit SKGraph(int o=9, bool threedimensionalf = false);
 
@@ -90,11 +81,6 @@ public:
 	virtual ksudoku::GameType type() const = 0;
 	virtual SudokuType specificType() const { return m_specificType; }
 
-/*
-public:
-	const Ruleset *rulset() const { return m_ruleset; }
-	const ItemBoard *board() const { return m_board; }
-*/
 protected:
 	void addConnection(int i, int j);
 	
@@ -103,11 +89,6 @@ protected:
 
 	int m_order;
 	int m_sizeX, m_sizeY, m_sizeZ;
-/*
-protected:
-	Ruleset *m_ruleset;
-	ItemBoard *m_board;
-*/
 };
 
 namespace ksudoku {
@@ -154,7 +135,9 @@ public:
 public:
 	void init() {}
 	ksudoku::GameType type() const { return TypeCustom; }
-	void init(const char* name, SudokuType specificType, int order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in);
+	void init(const char* name, SudokuType specificType,
+		  int order, int sizeX, int sizeY, int sizeZ,
+		  int ncliques, const char* in);
 };
 
 }

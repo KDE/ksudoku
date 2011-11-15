@@ -233,10 +233,6 @@ SudokuGame::SudokuGame(const QString& name, uint order, GameVariantCollection* c
 {
 	// TODO load from settings
 	m_symmetry = 0;
-
-/*
-	m_type = Plain;
-*/
 }
 
 bool SudokuGame::canConfigure() const {
@@ -271,14 +267,8 @@ Game SudokuGame::createGame(int difficulty, int symmetry) const {
 	}
 	
 	Puzzle* puzzle = new Puzzle(m_graph, true);
-	/* if (alternateSolver) { */
-	    puzzle->init(difficulty, symmetry);
-/*
-	}
-	else {
-	    puzzle->init(difficulty, m_symmetry);
-	}
-*/
+	puzzle->init(difficulty, symmetry);
+
 	return Game(puzzle);
 }
 
@@ -294,12 +284,7 @@ KsView* SudokuGame::createView(const Game& /*game*/) const {
 RoxdokuGame::RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection)
 	: GameVariant(name, collection), m_order(order), m_graph(0)
 {
-	// TODO load from settings
 	m_symmetry = 0;
-
-/*
-	m_type = Roxdoku;
-*/
 }
 
 bool RoxdokuGame::canConfigure() const {
@@ -334,14 +319,8 @@ Game RoxdokuGame::createGame(int difficulty, int symmetry) const {
 	}
 
 	Puzzle* puzzle = new Puzzle(m_graph, true);
-	/* if (alternateSolver) { */
-	    puzzle->init(difficulty, symmetry);
-/*
-	}
-	else {
-	    puzzle->init(difficulty, m_symmetry);
-	}
-*/
+	puzzle->init(difficulty, symmetry);
+
 	return Game(puzzle);
 }
 
@@ -358,7 +337,6 @@ CustomGame::CustomGame(const QString& name, const KUrl& url,
                        GameVariantCollection* collection)
 	: GameVariant(name, collection), m_url(url), m_graph(0)
 {
-	// TODO load from settings
 	m_symmetry = 0;
 }
 
@@ -393,14 +371,8 @@ Game CustomGame::createGame(int difficulty, int symmetry) const {
 	}
 
 	Puzzle* puzzle = new Puzzle(m_graph, true);
-	/* if (alternateSolver) { */
-	    puzzle->init(difficulty, symmetry);
-/*
-	}
-	else {
-	    puzzle->init(difficulty, 1);
-	}
-*/
+	puzzle->init(difficulty, symmetry);
+
 	return Game(puzzle);
 }
 

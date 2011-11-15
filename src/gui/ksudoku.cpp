@@ -183,9 +183,6 @@ void KSudoku::updateShapesList()
 	QString variantDescr;
 	QString variantDataPath;
 	QString variantIcon;
-/*
-	SudokuType variantType;
-*/
 
 	foreach(const QString &filepath, filepaths) {
 		KConfig variantConfig(filepath, KConfig::SimpleConfig);
@@ -196,27 +193,12 @@ void KSudoku::updateShapesList()
 		variantIcon = group.readEntry("Icon", "ksudoku-ksudoku_9x9");
 		variantDataPath = group.readEntry("FileName", "");
 		if(variantDataPath == "") continue;
-/*
-		// TODO: IDW - Find a neater hack.
-		if (variantDataPath == "Samurai.xml")
-		    variantType = Samurai;
-		else if (variantDataPath == "TinySamurai.xml")
-		    variantType = TinySamurai;
-		else if (variantDataPath == "4x4.xml")
-		    variantType = Plain;
-		else if (variantDataPath == "Jigsaw.xml")
-		    variantType = Jigsaw;
-		else if (variantDataPath == "XSudoku.xml")
-		    variantType = XSudoku;
-*/
+
 		variantDataPath = filepath.left(filepath.lastIndexOf("/")+1) + variantDataPath;
 
 		variant = new CustomGame(variantName, variantDataPath, m_gameVariants);
 		variant->setDescription(variantDescr);
 		variant->setIcon(variantIcon);
-/*
-		variant->setType(variantType);
-*/
 	}
 
 	// Put variants first and extra sizes last.

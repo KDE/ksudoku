@@ -20,10 +20,6 @@
 #ifndef _KSUDOKUGAMEVARIANTS_H_
 #define _KSUDOKUGAMEVARIANTS_H_
 
-/*
-#include "globals.h"
-*/
-
 #include <QObject>
 #include <QList>
 #include <KUrl>
@@ -43,10 +39,6 @@ public:
 
 public:
 	QString name() const { return m_name; }
-	/*
-	SudokuType type() const { return m_type; }
-	void setType(SudokuType type) { m_type = type; }
-	*/
 	QString description() const { return m_description; }
 	void setDescription(const QString& descr);
 	QString icon() const { return m_icon; }
@@ -70,11 +62,6 @@ public:
 	/// Creates the correct view for the game.
 	/// Game needs to be compatible with this GameVariant
 	virtual KsView* createView(const Game& game) const = 0;
-
-/*
-protected:
-	SudokuType m_type;
-*/
 
 private:
 	QString m_name;
