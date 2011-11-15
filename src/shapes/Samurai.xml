@@ -1,6 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="21" sizeY="21" sizeZ="1" ncliques="131" order="9" name="Samurai" type="custom" >
+ <graph sizeX="21" sizeY="21" sizeZ="1" ncliques="131" order="9" specific-type="Samurai" type="custom" name="Samurai" >
 	<clique size="9" >0 1 2 3 4 5 6 7 8 </clique>
 	<clique size="9" >21 22 23 24 25 26 27 28 29 </clique>
 	<clique size="9" >42 43 44 45 46 47 48 49 50 </clique>

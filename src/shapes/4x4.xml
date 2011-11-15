@@ -1,7 +1,7 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
  <graph sizeX="4" sizeY="4" sizeZ="1" ncliques="12" order="4" 
-type="custom" name="4x4">
+type="custom" specific-type="Plain" name="4x4">
   <clique size="4" >0 1 2 3 </clique>
   <clique size="4" >4 5 6 7 </clique>
   <clique size="4" >8 9 10 11 </clique>

@@ -1,6 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="10" author="Francesco Rossi" sizeY="10" sizeZ="1" ncliques="60" order="4" name="TinySamurai" type="custom" >
+ <graph sizeX="10" author="Francesco Rossi" sizeY="10" sizeZ="1" ncliques="60" order="4" name="TinySamurai" type="custom" specific-type="TinySamurai" >
 
 
 <clique size="4" >0 1 2 3 </clique>

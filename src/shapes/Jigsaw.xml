@@ -1,7 +1,7 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
  <graph sizeX="9" sizeY="9" sizeZ="1" ncliques="27" order="9" 
-name="Jigsaw" type="custom" >
+name="Jigsaw" type="custom" specific-type="Jigsaw" >
   <clique size="9" >0 1 2 3 4 5 6 7 8 </clique>
   <clique size="9" >9 10 11 12 13 14 15 16 17 </clique>
   <clique size="9" >18 19 20 21 22 23 24 25 26 </clique>
