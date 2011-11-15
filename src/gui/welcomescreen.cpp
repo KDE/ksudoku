@@ -23,6 +23,7 @@
 #include <QDebug>
 
 #include "ksudokugame.h"
+#include "globals.h"
 
 Q_DECLARE_METATYPE(ksudoku::GameVariant*)
 
@@ -143,11 +144,8 @@ void WelcomeScreen::playVariant() {
 void WelcomeScreen::generatePuzzle() {
 	GameVariant* variant = selectedVariant();
 	if(!variant) return;
-	qDebug()<<"CLASS NAME"<<variant->name()<<"TYPE"<<variant->type();
 
-	bool alternateSolver = true;
-	Game game = variant->createGame(difficulty(), symmetry(),
-					alternateSolver);
+	Game game = variant->createGame(difficulty(), symmetry());
 
 	// Save the selected puzzle configuration.
 	QModelIndex index = gameListWidget->currentIndex();

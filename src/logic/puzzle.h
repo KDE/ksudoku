@@ -22,11 +22,13 @@
 #ifndef _KSUDOKUPUZZLE_H_
 #define _KSUDOKUPUZZLE_H_
 
-#include "solver.h"
+/* #include "solver.h" */
 #include "skgraph.h"
 #include "globals.h"
 
 class QChar;
+class QObject;
+class SudokuBoard;
 
 namespace ksudoku {
 	
@@ -48,8 +50,7 @@ public:
 	* @param[in] difficulty The difficulty of the new game.
 	* @param[in] symmetry   The symmetry
 	*/
-	bool init(int difficulty, int symmetry,
-		  bool alternateSolver = false, SudokuType type = Plain);
+	bool init(int difficulty, int symmetry);
 	/**
 	* Tries to create a game on existing values
 	* @param[in]  values The values used for the new puzzle
@@ -68,8 +69,10 @@ public:
 
 	int value(int index) const;
 	int solution(int index) const;
-
+/*
 	inline bool hasSolution() const { return ((m_withSolution && m_solution2.ruleset()) || (m_alternateSolver && (m_solution.size() > 0))); }
+*/
+	inline bool hasSolution() const { return (m_solution.size() > 0); }
 
 	///@return order of game
 	int order() const { return m_graph->order(); }
@@ -89,17 +92,20 @@ public:
 public:
 	inline SKGraph *graph() const { return m_graph; }
 
+/*
 private:
 	bool createPartial(Solver* graph);
+*/
 
 private:
 	bool m_withSolution;
 	SKGraph *m_graph;
-	
+/*	
 	Problem m_puzzle2;
 	Problem m_solution2;
-
 	bool m_alternateSolver;
+*/
+	QByteArray m_puzzle;
 	QByteArray m_solution;
 
 	int m_difficulty;
@@ -110,6 +116,7 @@ private:
 	void setValues(const QByteArray& values);
 	const QByteArray convertBoardContents(const BoardContents & values,
 					      int boardSize);
+	SudokuBoard * getBoard(QObject * owner);
 };
 
 }

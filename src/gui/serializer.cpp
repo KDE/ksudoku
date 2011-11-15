@@ -39,6 +39,11 @@
 
 namespace ksudoku {
 
+const char *     typeNames[] = {"Plain", "XSudoku", "Jigsaw",
+				"Samurai", "TinySamurai", "Roxdoku"};
+const SudokuType types[]     = {Plain, XSudoku, Jigsaw,
+				Samurai, TinySamurai, Roxdoku};
+
 Game Serializer::deserializeGame(QDomElement element) {
 	bool hasPuzzle = false;
 	Puzzle* puzzle = 0;
@@ -203,7 +208,17 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 		int sizeZ = readInt(element,"sizeZ",&err);
 		//int size = sizeX*sizeY*sizeZ;
 
-		QString name = element.attribute("name");;
+		QString name = element.attribute("name");
+		QString typeName = element.attribute("specific-type");
+		SudokuType puzzleType = Plain; // Default puzzle-type.
+	        for (int n = 0; n < EndSudokuTypes; n++) {
+		    QString lookup = QString (typeNames [n]);
+	            if (QString::compare (typeName, lookup, Qt::CaseInsensitive)
+			== 0) {
+		        puzzleType = types [n];
+	                break;
+	            }
+		}
 
 		if(err==1) return 0;
 		if(sizeX<1 || sizeY<1 || sizeZ<1) return 0;
@@ -222,7 +237,8 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 		}
 		
 		GraphCustom* graph = new GraphCustom();
-		graph->init(name.toLatin1(), order, sizeX, sizeY, sizeZ, ncliques, cliques.toLatin1());
+		graph->init(name.toLatin1(), puzzleType, order,
+			    sizeX, sizeY, sizeZ, ncliques, cliques.toLatin1());
 		if(graph->valid==false) return 0;
 		return graph;
 	}
@@ -420,21 +436,21 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph) {
 	if(type == TypeCustom)
 	{
 		GraphCustom* g = (GraphCustom*) graph;
-		element.setAttribute("ncliques", (int) g->cliques.size());
+		element.setAttribute("ncliques", (int) g->cliqueCount());
 		element.setAttribute("name", g->name);
 		element.setAttribute("sizeX", g->sizeX());
 		element.setAttribute("sizeY", g->sizeY());
 		element.setAttribute("sizeZ", g->sizeZ());
 
-		for(int i=0; i<g->cliques.size(); i++)
+		for(int i=0; i < g->cliqueCount(); i++)
 		{
 			QDomElement clique = parent.ownerDocument().createElement("clique");
-			clique.setAttribute("size",  (int) g->cliques[i].size());
+			clique.setAttribute("size",  (int) g->clique(i).size());
 			//serialize clique
 			QString contentStr = "";
-			for(int j=0; j<g->cliques[i].size(); j++)
+			for(int j=0; j < g->clique(i).size(); j++)
 			{
-				contentStr += QString::number(g->cliques[i][j]) + ' ';
+				contentStr += QString::number(g->clique(i).at(j)) + ' ';
 			}
 			clique.appendChild(parent.ownerDocument().createTextNode(contentStr));
 			element.appendChild(clique);

@@ -27,6 +27,7 @@
 #include <QVector>
 
 #include "ksudoku_types.h"
+#include "globals.h"
 
 /**
 	@author 
@@ -85,6 +86,7 @@ public:
 public:
 	virtual void init() = 0;
 	virtual ksudoku::GameType type() const = 0;
+	virtual SudokuType specificType() { return m_specificType; }
 
 public:
 	const Ruleset *rulset() const { return m_ruleset; }
@@ -93,6 +95,8 @@ protected:
 	void addConnection(int i, int j);
 	
 protected:
+	SudokuType m_specificType;
+
 	int m_order;
 	int m_sizeX, m_sizeY, m_sizeZ;
 protected:
@@ -138,14 +142,13 @@ public:
 	char* name;
 	bool valid;
 
-	std::vector<std::vector<int> > cliques; //or chars? don't remove SPACE
 public:
 	GraphCustom();
 	explicit GraphCustom(const char* filenamed);
 public:
 	void init() {}
 	ksudoku::GameType type() const { return TypeCustom; }
-	void init(const char* name, int order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in);
+	void init(const char* name, SudokuType specificType, int order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in);
 };
 
 }

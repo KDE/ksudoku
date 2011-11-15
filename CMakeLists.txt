@@ -21,7 +21,7 @@ endif(OPENGL_SUPPORT)
 
 
 add_subdirectory( src )
-add_subdirectory( engine )
+# add_subdirectory( engine )
 
 #message(STATUS "ksudoku: DEBUG: ${DEBUG}")
 #message(STATUS "ksudoku: install prefix: ${CMAKE_INSTALL_PREFIX}")

@@ -73,7 +73,9 @@ inline void SKGraph::addConnection(int i, int j)
 void ksudoku::GraphSudoku::init()
 {
 	int base = static_cast<int>(sqrt((float)m_order));
-	
+
+	m_specificType = Plain;
+/*	
 	m_ruleset = new Ruleset();
 	ItemBoard *board = new ItemBoard(m_order, m_order);
 	m_ruleset->addItem(board);
@@ -110,7 +112,7 @@ void ksudoku::GraphSudoku::init()
 		m_ruleset->addItem(block);
 	}
 	// Finished initialization of ruleset
-
+*/
 	m_sizeX = m_order;
 	m_sizeY = m_order;
 	m_sizeZ = 1;
@@ -143,7 +145,9 @@ void ksudoku::GraphSudoku::init()
 void ksudoku::GraphRoxdoku::init()
 {
 	int base = static_cast<int>(sqrt((float)m_order));
-	
+
+	m_specificType = Roxdoku;
+/*	
 	m_ruleset = new Ruleset();
 	ItemBoard *board = new ItemBoard(base, base, base);
 	m_ruleset->addItem(board);
@@ -176,7 +180,7 @@ void ksudoku::GraphRoxdoku::init()
 		m_ruleset->addItem(constraint3);
 	}
 	// Finished initialization of ruleset
-	
+*/	
 	
 	m_sizeX = base;
 	m_sizeY = base;
@@ -227,30 +231,32 @@ void ksudoku::Graph2d::addClique(QVector<int> data) {
 	m_cliques << data;
 }
 
-void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in)
+void ksudoku::GraphCustom::init(const char* _name, SudokuType specificType, int _order, int sizeX, int sizeY, int sizeZ, int ncliques, const char* in)
 {//TODO free in when done
 	name = new char[strlen(_name)+1];
 	strcpy(name, _name);
+
+	m_specificType = specificType;
 
 	m_order = _order;
 	m_sizeX = sizeX;
 	m_sizeY = sizeY;
 	m_sizeZ = sizeZ;
-
+/*
 	m_ruleset = new Ruleset();
 	ItemBoard *board = new ItemBoard(m_sizeX, m_sizeY, m_sizeZ);
 	m_ruleset->addItem(board);
 	m_board = board;
-
+*/
 	std::istringstream is(in);
 
 	QVector<int> data;
 	for(int i = 0; i < ncliques; ++i)
 	{
 		data.clear();
-
+/*
 		SudokuConstraint *constraint = new SudokuConstraint();
-
+*/
 		//read clique line
 		int n;
 		is >> n;
@@ -258,7 +264,8 @@ void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int si
 			int temp;
 			is >> temp;
 			data << temp;
-
+		}
+/*
 			int x = cellPosX(temp), y = cellPosY(temp), z = cellPosZ(temp);
 			Item *item = board->itemAt(x, y, z);
 			if(!item) {
@@ -270,12 +277,12 @@ void ksudoku::GraphCustom::init(const char* _name, int _order, int sizeX, int si
 
 		constraint->init(m_ruleset);
 		m_ruleset->addItem(constraint);
-
+*/
 		addClique(data);
 	}
-
+/*
 	board->init(m_ruleset);
-
+*/
 	
 	valid=true;
 	return;

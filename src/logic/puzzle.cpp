@@ -25,7 +25,9 @@
 #include <qstring.h>
 
 #include <QtDebug>
+/*
 #include <choiceitem.h>
+*/
 
 #include "sudokuboard.h"
 #include "plainsudokuboard.h"
@@ -37,27 +39,34 @@ namespace ksudoku {
 Puzzle::Puzzle(SKGraph *graph, bool withSolution)
 	: m_withSolution(withSolution)
 	, m_graph(graph)
-	, m_alternateSolver(false)
+	/* , m_alternateSolver(false) */
 	, m_difficulty(0)
 	, m_symmetry(0)
 	, m_initialized(false)
 { }
 
 int Puzzle::value(int index) const {
+/*	if (m_alternateSolver) { */
+	return ((index < m_puzzle.size()) ? m_puzzle.at(index) : 0);
+/*
+	}
 	Item *item = m_graph->board()->itemAt(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index));
 	if(item && m_puzzle2.ruleset())
 		return static_cast<ChoiceItem*>(item)->value(&m_puzzle2);
 	return 0;
+*/
 }
 
 int Puzzle::solution(int index) const {
-	if (m_alternateSolver) {
-	    return ((index < m_solution.size()) ? m_solution.at(index) : 0);
+/*	if (m_alternateSolver) { */
+	return ((index < m_solution.size()) ? m_solution.at(index) : 0);
+/*
 	}
 	Item *item = m_graph->board()->itemAt(m_graph->cellPosX(index), m_graph->cellPosY(index), m_graph->cellPosZ(index));
 	if(item && m_solution2.ruleset())
 		return static_cast<ChoiceItem*>(item)->value(&m_solution2);
 	return 0;
+*/
 }
 
 bool Puzzle::init() {
@@ -65,13 +74,17 @@ bool Puzzle::init() {
 	
 	if(m_withSolution)
 		return false;
+/*
+	m_alternateSolver = true;
 
 	m_alternateSolver = false;
 	m_puzzle2 = Problem(m_graph->rulset());
+*/
 
 	return true;
 }
 
+/*
 bool Puzzle::createPartial(Solver *solver) {
 	// TODO after finding a solution try to find simpler ones
 	const ItemBoard *board = m_graph->board();
@@ -122,63 +135,31 @@ bool Puzzle::createPartial(Solver *solver) {
 	}
 	return false;
 }
+*/
 
-bool Puzzle::init(int difficulty, int symmetry,
-	          bool alternateSolver, SudokuType type) {
+bool Puzzle::init(int difficulty, int symmetry) {
 	if(m_initialized) return false;
 
-	m_alternateSolver = alternateSolver;
-	if (alternateSolver) {
-	    int blockSize = 3;
-	    for (int n = 2; n <= 5; n++) {
-		if (m_graph->order() == n * n) {
-		    blockSize = n;
-		}
-	    }
-	    qDebug() << "Difficulty" << difficulty << "type" << type; 
-	    SudokuBoard * board = 0;
-	    QObject * owner = new QObject();	// Stands in for "this".
-	    // Generate a puzzle and solution of the required type.
-	    switch (type) {
-	    case Plain:
-		board = new PlainSudokuBoard (owner, type, blockSize);
-		break;
-	    case XSudoku:
-		board = new XSudokuBoard (owner, type, blockSize);
-		break;
-	    case Jigsaw:
-		board = new JigsawBoard (owner, type, blockSize);
-		break;
-	    case Samurai:
-		board = new SamuraiBoard (owner, type, blockSize);
-		break;
-	    case TinySamurai:
-		board = new TinySamuraiBoard (owner, type, blockSize);
-		break;
-	    case Roxdoku:
-		board = new RoxdokuBoard (owner, type, blockSize);
-		break;
-	    case EndSudokuTypes:
-		return false;
-		break;
-	    }
-	    board->setUpBoard();
-
-	    // Generate a puzzle and its solution.
-	    BoardContents puzzle;
-	    BoardContents solution;
-	    board->generatePuzzle (puzzle, solution,
-				  (Difficulty) difficulty, (Symmetry) symmetry);
-	    int boardSize = board->boardSize();
-	    delete owner;			// And the SudokuBoard object.
-
-	    // Convert the puzzle and solution to KSudoku format.
-	    setValues(convertBoardContents(puzzle, boardSize));
-	    m_solution = convertBoardContents(solution, boardSize);
-
-	    return true;
+	QObject * owner = new QObject();	// Stands in for "this".
+	SudokuBoard * board = getBoard (owner);
+	if (board == 0) {
+	    return false;
 	}
 
+	// Generate a puzzle and its solution.
+	BoardContents puzzle;
+	BoardContents solution;
+	board->generatePuzzle (puzzle, solution,
+			      (Difficulty) difficulty, (Symmetry) symmetry);
+	int boardSize = board->boardSize();
+	delete owner;			// Also deletes the SudokuBoard object.
+
+	// Convert the puzzle and solution to KSudoku format.
+	m_puzzle   = convertBoardContents(puzzle, boardSize);
+	m_solution = convertBoardContents(solution, boardSize);
+
+	return true;
+/*
 	Solver solver;
 	solver.setLimit(2);
 	solver.loadEmpty(m_graph->rulset());
@@ -200,11 +181,15 @@ bool Puzzle::init(int difficulty, int symmetry,
 	}
 
 	return false;
+*/
 }
 
 int Puzzle::init(const QByteArray& values) {
+    QByteArray out = values; // IDW test.
+    for (int i = 0; i < out.size(); i++) out[i] = out.at(i) + '0'; // IDW test.
+    qDebug() << "Values" << out; // IDW test.
 	if(m_initialized) return -1;
-
+/*
 	m_alternateSolver = false;
 	setValues(values);
 	
@@ -218,9 +203,12 @@ int Puzzle::init(const QByteArray& values) {
 		m_solution2 = solver.results()[0];
 	}
 	
+*/
+	int success = 1; // TODO - IDW - Get SudokuBoard to check the solution.
 	return success;
 }
 
+/*
 void Puzzle::setValues(const QByteArray& values) {
 	qDebug() << "Puzzle::init, values size:" << values.size() << "XYZ size"
 	         << m_graph->sizeX() << m_graph->sizeY() << m_graph->sizeZ();
@@ -238,6 +226,7 @@ void Puzzle::setValues(const QByteArray& values) {
 		}
 	}
 }
+*/
 
 const QByteArray Puzzle::convertBoardContents(const BoardContents & values,
 					      int boardSize) {
@@ -255,6 +244,44 @@ const QByteArray Puzzle::convertBoardContents(const BoardContents & values,
 	    }
 	}
 	return newValues;
+}
+
+SudokuBoard * Puzzle::getBoard(QObject * owner) {
+	int blockSize = 3;
+	for (int n = 2; n <= 5; n++) {
+	    if (m_graph->order() == n * n) {
+		blockSize = n;
+	    }
+	}
+	SudokuType type = m_graph->specificType();
+	qDebug() << "Type" << type; // IDW test.
+	SudokuBoard * board = 0;
+	// Generate a puzzle and solution of the required type.
+	switch (type) {
+	case Plain:
+	    board = new PlainSudokuBoard (owner, type, blockSize);
+	    break;
+	case XSudoku:
+	    board = new XSudokuBoard (owner, type, blockSize);
+	    break;
+	case Jigsaw:
+	    board = new JigsawBoard (owner, type, blockSize);
+	    break;
+	case Samurai:
+	    board = new SamuraiBoard (owner, type, blockSize);
+	    break;
+	case TinySamurai:
+	    board = new TinySamuraiBoard (owner, type, blockSize);
+	    break;
+	case Roxdoku:
+	    board = new RoxdokuBoard (owner, type, blockSize);
+	    break;
+	case EndSudokuTypes:
+	    return 0;
+	    break;
+	}
+	board->setUpBoard();
+	return board;
 }
 
 }

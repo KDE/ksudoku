@@ -33,7 +33,7 @@ kde4_add_executable(ksudoku ${ksudoku_SRCS})
 target_link_libraries(ksudoku
 	ksudoku_gui ksudoku_logic
 	kdegames
-	logine loscript
+#	logine loscript
 	${KDE4_KIO_LIBS}
 )
 
