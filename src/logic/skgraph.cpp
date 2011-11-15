@@ -25,10 +25,11 @@
 #include <sstream>
 #include <cmath>
 
+/*
 #include <ruleset.h>
 #include <choiceitem.h>
 #include <sudokuconstraint.h>
-
+*/
 
 SKGraph::SKGraph(int o, bool threedimensionalf)
 {
@@ -37,9 +38,10 @@ SKGraph::SKGraph(int o, bool threedimensionalf)
 	int base = (int) sqrt((double)o);
 	int size = (threedimensionalf == 1) ? base*base*base : (m_order*m_order);
 	// >>>
-
+/*
 	m_ruleset = 0;
 	m_board = 0;
+*/
 	for(int i = 0; i < size; ++i)
 	{
 		optimized_d[i]=0;
@@ -48,7 +50,9 @@ SKGraph::SKGraph(int o, bool threedimensionalf)
 
 SKGraph::~SKGraph()
 {
+/*
 	delete m_ruleset;
+*/
 }
 
 bool SKGraph::hasConnection(int i, int j) const {

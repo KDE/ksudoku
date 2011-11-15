@@ -18,10 +18,7 @@ if(OPENGL_SUPPORT)
 	add_definitions(-DOPENGL_SUPPORT)
 endif(OPENGL_SUPPORT)
 
-
-
 add_subdirectory( src )
-# add_subdirectory( engine )
 
 #message(STATUS "ksudoku: DEBUG: ${DEBUG}")
 #message(STATUS "ksudoku: install prefix: ${CMAKE_INSTALL_PREFIX}")

@@ -33,8 +33,10 @@
 	@author 
 */
 
+/*
 class ItemBoard;
 class Ruleset;
+*/
 class SKGraph
 {
 public:
@@ -88,9 +90,11 @@ public:
 	virtual ksudoku::GameType type() const = 0;
 	virtual SudokuType specificType() const { return m_specificType; }
 
+/*
 public:
 	const Ruleset *rulset() const { return m_ruleset; }
 	const ItemBoard *board() const { return m_board; }
+*/
 protected:
 	void addConnection(int i, int j);
 	
@@ -99,9 +103,11 @@ protected:
 
 	int m_order;
 	int m_sizeX, m_sizeY, m_sizeZ;
+/*
 protected:
 	Ruleset *m_ruleset;
 	ItemBoard *m_board;
+*/
 };
 
 namespace ksudoku {
