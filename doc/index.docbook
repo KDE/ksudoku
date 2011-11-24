@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-<!ENTITY ksudoku "Ksudoku">
+<!ENTITY ksudoku "KSudoku">
 <!ENTITY kappname "&ksudoku;"> 
-  <!ENTITY kappversion "0.5"><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY kappversion "1.0"><!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
@@ -11,7 +11,7 @@
 <book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
 	<title>The &kappname; Handbook</title> <!-- This is the title of this docbook. -->
-<!-- List of immidiate authors begins here. -->
+<!-- List of immediate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
 	<author>
@@ -24,6 +24,11 @@
 		<surname>Trounev</surname>
 		<affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
 	</author>
+	<author>
+		<firstname>Ian</firstname>
+		<surname>Wadham</surname>
+		<affiliation><address><email>iandw.au@gmail.com</email></address></affiliation>
+	</author>
 <!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
@@ -31,9 +36,13 @@
 	<year>2007</year>
 	<holder>Mick Kappenburg</holder>
 </copyright>
+<copyright>
+	<year>2011</year>
+	<holder>Ian Wadham</holder>
+</copyright>
 <legalnotice>&FDLNotice;</legalnotice>
  
-<date>2007-11-14</date><!-- Date of (re)writing, or update.-->
+<date>2011-11-24</date><!-- Date of (re)writing, or update.-->
 <releaseinfo>&kappversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
  
 <!--Short description of this document. Do not change unless necessary!-->
@@ -41,7 +50,7 @@
 	<para>This documentation describes the game of &kappname; version &kappversion;</para>
 </abstract>
  
-<!--List of relevan keywords-->
+<!--List of relevant keywords-->
 <keywordset>
 	<keyword>KDE</keyword> <!-- do not change this! -->
 	<keyword>kdegames</keyword> <!-- do not change this! -->
@@ -56,75 +65,299 @@
 	<keyword>puzzle</keyword>
 </keywordset>
 </bookinfo>
+
 <!--Content begins here: -->
+
 <chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
-	<note><title>Gametype:</title><para>Logic, Board</para></note><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
-	<note><title>Number of possible players:</title><para>One</para></note><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
- 	<para>&kappname; is a logic-based symbol placement puzzle.</para>
-<para>The player has to fill a grid so that each column, row as well as each square block on the game field contains only one instance of each symbol.</para>
-<para>Depending on the preferences and the difficulty level some games start with a partially completed game field, while the others start with a blank one.</para>
-<para>There are hundreds of different variations of sudoku in existence. The most common variant of the game has a 9x9 squares grid and uses Arabic numerals for symbols. As an extra constraint, the grid is divided into 9 sectors of 3x3 squares. The problem is – each symbol can only be used once per row, column and sector.
-	</para>
-	<note>
-		<title>Note:</title>
-		<para>It takes a lot of time and concentration to complete each game. However, solving sudoku puzzles helps to increase the overall brain activity and therefore is highly recommended.</para>
-	</note>
+
+	<note><title>Gametype:</title><para>
+		Logic, Board</para></note>
+
+	<note><title>Number of possible players:</title><para>
+		One</para></note>
+
+<para>&kappname; is a logic-based symbol placement puzzle.</para>
+
+<para>The player has to fill a grid with symbols so that each column, row
+	and block on the game board contains only one instance of each
+	symbol. In &kappname; the symbols are usually the numbers 1 to 9,
+	but may be the letters A to P or A to Y in larger puzzles. Puzzles
+	start with the board partially filled and it is your job to fill
+	in the rest.</para>
+
+<para>When you start a game, you can choose from several Sudoku types
+	and sizes. You can then have &kappname; generate a puzzle for
+	you to solve or you can start with an empty board and enter in
+	a puzzle from another source, such as a newspaper, then get
+	&kappname; to check it and maybe solve it.</para>
+
+<para>There are many variations of Sudoku in existence and &kappname;
+	provides a good selection of them. The most common variant has
+	a 9x9 square grid and uses Arabic numerals 1 to 9 as symbols. The
+	grid has 9 rows and 9 columns and is divided into 9 blocks of
+	3x3 squares. The problem is – each symbol can only be used once
+	per row, column or block.</para>
+
+	<note><para>
+		It takes time and concentration to complete a game. However,
+		solving Sudoku puzzles helps to increase overall brain activity
+		and therefore is highly recommended.</para></note>
 </chapter>
- 
+
 <chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
-<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
-	<note><title>Objective:</title><para>Fill the grid so that each column, row as well as each square sector on the game field contains only one instance of each symbol.</para></note><!--Describe the objective of the game.-->
-<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
-	<para>At the game start you are prompted to choose which game type you are interested in.</para>
-<note><title>Note:</title><para>The game experience may change slightly depending on the game type you choose.</para></note>
-<para>Take a look at left hand side of the game field. There is a selection list which contains all the symbols available for you to use in the current game.</para>
-<note><title>Note:</title><para>The set of symbols varies depending on the game type you choose.</para></note>
-<para>First, note the boundaries of the game field. The thick black lines outline the sectors. Every one of this sectors has to be completed using the symbols available, in such a way that each symbol is used within the sector area once and only once.</para>
-<para>Now you can start entering the symbols into the vacant squares on the game field. You can do that by selecting the symbol you wish to enter from the selection list on the left, and then using your mouse to click on the vacant square on the game field.</para>
-<para>Notice that the squares change color while you hover your mouse over them. It is done to help you keep up with the rules of &kappname;. Use the vertical and horizontal lines to check if the symbol, you are about to enter into the vacant spot, is already in use anywhere in the vertical or horizontal line that square is a part of. The coloring also highlights the sector which, if you remember, must also contain only one instance of each symbol.</para>
-<para>Keep entering the symbols in accordance with the rules until the whole game field is filled up. At this point the application will check if all the entries are valid and either correct you, or except the solution.
-	</para>
+
+	<note><title>Objective:</title><para>
+		Fill the grid so that each column, row and block contains only
+		one instance of each symbol.</para></note>
+
+<para>When the game starts you are prompted to choose which game type and board
+	size you are interested in. You can enter in a puzzle from another
+	source or have &kappname; generate a puzzle. The generator has several
+	difficulty settings and some symmetry settings, which affect
+	the pattern in which the puzzle is generated. Your game experience will
+	depend on which of all these options you choose.</para>
+
+<para>When the puzzle board appears, take a look at the left hand side. There
+	is a selection list which contains all the symbols available in the
+	current game. The set of symbols depends on the size of game you
+	choose. Games may have 4, 9, 16 or 25 symbols. The first two sets
+	use the numbers 1 to 4 or 1 to 9: the others use the letters A to P
+	or A to Y.</para>
+
+<para>First, note the boundaries in the game board. The thick lines outline
+	the blocks. Each of these blocks has to be completed using the symbols
+	available and each symbol must be used once and only once within the
+	block. The same is true of the rows and columns in the board.</para>
+
+<para>Now you can start entering symbols into the vacant squares on the board.
+	To do that, select the symbol you wish to enter from the selection
+	list on the left, then use the mouse to click on a vacant square
+	in the board. Alternatively, you can hover with the mouse over a
+	vacant square, then use the keyboard to enter a symbol.</para>
+
+<para>In Roxdoku (three-dimensional) puzzles, always use the mouse to set a
+	small cube to a value and use a <emphasis>double</emphasis>
+	click. When you rotate the large cube, by clicking and dragging
+	with the mouse, it is easier to see what values are on the small
+	cubes in the background if you click <emphasis>between</emphasis>
+	the small cubes, not on them.</para>
+
+<para>It is useful sometimes to enter markers or notes, which are tiny
+	symbols within a square. These have no influence on the solution,
+	but they can help you keep track of ideas you have had, especially
+	when there is a choice between two alternatives and you do not
+	yet have enough information to decide between them. To enter a
+	marker or note, click with the right mouse button or hold down
+	the &Shift; key when using the keyboard.</para>
+
+<para>To clear symbols from a square, hover over the square with the
+	mouse and hit Delete or Backspace on the keyboard.</para>
+
+<para>Notice that the squares change color while you hover the mouse over
+	them. This is to help you keep up with the rules of &kappname;. Use
+	the vertical and horizontal lines to check if the symbol you are
+	about to enter into a vacant spot is already in use anywhere in
+	the vertical or horizontal line that square is a part of. The coloring
+	also highlights the block which, if you remember, must also contain
+	only one instance of each symbol. If you do not need the highlighting,
+	you can use the <menuchoice><guimenu>Settings</guimenu>
+	<guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>
+	menu item to turn it off.</para>
+
+<para>Keep entering symbols in accordance with the rules until the whole
+	game field is filled up. At this point &kappname; will check if all
+	the entries are valid and will either correct you or accept your
+	solution.</para>
 </chapter>
  
 <chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
-	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
-	<sect1 id="rules">
-		<title>General Game Rules</title>
-		<para>The rules of &kappname; are quite simple.</para>
-		<itemizedlist>
-		<listitem><para>Depending on the size of the game board and the difficulty level chosen each individual &kappname; puzzle may take up to a few hours to solve.</para></listitem>
-		<listitem><para>Each square may hold one and only one symbol.</para></listitem>
-		<listitem><para>Each horizontal row (as defined by the game board) can contain each symbol exactly once.</para></listitem>
-		<listitem><para>Each vertical row (as defined by the game board) can contain each symbol exactly once.</para></listitem>
-		<listitem><para>Each subgrid or section (as defined by the game board) can contain each symbol exactly once</para></listitem>
-		</itemizedlist>
-		<note><title>Note:</title><para>The set of symbols varies depending on the game type you choose.</para></note>
-		<itemizedlist>
-			<listitem><para>Knowledge of mathematics, or language is not required to solve &kappname; puzzles.</para></listitem>
-			<listitem><para>Depending on the difficulty chosen the puzzles may appear partially solved. In such case the symbols already on the game board cannot be changed.</para></listitem>
-			<listitem><para>You can only modify the symbols you have previously entered.</para></listitem>
-			<listitem><para>&kappname; generated puzzles have one solution only.</para></listitem>
-		</itemizedlist>
-	</sect1>
-	<sect1 id="tips">
-		<title>Strategies and Tips</title>
-		<itemizedlist>
-			<listitem><para>Take your time and do not rush. &kappname; is not a 'quick' game to play.</para></listitem>
-		<listitem><para>Pay attention to the row, column, and section colorings. They are here to aid you in the game.</para></listitem>
-		<listitem><para>Make sure that so duplicate symbol exists already in the row/column/section you are entering it to.</para></listitem>
-		<listitem><para>If in doubt, try to foresee if a square you are entering a symbol into maybe needed by some other symbol, which otherwise cannot go anywhere else due to the row/column/section rule violation.</para></listitem>
-		<listitem><para>If you are having troubles, try to retrace your steps and see exactly where you have made an error.</para></listitem>
-		<listitem><para>Even though &kappname; provides a 'Hint' option for you, try not to use it often. Remember solving the puzzle all by yourself enhances your brain activity, while using the 'Hint' feature too often is cheating.</para></listitem>
-			<listitem><para>If you have much trouble solving a certain puzzle, and simply must use the 'Hint' feature, then maybe you should try to decrease the difficulty level, or try a simpler, more basic puzzle.</para></listitem>
-		<listitem><para>Some puzzle layouts feature very specific game board shapes. It is a good idea to have the coloring option enabled even if you consider yourself an experienced player.</para></listitem>
-		</itemizedlist>
-	</sect1>
+
+<sect1 id="rules"><title>General Game Rules</title>
+
+<para>The rules of &kappname; are quite simple.</para>
+	<itemizedlist>
+	<listitem><para>Depending on the size of the game board, the type
+		of puzzle and the difficulty level chosen an individual
+		&kappname; puzzle may take from a few minutes to a few
+		hours to solve.</para></listitem>
+	<listitem><para>Each square may hold one and only one
+		symbol.</para></listitem>
+	<listitem><para>Each horizontal row (as defined by the game board)
+		can contain each symbol exactly once.</para></listitem>
+	<listitem><para>Each vertical column (as defined by the game board)
+		can contain each symbol exactly once.</para></listitem>
+	<listitem><para>Each block (as defined by the game board) can
+		contain each symbol exactly once</para></listitem>
+	</itemizedlist>
+
+	<note><title>Note:</title><para>
+		The set of symbols depends on the size of game you
+		choose.</para></note>
+
+	<itemizedlist>
+	<listitem><para>Knowledge of mathematics or language is not required
+		to solve &kappname; puzzles.</para></listitem>
+	<listitem><para>The symbols already on the game board when the
+		puzzle starts cannot be changed.</para></listitem>
+	<listitem><para>You can only modify the symbols you have previously
+		entered.</para></listitem>
+	<listitem><para>Puzzles generated by &kappname; have one solution
+		only.</para></listitem>
+	<listitem><para>Puzzles you enter in might have no solution or
+		more than one solution, but if they are from a published
+		source this probably means you have made a data-entry
+		error.</para></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="variants"><title>&kappname; Variations</title>
+
+	<itemizedlist>
+	<listitem><para>The Standard 9x9 Sudoku puzzle has 9 rows, 9 columns
+		and 9 square blocks of size 3x3.</para></listitem>
+	<listitem><para>Other sizes of Standard Sudoku are 4x4 (very easy),
+		16x16 and 25x25 (not so easy).</para></listitem>
+	<listitem><para>The Jigsaw variation is the same as Standard Sudoku
+		except that some blocks are not square.</para></listitem>
+	<listitem><para>The XSudoku variation is exactly the same as Standard
+		Sudoku with an additional requirement: the two main
+		diagonals must also each contain the symbols 1 to 9 once
+		and once only. &kappname; highlights the diagonals to make
+		this easier to see.</para></listitem>
+	<listitem><para>The Roxdoku variations are based on cubes in three
+		dimensions, but are easier than they sound. There are no
+		rows or columns. A 3x3x3 Roxdoku puzzle has 27 small cubes
+		arranged into a larger 3x3x3 cube. This contains nine
+		slices, each containing 3x3 small cubes, and these are
+		the square blocks that must be filled with the numbers
+		1 to 9. A 4x4x4 Roxdoku has twelve 4x4 slices and a
+		5x5x5 Roxdoku has fifteen 5x5 slices.</para></listitem>
+	<listitem><para>The Samurai Sudoku consists of five Standard Sudoku
+		puzzles of 9x9 squares each, overlapping at the corners
+		by four 3x3 blocks. Each of the five puzzles has 9 rows
+		and 9 columns to solve, but there are only 41 blocks to
+		solve, rather than 45, because of the overlap.</para></listitem>
+	<listitem><para>The Tiny Samurai Sudoku consists of five 4x4
+		puzzles, overlapping at the corners by four squares. Each
+		of the five puzzles has 4 rows, 4 columns and 4 blocks to
+		solve.</para></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="tips"><title>Strategies and Tips</title>
+
+	<itemizedlist>
+	<listitem><para>Take your time and do not rush. &kappname; is not
+		a quick game.</para></listitem>
+	<listitem><para>Pay attention to the row, column, and block
+		colorings. They are there to help you.</para></listitem>
+	<listitem><para>Make sure that no duplicate symbol exists already
+		in the row, column or block where you are entering a
+		symbol.</para></listitem>
+	<listitem><para>If in doubt, try to foresee if a square you are
+		entering a symbol into may be needed by some other symbol,
+		which otherwise cannot go anywhere else due to the
+		row, column and block rules.</para></listitem>
+	<listitem><para>Use the Internet to search for general hints
+		and strategies for solving Sudoku puzzles.</para></listitem>
+	<listitem><para>Use marker moves when you spot a square or
+		squares that have just a few alternatives but you
+		cannot decide between them immediately. Markers will
+		save you time and memory effort later, when more
+		squares have been filled in. See <link linkend="howto">
+		How to Play</link> for details of how to use
+		markers.</para></listitem>
+	<listitem><para>If you are having trouble, try to retrace your
+		steps and see exactly where you have made an error. You
+		can use the <menuchoice><guimenu>Move</guimenu>
+		<guimenuitem>Undo</guimenuitem></menuchoice> and
+		<menuchoice><guimenu>Move</guimenu>
+		<guimenuitem>Redo</guimenuitem></menuchoice> menu
+		items, repeatedly if necessary, and there is a setting
+		in <menuchoice><guimenu>Settings</guimenu>
+		<guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>
+		that highlights errors.</para></listitem>
+	<listitem><para>Even though &kappname; provides a 'Hint' option
+		for you, try not to use it often. Remember, solving the
+		puzzle all by yourself enhances your brain activity,
+		while using the 'Hint' feature too often is
+		cheating.</para></listitem>
+	<listitem><para>If you have too much trouble solving a certain
+		puzzle and simply must use the 'Hint' feature, then
+		maybe you should try decreasing the difficulty level,
+		or try a simpler, more basic puzzle.</para></listitem>
+	<listitem><para>Some puzzle layouts feature very specific game
+		board shapes. It is a good idea to have the highlighting
+		option enabled even if you consider yourself an
+		experienced player.</para></listitem>
+	</itemizedlist>
+</sect1>
 </chapter>
   
 <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
+
+<sect1 id="welcome-screen"><title>The Welcome Screen</title>
+
+<para>The Welcome Screen is the first thing you see when you start
+	&kappname; or use the toolbar or menu to request a new game.
+	It has a list of all the puzzle types and sizes and you can
+	click on one of them to make a selection.</para>
+
+<para>If you click the button marked 'Enter In A Puzzle', an empty board
+	of the selected type and size appears. Here you can use the mouse
+	or keyboard to enter in a puzzle from another source, such as
+	a newspaper. When you have finished, use the Check action, on
+	toolbar or menu, to check the puzzle. It should have just one
+	solution. If so, you can start solving the puzzle or perhaps
+	get &kappname; to solve it. If there is no solution or more
+	than one solution, it probably means you have made a data-entry
+	error somewhere.</para>
+
+<para>If you click the button marked 'Generate A Puzzle', &kappname;
+	will display a board with some squares already filled in. It
+	is up to you to fill in the rest.</para>
+
+<para>Before you generate a puzzle, check that the settings of the
+	Difficulty and Symmetry buttons are to your liking. You can
+	change them during a game, but then they will have no effect
+	until the next puzzle is generated.</para>
+
+	<note><para>If you cannot see the Difficulty and Symmetry
+		buttons, use the <menuchoice><guimenu>Settings</guimenu>
+		<guimenuitem>Show Statusbar</guimenuitem></menuchoice>
+		menu item to make sure that the statusbar is
+		visible.</para></note>
+
+<para>The Difficulty button provides six levels of difficulty, from
+	Very Easy up to Hard, Diabolical and Unlimited. The easier
+	levels may take a few minutes to solve on a 9x9 board. The
+	Hard and Diabolical levels may take an hour or so and are
+	intended to be equivalent to difficult grades appearing in
+	newspapers. Samurai puzzles and 16x16 or 25x25 sizes of
+	puzzles will take longer to solve, simply because there are
+	more rows, columns and blocks and more squares to fill in.</para>
+
+<para>The Diabolical level typically requires one or more guesses,
+	with backtracking if you guess wrong. Lower levels can usually
+	be solved by logic alone. The Unlimited level has no limits
+	on the number of guesses required, how soon the first guess
+	is needed or how complex the logic might be. It is provided
+	for the interest of expert players, but tends to generate
+	uninteresting 'inhuman' puzzles and is not recommended for
+	general use.</para>
+
+<para>The Symmetry button provides seven types of symmetry, including
+	No Symmetry. This controls the layout and appearance of the
+	squares that are filled in at the start of a puzzle and has
+	mainly aesthetic effect, except that puzzles with no symmetry
+	tend to be slightly harder than those with high symmetry and
+	it is less likely that &kappname; can generate a puzzle with
+	high difficulty and high symmetry combined.</para>
+</sect1>
+
 <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
-<sect1 id="game-menu">
-	<title>The <guimenu>Game</guimenu> Menu</title>
+<sect1 id="game-menu"><title>The <guimenu>Game</guimenu> Menu</title>
+
 		<variablelist>
 			<varlistentry id="game-menu-new">
 				<term><menuchoice>
@@ -176,7 +409,7 @@
 					<guimenu>Move</guimenu>
 					<guimenuitem>Undo</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Undo</action> your last move.</para></listitem>
+				<listitem><para><action>Undo</action> your last move, repeatedly if required.</para></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-redo">
 				<term><menuchoice>
@@ -184,7 +417,7 @@
 					<guimenu>Move</guimenu>
 					<guimenuitem>Redo</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Redo</action> a move that was undone.</para></listitem>
+				<listitem><para><action>Redo</action> a move that was undone, repeatedly if required.</para></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-hint">
 				<term><menuchoice>
@@ -192,7 +425,7 @@
 					<guimenu>Move</guimenu>
 					<guimenuitem>Hint</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Gives a Hint</action> by flashing a matching pair of tiles.</para></listitem>
+				<listitem><para><action>Give a Hint</action> by filling in a vacant square.</para></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-demo">
 				<term><menuchoice>
@@ -206,7 +439,7 @@
 					<guimenu>Move</guimenu>
 					<guimenuitem>Check</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Check</action> the entry for validity.</para></listitem>
+				<listitem><para><action>Check</action> an entered puzzle for validity. If it has only one solution, it becomes available for play. If it has no solution or more than one solution, there has probably been an error in the data-entry.</para></listitem>
 			</varlistentry>
 		</variablelist>
 </sect1>
@@ -219,7 +452,7 @@
 					<guisubmenu>Toolbars</guisubmenu>
 					<guimenuitem>Main Toolbar</guimenuitem>
 				</menuchoice></term>
-				<listitem><para>Shows or hides the Main Toolbar.</para></listitem>
+				<listitem><para>Show or hide the Main Toolbar.</para></listitem>
 			</varlistentry>
 			<varlistentry id="settings-menu-hide-matching">
 				<term><menuchoice>
@@ -227,7 +460,7 @@
 					<guisubmenu>Toolbars</guisubmenu>
 					<guimenuitem>Actions Toolbar</guimenuitem>
 				</menuchoice></term>
-				<listitem><para>Shows or hides the Actions Toolbar.</para></listitem>
+				<listitem><para>Show or hide the Actions Toolbar.</para></listitem>
 			</varlistentry>
 
 			<varlistentry id="settings-menu-statusbar">
@@ -235,48 +468,35 @@
 					<guimenu>Settings</guimenu>
 					<guimenuitem>Show Statusbar</guimenuitem>
 				</menuchoice></term>
-				<listitem><para>Shows or hides the Statusbar.</para></listitem>
+				<listitem><para>Show or hide the Statusbar.</para></listitem>
 			</varlistentry>
 			<varlistentry id="settings-menu-shortcuts">
 				<term><menuchoice>
 					<guimenu>Settings</guimenu>
 					<guimenuitem>Configure Shortcuts...</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Displays a standard &kde; shortcut configuration dialog</action> to change the keyboard shortcuts for &kappname;.</para></listitem>
+				<listitem><para><action>Display a standard &kde; shortcut configuration dialog</action> to change the keyboard shortcuts for &kappname;.</para></listitem>
 			</varlistentry>
 			<varlistentry id="settings-menu-toolbar">
 				<term><menuchoice>
 					<guimenu>Settings</guimenu>
 					<guimenuitem>Configure Toolbars...</guimenuitem>
 				</menuchoice></term>
-				<listitem><para>Displays a standard &kde; dialog where you can configure the toolbar icons.</para></listitem>
+				<listitem><para>Display a standard &kde; dialog where you can configure the toolbar icons.</para></listitem>
 			</varlistentry>
 			<varlistentry id="settings-menu-settings">
 				<term><menuchoice>
 					<guimenu>Settings</guimenu>
 					<guimenuitem>Configure &kappname;...</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Opens a dialog to configure &kappname;.</action> See <link linkend="configuration">Game Configuration</link> section for details.</para></listitem>
+				<listitem><para><action>Open a dialog to configure &kappname;.</action> See <link linkend="configuration">Game Configuration</link> section for details.</para></listitem>
 			</varlistentry>
 		</variablelist>
 </sect1>
 <sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
 <title>The <guimenu>Help</guimenu> Menu</title>
 <para>&kappname; has a default &kde; <guimenu>Help</guimenu> menu as described
-below, with one addition:</para>
-
-<variablelist>
-<varlistentry>
-<term><menuchoice><guimenu>Help</guimenu>
-<guimenuitem>Home Page</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>Opens the &kappname; website on sourceforge.net in &konqueror;.</para>
-</listitem>
-</varlistentry>
-</variablelist>
-
-<para>The default &kde; <guimenu>Help</guimenu> entries are:</para>
+below:</para>
 
 &help.menu.documentation;
 </sect1>
@@ -288,15 +508,11 @@ below, with one addition:</para>
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>Sudoku games are traditionally played using square grid. Themes would not make much sense here. However, you can select the set of symbols used in game. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>  on menubar.</para></answer>
-</qandaentry>
-<qandaentry>
- <question><para>I changed the symbols in the configuration dialog and now my entire game board is filled with question marks. What is the problem?</para></question>
- <answer><para>Each set contains a limited number of possible symbols. If you have chosen the set which has less symbols then your current game requires, the application will complain by displaying question marks. Change the set to fix the problem.</para></answer>
+ <answer><para>Sudoku games are traditionally played using a square grid. Themes do not make much sense here, but you can select some color schemes and backgrounds. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use the keyboard to play this game? </para></question>
- <answer><para>Yes. In &kappname; keyboard play is always enabled. Please use cursor keys to move the selection, numeric characters to enter the symbols and &Shift; key to apply markers.</para></answer>
+ <answer><para>Yes. In &kappname; keyboard play is always enabled. Please use the cursor keys to move the selection, numeric or alphabetic characters to enter the symbols and the &Shift; key to apply markers.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
@@ -310,7 +526,7 @@ below, with one addition:</para>
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
-<sect1 id="general-options"><title><guilabel>Game</guilabel> Options</title>
+<sect1 id="general-options"><title><guilabel>Game</guilabel>Options</title>
 	<variablelist>
 		<varlistentry>
 			<term><guilabel>Show Highlights</guilabel></term>
@@ -323,54 +539,35 @@ below, with one addition:</para>
 		</varlistentry>
 	</variablelist>
 </sect1>
-
-<sect1 id="layout-options"><title><guilabel>Symbol Themes</guilabel> Options</title>
-	<variablelist>
-		<varlistentry>
-			<term><guilabel>Simple Forms</guilabel></term>
-			<listitem><para>Toggles on and off the use of simple forms for the ingame pictograms.</para></listitem>
-		</varlistentry>
-		<varlistentry>
-			<term><guilabel>Dices</guilabel></term>
-			<listitem><para>Toggles on and off the use of dice for the ingame pictograms.</para></listitem>
-		</varlistentry>
-		<varlistentry>
-			<term><guilabel>Digits</guilabel></term>
-			<listitem><para>Toggles on and off the use of Arabic numerals for the ingame pictograms.</para></listitem>
-		</varlistentry>
-		<varlistentry>
-			<term><guilabel>Small Letters</guilabel></term>
-			<listitem><para>Toggles on and off the use of small Latin letters for the ingame pictograms.</para></listitem>
-		</varlistentry>
-		<varlistentry>
-			<term><guilabel>Capital Letters</guilabel></term>
-			<listitem><para>Toggles on and off the use of capital Latin letters for the ingame pictograms.</para></listitem>
-		</varlistentry>
-	</variablelist>
-	<note><title>Note:</title><para>Each set contains a limited number of possible symbols. If you have chosen the set which has less symbols then your current game requires, the application will complain by displaying question marks. Change the set to fix the problem.</para></note>
-</sect1>
 </chapter>
  
 <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
-<!--This chapter is for credits and licenses.-->
  
 <para>
 &kappname;  <!-- do not change this! -->
 </para>
 
 <!--List all the copyright holders here-->
-<para>
-&kappname; copyright 2005-2007 Francesco Rossi <email>redsh@email.it</email>
-</para>
-<para>
-Copyright 2006-2007 Mick Kappenburg <email>ksudoku@kappenburg.net</email>, Johannes Bergmeier <email>johannes.bergmeier@gmx.net</email>
-</para>
-<para>
-Documentation copyright 2005 Francesco Rossi <email>redsh@email.it</email>
-</para>
-<para>
-Documentation copyright 2007 Mick Kappenburg <email>ksudoku@kappenburg.net</email>, Eugene Trounev <email>eugene.trounev@gmail.com</email>
-</para>
+<para>Copyright 2005-2007 Francesco Rossi <email>redsh@email.it</email></para>
+
+<para>Copyright 2006-2007 Mick Kappenburg <email>ksudoku@kappenburg.net</email>,
+	Johannes Bergmeier <email>johannes.bergmeier@gmx.net</email></para>
+
+<para>Copyright 2011 Ian Wadham <email>iandw.au@gmail.com</email></para>
+
+<para>New solver and generator algorithms 2011 David Bau, <ulink
+	url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html">
+	see website.</ulink></para>
+
+<para>Documentation copyright 2005 Francesco Rossi
+	<email>redsh@email.it</email></para>
+
+<para>Documentation copyright 2007 Mick Kappenburg
+	<email>ksudoku@kappenburg.net</email>,
+	Eugene Trounev <email>eugene.trounev@gmail.com</email></para>
+
+<para>Documentation copyright 2011 Ian Wadham
+	<email>iandw.au@gmail.com</email></para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 &underFDL;
