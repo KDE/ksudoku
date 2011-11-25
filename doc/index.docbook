@@ -1,13 +1,13 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
 <!ENTITY ksudoku "KSudoku">
-<!ENTITY kappname "&ksudoku;"> 
+<!ENTITY kappname "&ksudoku;">
   <!ENTITY kappversion "1.0"><!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
- 
+
 <book lang="&language;"> <!-- do not change this! -->
 <bookinfo>
 	<title>The &kappname; Handbook</title> <!-- This is the title of this docbook. -->
@@ -41,15 +41,15 @@
 	<holder>Ian Wadham</holder>
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
- 
+
 <date>2011-11-24</date><!-- Date of (re)writing, or update.-->
 <releaseinfo>&kappversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
- 
+
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
 	<para>This documentation describes the game of &kappname; version &kappversion;</para>
 </abstract>
- 
+
 <!--List of relevant keywords-->
 <keywordset>
 	<keyword>KDE</keyword> <!-- do not change this! -->
@@ -151,7 +151,8 @@
 	the &Shift; key when using the keyboard.</para>
 
 <para>To clear symbols from a square, hover over the square with the
-	mouse and hit Delete or Backspace on the keyboard.</para>
+	mouse and hit <keycap>Delete</keycap> or <keycap>Backspace</keycap> on the
+	keyboard.</para>
 
 <para>Notice that the squares change color while you hover the mouse over
 	them. This is to help you keep up with the rules of &kappname;. Use
@@ -169,7 +170,7 @@
 	the entries are valid and will either correct you or accept your
 	solution.</para>
 </chapter>
- 
+
 <chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
 
 <sect1 id="rules"><title>General Game Rules</title>
@@ -293,7 +294,7 @@
 	</itemizedlist>
 </sect1>
 </chapter>
-  
+
 <chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
 
 <sect1 id="welcome-screen"><title>The Welcome Screen</title>
@@ -303,35 +304,37 @@
 	It has a list of all the puzzle types and sizes and you can
 	click on one of them to make a selection.</para>
 
-<para>If you click the button marked 'Enter In A Puzzle', an empty board
+<para>If you click the button marked <guilabel>Enter In A Puzzle</guilabel>, an empty board
 	of the selected type and size appears. Here you can use the mouse
 	or keyboard to enter in a puzzle from another source, such as
-	a newspaper. When you have finished, use the Check action, on
+	a newspaper. When you have finished, use the <guilabel>Check</guilabel> action, on
 	toolbar or menu, to check the puzzle. It should have just one
 	solution. If so, you can start solving the puzzle or perhaps
 	get &kappname; to solve it. If there is no solution or more
 	than one solution, it probably means you have made a data-entry
 	error somewhere.</para>
 
-<para>If you click the button marked 'Generate A Puzzle', &kappname;
+<para>If you click the button marked <guilabel>Generate A Puzzle</guilabel>, &kappname;
 	will display a board with some squares already filled in. It
 	is up to you to fill in the rest.</para>
 
 <para>Before you generate a puzzle, check that the settings of the
-	Difficulty and Symmetry buttons are to your liking. You can
-	change them during a game, but then they will have no effect
-	until the next puzzle is generated.</para>
+	<guilabel>Difficulty</guilabel> and <guilabel>Symmetry</guilabel>
+	buttons are to your liking. You can change them during a game, but
+	then they will have no effect until the next puzzle is
+	generated.</para>
 
-	<note><para>If you cannot see the Difficulty and Symmetry
+	<note><para>If you cannot see the <guilabel>Difficulty</guilabel> and <guilabel>Symmetry</guilabel>
 		buttons, use the <menuchoice><guimenu>Settings</guimenu>
 		<guimenuitem>Show Statusbar</guimenuitem></menuchoice>
 		menu item to make sure that the statusbar is
 		visible.</para></note>
 
-<para>The Difficulty button provides six levels of difficulty, from
-	Very Easy up to Hard, Diabolical and Unlimited. The easier
+<para>The <guilabel>Difficulty</guilabel> button provides six levels of difficulty, from
+	<guimenuitem>Very Easy</guimenuitem> up to <guimenuitem>Hard</guimenuitem>,
+	<guimenuitem>Diabolical</guimenuitem> and <guimenuitem>Unlimited</guimenuitem>. The easier
 	levels may take a few minutes to solve on a 9x9 board. The
-	Hard and Diabolical levels may take an hour or so and are
+	<guimenuitem>Hard</guimenuitem> and <guimenuitem>Diabolical</guimenuitem> levels may take an hour or so and are
 	intended to be equivalent to difficult grades appearing in
 	newspapers. Samurai puzzles and 16x16 or 25x25 sizes of
 	puzzles will take longer to solve, simply because there are
@@ -346,8 +349,8 @@
 	uninteresting 'inhuman' puzzles and is not recommended for
 	general use.</para>
 
-<para>The Symmetry button provides seven types of symmetry, including
-	No Symmetry. This controls the layout and appearance of the
+ <para>The <guilabel>Symmetry</guilabel> button provides seven types of symmetry, including
+	<guimenuitem>No Symmetry</guimenuitem>. This controls the layout and appearance of the
 	squares that are filled in at the start of a puzzle and has
 	mainly aesthetic effect, except that puzzles with no symmetry
 	tend to be slightly harder than those with high symmetry and
@@ -501,7 +504,7 @@ below:</para>
 &help.menu.documentation;
 </sect1>
 </chapter>
-  
+
 <chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
 <!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
 <qandaset>
@@ -519,10 +522,10 @@ below:</para>
  <answer><para>&kappname; does not have this feature.</para></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
- 
+
 </qandaset>
 </chapter>
- 
+
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
@@ -540,9 +543,9 @@ below:</para>
 	</variablelist>
 </sect1>
 </chapter>
- 
+
 <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
- 
+
 <para>
 &kappname;  <!-- do not change this! -->
 </para>
@@ -575,22 +578,22 @@ below:</para>
 
 <!-- !!!do not change ANYTHING after this line!!!! -->
 </chapter>
-  
+
 <appendix id="installation">
 <title>Installation</title>
- 
+
 &install.intro.documentation;
- 
- 
+
+
 <sect1 id="Compilation">
 <title>Compilation and Installation</title>
- 
+
 &install.compile.documentation;
- 
+
 </sect1>
 </appendix>
- 
-&documentation.index; 
+
+&documentation.index;
 </book>
 <!--
 Local Variables:
