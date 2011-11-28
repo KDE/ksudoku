@@ -91,20 +91,12 @@ int Puzzle::init(const QByteArray& values) {
 	    return 0;
 	}
 
-	// The new solver stores by column within row.
-	// KSudoku stores values by row within column.
-	BoardContents puzzleValues;
-	int boardSize = board->boardSize();
-	for (int j = 0; j < boardSize; j++) {
-	    for (int i = 0; i < boardSize; i++) {
-		puzzleValues.append((int) values.at(i * boardSize + j));
-	    }
-	}
-	qDebug() << puzzleValues.size() << "puzzleValues" << puzzleValues;
-	board->print(puzzleValues);
+	// Convert the puzzle values to SudokuBoard format.
+	BoardContents puzzleValues = board->fromKSudoku(values);
 
 	// Save the puzzle values and SudokuBoard's solution (if any).
 	m_puzzle = values;
+	int boardSize = board->boardSize();
 	m_solution = convertBoardContents
 			(board->solveBoard(puzzleValues), boardSize);
 
@@ -129,6 +121,9 @@ const QByteArray Puzzle::convertBoardContents(const BoardContents & values,
 	// KSudoku stores values by row within column and sets unused cells = 0,
 	// e.g. the empty areas in a Samurai or Tiny Samurai puzzle layout.
 	QByteArray newValues;
+	if (values.size() < (boardSize * boardSize)) {
+	    return newValues;	// No solution.
+	}
 	char value = 0;
 	int index = 0;
 	for (int j = 0; j < boardSize; j++) {

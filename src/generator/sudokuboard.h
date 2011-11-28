@@ -140,6 +140,13 @@ public:
                                             Symmetry        symmetry);
 
     /**
+     * Convert puzzle values from KSudoku format to SudokuBoard format.
+     * SudokuBoard stores by column within row and sets unused cells = -1.
+     * KSudoku stores values by row within column and sets unused cells = 0.
+    */
+    BoardContents & fromKSudoku (const QByteArray & values);
+
+    /**
      * Check that a puzzle is soluble, has the desired solution and has only one
      * solution.  This method can be used to check puzzles loaded from a file or
      * entered manually, in which case the solution parameter can be omitted.

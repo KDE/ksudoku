@@ -240,6 +240,22 @@ Difficulty SudokuBoard::calculateRating (const BoardContents & puzzle,
     return m_accum.difficulty;
 }
 
+BoardContents & SudokuBoard::fromKSudoku (const QByteArray & values)
+{
+    // SudokuBoard stores by column within row and sets unused cells = -1.
+    // KSudoku stores values by row within column and sets unused cells = 0.
+    clear (m_currentValues);
+    for (int i = 0; i < m_boardSize; i++) {
+        for (int j = 0; j < m_boardSize; j++) {
+            if (m_currentValues.at (i * m_boardSize + j) != m_unusable) {
+                m_currentValues [i * m_boardSize + j] =
+                                ((int) values.at (j * m_boardSize + i));
+            }
+        }
+    }
+    return m_currentValues;
+}
+
 int SudokuBoard::checkPuzzle (const BoardContents & puzzle,
                               const BoardContents & solution)
 {
