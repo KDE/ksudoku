@@ -83,8 +83,14 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     QTime t;
     t.start();
     setSeed();
-    int count = 0;
-    const int maxTries = 20;
+    const int     maxTries = 20;
+    int           count = 0;
+    float         bestRating = 0.0;
+    int           bestNClues = 0;
+    int           bestNGuesses = 0;
+    int           bestFirstGuessAt = 0;
+    BoardContents currPuzzle;
+    BoardContents currSolution;
 
     if (symmetry == RANDOM_SYM) {	// Choose a symmetry at random.
         symmetry = (Symmetry) (qrand() % (int) LAST_CHOICE);
@@ -100,31 +106,40 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     while (true) {
         // Fill the board with values that satisfy the Sudoku rules but are
         // chosen in a random way: these values are the solution of the puzzle.
-        solution = this->fillBoard();
+        currSolution = this->fillBoard();
         dbo "RETURN FROM fillBoard()\n");
         dbo "Time to fill board: %d msec\n", t.elapsed());
 
         // Randomly insert solution-values into an empty board until a point is
         // reached where all the cells in the solution can be logically deduced.
-        puzzle = insertValues (solution, difficultyRequired, symmetry);
+        currPuzzle = insertValues (currSolution, difficultyRequired, symmetry);
         dbo "RETURN FROM insertValues()\n");
         dbo "Time to do insertValues: %d msec\n", t.elapsed());
 
         if (difficultyRequired > m_stats.difficulty) {
             // Make the puzzle harder by removing values at random.
-            puzzle = removeValues (solution, puzzle,
-                                   difficultyRequired, symmetry);
+            currPuzzle = removeValues (currSolution, currPuzzle,
+                                       difficultyRequired, symmetry);
             dbo "RETURN FROM removeValues()\n");
             dbo "Time to do removeValues: %d msec\n", t.elapsed());
         }
 
-        Difficulty d = calculateRating (puzzle, 5);
+        Difficulty d = calculateRating (currPuzzle, 5);
         count++;
-        dbo "CYCLE %d, achieved difficulty %d, required %d\n",
-                         count, d, difficultyRequired);
-        dbe "CYCLE %d, achieved difficulty %d, required %d\n",
-                         count, d, difficultyRequired);
+        dbo "CYCLE %d, achieved difficulty %d, required %d, rating %3.1f\n",
+                         count, d, difficultyRequired, m_accum.rating);
+        dbe "CYCLE %d, achieved difficulty %d, required %d, rating %3.1f\n",
+                         count, d, difficultyRequired, m_accum.rating);
 
+	// Use the highest rated puzzle so far.
+	if (m_accum.rating > bestRating) {
+	    bestRating       = m_accum.rating;
+	    bestNClues       = m_stats.nClues;
+	    bestNGuesses     = m_accum.nGuesses;
+	    bestFirstGuessAt = m_stats.firstGuessAt;
+	    solution         = currSolution;
+	    puzzle           = currPuzzle;
+	}
         if ((d >= difficultyRequired) || (count >= maxTries)) {
             QWidget owner;
 	    if (m_accum.nGuesses == 0) {
@@ -134,8 +149,8 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 			    "\n"
 			    "The internal difficulty rating is %1. There are "
 			    "%2 clues at the start and %3 moves to go.")
-		            .arg(m_accum.rating, 0, 'f', 1).arg(m_stats.nClues)
-			    .arg(m_stats.nCells - m_stats.nClues),
+		            .arg(bestRating, 0, 'f', 1).arg(bestNClues)
+			    .arg(m_stats.nCells - bestNClues),
 		       i18n("Difficulty Level"),
 		       "ShowPuzzleStatistics_1");
 	    }
@@ -148,10 +163,10 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 			    "\n"
 			    "The internal difficulty rating is %3, there are "
 			    "%4 clues at the start and %5 moves to go.")
-		            .arg(((float) m_accum.nGuesses) / 5.0, 0, 'f', 1)
-			    .arg(m_stats.firstGuessAt)
-			    .arg(m_accum.rating, 0, 'f', 1).arg(m_stats.nClues)
-			    .arg(m_stats.nCells - m_stats.nClues),
+		            .arg(((float) bestNGuesses) / 5.0, 0, 'f', 1)
+			    .arg(bestFirstGuessAt)
+			    .arg(bestRating, 0, 'f', 1).arg(bestNClues)
+			    .arg(m_stats.nCells - bestNClues),
 		       i18n("Difficulty Level"),
 		       "ShowPuzzleStatistics_2");
 	    }
