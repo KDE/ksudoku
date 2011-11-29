@@ -298,8 +298,9 @@ void Game::setValue(int index, int val) {
 void Game::checkCompleted() {
 	if(!m_private || !m_private->puzzle->hasSolution()) return;
 
+	// Find cells that are empty and not in unusable areas (as in Samurai).
 	for(int i = 0; i < size(); i++)
-		if(value(i) == 0)
+		if((value(i) == 0) && (solution(i) > 0))
 			return;
 	
 	for(int i = 0; i < size(); i++) {
