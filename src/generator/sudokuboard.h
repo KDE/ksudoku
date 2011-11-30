@@ -168,6 +168,13 @@ public:
                                                BoardContents());
 
     /**
+     * Provide a list of solution moves for use as KSudoku hints.
+     *
+     * @param moveList     A list of KSudoku indices of solution moves (output).
+     */
+    void getMoveList (QList<int> & moveList);
+
+    /**
      * Calculate the difficulty of a puzzle, based on the number of guesses
      * required to solve it, the number of iterations of the solver's deduction
      * method over the whole board and the fraction of clues or givens in the
@@ -348,6 +355,7 @@ private:
     Statistics              m_accum;
     MoveList                m_moves;
     MoveList                m_moveTypes;
+    QList<int>              m_KSudokuMoves;	// Move-list for KSudoku hints.
 
     QStack<State *>         m_states;
 

@@ -49,6 +49,10 @@ int Puzzle::solution(int index) const {
 	return ((index < m_solution.size()) ? m_solution.at(index) : 0);
 }
 
+int Puzzle::hintIndex(int moveNum) const {
+	return ((moveNum >= m_hintList.count()) ? -1 : m_hintList.at(moveNum));
+}
+
 bool Puzzle::init() {
 	if(m_initialized) return false;
 	
@@ -72,6 +76,7 @@ bool Puzzle::init(int difficulty, int symmetry) {
 	BoardContents solution;
 	board->generatePuzzle (puzzle, solution,
 			      (Difficulty) difficulty, (Symmetry) symmetry);
+	board->getMoveList (m_hintList);
 	int boardSize = board->boardSize();
 	delete owner;			// Also deletes the SudokuBoard object.
 
@@ -110,6 +115,10 @@ int Puzzle::init(const QByteArray& values) {
 	}
 	else {
 	    result = 2;		// There is more than one solution.
+	}
+	m_hintList.clear();
+	if (result != 0) {
+	    board->getMoveList (m_hintList);
 	}
 	delete owner;		// Also deletes the SudokuBoard object.
 	return result;

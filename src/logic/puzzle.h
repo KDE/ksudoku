@@ -69,6 +69,13 @@ public:
 	int value(int index) const;
 	int solution(int index) const;
 
+	/**
+	 * Get the index of the n'th move in the solution, for use as a hint.
+	 * @param moveNum   The number of the move for which a hint is required.
+	 * @return          The position of the move, or -1 if past end of list.
+	 */
+	int hintIndex(int moveNum) const;
+
 	inline bool hasSolution() const { return (m_solution.size() > 0); }
 
 	///@return order of game
@@ -95,6 +102,7 @@ private:
 
 	QByteArray m_puzzle;
 	QByteArray m_solution;
+	QList<int> m_hintList;
 
 	int m_difficulty;
 	int m_symmetry;

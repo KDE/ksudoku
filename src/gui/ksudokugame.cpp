@@ -316,35 +316,25 @@ void Game::checkCompleted() {
 bool Game::giveHint() {
 	if(!m_private || !m_private->puzzle->hasSolution()) return false;
 	
+	int moveNum = 0;
+	int index = 0;
+	while (true) {
+		index = m_private->puzzle->hintIndex(moveNum);
+		if (index < 0) {
+			return false;	// End of hint-list.
+		}
+		if (value(index) == 0) {
+			break;		// Hint is for a cell not yet filled.
+		}
+		moveNum++;
+	}
+
 	m_private->hadHelp = true;
 	
-// 	uint remaining = 0;
-// 	for(uint i = 0; i < size(); ++i) {
-// 		if(!isGiven(i)) remaining++;
-// 	}
-// 	if(!remaining) return false;
+	int val = solution(index);
+	doEvent(HistoryEvent(index, CellInfo(GivenValue, val)));
 	
-// 	int i;
-// 	do {
-// 		i = RANDOM(size());
-// 	} while (m_private->isGiven(i));
-	
-	int start = rand() % size();
-	int i;
-	for(i = start; i < size(); ++i)
-		if(!given(i))
-			break;
-	if(i == size()) {
-		for(i = 0; i < start; ++i)
-			if(!given(i))
-				break;
-		if(i == start) return false;
-	}
-	
-	int val = solution(i);
-	doEvent(HistoryEvent(i, CellInfo(GivenValue, val)));
-	
-	m_private->emitCellChange(i);
+	m_private->emitCellChange(index);
 	m_private->emitModified(true);
 	
 	checkCompleted();

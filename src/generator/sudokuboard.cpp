@@ -296,6 +296,11 @@ int SudokuBoard::checkPuzzle (const BoardContents & puzzle,
     return calculateDifficulty (m_stats.rating);
 }
 
+void SudokuBoard::getMoveList (QList<int> & moveList)
+{
+    moveList = m_KSudokuMoves;
+}
+
 BoardContents & SudokuBoard::solveBoard (const BoardContents & boardValues,
                                                GuessingMode gMode)
 {
@@ -563,22 +568,27 @@ void SudokuBoard::analyseMoves (Statistics & s)
     s.firstGuessAt = s.nCells - s.nClues + 1;
 
     s.nSingles = s.nSpots = s.nDeduces = s.nGuesses = 0;
+    m_KSudokuMoves.clear();
     Move m;
     Move mType;
     while (! m_moves.isEmpty()) {
         m = m_moves.takeFirst();
         mType = m_moveTypes.takeFirst();
+	int val = pairVal(m);
+	int pos = pairPos(m);
+	int row = pos / m_boardSize;
+	int col = pos % m_boardSize;
+	int idx = col * m_boardSize + row;	// KSudoku's position-index.
+
         switch (mType) {
         case Single:
-            dbo2 "  Single Pick %d %d row %d col %d\n",
-                    pairVal(m), pairPos(m), pairPos(m)/m_boardSize + 1,
-                                            pairPos(m)%m_boardSize + 1);
+            dbo2 "  Single Pick %d %d row %d col %d\n", val, pos, row+1, col+1);
+	    m_KSudokuMoves.append (idx);
             s.nSingles++;
             break;
         case Spot:
-            dbo2 "  Single Spot %d %d row %d col %d\n",
-                    pairVal(m), pairPos(m), pairPos(m)/m_boardSize + 1,
-                                            pairPos(m)%m_boardSize + 1);
+            dbo2 "  Single Spot %d %d row %d col %d\n", val, pos, row+1, col+1);
+	    m_KSudokuMoves.append (idx);
             s.nSpots++;
             break;
         case Deduce:
@@ -586,18 +596,15 @@ void SudokuBoard::analyseMoves (Statistics & s)
             s.nDeduces++;
             break;
         case Guess:
-            dbo2 "GUESS:        %d %d row %d col %d\n",
-                    pairVal(m), pairPos(m), pairPos(m)/m_boardSize + 1,
-                                            pairPos(m)%m_boardSize + 1);
+            dbo2 "GUESS:        %d %d row %d col %d\n", val, pos, row+1, col+1);
+	    m_KSudokuMoves.append (idx);
             if (s.nGuesses < 1) {
                 s.firstGuessAt = s.nSingles + s.nSpots + 1;
             }
             s.nGuesses++;
             break;
         case Wrong:
-            dbo2 "WRONG GUESS:  %d %d row %d col %d\n",
-                    pairVal(m), pairPos(m), pairPos(m)/m_boardSize + 1,
-                                            pairPos(m)%m_boardSize + 1);
+            dbo2 "WRONG GUESS:  %d %d row %d col %d\n", val, pos, row+1, col+1);
             break;
         case Result:
             break;
