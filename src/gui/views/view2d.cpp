@@ -410,6 +410,9 @@ void View2DScene::init(const Game& game) {
 	connect(m_gameActions, SIGNAL(enterValue(int)), this, SLOT(enterValue(int)));
 	connect(m_gameActions, SIGNAL(markValue(int)), this, SLOT(flipMarkValue(int)));
 	connect(m_gameActions, SIGNAL(move(int,int)), this, SLOT(moveCursor(int,int)));
+	// Fix bug 188162 by ensuring that all markers, as well as cells, are
+	// updated and displayed after a Load action.
+	update(-1);
 }
 
 void View2DScene::setSceneSize(const QSize& size) {
