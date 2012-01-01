@@ -20,7 +20,7 @@
 
 #include <QVector>
 
-enum SudokuType {Plain, XSudoku, Jigsaw, Samurai, TinySamurai, Roxdoku,
+enum SudokuType {Plain, XSudoku, Jigsaw, Samurai, TinySamurai, Roxdoku, Aztec,
                  EndSudokuTypes};
 
 enum Difficulty {VeryEasy  = 0, Easy = 1, Medium = 2, Hard = 3, Diabolical = 4,

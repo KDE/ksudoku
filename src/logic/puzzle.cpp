@@ -166,6 +166,9 @@ SudokuBoard * Puzzle::getBoard(QObject * owner) {
 	case Jigsaw:
 	    board = new JigsawBoard (owner, type, blockSize);
 	    break;
+	case Aztec:
+	    board = new AztecBoard (owner, type, blockSize);
+	    break;
 	case Samurai:
 	    board = new SamuraiBoard (owner, type, blockSize);
 	    break;

@@ -180,4 +180,43 @@ protected:
     virtual qint32          makeBlockIndex (qint32 index);
 };
 
+/**
+ * @class AztecBoard  plainsudokuboard.h
+ * @short Data-structures and methods for handling Aztec Sudoku puzzles.
+ *
+ * An Aztec Sudoku puzzle is exactly like a plain Sudoku puzzle, except that
+ * only the central block is square.  The surrounding blocks interlock like
+ * jigsaw puzzle pieces, resembling an Aztec pyramid.  The block size is 3.
+ */
+class AztecBoard : public PlainSudokuBoard
+{
+    Q_OBJECT
+public:
+    /**
+     * Constructs a new AztecBoard object with required type and size.
+     *
+     * @param parent        A pointer to the object that owns this object and
+     *                      will delete it automatically.
+     * @param sudokuType    The type of Sudoku board required, which should
+     *                      always be SudokuType::Aztec.
+     * @param blockSize     The size of blocks required (must be 3).  The board
+     *                      will have blocks, rows and columns with 3x3 = 9
+     *                      cells and the numbers to be filled in will range
+     *                      from 1 to 9.
+     * @see globals.h
+     */
+    AztecBoard (QObject * parent, SudokuType sudokuType, int blockSize);
+
+protected:
+    /**
+     * Make a list of cells in blocks of the board.  This differs completely
+     * from the plain Sudoku's makeBlockIndex() because of the irregular
+     * arrangement of the blocks.
+     *
+     * @param index         The current position in the list of groups.
+     * @return              The updated position in the list of groups.
+     */
+    virtual qint32          makeBlockIndex (qint32 index);
+};
+
 #endif // PLAINSUDOKUBOARD_H

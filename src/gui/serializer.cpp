@@ -39,9 +39,9 @@
 
 namespace ksudoku {
 
-const char *     typeNames[] = {"Plain", "XSudoku", "Jigsaw",
+const char *     typeNames[] = {"Plain", "XSudoku", "Jigsaw", "Aztec",
 				"Samurai", "TinySamurai", "Roxdoku"};
-const SudokuType types[]     = {Plain, XSudoku, Jigsaw,
+const SudokuType types[]     = {Plain, XSudoku, Jigsaw, Aztec,
 				Samurai, TinySamurai, Roxdoku};
 
 Game Serializer::deserializeGame(QDomElement element) {

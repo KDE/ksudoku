@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Aztec
+Description=Jigsaw variant shaped like an Aztec pyramid
+Author=Ian Wadham
+FileName=Aztec.xml
+Icon=ksudoku-jigsaw

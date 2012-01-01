@@ -4,6 +4,7 @@ install( FILES
 	Samurai.desktop Samurai.xml
 	TinySamurai.desktop TinySamurai.xml
 	XSudoku.desktop XSudoku.xml
+	Aztec.desktop Aztec.xml
 	DESTINATION  ${DATA_INSTALL_DIR}/ksudoku
 )
 

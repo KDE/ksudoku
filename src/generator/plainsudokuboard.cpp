@@ -224,4 +224,39 @@ qint32 JigsawBoard::makeBlockIndex (qint32 index)
     return (index + nCells);
 }
 
+AztecBoard::AztecBoard (QObject * parent,
+                          SudokuType sudokuType, int blockSize)
+    :
+    PlainSudokuBoard (parent, sudokuType, blockSize)
+{
+}
+
+qint32 AztecBoard::makeBlockIndex (qint32 index)
+{
+    dbo1 "Make Aztec block index on whole board, index %d\n", index);
+
+    // Nine blocks.  The central block is square, the outside eight have
+    // interlocking tabs and sockets (holes), like a jigsaw.  The cell numbers
+    // run from left-to-right and then top-to-bottom.
+
+    const int blocks[] = { 0,  1,  9, 10, 11, 19, 20, 21, 29, // Top left
+                           2,  3,  4,  5,  6, 12, 13, 14, 22, // Top middle
+                           7,  8, 15, 16, 17, 23, 24, 25, 33, // Top right
+                          18, 27, 28, 36, 37, 38, 45, 46, 54, // Middle left
+                          30, 31, 32, 39, 40, 41, 48, 49, 50, // Central square
+                          26, 34, 35, 42, 43, 44, 52, 53, 62, // Middle right
+                          47, 55, 56, 57, 63, 64, 65, 72, 73, // Bottom left
+                          58, 66, 67, 68, 74, 75, 76, 77, 78, // Bottom middle
+                          51, 59, 60, 61, 69, 70, 71, 79, 80  // Bottom right
+                         };
+    qint32 nCells = m_order * m_order;
+
+    // Copy the blocks into the block index.
+    for (int n = 0; n < nCells; n++) {
+        m_groupList [index + n] = blocks [n];
+    }
+
+    return (index + nCells);
+}
+
 #include "plainsudokuboard.moc"
