@@ -54,10 +54,10 @@ public:
 	virtual bool canStartEmpty() const = 0;
 
 	/// Creates a game without a puzzle but with an empty grid
-	virtual Game startEmpty() const = 0;
+	virtual Game startEmpty() = 0;
 
 	/// Creates an instance of this game variant
-	virtual Game createGame(int difficulty, int symmetry) const = 0;
+	virtual Game createGame(int difficulty, int symmetry) = 0;
 
 	/// Creates the correct view for the game.
 	/// Game needs to be compatible with this GameVariant
@@ -130,15 +130,15 @@ public:
 	bool canConfigure() const;
 	bool configure();
 	bool canStartEmpty() const;
-	Game startEmpty() const;
-	Game createGame(int difficulty, int symmetry) const;
+	Game startEmpty();
+	Game createGame(int difficulty, int symmetry);
 	KsView* createView(const Game& game) const;
 
 private:
 	uint m_order;
 	uint m_symmetry;
 
-	mutable SKGraph *m_graph;
+	SKGraph *m_graph;
 };
 
 class RoxdokuGame : public GameVariant {
@@ -149,15 +149,15 @@ public:
 	bool canConfigure() const;
 	bool configure();
 	bool canStartEmpty() const;
-	Game startEmpty() const;
-	Game createGame(int difficulty, int symmetry) const;
+	Game startEmpty();
+	Game createGame(int difficulty, int symmetry);
 	KsView* createView(const Game& game) const;
 
 private:
 	uint m_order;
 	uint m_symmetry;
 
-	mutable SKGraph* m_graph;
+	SKGraph* m_graph;
 };
 
 class CustomGame : public GameVariant {
@@ -168,8 +168,8 @@ public:
 	bool canConfigure() const;
 	bool configure();
 	bool canStartEmpty() const;
-	Game startEmpty() const;
-	Game createGame(int difficulty, int symmetry) const;
+	Game startEmpty();
+	Game createGame(int difficulty, int symmetry);
 	KsView* createView(const Game& game) const;
 
 private:
@@ -177,7 +177,7 @@ private:
 	uint m_symmetry;
 
 	KUrl m_url;
-	mutable SKGraph* m_graph;
+	SKGraph* m_graph;
 };
 
 }

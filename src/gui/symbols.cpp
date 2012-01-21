@@ -20,6 +20,7 @@
  ***************************************************************************/
 
 #include "symbols.h"
+#include "globals.h"
 
 #include <QtCore/QChar>
 
@@ -27,14 +28,16 @@ namespace ksudoku {
 
 /// returns the symbol vor a value used for loading and saving
 QChar Symbols::ioValue2Symbol(int value) {
-	if(value <= 0) return '_';
+	if (value == VACANT) return '_';
+	if (value == UNUSABLE) return '.';
 	return 'a' + value;
 }
 
 /// returns the number of the index
 int Symbols::ioSymbol2Value(const QChar& symbol) {
 	char c = symbol.toAscii();
-	if(symbol == '_') return 0;
+	if(symbol == '_') return VACANT;
+	if(symbol == '.') return UNUSABLE;
 	return c - 'a';
 }
 

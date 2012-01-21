@@ -114,7 +114,7 @@ protected:
 		if(e->button() == Qt::LeftButton) isClicked = true;
 	}	
 protected:
-	void myDrawCube(int n, GLfloat x, GLfloat y, GLfloat z, int texture);
+	void myDrawCube(bool highlight, int n, GLfloat x, GLfloat y, GLfloat z, int texture);
 	void mouseMoveEvent(QMouseEvent* e) ;
 	void mouseDoubleClickEvent(QMouseEvent* e);
 	void wheelEvent (QWheelEvent* e){

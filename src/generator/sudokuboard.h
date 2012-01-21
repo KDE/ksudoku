@@ -20,6 +20,7 @@
 #define SUDOKUBOARD_H
 
 #include "globals.h"
+#include "skgraph.h"
 
 #include <QObject>
 #include <QList>
@@ -35,6 +36,7 @@ typedef MoveList     GuessesList;
 
 enum                 GuessingMode {Random, NotRandom};
 
+class SKGraph;
 class State;
 
 /**
@@ -81,13 +83,10 @@ class State;
  * is also used to check the validity of a puzzle entered manually or loaded
  * from a file.
  *
- * The pure virtual methods setUpBoard(), clear(), fillBoard(), makeBlockIndex()
- * and makeRowColIndex(), as implemented by descendant classes, set up a
- * board of the required size and layout, clear a board, fill a board with
- * randomly chosen values (the solution) and make indices (lists of cells) for
- * all the groups in that type and size of puzzle.  The setUpBoard() method
- * should be called just once for each SudokuBoard descendant object,
- * immediately after constructing that object.
+ * IDW TODO - Rewrite this.
+ * The virtual methods clear() and fillBoard(), 
+ * clear a board or fill it with
+ * randomly chosen values (the solution).
  *
  * Each group (row, column or block) contains N cells in which the numbers
  * 1 to N must appear exactly once.  In the SudokuBoard class, N can be 4, 9,
@@ -122,8 +121,11 @@ public:
      *                      filled in will range from 1 to blockSize squared
      *                      (e.g. a classic Sudoku has blockSize = 3 and there
      *                      are 3x3 = 9 cells in each row, column and block).
+     * @param graph         The layout, type and size of the board, including
+     *                      the grouping of cells into rows, columns and blocks,
+     *                      as required by this type of puzzle.
      */
-    SudokuBoard (QObject * parent, SudokuType sudokuType, int blockSize); 
+    SudokuBoard (SKGraph * graph);
 
     /**
      * Generate a puzzle and its solution (see details in the class-header doc).
@@ -138,13 +140,6 @@ public:
                                             BoardContents & solution,
                                             Difficulty      difficulty,
                                             Symmetry        symmetry);
-
-    /**
-     * Convert puzzle values from KSudoku format to SudokuBoard format.
-     * SudokuBoard stores by column within row and sets unused cells = -1.
-     * KSudoku stores values by row within column and sets unused cells = 0.
-    */
-    BoardContents & fromKSudoku (const QByteArray & values);
 
     /**
      * Check that a puzzle is soluble, has the desired solution and has only one
@@ -207,33 +202,9 @@ public:
                                               GuessingMode gMode = Random);
 
     /**
-     * Return the number of cells in the board.
-     */
-    int                     area() {return m_boardArea;};
-
-    /**
-     * Return the number of cells along the side of the board.
-     */
-    int                     boardSize() {return m_boardSize;};
-
-    /**
-     * Set up an empty board with the required number of cells and make indices
-     * to the required groups of cells, e.g. rows, columns and blocks (pure
-     * virtual).  The indices make it possible for one solver to handle many
-     * types and sizes of Sudoku puzzle.  See the class description for an
-     * overview.
-     */
-    virtual void            setUpBoard() = 0;
-
-    /**
      * Initialize or re-initialize the random number generator.
      */
     void                    setSeed();
-
-    /**
-     * Clear a board-vector of the required type and size (pure virtual).
-     */
-    virtual void            clear (BoardContents & boardValues) = 0;
 
     /**
      * Format some board-contents with ruled lines and boxes and send them to
@@ -242,14 +213,6 @@ public:
      * @param values        The contents of the board to be printed.
      */
     void                    sendToPrinter (const BoardContents & boardValues);
-
-    /**
-     * Format some board-contents into text for printing, debugging output or
-     * saving to a file that can be loaded.
-     *
-     * @param boardValues   The contents of the board to be formatted.
-     */
-    void                    print (const BoardContents & boardValues);
 
 protected:
     BoardContents           m_currentValues;	///< The current state of the
@@ -263,8 +226,6 @@ protected:
     int                     m_blockSize;	///< The number of cells on one
 						///< side of a square block (2,
 						///< 3, 4 or 5).
-    int                     m_gridArea;		///< The number of cells in a
-						///< square grid (e.g. 81).
     int                     m_boardSize;	///< The number of cells on one
 						///< side of the whole board.
 						///< In Samurai with 9x9 grids,
@@ -275,24 +236,11 @@ protected:
     int                     m_overlap;		///< The degree of overlap in a
 						///< Samurai board (=m_blockSize
 						///< or 1 for a TinySamurai).
-
-    int                     m_fillStartRow;	///< The row where fillBoard()
-						///< finds the first block to
-						///< fill.
-    int                     m_fillStartCol;	///< The column where
-						///< fillBoard() finds the
-						///< first block to fill.
     int                     m_nGroups;		///< The total number of rows,
 						///< columns, blocks, diagonals,
 						///< etc. in the puzzle.
     int                     m_groupSize;	///< The number of cells in each
 						///< group (= m_order).
-    QVector<int>            m_groupList;	///< An index from groups to the
-						///< cells they contain.  Each
-						///< cell will be in three
-						///< groups, a row, a column and
-						///< a block, and in some types
-						///< of puzzle maybe more.
     QVector<int>            m_cellIndex;	///< A first-level index from a
 						///< cell to the list of groups
 						///< to which it belongs.
@@ -301,35 +249,19 @@ protected:
 						///< to which they belong.
 
     /**
+     * Clear a board-vector of the required type and size (virtual).
+     *
+     * @param boardValues   The board-contents to be cleared.
+     */
+    virtual void            clear (BoardContents & boardValues);
+
+    /**
      * Fill the board with randomly chosen valid values, thus generating a
-     * solution from which a puzzle can be created (pure virtual).
+     * solution from which a puzzle can be created (virtual).
      *
      * @return              The filled board-vector.
      */
-    virtual BoardContents & fillBoard() = 0;
-
-    /**
-     * Make a list of cells in rows and columns of the board (pure virtual).
-     * The rows and columns indexed form a square of cells with blockSize
-     * squared rows and the same number of columns.
-     *
-     * @param i             The row-number in the board of the top left cell.
-     * @param j             The column-number in the board of the top left cell.
-     * @param index         The current position in the list of groups.
-     * @return              The updated position in the list of groups.
-     */
-    virtual qint32          makeRowColIndex (int i, int j, qint32 index) = 0;
-
-    /**
-     * Make a list of cells in blocks of the board (pure virtual).  In a classic
-     * Sudoku a block is a small square of cells of size blockSize * blockSize,
-     * but in other types of puzzle it can have other shapes or connections
-     * between cells (e.g. as in XSudoku, Jigsaw or Roxdoku types).
-     *
-     * @param index         The current position in the list of groups.
-     * @return              The updated position in the list of groups.
-     */
-    virtual qint32          makeBlockIndex (qint32 index) = 0;
+    virtual BoardContents & fillBoard();
 
     /*
      * Fill a vector of integers with values from 1 up to the size of the
@@ -339,14 +271,12 @@ protected:
      */
     void                    randomSequence (QVector<int> & sequence);
 
-    // Helper methods for inheriting classes.
+    // For efficiency, make an index from cells to the groups (cliques)
+    // where they belong.
     void                    indexCellsToGroups();
-    qint32                  indexSquareBlock (qint32 index, int topLeft);
-
-    void                    markUnusable (BoardContents & boardValues,
-                                    int imin, int imax, int jmin, int jmax);
 
 private:
+    SKGraph *               m_graph;
     int                     m_vacant;
     int                     m_unusable;
     enum                    MoveType {Single, Spot, Guess, Wrong,
@@ -484,6 +414,14 @@ private:
      */
     int                     getSymmetricIndices (int size, Symmetry type,
                                                  int cell, int * out);
+
+    /**
+     * Format some board-contents into text for printing, debugging output or
+     * saving to a file that can be loaded.
+     *
+     * @param boardValues   The contents of the board to be formatted.
+     */
+    void                    print (const BoardContents & boardValues);
 
     // Methods for packing two small integers into one and unpacking them.  Used
     // for speed and efficiency in the solver and other places.

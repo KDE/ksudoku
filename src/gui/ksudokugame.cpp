@@ -25,7 +25,6 @@
 
 #include "history.h"
 
-//Added by qt3to4:
 #include <QList>
 
 #include <QDebug> // IDW
@@ -70,9 +69,6 @@ public:
 	bool hadHelp : 1;
 	bool wasFinished : 1;
 	
-	// bool m_alternateSolver; IDW test - Done in Puzzle now.
-	// QByteArray m_solution;
-
 	Puzzle* puzzle;
 	QTime time;
 	KUrl url;
@@ -174,36 +170,14 @@ Game& Game::operator=(const Game& game) {
 
 
 
-bool Game::simpleCheck() const {
+bool Game::simpleCheck() const { // IDW TODO - This does nothing useful now
+                                 //            that connections have gone.
 	if(!m_private) return false;
 
-	// IDW test. The rest of this test FAILS if we use puzzle->init(values).
-	// and then "Check" in the view's toolbar.  So we skip it.  I think this
-	// is a bug that crept into "Load" when "src/engine" was introduced.
 	qDebug() << "BYPASSED Game::simpleCheck()";
-	return true; // IDW: disable rest of test. TODO: Fix the problem.
-	
-	for(int i = 0; i < size(); ++i) {
-		if(m_private->puzzle->value(i) == 0)
-			continue;
-		
-		for(int j = 0; j < m_private->puzzle->optimized_d(i); ++j){
-			// set k to the index of the connected field
-			int k = m_private->puzzle->optimized(i,j);
-			if(k == i)
-				continue;
+	return true; // IDW: disabled rest of test.
 
-			// change k to the value of the connected field
-			k = m_private->puzzle->value(i);
-			if(k == 0)
-				continue;
-			if(k == m_private->puzzle->value(i)) {
-			        qDebug() << "Failed: i,j =" << i << j;
-				return false;
-			}	
-		}
-	}	
-	return true;
+// IDW test. Eliminated optimized[] arrays and xxxConnection() functions.
 }
 
 int Game::order() const {
@@ -417,8 +391,8 @@ CellInfo Game::cellInfo(int index) const {
 	return CellInfo(CorrectValue, value(index));
 }
 
-const QByteArray Game::allValues() const {
-	if(!m_private) return QByteArray();
+const BoardContents Game::allValues() const {
+	if(!m_private) return BoardContents();
 	
 	return m_private->state.allValues();
 }

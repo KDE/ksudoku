@@ -270,7 +270,7 @@ void RoxdokuView::settingsChanged() {
 
 
 
-void RoxdokuView::myDrawCube(int name, GLfloat x, GLfloat y, GLfloat z, int /*texturef*/)
+void RoxdokuView::myDrawCube(bool highlight, int name, GLfloat x, GLfloat y, GLfloat z, int /*texturef*/)
 {
 	glPushMatrix();
 	glLoadName(name+1);
@@ -280,7 +280,8 @@ void RoxdokuView::myDrawCube(int name, GLfloat x, GLfloat y, GLfloat z, int /*te
 	
 	float sz = 1.0f;
 	float s = 0.1f;
-	if(selection != -1 && selection != name && m_game.puzzle()->hasConnection(selection, name)) {
+	// TODO - IDW Could check whether selection and name have any XYZ equal.
+	if(selection != -1 && selection != name && highlight) {
 		s = -0.25f;
 		sz = 0.52f;
 		
@@ -394,6 +395,14 @@ void RoxdokuView::paintGL()
 
 	glMultMatrixf(Transform.M);
 
+	int selX = -1, selY = -1, selZ = -1;
+	if (selection != -1) {
+	    SKGraph * g = m_game.puzzle()->graph();
+	    selX = g->cellPosX (selection);
+	    selY = g->cellPosY (selection);
+	    selZ = g->cellPosZ (selection);
+	}
+
 	int c=0;
 
 	for(int xx=0; xx<base; ++xx)
@@ -401,7 +410,9 @@ void RoxdokuView::paintGL()
 			for(int zz=0; zz<base; ++zz){
 				glPushMatrix();
 				glTranslatef(-(dist*base-dist)/2,-(dist*base-dist)/2,-(dist*base-dist)/2);
-				myDrawCube(c++,(GLfloat) (dist*xx), (GLfloat)(dist* yy ), (GLfloat) (dist*zz), 0);
+				// Highlight cells in the three planes through the selected cell.
+				bool highlight = (xx == selX) || (yy == selY) || (zz == selZ);
+				myDrawCube(highlight, c++,(GLfloat) (dist*xx), (GLfloat)(dist* yy ), (GLfloat) (dist*zz), 0);
 				glPopMatrix();
 			}
 

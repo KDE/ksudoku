@@ -20,6 +20,10 @@
 
 #include <QVector>
 
+// Values used in vacant and unusable cells (e.g. for Samurai puzzles).
+#define VACANT 0
+#define UNUSABLE -1
+
 enum SudokuType {Plain, XSudoku, Jigsaw, Samurai, TinySamurai, Roxdoku, Aztec,
                  EndSudokuTypes};
 

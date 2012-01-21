@@ -248,10 +248,10 @@ bool SudokuGame::canStartEmpty() const {
 	return true;
 }
 
-Game SudokuGame::startEmpty() const {
+Game SudokuGame::startEmpty() {
 	if(!m_graph) {
-		m_graph = new GraphSudoku(m_order);
-		m_graph->init();
+		m_graph = new SKGraph(m_order, TypeSudoku);
+		m_graph->initSudoku();
 	}
 
 	Puzzle* puzzle = new Puzzle(m_graph, false);
@@ -260,10 +260,10 @@ Game SudokuGame::startEmpty() const {
 	return Game(puzzle);
 }
 
-Game SudokuGame::createGame(int difficulty, int symmetry) const {
+Game SudokuGame::createGame(int difficulty, int symmetry) {
 	if(!m_graph) {
-		m_graph = new GraphSudoku(m_order);
-		m_graph->init();
+		m_graph = new SKGraph(m_order, TypeSudoku);
+		m_graph->initSudoku();
 	}
 	
 	Puzzle* puzzle = new Puzzle(m_graph, true);
@@ -300,10 +300,10 @@ bool RoxdokuGame::canStartEmpty() const {
 	return true;
 }
 
-Game RoxdokuGame::startEmpty() const {
+Game RoxdokuGame::startEmpty() {
 	if(!m_graph) {
-		m_graph = new GraphRoxdoku(m_order);
-		m_graph->init();
+		m_graph = new SKGraph(m_order, TypeRoxdoku);
+		m_graph->initRoxdoku();
 	}
 
 	Puzzle* puzzle = new Puzzle(m_graph, false);
@@ -312,10 +312,10 @@ Game RoxdokuGame::startEmpty() const {
 	return Game(puzzle);
 }
 
-Game RoxdokuGame::createGame(int difficulty, int symmetry) const {
+Game RoxdokuGame::createGame(int difficulty, int symmetry) {
 	if(!m_graph) {
-		m_graph = new GraphRoxdoku(m_order);
-		m_graph->init();
+		m_graph = new SKGraph(m_order, TypeRoxdoku);
+		m_graph->initRoxdoku();
 	}
 
 	Puzzle* puzzle = new Puzzle(m_graph, true);
@@ -352,7 +352,7 @@ bool CustomGame::canStartEmpty() const {
 	return true;
 }
 
-Game CustomGame::startEmpty() const {
+Game CustomGame::startEmpty() {
 	if(!m_graph) {
 		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
 		if(!m_graph) return Game();
@@ -364,7 +364,7 @@ Game CustomGame::startEmpty() const {
 	return Game(puzzle);
 }
 
-Game CustomGame::createGame(int difficulty, int symmetry) const {
+Game CustomGame::createGame(int difficulty, int symmetry) {
 	if(!m_graph) {
 		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
 		if(!m_graph) return Game();

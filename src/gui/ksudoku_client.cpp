@@ -32,7 +32,7 @@ int main(int argc, char **argv)
     client->attach();
 
     // do a 'send' for now
-    QByteArray data;
+    BoardContents data;
     QDataStream ds(data, QIODevice::WriteOnly);
     if (argc > 1)
         ds << QString(argv[1]);

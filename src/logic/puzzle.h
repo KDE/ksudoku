@@ -57,7 +57,7 @@ public:
 	* @return <0 on error, 0 for no solutions, 1 for exactly one solution and
 	* 2 for more than 1 solutions. For return value <= 0 the init failed.
 	*/
-	int init(const QByteArray& values);
+	int init(const BoardContents& values);
 	
 	/**
 	* Return game type
@@ -86,10 +86,6 @@ public:
 		return m_graph->sizeX() * m_graph->sizeY() * m_graph->sizeZ(); 
 		}
 
-	int optimized_d(int index) const { return m_graph->optimized_d[index]; }
-	int optimized(int indX, int indY) const { return m_graph->optimized[indX][indY]; }
-	bool hasConnection(int i, int j) const { return m_graph->hasConnection(i,j); }
-
 	///create new Puzzle with same solver and set withSolution to true
 	Puzzle* dubPuzzle() { return new Puzzle(m_graph, true) ; }
 
@@ -100,18 +96,14 @@ private:
 	bool m_withSolution;
 	SKGraph *m_graph;
 
-	QByteArray m_puzzle;
-	QByteArray m_solution;
+	BoardContents m_puzzle;
+	BoardContents m_solution;
 	QList<int> m_hintList;
 
 	int m_difficulty;
 	int m_symmetry;
 
 	bool m_initialized;
-
-	const QByteArray convertBoardContents(const BoardContents & values,
-					      int boardSize);
-	SudokuBoard * getBoard(QObject * owner);
 };
 
 }

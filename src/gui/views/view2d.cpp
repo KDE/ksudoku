@@ -369,8 +369,8 @@ void View2DScene::init(const Game& game) {
 	m_cells.resize(m_game.size());
 	m_cursorPos = -1;
 	for(int i = 0; i < m_game.size(); ++i) {
-		bool notConnectedNode = ((GraphCustom*) m_game.puzzle()->graph())->optimized_d[i] == 0;			
-		if(notConnectedNode) {
+		// Do not paint unusable cells (e.g. gaps in Samurai puzzles).
+		if (game.value(i) == UNUSABLE) {
 			m_cells[i] = 0;
 			continue;
 		}
@@ -387,13 +387,12 @@ void View2DScene::init(const Game& game) {
 		if(m_cursorPos < 0) m_cursorPos = i;
 	}
 	
-	Graph2d* g2 = dynamic_cast<Graph2d*>(g);
-	m_groups.resize(g2->cliqueCount());
-	for(int i = 0; i < g2->cliqueCount(); ++i) {
-		QVector<int> idx = g2->clique(i);
+	m_groups.resize(g->cliqueCount());
+	for(int i = 0; i < g->cliqueCount(); ++i) {
+		QVector<int> idx = g->clique(i);
 		QVector<QPoint> pts = QVector<QPoint>(idx.size());
 		for(int j = 0; j < idx.size(); ++j) {
-			pts[j] = QPoint(g2->cellPosX(idx[j]), g2->cellPosY(idx[j]));
+			pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
 		}
 		m_groups[i] = new GroupGraphicsItem(pts);
 		m_groups[i]->setParentItem(m_groupLayer);

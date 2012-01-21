@@ -33,29 +33,29 @@
 #include <stdio.h>
 #include <time.h>
 
-SudokuBoard::SudokuBoard (QObject * parent,
-                          SudokuType sudokuType, int blockSize)
+SudokuBoard::SudokuBoard (SKGraph * graph)
     :
-    QObject        (parent),
-    m_type         (sudokuType),
-    m_order        (blockSize * blockSize),
-    m_blockSize    (blockSize),
-    m_gridArea     (m_order * m_order),
+    m_graph        (graph),
+    m_type         (graph->specificType()),
+    m_order        (graph->order()),
+    m_blockSize    (graph->base()),
     m_boardSize    (0),
-    m_boardArea    (0),
+    m_boardArea    (graph->size()),
     m_overlap      (0),
-    m_fillStartRow (0),
-    m_fillStartCol (0),
-    m_nGroups      (0),
-    m_groupSize    (0),
-    m_vacant       (0),
-    m_unusable     (-1)
+    m_nGroups      (graph->cliqueCount()),
+    m_groupSize    (m_order),
+    m_vacant       (VACANT),
+    m_unusable     (UNUSABLE)
 {
     dbgLevel = 1;
 
-    m_stats.type      = sudokuType;
-    m_stats.blockSize = blockSize;
+    m_stats.type      = m_type;
+    m_stats.blockSize = m_blockSize;
     m_stats.order     = m_order;
+    m_boardSize       = graph->sizeX(); // TODO - IDW. Rationalise grid sizes.
+    indexCellsToGroups();
+    dbe "SudokuBoard constructor: type %d, block %d, order %d, BoardArea %d\n",
+	m_type, m_blockSize, m_order, m_boardArea);
 }
 
 void SudokuBoard::setSeed()
@@ -67,9 +67,7 @@ void SudokuBoard::setSeed()
     }
     else {
         started = true;
-        // m_stats.seed = 95985288; // IDW test.
-        // m_stats.seed = 1317731144; // IDW test.
-        m_stats.seed = time(0); // IDW test.
+        m_stats.seed = time(0);
         qsrand (m_stats.seed);
         dbo "setSeed(): SEED = %d\n", m_stats.seed);
     }
@@ -80,6 +78,7 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
                                   Difficulty difficultyRequired,
                                   Symmetry symmetry)
 {
+    dbo "Entered generatePuzzle()\n");
     QTime t;
     t.start();
     setSeed();
@@ -92,6 +91,9 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     BoardContents currPuzzle;
     BoardContents currSolution;
 
+    if (m_type == Roxdoku) {
+	symmetry = NONE;		// Symmetry not implemented in 3-D.
+    }
     if (symmetry == RANDOM_SYM) {	// Choose a symmetry at random.
         symmetry = (Symmetry) (qrand() % (int) LAST_CHOICE);
     }
@@ -200,10 +202,6 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
         dbo "SOLUTION\n");
         print (solution);
     }
-
-    // TODO - Description of puzzle - seed, date-time, type, blocksize, rating.
-
-    fflush (stdout); // IDW test.
 }
 
 Difficulty SudokuBoard::calculateRating (const BoardContents & puzzle,
@@ -253,22 +251,6 @@ Difficulty SudokuBoard::calculateRating (const BoardContents & puzzle,
         avGuesses, avDeduces, avDeduced, m_accum.rating, m_accum.difficulty);
 
     return m_accum.difficulty;
-}
-
-BoardContents & SudokuBoard::fromKSudoku (const QByteArray & values)
-{
-    // SudokuBoard stores by column within row and sets unused cells = -1.
-    // KSudoku stores values by row within column and sets unused cells = 0.
-    clear (m_currentValues);
-    for (int i = 0; i < m_boardSize; i++) {
-        for (int j = 0; j < m_boardSize; j++) {
-            if (m_currentValues.at (i * m_boardSize + j) != m_unusable) {
-                m_currentValues [i * m_boardSize + j] =
-                                ((int) values.at (j * m_boardSize + i));
-            }
-        }
-    }
-    return m_currentValues;
 }
 
 int SudokuBoard::checkPuzzle (const BoardContents & puzzle,
@@ -382,13 +364,9 @@ BoardContents & SudokuBoard::tryGuesses (GuessingMode gMode = Random)
         guesses = deduceValues (m_currentValues, gMode);
 
         if (guesses.isEmpty()) {
-            // TODO: IDW - Delete the stack somewhere else.  It is needed by
-            //             checkPuzzle() for the multiple-solutions test.
-            // while (! m_states.isEmpty()) {
-                // dbo2 "POP: No more guesses needed at level %d\n",
-                        // m_states.count());
-                // delete m_states.pop();
-            // }
+            // NOTE: We keep the stack of states.  It is needed by checkPuzzle()
+	    //       for the multiple-solutions test and deleted when its parent
+	    //       SudokuBoard object (i.e. this->) is deleted.
             return m_currentValues;
         }
         m_states.push (new State (this, guesses, 0,
@@ -427,9 +405,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
             changeClues (puzzle, cell, symmetry, solution);
             changeClues (filled, cell, symmetry, solution);
 
-            dbo2 "CALL deduceValues():\n");
             deduceValues (filled, Random /* NotRandom */);
-            dbo2 "BACK FROM deduceValues():\n");
             if (dbgLevel >= 3) {
                 print (puzzle);
                 print (filled);
@@ -578,17 +554,16 @@ void SudokuBoard::analyseMoves (Statistics & s)
 	int pos = pairPos(m);
 	int row = pos / m_boardSize;
 	int col = pos % m_boardSize;
-	int idx = col * m_boardSize + row;	// KSudoku's position-index.
 
         switch (mType) {
         case Single:
             dbo2 "  Single Pick %d %d row %d col %d\n", val, pos, row+1, col+1);
-	    m_KSudokuMoves.append (idx);
+	    m_KSudokuMoves.append (pos);
             s.nSingles++;
             break;
         case Spot:
             dbo2 "  Single Spot %d %d row %d col %d\n", val, pos, row+1, col+1);
-	    m_KSudokuMoves.append (idx);
+	    m_KSudokuMoves.append (pos);
             s.nSpots++;
             break;
         case Deduce:
@@ -597,7 +572,7 @@ void SudokuBoard::analyseMoves (Statistics & s)
             break;
         case Guess:
             dbo2 "GUESS:        %d %d row %d col %d\n", val, pos, row+1, col+1);
-	    m_KSudokuMoves.append (idx);
+	    m_KSudokuMoves.append (pos);
             if (s.nGuesses < 1) {
                 s.firstGuessAt = s.nSingles + s.nSpots + 1;
             }
@@ -658,6 +633,8 @@ Difficulty SudokuBoard::calculateDifficulty (float rating)
 
 void SudokuBoard::print (const BoardContents & boardValues)
 {
+    // TODO - IDW. Need to handle 27 cell board for 3x3x3 Roxdoku.
+    return; // IDW test.
     // Used for test and debug, but the format is also parsable and loadable.
 
     char nLabels[] = "123456789";
@@ -714,7 +691,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
             if (boardValues.at (cell) == m_vacant) {
                 GuessesList newGuesses;
                 qint32 numbers = m_validCellValues.at (cell);
-                // dbo3 ("Cell %d, valid numbers %03o\n", cell, numbers);
+                // dbo3 "Cell %d, valid numbers %03o\n", cell, numbers);
                 if (numbers == 0) {
                     dbo2 "SOLUTION FAILED: RETURN at cell %d\n", cell);
                     return solutionFailed (guesses);
@@ -760,6 +737,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
         } // Next cell
 
         for (int group = 0; group < m_nGroups; group++) {
+	    QVector<int> cellList = m_graph->clique (group);
             qint32 numbers = m_requiredGroupValues.at (group);
             // dbo3 "Group %d, valid numbers %03o\n", group, numbers);
             if (numbers == 0) {
@@ -773,7 +751,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
                     GuessesList newGuesses;
                     int index = group * m_groupSize;
                     for (int n = 0; n < m_groupSize; n++) {
-                        cell = m_groupList.at (index);
+			cell = cellList.at (n);
                         if ((m_validCellValues.at (cell) & bit) != 0) {
                             newGuesses.append (setPair (cell, validNumber));
                         }
@@ -855,6 +833,33 @@ GuessesList SudokuBoard::solutionFailed (GuessesList & guesses)
     return guesses;
 }
 
+void SudokuBoard::clear (BoardContents & boardValues)
+{
+    boardValues = m_graph->emptyBoard();	// Set cells vacant or unusable.
+}
+
+BoardContents & SudokuBoard::fillBoard()
+{
+    // Solve the empty board, thus filling it with values at random.  These
+    // values can be the starting point for generating a puzzle and also the 
+    // final solution of that puzzle.
+
+    clear (m_currentValues);
+
+    // Fill a central block with values 1 to m_order in random sequence.  This
+    // reduces the solveBoard() time considerably, esp. if blockSize is 4 or 5.
+    QVector<int> sequence (m_order);
+    QVector<int> cellList = m_graph->clique (m_nGroups / 2);
+    randomSequence (sequence);
+    for (int n = 0; n < m_order; n++) {
+        m_currentValues [cellList.at (n)] = sequence.at (n) + 1;
+    }
+
+    solveBoard (m_currentValues);
+    dbo "BOARD FILLED\n");
+    return m_currentValues;
+}
+
 void SudokuBoard::randomSequence (QVector<int> & sequence)
 {
     if (sequence.isEmpty()) return;
@@ -898,10 +903,11 @@ void SudokuBoard::setUpValueRequirements (BoardContents & boardValues)
     int    index = 0;
     qint32 bitPattern = 0;
     for (int group = 0; group < m_nGroups; group++) {
+	QVector<int> cellList = m_graph->clique (group);
         bitPattern = 0;
         for (int n = 0; n < m_groupSize; n++) {
-            int value = boardValues.at (m_groupList.at (index)) - 1;
-            if (value >= 0) {
+            int value = boardValues.at (cellList.at (n)) - 1;
+            if (value != m_unusable) {
                 bitPattern |= (1 << value);	// Add bit for each value found.
             }
             index++;
@@ -930,8 +936,9 @@ void SudokuBoard::setUpValueRequirements (BoardContents & boardValues)
     // can only have 7 or 8, with bit value 192.
     index = 0;
     for (int group = 0; group < m_nGroups; group++) {
+	QVector<int> cellList = m_graph->clique (group);
         for (int n = 0; n < m_order; n++) {
-            int cell  = m_groupList.at (index);
+	    int cell = cellList.at (n);
             m_validCellValues [cell] &= m_requiredGroupValues.at (group);
             index++;
         }   
@@ -967,40 +974,21 @@ void SudokuBoard::updateValueRequirements (BoardContents & boardValues, int cell
         int group  = m_cellGroups.at (i);
         m_requiredGroupValues [group] &= bitPattern;
 
-        int offset = group * m_groupSize;
+	QVector<int> cellList = m_graph->clique (group);
         for (int n = 0; n < m_order; n++) {
-            int cell  = m_groupList.at (offset + n);
+	    int cell = cellList.at (n);
             m_validCellValues [cell] &= bitPattern;
         }   
     }
-}
-
-qint32 SudokuBoard::indexSquareBlock (qint32 index, int topLeft)
-{
-    int cell      = topLeft;
-    qint32 offset = index;
-    for (int i = 0; i < m_blockSize; i++) {
-        for (int j = 0; j < m_blockSize; j++) {
-            m_groupList [offset] = cell;
-            // dbo3 "Index block [%d,%d], "
-                    // "value %d at offset %d.\n",
-                    // i, j, cell, offset);
-            cell++;
-            offset++;
-        }
-        cell = cell + m_boardSize - m_blockSize;
-    }
-
-    return offset;
 }
 
 void SudokuBoard::indexCellsToGroups()
 {
     QMultiMap<int, int> cellsToGroups;
     for (int g = 0; g < m_nGroups; g++) {
-        int offset = g * m_groupSize;
+	QVector<int> cellList = m_graph->clique (g);
         for (int n = 0; n < m_groupSize; n++) {
-            cellsToGroups.insert (m_groupList.at (offset + n), g);
+            cellsToGroups.insert (cellList.at (n), g);
         }
     }
 
@@ -1026,20 +1014,6 @@ void SudokuBoard::indexCellsToGroups()
             // dbo3 " %3d", m_cellGroups.at (n));
         }
         // dbo3 "\n");
-    }
-}
-
-void SudokuBoard::markUnusable (BoardContents & boardValues,
-                            int imin, int imax, int jmin, int jmax)
-{
-    dbo3 "markUnusable(): Row %2d to %2d, col %2d to %2d\n", // IDW test.
-            imin + 1, imax, jmin + 1, jmax); // IDW test.
-    int index = 0;
-    for (int i = imin; i < imax; i++) {
-        for (int j = jmin; j < jmax; j++) {
-            index = i * m_boardSize + j;
-            boardValues [index] = m_unusable;
-        }
     }
 }
 

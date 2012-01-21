@@ -2,6 +2,7 @@
  *   Copyright 2005-2007 Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006      Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -22,8 +23,7 @@
 #ifndef SKGRAPH_H
 #define SKGRAPH_H
 
-#include <vector>
-#include <QBitArray>
+#include <QString>
 #include <QVector>
 
 #include "ksudoku_types.h"
@@ -32,114 +32,67 @@
 class SKGraph
 {
 public:
-	inline int sizeX() { return m_sizeX; }
-	inline int sizeY() { return m_sizeY; }
-	inline int sizeZ() { return m_sizeZ; }
+	explicit SKGraph(int order = 9, ksudoku::GameType type = ksudoku::TypeSudoku);
+	virtual ~SKGraph();
 
-	inline int size() { return m_sizeX * m_sizeY * m_sizeZ; }
+	inline int sizeX() const { return m_sizeX; }
+	inline int sizeY() const { return m_sizeY; }
+	inline int sizeZ() const { return m_sizeZ; }
 
-	inline int cellIndex(uint x, uint y, uint z = 0) 
+	inline int size() const { return m_sizeX * m_sizeY * m_sizeZ; }
+
+	inline int cellIndex(uint x, uint y, uint z = 0) const
 	{
 		return (x*sizeY() + y)*sizeZ() + z;
 	}
-	inline int cellPosX(int i) {
+	inline int cellPosX(int i) const {
 		if(!(sizeX() && sizeY() && sizeZ())) return 0;
 		return i/sizeZ()/sizeY();
 	}
-	inline int cellPosY(int i) {
+	inline int cellPosY(int i) const {
 		if(!(sizeX() && sizeY() && sizeZ())) return 0;
 		return i/sizeZ()%sizeY();
 	}
-	inline int cellPosZ(int i) {
+	inline int cellPosZ(int i) const {
 		if(!(sizeX() && sizeY() && sizeZ())) return 0;
 		return i%sizeZ();
 	}
 
-public:
-	int optimized_d[625];
-	int optimized[625][625]; //pointer-style list of connected nodes
+	inline int cliqueCount() const { return m_cliques.count(); }
 
-public:
-	virtual ~SKGraph();
-
-public:
-	explicit SKGraph(int o=9, bool threedimensionalf = false);
-
-public:
+	inline const QString & name() const { return m_name; }
 	inline int order() const { return m_order; }
+	inline ksudoku::GameType type() const { return m_type; }
+	inline int base() const { return m_base; }
 
-public:
-	/**
-	 * @brief Searches for existing connections.
-	 * @returns Returns true if a connection between nodes @param i and @param j exists
-	 * otherwise false.
-	 */
-	bool hasConnection(int i, int j) const;
-
-public:
-	virtual void init() = 0;
-	virtual ksudoku::GameType type() const = 0;
 	virtual SudokuType specificType() const { return m_specificType; }
 
-protected:
-	void addConnection(int i, int j);
-	
-protected:
-	SudokuType m_specificType;
+	QVector<int> clique(int i) const { return m_cliques[i]; }
 
-	int m_order;
-	int m_sizeX, m_sizeY, m_sizeZ;
-};
+	void initSudoku();
 
-namespace ksudoku {
-	
-class Graph2d : public SKGraph {
-public:
-	explicit Graph2d(int o=9) : SKGraph(o, false) {}
-	
-	void addClique(QVector<int> data);
-	
-	int cliqueCount() { return m_cliques.count(); }
+	void initRoxdoku();
 
-	QVector<int> clique(int i) { return m_cliques[i]; }
-protected:
-	QVector<QVector<int> > m_cliques;
-};
-
-class GraphSudoku : public Graph2d {
-	public:
-		explicit GraphSudoku(int o=9) : Graph2d(o) {}
-	public:
-		void init();
-		ksudoku::GameType type() const { return TypeSudoku; }
-};
-
-class GraphRoxdoku : public SKGraph {
-	public:
-		explicit GraphRoxdoku(int o=9) : SKGraph(o, true) {}
-	public:
-		void init();
-		ksudoku::GameType type() const { return TypeRoxdoku; }
-};
-
-class GraphCustom : public Graph2d
-{
-public:
-	const char* filename;
-	char* name;
-	bool valid;
-
-public:
-	GraphCustom();
-	explicit GraphCustom(const char* filenamed);
-public:
-	void init() {}
-	ksudoku::GameType type() const { return TypeCustom; }
-	void init(const char* name, SudokuType specificType,
+	void initCustom(const QString & name, SudokuType specificType,
 		  int order, int sizeX, int sizeY, int sizeZ,
 		  int ncliques, const char* in);
-};
 
-}
+	inline const BoardContents & emptyBoard() const { return m_emptyBoard; }
+
+protected:
+	void addClique(QVector<int> data);
+	
+	QVector<QVector<int> > m_cliques;
+
+	QString m_name;
+	ksudoku::GameType   m_type;
+	SudokuType          m_specificType;
+
+	int m_order;
+	int m_base;
+	int m_sizeX, m_sizeY, m_sizeZ;
+
+	BoardContents m_emptyBoard;
+};
 
 #endif

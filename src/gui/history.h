@@ -25,6 +25,7 @@
 #include <qobject.h>
 #include <qdatetime.h>
 
+#include "globals.h"
 #include "ksudoku_types.h"
 
 
@@ -160,7 +161,7 @@ public:
 		m_values.detach();
 		m_given.detach();
 	}
-	inline const QByteArray allValues() const {
+	inline const BoardContents allValues() const {
 		return m_values;
 	}
 	/**
@@ -173,7 +174,7 @@ public:
 	
 private:
 	QVector<QBitArray> m_markers;
-	QByteArray m_values;
+	BoardContents m_values;
 	QBitArray m_given;
 };
 

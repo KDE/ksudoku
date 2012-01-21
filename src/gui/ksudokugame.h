@@ -22,7 +22,6 @@
 #ifndef _KSUDOKUGAME_H_
 #define _KSUDOKUGAME_H_
 
-// #include "ksudoku_types.h" // TODO: IDW, remove this -- now redundant.
 #include <qobject.h>
 #include "history.h"
 
@@ -150,7 +149,7 @@ public:
 	/**
 	 * Gets the all current values of the game
 	 */
-	const QByteArray allValues() const;
+	const BoardContents allValues() const;
 	
 	/**
 	 * Gives one value in a randomly chosen cell.

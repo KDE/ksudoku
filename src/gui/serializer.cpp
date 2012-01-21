@@ -144,14 +144,14 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	
 	Puzzle* puzzle = new Puzzle(graph, hasSolution);
 	
-	QByteArray values;
+	BoardContents values;
 	values.resize(graph->size());
 	for(int i = 0; i < graph->size(); ++i) {
 		values[i] = Symbols::ioSymbol2Value(valuesStr[i]);
 	}
 	
 	// TODO remove deserialization of solution, it is no longer required
-	QByteArray solution;
+	BoardContents solution;
 	if(solutionStr.length() != 0) {
 		solution.resize(graph->size());
 		for(int i = 0; i < graph->size(); ++i) {
@@ -193,12 +193,12 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 	
 	bool d3 = false;
 	if(type == "sudoku") {
-		GraphSudoku *graph = new GraphSudoku(order);
-		graph->init();
+		SKGraph *graph = new SKGraph(order, TypeSudoku);
+		graph->initSudoku();
 		return graph;
 	} else if(type == "roxdoku") {
-		GraphRoxdoku *graph = new GraphRoxdoku(order);
-		graph->init();
+		SKGraph *graph = new SKGraph(order, TypeRoxdoku);
+		graph->initRoxdoku();
 		return graph;
 	} else if(type == "custom") {
 		int err=0;
@@ -236,10 +236,9 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 			child = child.nextSibling();
 		}
 		
-		GraphCustom* graph = new GraphCustom();
-		graph->init(name.toLatin1(), puzzleType, order,
+		SKGraph* graph = new SKGraph(order, TypeCustom);
+		graph->initCustom(name, puzzleType, order,
 			    sizeX, sizeY, sizeZ, ncliques, cliques.toLatin1());
-		if(graph->valid==false) return 0;
 		return graph;
 	}
 	
@@ -426,13 +425,14 @@ bool Serializer::serializePuzzle(QDomElement& parent, const Puzzle* puzzle) {
 	return true;
 }
 
-bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph) {
+bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
+{
 	QDomElement element = parent.ownerDocument().createElement("graph");
 	element.setAttribute("order", graph->order());
-	//element.setAttribute("size", puzzle->size());
 	
 	GameType type = graph->type();
-	element.setAttribute("type" , (type == TypeSudoku) ? "sudoku" : (type == TypeRoxdoku) ? "roxdoku" : "custom");
+	element.setAttribute("type" , (type == TypeSudoku) ? "sudoku" :
+				(type == TypeRoxdoku) ? "roxdoku" : "custom");
 
 	int n = -1;
 	SudokuType puzzleType = graph->specificType();
@@ -445,22 +445,21 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph) {
 
 	if(type == TypeCustom)
 	{
-		GraphCustom* g = (GraphCustom*) graph;
-		element.setAttribute("ncliques", (int) g->cliqueCount());
-		element.setAttribute("name", g->name);
-		element.setAttribute("sizeX", g->sizeX());
-		element.setAttribute("sizeY", g->sizeY());
-		element.setAttribute("sizeZ", g->sizeZ());
+		element.setAttribute("name", graph->name());
+		element.setAttribute("ncliques", (int) graph->cliqueCount());
+		element.setAttribute("sizeX", graph->sizeX());
+		element.setAttribute("sizeY", graph->sizeY());
+		element.setAttribute("sizeZ", graph->sizeZ());
 
-		for(int i=0; i < g->cliqueCount(); i++)
+		for(int i=0; i < graph->cliqueCount(); i++)
 		{
 			QDomElement clique = parent.ownerDocument().createElement("clique");
-			clique.setAttribute("size",  (int) g->clique(i).size());
+			clique.setAttribute("size",  (int) graph->clique(i).size());
 			//serialize clique
 			QString contentStr = "";
-			for(int j=0; j < g->clique(i).size(); j++)
+			for(int j=0; j < graph->clique(i).size(); j++)
 			{
-				contentStr += QString::number(g->clique(i).at(j)) + ' ';
+				contentStr += QString::number(graph->clique(i).at(j)) + ' ';
 			}
 			clique.appendChild(parent.ownerDocument().createTextNode(contentStr));
 			element.appendChild(clique);

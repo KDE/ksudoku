@@ -27,9 +27,6 @@
 #include <QtDebug>
 
 #include "sudokuboard.h"
-#include "plainsudokuboard.h"
-#include "samuraiboard.h"
-#include "roxdokuboard.h"
 
 namespace ksudoku {
 
@@ -65,48 +62,28 @@ bool Puzzle::init() {
 bool Puzzle::init(int difficulty, int symmetry) {
 	if(m_initialized) return false;
 
-	QObject * owner = new QObject();	// Stands in for "this".
-	SudokuBoard * board = getBoard (owner);
-	if (board == 0) {
-	    return false;
-	}
+	SudokuBoard * board = new SudokuBoard (m_graph);
 
 	// Generate a puzzle and its solution.
-	BoardContents puzzle;
-	BoardContents solution;
-	board->generatePuzzle (puzzle, solution,
+	qDebug() << "Calling board->generatePuzzle()"; // IDW test.
+	board->generatePuzzle (m_puzzle, m_solution,
 			      (Difficulty) difficulty, (Symmetry) symmetry);
 	board->getMoveList (m_hintList);
-	int boardSize = board->boardSize();
-	delete owner;			// Also deletes the SudokuBoard object.
-
-	// Convert the puzzle and solution to KSudoku format.
-	m_puzzle   = convertBoardContents(puzzle, boardSize);
-	m_solution = convertBoardContents(solution, boardSize);
-
+	delete board;
 	return true;
 }
 
-int Puzzle::init(const QByteArray& values) {
+int Puzzle::init(const BoardContents & values) {
 	if(m_initialized) return -1;
 
-	QObject * owner = new QObject();	// Stands in for "this".
-	SudokuBoard * board = getBoard (owner);
-	if (board == 0) {
-	    return 0;
-	}
-
-	// Convert the puzzle values to SudokuBoard format.
-	BoardContents puzzleValues = board->fromKSudoku(values);
+	SudokuBoard * board = new SudokuBoard (m_graph);
 
 	// Save the puzzle values and SudokuBoard's solution (if any).
 	m_puzzle = values;
-	int boardSize = board->boardSize();
-	m_solution = convertBoardContents
-			(board->solveBoard(puzzleValues), boardSize);
+	m_solution = board->solveBoard (m_puzzle);
 
 	// Get SudokuBoard to check the solution.
-	int result = board->checkPuzzle (puzzleValues);
+	int result = board->checkPuzzle (m_puzzle);
 	if (result >= 0) {
 	    result = 1;		// There is one solution.
 	}
@@ -120,70 +97,8 @@ int Puzzle::init(const QByteArray& values) {
 	if (result != 0) {
 	    board->getMoveList (m_hintList);
 	}
-	delete owner;		// Also deletes the SudokuBoard object.
+	delete board;
 	return result;
-}
-
-const QByteArray Puzzle::convertBoardContents(const BoardContents & values,
-					      int boardSize) {
-	// New solver stores by column within row and sets unused cells = -1.
-	// KSudoku stores values by row within column and sets unused cells = 0,
-	// e.g. the empty areas in a Samurai or Tiny Samurai puzzle layout.
-	QByteArray newValues;
-	if (values.size() < (boardSize * boardSize)) {
-	    return newValues;	// No solution.
-	}
-	char value = 0;
-	int index = 0;
-	for (int j = 0; j < boardSize; j++) {
-	    for (int i = 0; i < boardSize; i++) {
-		index = i * boardSize + j;
-		value = values.at(index) < 0 ? 0 : values.at(index);
-		newValues.append(value);
-	    }
-	}
-	return newValues;
-}
-
-SudokuBoard * Puzzle::getBoard(QObject * owner) {
-	int blockSize = 3;
-	for (int n = 2; n <= 5; n++) {
-	    if (m_graph->order() == n * n) {
-		blockSize = n;
-	    }
-	}
-	SudokuType type = m_graph->specificType();
-	qDebug() << "Type" << type; // IDW test.
-	SudokuBoard * board = 0;
-	// Generate a puzzle and solution of the required type.
-	switch (type) {
-	case Plain:
-	    board = new PlainSudokuBoard (owner, type, blockSize);
-	    break;
-	case XSudoku:
-	    board = new XSudokuBoard (owner, type, blockSize);
-	    break;
-	case Jigsaw:
-	    board = new JigsawBoard (owner, type, blockSize);
-	    break;
-	case Aztec:
-	    board = new AztecBoard (owner, type, blockSize);
-	    break;
-	case Samurai:
-	    board = new SamuraiBoard (owner, type, blockSize);
-	    break;
-	case TinySamurai:
-	    board = new TinySamuraiBoard (owner, type, blockSize);
-	    break;
-	case Roxdoku:
-	    board = new RoxdokuBoard (owner, type, blockSize);
-	    break;
-	case EndSudokuTypes:
-	    return 0;
-	    break;
-	}
-	board->setUpBoard();
-	return board;
 }
 
 }

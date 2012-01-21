@@ -9,7 +9,7 @@ include_directories(
         ${CMAKE_CURRENT_BINARY_DIR}/gui/views
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export/draw
-#        ${CMAKE_CURRENT_BINARY_DIR}/logic
+        ${CMAKE_CURRENT_BINARY_DIR}/logic
         ${CMAKE_CURRENT_SOURCE_DIR}/generator
 )
 
@@ -20,9 +20,6 @@ endif(OPENGL_SUPPORT)
 set(ksudoku_SRCS
 	main.cpp
 	generator/sudokuboard.cpp
-	generator/plainsudokuboard.cpp
-	generator/roxdokuboard.cpp
-	generator/samuraiboard.cpp
 	generator/state.cpp
 )
 

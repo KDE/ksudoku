@@ -2,6 +2,7 @@
  *   Copyright 2005-2007 Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -23,62 +24,35 @@
 #include <string>
 #include <iostream>
 #include <sstream>
-#include <cmath>
 
-SKGraph::SKGraph(int o, bool threedimensionalf)
+SKGraph::SKGraph(int order, ksudoku::GameType type)
 {
-	// <<< implementation of SKBase::setorder
-	m_order = o;
-	int base = (int) sqrt((double)o);
-	int size = (threedimensionalf == 1) ? base*base*base : (m_order*m_order);
-	// >>>
-
-	for(int i = 0; i < size; ++i)
-	{
-		optimized_d[i]=0;
+	m_order = order;
+	m_base  = 3;
+	for (int n = 2; n <= 5; n++) {
+	    if (m_order == n * n) {
+		m_base = n;
+	    }
 	}
+	m_type = type;
 }
 
 SKGraph::~SKGraph()
 {
 }
 
-bool SKGraph::hasConnection(int i, int j) const {
-	for(int k = 0; k < optimized_d[i]; ++k)
-	{
-		if(optimized[i][k] == j)
-			return true;
-	}
-	return false;
-}
-
-inline void SKGraph::addConnection(int i, int j)
+void SKGraph::initSudoku()
 {
-	for(int k = 0; k < optimized_d[i]; ++k)
-	{
-		if(optimized[i][k] == j)
-			return;
-	}
-	optimized[i][optimized_d[i]++] = j;
-}
-
-void ksudoku::GraphSudoku::init()
-{
-	int base = static_cast<int>(sqrt((float)m_order));
-
+	m_name = "PlainSudoku";
 	m_specificType = Plain;
 
 	m_sizeX = m_order;
 	m_sizeY = m_order;
 	m_sizeZ = 1;
+	m_emptyBoard.fill (UNUSABLE, size());
 
 	int row, col, subsquare;
 
-	for(int i = 0; i < size(); ++i) {
-		optimized_d[i] = 0;
-	}
-
-	
 	QVector<int> rowc, colc, blockc;
 	for(int i = 0; i < m_order; ++i) {
 		rowc.clear();
@@ -89,7 +63,7 @@ void ksudoku::GraphSudoku::init()
 		{
 			rowc << j+i*m_order;
 			colc << j*m_order+i;
-			blockc << ((i/base)*base + j%base) * m_order + (i%base)*base + j/base;
+			blockc << ((i/m_base)*m_base + j%m_base) * m_order + (i%m_base)*m_base + j/m_base;
 		}
 		addClique(rowc);
 		addClique(colc);
@@ -97,72 +71,56 @@ void ksudoku::GraphSudoku::init()
 	}
 }
 
-void ksudoku::GraphRoxdoku::init()
+void SKGraph::initRoxdoku()
 {
-	int base = static_cast<int>(sqrt((float)m_order));
-
+	m_name = "Roxdoku";
 	m_specificType = Roxdoku;
 
-	m_sizeX = base;
-	m_sizeY = base;
-	m_sizeZ = base;
+	m_sizeX = m_base;
+	m_sizeY = m_base;
+	m_sizeZ = m_base;
+	m_emptyBoard.fill (UNUSABLE, size());
 
-	int faces[3];
-	for(int i = 0; i < size(); ++i)
-	{
-		faces[0] = i / m_order;
-		faces[1] = i % base;
-		faces[2] = (i % m_order) / base;
-		
-		optimized_d[i] = 0;
-		
-		for(int j = 0; j < size(); ++j)
-		{
-			if(j / m_order == faces[0]) addConnection(i, j);
-			if(j % base == faces[1]) addConnection(i, j);
-			if((j % m_order) / base == faces[2]) addConnection(i, j);
+	QVector<int> xFace, yFace, zFace;
+
+	for (uint i = 0; i < m_base; i++) {
+		xFace.clear();
+		yFace.clear();
+		zFace.clear();
+                for (int j = 0; j < m_base; j++) {
+                    for (int k = 0; k < m_base; k++) {
+			// Intersecting faces at (0,0,0), (1,1,1), (2,2,2), etc.
+			xFace << cellIndex (i, j, k);
+			yFace << cellIndex (k, i, j);
+			zFace << cellIndex (j, k, i);
+		    }
 		}
+		addClique(xFace);
+		addClique(yFace);
+		addClique(zFace);
 	}
 }
 
-ksudoku::GraphCustom::GraphCustom(const char* filenamed)
-{
-	filename=filenamed; //TODO fix
-	m_order = 0;
-	for(int i = 0; i < 625; ++i)	optimized_d[i]=0;
-}
-
-ksudoku::GraphCustom::GraphCustom()
-{
-	m_order = 0;
-	for(int i = 0; i < 625; ++i)	optimized_d[i]=0;
-
-}
-
-void ksudoku::Graph2d::addClique(QVector<int> data) {
-	// add connections to the graph
-	for(int i = 0; i < data.size(); ++i) {
-		for(int j = 0; j < data.size(); ++j) {
-			addConnection(data[i], data[j]);
-		}
-	}
-	
-	// add to the cliques list
+void SKGraph::addClique(QVector<int> data) {
+	// Add to the cliques (groups) list.
 	m_cliques << data;
+	for (int n = 0; n < data.size(); n++) {
+	    // Cells in groups are vacant: cells not in groups are unusable.
+	    m_emptyBoard [data.at(n)] = VACANT;
+	}
 }
 
-void ksudoku::GraphCustom::init(const char* _name, SudokuType specificType,
-				int _order, int sizeX, int sizeY, int sizeZ,					int ncliques, const char* in)
+void SKGraph::initCustom(const QString & name, SudokuType specificType,
+				int order, int sizeX, int sizeY, int sizeZ,					int ncliques, const char* in)
 {//TODO free in when done
-	name = new char[strlen(_name)+1];
-	strcpy(name, _name);
-
+	m_name = name;
 	m_specificType = specificType;
 
-	m_order = _order;
+	m_order = order;
 	m_sizeX = sizeX;
 	m_sizeY = sizeY;
 	m_sizeZ = sizeZ;
+	m_emptyBoard.fill (UNUSABLE, size());
 
 	std::istringstream is(in);
 
@@ -182,7 +140,5 @@ void ksudoku::GraphCustom::init(const char* _name, SudokuType specificType,
 
 		addClique(data);
 	}
-
-	valid=true;
 	return;
 }
