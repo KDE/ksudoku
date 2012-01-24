@@ -81,16 +81,19 @@ class State;
  * The principal methods used in puzzle-generation are generatePuzzle(),
  * insertValues(), removeValues() and checkPuzzle().  The checkPuzzle() method
  * is also used to check the validity of a puzzle entered manually or loaded
- * from a file.
+ * from a file.  The virtual methods clear() and fillBoard() clear a board or
+ * fill it with randomly chosen values (the solution).
  *
  * IDW TODO - Rewrite this.
- * The virtual methods clear() and fillBoard(), 
- * clear a board or fill it with
- * randomly chosen values (the solution).
+ * The main input to the puzzle generator/solver is an pointer to an object of
+ * type SKGraph.  That object contains the shape, dimensions and rules for
+ * grouping the cells of the particular type of Sudoku being played, including
+ * Classic Sudoku in several sizes and variants, Samurai Sudoku with five
+ * overlapping grids and the three-dimensional Roxdoku in several sizes.
  *
- * Each group (row, column or block) contains N cells in which the numbers
- * 1 to N must appear exactly once.  In the SudokuBoard class, N can be 4, 9,
- * 16 or 25, but the descendant objects do not all support all four sizes.
+ * Each group (row, column, blocki or plane) contains N cells in which the
+ * numbers * 1 to N must appear exactly once.  N can be 4, 9, 16 or 25, but not
+ * all types of puzzle support all four sizes.
  *
  * As examples, a classic Sudoku puzzle has 27 groups: 9 rows, 9 columns and
  * 9 blocks of 3x3 cells.  Each group must contain the numbers 1 to 9 once and
@@ -99,10 +102,12 @@ class State;
  * columns, 45 rows and 41 blocks of 3x3 cells, making 131 groups in all.  A
  * classic Sudoku puzzle of size 16 has 16 rows, 16 columns and 16 blocks of
  * 4x4 cells, making 48 groups, where each group must contain the values 1 to
- * 16 once and only once.  That range of values is usually displayed and entered
- * as letters of the Roman alphabet, but that is the concern of View classes.
+ * 16 once and only once.  A 3x3x3 Roxdoku puzzle is a cube with 9 groups of
+ * 3x3 cells.  These form 3 planes perpendicular to each of the X, Y and Z axes.
  *
- * SudokuBoard and its inheritors are Model classes.
+ * All these configurations are represented by a table of groups (or cliques) in
+ * the SKGraph object, which maps cell numbers into groups.  The SudokuBoard
+ * class itself is unaware of the type of puzzle it is generating or solving.
  */
 class SudokuBoard : public QObject
 {
@@ -111,19 +116,9 @@ public:
     /**
      * Construct a new SudokuBoard object with a required type and size.
      *
-     * @param parent        A pointer to the object that owns the SudokuBoard
-     *                      object and will delete it automatically.
-     * @param sudokuType    The type of Sudoku board required (defined
-     *                      in file globals.h).
-     * @param blockSize     The size of blocks required (value 2 to 5).  The
-     *                      board will have blocks, rows and columns with
-     *                      blockSize squared cells and the numbers to be
-     *                      filled in will range from 1 to blockSize squared
-     *                      (e.g. a classic Sudoku has blockSize = 3 and there
-     *                      are 3x3 = 9 cells in each row, column and block).
      * @param graph         The layout, type and size of the board, including
      *                      the grouping of cells into rows, columns and blocks,
-     *                      as required by this type of puzzle.
+     *                      as required by the type of puzzle being played.
      */
     SudokuBoard (SKGraph * graph);
 
