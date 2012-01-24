@@ -37,6 +37,16 @@ class Puzzle;
 class HistoryEvent;
 class Serializer {
 public:
+	static SKGraph* loadCustomShape
+		    (const KUrl& url, QWidget* window, QString* errorMsg = 0);
+	static bool store
+		    (const Game& game, const KUrl& url, QWidget* window);
+	static Game load
+		    (const KUrl& url, QWidget* window, QString* errorMsg = 0);
+
+private:
+	// TODO - IDW. Maybe there should be shared methods for file handling.
+	//             And do all these methods need to be static?
 	static Game deserializeGame(QDomElement element);
 	static Puzzle* deserializePuzzle(QDomElement element) ;
 	static SKGraph* deserializeGraph(QDomElement element);
@@ -44,8 +54,6 @@ public:
 	static HistoryEvent deserializeSimpleHistoryEvent(QDomElement element);
 	static HistoryEvent deserializeComplexHistoryEvent(QDomElement element);
 	
-	static Game load(const KUrl& url, QWidget* window, QString* errorMsg = 0);
-	static SKGraph* loadCustomShape(const KUrl& url, QWidget* window, QString* errorMsg = 0);
 
 
 	static bool serializeGame(QDomElement& parent, const Game& game);
@@ -54,7 +62,6 @@ public:
 	static bool serializeHistory(QDomElement& parent, const Game& game);
 	static bool serializeHistoryEvent(QDomElement& parent, const HistoryEvent& event);
 	
-	static bool store(const Game& game, const KUrl& url, QWidget* window);
 };
 
 }
