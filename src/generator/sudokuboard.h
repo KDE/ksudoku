@@ -59,8 +59,8 @@ class State;
  * zero if it is a given (or clue) or has been (tentatively) solved.
  *
  * The central method of the class is the solver (solve()). It is used when
- * solving an existing puzzle, generating a puzzle, checking the validity of a
- * puzzle keyed in or loaded from a file, verifying that a puzzle is solvable,
+ * solving an existing puzzle, generating a new puzzle, checking the validity of
+ * a puzzle keyed in or loaded from a file, verifying that a puzzle is solvable,
  * checking that it has only one solution and collecting statistics related to
  * the difficulty of solving the puzzle.
  *
@@ -84,15 +84,14 @@ class State;
  * from a file.  The virtual methods clear() and fillBoard() clear a board or
  * fill it with randomly chosen values (the solution).
  *
- * IDW TODO - Rewrite this.
- * The main input to the puzzle generator/solver is an pointer to an object of
+ * The main input to the puzzle generator/solver is a pointer to an object of
  * type SKGraph.  That object contains the shape, dimensions and rules for
  * grouping the cells of the particular type of Sudoku being played, including
  * Classic Sudoku in several sizes and variants, Samurai Sudoku with five
  * overlapping grids and the three-dimensional Roxdoku in several sizes.
  *
  * Each group (row, column, blocki or plane) contains N cells in which the
- * numbers * 1 to N must appear exactly once.  N can be 4, 9, 16 or 25, but not
+ * numbers 1 to N must appear exactly once.  N can be 4, 9, 16 or 25, but not
  * all types of puzzle support all four sizes.
  *
  * As examples, a classic Sudoku puzzle has 27 groups: 9 rows, 9 columns and
