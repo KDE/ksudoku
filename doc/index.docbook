@@ -43,7 +43,7 @@
 <legalnotice>&FDLNotice;</legalnotice>
 
 <date>2011-11-24</date><!-- Date of (re)writing, or update.-->
-<releaseinfo>&kappversion;</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+<releaseinfo>&kappversion; &kde; 4.8</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
 
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
@@ -133,7 +133,8 @@
 	To do that, select the symbol you wish to enter from the selection
 	list on the left, then use the mouse to click on a vacant square
 	in the board. Alternatively, you can hover with the mouse over a
-	vacant square, then use the keyboard to enter a symbol.</para>
+	vacant square or use the cursor keys to move around, 
+        then use the keyboard to enter a symbol.</para>
 
 <para>In Roxdoku (three-dimensional) puzzles, always use the mouse to set a
 	small cube to a value and use a <emphasis>double</emphasis>
