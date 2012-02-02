@@ -56,6 +56,10 @@ bool Puzzle::init() {
 	if(m_withSolution)
 		return false;
 
+	// Set up an empty puzzle.  The user will enter his/her own puzzle.
+	if(m_graph) {
+	    m_puzzle = m_graph->emptyBoard();
+	}
 	return true;
 }
 
