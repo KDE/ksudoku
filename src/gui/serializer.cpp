@@ -36,6 +36,7 @@
 
 #include "ksudoku.h"
 #include "symbols.h"
+#include <QDebug> // IDW test.
 
 namespace ksudoku {
 
@@ -223,22 +224,39 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 		if(err==1) return 0;
 		if(sizeX<1 || sizeY<1 || sizeZ<1) return 0;
 
-		QString cliques = "";
+		QString groupData;
 		QDomNode child = element.firstChild();
-		while (!child.isNull()) 
-		{
-			if(child.isElement())
-			{
-				QString sz = child.toElement().attribute("size");
+		while (!child.isNull()) {
+			if(child.isElement()) {
+			    QDomElement e   = child.toElement();
+			    QString     tag = e.tagName();
+			    if (tag == "clique") {
+				QString sz = e.attribute("size");
 				if(sz.isNull()) return 0;
-				cliques += sz + ' ' + child.toElement().text();
+				groupData = groupData %
+					"Group " % sz % " " %
+					e.text() % " ";
+
+			    }
+			    else if (tag == "sudokugroups") {
+				groupData = groupData %
+					"SudokuGroups " %
+					e.attribute("at", "0") % " " %
+					e.attribute("withblocks", "1") % " ";
+			    }
+			    else if (tag == "roxdokugroups") {
+				groupData = groupData %
+					"RoxdokuGroups " %
+					e.attribute("at", "0") % " ";
+			    }
 			}
 			child = child.nextSibling();
 		}
-		
+
 		SKGraph* graph = new SKGraph(order, TypeCustom);
+		// qDebug() << "groupData" << groupData; // IDW test.
 		graph->initCustom(name, puzzleType, order,
-			    sizeX, sizeY, sizeZ, ncliques, cliques.toLatin1());
+			    sizeX, sizeY, sizeZ, ncliques, groupData);
 		return graph;
 	}
 	

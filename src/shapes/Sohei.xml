@@ -1,0 +1,14 @@
+<!DOCTYPE ksudoku-graph>
+<ksudoku-graph>
+ <graph sizeX="21" sizeY="21" sizeZ="1" ncliques="131" order="9" specific-type="Sohei" type="custom" name="Sohei" >
+
+  <sudokugroups at="126" withblocks="1" /> <!-- Top square -->
+
+  <sudokugroups at="6"   withblocks="1" /> <!-- Left-hand square -->
+
+  <sudokugroups at="258" withblocks="1" /> <!-- Right-hand square -->
+
+  <sudokugroups at="138" withblocks="1" /> <!-- Bottom square -->
+
+ </graph>
+</ksudoku-graph>

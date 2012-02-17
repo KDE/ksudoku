@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Sohei
+Description=Sohei puzzle with four overlapping 9x9 squares
+Author=Ian Wadham
+FileName=Sohei.xml
+Icon=ksudoku-samurai

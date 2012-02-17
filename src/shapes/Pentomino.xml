@@ -1,0 +1,14 @@
+<!DOCTYPE ksudoku-graph>
+<ksudoku-graph>
+ <graph sizeX="5" sizeY="5" sizeZ="1" ncliques="15" order="5" 
+name="Pentomino" type="custom" specific-type="Pentomino" >
+
+  <sudokugroups at="0" withblocks="0" />
+  <clique size="5" > 0  5  1  6  2 </clique>
+  <clique size="5" >10 15 11 16 12 </clique>
+  <clique size="5" >20 21 17 22 18 </clique>
+  <clique size="5" > 7  3  8 13  4 </clique>
+  <clique size="5" >23  9 14 19 24 </clique>
+
+ </graph>
+</ksudoku-graph>

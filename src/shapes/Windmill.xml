@@ -1,0 +1,17 @@
+<!DOCTYPE ksudoku-graph>
+<ksudoku-graph>
+ <graph sizeX="21" sizeY="21" sizeZ="1" ncliques="131" order="9" specific-type="Windmill" type="custom" name="Windmill" >
+
+  <sudokugroups at="63"  withblocks="1" />
+
+  <sudokugroups at="255" withblocks="1" />
+
+  <sudokugroups at="132" withblocks="0" />
+  <clique size="9" >198 199 200 219 220 221 240 241 242 </clique>
+
+  <sudokugroups at="9"   withblocks="1" />
+
+  <sudokugroups at="201" withblocks="1" />
+
+ </graph>
+</ksudoku-graph>

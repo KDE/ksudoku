@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=6x6
+Description=6x6 puzzle with rectangular blocks
+Author=Ian Wadham
+FileName=6x6.xml
+Icon=ksudoku-ksudoku_9x9

@@ -88,45 +88,46 @@ public:
 	virtual ~SKGraph();
 
 	inline int order() const { return m_order; }
-	inline int base() const { return m_base; }
+	inline int base()  const { return m_base;  }
 
 	inline int sizeX() const { return m_sizeX; }
 	inline int sizeY() const { return m_sizeY; }
 	inline int sizeZ() const { return m_sizeZ; }
 
-	inline int size() const { return m_sizeX * m_sizeY * m_sizeZ; }
+	inline int size()  const { return m_sizeX * m_sizeY * m_sizeZ; }
 
 	inline int cellIndex(uint x, uint y, uint z = 0) const
 	{
-		return (x*sizeY() + y)*sizeZ() + z;
+		return (x * m_sizeY + y) * m_sizeZ + z;
 	}
 	inline int cellPosX(int i) const {
-		if(!(sizeX() && sizeY() && sizeZ())) return 0;
-		return i/sizeZ()/sizeY();
+		if(! (m_sizeX && m_sizeY && m_sizeZ)) return 0;
+		return i / m_sizeZ / m_sizeY;
 	}
 	inline int cellPosY(int i) const {
-		if(!(sizeX() && sizeY() && sizeZ())) return 0;
-		return i/sizeZ()%sizeY();
+		if(! (m_sizeX && m_sizeY && m_sizeZ)) return 0;
+		return i / m_sizeZ % m_sizeY;
 	}
 	inline int cellPosZ(int i) const {
-		if(!(sizeX() && sizeY() && sizeZ())) return 0;
-		return i%sizeZ();
+		if(! (m_sizeX && m_sizeY && m_sizeZ)) return 0;
+		return i % m_sizeZ;
 	}
 
-	inline int cliqueCount() const { return m_cliques.count(); }
+	inline int cliqueCount()   const { return m_cliques.count(); }
 	QVector<int> clique(int i) const { return m_cliques[i]; }
 
-	inline const QString & name() const { return m_name; }
-	inline ksudoku::GameType type() const { return m_type; }
+	inline const QString & name()     const { return m_name; }
+	inline ksudoku::GameType type()   const { return m_type; }
 	virtual SudokuType specificType() const { return m_specificType; }
 
 	void initSudoku();
+	void initSudokuGroups(int pos = 0, bool withBlocks = true);
 
 	void initRoxdoku();
 
 	void initCustom(const QString & name, SudokuType specificType,
 		  int order, int sizeX, int sizeY, int sizeZ,
-		  int ncliques, const char* in);
+		  int ncliques, const QString& groupData);
 
 	inline const BoardContents & emptyBoard() const { return m_emptyBoard; }
 
@@ -143,7 +144,7 @@ protected:
 	ksudoku::GameType   m_type;
 	SudokuType          m_specificType;
 
-	BoardContents m_emptyBoard;
+	BoardContents       m_emptyBoard;
 };
 
 #endif

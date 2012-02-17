@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Windmill
+Description=Windmill puzzle with five overlapping 9x9 squares
+Author=Ian Wadham
+FileName=Windmill.xml
+Icon=ksudoku-samurai

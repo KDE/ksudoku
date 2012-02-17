@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Tetromino 4x4
+Description=Jigsaw with Tetromino blocks (Tetris pieces)
+Author=Ian Wadham
+FileName=Tetromino.xml
+Icon=ksudoku-ksudoku_4x4

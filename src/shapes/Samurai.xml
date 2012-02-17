@@ -1,145 +1,21 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
  <graph sizeX="21" sizeY="21" sizeZ="1" ncliques="131" order="9" specific-type="Samurai" type="custom" name="Samurai" >
-	<clique size="9" >0 1 2 3 4 5 6 7 8 </clique>
-	<clique size="9" >21 22 23 24 25 26 27 28 29 </clique>
-	<clique size="9" >42 43 44 45 46 47 48 49 50 </clique>
-	<clique size="9" >63 64 65 66 67 68 69 70 71 </clique>
-	<clique size="9" >84 85 86 87 88 89 90 91 92 </clique>
-	<clique size="9" >105 106 107 108 109 110 111 112 113 </clique>
-	<clique size="9" >126 127 128 129 130 131 132 133 134 </clique>
-	<clique size="9" >147 148 149 150 151 152 153 154 155 </clique>
-	<clique size="9" >168 169 170 171 172 173 174 175 176 </clique>
-	<clique size="9" >0 21 42 63 84 105 126 147 168 </clique>
-	<clique size="9" >1 22 43 64 85 106 127 148 169 </clique>
-	<clique size="9" >2 23 44 65 86 107 128 149 170 </clique>
-	<clique size="9" >3 24 45 66 87 108 129 150 171 </clique>
-	<clique size="9" >4 25 46 67 88 109 130 151 172 </clique>
-	<clique size="9" >5 26 47 68 89 110 131 152 173 </clique>
-	<clique size="9" >6 27 48 69 90 111 132 153 174 </clique>
-	<clique size="9" >7 28 49 70 91 112 133 154 175 </clique>
-	<clique size="9" >8 29 50 71 92 113 134 155 176 </clique>
-	<clique size="9" >0 1 2 21 22 23 42 43 44 </clique>
-	<clique size="9" >3 4 5 24 25 26 45 46 47 </clique>
-	<clique size="9" >6 7 8 27 28 29 48 49 50 </clique>
-	<clique size="9" >63 64 65 84 85 86 105 106 107 </clique>
-	<clique size="9" >66 67 68 87 88 89 108 109 110 </clique>
-	<clique size="9" >69 70 71 90 91 92 111 112 113 </clique>
-	<clique size="9" >126 127 128 147 148 149 168 169 170 </clique>
-	<clique size="9" >129 130 131 150 151 152 171 172 173 </clique>
-	<clique size="9" >132 133 134 153 154 155 174 175 176 </clique>
 
-	<clique size="9" >12 13 14 15 16 17 18 19 20 </clique>
-	<clique size="9" >33 34 35 36 37 38 39 40 41 </clique>
-	<clique size="9" >54 55 56 57 58 59 60 61 62 </clique>
-	<clique size="9" >75 76 77 78 79 80 81 82 83 </clique>
-	<clique size="9" >96 97 98 99 100 101 102 103 104 </clique>
-	<clique size="9" >117 118 119 120 121 122 123 124 125 </clique>
-	<clique size="9" >138 139 140 141 142 143 144 145 146 </clique>
-	<clique size="9" >159 160 161 162 163 164 165 166 167 </clique>
-	<clique size="9" >180 181 182 183 184 185 186 187 188 </clique>
-	<clique size="9" >12 33 54 75 96 117 138 159 180 </clique>
-	<clique size="9" >13 34 55 76 97 118 139 160 181 </clique>
-	<clique size="9" >14 35 56 77 98 119 140 161 182 </clique>
-	<clique size="9" >15 36 57 78 99 120 141 162 183 </clique>
-	<clique size="9" >16 37 58 79 100 121 142 163 184 </clique>
-	<clique size="9" >17 38 59 80 101 122 143 164 185 </clique>
-	<clique size="9" >18 39 60 81 102 123 144 165 186 </clique>
-	<clique size="9" >19 40 61 82 103 124 145 166 187 </clique>
-	<clique size="9" >20 41 62 83 104 125 146 167 188 </clique>
-	<clique size="9" >12 13 14 33 34 35 54 55 56 </clique>
-	<clique size="9" >15 16 17 36 37 38 57 58 59 </clique>
-	<clique size="9" >18 19 20 39 40 41 60 61 62 </clique>
-	<clique size="9" >75 76 77 96 97 98 117 118 119 </clique>
-	<clique size="9" >78 79 80 99 100 101 120 121 122 </clique>
-	<clique size="9" >81 82 83 102 103 104 123 124 125 </clique>
-	<clique size="9" >138 139 140 159 160 161 180 181 182 </clique>
-	<clique size="9" >141 142 143 162 163 164 183 184 185 </clique>
-	<clique size="9" >144 145 146 165 166 167 186 187 188 </clique>
+  <sudokugroups at="0"   withblocks="1" />
 
-	<clique size="9" >252 253 254 255 256 257 258 259 260 </clique>
-	<clique size="9" >273 274 275 276 277 278 279 280 281 </clique>
-	<clique size="9" >294 295 296 297 298 299 300 301 302 </clique>
-	<clique size="9" >315 316 317 318 319 320 321 322 323 </clique>
-	<clique size="9" >336 337 338 339 340 341 342 343 344 </clique>
-	<clique size="9" >357 358 359 360 361 362 363 364 365 </clique>
-	<clique size="9" >378 379 380 381 382 383 384 385 386 </clique>
-	<clique size="9" >399 400 401 402 403 404 405 406 407 </clique>
-	<clique size="9" >420 421 422 423 424 425 426 427 428 </clique>
-	<clique size="9" >252 273 294 315 336 357 378 399 420 </clique>
-	<clique size="9" >253 274 295 316 337 358 379 400 421 </clique>
-	<clique size="9" >254 275 296 317 338 359 380 401 422 </clique>
-	<clique size="9" >255 276 297 318 339 360 381 402 423 </clique>
-	<clique size="9" >256 277 298 319 340 361 382 403 424 </clique>
-	<clique size="9" >257 278 299 320 341 362 383 404 425 </clique>
-	<clique size="9" >258 279 300 321 342 363 384 405 426 </clique>
-	<clique size="9" >259 280 301 322 343 364 385 406 427 </clique>
-	<clique size="9" >260 281 302 323 344 365 386 407 428 </clique>
-	<clique size="9" >252 253 254 273 274 275 294 295 296 </clique>
-	<clique size="9" >255 256 257 276 277 278 297 298 299 </clique>
-	<clique size="9" >258 259 260 279 280 281 300 301 302 </clique>
-	<clique size="9" >315 316 317 336 337 338 357 358 359 </clique>
-	<clique size="9" >318 319 320 339 340 341 360 361 362 </clique>
-	<clique size="9" >321 322 323 342 343 344 363 364 365 </clique>
-	<clique size="9" >378 379 380 399 400 401 420 421 422 </clique>
-	<clique size="9" >381 382 383 402 403 404 423 424 425 </clique>
-	<clique size="9" >384 385 386 405 406 407 426 427 428 </clique>
+  <sudokugroups at="12"  withblocks="1" />
 
-	<clique size="9" >264 265 266 267 268 269 270 271 272 </clique>
-	<clique size="9" >285 286 287 288 289 290 291 292 293 </clique>
-	<clique size="9" >306 307 308 309 310 311 312 313 314 </clique>
-	<clique size="9" >327 328 329 330 331 332 333 334 335 </clique>
-	<clique size="9" >348 349 350 351 352 353 354 355 356 </clique>
-	<clique size="9" >369 370 371 372 373 374 375 376 377 </clique>
-	<clique size="9" >390 391 392 393 394 395 396 397 398 </clique>
-	<clique size="9" >411 412 413 414 415 416 417 418 419 </clique>
-	<clique size="9" >432 433 434 435 436 437 438 439 440 </clique>
-	<clique size="9" >264 285 306 327 348 369 390 411 432 </clique>
-	<clique size="9" >265 286 307 328 349 370 391 412 433 </clique>
-	<clique size="9" >266 287 308 329 350 371 392 413 434 </clique>
-	<clique size="9" >267 288 309 330 351 372 393 414 435 </clique>
-	<clique size="9" >268 289 310 331 352 373 394 415 436 </clique>
-	<clique size="9" >269 290 311 332 353 374 395 416 437 </clique>
-	<clique size="9" >270 291 312 333 354 375 396 417 438 </clique>
-	<clique size="9" >271 292 313 334 355 376 397 418 439 </clique>
-	<clique size="9" >272 293 314 335 356 377 398 419 440 </clique>
-	<clique size="9" >264 265 266 285 286 287 306 307 308 </clique>
-	<clique size="9" >267 268 269 288 289 290 309 310 311 </clique>
-	<clique size="9" >270 271 272 291 292 293 312 313 314 </clique>
-	<clique size="9" >327 328 329 348 349 350 369 370 371 </clique>
-	<clique size="9" >330 331 332 351 352 353 372 373 374 </clique>
-	<clique size="9" >333 334 335 354 355 356 375 376 377 </clique>
-	<clique size="9" >390 391 392 411 412 413 432 433 434 </clique>
-	<clique size="9" >393 394 395 414 415 416 435 436 437 </clique>
-	<clique size="9" >396 397 398 417 418 419 438 439 440 </clique>
+  <sudokugroups at="132" withblocks="0" />
+  <clique size="9" >135 136 137 156 157 158 177 178 179 </clique>
+  <clique size="9" >195 196 197 216 217 218 237 238 239 </clique>
+  <clique size="9" >198 199 200 219 220 221 240 241 242 </clique>
+  <clique size="9" >201 202 203 222 223 224 243 244 245 </clique>
+  <clique size="9" >261 262 263 282 283 284 303 304 305 </clique>
 
-	<clique size="9" >132 133 134 135 136 137 138 139 140 </clique>
-	<clique size="9" >153 154 155 156 157 158 159 160 161 </clique>
-	<clique size="9" >174 175 176 177 178 179 180 181 182 </clique>
-	<clique size="9" >195 196 197 198 199 200 201 202 203 </clique>
-	<clique size="9" >216 217 218 219 220 221 222 223 224 </clique>
-	<clique size="9" >237 238 239 240 241 242 243 244 245 </clique>
-	<clique size="9" >258 259 260 261 262 263 264 265 266 </clique>
-	<clique size="9" >279 280 281 282 283 284 285 286 287 </clique>
-	<clique size="9" >300 301 302 303 304 305 306 307 308 </clique>
-	<clique size="9" >132 153 174 195 216 237 258 279 300 </clique>
-	<clique size="9" >133 154 175 196 217 238 259 280 301 </clique>
-	<clique size="9" >134 155 176 197 218 239 260 281 302 </clique>
-	<clique size="9" >135 156 177 198 219 240 261 282 303 </clique>
-	<clique size="9" >136 157 178 199 220 241 262 283 304 </clique>
-	<clique size="9" >137 158 179 200 221 242 263 284 305 </clique>
-	<clique size="9" >138 159 180 201 222 243 264 285 306 </clique>
-	<clique size="9" >139 160 181 202 223 244 265 286 307 </clique>
-	<clique size="9" >140 161 182 203 224 245 266 287 308 </clique>
+  <sudokugroups at="252" withblocks="1" />
 
-
-	<clique size="9" >135 136 137 156 157 158 177 178 179 </clique>
-	<clique size="9" >195 196 197 216 217 218 237 238 239 </clique>
-	<clique size="9" >198 199 200 219 220 221 240 241 242 </clique>
-	<clique size="9" >201 202 203 222 223 224 243 244 245 </clique>
-	<clique size="9" >261 262 263 282 283 284 303 304 305 </clique>
-
-
+  <sudokugroups at="264" withblocks="1" />
 
  </graph>
 </ksudoku-graph>

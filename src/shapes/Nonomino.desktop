@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Nonomino 9x9
+Description=Jigsaw variant with irregularly shaped Nonomino blocks
+Author=Ian Wadham
+FileName=Nonomino.xml
+Icon=ksudoku-jigsaw
