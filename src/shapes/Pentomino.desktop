@@ -1,6 +1,16 @@
 [KSudokuVariant]
 Name=Pentomino 5x5
+Name[nl]=Pentomino 5x5
+Name[pt]=Pentómino 5z5
+Name[pt_BR]=Pentaminó 5x5
+Name[uk]=Пентоміно 5x5
+Name[x-test]=xxPentomino 5x5xx
 Description=Jigsaw variant with irregularly shaped Pentomino blocks
+Description[nl]=Legpuzzelvariant met onregelmatig gevormde Pentomino-blokken
+Description[pt]=Variante de 'puzzle' com blocos do tipo Pentómino irregulares
+Description[pt_BR]=Variante de quebra-cabeça com blocos do tipo Pentaminó irregulares
+Description[uk]=Варіант мозаїки з блоками пентоміно неправильної форми
+Description[x-test]=xxJigsaw variant with irregularly shaped Pentomino blocksxx
 Author=Ian Wadham
 FileName=Pentomino.xml
 Icon=ksudoku-jigsaw

@@ -1,6 +1,16 @@
 [KSudokuVariant]
 Name=Sohei
+Name[nl]=Sohei
+Name[pt]=Sohei
+Name[pt_BR]=Sohei
+Name[uk]=Сохей
+Name[x-test]=xxSoheixx
 Description=Sohei puzzle with four overlapping 9x9 squares
+Description[nl]=Sohei puzzel met vier overlappende 9x9 vierkanten
+Description[pt]='Puzzle' Sohei com quatro quadrados 9x9 sobrepostos
+Description[pt_BR]=Quebra-cabeça Sohei com quatro quadrados 9x9 sobrepostos
+Description[uk]=Варіант сохей з чотирма квадратами 9x9, що перекриваються
+Description[x-test]=xxSohei puzzle with four overlapping 9x9 squaresxx
 Author=Ian Wadham
 FileName=Sohei.xml
 Icon=ksudoku-samurai
