@@ -126,7 +126,7 @@ ValueListWidget::ValueListWidget(QWidget* parent)
 	m_selectionItem = new SelectionItem();
 	m_scene->addItem(m_selectionItem);
 	
-	setMaxValue(1);
+	setMaxValue(1);	// Make SymbolItem list non-empty, in case of a resize.
 	m_selectedValue = 1;
 }
 
