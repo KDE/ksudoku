@@ -21,7 +21,7 @@
 
 State::State (QObject *             parent,
               const GuessesList &   guesses,
-              int                   guessNumber,
+              const int             guessNumber,
               const BoardContents & values,
               const MoveList &      moves,
               const MoveList &      moveTypes)
