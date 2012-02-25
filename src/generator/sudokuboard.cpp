@@ -85,6 +85,7 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     const int     maxTries = 20;
     int           count = 0;
     float         bestRating = 0.0;
+    int           bestDifficulty = 0;
     int           bestNClues = 0;
     int           bestNGuesses = 0;
     int           bestFirstGuessAt = 0;
@@ -136,18 +137,41 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 	// Use the highest rated puzzle so far.
 	if (m_accum.rating > bestRating) {
 	    bestRating       = m_accum.rating;
+	    bestDifficulty   = d;
 	    bestNClues       = m_stats.nClues;
 	    bestNGuesses     = m_accum.nGuesses;
 	    bestFirstGuessAt = m_stats.firstGuessAt;
 	    solution         = currSolution;
 	    puzzle           = currPuzzle;
 	}
+
+	if ((d < difficultyRequired) && (count >= maxTries)) {
+            // Exit after max attempts?
+            QWidget owner;
+            int ans = KMessageBox::questionYesNo (&owner,
+                      i18n("After %1 tries, the best difficulty level achieved "
+			   "is %2, with internal difficulty rating %3, but you "
+			   "requested difficulty level %4. Do you wish to try "
+			   "again or accept the puzzle as is?\n"
+			   "\n"
+			   "If you accept the puzzle, it may help to change to "
+			   "No Symmetry or some low symmetry type, then use "
+			   "Game->New and try generating another puzzle.")
+		      .arg(maxTries).arg(bestDifficulty)
+		      .arg(bestRating, 0, 'f', 1).arg(difficultyRequired),
+                      i18n("Difficulty Level"),
+                      KGuiItem(i18n("&Try Again")), KGuiItem(i18n("&Accept")));
+            if (ans == KMessageBox::Yes) {
+                count = 0;
+                continue;
+            }
+	}
         if ((d >= difficultyRequired) || (count >= maxTries)) {
             QWidget owner;
 	    if (m_accum.nGuesses == 0) {
 		KMessageBox::information (&owner,
-		       i18n("This puzzle can be solved by logic alone. No "
-			    "guessing is required.\n"
+		       i18n("It will be possible to solve the generated puzzle "
+			    "by logic alone. No guessing will be required.\n"
 			    "\n"
 			    "The internal difficulty rating is %1. There are "
 			    "%2 clues at the start and %3 moves to go.")
@@ -158,10 +182,10 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 	    }
 	    else {
 		KMessageBox::information (&owner,
-		       i18n("This puzzle requires an average of %1 guesses "
-			    "or branch points and if you guess wrong, "
-			    "backtracking is necessary. The first guess comes "
-			    "after %2 moves.\n"
+		       i18n("Solving the generated puzzle will require an "
+			    "average of %1 guesses or branch points and if you "
+			    "guess wrong, backtracking will be necessary. The "
+			    "first guess should come after %2 moves.\n"
 			    "\n"
 			    "The internal difficulty rating is %3, there are "
 			    "%4 clues at the start and %5 moves to go.")
@@ -172,27 +196,8 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 		       i18n("Difficulty Level"),
 		       "ShowPuzzleStatistics_2");
 	    }
-            if (d >= difficultyRequired) {
-                // Exit when the required difficulty is reached.
-                break;
-            }
-
-            // Exit after max attempts?
-            int ans = KMessageBox::questionYesNo (&owner,
-                      i18n("After %1 tries, the puzzle generator has not "
-                           "reached the difficulty level you requested. Do you "
-                           "wish to try again or accept the puzzle as is?\n"
-			   "\n"
-			   "If you accept the puzzle, it may help to change to "
-			   "No Symmetry or some low symmetry type and then "
-                           "generate another puzzle.").arg(maxTries),
-                      i18n("Difficulty Level"),
-                      KGuiItem(i18n("&Try Again")), KGuiItem(i18n("&Accept")));
-            if (ans == KMessageBox::Yes) {
-                count = 0;
-                continue;
-            }
-            break;
+	    // Exit when the required difficulty or number of tries is reached.
+	    break;
         }
     }
 
