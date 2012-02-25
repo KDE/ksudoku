@@ -552,8 +552,8 @@ void SudokuBoard::analyseMoves (Statistics & s)
         mType = m_moveTypes.takeFirst();
 	int val = pairVal(m);
 	int pos = pairPos(m);
-	int row = pos / m_boardSize;
-	int col = pos % m_boardSize;
+	int row = m_graph->cellPosY (pos);
+	int col = m_graph->cellPosX (pos);
 
         switch (mType) {
         case Single:
@@ -633,8 +633,6 @@ Difficulty SudokuBoard::calculateDifficulty (float rating)
 
 void SudokuBoard::print (const BoardContents & boardValues)
 {
-    // TODO - IDW. Need to handle 27 cell board for 3x3x3 Roxdoku.
-    return; // IDW test.
     // Used for test and debug, but the format is also parsable and loadable.
 
     char nLabels[] = "123456789";
@@ -646,14 +644,18 @@ void SudokuBoard::print (const BoardContents & boardValues)
             boardValues.size(), m_boardArea);
         return;
     }
-    for (int i = 0; i < m_boardSize; i++) {
-        if ((i != 0) && (i % m_blockSize == 0)) {
-            printf ("\n");		// Gap between square blocks.
-        }
-        for (int j = 0; j < m_boardSize; j++) {
-            index = i * m_boardSize + j;
+
+    for (int k = 0; k < m_graph->sizeZ(); k++) {
+      int z = (m_type == Roxdoku) ? (m_graph->sizeZ() - k - 1) : k;
+      for (int j = 0; j < m_graph->sizeY(); j++) {
+	if ((j != 0) && (j % m_blockSize == 0)) {
+	    printf ("\n");		// Gap between square blocks.
+	}
+        int y = (m_type == Roxdoku) ? (m_graph->sizeY() - j - 1) : j;
+        for (int x = 0; x < m_graph->sizeX(); x++) {
+            index = m_graph->cellIndex (x, y, z);
             value = boardValues.at (index);
-            if (j % m_blockSize == 0) {
+            if (x % m_blockSize == 0) {
                 printf ("  ");		// Gap between square blocks.
             }
             if (value == m_unusable) {
@@ -669,8 +671,9 @@ void SudokuBoard::print (const BoardContents & boardValues)
             }
         }
         printf ("\n");			// End of row.
+      }
+      printf ("\n");			// Next Z or end of 2D puzzle/solution.
     }
-    printf ("\n");			// End of puzzle/solution.
 }
 
 GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
@@ -691,15 +694,15 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
             if (boardValues.at (cell) == m_vacant) {
                 GuessesList newGuesses;
                 qint32 numbers = m_validCellValues.at (cell);
-                // dbo3 "Cell %d, valid numbers %03o\n", cell, numbers);
+                dbo3 "Cell %d, valid numbers %03o\n", cell, numbers);
                 if (numbers == 0) {
                     dbo2 "SOLUTION FAILED: RETURN at cell %d\n", cell);
                     return solutionFailed (guesses);
                 }
                 int validNumber = 1;
                 while (numbers != 0) {
-                    // dbo3 "Numbers = %03o, validNumber = %d\n",
-                    //         numbers, validNumber);
+                    dbo3 "Numbers = %03o, validNumber = %d\n",
+                            numbers, validNumber);
                     if (numbers & 1) {
                         newGuesses.append (setPair (cell, validNumber));
                     }
@@ -739,7 +742,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
         for (int group = 0; group < m_nGroups; group++) {
 	    QVector<int> cellList = m_graph->clique (group);
             qint32 numbers = m_requiredGroupValues.at (group);
-            // dbo3 "Group %d, valid numbers %03o\n", group, numbers);
+            dbo3 "Group %d, valid numbers %03o\n", group, numbers);
             if (numbers == 0) {
                 continue;
             }
@@ -891,6 +894,7 @@ void SudokuBoard::setUpValueRequirements (BoardContents & boardValues)
     // example 9 bits for a 9x9 grid with 3x3 blocks.
     qint32 allValues = (1 << m_order) - 1;
 
+    dbo2 "Enter setUpValueRequirements()\n");
     if (dbgLevel >= 2) {
         this->print (boardValues);
     }
@@ -903,6 +907,7 @@ void SudokuBoard::setUpValueRequirements (BoardContents & boardValues)
     int    index = 0;
     qint32 bitPattern = 0;
     for (int group = 0; group < m_nGroups; group++) {
+	dbo3 "Group %3d ", group);
 	QVector<int> cellList = m_graph->clique (group);
         bitPattern = 0;
         for (int n = 0; n < m_groupSize; n++) {
@@ -910,10 +915,12 @@ void SudokuBoard::setUpValueRequirements (BoardContents & boardValues)
             if (value != m_unusable) {
                 bitPattern |= (1 << value);	// Add bit for each value found.
             }
+	    dbo3 "%3d=%2d ", cellList.at (n), value + 1);
             index++;
         }
         // Reverse all the bits, giving values currently not found in the group.
         m_requiredGroupValues [group] = bitPattern ^ allValues;
+	dbo3 "bits %03o\n", m_requiredGroupValues.at (group));
     }
 
     // Set bit-patterns to show that each cell can accept any value.  Bits are
@@ -1021,7 +1028,7 @@ void SudokuBoard::changeClues (BoardContents & to, int cell, Symmetry type,
                                const BoardContents & from)
 {
     int nSymm = 1;
-    int indices[4];
+    int indices[8];
     nSymm = getSymmetricIndices (m_boardSize, type, cell, indices);
     for (int k = 0; k < nSymm; k++) {
         cell = indices [k];
@@ -1033,22 +1040,26 @@ int SudokuBoard::getSymmetricIndices
                 (int size, Symmetry type, int index, int * out)
 {
     int result = 1;
-    int row    = index / size;
-    int col    = index % size;
     out[0]     = index;
-    bool b[3]  = {1, 1, 1};
+    if (type == NONE) {
+	return result;
+    }
+
+    int row    = m_graph->cellPosY (index);
+    int col    = m_graph->cellPosX (index);
+    int lr     = size - col - 1;		// For left-to-right reflection.
+    int tb     = size - row - 1;		// For top-to-bottom reflection.
 
     switch (type) {
-        case NONE:
-            break;
         case DIAGONAL_1:
 	    // Reflect a copy of the point around two central axes making its
 	    // reflection in the NW-SE diagonal the same as for NE-SW diagonal.
-            row = size - row - 1;
-            col = size - col - 1;
+            row = tb;
+            col = lr;
             // No break; fall through to case DIAGONAL_2.
         case DIAGONAL_2:
-            out[1] = (col * size) + row;	// Reflect in NW-SE diagonal.
+	    // Reflect (col, row) in the main NW-SE diagonal by swapping coords.
+            out[1] = m_graph->cellIndex(row, col);
             result = (out[1] == out[0]) ? 1 : 2;
             break;
         case CENTRAL:
@@ -1056,44 +1067,37 @@ int SudokuBoard::getSymmetricIndices
             result = (out[1] == out[0]) ? 1 : 2;
             break;
 	case SPIRAL:
-	    result = 4;
-            if(size % 2 == 1) {
-		if ((row == col) && (col == (size - 1)/2)) {
-		    result = 1;		// This is the central cell.
-		}
-	    }
-	    if (result == 4) {
-                out[1] = (size - row - 1) * size + size - col - 1;
-                out[2] = col * size + size - row - 1;
-                out[3] = (size - col - 1) * size + row;
+	    if ((size % 2 != 1) || (row != col) || (col != (size - 1)/2)) {
+		result = 4;			// This is not the central cell.
+		out[1] = m_graph->cellIndex(lr,  tb);
+		out[2] = m_graph->cellIndex(row, lr);
+		out[3] = m_graph->cellIndex(tb,  col);
 	    }
             break;
         case FOURWAY:
-            out[1] = out[2] = out[3] = 0;
-            if(size % 2 == 1) {
-                if(col == (size - 1)/2) {
-                    b[0] = b[2] = 0;
-                }
-                if(row == (size - 1)/2) {
-                    b[1] = b[2] = 0;
-                }
-            }
+	    out[1] = m_graph->cellIndex(row, col);	// Interchange X and Y.
+	    out[2] = m_graph->cellIndex(lr,  row);	// Left-to-right.
+	    out[3] = m_graph->cellIndex(row, lr);	// Interchange X and Y.
+	    out[4] = m_graph->cellIndex(col, tb);	// Top-to-bottom.
+	    out[5] = m_graph->cellIndex(tb,  col);	// Interchange X and Y.
+	    out[6] = m_graph->cellIndex(lr,  tb);	// Both L-R and T-B.
+	    out[7] = m_graph->cellIndex(tb,  lr);	// Interchange X and Y.
 
-            if(b[2] == 0) {
-                out[1] = (size - row - 1) * size + size - col - 1;
-                if(out[1] != out[0]) {
-		    result++;
+	    int k;
+	    for (int n = 1; n < 8; n++) {
+		for (k = 0; k < result; k++) {
+		    if (out[n] == out[k]) {
+			break;				// Omit duplicates.
+		    }
 		}
-            }
-            else {
-                out[1] = (size - row - 1) * size + (size - col - 1);
-                out[2] = row * size + (size - col - 1);
-                out[3] = (size - row - 1) * size + col;
-                result = 4;
-            }
+		if (k >= result) {
+		    out[result] = out[n];
+		    result++;				// Use unique positions.
+		}
+	    }
             break;
         case LEFT_RIGHT:
-	    out[1] = row * size + size - col - 1;
+	    out[1] = m_graph->cellIndex(lr,  row);
             result = (out[1] == out[0]) ? 1 : 2;
             break;
         default:
