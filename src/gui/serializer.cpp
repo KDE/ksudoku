@@ -207,7 +207,6 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 		int sizeX = readInt(element,"sizeX",&err);
 		int sizeY = readInt(element,"sizeY",&err);
 		int sizeZ = readInt(element,"sizeZ",&err);
-		//int size = sizeX*sizeY*sizeZ;
 
 		QString name = element.attribute("name");
 		QString typeName = element.attribute("specific-type");
@@ -224,7 +223,10 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 		if(err==1) return 0;
 		if(sizeX<1 || sizeY<1 || sizeZ<1) return 0;
 
-		QString groupData;
+		SKGraph* graph = new SKGraph(order, TypeCustom);
+		graph->initCustom(name, puzzleType, order,
+			    sizeX, sizeY, sizeZ, ncliques);
+
 		QDomNode child = element.firstChild();
 		while (!child.isNull()) {
 			if(child.isElement()) {
@@ -232,35 +234,55 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 			    QString     tag = e.tagName();
 			    if (tag == "clique") {
 				QString sz = e.attribute("size");
-				if(sz.isNull()) return 0;
-				groupData = groupData %
-					"Group " % sz % " " %
-					e.text() % " ";
-
+				if(! deserializeClique(graph, sz, e.text())) {
+				    delete graph;	// Error return.
+				    return 0;
+				}
 			    }
 			    else if (tag == "sudokugroups") {
-				groupData = groupData %
-					"SudokuGroups " %
-					e.attribute("at", "0") % " " %
-					e.attribute("withblocks", "1") % " ";
+				graph->initSudokuGroups(
+					e.attribute("at", "0").toInt(),
+					(e.attribute("withblocks","1") == "1"));
 			    }
 			    else if (tag == "roxdokugroups") {
-				groupData = groupData %
-					"RoxdokuGroups " %
-					e.attribute("at", "0") % " ";
+				/* NOT IMPLEMENTED YET.
+				graph->initRoxdokuGroups(
+					e.attribute("at", "0").toInt());
+					*/
 			    }
 			}
 			child = child.nextSibling();
 		}
-
-		SKGraph* graph = new SKGraph(order, TypeCustom);
-		// qDebug() << "groupData" << groupData; // IDW test.
-		graph->initCustom(name, puzzleType, order,
-			    sizeX, sizeY, sizeZ, ncliques, groupData);
 		return graph;
 	}
-	
 	return 0;
+}
+
+bool Serializer::deserializeClique(SKGraph * graph, const QString & size,
+						    const QString & text) {
+    // A group (or clique) should have a size followed by that number of
+    // indices of cells that are members of the Group.  Normally size is
+    // equal to m_order (e.g. 4, 9, 16, 25).
+
+    int cellCount = 0;
+    if(! size.isNull()) {
+	cellCount = size.toInt();
+    }
+    if (cellCount <= 0) {
+	return false;
+    }
+
+    QStringList  splitData = text.split(QString(" "), QString::SkipEmptyParts);
+    QVector<int> data;
+    data.clear();
+    foreach (QString s, splitData) {
+	--cellCount;
+	data << s.toInt();
+	if(cellCount <= 0) {
+	    break;
+	}
+    }
+    graph->addClique(data);
 }
 
 QList<HistoryEvent> Serializer::deserializeHistory(QDomElement element) {

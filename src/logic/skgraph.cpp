@@ -55,6 +55,12 @@ void SKGraph::initSudoku()
 
 void SKGraph::initSudokuGroups(int pos, bool withBlocks)
 {
+	// initSudokuGroups() sets up rows and columns in a Sudoku grid of size
+	// (m_order*m_order) cells. Its first parameter (usually 0) shows where
+	// on the whole board the grid goes. This is relevant in Samurai and
+	// related layouts. Its second attribute is true if square-block groups
+	// are required or false if not (e.g. as in a Jigsaw type).
+
 	QVector<int> rowc, colc, blockc;
 	for(int i = 0; i < m_order; ++i) {
 		rowc.clear();
@@ -105,6 +111,10 @@ void SKGraph::initRoxdoku()
 	}
 }
 
+	// initRoxdokuGroups() sets up the intersecting planes in a
+	// 3-D Roxdoku grid. Its only attribute shows where in the entire
+	// three-dimensional layout the grid goes. NOT IMPLEMENTED YET.
+
 void SKGraph::addClique(QVector<int> data) {
 	// Add to the cliques (groups) list.
 	m_cliques << data;
@@ -116,8 +126,8 @@ void SKGraph::addClique(QVector<int> data) {
 
 void SKGraph::initCustom(const QString & name, SudokuType specificType,
 				int order, int sizeX, int sizeY, int sizeZ,
-				int ncliques, const QString& groupData)
-{
+				int ncliques) {
+	// The Serializer's deserializer methods will add groups (or cliques).
 	m_name = name;
 	m_specificType = specificType;
 
@@ -126,70 +136,4 @@ void SKGraph::initCustom(const QString & name, SudokuType specificType,
 	m_sizeY = sizeY;
 	m_sizeZ = sizeZ;
 	m_emptyBoard.fill (UNUSABLE, size());
-
-	QStringList splitGroupData = groupData.split(QString(" "),
-						     QString::SkipEmptyParts);
-	QVector<int> data;
-	int state = 0;
-	int cellCount = 0;
-	int pos = 0;
-	int withBlocks = 1;
-	foreach (QString s, splitGroupData) {
-	    // A "Group (or clique) should have a size followed by that number
-	    // of indices of cells that are members of the Group.  Normally size
-	    // is equal to m_order (e.g. 4, 9, 16, 25).
-	    if (s == "Group") {
-		state = 1;
-		continue;
-	    }
-	    else if (state == 1) {
-		data.clear();
-		cellCount = s.toInt();
-		state = 2;
-		continue;
-	    }
-	    else if (state == 2) {
-		--cellCount;
-		data << s.toInt();
-		if (cellCount <= 0) {
-		    addClique(data);
-		    state = 0;
-		}
-		continue;
-	    }
-	    // "SudokuGroups" is shorthand for rows and columns in a Sudoku grid
-	    // of size (m_order*m_order) cells. Its first attribute (usually 0)
-	    // shows where on the whole board the grid goes. This is relevant in
-	    // Samurai and related layouts. Its second attribute is 1 if square-
-	    // block groups are required or 0 if not (e.g. as in a Jigsaw type).
-	    else if (s == "SudokuGroups") {
-		state = 3;
-		continue;
-	    }
-	    else if (state == 3) {
-		pos = s.toInt();
-		state = 4;
-		continue;
-	    }
-	    else if (state == 4) {
-		withBlocks = s.toInt();
-		initSudokuGroups(pos, withBlocks == 1 ? true : false);
-		state = 0;
-		continue;
-	    }
-	    // "RoxdokuGroups" is shorthand for the intersecting planes in a
-	    // 3-D Roxdoku grid. Its only attribute shows where in the entire
-	    // three-dimensional layout the grid goes. NOT IMPLEMENTED YET.
-	    else if (s == "RoxdokuGroups") {
-		state = 5;
-		continue;
-	    }
-	    else if (state == 5) {
-		pos = s.toInt();
-		state = 0;
-		continue;
-	    }
-	}
-
-	return;
 }

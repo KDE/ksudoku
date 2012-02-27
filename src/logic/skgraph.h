@@ -127,13 +127,13 @@ public:
 
 	void initCustom(const QString & name, SudokuType specificType,
 		  int order, int sizeX, int sizeY, int sizeZ,
-		  int ncliques, const QString& groupData);
+		  int ncliques); // IDW test. , const QString& groupData);
 
 	inline const BoardContents & emptyBoard() const { return m_emptyBoard; }
 
-protected:
 	void addClique(QVector<int> data);
 
+protected:
 	int m_order;
 	int m_base;
 	int m_sizeX, m_sizeY, m_sizeZ;
