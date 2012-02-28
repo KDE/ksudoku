@@ -124,6 +124,7 @@ public:
 	void initSudokuGroups(int pos = 0, bool withBlocks = true);
 
 	void initRoxdoku();
+	void initRoxdokuGroups(int pos = 0);
 
 	void initCustom(const QString & name, SudokuType specificType,
 		  int order, int sizeX, int sizeY, int sizeZ,

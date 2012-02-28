@@ -90,8 +90,19 @@ void SKGraph::initRoxdoku()
 	m_sizeY = m_base;
 	m_sizeZ = m_base;
 	m_emptyBoard.fill (UNUSABLE, size());
+	initRoxdokuGroups(0);
+}
+
+void SKGraph::initRoxdokuGroups(int pos)
+{
+	// initRoxdokuGroups() sets up the intersecting planes in a
+	// 3-D Roxdoku grid. Its only parameter shows where in the entire
+	// three-dimensional layout the grid goes.
 
 	QVector<int> xFace, yFace, zFace;
+	int x = cellPosX(pos);
+	int y = cellPosY(pos);
+	int z = cellPosZ(pos);
 
 	for (uint i = 0; i < m_base; i++) {
 		xFace.clear();
@@ -99,10 +110,10 @@ void SKGraph::initRoxdoku()
 		zFace.clear();
                 for (int j = 0; j < m_base; j++) {
                     for (int k = 0; k < m_base; k++) {
-			// Intersecting faces at (0,0,0), (1,1,1), (2,2,2), etc.
-			xFace << cellIndex (i, j, k);
-			yFace << cellIndex (k, i, j);
-			zFace << cellIndex (j, k, i);
+			// Intersecting faces at relative (0,0,0), (1,1,1), etc.
+			xFace << cellIndex (x + i, y + j, z + k);
+			yFace << cellIndex (x + k, y + i, z + j);
+			zFace << cellIndex (x + j, y + k, z + i);
 		    }
 		}
 		addClique(xFace);
@@ -110,10 +121,6 @@ void SKGraph::initRoxdoku()
 		addClique(zFace);
 	}
 }
-
-	// initRoxdokuGroups() sets up the intersecting planes in a
-	// 3-D Roxdoku grid. Its only attribute shows where in the entire
-	// three-dimensional layout the grid goes. NOT IMPLEMENTED YET.
 
 void SKGraph::addClique(QVector<int> data) {
 	// Add to the cliques (groups) list.

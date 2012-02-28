@@ -245,10 +245,8 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 					(e.attribute("withblocks","1") == "1"));
 			    }
 			    else if (tag == "roxdokugroups") {
-				/* NOT IMPLEMENTED YET.
 				graph->initRoxdokuGroups(
 					e.attribute("at", "0").toInt());
-					*/
 			    }
 			}
 			child = child.nextSibling();
