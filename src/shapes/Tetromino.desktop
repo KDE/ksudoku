@@ -1,11 +1,13 @@
 [KSudokuVariant]
 Name=Tetromino 4x4
+Name[es]=Tetrominó 4x4
 Name[nl]=Tetromino 4x4
 Name[pt]=Tetrómino 4x4
 Name[pt_BR]=Tetraminó 4x4
 Name[uk]=Тетроміно 4x4
 Name[x-test]=xxTetromino 4x4xx
 Description=Jigsaw with Tetromino blocks (Tetris pieces)
+Description[es]=Rompecabezas con bloques de tetrominós (piezas de Tetris)
 Description[nl]=Legpuzzel met Tetromino-blokken (Tetris-blokjes)
 Description[pt]='Puzzle' com blocos de Tetrómino (peças de Tetris)
 Description[pt_BR]=Quebra-cabeça com blocos de Tetraminó (peças de Tetris)

@@ -1,11 +1,13 @@
 [KSudokuVariant]
 Name=Windmill
+Name[es]=Molino de viento
 Name[nl]=Windmolen
 Name[pt]=Moinho
 Name[pt_BR]=Moinho
 Name[uk]=Вітряк
 Name[x-test]=xxWindmillxx
 Description=Windmill puzzle with five overlapping 9x9 squares
+Description[es]=Rompecabezas en molino de viento con cinco cuadrados superpuestos de 9x9
 Description[nl]=Windmolen-puzzel met vijf overlappende 9x9 vierkantjes
 Description[pt]='Puzzle' em moinho com cinco quadrados 9x9 sobrepostos
 Description[pt_BR]=Quebra-cabeça em moinho com cinco quadrados 9x9 sobrepostos
