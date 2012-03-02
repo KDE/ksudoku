@@ -265,10 +265,6 @@ protected:
      */
     void                    randomSequence (QVector<int> & sequence);
 
-    // For efficiency, make an index from cells to the groups (cliques)
-    // where they belong.
-    void                    indexCellsToGroups();
-
 private:
     SKGraph *               m_graph;
     int                     m_vacant;

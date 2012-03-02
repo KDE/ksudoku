@@ -25,6 +25,7 @@
 
 #include <QString>
 #include <QVector>
+#include <QList>
 
 #include "ksudoku_types.h"
 #include "globals.h"
@@ -113,8 +114,14 @@ public:
 		return i % m_sizeZ;
 	}
 
+	// Get the total number of groups (cliques) -- rows, columns and blocks.
 	inline int cliqueCount()   const { return m_cliques.count(); }
+
+	// Get a list of the cells in a group (clique).
 	QVector<int> clique(int i) const { return m_cliques[i]; }
+
+	// Get a list of the groups (cliques) to which a cell belongs.
+	const QList<int> cliqueList(int cell) const;
 
 	inline const QString & name()     const { return m_name; }
 	inline ksudoku::GameType type()   const { return m_type; }
@@ -127,8 +134,8 @@ public:
 	void initRoxdokuGroups(int pos = 0);
 
 	void initCustom(const QString & name, SudokuType specificType,
-		  int order, int sizeX, int sizeY, int sizeZ,
-		  int ncliques); // IDW test. , const QString& groupData);
+		  int order, int sizeX, int sizeY, int sizeZ, int ncliques);
+	void endCustom();
 
 	inline const BoardContents & emptyBoard() const { return m_emptyBoard; }
 
@@ -141,11 +148,19 @@ protected:
 
 	QVector<QVector<int> > m_cliques;	// Also known as groups.
 
+	QVector<int>        m_cellIndex;	// Index of cells to cliques.
+	QVector<int>        m_cellCliques;	// Second level of the index.
+
 	QString             m_name;
 	ksudoku::GameType   m_type;
 	SudokuType          m_specificType;
 
 	BoardContents       m_emptyBoard;
+
+private:
+	// For efficiency, make an index from cells to the groups (cliques)
+	// where they belong.
+	void indexCellsToCliques();
 };
 
 #endif

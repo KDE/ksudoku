@@ -36,7 +36,6 @@
 
 #include "ksudoku.h"
 #include "symbols.h"
-#include <QDebug> // IDW test.
 
 namespace ksudoku {
 
@@ -251,6 +250,7 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 			}
 			child = child.nextSibling();
 		}
+		graph->endCustom();	// Finalise the structure of the graph.
 		return graph;
 	}
 	return 0;

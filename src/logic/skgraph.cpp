@@ -24,6 +24,7 @@
 
 #include <QString>
 #include <QStringList>
+#include <QMultiMap>
 
 SKGraph::SKGraph(int order, ksudoku::GameType type)
 {
@@ -51,6 +52,7 @@ void SKGraph::initSudoku()
 	m_sizeZ = 1;
 	m_emptyBoard.fill (UNUSABLE, size());
 	initSudokuGroups(0, true);
+	indexCellsToCliques();
 }
 
 void SKGraph::initSudokuGroups(int pos, bool withBlocks)
@@ -91,6 +93,7 @@ void SKGraph::initRoxdoku()
 	m_sizeZ = m_base;
 	m_emptyBoard.fill (UNUSABLE, size());
 	initRoxdokuGroups(0);
+	indexCellsToCliques();
 }
 
 void SKGraph::initRoxdokuGroups(int pos)
@@ -143,4 +146,50 @@ void SKGraph::initCustom(const QString & name, SudokuType specificType,
 	m_sizeY = sizeY;
 	m_sizeZ = sizeZ;
 	m_emptyBoard.fill (UNUSABLE, size());
+}
+
+void SKGraph::endCustom()
+{
+	indexCellsToCliques();
+}
+
+void SKGraph::indexCellsToCliques()
+{
+	QMultiMap<int, int> cellsToCliques;
+	int nCliques = cliqueCount();
+	int nCells   = size();
+	for (int g = 0; g < nCliques; g++) {
+	    QVector<int> cellList = clique(g);
+	    for (int n = 0; n < m_order; n++) {
+		cellsToCliques.insert (cellList.at (n), g);
+	    }
+	}
+
+	m_cellIndex.fill   (0, nCells + 1);
+	m_cellCliques.fill (0, nCliques * m_order);
+	int index = 0;
+	for (int cell = 0; cell < nCells; cell++) {
+	    m_cellIndex [cell] = index;
+	    QList<int> cliqueList = cellsToCliques.values (cell);
+	    foreach (int g, cliqueList) {
+		m_cellCliques [index] = g;
+		index++;
+	    }
+	}
+	m_cellIndex [nCells] = index;
+}
+
+const QList<int> SKGraph::cliqueList(int cell) const
+{
+	// NOTE: We could have used QMultiMap<int, int>::values(int cell) to
+	// access this index, but the index's main usage is on an inner loop
+	// of the generator/solver and execution time is a concern there.
+
+	QList<int> cells;
+	int start = m_cellIndex.at(cell);
+	int end   = m_cellIndex.at(cell + 1);
+	for (int n = start; n < end; n++) {
+	    cells << m_cellCliques.at(n);
+	}
+	return cells;
 }

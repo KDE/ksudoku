@@ -53,7 +53,6 @@ SudokuBoard::SudokuBoard (SKGraph * graph)
     m_stats.blockSize = m_blockSize;
     m_stats.order     = m_order;
     m_boardSize       = graph->sizeX(); // TODO - IDW. Rationalise grid sizes.
-    indexCellsToGroups();
     dbe "SudokuBoard constructor: type %d, block %d, order %d, BoardArea %d\n",
 	m_type, m_blockSize, m_order, m_boardArea);
 }
@@ -980,10 +979,8 @@ void SudokuBoard::updateValueRequirements (BoardContents & boardValues, int cell
     m_validCellValues [cell] = 0;
 
     // Update the requirements for each group to which this cell belongs.
-    int index = m_cellIndex.at (cell);
-    int inmax = m_cellIndex.at (cell + 1);
-    for (int i = index; i < inmax; i++) {
-        int group  = m_cellGroups.at (i);
+    QList<int> groupList = m_graph->cliqueList(cell);
+    foreach (int group, groupList) {
         m_requiredGroupValues [group] &= bitPattern;
 
 	QVector<int> cellList = m_graph->clique (group);
@@ -991,41 +988,6 @@ void SudokuBoard::updateValueRequirements (BoardContents & boardValues, int cell
 	    int cell = cellList.at (n);
             m_validCellValues [cell] &= bitPattern;
         }   
-    }
-}
-
-void SudokuBoard::indexCellsToGroups()
-{
-    QMultiMap<int, int> cellsToGroups;
-    for (int g = 0; g < m_nGroups; g++) {
-	QVector<int> cellList = m_graph->clique (g);
-        for (int n = 0; n < m_groupSize; n++) {
-            cellsToGroups.insert (cellList.at (n), g);
-        }
-    }
-
-    m_cellIndex.fill  (0, m_boardArea + 1);
-    m_cellGroups.fill (0, m_nGroups * m_groupSize);
-    int index = 0;
-    for (int cell = 0; cell < m_boardArea; cell++) {
-        m_cellIndex [cell] = index;
-        QList<int> groups = cellsToGroups.values (cell);
-        foreach (int g, groups) {
-            m_cellGroups [index] = g;
-            index++;
-        }
-    }
-    m_cellIndex [m_boardArea] = index;
-
-    dbo3 "indexCellsToGroups():\n");
-    for (int cell = 0; cell < m_boardArea; cell++) {
-        // dbo3 "Cell %3d: groups: ", cell);
-        int index = m_cellIndex.at (cell);
-        int inmax = m_cellIndex.at (cell + 1);
-        for (int n = index; n < inmax; n++) {
-            // dbo3 " %3d", m_cellGroups.at (n));
-        }
-        // dbo3 "\n");
     }
 }
 
