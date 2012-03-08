@@ -209,11 +209,11 @@ void GroupGraphicsItem::detectType() {
 	m_type = GroupNone;
 	if(x==-1) m_type |= GroupRow;
 	if(y==-1) m_type |= GroupColumn;
-	
-	if(m_type == GroupSpecial) setZValue(0);
-	if(m_type == GroupColumn) setZValue(-1);
-	else if(m_type == GroupRow) setZValue(-2);
-	else if(m_type == GroupBlock) setZValue(-3);
+
+	// Row and column highlights must go above the GroupBlock boundary-line.
+	if(m_type == GroupColumn) setZValue(4);
+	else if(m_type == GroupRow) setZValue(4);
+	else if(m_type == GroupBlock) setZValue(3);
 }
 
 void GroupGraphicsItem::createContour() {
@@ -221,19 +221,23 @@ void GroupGraphicsItem::createContour() {
 		int x = m_cells[i].x();
 		int y = m_cells[i].y();
 		int idx[9];
-		idx[0] = m_cells.indexOf(QPoint(x-1, y-1));
-		idx[1] = m_cells.indexOf(QPoint(x,   y-1));
-		idx[2] = m_cells.indexOf(QPoint(x+1, y-1));
-		idx[3] = m_cells.indexOf(QPoint(x-1, y  ));
-		idx[4] = i;
-		idx[5] = m_cells.indexOf(QPoint(x+1, y  ));
-		idx[6] = m_cells.indexOf(QPoint(x-1, y+1));
-		idx[7] = m_cells.indexOf(QPoint(x,   y+1));
-		idx[8] = m_cells.indexOf(QPoint(x+1, y+1));
+		// Find neighbours of cell (x, y).
+		idx[0] = m_cells.indexOf(QPoint(x-1, y-1));	// North West.
+		idx[1] = m_cells.indexOf(QPoint(x,   y-1));	// North.
+		idx[2] = m_cells.indexOf(QPoint(x+1, y-1));	// North East.
+		idx[3] = m_cells.indexOf(QPoint(x-1, y  ));	// West.
+		idx[4] = i;					// Self.
+		idx[5] = m_cells.indexOf(QPoint(x+1, y  ));	// East.
+		idx[6] = m_cells.indexOf(QPoint(x-1, y+1));	// South West.
+		idx[7] = m_cells.indexOf(QPoint(x,   y+1));	// South.
+		idx[8] = m_cells.indexOf(QPoint(x+1, y+1));	// South East.
 		
-		// TODO FIX: this is a detection outsied of detectType
 		if(idx[1] == -1 && idx[3] == -1 && idx[5] == -1 && idx[7] == -1)
-			m_type |= GroupSpecial;
+		{
+			// No adjoining neighbour to N, S, E or W.
+			m_type = GroupSpecial;	// Used in the "X" of XSudoku.
+			setZValue(4);		// Same height as row or column.
+		}
 		
 		int b;
 		if((b = border(idx[0],idx[1],idx[3],idx[4],3))) {
@@ -255,6 +259,11 @@ void GroupGraphicsItem::createSegment(const QPoint& pos, int shape) {
 	GroupGraphicItemSegment segment;
 	segment.pos = pos*2 - QPoint(1,1);
 	segment.shape = shape;
+
+	// Row and column groups have no boundary-line.
+	// Block groups have a boundary-line.
+	// Special groups (disjoint cells) have a special color.
+
 	switch(m_type & GroupUnhighlightedMask) {
 		// TODO make this behaviour dependant on the availability of normal pixmaps
 		case GroupRow:
@@ -266,6 +275,8 @@ void GroupGraphicsItem::createSegment(const QPoint& pos, int shape) {
 			segment.standard = new QGraphicsPixmapItem(this);
 			break;
 	}
+
+	// All groups have highlighting.
 	segment.highlighted = new QGraphicsPixmapItem(this);
 	segment.highlighted->setVisible(false);
 
@@ -284,14 +295,27 @@ int GroupGraphicsItem::border(int tl, int tr, int bl, int br, int given) {
 }
 
 void GroupGraphicsItem::setHighlight(bool highlight) {
-	if(((m_type & GroupHighlight) == GroupHighlight) == highlight) return;
-	
-	QVector<GroupGraphicItemSegment>::iterator segment;
-	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
-		if(segment->highlighted) segment->highlighted->setVisible(highlight);
-		if(segment->standard) segment->standard->setVisible(!highlight);
+    if(((m_type & GroupHighlight) == GroupHighlight) == highlight) return;
+
+    QVector<GroupGraphicItemSegment>::iterator segment;
+    for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
+	if (segment->highlighted) {
+	    segment->highlighted->setVisible(highlight);
+	    if ((m_type & GroupBlock) == GroupBlock) {
+		// Block highlight goes on top of row, column and special
+		// highlights.  Block boundary-line goes underneath them.
+		setZValue(highlight ? 6 : 3);
+	    }
+	    if ((m_type & GroupSpecial) == GroupSpecial) {
+		// Special highlight goes on top of unhighlighted special cell.
+		setZValue(highlight ? 5 : 4);
+	    }
 	}
-	m_type ^= GroupHighlight;
+	if(segment->standard) {
+	    segment->standard->setVisible(!highlight);
+	}
+    }
+    m_type ^= GroupHighlight;
 }
 
 void GroupGraphicsItem::setHighlight(const QPoint& pos) {
@@ -354,14 +378,16 @@ void View2DScene::init(const Game& game) {
 	m_selectedValue = 1;
 	
 	m_game = game;
-	
+
+	// Set the order of the layers.
 	m_background = new QGraphicsPixmapItem();
-	m_background->setZValue(-7);
+	m_background->setZValue(-7);	// Background.
 	addItem(m_background);
 	m_groupLayer = new QGraphicsItemGroup();
-	m_groupLayer->setZValue(-1);
+	m_groupLayer->setZValue(-1);	// Boundary-lines and highlighting.
 	addItem(m_groupLayer);
 	m_cellLayer = new QGraphicsItemGroup();
+	m_cellLayer->setZValue(0);	// Cell outlines and shading.
 	m_cellLayer->setHandlesChildEvents(false);
 	addItem(m_cellLayer);
 	
