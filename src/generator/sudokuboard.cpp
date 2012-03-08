@@ -91,7 +91,7 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     BoardContents currPuzzle;
     BoardContents currSolution;
 
-    if (m_type == Roxdoku) {
+    if (m_graph->sizeZ() > 1) {
 	symmetry = NONE;		// Symmetry not implemented in 3-D.
     }
     if (symmetry == RANDOM_SYM) {	// Choose a symmetry at random.
@@ -649,13 +649,14 @@ void SudokuBoard::print (const BoardContents & boardValues)
         return;
     }
 
-    for (int k = 0; k < m_graph->sizeZ(); k++) {
-      int z = (m_type == Roxdoku) ? (m_graph->sizeZ() - k - 1) : k;
+    int depth = m_graph->sizeZ();	// If 2-D, depth == 1, else depth > 1.
+    for (int k = 0; k < depth; k++) {
+      int z = (depth > 1) ? (depth - k - 1) : k;
       for (int j = 0; j < m_graph->sizeY(); j++) {
 	if ((j != 0) && (j % m_blockSize == 0)) {
 	    printf ("\n");		// Gap between square blocks.
 	}
-        int y = (m_type == Roxdoku) ? (m_graph->sizeY() - j - 1) : j;
+        int y = (depth > 1) ? (m_graph->sizeY() - j - 1) : j;
         for (int x = 0; x < m_graph->sizeX(); x++) {
             index = m_graph->cellIndex (x, y, z);
             value = boardValues.at (index);
