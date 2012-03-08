@@ -1,5 +1,5 @@
 [KGameTheme]
-Name=Scrible
+Name=Scribble
 Name[ast]=Garabatos
 Name[bs]=Scrible
 Name[ca]=Scrible
@@ -43,7 +43,7 @@ Name[uk]=Scrible
 Name[x-test]=xxScriblexx
 Name[zh_CN]=草书
 Name[zh_TW]=Scrible
-Description=KSudoku Scrible theme for KDE 4
+Description=KSudoku Scribble theme for KDE 4
 Description[ast]=Tema garabatos de KSudoku pa KDE 4
 Description[bs]=KSudoku Scrible tema za KDE 4
 Description[ca]=Tema Scrible pel KSudoku del KDE 4
