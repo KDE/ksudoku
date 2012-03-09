@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Pentomino 5x5
 Name[es]=Pentominó 5x5
+Name[gl]=Pentomino 5x5
 Name[nl]=Pentomino 5x5
 Name[pt]=Pentómino 5z5
 Name[pt_BR]=Pentaminó 5x5
@@ -10,6 +11,7 @@ Name[x-test]=xxPentomino 5x5xx
 Name[zh_TW]=Pentomino 5x5
 Description=Jigsaw variant with irregularly shaped Pentomino blocks
 Description[es]=Variante de rompecabezas con bloques de pentominós de forma irregular
+Description[gl]=Variante do puzzle con bloques de Pentomino de formas irregulares
 Description[nl]=Legpuzzelvariant met onregelmatig gevormde Pentomino-blokken
 Description[pt]=Variante de 'puzzle' com blocos do tipo Pentómino irregulares
 Description[pt_BR]=Variante de quebra-cabeça com blocos do tipo Pentaminó irregulares

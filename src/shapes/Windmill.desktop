@@ -2,6 +2,7 @@
 Name=Windmill
 Name[de]=Windmühle
 Name[es]=Molino de viento
+Name[gl]=Muíño de Vento
 Name[nl]=Windmolen
 Name[pt]=Moinho
 Name[pt_BR]=Moinho
@@ -11,6 +12,7 @@ Name[x-test]=xxWindmillxx
 Name[zh_TW]=風車
 Description=Windmill puzzle with five overlapping 9x9 squares
 Description[es]=Rompecabezas en molino de viento con cinco cuadrados superpuestos de 9x9
+Description[gl]=Puzzle Muíño de Vento con cinco cadrados 9x9 que se sobrepoñen
 Description[nl]=Windmolen-puzzel met vijf overlappende 9x9 vierkantjes
 Description[pt]='Puzzle' em moinho com cinco quadrados 9x9 sobrepostos
 Description[pt_BR]=Quebra-cabeça em moinho com cinco quadrados 9x9 sobrepostos

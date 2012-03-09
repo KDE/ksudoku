@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Sohei
 Name[es]=Sohei
+Name[gl]=Sohei
 Name[nl]=Sohei
 Name[pt]=Sohei
 Name[pt_BR]=Sohei
@@ -10,6 +11,7 @@ Name[x-test]=xxSoheixx
 Name[zh_TW]=Sohei
 Description=Sohei puzzle with four overlapping 9x9 squares
 Description[es]=Rompecabezas sohei con cuatro cuadrados de 9x9 superpuestos
+Description[gl]=Puzzle sohei con catro cadrados 9x9 que se sobrepoñen
 Description[nl]=Sohei puzzel met vier overlappende 9x9 vierkanten
 Description[pt]='Puzzle' Sohei com quatro quadrados 9x9 sobrepostos
 Description[pt_BR]=Quebra-cabeça Sohei com quatro quadrados 9x9 sobrepostos
