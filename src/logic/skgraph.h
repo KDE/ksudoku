@@ -53,11 +53,11 @@
  *      sizeY     The number of cells in the Y direction.
  *      sizeZ     The number of cells in the Z direction.
  *
- * A conventional two-dimensional type of puzzle has a square grid, wherer
- * sizeX = * sizeY and sizeZ = 1.  A three-dimensional type of puzzle (Roxdoku)
- * has a cubic grid and sizeX = sizeY = sizeZ.
+ * A conventional two-dimensional type of puzzle has a square grid, where
+ * sizeX = sizeY and sizeZ = 1.  A three-dimensional type of puzzle (Roxdoku)
+ * has a three-dimensional grid with sizeZ > 1.
  *
- * The actual contents of puzzles and solutions are represented as vectors of
+ * The actual contents of a puzzle or solution are represented as a vector of
  * integers (see classes Puzzle and SudokuBoard).  SKGraph provides methods to
  * convert both ways between XYZ co-ordinates and a cell index (or cell number)
  * in a vector representing a puzzle or solution.  The total size of the vector
@@ -70,7 +70,7 @@
  * there are symbols in the puzzle (i.e. that number = order).  Each member
  * of a group is a cell number (or index) representing a cell that is in the
  * group.  A group may represent a row, a column, a block of some shape (not
- * necessarily square) or a plane within a cubic grid.  The fact that each
+ * necessarily square) or a plane within a 3-D grid.  The fact that each
  * row, column, block or plane must contain each symbol exactly once is the
  * cardinal rule of Sudoku puzzles in general.
  *
@@ -81,6 +81,14 @@
  * square and each having 16 cells to be filled with the letters A to P.  There
  * are three sets of 4 planes, which are perpendicular to the X, Y and Z
  * directions respectively.
+ *
+ * For brevity and the convenience of classes using SKGraph, the groups or
+ * cliques are organised into high-level structures such as a square grid (with
+ * rows and columns, but with or without square blocks), a large NxNxN cube or a
+ * special block, such as a diagonal in XSudoku or an irregularly shaped block
+ * in jigsaw-type puzzles.  These structures also make it easier to write XML
+ * files for new 2-D puzzle shapes and open the way for 3-D puzzles containing
+ * more than one NxNxN cube overlapping in various ways.
  */
 
 class SKGraph
@@ -88,10 +96,6 @@ class SKGraph
 public:
 	explicit SKGraph(int order = 9, ksudoku::GameType type = ksudoku::TypeSudoku);
 	virtual ~SKGraph();
-
-	// High-level structure types are a square grid, a large cube or a
-	// special or irregularly-shaped group, as in XSudoku or jigsaw types.
-	enum StructureType { SudokuGroups, RoxdokuGroups, Clique };
 
 	inline int order() const { return m_order; }
 	inline int base()  const { return m_base;  }
@@ -128,14 +132,28 @@ public:
 	// Get a list of the groups (cliques) to which a cell belongs.
 	const QList<int> cliqueList(int cell) const;
 
+	// High-level structure types are a square grid, a large cube or a
+	// special or irregularly-shaped group, as in XSudoku or jigsaw types.
+	enum StructureType { SudokuGroups, RoxdokuGroups, Clique };
+
+	// Get the total number of high-level structures.
 	inline int structureCount() const
 				{ return m_structures.count()/3; }
+
+	// Get the type of a structure (square, cube, etc.).
 	inline StructureType structureType(int n) const
 				{ return (StructureType) m_structures.at(n*3); }
+
+	// Get the position of a structure within the puzzle-vector.
 	inline int           structurePosition(int n) const
 				{ return m_structures.at(n*3 + 1); }
+
+	// Find out whether a 2-D structure has square blocks or not.
 	inline bool          structureHasBlocks(int n) const
 				{ return m_structures.at(n*3 + 2); }
+
+	// Add a special or irregularly-shaped group to the list of structures.
+	void addCliqueStructure(QVector<int> data);
 
 	inline const QString & name()     const { return m_name; }
 	inline ksudoku::GameType type()   const { return m_type; }
@@ -152,8 +170,6 @@ public:
 	void endCustom();
 
 	inline const BoardContents & emptyBoard() const { return m_emptyBoard; }
-
-	void addCliqueStructure(QVector<int> data);
 
 protected:
 	int m_order;
