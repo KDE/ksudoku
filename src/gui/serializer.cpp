@@ -482,27 +482,45 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 	}
 	element.setAttribute("specific-type", (n < 0) ? "Plain" : typeNames[n]);
 
-	if(type == TypeCustom)
-	{
-		element.setAttribute("name", graph->name());
-		element.setAttribute("ncliques", (int) graph->cliqueCount());
-		element.setAttribute("sizeX", graph->sizeX());
-		element.setAttribute("sizeY", graph->sizeY());
-		element.setAttribute("sizeZ", graph->sizeZ());
+	if(type == TypeCustom) {
+	    element.setAttribute("name", graph->name());
+	    element.setAttribute("ncliques", (int) graph->cliqueCount());
+	    element.setAttribute("sizeX", graph->sizeX());
+	    element.setAttribute("sizeY", graph->sizeY());
+	    element.setAttribute("sizeZ", graph->sizeZ());
 
-		for(int i=0; i < graph->cliqueCount(); i++)
-		{
-			QDomElement clique = parent.ownerDocument().createElement("clique");
-			clique.setAttribute("size",  (int) graph->clique(i).size());
-			//serialize clique
-			QString contentStr = "";
-			for(int j=0; j < graph->clique(i).size(); j++)
-			{
-				contentStr += QString::number(graph->clique(i).at(j)) + ' ';
-			}
-			clique.appendChild(parent.ownerDocument().createTextNode(contentStr));
-			element.appendChild(clique);
+	    for (int n = 0; n < graph->structureCount(); n++) {
+		QDomElement e;
+		SKGraph::StructureType sType = graph->structureType(n);
+		switch (sType) {
+		case SKGraph::SudokuGroups:
+		    e = parent.ownerDocument().createElement("sudokugroups");
+		    e.setAttribute("at", graph->structurePosition(n));
+		    e.setAttribute("withblocks",
+				    graph->structureHasBlocks(n) ? "1" : "0");
+		    break;
+		case SKGraph::RoxdokuGroups:
+		    e = parent.ownerDocument().createElement("roxdokugroups");
+		    e.setAttribute("at", graph->structurePosition(n));
+		    break;
+		case SKGraph::Clique:
+		    e = parent.ownerDocument().createElement("clique");
+		    int cNum  = graph->structurePosition(n);
+		    int cSize = graph->clique(cNum).size();
+		    e.setAttribute("size", cSize);
+
+		    // Serialize the cell-numbers in the clique (or group).
+		    QString contentStr = "";
+		    for(int j=0; j < cSize; j++) {
+			contentStr += QString::number
+				    (graph->clique(cNum).at(j)) + ' ';
+		    }
+		    e.appendChild(parent.ownerDocument().
+				    createTextNode(contentStr));
+		    break;
 		}
+		element.appendChild(e);
+	    }
 	}
 
 	parent.appendChild(element);
