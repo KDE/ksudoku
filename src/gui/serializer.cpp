@@ -280,7 +280,7 @@ bool Serializer::deserializeClique(SKGraph * graph, const QString & size,
 	    break;
 	}
     }
-    graph->addClique(data);
+    graph->addCliqueStructure(data);
     return true;
 }
 

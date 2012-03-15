@@ -82,11 +82,16 @@
  * are three sets of 4 planes, which are perpendicular to the X, Y and Z
  * directions respectively.
  */
+
 class SKGraph
 {
 public:
 	explicit SKGraph(int order = 9, ksudoku::GameType type = ksudoku::TypeSudoku);
 	virtual ~SKGraph();
+
+	// High-level structure types are a square grid, a large cube or a
+	// special or irregularly-shaped group, as in XSudoku or jigsaw types.
+	enum StructureType { SudokuGroups, RoxdokuGroups, Clique };
 
 	inline int order() const { return m_order; }
 	inline int base()  const { return m_base;  }
@@ -123,6 +128,15 @@ public:
 	// Get a list of the groups (cliques) to which a cell belongs.
 	const QList<int> cliqueList(int cell) const;
 
+	inline int structureCount() const
+				{ return m_structures.count()/3; }
+	inline StructureType structureType(int n) const
+				{ return (StructureType) m_structures.at(n*3); }
+	inline int           structurePosition(int n) const
+				{ return m_structures.at(n*3 + 1); }
+	inline bool          structureHasBlocks(int n) const
+				{ return m_structures.at(n*3 + 2); }
+
 	inline const QString & name()     const { return m_name; }
 	inline ksudoku::GameType type()   const { return m_type; }
 	virtual SudokuType specificType() const { return m_specificType; }
@@ -139,14 +153,19 @@ public:
 
 	inline const BoardContents & emptyBoard() const { return m_emptyBoard; }
 
-	void addClique(QVector<int> data);
+	void addCliqueStructure(QVector<int> data);
 
 protected:
 	int m_order;
 	int m_base;
 	int m_sizeX, m_sizeY, m_sizeZ;
 
-	QVector<QVector<int> > m_cliques;	// Also known as groups.
+	// High-level structures, 3 values/structure: structure type (see enum),
+	// structure position and whether the structure includes square blocks.
+	QVector<int>        m_structures;
+
+	// Low-level structures (rows, columns and blocks) also known as groups.
+	QVector<QVector<int> > m_cliques;
 
 	QVector<int>        m_cellIndex;	// Index of cells to cliques.
 	QVector<int>        m_cellCliques;	// Second level of the index.
@@ -158,6 +177,8 @@ protected:
 	BoardContents       m_emptyBoard;
 
 private:
+	void addClique(QVector<int> data);
+
 	// For efficiency, make an index from cells to the groups (cliques)
 	// where they belong.
 	void indexCellsToCliques();

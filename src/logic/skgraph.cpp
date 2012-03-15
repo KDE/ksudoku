@@ -63,6 +63,8 @@ void SKGraph::initSudokuGroups(int pos, bool withBlocks)
 	// related layouts. Its second attribute is true if square-block groups
 	// are required or false if not (e.g. as in a Jigsaw type).
 
+	m_structures << SudokuGroups << pos << (withBlocks ? 1 : 0);
+
 	QVector<int> rowc, colc, blockc;
 	for(int i = 0; i < m_order; ++i) {
 		rowc.clear();
@@ -102,6 +104,8 @@ void SKGraph::initRoxdokuGroups(int pos)
 	// 3-D Roxdoku grid. Its only parameter shows where in the entire
 	// three-dimensional layout the grid goes.
 
+	m_structures << RoxdokuGroups << pos << 1;
+
 	QVector<int> xFace, yFace, zFace;
 	int x = cellPosX(pos);
 	int y = cellPosY(pos);
@@ -123,6 +127,13 @@ void SKGraph::initRoxdokuGroups(int pos)
 		addClique(yFace);
 		addClique(zFace);
 	}
+}
+
+void SKGraph::addCliqueStructure(QVector<int> data) {
+
+	m_structures << Clique << m_cliques.count() << 0;
+
+	addClique(data);
 }
 
 void SKGraph::addClique(QVector<int> data) {
