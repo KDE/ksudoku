@@ -60,7 +60,16 @@ void KsView::createView() {
 			break;
 		}
 		case TypeCustom: {
+#ifdef OPENGL_SUPPORT
+			if(m_game.puzzle()->graph()->sizeZ() > 1) {
+			    setWidget(new RoxdokuView(m_game, 0, 0));
+			}
+			else {
+			    setWidget(new View2D(0, m_game, m_gameActions));
+			}
+#else
 			setWidget(new View2D(0, m_game, m_gameActions));
+#endif
 			break;
 		}
 #ifdef OPENGL_SUPPORT
