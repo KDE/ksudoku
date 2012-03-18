@@ -29,12 +29,14 @@
 //Added by qt3to4:
 #include <QWheelEvent>
 #include <QMouseEvent>
+#include <QTimer>
+
 #include "ArcBall.h"
 
 #include "ksudokugame.h"
 #include "ksview.h"
 
-
+class SKGraph;
 
 namespace ksudoku{
 
@@ -42,8 +44,7 @@ class Game;
 class Symbols;
 
 /**
- * Gui for a roxdoku puzzle
- * @TODO hide private members (now public)
+ * GUI for a Roxdoku puzzle.
  */
 class RoxdokuView : public QGLWidget, public ViewInterface
 {
@@ -51,83 +52,79 @@ Q_OBJECT
 public:
 	RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent = 0);
 	~RoxdokuView();
-public:
-	///(re)implemented from KsView
-	virtual void setGame(const ksudoku::Game& /* game*/) { /* ///@todo fixme */ }
 
-	///(re)implemented from KsView
 	virtual QString status() const;
 
-	int base;
-	int order;
-	int size;
-	char selected_number;
-
-	bool isClicked;
-	bool isRClicked;	
-	bool isDragging;	
-	ArcBallT*    ArcBall;	
-	int selection;
-
-	float dist;
-	float wheelmove;
-
-	GLuint  texture[2][26];
-	
-	bool m_guidedMode;
-
-public:
 	void initializeGL();
 
-	void resizeGL( int w, int h ){ //hm this won't be compiled inline I think ..??
-		if(w==0)w=1;	
-		if(h==0)h=1;
-		ArcBall = new ArcBallT((GLfloat)w,(GLfloat)h);
+	void resizeGL(int w, int h );
 
-		glViewport( 0, 0, (GLint)w, (GLint)h );
-		glMatrixMode(GL_PROJECTION); // Select The Projection Matrix
-		glLoadIdentity();            // Reset The Projection Matrix
-
-		gluPerspective(45.0f,(GLfloat)w/(GLfloat)h,0.1f,100.0f);
-
-		glMatrixMode(GL_MODELVIEW); // Select The Modelview Matrix
-		glLoadIdentity();
-	}
-	
 	QWidget* widget() { return this; }
-	
+
 public slots:
 	void selectValue(int value);
 	void settingsChanged();
-	
+
 signals:
 	void valueSelected(int value); // Never used but connected to
-	
+
 protected:
 	void paintGL();
-protected:
+
+	void myDrawCube(bool highlight, int cell,
+			GLfloat x, GLfloat y, GLfloat z,
+			bool outside);
+
 	void Selection(int mouse_x, int mouse_y);
 	void mouseReleaseEvent ( QMouseEvent * e ){
-		if(e->button() == Qt::LeftButton) isClicked = false;
+		if(e->button() == Qt::LeftButton) m_isClicked = false;
 	}
 	void mousePressEvent ( QMouseEvent * e ){
-		if(e->button() == Qt::LeftButton) isClicked = true;
+		if(e->button() == Qt::LeftButton) m_isClicked = true;
 	}	
-protected:
-	void myDrawCube(bool highlight, int n, GLfloat x, GLfloat y, GLfloat z, int texture);
 	void mouseMoveEvent(QMouseEvent* e) ;
 	void mouseDoubleClickEvent(QMouseEvent* e);
 	void wheelEvent (QWheelEvent* e){
-		wheelmove += e->delta() * .02;
+		m_wheelmove += e->delta() * .02;
 		updateGL();
 	}
 
+private slots:
+	void delayOver();
+
 private:
 	void loadSettings();
-	
-private:
-	Symbols* m_symbols;
-	Game m_game;
+
+	Symbols *    m_symbols;
+	Game         m_game;
+	SKGraph *    m_graph;
+
+	int          m_base;
+	int          m_order;
+	int          m_size;
+	int          m_width;
+	int          m_height;
+	int          m_depth;
+
+	char         m_selected_number;
+
+	ArcBallT *   m_arcBall;	
+	bool         m_isClicked;
+	bool         m_isRClicked;	
+	bool         m_isDragging;	
+	int          m_selection;
+	int          m_lastSelection;
+	QVector<int> m_highlights;
+
+	float        m_dist;
+	float        m_wheelmove;
+
+	GLuint       m_texture[2][26];
+
+	bool         m_guidedMode;
+	bool         m_showHighlights;
+	QTimer *     m_delayTimer;
+	bool         m_timeDelay;
 };
 
 }

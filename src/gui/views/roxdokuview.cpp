@@ -23,6 +23,7 @@
 
 #include "puzzle.h"
 #include "ksudoku.h"
+#include "skgraph.h"
 
 #include <kmessagebox.h>
 #include <qcursor.h>
@@ -35,6 +36,7 @@
 
 #include "renderer.h"
 
+#include <QDebug> // IDW test.
 
 namespace ksudoku{
 
@@ -67,32 +69,42 @@ RoxdokuView::RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent)
 	, m_symbols(symbols)
 	
 {
-	m_game = game;
-	
-	order = m_game.order();
-	base = (int) sqrt((double)order);
-	size = base*order;
+	m_game   = game;
+	m_graph  = m_game.puzzle()->graph();
+
+	m_order  = m_graph->order();
+	m_base   = m_graph->base();
+	m_size   = m_graph->size();
+	m_width  = m_graph->sizeX();
+	m_height = m_graph->sizeY();
+	m_depth  = m_graph->sizeZ();
+
 	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(updateGL()));
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(updateGL()));
 
-	wheelmove = 0.0f;
-	dist = 5.3f;
-	selected_number = 1;
+	// IDW test. m_wheelmove = 0.0f;
+	m_wheelmove = -5.0f; // IDW test. Makes the viewport bigger, can see more.
+	m_dist = 5.3f;
+	m_selected_number = 1;
 
 	loadSettings();
 
-	isClicked  = false;
-	isRClicked = false;	
-	isDragging = false;	
+	m_isClicked  = false;
+	m_isRClicked = false;	
+	m_isDragging = false;	
 
-	selection = -1;
-// 	stack_d = 0;
+	m_selection = -1;
+	m_lastSelection = -1;
+	m_highlights.fill(0, m_size);
+	m_timeDelay = false;
+	m_delayTimer = new QTimer(this);
+	connect(m_delayTimer, SIGNAL(timeout()), SLOT(delayOver()));
 }
 
 RoxdokuView::~RoxdokuView()
 {
-	glDeleteTextures(10, texture[0]);
-	glDeleteTextures(25, texture[1]);
+	glDeleteTextures(10, m_texture[0]);
+	glDeleteTextures(25, m_texture[1]);
 }
 
 QString RoxdokuView::status() const
@@ -102,15 +114,15 @@ QString RoxdokuView::status() const
 // 	int secs = QTime(0,0).secsTo(m_game.time());
 // 	if(secs % 36 < 12)
 // 		m = i18n("Selected item %1, Time elapsed %2. DRAG to rotate. MOUSE WHEEL to zoom in/out.",
-// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+// 				 m_symbols->value2Symbol(m_selected_number, m_game.order()),
 // 		         m_game.time().toString("hh:mm:ss"));
 // 	else  if(secs % 36 < 24)
 // 		m = i18n("Selected item %1, Time elapsed %2. DOUBLE CLICK on a cube to insert selected number.",
-// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+// 				 m_symbols->value2Symbol(m_selected_number, m_game.order()),
 // 		         m_game.time().toString("hh:mm:ss"));
 // 	else
 // 		m = i18n("Selected item %1, Time elapsed %2. Type in a cell (zero to delete) to place that number in it.",
-// 				 m_symbols->value2Symbol(selected_number, m_game.order()),
+// 				 m_symbols->value2Symbol(m_selected_number, m_game.order()),
 // 		         m_game.time().toString("hh:mm:ss"));
 
 	return m;
@@ -120,12 +132,12 @@ QString RoxdokuView::status() const
 void RoxdokuView::initializeGL()
 {
 	glClearColor( 0.0, 0.0, 0.0, 0.5 );
-	glEnable(GL_TEXTURE_2D);						// Enable Texture Mapping ( NEW )
-	//glShadeModel(GL_SMOOTH);						// Enable Smooth Shading
-	//glClearColor(0.0f, 0.0f, 0.0f, 0.5f);					// Black Background
-	//glClearDepth(1.0f);							// Depth Buffer Setup
-	glEnable(GL_DEPTH_TEST);						// Enables Depth Testing
-	//glDepthFunc(GL_LEQUAL);							// The Type Of Depth Testing To Do
+	glEnable(GL_TEXTURE_2D);	// Enable Texture Mapping ( NEW )
+	//glShadeModel(GL_SMOOTH);	// Enable Smooth Shading
+	//glClearColor(0.0f, 0.0f, 0.0f, 0.5f);	// Black Background
+	//glClearDepth(1.0f);		// Depth Buffer Setup
+	glEnable(GL_DEPTH_TEST);	// Enables Depth Testing
+	//glDepthFunc(GL_LEQUAL);	// The Type Of Depth Testing To Do
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);	
 
 	setMouseTracking(true);
@@ -140,27 +152,43 @@ void RoxdokuView::initializeGL()
 			}
 			QImage pix = convertToGLFormat(pic.toImage());
 	
-			glGenTextures(1, &texture[o][i]);
-			glBindTexture(GL_TEXTURE_2D, texture[o][i]);
+			glGenTextures(1, &m_texture[o][i]);
+			glBindTexture(GL_TEXTURE_2D, m_texture[o][i]);
 			glTexImage2D(GL_TEXTURE_2D, 0,4, sz,sz, 0, GL_RGBA, GL_UNSIGNED_BYTE, (GLvoid*) pix.bits());
 			glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);	// Linear Filtering
 			glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);	// Linear Filtering
 		}
 }
 
+void  RoxdokuView::resizeGL(int w, int h ) {
+	if (w == 0) w = 1;	
+	if (h == 0) h = 1;
+	m_arcBall = new ArcBallT((GLfloat)w, (GLfloat)h);
+
+	glViewport(0, 0, (GLint)w, (GLint)h);
+	glMatrixMode(GL_PROJECTION); // Select the Projection Matrix
+	glLoadIdentity();            // Reset the Projection Matrix
+
+	gluPerspective(45.0f, (GLfloat)w / (GLfloat)h, 0.1f, 100.0f);
+
+	glMatrixMode(GL_MODELVIEW); // Select the Modelview Matrix
+	glLoadIdentity();
+}
+	
+
 	void RoxdokuView::mouseDoubleClickEvent ( QMouseEvent * /*e*/ )
 	{
-		if(selection == -1) return;
-		if(selected_number == -1) return;
-		if(m_game.given(selection)) return;
-		m_game.setValue(selection, selected_number);
+		if(m_selection == -1) return;
+		if(m_selected_number == -1) return;
+		if(m_game.given(m_selection)) return;
+		m_game.setValue(m_selection, m_selected_number);
 //		updateGL();
-		if(isDragging) releaseMouse();
+		if(m_isDragging) releaseMouse();
 	}
 
 void RoxdokuView::Selection(int mouse_x, int mouse_y)
 {
-	if(isDragging)
+	if(m_isDragging)
 		return;
 	
 	makeCurrent();
@@ -203,17 +231,32 @@ void RoxdokuView::Selection(int mouse_x, int mouse_y)
 			}
 		}
 
-		if(choose <= size && choose > 0)
-			selection  = choose-1;
+		if(choose <= m_size && choose > 0)
+			m_selection  = choose-1;
 
+		// Stop the timer if the selection is on a cube.
+		if (m_timeDelay) {
+			m_delayTimer->stop();
+			m_timeDelay = false;
+		}
 		setFocus();
 		paintGL();
 	}
-	else {
-		selection = -1;
+	else if ((! m_timeDelay) && (m_selection != -1)) {
+		// Avoid flickering when the pointer passes between cubes.
+		m_delayTimer->start(300);
+		m_timeDelay = true;
 	}
 }
 
+void RoxdokuView::delayOver()
+{
+	// Remove the highlighting, etc. when the pointer rests between cubes.
+	m_delayTimer->stop();
+	m_timeDelay = false;
+	m_selection = -1;
+	paintGL();
+}
 
 void RoxdokuView::mouseMoveEvent ( QMouseEvent * e )
 {
@@ -223,32 +266,32 @@ void RoxdokuView::mouseMoveEvent ( QMouseEvent * e )
 	
 	Selection(e->x(), e->y());
 
-	if (isRClicked){                      // If Right Mouse Clicked, Reset All Rotations
+	if (m_isRClicked){                      // If Right Mouse Clicked, Reset All Rotations
 		Matrix3fSetIdentity(&LastRot);      // Reset Rotation
 		Matrix3fSetIdentity(&ThisRot);      // Reset Rotation
 			Matrix4fSetRotationFromMatrix3f(&Transform, &ThisRot);		// Reset Rotation
 	}
 
-	if (!isDragging){          // Not Dragging
-		if (isClicked){          // First Click	
-		isDragging = true;       // Prepare For Dragging
+	if (!m_isDragging){          // Not Dragging
+		if (m_isClicked){          // First Click	
+		m_isDragging = true;       // Prepare For Dragging
 		LastRot = ThisRot;       // Set Last Static Rotation To Last Dynamic One
-		ArcBall->click(&f);      // Update Start Vector And Prepare For Dragging
+		m_arcBall->click(&f);      // Update Start Vector And Prepare For Dragging
 		grabMouse(/*QCursor(Qt::SizeAllCursor)*/);
 		}
 		updateGL();
 	}
 	else{
-		if (isClicked){          // Still Clicked, So Still Dragging
+		if (m_isClicked){          // Still Clicked, So Still Dragging
 			Quat4fT     ThisQuat;
 
-			ArcBall->drag(&f, &ThisQuat);                           // Update End Vector And Get Rotation As Quaternion
+			m_arcBall->drag(&f, &ThisQuat);                           // Update End Vector And Get Rotation As Quaternion
 			Matrix3fSetRotationFromQuat4f(&ThisRot, &ThisQuat);     // Convert Quaternion Into Matrix3fT
 			Matrix3fMulMatrix3f(&ThisRot, &LastRot);                // Accumulate Last Rotation Into This One
 			Matrix4fSetRotationFromMatrix3f(&Transform, &ThisRot);  // Set Our Final Transform's Rotation From This One
 		}
 		else{                   // No Longer Dragging
-			isDragging = false;
+			m_isDragging = false;
 			releaseMouse ();
 		}
 		updateGL();
@@ -256,11 +299,13 @@ void RoxdokuView::mouseMoveEvent ( QMouseEvent * e )
 }
 
 void RoxdokuView::selectValue(int value) {
-	selected_number = value;
+	m_selected_number = value;
 }
 
 void RoxdokuView::loadSettings() {
 	m_guidedMode = Settings::showErrors();
+	m_showHighlights = Settings::showHighlights();
+	qDebug() << "Show errors" << m_guidedMode << "Show highlights" << m_showHighlights;
 }
 
 void RoxdokuView::settingsChanged() {
@@ -268,63 +313,77 @@ void RoxdokuView::settingsChanged() {
 	updateGL();
 }
 
-
-
-void RoxdokuView::myDrawCube(bool highlight, int name, GLfloat x, GLfloat y, GLfloat z, int /*texturef*/)
+void RoxdokuView::myDrawCube(bool highlight, int name,
+				GLfloat x, GLfloat y, GLfloat z, bool outside)
 {
 	glPushMatrix();
 	glLoadName(name+1);
 	glTranslatef(x,y,z);
 
-	glBindTexture(GL_TEXTURE_2D, texture[order >= 16][m_game.value(name)]);
+	glBindTexture(GL_TEXTURE_2D, m_texture[m_order >= 16][m_game.value(name)]);
 	
 	float sz = 1.0f;
-	float s = 0.1f;
-	// TODO - IDW Could check whether selection and name have any XYZ equal.
-	if(selection != -1 && selection != name && highlight) {
-		s = -0.25f;
-		sz = 0.52f;
-		
+	// float s = 0.15f;
+	float s = 0.2f;
+	if(m_selection != -1 && m_selection != name && highlight) {
+		// IDW test. s = -0.25f;
+		s = +0.2;
+		// IDW test. Keep highlighted cells at same size. sz = 0.52f;
+		sz = 0.7f;
+
 		switch(m_game.buttonState(name)) {
 			case ksudoku::GivenValue:
-				glColor3f(0.4f,0.4f,0.8f);
-				sz+=0.15;
+				// IDW test. glColor3f(0.4f,0.4f,0.8f);
+				glColor3f(0.85f,1.0f,0.4f);	// Green/Gold.
+				// IDW cancel. sz+=0.15;
 				break;
 			case ksudoku::ObviouslyWrong:
 			case ksudoku::WrongValue:
 				if(m_guidedMode && m_game.puzzle()->hasSolution())
-					glColor3f(0.75f,0.25f,0.25f);
+					glColor3f(0.75f,0.25f,0.25f);	// Red.
 				else
-					glColor3f(0.5f+s,0.5f+s,1.0f+s);
+					// IDW test. glColor3f(0.5f+s,0.5f+s,1.0f+s);
+					glColor3f(0.75f+s,0.75f+s,0.25f+s);
 				break;
 			case ksudoku::Marker:
 			case ksudoku::CorrectValue:
-				glColor3f(0.5f+s,0.5f+s,1.0f+s);	
+				// IDW test. glColor3f(0.5f+s,0.5f+s,1.0f+s);	
+				glColor3f(0.75f+s,0.75f+s,0.25f+s);	// Gold.
 				break;
 		}
 	} else {
-		sz = 1.0f;
+		// IDW test. sz = 1.0f;
+		// IDW test. s = 0.1f;
 		s = 0.1f;
+		if (outside && (m_selection != -1)) {
+		    // Shrink and darken cells outside the selection-volume.
+		    sz = 0.52f;
+		    s  = -0.24;
+		}
 		switch(m_game.buttonState(name)) {
 			case ksudoku::GivenValue:
-				glColor3f(0.35f,0.70f,0.45f);
+				// IDW test. glColor3f(0.35f,0.70f,0.45f);
+				glColor3f(0.6f+s,0.9f+s,0.6f+s);	// Green.
 				break;
 			case ksudoku::ObviouslyWrong:
 			case ksudoku::WrongValue:
 				if(m_guidedMode && m_game.puzzle()->hasSolution())
-	 				glColor3f(0.75f,0.25f,0.25f);
+	 				glColor3f(0.75f,0.25f,0.25f);	// Red.
 				else
-					glColor3f(0.5f+s,0.5f+s,1.0f+s);
+					// IDW test. glColor3f(0.5f+s,0.5f+s,1.0f+s);
+					glColor3f(0.6f+s,1.0f+s,1.0f+s);// Blue.
 				break;
 			case ksudoku::Marker:
 			case ksudoku::CorrectValue:
-				glColor3f(0.5f+s,0.5f+s,1.0f+s);	
+				// IDW test. glColor3f(0.5f+s,0.5f+s,1.0f+s);	
+				glColor3f(0.6f+s,1.0f+s,1.0f+s);	// Blue.
 				break;
 		}
 	}
 
-	if(selection == name)
-		glColor3f(0.75f,0.25f,0.25f);
+	if(m_selection == name)
+		// IDW test. glColor3f(0.75f,0.25f,0.25f);
+		glColor3f(1.0f,0.8f,0.4f);	// Orange.
 
 	glBegin(GL_QUADS);
 	/* front face */
@@ -391,31 +450,93 @@ void RoxdokuView::paintGL()
 	glLoadIdentity();
 
 	glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);
-	glTranslatef(0.0f, 0.0f, -dist*(base+3)+wheelmove);
+	glTranslatef(0.0f, 0.0f, -m_dist*(m_width+3)+m_wheelmove);
 
 	glMultMatrixf(Transform.M);
 
+	enum {Outside, Inside, Highlight};
 	int selX = -1, selY = -1, selZ = -1;
-	if (selection != -1) {
-	    SKGraph * g = m_game.puzzle()->graph();
-	    selX = g->cellPosX (selection);
-	    selY = g->cellPosY (selection);
-	    selZ = g->cellPosZ (selection);
+
+	// If a cell is newly selected work out the highlights and lowlights.
+	if ((m_selection != -1) && (m_selection != m_lastSelection)) {
+	    m_lastSelection = m_selection;
+	    selX = m_graph->cellPosX (m_selection);
+	    selY = m_graph->cellPosY (m_selection);
+	    selZ = m_graph->cellPosZ (m_selection);
+
+	    // Note: m_highlights persists through many frame-paints per second.
+	    m_highlights.fill(Outside, m_size);
+
+	    // Mark the cells to be highlighted when highlighting is on.
+	    QList<int> groupsToHighlight = m_graph->cliqueList(m_selection);
+	    for(int g = 0; g < groupsToHighlight.count(); g++) {
+		QVector<int> cellList =
+				m_graph->clique(groupsToHighlight.at(g));
+		for (int n = 0; n < m_order; n++) {
+		    m_highlights[cellList.at(n)] = Highlight;
+		}
+	    }
+
+	    // Mark non-highlighted cells that are inside cubes containing
+	    // the selected cell.  In custom Roxdoku puzzles with > 1 cube,
+	    // cells outside are shrunk and darkened.
+	    for (int n = 0; n < m_graph->structureCount(); n++) {
+		int cubePos = m_graph->structurePosition(n);
+		int cubeX   = m_graph->cellPosX(cubePos);
+		int cubeY   = m_graph->cellPosY(cubePos);
+		int cubeZ   = m_graph->cellPosZ(cubePos);
+		if (m_graph->structureType(n) != SKGraph::RoxdokuGroups) {
+		    continue;
+		}
+		if ((selX >= cubeX) && (selX < (cubeX + m_base)) &&
+		    (selY >= cubeY) && (selY < (cubeY + m_base)) &&
+		    (selZ >= cubeZ) && (selZ < (cubeZ + m_base))) {
+		    for (int x = cubeX; x < cubeX + m_base; x++) {
+			for (int y = cubeY; y < cubeY + m_base; y++) {
+			    for (int z = cubeZ; z < cubeZ + m_base; z++) {
+				int pos = m_graph->cellIndex(x, y, z);
+				if (m_highlights.at(pos) == Outside) {
+				    m_highlights[pos] = Inside;
+				}
+			    }
+			}
+		    }
+		}
+	    }
 	}
 
-	int c=0;
+	int c = 0;
 
-	for(int xx=0; xx<base; ++xx)
-		for(int yy=0; yy<base; ++yy)
-			for(int zz=0; zz<base; ++zz){
+	for(int xx = 0; xx < m_width; ++xx) {
+		for(int yy = 0; yy < m_height; ++yy) {
+			for(int zz = 0; zz < m_depth; ++zz) {
+				if(m_game.value(c) == UNUSABLE) {
+				    c++;
+				    continue;	// Do not paint unusable cells.
+				}
 				glPushMatrix();
-				glTranslatef(-(dist*base-dist)/2,-(dist*base-dist)/2,-(dist*base-dist)/2);
-				// Highlight cells in the three planes through the selected cell.
-				bool highlight = (xx == selX) || (yy == selY) || (zz == selZ);
-				myDrawCube(highlight, c++,(GLfloat) (dist*xx), (GLfloat)(dist* yy ), (GLfloat) (dist*zz), 0);
+
+				// Centre the puzzle in the viewport.
+				glTranslatef(-(m_dist * m_width  - m_dist) / 2,
+					     -(m_dist * m_height - m_dist) / 2,
+					     -(m_dist * m_depth  - m_dist) / 2);
+
+				// Highlight cells in the three planes through
+				// the selected cell. Unhighlight cells outside
+				// the cubical volume of the selection.
+				bool highlight = m_showHighlights &&
+					     (m_highlights.at(c) == Highlight);
+				bool outside = (m_highlights.at(c) == Outside);
+
+				myDrawCube(highlight, c++,
+					    (GLfloat)(m_dist * xx),
+					    (GLfloat)(m_dist * yy),
+					    (GLfloat)(m_dist * zz), outside);
+
 				glPopMatrix();
 			}
-
+		}
+	}
 	swapBuffers();
 }
 
