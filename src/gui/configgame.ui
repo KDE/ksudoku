@@ -1,41 +1,395 @@
-<ui version="4.0" >
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
  <class>ConfigGame</class>
- <widget class="QWidget" name="ConfigGame" >
-  <property name="geometry" >
+ <widget class="QWidget" name="ConfigGame">
+  <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>413</width>
+    <height>466</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" >
+  <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QCheckBox" name="kcfg_ShowHighlights" >
-     <property name="whatsThis" >
-      <string>Highlight the current row, column and box in different colors</string>
+    <widget class="QCheckBox" name="kcfg_ShowHighlights">
+     <property name="toolTip">
+      <string>Highlight the row, column and block that contain the selected cell</string>
      </property>
-     <property name="text" >
-      <string>Show highlights</string>
+     <property name="whatsThis">
+      <string>Highlight the row, column and block that contain the selected cell. Blocks may be square or irregular (as in jigsaw-type or XSudoku puzzles).</string>
+     </property>
+     <property name="text">
+      <string>Show highlights in 2-D puzzles</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QCheckBox" name="kcfg_ShowErrors" >
-     <property name="whatsThis" >
-      <string>Highlight cells which values are against the rules in red</string>
+    <widget class="QCheckBox" name="kcfg_ShowErrors">
+     <property name="toolTip">
+      <string>Highlight in red any cells whose values break the Sudoku rules.</string>
      </property>
-     <property name="text" >
+     <property name="whatsThis">
+      <string>Highlight in red any cells whose values break the Sudoku rules.</string>
+     </property>
+     <property name="text">
       <string>Show errors</string>
      </property>
     </widget>
    </item>
    <item>
-    <spacer>
-     <property name="orientation" >
+    <widget class="QCheckBox" name="kcfg_ShowHighlights3D">
+     <property name="toolTip">
+      <string>Highlight the planes (blocks) that contain the selected cell.</string>
+     </property>
+     <property name="whatsThis">
+      <string>Highlight the planes (blocks) that contain the selected cell.</string>
+     </property>
+     <property name="text">
+      <string>Show highlights in 3-D puzzles</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="spacer_3">
+     <property name="orientation">
       <enum>Qt::Vertical</enum>
      </property>
-     <property name="sizeHint" >
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>30</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QLabel" name="label_2">
+     <property name="font">
+      <font>
+       <pointsize>13</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Settings for 3-D Puzzles Only</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QSlider" name="kcfg_OverallSize3D">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>200</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Set the relative size of 3-D cells and the spaces between them.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Set the relative size of 3-D cells and the spaces between them.</string>
+       </property>
+       <property name="minimum">
+        <number>7</number>
+       </property>
+       <property name="maximum">
+        <number>13</number>
+       </property>
+       <property name="singleStep">
+        <number>1</number>
+       </property>
+       <property name="pageStep">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>10</number>
+       </property>
+       <property name="sliderPosition">
+        <number>10</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+       <property name="tickInterval">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_6">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Set the relative size of 3-D cells and the spaces between them.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Set the relative size of 3-D cells and the spaces between them.</string>
+       </property>
+       <property name="text">
+        <string>Overall size of 3-D cells</string>
+       </property>
+       <property name="buddy">
+        <cstring></cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_1">
+     <item>
+      <widget class="QSlider" name="kcfg_SelectionSize3D">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>200</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Shrink or expand a cell by up to 30% when it is selected.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Shrink or expand a cell by up to 30% when it is selected.</string>
+       </property>
+       <property name="minimum">
+        <number>7</number>
+       </property>
+       <property name="maximum">
+        <number>13</number>
+       </property>
+       <property name="singleStep">
+        <number>1</number>
+       </property>
+       <property name="pageStep">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>7</number>
+       </property>
+       <property name="sliderPosition">
+        <number>7</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="invertedAppearance">
+        <bool>false</bool>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+       <property name="tickInterval">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Shrink or expand a cell by up to 30% when it is selected.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Shrink or expand a cell by up to 30% when it is selected.</string>
+       </property>
+       <property name="text">
+        <string>Size of selected 3-D cell</string>
+       </property>
+       <property name="buddy">
+        <cstring>kcfg_SelectionSize3D</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QSlider" name="kcfg_HighlightedSize3D">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>200</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Shrink or expand cells by up to 30% when they are highlighted.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Shrink or expand cells by up to 30% when they are highlighted.</string>
+       </property>
+       <property name="minimum">
+        <number>7</number>
+       </property>
+       <property name="maximum">
+        <number>13</number>
+       </property>
+       <property name="pageStep">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>7</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+       <property name="tickInterval">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Shrink or expand cells by up to 30% when they are highlighted.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Shrink or expand cells by up to 30% when they are highlighted.</string>
+       </property>
+       <property name="text">
+        <string>Size of highlighted 3-D cells</string>
+       </property>
+       <property name="buddy">
+        <cstring>kcfg_HighlightedSize3D</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_4">
+     <item>
+      <widget class="QSlider" name="kcfg_OuterCellSize3D">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>200</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Shrink cells by up to 60% if they are not in an NxNxN cube that contains the selected cell.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Shrink cells by up to 60% if they are not in an NxNxN cube that contains the selected cell. This is useful if a 3-D puzzle has more than one cube.</string>
+       </property>
+       <property name="minimum">
+        <number>4</number>
+       </property>
+       <property name="maximum">
+        <number>10</number>
+       </property>
+       <property name="pageStep">
+        <number>1</number>
+       </property>
+       <property name="value">
+        <number>4</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="tickPosition">
+        <enum>QSlider::TicksBelow</enum>
+       </property>
+       <property name="tickInterval">
+        <number>1</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_5">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="toolTip">
+        <string>Shrink cells by up to 60% if they are not in an NxNxN cube that contains the selected cell.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Shrink cells by up to 60% if they are not in an NxNxN cube that contains the selected cell. This is useful if a 3-D puzzle has more than one cube.</string>
+       </property>
+       <property name="text">
+        <string>Size of 3-D cells outside the selected volume</string>
+       </property>
+       <property name="buddy">
+        <cstring>kcfg_OuterCellSize3D</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <property name="topMargin">
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="kcfg_DarkenOuterCells3D">
+       <property name="toolTip">
+        <string>Darken cells if they are not in an NxNxN cube that contains the selected cell.</string>
+       </property>
+       <property name="whatsThis">
+        <string>Shrink cells by up to 60% if they are not in an NxNxN cube that contains the selected cell. This is useful if a 3-D puzzle has more than one cube.</string>
+       </property>
+       <property name="text">
+        <string>Darken 3-D cells outside the selected volume</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer>
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Expanding</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
       <size>
        <width>20</width>
        <height>40</height>
@@ -45,6 +399,15 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>kcfg_ShowHighlights</tabstop>
+  <tabstop>kcfg_ShowErrors</tabstop>
+  <tabstop>kcfg_ShowHighlights3D</tabstop>
+  <tabstop>kcfg_SelectionSize3D</tabstop>
+  <tabstop>kcfg_HighlightedSize3D</tabstop>
+  <tabstop>kcfg_OuterCellSize3D</tabstop>
+  <tabstop>kcfg_DarkenOuterCells3D</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

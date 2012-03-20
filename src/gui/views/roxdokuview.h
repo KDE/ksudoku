@@ -123,6 +123,12 @@ private:
 
 	bool         m_guidedMode;
 	bool         m_showHighlights;
+	float        m_selectionSize;
+	float        m_highlightedSize;
+	float        m_unhighlightedSize;
+	float        m_outerCellSize;
+	bool         m_darkenOuterCells;
+
 	QTimer *     m_delayTimer;
 	bool         m_timeDelay;
 };

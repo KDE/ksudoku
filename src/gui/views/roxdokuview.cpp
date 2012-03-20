@@ -36,8 +36,6 @@
 
 #include "renderer.h"
 
-#include <QDebug> // IDW test.
-
 namespace ksudoku{
 
 GLUquadricObj *quadratic; // Used For Our Quadric
@@ -303,9 +301,15 @@ void RoxdokuView::selectValue(int value) {
 }
 
 void RoxdokuView::loadSettings() {
-	m_guidedMode = Settings::showErrors();
-	m_showHighlights = Settings::showHighlights();
-	qDebug() << "Show errors" << m_guidedMode << "Show highlights" << m_showHighlights;
+	m_guidedMode        = Settings::showErrors();
+	m_showHighlights    = Settings::showHighlights3D();
+
+	float s             = Settings::overallSize3D()/10.0f;	// Normal size.
+	m_unhighlightedSize = s;
+	m_selectionSize     = s * Settings::selectionSize3D()/10.0f;
+	m_highlightedSize   = s * Settings::highlightedSize3D()/10.0f;
+	m_outerCellSize     = s * Settings::outerCellSize3D()/10.0f;
+	m_darkenOuterCells  = Settings::darkenOuterCells3D();
 }
 
 void RoxdokuView::settingsChanged() {
@@ -323,46 +327,37 @@ void RoxdokuView::myDrawCube(bool highlight, int name,
 	glBindTexture(GL_TEXTURE_2D, m_texture[m_order >= 16][m_game.value(name)]);
 	
 	float sz = 1.0f;
-	// float s = 0.15f;
 	float s = 0.2f;
 	if(m_selection != -1 && m_selection != name && highlight) {
-		// IDW test. s = -0.25f;
 		s = +0.2;
-		// IDW test. Keep highlighted cells at same size. sz = 0.52f;
-		sz = 0.7f;
+		sz = m_highlightedSize;
 
 		switch(m_game.buttonState(name)) {
 			case ksudoku::GivenValue:
-				// IDW test. glColor3f(0.4f,0.4f,0.8f);
 				glColor3f(0.85f,1.0f,0.4f);	// Green/Gold.
-				// IDW cancel. sz+=0.15;
 				break;
 			case ksudoku::ObviouslyWrong:
 			case ksudoku::WrongValue:
 				if(m_guidedMode && m_game.puzzle()->hasSolution())
 					glColor3f(0.75f,0.25f,0.25f);	// Red.
 				else
-					// IDW test. glColor3f(0.5f+s,0.5f+s,1.0f+s);
 					glColor3f(0.75f+s,0.75f+s,0.25f+s);
 				break;
 			case ksudoku::Marker:
 			case ksudoku::CorrectValue:
-				// IDW test. glColor3f(0.5f+s,0.5f+s,1.0f+s);	
 				glColor3f(0.75f+s,0.75f+s,0.25f+s);	// Gold.
 				break;
 		}
 	} else {
-		// IDW test. sz = 1.0f;
-		// IDW test. s = 0.1f;
+		sz = m_unhighlightedSize;
 		s = 0.1f;
 		if (outside && (m_selection != -1)) {
 		    // Shrink and darken cells outside the selection-volume.
-		    sz = 0.52f;
-		    s  = -0.24;
+		    sz = m_outerCellSize;
+		    s  = m_darkenOuterCells ? -0.24f : 0.0f;
 		}
 		switch(m_game.buttonState(name)) {
 			case ksudoku::GivenValue:
-				// IDW test. glColor3f(0.35f,0.70f,0.45f);
 				glColor3f(0.6f+s,0.9f+s,0.6f+s);	// Green.
 				break;
 			case ksudoku::ObviouslyWrong:
@@ -370,20 +365,20 @@ void RoxdokuView::myDrawCube(bool highlight, int name,
 				if(m_guidedMode && m_game.puzzle()->hasSolution())
 	 				glColor3f(0.75f,0.25f,0.25f);	// Red.
 				else
-					// IDW test. glColor3f(0.5f+s,0.5f+s,1.0f+s);
 					glColor3f(0.6f+s,1.0f+s,1.0f+s);// Blue.
 				break;
 			case ksudoku::Marker:
 			case ksudoku::CorrectValue:
-				// IDW test. glColor3f(0.5f+s,0.5f+s,1.0f+s);	
 				glColor3f(0.6f+s,1.0f+s,1.0f+s);	// Blue.
 				break;
 		}
 	}
 
-	if(m_selection == name)
+	if(m_selection == name) {
+		sz = m_selectionSize;
 		// IDW test. glColor3f(0.75f,0.25f,0.25f);
 		glColor3f(1.0f,0.8f,0.4f);	// Orange.
+	}
 
 	glBegin(GL_QUADS);
 	/* front face */

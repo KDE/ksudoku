@@ -11,6 +11,24 @@
     <entry name="ShowErrors" type="Bool" key="showErrors">
       <default>true</default>
     </entry>
+    <entry name="ShowHighlights3D" type="Bool" key="showHighlights3D">
+      <default>true</default>
+    </entry>
+    <entry name="OverallSize3D" type="Int" key="overallSize3D">
+      <default>10</default>
+    </entry>
+    <entry name="SelectionSize3D" type="Int" key="selectionSize3D">
+      <default>7</default>
+    </entry>
+    <entry name="HighlightedSize3D" type="Int" key="highlightedSize3D">
+      <default>7</default>
+    </entry>
+    <entry name="OuterCellSize3D" type="Int" key="outerCellSize3D">
+      <default>4</default>
+    </entry>
+    <entry name="DarkenOuterCells3D" type="Bool" key="darkenOuterCells3D">
+      <default>true</default>
+    </entry>
   </group>
   <group name="Themes">
     <entry name="Theme" type="String" key="theme">
