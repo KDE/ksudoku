@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Double Roxdoku
+Description=Three-dimensional puzzle with two interlocking 3x3 cubes
+Author=Ian Wadham
+FileName=DoubleRoxdoku.xml
+Icon=ksudoku-roxdoku_3x3x3

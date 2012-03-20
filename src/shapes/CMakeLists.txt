@@ -11,6 +11,9 @@ install( FILES
 	Nonomino.desktop Nonomino.xml
 	Sohei.desktop Sohei.xml
 	Windmill.desktop Windmill.xml
+	DoubleRoxdoku.desktop DoubleRoxdoku.xml
+	RoxdokuTwin.desktop RoxdokuTwin.xml
+	SamuraiRoxdoku.desktop SamuraiRoxdoku.xml
 	DESTINATION  ${DATA_INSTALL_DIR}/ksudoku
 )
 

@@ -1,0 +1,24 @@
+<!DOCTYPE ksudoku-graph>
+<ksudoku-graph>
+ <graph sizeX="7" sizeY="7" sizeZ="7" ncliques="81" order="9" specific-type="Samurai" type="custom" name="SamuraiRoxdoku" >
+
+  <roxdokugroups at="0"   />
+
+  <roxdokugroups at="196" />
+
+  <roxdokugroups at="28"  />
+
+  <roxdokugroups at="224" />
+
+  <roxdokugroups at="114" />
+
+  <roxdokugroups at="4"   />
+
+  <roxdokugroups at="200" />
+
+  <roxdokugroups at="32"  />
+
+  <roxdokugroups at="228" />
+
+ </graph>
+</ksudoku-graph>

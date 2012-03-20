@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Samurai Roxdoku
+Description=Samurai three-dimensional puzzle with nine 3x3 cubes
+Author=Ian Wadham
+FileName=SamuraiRoxdoku.xml
+Icon=ksudoku-roxdoku_3x3x3

@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Roxdoku Twin
+Description=Three-dimensional puzzle with two 3x3 cubes which share a corner
+Author=Ian Wadham
+FileName=RoxdokuTwin.xml
+Icon=ksudoku-roxdoku_3x3x3
