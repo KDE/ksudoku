@@ -1,5 +1,9 @@
 [KSudokuVariant]
 Name=Double Roxdoku
+Name[pt]=Roxdoku Duplo
+Name[pt_BR]=Roxdoku Duplo
+Name[uk]=Подвійне роксудоку
+Name[x-test]=xxDouble Roxdokuxx
 Description=Three-dimensional puzzle with two interlocking 3x3x3 cubes
 Author=Ian Wadham
 FileName=DoubleRoxdoku.xml

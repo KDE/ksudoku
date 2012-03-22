@@ -1,5 +1,9 @@
 [KSudokuVariant]
 Name=Samurai Roxdoku
+Name[pt]=Roxdoku Samurai
+Name[pt_BR]=Roxdoku Samurai
+Name[uk]=Самурайське роксудоку
+Name[x-test]=xxSamurai Roxdokuxx
 Description=Samurai three-dimensional puzzle with nine 3x3x3 cubes
 Author=Ian Wadham
 FileName=SamuraiRoxdoku.xml
