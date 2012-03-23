@@ -51,6 +51,7 @@ Game Serializer::deserializeGame(QDomElement element) {
 	QList<HistoryEvent> history;
 
 	bool hadHelp = static_cast<bool>(element.attribute("had-help", "0").toInt());
+	int  msecsElapsed = element.attribute("msecs-elapsed", "0").toInt();
 
 	QDomNode child = element.firstChild();
 	while (!child.isNull()) {
@@ -86,6 +87,7 @@ Game Serializer::deserializeGame(QDomElement element) {
 			game.doEvent(history[i]);
 	}
 
+	game.setTime(msecsElapsed);
 	return game;
 }
 
@@ -429,6 +431,7 @@ Game Serializer::load(const KUrl& url, QWidget* window, QString *errorMsg) {
 bool Serializer::serializeGame(QDomElement& parent, const Game& game) {
 	QDomElement element = parent.ownerDocument().createElement("game");
 	element.setAttribute("had-help", game.userHadHelp());
+	element.setAttribute("msecs-elapsed", game.msecsElapsed());
 	serializePuzzle(element, game.puzzle());
 	serializeHistory(element, game);
 	parent.appendChild(element);

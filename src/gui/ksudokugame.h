@@ -160,11 +160,23 @@ public:
 	 * Makes the whole puzzle given.
 	 */
 	bool autoSolve();
-	
+
 	/**
-	 * Returns the time since game start
+	 * Returns the time since game start, as a QTime object.
 	 */
 	QTime time() const;
+
+	/**
+	 * Returns the time since game start, as milliseconds. Used when saving
+	 * the elapsed time during a break in play.
+	 */
+	int   msecsElapsed() const;
+
+	/**
+	 * Sets the time since game start and restarts the clock. Used after a
+	 * break in play, e.g. when loading a saved game.
+	 */
+	void  setTime(int msecs) const;
 	
 	/**
 	 * Sets the URL. Game itself doesn't use the URL, but remembers it for other users.

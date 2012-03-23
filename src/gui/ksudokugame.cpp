@@ -71,6 +71,7 @@ public:
 	
 	Puzzle* puzzle;
 	QTime time;
+	int   accumTime;
 	KUrl url;
 	QList<HistoryEvent> history;
 	int historyPos;
@@ -145,6 +146,7 @@ Game::Game(Puzzle* puzzle)
 	}
 	m_private->historyPos = 0;
 	
+	m_private->accumTime = 0;
 	m_private->time.start();
 }
 
@@ -399,8 +401,18 @@ const BoardContents Game::allValues() const {
 
 QTime Game::time() const {
 	if(!m_private) return QTime();
-	
-	return QTime().addMSecs(m_private->time.elapsed());
+	return QTime().addMSecs(msecsElapsed());
+}
+
+int Game::msecsElapsed() const {
+	if(!m_private) return 0;
+	return (m_private->accumTime + m_private->time.elapsed());
+}
+
+void Game::setTime(int msecs) const {
+	if(!m_private) return;
+	m_private->accumTime = msecs;
+	m_private->time.start();
 }
 
 // History
