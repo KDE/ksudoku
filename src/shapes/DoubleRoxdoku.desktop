@@ -1,11 +1,15 @@
 [KSudokuVariant]
 Name=Double Roxdoku
+Name[es]=Roxdoku doble
+Name[nl]=Double Roxdoku
 Name[pt]=Roxdoku Duplo
 Name[pt_BR]=Roxdoku Duplo
 Name[sv]=Dubbel Roxdoku
 Name[uk]=Подвійне роксудоку
 Name[x-test]=xxDouble Roxdokuxx
 Description=Three-dimensional puzzle with two interlocking 3x3x3 cubes
+Description[es]=Rompecabezas tridimensional con dos cubos entrelazados de 3x3x3
+Description[nl]=Driedimensionale puzzel met twee in elkaar passende 3x3x3 kubussen
 Description[pt]=Puzzle tridimensional com dois cubos 3x3x3 interbloqueados
 Description[sv]=Tredimensionellt spel med två sammanlänkade 3x3x3 kuber
 Description[uk]=Тривимірна головоломка з двома взаємопов’язаними кубічними частинами 3⨯3⨯3

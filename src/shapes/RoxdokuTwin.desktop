@@ -1,11 +1,15 @@
 [KSudokuVariant]
 Name=Roxdoku Twin
+Name[es]=Roxdoku gemelos
+Name[nl]=Roxdoku Twin
 Name[pt]=Roxdoku Gémeo
 Name[pt_BR]=Roxdoku Gêmeo
 Name[sv]=Roxdoku-tvilling
 Name[uk]=Роксудоку-близнюки
 Name[x-test]=xxRoxdoku Twinxx
 Description=Three-dimensional puzzle with two 3x3x3 cubes which share a corner
+Description[es]=Rompecabezas tridimensional con dos cubos de 3x3x3 que comparten una esquina
+Description[nl]=Driedimensionale puzzel met twee 3x3x3 kubussen die een hoek delen
 Description[pt]='Puzzle' tridimensional com dois cubos 3x3x3 que partilham um canto
 Description[sv]=Tredimensionellt spel med två 3x3x3 kuber som delar ett hörn
 Description[uk]=Тривимірна головоломка з двома кубічними частинами 3⨯3⨯3, що перетинаються кутом
