@@ -42,6 +42,7 @@ namespace ksudoku{
 
 class Game;
 class Symbols;
+class GameActions;
 
 /**
  * GUI for a Roxdoku puzzle.
@@ -50,7 +51,7 @@ class RoxdokuView : public QGLWidget, public ViewInterface
 {
 Q_OBJECT
 public:
-	RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent = 0);
+	RoxdokuView(ksudoku::Game game, GameActions * gameActions, QWidget * parent = 0);
 	~RoxdokuView();
 
 	virtual QString status() const;
@@ -64,6 +65,7 @@ public:
 public slots:
 	void selectValue(int value);
 	void settingsChanged();
+	void enterValue(int value);
 
 signals:
 	void valueSelected(int value); // Never used but connected to
@@ -95,7 +97,6 @@ private slots:
 private:
 	void loadSettings();
 
-	Symbols *    m_symbols;
 	Game         m_game;
 	SKGraph *    m_graph;
 

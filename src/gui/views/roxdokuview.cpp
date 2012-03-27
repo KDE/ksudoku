@@ -35,6 +35,7 @@
 #include "settings.h"
 
 #include "renderer.h"
+#include "gameactions.h"
 
 namespace ksudoku{
 
@@ -62,10 +63,9 @@ Matrix3fT ThisRot     = {{  {1.0f},  {0.0f},  {0.0f},          // NEW: This Rota
                             {0.0f},  {0.0f},  {1.0f} }};
 
 
-RoxdokuView::RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent)
+RoxdokuView::RoxdokuView(ksudoku::Game game, GameActions * gameActions,
+				QWidget * parent)
 	: QGLWidget(parent)
-	, m_symbols(symbols)
-	
 {
 	m_game   = game;
 	m_graph  = m_game.puzzle()->graph();
@@ -79,6 +79,7 @@ RoxdokuView::RoxdokuView(ksudoku::Game game, Symbols* symbols, QWidget *parent)
 
 	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(updateGL()));
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(updateGL()));
+	connect(gameActions, SIGNAL(enterValue(int)), SLOT(enterValue(int)));
 
 	// IDW test. m_wheelmove = 0.0f;
 	m_wheelmove = -5.0f; // IDW test. Makes the viewport bigger, can see more.
@@ -103,6 +104,14 @@ RoxdokuView::~RoxdokuView()
 {
 	glDeleteTextures(10, m_texture[0]);
 	glDeleteTextures(25, m_texture[1]);
+}
+
+void RoxdokuView::enterValue(int value)
+{
+	if (m_selection >= 0) {
+	    m_game.setValue(m_selection, value);
+	    updateGL();
+	}
 }
 
 QString RoxdokuView::status() const

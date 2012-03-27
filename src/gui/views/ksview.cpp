@@ -62,7 +62,8 @@ void KsView::createView() {
 		case TypeCustom: {
 #ifdef OPENGL_SUPPORT
 			if(m_game.puzzle()->graph()->sizeZ() > 1) {
-			    setWidget(new RoxdokuView(m_game, 0, 0));
+			    // TODO - IDW - Add a parent widget. Memory leak?
+			    setWidget(new RoxdokuView(m_game, m_gameActions, 0));
 			}
 			else {
 			    setWidget(new View2D(0, m_game, m_gameActions));
@@ -74,7 +75,8 @@ void KsView::createView() {
 		}
 #ifdef OPENGL_SUPPORT
 		case TypeRoxdoku: {
-			setWidget(new RoxdokuView(m_game, 0, 0));
+			// TODO - IDW - Add a parent widget. Memory leak?
+			setWidget(new RoxdokuView(m_game, m_gameActions, 0));
 			break;
 		}
 #endif
