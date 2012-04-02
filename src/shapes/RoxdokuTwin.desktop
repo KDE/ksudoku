@@ -2,6 +2,7 @@
 Name=Roxdoku Twin
 Name[es]=Roxdoku gemelos
 Name[nl]=Roxdoku Twin
+Name[pl]=Bliźniacze Roxdoku
 Name[pt]=Roxdoku Gémeo
 Name[pt_BR]=Roxdoku Gêmeo
 Name[sv]=Roxdoku-tvilling
@@ -10,6 +11,7 @@ Name[x-test]=xxRoxdoku Twinxx
 Description=Three-dimensional puzzle with two 3x3x3 cubes which share a corner
 Description[es]=Rompecabezas tridimensional con dos cubos de 3x3x3 que comparten una esquina
 Description[nl]=Driedimensionale puzzel met twee 3x3x3 kubussen die een hoek delen
+Description[pl]=Trójwymiarowe puzzle z dwoma kostkami 3x3x3, które współdzielą narożnik
 Description[pt]='Puzzle' tridimensional com dois cubos 3x3x3 que partilham um canto
 Description[pt_BR]=Quebra-cabeça tridimensional com dois cubos 3x3x3 que compartilham um canto
 Description[sv]=Tredimensionellt spel med två 3x3x3 kuber som delar ett hörn

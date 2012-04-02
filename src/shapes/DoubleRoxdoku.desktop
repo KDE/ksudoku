@@ -2,6 +2,7 @@
 Name=Double Roxdoku
 Name[es]=Roxdoku doble
 Name[nl]=Double Roxdoku
+Name[pl]=Podwójne Roxdoku
 Name[pt]=Roxdoku Duplo
 Name[pt_BR]=Roxdoku Duplo
 Name[sv]=Dubbel Roxdoku
@@ -10,6 +11,7 @@ Name[x-test]=xxDouble Roxdokuxx
 Description=Three-dimensional puzzle with two interlocking 3x3x3 cubes
 Description[es]=Rompecabezas tridimensional con dos cubos entrelazados de 3x3x3
 Description[nl]=Driedimensionale puzzel met twee in elkaar passende 3x3x3 kubussen
+Description[pl]=Trójwymiarowe puzzle z dwoma zblokowanymi kostkami 3x3x3
 Description[pt]=Puzzle tridimensional com dois cubos 3x3x3 interbloqueados
 Description[pt_BR]=Quebra-cabeça tridimensional com dois cubos 3x3x3 interbloqueados
 Description[sv]=Tredimensionellt spel med två sammanlänkade 3x3x3 kuber
