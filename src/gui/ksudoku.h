@@ -26,7 +26,9 @@
 #if 0
 #include <knewstuff/knewstuff.h>
 #endif
-#include <KGameDifficulty>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamedifficulty.h>
 
 class KUrl;
 

@@ -34,7 +34,9 @@
 #include <KStandardAction>
 #include <KAction>
 #include <KConfigDialog>
-#include <KGameThemeSelector>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamethemeselector.h>
 
 #include <KCmdLineArgs>
 #include <KAboutData>

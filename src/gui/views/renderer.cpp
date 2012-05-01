@@ -3,7 +3,9 @@
 #include <QSvgRenderer>
 #include <KStandardDirs>
 #include <kpixmapcache.h>
-#include <KGameTheme>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgametheme.h>
 
 #include "settings.h"
 
