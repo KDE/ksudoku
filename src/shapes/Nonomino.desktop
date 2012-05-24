@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Nonomino 9x9
 Name[es]=Nonominó 9x9
+Name[et]=Nonomino 9x9
 Name[gl]=Nonomino 9x9
 Name[nl]=Nonomino 9x9
 Name[pl]=Nonomino 9x9
@@ -13,6 +14,7 @@ Name[x-test]=xxNonomino 9x9xx
 Name[zh_TW]=Nonomino 9x9
 Description=Jigsaw variant with irregularly shaped Nonomino blocks
 Description[es]=Variante de rompecabezas con bloques de nonominós de forma irregular
+Description[et]=Nonomino ebareeglipäraste plokkidega sudoku
 Description[gl]=Variante do puzzle con bloques de Nonomino de formas irregulares
 Description[nl]=Legpuzzelvariant met onregelmatig gevormde Nonomino-blokken
 Description[pl]=Wariant układanki z nieregularnie ukształtowanymi blokami Nonomino
