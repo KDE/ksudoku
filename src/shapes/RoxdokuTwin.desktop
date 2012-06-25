@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Roxdoku Twin
+Name[de]=Roxdoku-Zwilling
 Name[es]=Roxdoku gemelos
 Name[et]=Kaksik-Roxdoku
 Name[hu]=Roxdoku Twin
@@ -18,6 +19,7 @@ Name[uk]=Роксудоку-близнюки
 Name[x-test]=xxRoxdoku Twinxx
 Name[zh_TW]=Roxdoku Twin
 Description=Three-dimensional puzzle with two 3x3x3 cubes which share a corner
+Description[de]=Dreidimensionales Rätsel, bei dem zwei 3x3x3-Würfel eine gemeinsame Ecke haben
 Description[es]=Rompecabezas tridimensional con dos cubos de 3x3x3 que comparten una esquina
 Description[et]=Kolmemõõtmeline sudoku kahe nurkapidi kokkupuutuva 3x3x3 kuubikuga
 Description[hu]=Háromdimenziós kirakó két 3x3x3-as kockával, amelyeknek közös a sarkuk
