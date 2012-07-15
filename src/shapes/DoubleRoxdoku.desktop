@@ -1,8 +1,10 @@
 [KSudokuVariant]
 Name=Double Roxdoku
+Name[da]=Dobbelt Roxdoku
 Name[de]=Doppel-Roxdoku
 Name[es]=Roxdoku doble
 Name[et]=Topelt-Roxdoku
+Name[fr]=Roxdoku double
 Name[hu]=Dupla Roxdoku
 Name[km]=Roxdoku ទ្វេ
 Name[lv]=Divkāršais Roksdoku
@@ -20,9 +22,11 @@ Name[uk]=Подвійне роксудоку
 Name[x-test]=xxDouble Roxdokuxx
 Name[zh_TW]=Double Roxdoku
 Description=Three-dimensional puzzle with two interlocking 3x3x3 cubes
+Description[da]=Trediminsionel opgave med to sammenkædede 3x3x3-terninger
 Description[de]=Dreidimensionales Rätsel mit zwei verschränkten 3x3x3-Würfeln
 Description[es]=Rompecabezas tridimensional con dos cubos entrelazados de 3x3x3
 Description[et]=Kolmemõõtmeline sudoku kahe haakuva 3x3x3 kuubikuga
+Description[fr]=Puzzle à trois dimensions comprenant deux cubes 3x3x3 verrouillés
 Description[hu]=Háromdimenziós kirakó két egymásba illeszkedő 3x3x3-as kockával
 Description[km]=ល្បែង​ផ្គុំរូប​វិមាត្រ​បី​ដែល​មាន​គូប​ 3x3x3 ពីរ
 Description[lv]=Trīsdimensionāla mīkla ar diviem 3x3x3 kubiem

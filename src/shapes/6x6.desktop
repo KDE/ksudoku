@@ -1,8 +1,10 @@
 [KSudokuVariant]
 Name=6x6
+Name[da]=6x6
 Name[de]=6x6
 Name[es]=6x6
 Name[et]=6x6
+Name[fr]=6x6
 Name[gl]=6x6
 Name[hu]=6x6
 Name[km]=6x6
@@ -22,9 +24,11 @@ Name[x-test]=xx6x6xx
 Name[zh_CN]=6x6
 Name[zh_TW]=6x6
 Description=6x6 puzzle with rectangular blocks
+Description[da]=6x6 opgave med rektangulære blokke
 Description[de]=6x6-Rätsel mit rechteckigen Blöcken
 Description[es]=Rompecabezas de 6x6 con bloques rectangulares
 Description[et]=6x6 sudoku nelinurksete plokkidega
+Description[fr]=Un puzzle 6x6 avec des blocs rectangulaires
 Description[gl]=Un puzzle de 6x6 con bloques rectangulares
 Description[hu]=6x6-os feladvány négyszögletes blokkokkal
 Description[km]=ល្បែង​ផ្គុំរូប 6x6 ដែល​មាន​ប្លុក​រាង​ចតុកោណកែង
