@@ -4,7 +4,7 @@ if(NOT COMPILING_KDEGAMES)
 	find_package(KDE4 REQUIRED)
 	include(KDE4Defaults)
 	include(MacroLibrary)
-	find_package(KDEGames REQUIRED)
+	find_package(KDEGames 4.9.0 REQUIRED)
 
 	macro_optional_find_package(OpenGL)
 	macro_log_feature(OPENGL_FOUND "OpenGL" "API for developing portable, interactive 2D and 3Dgraphics applications" "http://mesa3d.sourceforge.net" FALSE "" "Kubrick will not be built and KSudoku will not have Roxdoku support without OpenGL.")
