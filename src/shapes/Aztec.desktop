@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=Aztec
+Name[uk]=Ацтецька
+Name[x-test]=xxAztecxx
 Description=Jigsaw variant shaped like an Aztec pyramid
+Description[uk]=Варіант мозаїки у формі, подібній до ацтецької піраміди
+Description[x-test]=xxJigsaw variant shaped like an Aztec pyramidxx
 Author=Ian Wadham
 FileName=Aztec.xml
 Icon=ksudoku-jigsaw

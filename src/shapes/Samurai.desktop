@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=Samurai
+Name[uk]=Самурай
+Name[x-test]=xxSamuraixx
 Description=Samurai shape puzzle
+Description[uk]=Головоломка з частинок «Самурай»
+Description[x-test]=xxSamurai shape puzzlexx
 Author=Francesco Rossi
 FileName=Samurai.xml
 Icon=ksudoku-samurai

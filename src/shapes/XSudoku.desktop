@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=XSudoku
+Name[uk]=Кроссудоку
+Name[x-test]=xxXSudokuxx
 Description=XSudoku shape puzzle
+Description[uk]=Головоломка з правилами кроссудоку
+Description[x-test]=xxXSudoku shape puzzlexx
 Author=Francesco Rossi
 FileName=XSudoku.xml
 Icon=ksudoku-xsudoku

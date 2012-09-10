@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=6x6
+Name[uk]=6x6
+Name[x-test]=xx6x6xx
 Description=6x6 puzzle with rectangular blocks
+Description[uk]=Поле 6x6 з прямокутними блоками
+Description[x-test]=xx6x6 puzzle with rectangular blocksxx
 Author=Ian Wadham
 FileName=6x6.xml
 Icon=ksudoku-ksudoku_9x9

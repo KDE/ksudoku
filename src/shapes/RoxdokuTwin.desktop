@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=Roxdoku Twin
+Name[uk]=Роксудоку-близнюки
+Name[x-test]=xxRoxdoku Twinxx
 Description=Three-dimensional puzzle with two 3x3x3 cubes which share a corner
+Description[uk]=Тривимірна головоломка з двома кубічними частинами 3⨯3⨯3, що перетинаються кутом
+Description[x-test]=xxThree-dimensional puzzle with two 3x3x3 cubes which share a cornerxx
 Author=Ian Wadham
 FileName=RoxdokuTwin.xml
 Icon=ksudoku-roxdoku_3x3x3

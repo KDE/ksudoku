@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=Abstraction
+Name[uk]=Абстракція
+Name[x-test]=xxAbstractionxx
 Description=A ksudoku theme with abstract artwork.
+Description[uk]=Тема ksudoku у дусі абстрактного мистецтва.
+Description[x-test]=xxA ksudoku theme with abstract artwork.xx
 VersionFormat=1
 Author=Johannes Bergmeier
 AuthorEmail=Johannes.Bergmeier@gmx.net

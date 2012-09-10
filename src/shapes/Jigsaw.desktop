@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=Jigsaw
+Name[uk]=Мозаїка
+Name[x-test]=xxJigsawxx
 Description=Jigsaw shape puzzle
+Description[uk]=Головоломка з вирізаними шматками дошки
+Description[x-test]=xxJigsaw shape puzzlexx
 Author=Francesco Rossi
 FileName=Jigsaw.xml
 Icon=ksudoku-jigsaw

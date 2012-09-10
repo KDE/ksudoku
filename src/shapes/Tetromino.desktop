@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=Tetromino 4x4
+Name[uk]=Тетроміно 4x4
+Name[x-test]=xxTetromino 4x4xx
 Description=Jigsaw with Tetromino blocks (Tetris pieces)
+Description[uk]=Мозаїка з блоків тетроміно (подібних до блоків у тетрісі)
+Description[x-test]=xxJigsaw with Tetromino blocks (Tetris pieces)xx
 Author=Ian Wadham
 FileName=Tetromino.xml
 Icon=ksudoku-ksudoku_4x4

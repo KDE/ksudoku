@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=Samurai Roxdoku
+Name[uk]=Самурайське роксудоку
+Name[x-test]=xxSamurai Roxdokuxx
 Description=Samurai three-dimensional puzzle with nine 3x3x3 cubes
+Description[uk]=Самурайська тривимірна головоломка з дев’ятьма кубічними частинами 3⨯3⨯3
+Description[x-test]=xxSamurai three-dimensional puzzle with nine 3x3x3 cubesxx
 Author=Ian Wadham
 FileName=SamuraiRoxdoku.xml
 Icon=ksudoku-roxdoku_3x3x3

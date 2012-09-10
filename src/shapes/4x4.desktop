@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=4x4
+Name[uk]=4x4
+Name[x-test]=xx4x4xx
 Description=4x4 shape puzzle
+Description[uk]=Головоломка 4x4 частинки
+Description[x-test]=xx4x4 shape puzzlexx
 Author=Francesco Rossi
 FileName=4x4.xml
 Icon=ksudoku-ksudoku_4x4

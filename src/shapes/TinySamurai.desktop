@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=Tiny Samurai
+Name[uk]=Маленький самурай
+Name[x-test]=xxTiny Samuraixx
 Description=A smaller samurai puzzle
+Description[uk]=Менша головоломка «Самурай»
+Description[x-test]=xxA smaller samurai puzzlexx
 Author=Francesco Rossi
 FileName=TinySamurai.xml
 Icon=ksudoku-tiny_samurai

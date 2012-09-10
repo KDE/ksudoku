@@ -1,10 +1,16 @@
 [Desktop Entry]
 Name=KSudoku
+Name[uk]=KSudoku
+Name[x-test]=xxKSudokuxx
 Exec=ksudoku %i -caption "%c"
 Icon=ksudoku
 Type=Application
 X-DocPath=ksudoku/index.html
 GenericName=Sudoku Game
+GenericName[uk]=Гра у судоку
+GenericName[x-test]=xxSudoku Gamexx
 Comment=KSudoku, Sudoku game & more for KDE
+Comment[uk]=KSudoku, Гра у судоку і інше для KDE
+Comment[x-test]=xxKSudoku, Sudoku game & more for KDExx
 Terminal=false
 Categories=Qt;KDE;Game;LogicGame;

@@ -1,6 +1,10 @@
 [KGameTheme]
 Name=Scribble
+Name[uk]=Шкрябанина
+Name[x-test]=xxScribblexx
 Description=KSudoku Scribble theme for KDE 4
+Description[uk]=Тема «Карлючки» KSudoku для KDE 4
+Description[x-test]=xxKSudoku Scribble theme for KDE 4xx
 VersionFormat=1
 Author=Johannes Bergmeier
 AuthorEmail=Johannes.Bergmeier@gmx.net

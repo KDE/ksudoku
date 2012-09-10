@@ -1,6 +1,10 @@
 [KSudokuVariant]
 Name=Nonomino 9x9
+Name[uk]=Нономіно 9x9
+Name[x-test]=xxNonomino 9x9xx
 Description=Jigsaw variant with irregularly shaped Nonomino blocks
+Description[uk]=Варіант мозаїки з блоками нономіно неправильної форми
+Description[x-test]=xxJigsaw variant with irregularly shaped Nonomino blocksxx
 Author=Ian Wadham
 FileName=Nonomino.xml
 Icon=ksudoku-jigsaw
