@@ -8,8 +8,8 @@
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
 
-<book lang="&language;"> <!-- do not change this! -->
-<bookinfo>
+<book id="ksudoku" lang="&language;"> <!-- do not change this! -->
+<book id="ksudoku"info>
 	<title>The &kappname; Handbook</title> <!-- This is the title of this docbook. -->
 <!-- List of immediate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
