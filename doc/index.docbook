@@ -9,7 +9,7 @@
 ]>
 
 <book id="ksudoku" lang="&language;"> <!-- do not change this! -->
-<book id="ksudoku"info>
+<bookinfo>
 	<title>The &kappname; Handbook</title> <!-- This is the title of this docbook. -->
 <!-- List of immediate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
