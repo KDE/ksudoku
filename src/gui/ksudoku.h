@@ -39,8 +39,10 @@ class GameVariantCollection;
 class ValueListWidget;
 class WelcomeScreen;
 class Game;
+class Puzzle;
 }
 
+class SKGraph;
 
 /**
  * This class serves as the main window for ksudoku.  It handles the
@@ -144,6 +146,7 @@ private:
 
 	void adaptActions2View();
 
+	void sendToPrinter (const ksudoku::Puzzle * puzzle);
 	
 private:
 	QWidget* wrapper;

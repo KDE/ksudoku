@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <gui name="ksudoku"
-     version="4"
+     version="5"
      xmlns="http://www.kde.org/standards/kxmlgui/1.0"
      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
      xsi:schemaLocation="http://www.kde.org/standards/kxmlgui/1.0
@@ -15,7 +15,6 @@
 		<Action group="save_merge" name="game_save_as" />
 		<Separator group="save_merge" />
 		<Action group="print_merge" name="game_print" />
-		<Action group="print_merge" name="game_export" />
 		<Separator group="print_merge" />
 		<Action group="game_merge" name="game_quit" />
 	</Menu>
@@ -41,6 +40,7 @@
 <ToolBar name="mainToolBar">
 	<text>Main Toolbar</text>
 	<Action name="game_new" />
+	<Action name="game_print" />
 </ToolBar>
 
 <ToolBar noMerge="1" name="actionsToolbar" position="top">

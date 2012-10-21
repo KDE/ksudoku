@@ -19,6 +19,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "globals.h"
 #include "ksudoku.h"
 
 #include <QDragEnterEvent>
@@ -28,6 +29,9 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QComboBox>
+
+#include <QPrinter>
+#include <QPrintDialog>
 
 #include <KLocale>
 #include <KActionCollection>
@@ -55,6 +59,7 @@
 #include "renderer.h"
 
 #include "puzzle.h" // TODO
+#include "skgraph.h"
 #include "serializer.h"
 
 #include <ktar.h>
@@ -364,7 +369,7 @@ void KSudoku::setupActions()
 	m_gameSave = KStandardGameAction::save(this, SLOT(gameSave()), actionCollection());
 	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(gameSaveAs()), actionCollection());
 	// TODO Print and Export are disabled due to missing port to KDE4
-// 	KStandardGameAction::print(this, SLOT(gamePrint()), actionCollection());
+ 	KStandardGameAction::print(this, SLOT(gamePrint()), actionCollection());
 	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
 	// TODO Print and Export are disables due to missing port to KDE4
 // 	createAction("game_export", SLOT(gameExport()), i18n("Export"));
@@ -615,17 +620,171 @@ void KSudoku::gameSaveAs()
 
 void KSudoku::gamePrint()
 {
-    // this slot is called whenever the Game->Print menu is selected,
+    // This slot is called whenever the Game->Print menu is selected,
     // the Print shortcut is pressed (usually CTRL+P) or the Print toolbar
     // button is clicked
 
-// 	Game* game = currentGame();
+    qDebug() << "CALLED void KSudoku::gamePrint() ...";
+    Game game = currentGame();
+    if (! game.isValid()) {
+        // IDW TODO - Error message, nothing to print.
+        return;
+    }
+    sendToPrinter (game.puzzle());
+}
 
-//TODO PORT
-// 	ksudoku::KsView* view = currentView();
-//	if(view)
-//		ksudoku::Print p(*view);// *game, game->solver()->g->sizeZ() > 0);
-	//else ??? give message noting to print with hint what is printable ??
+void KSudoku::sendToPrinter (const Puzzle * puzzle)
+{
+    const SKGraph * graph = puzzle->graph();
+    QString labels = (graph->base() <= 3) ? "123456789" :
+                                            "ABCDEFGHIJKLMNOPQRSTUVWXY";
+    enum Edge {Left = 0, Right, Above, Below};
+    const int All = (1 << Left) + (1 << Right) + (1 << Above) + (1 << Below);
+
+    QPrinter printer (QPrinter::HighResolution);
+    QPrintDialog *dialog = new QPrintDialog(&printer, this);
+    dialog->setWindowTitle(i18n("Print Sudoku Puzzle"));
+    if (dialog->exec() != QDialog::Accepted)
+        return;
+
+    QList<int> groups;
+    QList<QVector<int> *> groupEdges;
+    int order = graph->order();
+    for (int n = 0; n < graph->cliqueCount(); n++) {
+        QVector<int> clique = graph->clique (n);
+        int x = graph->cellPosX (clique.at (0));
+        int y = graph->cellPosY (clique.at (0));
+        bool isRow = true;
+        bool isCol = true;
+        for (int k = 1; k < order; k++) {
+            if (graph->cellPosX (clique.at (k)) != x) isRow = false;
+            if (graph->cellPosY (clique.at (k)) != y) isCol = false;
+        }
+        // qDebug() << "CLIQUE" << n << "isRow" << isRow << "isCol" << isCol;
+        if (isRow || isCol) continue;
+        groups.append (n);
+    }
+    // qDebug() << "LIST of GROUPS" << groups;
+    for (int n = 0; n < groups.count(); n++) {
+        QVector<int> clique = graph->clique (groups.at (n));
+        QVector<int> * edges = new QVector<int> (order, 0);
+        for (int k = 0; k < order; k++) {
+            int cell = clique.at (k);
+            int x = graph->cellPosX (clique.at (k));
+            int y = graph->cellPosY (clique.at (k));
+            int nb[4] = {-1, -1, -1, -1};
+            int lim = graph->sizeX() - 1;
+
+            // Start with all edges: remove them as neighbours are found.
+            int edge = All;
+            nb[Left]  = (x > 0)   ? graph->cellIndex (x-1, y) : -1;
+            nb[Right] = (x < lim) ? graph->cellIndex (x+1, y) : -1;
+            nb[Above] = (y > 0)   ? graph->cellIndex (x, y-1) : -1;
+            nb[Below] = (y < lim) ? graph->cellIndex (x, y+1) : -1;
+            for (int neighbour = 0; neighbour < 4; neighbour++) {
+                if ((nb[neighbour] < 0) || (puzzle->value(nb[neighbour]) < 0)) {
+                    continue;		// No neighbour on this side.
+                }
+                for (int cl = 0; cl < order; cl++) {
+                    if (clique.at (cl) == nb[neighbour]) {
+                        edge = edge - (1 << neighbour);
+                    }
+                }
+            }
+            (* edges)[k] = edge;
+        }
+        // qDebug() << "GROUP" << n << "=" << clique << "EDGES" << (* edges);
+        groupEdges.append (edges);
+    }
+
+    int pixels = qMin (printer.width(), printer.height());
+    // qDebug() << "Printer has w =" << printer.width()
+             // << "h =" << printer.height() << "pix =" << pixels;
+
+    int size    = pixels - (pixels / 20);	// Allow about 2.5% each side.
+    int divs    = (graph->sizeX() > 18) ? graph->sizeX() : 18;
+    int sCell   = size / divs;
+    size        = graph->sizeX() * sCell;
+    int margin1 = (pixels - size) / 2;
+    int margin2 = (qMax (printer.width(), printer.height()) - size) / 2;
+    int topX    = (printer.width() < printer.height()) ? margin1 : margin2;
+    int topY    = (printer.width() < printer.height()) ? margin2 : margin1;
+    // qDebug() << "margin1" << margin1 << "margin2" << margin2 << "size" << size
+             // << "topX" << topX << "topY" << topY;
+
+    int thin    = sCell / 40;	// Allow 0.25%.
+    int thick   = (thin > 0) ? 2 * thin : 2;
+    int nLines  = graph->order() + 1;
+    // qDebug() << "thin" << thin << "thick" << thick << "nLines" << nLines;
+
+    QPen light (QColor(QString("lightblue")));
+    QPen heavy (QColor(QString("black")));
+    light.setWidth (thin);
+    heavy.setWidth (thick);
+
+    QPainter p (&printer);
+    QFont    f = p.font();
+
+    f.setPixelSize ((sCell * 6) / 10);		// Font size 60% height of cell.
+    p.setFont (f);
+
+    // Draw the faint lines that go inside the blocks.
+    p.setPen (light);
+    for (int n = 0; n < graph->size(); n++) {
+        if (puzzle->value (n) < 0) {
+            continue;		// Do not draw unused cells.
+        }
+        int row = graph->cellPosY (n);
+        int col = graph->cellPosX (n);
+        p.drawRect (topX + sCell * col, topY + sCell * row, sCell, sCell);
+    }
+
+    // Highlight each group of cells with heavy lines or shading.
+    p.setPen (heavy);
+    for (int n = 0; n < groups.count(); n++) {
+        QVector<int> clique = graph->clique (groups.at (n));
+        QVector<int> * edges = groupEdges.at (n);
+        for (int k = 0; k < order; k++) {
+            int edge = edges->at (k);
+            if (edge == 0) continue;
+
+            int x = topX + sCell * graph->cellPosX (clique.at (k));
+            int y = topY + sCell * graph->cellPosY (clique.at (k));
+            if (edge == All) {
+                // Shade cells that do not adjoin other cells in their group.
+                p.fillRect (x, y, sCell, sCell, Qt::Dense6Pattern);
+            }
+            else {
+                // Draw the outer edge(s) of a boundary cell of this group.
+                if (edge & (1 << Left)) {		// Left edge.
+                    p.drawLine (x, y, x, y + sCell);
+                }
+                if (edge & (1 << Right)) {		// Right edge.
+                    p.drawLine (x + sCell, y, x + sCell, y + sCell);
+                }
+                if (edge & (1 << Above)) {		// Top edge.
+                    p.drawLine (x, y, x + sCell, y);
+                }
+                if (edge & (1 << Below)) {		// Bottom edge.
+                    p.drawLine (x, y + sCell, x + sCell, y + sCell);
+                }
+            }
+        }
+        delete edges;
+    }
+    groups.clear();
+    groupEdges.clear();
+
+    // Fill in the cell contents.
+    for (int n = 0; n < graph->size(); n++) {
+        int row = graph->cellPosY (n);
+        int col = graph->cellPosX (n);
+        QRectF rect (topX + sCell * col, topY + sCell * row, sCell, sCell);
+        if (puzzle->value (n) > 0) {
+            p.drawText (rect, Qt::AlignCenter,
+                        labels.mid (puzzle->value (n) - 1, 1));
+        }
+    }
 }
 
 void KSudoku::gameExport()
