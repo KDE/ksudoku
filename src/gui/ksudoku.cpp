@@ -721,12 +721,14 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
     QPen heavy (QColor(QString("black")));
     light.setWidth (thin);
     heavy.setWidth (thick);
+    heavy.setCapStyle (Qt::RoundCap);
 
+    // Set font size 60% height of cell. Do not draw gray lines on top of black.
     QPainter p (&printer);
     QFont    f = p.font();
-
-    f.setPixelSize ((sCell * 6) / 10);		// Font size 60% height of cell.
+    f.setPixelSize ((sCell * 6) / 10);
     p.setFont (f);
+    p.setCompositionMode (QPainter::CompositionMode_Darken);
 
     // Draw each cell in the puzzle.
     for (int n = 0; n < graph->size(); n++) {
