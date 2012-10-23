@@ -620,10 +620,7 @@ void KSudoku::gameSaveAs()
 
 void KSudoku::gamePrint()
 {
-    // This slot is called whenever the Game->Print menu is selected,
-    // the Print shortcut is pressed (usually CTRL+P) or the Print toolbar
-    // button is clicked
-
+    // This slot is called whenever the Game->Print action is selected.
     qDebug() << "CALLED void KSudoku::gamePrint() ...";
     Game game = currentGame();
     if (! game.isValid()) {
@@ -638,7 +635,7 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
     const SKGraph * graph = puzzle->graph();
     QString labels = (graph->base() <= 3) ? "123456789" :
                                             "ABCDEFGHIJKLMNOPQRSTUVWXY";
-    enum Edge {Left = 0, Right, Above, Below};
+    enum Edge {Left = 0, Right, Above, Below, Detached};
     const int All = (1 << Left) + (1 << Right) + (1 << Above) + (1 << Below);
 
     QPrinter printer (QPrinter::HighResolution);
@@ -648,8 +645,10 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
         return;
 
     QList<int> groups;
-    QList<QVector<int> *> groupEdges;
+    QVector<int> edges (graph->size(), 0);
     int order = graph->order();
+
+    // Find out which groups are blocks of cells, rather than rows or columns.
     for (int n = 0; n < graph->cliqueCount(); n++) {
         QVector<int> clique = graph->clique (n);
         int x = graph->cellPosX (clique.at (0));
@@ -665,9 +664,10 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
         groups.append (n);
     }
     // qDebug() << "LIST of GROUPS" << groups;
+
+    // Mark the edges of each block, which have no neighbours inside the block.
     for (int n = 0; n < groups.count(); n++) {
         QVector<int> clique = graph->clique (groups.at (n));
-        QVector<int> * edges = new QVector<int> (order, 0);
         for (int k = 0; k < order; k++) {
             int cell = clique.at (k);
             int x = graph->cellPosX (clique.at (k));
@@ -691,10 +691,9 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
                     }
                 }
             }
-            (* edges)[k] = edge;
+            edge = (edge == All) ? (1 << Detached) : edge;
+            edges [cell] |= edge;	// Merge the edges found for this cell.
         }
-        // qDebug() << "GROUP" << n << "=" << clique << "EDGES" << (* edges);
-        groupEdges.append (edges);
     }
 
     int pixels = qMin (printer.width(), printer.height());
@@ -712,12 +711,13 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
     // qDebug() << "margin1" << margin1 << "margin2" << margin2 << "size" << size
              // << "topX" << topX << "topY" << topY;
 
-    int thin    = sCell / 40;	// Allow 0.25%.
-    int thick   = (thin > 0) ? 2 * thin : 2;
+    int thin    = sCell / 40;	// Allow 2.5%.
+    int thick   = (thin > 0) ? 3 * thin : 3;
     int nLines  = graph->order() + 1;
     // qDebug() << "thin" << thin << "thick" << thick << "nLines" << nLines;
 
-    QPen light (QColor(QString("lightblue")));
+    // QPen light (QColor(QString("lightblue")));
+    QPen light (QColor("#888888"));
     QPen heavy (QColor(QString("black")));
     light.setWidth (thin);
     heavy.setWidth (thick);
@@ -728,59 +728,26 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
     f.setPixelSize ((sCell * 6) / 10);		// Font size 60% height of cell.
     p.setFont (f);
 
-    // Draw the faint lines that go inside the blocks.
-    p.setPen (light);
+    // Draw each cell in the puzzle.
     for (int n = 0; n < graph->size(); n++) {
         if (puzzle->value (n) < 0) {
-            continue;		// Do not draw unused cells.
+            continue;				// Do not draw unused cells.
         }
-        int row = graph->cellPosY (n);
-        int col = graph->cellPosX (n);
-        p.drawRect (topX + sCell * col, topY + sCell * row, sCell, sCell);
-    }
-
-    // Highlight each group of cells with heavy lines or shading.
-    p.setPen (heavy);
-    for (int n = 0; n < groups.count(); n++) {
-        QVector<int> clique = graph->clique (groups.at (n));
-        QVector<int> * edges = groupEdges.at (n);
-        for (int k = 0; k < order; k++) {
-            int edge = edges->at (k);
-            if (edge == 0) continue;
-
-            int x = topX + sCell * graph->cellPosX (clique.at (k));
-            int y = topY + sCell * graph->cellPosY (clique.at (k));
-            if (edge == All) {
-                // Shade cells that do not adjoin other cells in their group.
-                p.fillRect (x, y, sCell, sCell, Qt::Dense6Pattern);
-            }
-            else {
-                // Draw the outer edge(s) of a boundary cell of this group.
-                if (edge & (1 << Left)) {		// Left edge.
-                    p.drawLine (x, y, x, y + sCell);
-                }
-                if (edge & (1 << Right)) {		// Right edge.
-                    p.drawLine (x + sCell, y, x + sCell, y + sCell);
-                }
-                if (edge & (1 << Above)) {		// Top edge.
-                    p.drawLine (x, y, x + sCell, y);
-                }
-                if (edge & (1 << Below)) {		// Bottom edge.
-                    p.drawLine (x, y + sCell, x + sCell, y + sCell);
-                }
-            }
+        int x = topX + sCell * graph->cellPosX (n);
+        int y = topY + sCell * graph->cellPosY (n);
+        QRect rect (x, y, sCell, sCell);
+        int edge = edges.at (n);
+        if (edge & (1 << Detached)) {		// Shade a cell, as in XSudoku.
+            p.fillRect (rect, QColor ("#DDDDDD"));
         }
-        delete edges;
-    }
-    groups.clear();
-    groupEdges.clear();
-
-    // Fill in the cell contents.
-    for (int n = 0; n < graph->size(); n++) {
-        int row = graph->cellPosY (n);
-        int col = graph->cellPosX (n);
-        QRectF rect (topX + sCell * col, topY + sCell * row, sCell, sCell);
-        if (puzzle->value (n) > 0) {
+	p.setPen (light);			// First draw every cell light.
+        p.drawRect (rect);
+	p.setPen (heavy);			// Draw block boundaries heavy.
+        if (edge & (1<<Left))  p.drawLine (x, y, x, y + sCell);
+        if (edge & (1<<Right)) p.drawLine (x + sCell, y, x + sCell, y + sCell);
+        if (edge & (1<<Above)) p.drawLine (x, y, x + sCell, y);
+        if (edge & (1<<Below)) p.drawLine (x, y + sCell, x + sCell, y + sCell);
+        if (puzzle->value (n) > 0) {		// Draw symbol, if present.
             p.drawText (rect, Qt::AlignCenter,
                         labels.mid (puzzle->value (n) - 1, 1));
         }
