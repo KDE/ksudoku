@@ -12,6 +12,32 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
+    <widget class="QCheckBox" name="kcfg_PrintMulti">
+     <property name="toolTip">
+      <string/>
+     </property>
+     <property name="text">
+      <string>When printing, try to fit more than one puzzle on a page</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>30</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
     <widget class="QCheckBox" name="kcfg_ShowHighlights">
      <property name="toolTip">
       <string>Highlight the row, column and block that contain the selected cell</string>

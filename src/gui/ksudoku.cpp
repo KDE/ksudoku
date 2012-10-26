@@ -2,6 +2,7 @@
  *   Copyright 2005-2007 Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -52,8 +53,6 @@
 #include <kfiledialog.h>
 #include <krun.h>
 
-//#include "print.h" //TODO PORT
-//#include "exportdlg.h"
 #include "ksview.h"
 #include "gameactions.h"
 #include "renderer.h"
@@ -121,7 +120,12 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 // }
 
 KSudoku::KSudoku()
-	: KXmlGuiWindow(), m_gameVariants(new GameVariantCollection(this, true))
+	:
+	KXmlGuiWindow(),
+	m_gameVariants(new GameVariantCollection(this, true)),
+	m_printer(0),
+	m_p(0),
+	m_quadrant(0)
 {
 	setObjectName( QLatin1String("ksudoku" ));
 
@@ -167,6 +171,8 @@ KSudoku::KSudoku()
 
 KSudoku::~KSudoku()
 {
+	delete m_p;
+	delete m_printer;
 	endCurrentGame();
 }
 
@@ -368,10 +374,9 @@ void KSudoku::setupActions()
 	KStandardGameAction::load(this, SLOT(gameOpen()), actionCollection());
 	m_gameSave = KStandardGameAction::save(this, SLOT(gameSave()), actionCollection());
 	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(gameSaveAs()), actionCollection());
-	// TODO Print and Export are disabled due to missing port to KDE4
  	KStandardGameAction::print(this, SLOT(gamePrint()), actionCollection());
 	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
-	// TODO Print and Export are disables due to missing port to KDE4
+	// TODO Export is disabled due to missing port to KDE4.
 // 	createAction("game_export", SLOT(gameExport()), i18n("Export"));
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
@@ -621,10 +626,10 @@ void KSudoku::gameSaveAs()
 void KSudoku::gamePrint()
 {
     // This slot is called whenever the Game->Print action is selected.
-    qDebug() << "CALLED void KSudoku::gamePrint() ...";
     Game game = currentGame();
     if (! game.isValid()) {
-        // IDW TODO - Error message, nothing to print.
+        KMessageBox::information (this,
+            i18n("There seems to be no puzzle to print."));
         return;
     }
     sendToPrinter (game.puzzle());
@@ -633,23 +638,42 @@ void KSudoku::gamePrint()
 void KSudoku::sendToPrinter (const Puzzle * puzzle)
 {
     const SKGraph * graph = puzzle->graph();
-    QString labels = (graph->base() <= 3) ? "123456789" :
-                                            "ABCDEFGHIJKLMNOPQRSTUVWXY";
+    if (graph->sizeZ() > 1) {
+        KMessageBox::information (this,
+            i18n("Sorry, cannot print three-dimensional puzzles."));
+        return;
+    }
+    const bool printMulti = Settings::printMulti();
+    const int  across  = 2;
+    const int  down    = 2;
+    const QString labels = (graph->base() <= 3) ? "123456789" :
+                                                  "ABCDEFGHIJKLMNOPQRSTUVWXY";
     enum Edge {Left = 0, Right, Above, Below, Detached};
     const int All = (1 << Left) + (1 << Right) + (1 << Above) + (1 << Below);
 
-    QPrinter printer (QPrinter::HighResolution);
-    QPrintDialog *dialog = new QPrintDialog(&printer, this);
-    dialog->setWindowTitle(i18n("Print Sudoku Puzzle"));
-    if (dialog->exec() != QDialog::Accepted)
-        return;
+    // The printer and painter objects can persist between print requests, so
+    // (if required) we can print several puzzles per page and defer printing
+    // until the page is full or KSudoku terminates and the painter ends itself.
+    // NOTE: Must create painter before using functions like m_printer->width().
+    if (m_printer == 0) {
+        m_printer = new QPrinter (QPrinter::HighResolution);
+        QPrintDialog * dialog = new QPrintDialog(m_printer, this);
+        dialog->setWindowTitle(i18n("Print Sudoku Puzzle"));
+        if (dialog->exec() != QDialog::Accepted) {
+            delete m_printer;
+            m_printer = 0;
+            return;
+        }
+    }
+    if (m_p == 0) {
+        m_p = new QPainter (m_printer);	// Start a new print job.
+    }
 
-    QList<int> groups;
     QVector<int> edges (graph->size(), 0);
     int order = graph->order();
 
-    // Find out which groups are blocks of cells, rather than rows or columns.
     for (int n = 0; n < graph->cliqueCount(); n++) {
+        // Find out which groups are blocks of cells, not rows or columns.
         QVector<int> clique = graph->clique (n);
         int x = graph->cellPosX (clique.at (0));
         int y = graph->cellPosY (clique.at (0));
@@ -659,19 +683,13 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
             if (graph->cellPosX (clique.at (k)) != x) isRow = false;
             if (graph->cellPosY (clique.at (k)) != y) isCol = false;
         }
-        // qDebug() << "CLIQUE" << n << "isRow" << isRow << "isCol" << isCol;
-        if (isRow || isCol) continue;
-        groups.append (n);
-    }
-    // qDebug() << "LIST of GROUPS" << groups;
+        if (isRow || isCol) continue;	// Skip rows and columns.
 
-    // Mark the edges of each block, which have no neighbours inside the block.
-    for (int n = 0; n < groups.count(); n++) {
-        QVector<int> clique = graph->clique (groups.at (n));
+        // Mark the outside edges of each block.
         for (int k = 0; k < order; k++) {
             int cell = clique.at (k);
-            int x = graph->cellPosX (clique.at (k));
-            int y = graph->cellPosY (clique.at (k));
+            int x = graph->cellPosX (cell);
+            int y = graph->cellPosY (cell);
             int nb[4] = {-1, -1, -1, -1};
             int lim = graph->sizeX() - 1;
 
@@ -696,27 +714,39 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
         }
     }
 
-    int pixels = qMin (printer.width(), printer.height());
-    // qDebug() << "Printer has w =" << printer.width()
-             // << "h =" << printer.height() << "pix =" << pixels;
-
+    // Calculate the printed dimensions of the puzzle.
+    m_printer->setFullPage (false);		// Allow minimal margins.
+    int pixels  = qMin (m_printer->width(), m_printer->height());
     int size    = pixels - (pixels / 20);	// Allow about 2.5% each side.
-    int divs    = (graph->sizeX() > 18) ? graph->sizeX() : 18;
-    int sCell   = size / divs;
-    size        = graph->sizeX() * sCell;
-    int margin1 = (pixels - size) / 2;
-    int margin2 = (qMax (printer.width(), printer.height()) - size) / 2;
-    int topX    = (printer.width() < printer.height()) ? margin1 : margin2;
-    int topY    = (printer.width() < printer.height()) ? margin2 : margin1;
-    // qDebug() << "margin1" << margin1 << "margin2" << margin2 << "size" << size
-             // << "topX" << topX << "topY" << topY;
+    int divs    = (graph->sizeX() > 20) ? graph->sizeX() : 20;
+    int sCell   = size / divs;			// Size of each cell.
+    size        = graph->sizeX() * sCell;	// Size of the whole puzzle.
 
+    // Check if we require more than one puzzle per page and if they would fit.
+    bool manyUp = printMulti && (pixels > (across * size));
+    int margin1 = manyUp ? (pixels - across * size) / (across + 1)	// > 1.
+                         : (pixels - size) / 2;				// = 1.
+    pixels      = qMax (m_printer->width(), m_printer->height());
+    int margin2 = manyUp ? (pixels - down * size) / (down + 1)		// > 1.
+                         : (pixels - size) / 2;				// = 1.
+
+    // Check for landscape vs. portrait mode and set the margins accordingly.
+    int topX    = (m_printer->width() < m_printer->height())? margin1 : margin2;
+    int topY    = (m_printer->width() < m_printer->height())? margin2 : margin1;
+
+    if ((m_quadrant > 0) && (! manyUp)) {
+        bool test = m_printer->newPage();	// Page has previous output.
+        m_quadrant = 0;
+    }
+    topX = manyUp ? topX + (m_quadrant % across) * (topX + size) : topX;
+    topY = manyUp ? topY + (m_quadrant / across) * (topY + size) : topY;
+    m_quadrant = manyUp ? (m_quadrant + 1) : (across * down);
+
+    // Set up parameters for the heavy and light line-drawing.
     int thin    = sCell / 40;	// Allow 2.5%.
     int thick   = (thin > 0) ? 3 * thin : 3;
     int nLines  = graph->order() + 1;
-    // qDebug() << "thin" << thin << "thick" << thick << "nLines" << nLines;
 
-    // QPen light (QColor(QString("lightblue")));
     QPen light (QColor("#888888"));
     QPen heavy (QColor(QString("black")));
     light.setWidth (thin);
@@ -724,11 +754,10 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
     heavy.setCapStyle (Qt::RoundCap);
 
     // Set font size 60% height of cell. Do not draw gray lines on top of black.
-    QPainter p (&printer);
-    QFont    f = p.font();
+    QFont    f = m_p->font();
     f.setPixelSize ((sCell * 6) / 10);
-    p.setFont (f);
-    p.setCompositionMode (QPainter::CompositionMode_Darken);
+    m_p->setFont (f);
+    m_p->setCompositionMode (QPainter::CompositionMode_Darken);
 
     // Draw each cell in the puzzle.
     for (int n = 0; n < graph->size(); n++) {
@@ -740,20 +769,49 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
         QRect rect (x, y, sCell, sCell);
         int edge = edges.at (n);
         if (edge & (1 << Detached)) {		// Shade a cell, as in XSudoku.
-            p.fillRect (rect, QColor ("#DDDDDD"));
+            m_p->fillRect (rect, QColor ("#DDDDDD"));
         }
-	p.setPen (light);			// First draw every cell light.
-        p.drawRect (rect);
-	p.setPen (heavy);			// Draw block boundaries heavy.
-        if (edge & (1<<Left))  p.drawLine (x, y, x, y + sCell);
-        if (edge & (1<<Right)) p.drawLine (x + sCell, y, x + sCell, y + sCell);
-        if (edge & (1<<Above)) p.drawLine (x, y, x + sCell, y);
-        if (edge & (1<<Below)) p.drawLine (x, y + sCell, x + sCell, y + sCell);
+        m_p->setPen (light);			// First draw every cell light.
+        m_p->drawRect (rect);
+        m_p->setPen (heavy);			// Draw block boundaries heavy.
+        if (edge & (1<<Left))  m_p->drawLine (x, y, x, y + sCell);
+        if (edge & (1<<Right)) m_p->drawLine (x+sCell, y, x+sCell, y+sCell);
+        if (edge & (1<<Above)) m_p->drawLine (x, y, x+sCell, y);
+        if (edge & (1<<Below)) m_p->drawLine (x, y+sCell, x+sCell, y+sCell);
         if (puzzle->value (n) > 0) {		// Draw symbol, if present.
-            p.drawText (rect, Qt::AlignCenter,
+            m_p->drawText (rect, Qt::AlignCenter,
                         labels.mid (puzzle->value (n) - 1, 1));
         }
     }
+    if ((! manyUp) || (m_quadrant >= (across * down))) {
+        endPrint();				// Print immediately.
+    }
+    else {
+        KMessageBox::information (this,
+            i18n ("The KSudoku setting for printing several puzzles per page "
+                  "is currently selected.\n\n"
+                  "Your puzzle will be printed when no more will fit on the "
+                  "page or when KSudoku terminates."));
+    }
+}
+
+void KSudoku::endPrint()
+{
+    if (m_p != 0) {
+        // The current print output goes to the printer when the painter ends.
+        m_p->end();
+        delete m_p;
+	m_p = 0;
+        m_quadrant = 0;
+        KMessageBox::information (this,
+            i18n ("KSudoku has sent output to your printer."));
+    }
+}
+
+bool KSudoku::queryClose()
+{
+    endPrint();
+    return true;
 }
 
 void KSudoku::gameExport()

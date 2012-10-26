@@ -103,6 +103,8 @@ public slots:
 
 	void startGame(const ::ksudoku::Game& game);
 	void endCurrentGame();
+
+	bool queryClose();
 	
 private slots:
 	void difficultyChanged (KGameDifficulty::standardLevel difficulty);
@@ -147,6 +149,7 @@ private:
 	void adaptActions2View();
 
 	void sendToPrinter (const ksudoku::Puzzle * puzzle);
+	void endPrint();
 	
 private:
 	QWidget* wrapper;
@@ -163,6 +166,10 @@ private:
 	ksudoku::KsView* m_gameUI;
 
 	ksudoku::GameActions* m_gameActions;
+
+	QPrinter * m_printer;
+	QPainter * m_p;
+	int m_quadrant;
 };
 
 #endif // _KSUDOKU_H_
