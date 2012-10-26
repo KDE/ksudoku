@@ -778,9 +778,14 @@ void KSudoku::sendToPrinter (const Puzzle * puzzle)
         if (edge & (1<<Right)) m_p->drawLine (x+sCell, y, x+sCell, y+sCell);
         if (edge & (1<<Above)) m_p->drawLine (x, y, x+sCell, y);
         if (edge & (1<<Below)) m_p->drawLine (x, y+sCell, x+sCell, y+sCell);
-        if (puzzle->value (n) > 0) {		// Draw symbol, if present.
+        if (puzzle->value (n) > 0) {	// Draw original puzzle values dark.
             m_p->drawText (rect, Qt::AlignCenter,
                         labels.mid (puzzle->value (n) - 1, 1));
+        }
+        else if (puzzle->value (n) == 0) {
+            m_p->setPen (light);	// Draw filled-in/solution values light.
+            m_p->drawText (rect, Qt::AlignCenter,
+                        labels.mid (currentGame().value (n) - 1, 1));
         }
     }
     if ((! manyUp) || (m_quadrant >= (across * down))) {
