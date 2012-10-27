@@ -396,6 +396,21 @@
 			</varlistentry>
 			<varlistentry>
 				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>P</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Print...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Prints</action> the
+				current state of the game on a printer of your
+				choice. The block outlines and original puzzle
+				values are printed in black. Other cells,
+				filled-in values and solution values are printed
+				in gray. There is an option to print just one
+				puzzle or more than one puzzle per page. See
+				<link linkend="configuration">Game Configuration</link>.</para></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><menuchoice>
 					<shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
 					<guimenu>Game</guimenu>
 					<guimenuitem>Quit</guimenuitem>
@@ -533,15 +548,27 @@ below:</para>
 <sect1 id="general-options"><title><guilabel>Game</guilabel>Options</title>
 	<variablelist>
 		<varlistentry>
-			<term><guilabel>Show Highlights</guilabel></term>
-			<listitem><para>Toggle the &kappname; highlight option.</para>
-					<note><title>Note:</title><para>Having this option enabled is recommended even for the most experienced players, as it helps to see the actual game board constraints.</para></note></listitem>
+			<term><guilabel>Printing</guilabel></term>
+			<listitem><para>Toggle the option to print more than one puzzle per page whenever they will fit.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Show Highlights in 2-D puzzles</guilabel></term>
+			<listitem><para>Toggle the &kappname; highlight option for two-dimensional puzzles.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Show Errors</guilabel></term>
-			<listitem><para>Toggle the invalid entry highlight.</para></listitem>
+			<listitem><para>Toggle the option to highlight errors.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Show Highlights in 3-D puzzles</guilabel></term>
+			<listitem><para>Toggle the &kappname; highlight option for three-dimensional puzzles.</para></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term><guilabel>Settings for 3-D Puzzles Only</guilabel></term>
+			<listitem><para>These five settings adjust the highlighting and visibility of cells in three-dimensional puzzles. The idea is to make it easier to see relationships between cells, especially if they are behind other cells.</para></listitem>
 		</varlistentry>
 	</variablelist>
+		<note><title>Note:</title><para>Having the highlighting options enabled is recommended even for the most experienced players, as it helps you see the actual game board constraints.</para></note>
 </sect1>
 </chapter>
 
