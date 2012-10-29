@@ -277,7 +277,6 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 	QString cacheName = QString("%1_%2_%3").arg(groupName).arg(symbol).arg(size);
 	QPixmap pix;
 	if(!m_cache->find(cacheName, pix)) {
-		qDebug() << cacheName;
 		pix = QPixmap(size, size);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
