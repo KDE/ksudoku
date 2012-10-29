@@ -200,14 +200,6 @@ public:
      */
     void                    setSeed();
 
-    /**
-     * Format some board-contents with ruled lines and boxes and send them to
-     * the default printer.  Uses Qt's QPrinter and QPainter classes.
-     *
-     * @param values        The contents of the board to be printed.
-     */
-    void                    sendToPrinter (const BoardContents & boardValues);
-
 protected:
     BoardContents           m_currentValues;	///< The current state of the
 						///< cell values during solve().

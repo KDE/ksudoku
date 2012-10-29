@@ -25,8 +25,6 @@
 #include <KMessageBox>
 
 #include <QMultiMap>
-#include <QPrinter>
-#include <QPainter>
 
 #include <QTime>
 
@@ -1072,104 +1070,6 @@ int SudokuBoard::getSymmetricIndices
             break;
     }
     return result;
-}
-
-void SudokuBoard::sendToPrinter (const BoardContents & boardValues)
-{
-    QString labels = (m_blockSize <= 3) ? "123456789" :
-                                          "ABCDEFGHIJKLMNOPQRSTUVWXY";
-
-    // This gets us to the installation's default printer (i.e. no dialog).
-    QPrinter printer (QPrinter::HighResolution);
-    int pixels = qMin (printer.width(), printer.height());
-    dbo "Printer has w = %d, h = %d, pix = %d\n",
-            printer.width(), printer.height(), pixels);
-
-    int size    = pixels - (pixels / 20);	// Allow about 2.5% each side.
-    int divs    = (m_boardSize > 18) ? m_boardSize : 18;
-    int sCell   = size / divs;
-    size        = m_boardSize * sCell;
-    int margin1 = (pixels - size) / 2;
-    int margin2 = (qMax (printer.width(), printer.height()) - size) / 2;
-    int topX    = (printer.width() < printer.height()) ? margin1 : margin2;
-    int topY    = (printer.width() < printer.height()) ? margin2 : margin1;
-    dbo "margin1 %d, margin2 %d, size %d, topX %d, topY %d\n",
-            margin1, margin2, size, topX, topY);
-
-    int thin    = sCell / 40;		// Allow 0.25%.
-    int thick   = (thin > 0) ? 2 * thin : 2;
-    int nLines  = m_order + 1;
-    dbo "thin %d, thick = %d, nLines = %d\n", thin, thick, nLines);
-
-    QPen light (QColor(QString("lightblue")));
-    QPen heavy (QColor(QString("black")));
-    light.setWidth (thin);
-    heavy.setWidth (thick);
-
-    QPainter p (&printer);
-    QFont    f = p.font();
-
-    f.setPixelSize ((sCell * 6) / 10);		// Font size 60% height of cell.
-    p.setFont (f);
-
-    // Draw one or more grids (five overlapping grids in Samurai layout).
-    int length = m_order * sCell;
-    int pos    = 0;
-    int gridX  = 0;
-    int gridY  = 0;
-    for (int g = 0; g < ((m_type == Samurai) ? 5 : 1); g++) {
-        switch (g) {
-        case 0:			// Main grid or top-left grid in Samurai layout.
-            gridX = topX;
-            gridY = topY;
-            break;
-        case 1:			// Top-right grid in Samurai layout.
-            gridX = topX + (2 * m_order - 2 * m_overlap) * sCell;
-            gridY = topY;
-            break;
-        case 2:			// Centre grid in Samurai layout.
-            gridX = topX + (m_order - m_overlap) * sCell;
-            gridY = topY + (m_order - m_overlap) * sCell;
-            break;
-        case 3:			// Bottom-left grid in Samurai layout.
-            gridX = topX;
-            gridY = topY + (2 * m_order - 2 * m_overlap) * sCell;
-            break;
-        case 4:			// Bottom-right grid in Samurai layout.
-            gridX = topX + (2 * m_order - 2 * m_overlap) * sCell;
-            gridY = topY + (2 * m_order - 2 * m_overlap) * sCell;
-            break;
-        }
-
-        // Draw the faint lines that go inside the blocks.
-        p.setPen (light);
-        for (int n = 0; n < nLines; n++) {
-            if ((n % 3) == 0) continue;
-            pos = n * sCell;
-            p.drawLine (gridX + pos, gridY, gridX + pos, gridY + length);
-            p.drawLine (gridX, gridY + pos, gridX + length, gridY + pos);
-        }
-
-        // Draw the heavy lines that surround the blocks.
-        p.setPen (heavy);
-        for (int n = 0; n < nLines; n++) {
-            if ((n % 3) > 0) continue;
-            pos = n * sCell;
-            p.drawLine (gridX + pos, gridY, gridX + pos, gridY + length);
-            p.drawLine (gridX, gridY + pos, gridX + length, gridY + pos);
-        }
-    }
-
-    // Fill in the cell contents.
-    for (int n = 0; n < m_boardArea; n++) {
-        int row = n / m_boardSize;
-        int col = n % m_boardSize;
-        QRectF rect (topX + sCell * col, topY + sCell * row, sCell, sCell);
-        if (boardValues.at (n) > 0) {
-            p.drawText (rect, Qt::AlignCenter,
-                        labels.mid (boardValues.at(n) - 1, 1));
-        }
-    }
 }
 
 #include "sudokuboard.moc"
