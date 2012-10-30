@@ -159,13 +159,14 @@ void ValueListWidget::setMaxValue(int maxValue) {
 void ValueListWidget::resizeEvent(QResizeEvent*)
 {
 	QSize s = size();
-	// add -4 as a margin and for avoiding problems with the border
-	int size = qMin(s.width(), s.height()/m_maxValue) - 4;
+	// Allow 4 as a margin and to avoid problems with the border.
+	int size = qMin((s.width() - 4), (s.height() - 4)/m_maxValue);
+	size = (size < 4) ? 4 : size;	// NB. Negative size --> painter errors.
 	for(int i = 0; i < m_maxValue; ++i) {
 		m_symbols[i]->setSize(size);
 	}
 	m_scene->setSceneRect(-size/2, -size/2, size, m_maxValue*size);
-	
+
 	m_selectionItem->setSize(size);
 }
 
