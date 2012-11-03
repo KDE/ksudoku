@@ -74,6 +74,7 @@ private:
 
 	int m_cursorPos;
 	int m_selectedValue;
+	bool m_highlightsOn;
 };
 
 class View2D : public QGraphicsView, public ViewInterface {

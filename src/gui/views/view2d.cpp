@@ -32,6 +32,8 @@
 #include "puzzle.h"
 #include "gameactions.h"
 
+#include "settings.h"
+
 namespace ksudoku {
 
 
@@ -164,9 +166,9 @@ public:
 	GroupGraphicsItem(QVector<QPoint> cells);
 	~GroupGraphicsItem();
 public:
-	void resize(int gridSize);
+	void resize(int gridSize, bool highlight);
 	void setHighlight(bool highlight);
-	void setHighlight(const QPoint& pos);
+	void setHighlight(const QPoint& pos, bool highlight);
 private:
 	int border(int tl, int tr, int bl, int br, int given);
 	void detectType();
@@ -318,11 +320,11 @@ void GroupGraphicsItem::setHighlight(bool highlight) {
     m_type ^= GroupHighlight;
 }
 
-void GroupGraphicsItem::setHighlight(const QPoint& pos) {
-	setHighlight(m_cells.contains(pos));
+void GroupGraphicsItem::setHighlight(const QPoint& pos, bool highlight) {
+	setHighlight(m_cells.contains(pos) && highlight);
 }
 
-void GroupGraphicsItem::resize(int gridSize) {
+void GroupGraphicsItem::resize(int gridSize, bool highlight) {
 	int size = gridSize*2;
 	Renderer* r = Renderer::instance();
 
@@ -332,12 +334,14 @@ void GroupGraphicsItem::resize(int gridSize) {
 	QVector<GroupGraphicItemSegment>::iterator segment;
 	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
 		QPointF pos = segment->pos*gridSize;
+		// Has standard pixmap item?
 		if(segment->standard) {
 			QPixmap pic = r->renderBorder(segment->shape, standard, size);
 			segment->standard->setPixmap(pic);
 			segment->standard->setOffset(pos);
 		}
-		if(segment->highlighted) {
+		// Highlights on and has highlighted pixmap item?
+		if(highlight && segment->highlighted) {
 			QPixmap pic = r->renderBorder(segment->shape, highlighted, size);
 			segment->highlighted->setPixmap(pic);
 			segment->highlighted->setOffset(pos);
@@ -352,6 +356,7 @@ View2DScene::View2DScene(GameActions* gameActions) {
 	m_cellLayer = 0;
 	m_cursorPos = 0;
 	m_cursor = 0;
+	m_highlightsOn = false;
 }
 
 View2DScene::~View2DScene() {
@@ -441,6 +446,9 @@ void View2DScene::init(const Game& game) {
 }
 
 void View2DScene::setSceneSize(const QSize& size) {
+	// Called from View2D::resizeEvent() and View2D::settingsChanged().
+	m_highlightsOn = Settings::showHighlights();
+
 	m_background->setPixmap(Renderer::instance()->renderBackground(size));
 	
 	SKGraph* g = m_game.puzzle()->graph();
@@ -461,7 +469,7 @@ void View2DScene::setSceneSize(const QSize& size) {
 	}
 	
 	for(int i = 0; i < m_groups.size(); ++i) {
-		m_groups[i]->resize(grid);
+		m_groups[i]->resize(grid, m_highlightsOn);
 	}
 	
 	m_cursor->setPixmap(Renderer::instance()->renderSpecial(SpecialCursor, grid*2));
@@ -472,7 +480,7 @@ void View2DScene::hover(int cell) {
 // 	qDebug() << "hover cell" << cell << m_cells[cell];
 	QPoint pos(m_cells[cell]->pos());
 	foreach(GroupGraphicsItem* item, m_groups) {
-		item->setHighlight(pos);
+		item->setHighlight(pos, m_highlightsOn);
 	}
 	
 	m_cells[cell]->showCursor(m_cursor);
