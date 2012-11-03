@@ -262,17 +262,19 @@ void GroupGraphicsItem::createSegment(const QPoint& pos, int shape) {
 	segment.pos = pos*2 - QPoint(1,1);
 	segment.shape = shape;
 
-	// Row and column groups have no boundary-line.
-	// Block groups have a boundary-line.
+	// Row and column groups are drawn only when highlighted.
+	// Block groups have a boundary-line, but no middle unless highlighted.
 	// Special groups (disjoint cells) have a special color.
 
 	switch(m_type & GroupUnhighlightedMask) {
-		// TODO make this behaviour dependant on the availability of normal pixmaps
 		case GroupRow:
 		case GroupColumn:
 			segment.standard = 0;
 			break;
 		case GroupBlock:
+			segment.standard = (shape == 15) ? 0	// No middle.
+					   : new QGraphicsPixmapItem(this);
+			break;
 		default: // Special Group
 			segment.standard = new QGraphicsPixmapItem(this);
 			break;
