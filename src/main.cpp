@@ -36,7 +36,7 @@
 static const char description[] =
     I18N_NOOP("KSudoku - Sudokus and more");
 
-static const char version[] = "1.1";
+static const char version[] = "1.2";
 
 
 int main(int argc, char **argv)
