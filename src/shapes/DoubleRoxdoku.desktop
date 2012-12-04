@@ -2,6 +2,7 @@
 Name=Double Roxdoku
 Name[da]=Dobbelt Roxdoku
 Name[de]=Doppel-Roxdoku
+Name[el]=Double Roxdoku
 Name[es]=Roxdoku doble
 Name[et]=Topelt-Roxdoku
 Name[fr]=Roxdoku double
@@ -28,6 +29,7 @@ Name[zh_TW]=Double Roxdoku
 Description=Three-dimensional puzzle with two interlocking 3x3x3 cubes
 Description[da]=Trediminsionel opgave med to sammenkædede 3x3x3-terninger
 Description[de]=Dreidimensionales Rätsel mit zwei verschränkten 3x3x3-Würfeln
+Description[el]=Τρισδιάστατο παζλ με δύο περιπλεγμένους 3x3x3 κύβους
 Description[es]=Rompecabezas tridimensional con dos cubos entrelazados de 3x3x3
 Description[et]=Kolmemõõtmeline sudoku kahe haakuva 3x3x3 kuubikuga
 Description[fr]=Puzzle à trois dimensions comprenant deux cubes 3x3x3 verrouillés

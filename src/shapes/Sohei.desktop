@@ -2,6 +2,7 @@
 Name=Sohei
 Name[da]=Sohei
 Name[de]=Sohei
+Name[el]=Sohei
 Name[es]=Sohei
 Name[et]=Sohei
 Name[fr]=Sohei
@@ -29,6 +30,7 @@ Name[zh_TW]=Sohei
 Description=Sohei puzzle with four overlapping 9x9 squares
 Description[da]=Sohei-opgave med fire overlappende 9x9-kvadrater
 Description[de]=Sohei-Rätsel mit vier 9x9-Quadraten, die sich überlappen
+Description[el]=Sohei παζλ με τέσσερα επικαλυπτόμενα 9x9 τετράγωνα
 Description[es]=Rompecabezas sohei con cuatro cuadrados de 9x9 superpuestos
 Description[et]=Sohei nelja kattuva 9x9 ruudustikuga
 Description[fr]=Puzzle Sohei avec quatre carrés de 9x9 se chevauchant

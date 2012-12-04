@@ -2,6 +2,7 @@
 Name=Windmill
 Name[da]=Vindmølle
 Name[de]=Windmühle
+Name[el]=Windmill
 Name[es]=Molino de viento
 Name[et]=Tuuleveski
 Name[fr]=Windmill
@@ -28,6 +29,7 @@ Name[zh_TW]=風車
 Description=Windmill puzzle with five overlapping 9x9 squares
 Description[da]=Vindmølleopgave med fire overlappende 9x9-kvadrater
 Description[de]=Windmühlen-Rätsel mit fünf 9x9-Quadraten, die sich überlappen
+Description[el]=Windmill παζλ με πέντε επικαλυπτόμενα 9x9 τετράγωνα
 Description[es]=Rompecabezas en molino de viento con cinco cuadrados superpuestos de 9x9
 Description[et]=Tuuleveski nelja kattuva 9x9 ruudustikuga
 Description[fr]=Puzzle Windmill avec cinq carrés de 9x9 se chevauchant
