@@ -1,6 +1,5 @@
 [KSudokuVariant]
 Name=Tetromino 4x4
-Name[bs]=Tetromino 4x4
 Name[da]=Tetromino 4x4
 Name[de]=Tetromino 4x4
 Name[el]=Tetromino 4x4
@@ -30,7 +29,6 @@ Name[uk]=Тетроміно 4x4
 Name[x-test]=xxTetromino 4x4xx
 Name[zh_TW]=Tetromino 4x4
 Description=Jigsaw with Tetromino blocks (Tetris pieces)
-Description[bs]=Slagalica sa Tetromino blokovima (Tetris komadi)
 Description[da]=Puslespil med Tetromino-blokke (Tetris-brikker)
 Description[de]=Stichsägen-Variante mit 4er-Blöcken (Tetris-Steine)
 Description[el]=Παζλ με τμήματα Tetromino (κομμάτια Tetris)

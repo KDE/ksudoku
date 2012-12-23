@@ -1,7 +1,6 @@
 [KGameTheme]
 Name=Scribble
 Name[ast]=Garabatos
-Name[bs]=Piskaranje
 Name[ca]=Scribble
 Name[ca@valencia]=Scribble
 Name[cs]=Scribble
@@ -52,7 +51,6 @@ Name[x-test]=xxScribblexx
 Name[zh_CN]=涂鸦
 Name[zh_TW]=Scribble
 Description=KSudoku Scribble theme for KDE 4
-Description[bs]=KSudoku Piskaranje tema za KDE 4
 Description[da]=KSudoku Scrible-tema til KDE 4
 Description[de]=Ein Scribble-Design für KSudoku in KDE 4.
 Description[el]=Θέμα Scribble του KSudoku για το KDE 4

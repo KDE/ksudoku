@@ -1,7 +1,6 @@
 [KSudokuVariant]
 Name=XSudoku
 Name[ast]=XSudoku
-Name[bs]=XSudoku
 Name[ca]=XSudoku
 Name[ca@valencia]=XSudoku
 Name[cs]=XSudoku
@@ -52,7 +51,6 @@ Name[zh_CN]=XSudoku
 Name[zh_TW]=XSudoku
 Description=XSudoku shape puzzle
 Description[ast]=Frañetiestes al estilu XSudoku
-Description[bs]=XSudoku oblik slagalice
 Description[ca]=Trencaclosques amb forma XSudoku
 Description[ca@valencia]=Trencaclosques amb forma XSudoku
 Description[cs]=Hádanka ve tvaru XSudoku
