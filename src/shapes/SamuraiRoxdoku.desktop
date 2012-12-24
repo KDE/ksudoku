@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Samurai Roxdoku
+Name[bs]=Samuraj Roxdoku
 Name[da]=Samurai Roxdoku
 Name[de]=Samurai-Roxdoku
 Name[el]=Samurai Roxdoku
@@ -30,6 +31,7 @@ Name[uk]=Самурайське роксудоку
 Name[x-test]=xxSamurai Roxdokuxx
 Name[zh_TW]=Samurai Roxdoku
 Description=Samurai three-dimensional puzzle with nine 3x3x3 cubes
+Description[bs]=Samuraj trodimenzionalna slagalica s devet 3x3x3 kocki
 Description[da]=Tredimensional samuraiopgave med ni 3x3x3-terninger
 Description[de]=Dreidimensionales Samurai-Sudoku mit neun 3x3x3-Würfeln
 Description[el]=Samurai τρισδιάστατο παζλ με εννέα 3x3x3 κύβους

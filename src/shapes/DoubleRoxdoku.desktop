@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Double Roxdoku
+Name[bs]=Dvostruki Roxdoku
 Name[da]=Dobbelt Roxdoku
 Name[de]=Doppel-Roxdoku
 Name[el]=Double Roxdoku
@@ -28,6 +29,7 @@ Name[uk]=Подвійне роксудоку
 Name[x-test]=xxDouble Roxdokuxx
 Name[zh_TW]=Double Roxdoku
 Description=Three-dimensional puzzle with two interlocking 3x3x3 cubes
+Description[bs]=Trodimenzionalna slagalica sa dva blokiranje 3x3x3 kocke
 Description[da]=Trediminsionel opgave med to sammenkædede 3x3x3-terninger
 Description[de]=Dreidimensionales Rätsel mit zwei verschränkten 3x3x3-Würfeln
 Description[el]=Τρισδιάστατο παζλ με δύο περιπλεγμένους 3x3x3 κύβους

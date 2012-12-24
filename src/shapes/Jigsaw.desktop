@@ -2,6 +2,7 @@
 Name=Jigsaw
 Name[ast]=Jigsaw
 Name[br]=Jigsaw
+Name[bs]=Slagalica
 Name[ca]=Puzzle
 Name[ca@valencia]=Puzzle
 Name[cs]=Puzzle
@@ -51,6 +52,7 @@ Name[zh_CN]=线锯
 Name[zh_TW]=拼圖
 Description=Jigsaw shape puzzle
 Description[ast]=Frañetiestes al estilu Jigsaw
+Description[bs]=Igra slagalice
 Description[ca]=Trencaclosques amb forma de puzzle
 Description[ca@valencia]=Trencaclosques amb forma de puzzle
 Description[cs]=Hádanka ve tvaru puzzle

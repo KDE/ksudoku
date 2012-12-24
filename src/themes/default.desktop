@@ -1,5 +1,6 @@
 [KGameTheme]
 Name=ksudoku_egyptian
+Name[bs]=ksudoku_egipatski
 Name[ca]=ksudoku_egipci
 Name[ca@valencia]=ksudoku_egipci
 Name[da]=ksudoku-egyptisk
@@ -38,6 +39,7 @@ Name[x-test]=xxksudoku_egyptianxx
 Name[zh_CN]=ksudoku_egyptian
 Name[zh_TW]=ksudoku_egyptian
 Description=KSudoku egyptian style theme
+Description[bs]=KSudoku tema u egipatskom stilu
 Description[ca]=Tema d'estil egipci pel KSudoku
 Description[ca@valencia]=Tema d'estil egipci pel KSudoku
 Description[da]=KSudoku-tema i egyptisk stil

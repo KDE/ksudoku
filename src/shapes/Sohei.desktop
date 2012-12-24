@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Sohei
+Name[bs]=Sohei
 Name[da]=Sohei
 Name[de]=Sohei
 Name[el]=Sohei
@@ -29,6 +30,7 @@ Name[uk]=Сохей
 Name[x-test]=xxSoheixx
 Name[zh_TW]=Sohei
 Description=Sohei puzzle with four overlapping 9x9 squares
+Description[bs]=Sohei slagalica sa četiri preklopanja 9x9 kvadrata
 Description[da]=Sohei-opgave med fire overlappende 9x9-kvadrater
 Description[de]=Sohei-Rätsel mit vier 9x9-Quadraten, die sich überlappen
 Description[el]=Sohei παζλ με τέσσερα επικαλυπτόμενα 9x9 τετράγωνα
