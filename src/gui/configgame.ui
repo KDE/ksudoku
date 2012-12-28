@@ -170,7 +170,7 @@
         <string>Overall size of 3-D cells</string>
        </property>
        <property name="buddy">
-        <cstring></cstring>
+        <cstring>kcfg_OverallSize3D</cstring>
        </property>
       </widget>
      </item>
