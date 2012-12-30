@@ -53,7 +53,7 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 		                   Qt::QueuedConnection,
 				   Q_ARG (int, m_selectedPuzzle));
 
-	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(const QModelIndex&,const QModelIndex&)), this, SLOT(onCurrentVariantChange()));
+	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(onCurrentVariantChange()));
 	
 	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
 	// TODO disabled due to missing per-game config dialog
