@@ -33,7 +33,6 @@
 
 SudokuBoard::SudokuBoard (SKGraph * graph)
     :
-    m_graph        (graph),
     m_type         (graph->specificType()),
     m_order        (graph->order()),
     m_blockSize    (graph->base()),
@@ -42,6 +41,7 @@ SudokuBoard::SudokuBoard (SKGraph * graph)
     m_overlap      (0),
     m_nGroups      (graph->cliqueCount()),
     m_groupSize    (m_order),
+    m_graph        (graph),
     m_vacant       (VACANT),
     m_unusable     (UNUSABLE)
 {
