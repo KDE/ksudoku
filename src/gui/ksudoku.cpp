@@ -151,7 +151,7 @@ KSudoku::KSudoku()
 
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
 	wrapper->layout()->addWidget(m_welcomeScreen);
-	connect(m_welcomeScreen, SIGNAL(newGameStarted(const::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const::ksudoku::Game&)));
+	connect(m_welcomeScreen, SIGNAL(newGameStarted(const ::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const ::ksudoku::Game&)));
 
 	setupStatusBar(m_welcomeScreen->difficulty(),
 		       m_welcomeScreen->symmetry());
