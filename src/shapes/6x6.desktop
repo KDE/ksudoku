@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=6x6
 Name[bs]=6x6
+Name[ca]=6x6
 Name[da]=6x6
 Name[de]=6x6
 Name[el]=6x6
@@ -33,6 +34,7 @@ Name[zh_CN]=6x6
 Name[zh_TW]=6x6
 Description=6x6 puzzle with rectangular blocks
 Description[bs]=6x6 slagalica sa pravougaonim blokovima
+Description[ca]=Un trencaclosques de 6x6 amb blocs rectangulars
 Description[da]=6x6 opgave med rektangulære blokke
 Description[de]=6x6-Rätsel mit rechteckigen Blöcken
 Description[el]=Ένα παζλ με ορθογώνια κομμάτια
