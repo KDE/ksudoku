@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Nonomino 9x9
 Name[bs]=Nonomino 9x9
+Name[ca]=Nonomino 9x9
 Name[da]=Nonomino 9x9
 Name[de]=Nonomino 9x9
 Name[el]=Nonomino 9x9
@@ -30,6 +31,7 @@ Name[x-test]=xxNonomino 9x9xx
 Name[zh_TW]=Nonomino 9x9
 Description=Jigsaw variant with irregularly shaped Nonomino blocks
 Description[bs]=Varijanta slagalice sa neravnomjerno oblikovanim Nonomino blokovima
+Description[ca]=Variant de puzzle amb forma de blocs nonomino irregulars
 Description[da]=Puslespilsvariant med uregelmæssigt formede Nonomino-blokke
 Description[de]=Stichsägen-Variante mit unregelmäßig geformten 9er-Blöcken
 Description[el]=Παραλλαγή jigsaw με ακανόνιστου σχήματος τμήματα Nonomino

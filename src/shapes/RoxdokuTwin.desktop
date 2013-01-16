@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Roxdoku Twin
 Name[bs]=Roxdoku Twin
+Name[ca]=Roxdoku bessó
 Name[da]=Roxdoku-tvilling
 Name[de]=Roxdoku-Zwilling
 Name[el]=Roxdoku Twin
@@ -30,6 +31,7 @@ Name[x-test]=xxRoxdoku Twinxx
 Name[zh_TW]=Roxdoku Twin
 Description=Three-dimensional puzzle with two 3x3x3 cubes which share a corner
 Description[bs]=Trodimenzionalni puzzle sa dvije 3x3x3 kocke koje dijele ugao
+Description[ca]=Trencaclosques tridimensional amb dos cubs 3x3x3 que comparteixen una cantonada
 Description[da]=Tredimensional opgave med to 3x3x3-terninger som har et hjørne til fælles
 Description[de]=Dreidimensionales Rätsel, bei dem zwei 3x3x3-Würfel eine gemeinsame Ecke haben
 Description[el]=Τρισδιάστατο παζλ με δύο 3x3x3 κύβους που μοιράζονται την ίδια γωνία

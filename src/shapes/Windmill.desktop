@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Windmill
 Name[bs]=Vjetrenjača
+Name[ca]=Molinet
 Name[da]=Vindmølle
 Name[de]=Windmühle
 Name[el]=Windmill
@@ -30,6 +31,7 @@ Name[x-test]=xxWindmillxx
 Name[zh_TW]=風車
 Description=Windmill puzzle with five overlapping 9x9 squares
 Description[bs]=Slagalica vjetrenjača sa pet preklapanja 9x9 kvadrata
+Description[ca]=Trencaclosques molinet amb cinc quadrats sobreposats de 9x9
 Description[da]=Vindmølleopgave med fire overlappende 9x9-kvadrater
 Description[de]=Windmühlen-Rätsel mit fünf 9x9-Quadraten, die sich überlappen
 Description[el]=Windmill παζλ με πέντε επικαλυπτόμενα 9x9 τετράγωνα
