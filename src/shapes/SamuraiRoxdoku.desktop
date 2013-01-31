@@ -2,6 +2,7 @@
 Name=Samurai Roxdoku
 Name[bs]=Samuraj Roxdoku
 Name[ca]=Roxdoku samurai
+Name[ca@valencia]=Roxdoku samurai
 Name[da]=Samurai Roxdoku
 Name[de]=Samurai-Roxdoku
 Name[el]=Samurai Roxdoku
@@ -34,6 +35,7 @@ Name[zh_TW]=Samurai Roxdoku
 Description=Samurai three-dimensional puzzle with nine 3x3x3 cubes
 Description[bs]=Samuraj trodimenzionalna slagalica s devet 3x3x3 kocki
 Description[ca]=Trencaclosques samurai tridimensional amb nou cubs 3x3x3
+Description[ca@valencia]=Trencaclosques samurai tridimensional amb nou cubs 3x3x3
 Description[da]=Tredimensional samuraiopgave med ni 3x3x3-terninger
 Description[de]=Dreidimensionales Samurai-Sudoku mit neun 3x3x3-Würfeln
 Description[el]=Samurai τρισδιάστατο παζλ με εννέα 3x3x3 κύβους
