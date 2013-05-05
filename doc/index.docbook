@@ -2,7 +2,7 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
 <!ENTITY ksudoku "KSudoku">
 <!ENTITY kappname "&ksudoku;">
-  <!ENTITY kappversion "1.0"><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY kappversion "1.1"><!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
@@ -42,8 +42,8 @@
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2011-11-24</date><!-- Date of (re)writing, or update.-->
-<releaseinfo>&kappversion; &kde; 4.8</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+<date>2013-05-05</date><!-- Date of (re)writing, or update.-->
+<releaseinfo>&kappversion; (&kde; 4.11)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
 
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
@@ -465,44 +465,6 @@
 <sect1 id="settings-menu">
 	<title>The <guimenu>Settings</guimenu> Menu</title>
 		<variablelist>
-			<varlistentry>
-				<term><menuchoice>
-					<guimenu>Settings</guimenu>
-					<guisubmenu>Toolbars</guisubmenu>
-					<guimenuitem>Main Toolbar</guimenuitem>
-				</menuchoice></term>
-				<listitem><para>Show or hide the Main Toolbar.</para></listitem>
-			</varlistentry>
-			<varlistentry id="settings-menu-hide-matching">
-				<term><menuchoice>
-					<guimenu>Settings</guimenu>
-					<guisubmenu>Toolbars</guisubmenu>
-					<guimenuitem>Actions Toolbar</guimenuitem>
-				</menuchoice></term>
-				<listitem><para>Show or hide the Actions Toolbar.</para></listitem>
-			</varlistentry>
-
-			<varlistentry id="settings-menu-statusbar">
-				<term><menuchoice>
-					<guimenu>Settings</guimenu>
-					<guimenuitem>Show Statusbar</guimenuitem>
-				</menuchoice></term>
-				<listitem><para>Show or hide the Statusbar.</para></listitem>
-			</varlistentry>
-			<varlistentry id="settings-menu-shortcuts">
-				<term><menuchoice>
-					<guimenu>Settings</guimenu>
-					<guimenuitem>Configure Shortcuts...</guimenuitem>
-				</menuchoice></term>
-				<listitem><para><action>Display a standard &kde; shortcut configuration dialog</action> to change the keyboard shortcuts for &kappname;.</para></listitem>
-			</varlistentry>
-			<varlistentry id="settings-menu-toolbar">
-				<term><menuchoice>
-					<guimenu>Settings</guimenu>
-					<guimenuitem>Configure Toolbars...</guimenuitem>
-				</menuchoice></term>
-				<listitem><para>Display a standard &kde; dialog where you can configure the toolbar icons.</para></listitem>
-			</varlistentry>
 			<varlistentry id="settings-menu-settings">
 				<term><menuchoice>
 					<guimenu>Settings</guimenu>
@@ -511,13 +473,12 @@
 				<listitem><para><action>Open a dialog to configure &kappname;.</action> See <link linkend="configuration">Game Configuration</link> section for details.</para></listitem>
 			</varlistentry>
 		</variablelist>
-</sect1>
-<sect1 id="help"><!--This is a standard Help menubar entry. Only change if needed.-->
-<title>The <guimenu>Help</guimenu> Menu</title>
-<para>&kappname; has a default &kde; <guimenu>Help</guimenu> menu as described
-below:</para>
-
-&help.menu.documentation;
+		<para>
+		  Additionally &picmi; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+		  menu items, for more information read the sections about the <ulink url="help:/fundamentals/ui.html#menus-settings">Settings Menu</ulink> and
+		  <ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink>
+		  of the &kde; Fundamentals.
+		</para>
 </sect1>
 </chapter>
 
