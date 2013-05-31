@@ -608,11 +608,11 @@ void SudokuBoard::analyseMoves (Statistics & s)
 
     dbo1  // IDW test.
          "  aM: Type %2d %2d: clues %3d %3d %2.1f%%   %3dP %3dS %3dG "
-         "%3dM %3dD %3.1fR D=%d\n\n",
+         "%3dM %3dD %3.1fR D=%d F=%d\n\n",
          m_stats.type, m_stats.order,
          s.nClues, s.nCells, ((float) s.nClues / s.nCells) * 100.0,
          s.nSingles, s.nSpots, s.nGuesses, (s.nSingles + s.nSpots + s.nGuesses),
-         s.nDeduces, s.rating, s.difficulty);
+         s.nDeduces, s.rating, s.difficulty, s.firstGuessAt);
 }
 
 Difficulty SudokuBoard::calculateDifficulty (float rating)
