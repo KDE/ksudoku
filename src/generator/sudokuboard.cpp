@@ -159,14 +159,15 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
                       i18n("Difficulty Level"),
                       KGuiItem(i18n("&Try Again")), KGuiItem(i18n("&Accept")));
             if (ans == KMessageBox::Yes) {
-                count = 0;
+                count = 0;	// Continue on if the puzzle is not hard enough.
                 continue;
             }
 	}
         if ((d >= difficultyRequired) || (count >= maxTries)) {
             QWidget owner;
+	    int ans = 0;
 	    if (m_accum.nGuesses == 0) {
-		KMessageBox::information (&owner,
+                ans = KMessageBox::questionYesNo (&owner,
 		       i18n("It will be possible to solve the generated puzzle "
 			    "by logic alone. No guessing will be required.\n"
 			    "\n"
@@ -175,10 +176,10 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 		            .arg(bestRating, 0, 'f', 1).arg(bestNClues)
 			    .arg(m_stats.nCells - bestNClues),
 		       i18n("Difficulty Level"),
-		       "ShowPuzzleStatistics_1");
+                       KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
 	    }
 	    else {
-		KMessageBox::information (&owner,
+                ans = KMessageBox::questionYesNo (&owner,
 		       i18n("Solving the generated puzzle will require an "
 			    "average of %1 guesses or branch points and if you "
 			    "guess wrong, backtracking will be necessary. The "
@@ -190,10 +191,19 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 			    .arg(bestFirstGuessAt)
 			    .arg(bestRating, 0, 'f', 1).arg(bestNClues)
 			    .arg(m_stats.nCells - bestNClues),
-		       i18n("Difficulty Level"),
-		       "ShowPuzzleStatistics_2");
+                       i18n("Difficulty Level"),
+                       KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
 	    }
 	    // Exit when the required difficulty or number of tries is reached.
+            if (ans == KMessageBox::No) {
+                count = 0;
+                bestRating = 0.0;
+                bestDifficulty = 0;
+                bestNClues = 0;
+                bestNGuesses = 0;
+                bestFirstGuessAt = 0;
+                continue;	// Start again if the user rejects this puzzle.
+            }
 	    break;
         }
     }
