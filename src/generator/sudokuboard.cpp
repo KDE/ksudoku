@@ -45,28 +45,29 @@ SudokuBoard::SudokuBoard (SKGraph * graph)
     m_vacant       (VACANT),
     m_unusable     (UNUSABLE)
 {
-    dbgLevel = 1;
+    dbgLevel = 0;
 
     m_stats.type      = m_type;
     m_stats.blockSize = m_blockSize;
     m_stats.order     = m_order;
     m_boardSize       = graph->sizeX(); // TODO - IDW. Rationalise grid sizes.
-    dbe "SudokuBoard constructor: type %d, block %d, order %d, BoardArea %d\n",
-	m_type, m_blockSize, m_order, m_boardArea);
+    dbe "SudokuBoard: type %d %s, block %d, order %d, BoardArea %d\n",
+	m_type, graph->name().toAscii().constData(),
+        m_blockSize, m_order, m_boardArea);
 }
 
 void SudokuBoard::setSeed()
 {
     static bool started = false;
     if (started) {
-        dbo "setSeed(): RESET IS TURNED OFF\n");
+        dbo1 "setSeed(): RESET IS TURNED OFF\n");
         // qsrand (m_stats.seed); // IDW test.
     }
     else {
         started = true;
         m_stats.seed = time(0);
         qsrand (m_stats.seed);
-        dbo "setSeed(): SEED = %d\n", m_stats.seed);
+        dbo1 "setSeed(): SEED = %d\n", m_stats.seed);
     }
 }
 
@@ -75,7 +76,8 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
                                   Difficulty difficultyRequired,
                                   Symmetry symmetry)
 {
-    dbo "Entered generatePuzzle()\n");
+    dbe "Entered generatePuzzle(): difficulty %d, symmetry %d\n",
+        difficultyRequired, symmetry);
     QTime t;
     t.start();
     setSeed();
@@ -95,11 +97,11 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     if (symmetry == RANDOM_SYM) {	// Choose a symmetry at random.
         symmetry = (Symmetry) (qrand() % (int) LAST_CHOICE);
     }
-    dbo "SYMMETRY IS %d\n", (int) symmetry);
+    dbo1 "SYMMETRY IS %d\n", (int) symmetry);
     if (symmetry == DIAGONAL_1) {
 	// If diagonal symmetry, choose between NW->SE and NE->SW diagonals.
         symmetry = (qrand() % 2 == 0) ? DIAGONAL_1 : DIAGONAL_2;
-	dbo "Diagonal symmetry, choosing %s\n",
+	dbo1 "Diagonal symmetry, choosing %s\n",
             (symmetry == DIAGONAL_1) ? "DIAGONAL_1" : "DIAGONAL_2");
     }
 
@@ -107,28 +109,28 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
         // Fill the board with values that satisfy the Sudoku rules but are
         // chosen in a random way: these values are the solution of the puzzle.
         currSolution = this->fillBoard();
-        dbo "RETURN FROM fillBoard()\n");
-        dbo "Time to fill board: %d msec\n", t.elapsed());
+        dbo1 "RETURN FROM fillBoard()\n");
+        dbo1 "Time to fill board: %d msec\n", t.elapsed());
 
         // Randomly insert solution-values into an empty board until a point is
         // reached where all the cells in the solution can be logically deduced.
         currPuzzle = insertValues (currSolution, difficultyRequired, symmetry);
-        dbo "RETURN FROM insertValues()\n");
-        dbo "Time to do insertValues: %d msec\n", t.elapsed());
+        dbo1 "RETURN FROM insertValues()\n");
+        dbo1 "Time to do insertValues: %d msec\n", t.elapsed());
 
         if (difficultyRequired > m_stats.difficulty) {
             // Make the puzzle harder by removing values at random.
             currPuzzle = removeValues (currSolution, currPuzzle,
                                        difficultyRequired, symmetry);
-            dbo "RETURN FROM removeValues()\n");
-            dbo "Time to do removeValues: %d msec\n", t.elapsed());
+            dbo1 "RETURN FROM removeValues()\n");
+            dbo1 "Time to do removeValues: %d msec\n", t.elapsed());
         }
 
         Difficulty d = calculateRating (currPuzzle, 5);
         count++;
-        dbo "CYCLE %d, achieved difficulty %d, required %d, rating %3.1f\n",
+        dbo1 "CYCLE %d, achieved difficulty %d, required %d, rating %3.1f\n",
                          count, d, difficultyRequired, m_accum.rating);
-        dbe "CYCLE %d, achieved difficulty %d, required %d, rating %3.1f\n",
+        dbe1 "CYCLE %d, achieved difficulty %d, required %d, rating %3.1f\n",
                          count, d, difficultyRequired, m_accum.rating);
 
 	// Use the highest rated puzzle so far.
@@ -162,6 +164,7 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
                 count = 0;	// Continue on if the puzzle is not hard enough.
                 continue;
             }
+            break;		// Exit if the puzzle is accepted.
 	}
         if ((d >= difficultyRequired) || (count >= maxTries)) {
             QWidget owner;
@@ -204,7 +207,7 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
                 bestFirstGuessAt = 0;
                 continue;	// Start again if the user rejects this puzzle.
             }
-	    break;
+	    break;		// Exit if the puzzle is OK.
         }
     }
 
@@ -231,9 +234,9 @@ Difficulty SudokuBoard::calculateRating (const BoardContents & puzzle,
     setSeed();
 
     for (int n = 0; n < nSamples; n++) {
-        dbo "SOLVE PUZZLE %d\n", n);
+        dbo1 "SOLVE PUZZLE %d\n", n);
         solution = solveBoard (puzzle, nSamples == 1 ? NotRandom : Random);
-        dbo "PUZZLE SOLVED %d\n", n);
+        dbo1 "PUZZLE SOLVED %d\n", n);
         analyseMoves (m_stats);
         fracClues = float (m_stats.nClues) / float (m_stats.nCells);
         m_accum.nSingles += m_stats.nSingles;
@@ -258,7 +261,7 @@ Difficulty SudokuBoard::calculateRating (const BoardContents & puzzle,
     avDeduced = float (m_accum.nSingles + m_accum.nSpots) / m_accum.nDeduces;
     m_accum.rating = m_accum.rating / nSamples;
     m_accum.difficulty = calculateDifficulty (m_accum.rating);
-    dbo "  Av guesses %2.1f  Av deduces %2.1f"
+    dbo1 "  Av guesses %2.1f  Av deduces %2.1f"
         "  Av per deduce %3.1f  rating %2.1f difficulty %d\n",
         avGuesses, avDeduces, avDeduced, m_accum.rating, m_accum.difficulty);
 
@@ -424,7 +427,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
             }
         }
     }
-    print (puzzle); // IDW test.
+    if (dbgLevel > 0) print (puzzle);
 
     while (true) {
         // Check the difficulty of the puzzle.
@@ -447,7 +450,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
                 index, solution.at (cell),
                 cell, cell/m_boardSize + 1, cell%m_boardSize + 1);
     }
-    print (puzzle);
+    if (dbgLevel > 0) print (puzzle);
     return puzzle;
 }
 
@@ -606,8 +609,7 @@ void SudokuBoard::analyseMoves (Statistics & s)
     // Calculate the difficulty level for empirical ranges of the rating.
     s.difficulty = calculateDifficulty (s.rating);
 
-    dbo1  // IDW test.
-         "  aM: Type %2d %2d: clues %3d %3d %2.1f%%   %3dP %3dS %3dG "
+    dbo1 "  aM: Type %2d %2d: clues %3d %3d %2.1f%%   %3dP %3dS %3dG "
          "%3dM %3dD %3.1fR D=%d F=%d\n\n",
          m_stats.type, m_stats.order,
          s.nClues, s.nCells, ((float) s.nClues / s.nCells) * 100.0,
@@ -872,7 +874,7 @@ BoardContents & SudokuBoard::fillBoard()
     }
 
     solveBoard (m_currentValues);
-    dbo "BOARD FILLED\n");
+    dbo1 "BOARD FILLED\n");
     return m_currentValues;
 }
 
