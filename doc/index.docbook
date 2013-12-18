@@ -2,7 +2,6 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
 <!ENTITY ksudoku "KSudoku">
 <!ENTITY kappname "&ksudoku;">
-  <!ENTITY kappversion "1.1"><!--Application version. Use this variable everywhere it's needed.-->
   <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
@@ -42,12 +41,12 @@
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2013-05-05</date><!-- Date of (re)writing, or update.-->
-<releaseinfo>&kappversion; (&kde; 4.11)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+<date>2013-12-18</date><!-- Date of (re)writing, or update.-->
+<releaseinfo>1.2.1 (&kde; 4.12)</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
 
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of &kappname; version &kappversion;</para>
+	<para>This documentation describes the game of &kappname;, a logic-based symbol placement puzzle.</para>
 </abstract>
 
 <!--List of relevant keywords-->
@@ -360,7 +359,7 @@
 </sect1>
 
 <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
-<sect1 id="game-menu"><title>The <guimenu>Game</guimenu> Menu</title>
+<sect1 id="game-menu"><title>The Game Menu</title>
 
 		<variablelist>
 			<varlistentry id="game-menu-new">
@@ -401,7 +400,7 @@
 					<guimenuitem>Print...</guimenuitem>
 				</menuchoice></term>
 				<listitem><para><action>Prints</action> the
-				current state of the game on a printer of your
+				current state of a two-dimensional game on a printer of your
 				choice. The block outlines and original puzzle
 				values are printed in black. Other cells,
 				filled-in values and solution values are printed
@@ -420,7 +419,7 @@
 		</variablelist>
 </sect1>
 <sect1 id="move-menu">
-	<title>The <guimenu>Move</guimenu> Menu</title>
+	<title>The Move Menu</title>
 		<variablelist>
 			<varlistentry id="move-menu-undo">
 				<term><menuchoice>
@@ -463,7 +462,7 @@
 		</variablelist>
 </sect1>
 <sect1 id="settings-menu">
-	<title>The <guimenu>Settings</guimenu> Menu</title>
+	<title>The Settings Menu</title>
 		<variablelist>
 			<varlistentry id="settings-menu-settings">
 				<term><menuchoice>
@@ -506,11 +505,16 @@
 <chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
-<sect1 id="general-options"><title><guilabel>Game</guilabel>Options</title>
+<sect1 id="general-options"><title>Game Options</title>
 	<variablelist>
 		<varlistentry>
-			<term><guilabel>Printing</guilabel></term>
-			<listitem><para>Toggle the option to print more than one puzzle per page whenever they will fit.</para></listitem>
+			<term><guilabel>When printing, try to fit more than one puzzle on a page</guilabel></term>
+			<listitem>
+			<para>Toggle the option to print more than one puzzle per page whenever they will fit.</para>
+			<para>If this option is checked, puzzles will be printed when no more will fit on a page 
+			      or when &kappname; terminates. Otherwise a puzzle is printed immediately.</para>
+			<para>Three-dimensional puzzles cannot be printed.</para>
+			</listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Show Highlights in 2-D puzzles</guilabel></term>
