@@ -31,7 +31,7 @@
 #include <ktemporaryfile.h>
 #include <kio/netaccess.h>
 #include <qfile.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kstandarddirs.h>
 
 #include "ksudoku.h"

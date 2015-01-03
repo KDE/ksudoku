@@ -30,7 +30,7 @@
 //Added by qt3to4:
 #include <QPixmap>
 #include <QMouseEvent>
-#include <klocale.h>
+#include <KLocalizedString>
 
 #include "settings.h"
 

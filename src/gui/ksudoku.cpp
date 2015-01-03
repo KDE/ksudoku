@@ -34,7 +34,7 @@
 #include <QPrinter>
 #include <QPrintDialog>
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KActionCollection>
 #include <KStandardAction>
 #include <KAction>
@@ -48,7 +48,7 @@
 #include <K4AboutData>
 #include <KGlobal>
 #include <kmessagebox.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kstatusbar.h>
 #include <kio/netaccess.h>
 #include <kfiledialog.h>

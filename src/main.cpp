@@ -24,7 +24,7 @@
 //#include <dcopclient.h>
 #include <K4AboutData>
 #include <kcmdlineargs.h>
-#include <klocale.h>
+#include <KLocalizedString>
 #include <kconfigdialogmanager.h>
 
 #include <cstdlib>
@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 	KCmdLineArgs::addCmdLineOptions(options);
 	KApplication app;
 	//KF5 port: remove this line and define TRANSLATION_DOMAIN in CMakeLists.txt instead
-//KLocale::global()->insertCatalog( QLatin1String( "libkdegames" ));
+//KLocalizedString::global()->insertCatalog( QLatin1String( "libkdegames" ));
 
 	// register ourselves as a dcop client
 //	app.dcopClient()->registerAs(app.name(), false); //TODO PORT

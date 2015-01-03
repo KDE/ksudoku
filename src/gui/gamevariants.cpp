@@ -23,7 +23,7 @@
 
 #include <QtDebug>
 #include <KMessageBox>
-#include <KLocale>
+#include <KLocalizedString>
 #include <QPainter>
 #include <KIconLoader>
 #include <KIcon>

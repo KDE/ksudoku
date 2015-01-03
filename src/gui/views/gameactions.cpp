@@ -19,7 +19,7 @@
 
 #include "gameactions.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <QAction>
 #include <KActionCollection>
 #include <QSignalMapper>

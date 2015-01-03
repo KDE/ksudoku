@@ -19,7 +19,7 @@
 
 #include "config.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <QListWidget>
 #include <QVBoxLayout>
 

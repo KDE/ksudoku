@@ -21,7 +21,7 @@
 #include "sudokuboard.h"
 #include "state.h"
 
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 
 #include <QMultiMap>
