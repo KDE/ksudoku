@@ -63,9 +63,9 @@ add_subdirectory( themes )
 ########### install files ###############
 
 install( PROGRAMS gui/ksudoku.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
-install( FILES gui/ksudokuui.rc  DESTINATION  ${DATA_INSTALL_DIR}/ksudoku )
+install( FILES gui/ksudokuui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/ksudoku )
 install( FILES ksudokurc  DESTINATION ${CONFIG_INSTALL_DIR})
 
-ecm_install_icons(${ICON_INSTALL_DIR})
+ecm_install_icons(ICONS hi128-apps-ksudoku.png  hi16-apps-ksudoku.png  hi32-apps-ksudoku.png DESTINATION ${ICON_INSTALL_DIR})
 
 
