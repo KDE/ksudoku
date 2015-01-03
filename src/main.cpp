@@ -22,7 +22,7 @@
 #include "ksudoku.h"
 #include <kapplication.h>
 //#include <dcopclient.h>
-#include <kaboutdata.h>
+#include <K4AboutData>
 #include <kcmdlineargs.h>
 #include <klocale.h>
 #include <kconfigdialogmanager.h>
@@ -43,11 +43,11 @@ int main(int argc, char **argv)
 {
 	std::srand(time(0));
 
-	KAboutData about("ksudoku", 0,
+	K4AboutData about("ksudoku", 0,
 	                 ki18n("KSudoku"),
 	                 version,
 	                 ki18n("KSudoku - Sudoku games and more"),
-	                 KAboutData::License_GPL_V2,
+	                 K4AboutData::License_GPL_V2,
 	                 ki18n("(c) 2005-2007 The KSudoku Authors"),
 	                 KLocalizedString(), "http://ksudoku.sourceforge.net/");
 	about.addAuthor( ki18n("Francesco Rossi"), ki18n("KSudoku Author"), "redsh@email.it" );
