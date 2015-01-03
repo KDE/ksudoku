@@ -66,6 +66,7 @@
 #include <kstandarddirs.h>
 #include <kio/job.h>
 #include <kstandardgameaction.h>
+#include <QDir>
 
 #include "gamevariants.h"
 #include "welcomescreen.h"
@@ -949,7 +950,7 @@ void KSudoku::loadCustomShapeFromPath()
 
 	KStandardDirs myStdDir;
 	const QString destDir = myStdDir.saveLocation( "data", /*kapp->instanceName() + TODO PORT */"ksudoku/", true );
-	KStandardDirs::makeDir( destDir );
+	QDir().mkpath( destDir );
 
 	KTar archive( tmpFile );
 
@@ -985,7 +986,7 @@ bool KSudokuNewStuff::install( const QString &fileName )
 	const KArchiveDirectory *archiveDir = archive.directory();
 	KStandardDirs myStdDir;
 	const QString destDir = myStdDir.saveLocation("data", /*kapp->instanceName() + TODO PORT*/"ksudoku/", true);
-	KStandardDirs::makeDir(destDir);
+	QDir().mkpath(destDir);
 
 	archiveDir->copyTo(destDir);
 	archive.close();

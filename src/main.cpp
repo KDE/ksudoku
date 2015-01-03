@@ -62,7 +62,8 @@ int main(int argc, char **argv)
 	options.add("+[URL]", ki18n( "Document to open" ));
 	KCmdLineArgs::addCmdLineOptions(options);
 	KApplication app;
-	KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
+	//KF5 port: remove this line and define TRANSLATION_DOMAIN in CMakeLists.txt instead
+//KLocale::global()->insertCatalog( QLatin1String( "libkdegames" ));
 
 	// register ourselves as a dcop client
 //	app.dcopClient()->registerAs(app.name(), false); //TODO PORT

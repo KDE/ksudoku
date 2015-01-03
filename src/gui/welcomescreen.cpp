@@ -43,7 +43,7 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	gameListWidget->setSelectionMode(QAbstractItemView::SingleSelection);
 
 	// Get the previous puzzle configuration.
-	KConfigGroup gameGroup (KGlobal::config(), "KSudokuGame");
+	KConfigGroup gameGroup (KSharedConfig::openConfig(), "KSudokuGame");
 	m_selectedPuzzle = gameGroup.readEntry("SelectedPuzzle", 0);
 	m_difficulty     = gameGroup.readEntry("Difficulty", (int) VeryEasy);
 	m_symmetry       = gameGroup.readEntry("Symmetry"  , (int) CENTRAL);
@@ -152,7 +152,7 @@ void WelcomeScreen::generatePuzzle() {
 	QModelIndex index = gameListWidget->currentIndex();
 	m_selectedPuzzle = index.row();
 
-	KConfigGroup gameGroup (KGlobal::config(), "KSudokuGame");
+	KConfigGroup gameGroup (KSharedConfig::openConfig(), "KSudokuGame");
 	gameGroup.writeEntry("SelectedPuzzle", m_selectedPuzzle);
 	gameGroup.writeEntry("Difficulty", m_difficulty);
 	gameGroup.writeEntry("Symmetry"  , m_symmetry);
