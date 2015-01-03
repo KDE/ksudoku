@@ -40,6 +40,7 @@ target_link_libraries(ksudoku_gui
 	KF5::KIOCore
 	Qt5::Core 
 	Qt5::Gui
+        Qt5::Svg
 	)
 
 if(OPENGL_SUPPORT)

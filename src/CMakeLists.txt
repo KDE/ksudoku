@@ -27,7 +27,7 @@ add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
 	ksudoku_gui ksudoku_logic
-	KF5KDEGames kdegamesprivate
+	KF5KDEGames KF5KDEGamesPrivate
 	KF5::KIOCore
 )
 
