@@ -1002,4 +1002,4 @@ bool KSudokuNewStuff::createUploadFile( const QString &/*fileName*/ )
 
 
 
-#include "ksudoku.moc"
+

@@ -19,7 +19,7 @@
 
 #include "view2d.h"
 
-#include "view2d.moc" 
+ 
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneEvent>

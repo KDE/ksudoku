@@ -29,7 +29,7 @@
 #include <KIcon>
 #include <QEvent>
 
-#include "gamevariants.moc"
+
 
 #include "puzzle.h"
 

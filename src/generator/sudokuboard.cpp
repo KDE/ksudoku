@@ -1084,4 +1084,4 @@ int SudokuBoard::getSymmetricIndices
     return result;
 }
 
-#include "sudokuboard.moc"
+

@@ -472,4 +472,4 @@ void Game::setUserHadHelp(bool hadHelp) {
 
 }
 
-#include "ksudokugame.moc"
+

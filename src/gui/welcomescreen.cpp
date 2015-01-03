@@ -163,4 +163,4 @@ void WelcomeScreen::generatePuzzle() {
 
 }
 
-#include "welcomescreen.moc"
+

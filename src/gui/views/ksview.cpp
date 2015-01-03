@@ -27,7 +27,7 @@
 #include <qpixmap.h>
 #include <qpainter.h>
 
-#include "ksview.moc"
+
 
 #include "puzzle.h"
 

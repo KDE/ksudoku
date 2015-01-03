@@ -35,4 +35,4 @@ State::State (QObject *             parent,
 {
 }
 
-#include "state.moc"
+

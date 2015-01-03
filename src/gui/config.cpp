@@ -25,7 +25,7 @@
 
 #include "symbols.h"
 
-#include "config.moc"
+
 
 namespace ksudoku {
 	

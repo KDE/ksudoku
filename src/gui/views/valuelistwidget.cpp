@@ -19,7 +19,7 @@
 
 #include "valuelistwidget.h"
 
-#include "valuelistwidget.moc"
+
 
 #include <QGraphicsSimpleTextItem>
 #include <QWheelEvent>
