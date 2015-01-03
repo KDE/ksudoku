@@ -29,7 +29,7 @@
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamedifficulty.h>
-
+class QPrinter;
 class KUrl;
 
 namespace ksudoku {

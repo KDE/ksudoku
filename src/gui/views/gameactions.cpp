@@ -20,10 +20,10 @@
 #include "gameactions.h"
 
 #include <KLocale>
-#include <KAction>
+#include <QAction>
 #include <KActionCollection>
 #include <QSignalMapper>
-
+#include <KShortcut>
 namespace ksudoku {
 
 GameActions::GameActions(KActionCollection* collection) {
@@ -40,17 +40,17 @@ void GameActions::init() {
 	connect(m_markValueMapper, SIGNAL(mapped(int)), SIGNAL(markValue(int)));
 
 
-	KAction* a;
+	QAction * a;
 	KShortcut shortcut;
 	for(int i = 0; i < 25; ++i) {
-		a = new KAction(this);
+		a = new QAction(this);
 		m_collection->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
 		m_selectValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_selectValueMapper, SLOT(map()));
 		m_actions << a;
 
-		a = new KAction(this);
+		a = new QAction(this);
 		m_collection->addAction(QString("val-enter%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Enter %1 (%2)", QChar('a'+i), i+1));
 		shortcut = a->shortcut();
@@ -63,7 +63,7 @@ void GameActions::init() {
 		connect(a, SIGNAL(triggered(bool)), m_enterValueMapper, SLOT(map()));
 		m_actions << a;
 
-		a = new KAction(this);
+		a = new QAction(this);
 		m_collection->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Mark %1 (%2)", QChar('a'+i), i+1));
 		shortcut = a->shortcut();
@@ -77,35 +77,35 @@ void GameActions::init() {
 		m_actions << a;
 	}
 	
-	a = new KAction(this);
+	a = new QAction(this);
 	m_collection->addAction("move_up", a);
 	a->setText(i18n("Move Up"));
 	a->setShortcut(Qt::Key_Up);
 	connect(a, SIGNAL(triggered(bool)), SLOT(moveUp()));
 	m_actions << a;
 
-	a = new KAction(this);
+	a = new QAction(this);
 	m_collection->addAction("move_down", a);
 	a->setText(i18n("Move Down"));
 	a->setShortcut(Qt::Key_Down);
 	connect(a, SIGNAL(triggered(bool)), SLOT(moveDown()));
 	m_actions << a;
 
-	a = new KAction(this);
+	a = new QAction(this);
 	m_collection->addAction("move_left", a);
 	a->setText(i18n("Move Left"));
 	a->setShortcut(Qt::Key_Left);
 	connect(a, SIGNAL(triggered(bool)), SLOT(moveLeft()));
 	m_actions << a;
 
-	a = new KAction(this);
+	a = new QAction(this);
 	m_collection->addAction("move_right", a);
 	a->setText(i18n("Move Right"));
 	a->setShortcut(Qt::Key_Right);
 	connect(a, SIGNAL(triggered(bool)), SLOT(moveRight()));
 	m_actions << a;
 
-	a = new KAction(this);
+	a = new QAction(this);
 	m_collection->addAction("move_clear_cell", a);
 	a->setText(i18n("Clear Cell"));
 	shortcut = a->shortcut();
@@ -117,7 +117,7 @@ void GameActions::init() {
 }
 
 void GameActions::associateWidget(QWidget* widget) {
-	QVector<KAction*>::iterator it;
+	QVector<QAction *>::iterator it;
 	for(it = m_actions.begin(); it != m_actions.end(); ++it) {
 		widget->addAction(*it);
 	}

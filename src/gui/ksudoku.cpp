@@ -42,10 +42,11 @@
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
-
+#include <KShortcut>
+#include <KUrl>
 #include <KCmdLineArgs>
-#include <KAboutData>
-
+#include <K4AboutData>
+#include <KGlobal>
 #include <kmessagebox.h>
 #include <klocale.h>
 #include <kstatusbar.h>
@@ -391,7 +392,7 @@ void KSudoku::setupActions()
 	KAction* a = new KAction(this);
 	actionCollection()->addAction( QLatin1String( "move_dub_puzzle" ), a);
 	a->setText(i18n("Check"));
-	a->setIcon(KIcon( QLatin1String( "games-endturn" )));
+	a->setIcon(QIcon::fromTheme( QLatin1String( "games-endturn" )));
 	connect(a, SIGNAL(triggered(bool)), SLOT(dubPuzzle()));
 	addAction(a);
 
@@ -399,7 +400,7 @@ void KSudoku::setupActions()
 	a = new KAction(this);
 	actionCollection()->addAction( QLatin1String( "home_page" ), a);
 	a->setText(i18n("Home Page"));
-	a->setIcon(KIcon( QLatin1String( "internet-web-browser" )));
+	a->setIcon(QIcon::fromTheme( QLatin1String( "internet-web-browser" )));
 	connect(a, SIGNAL(triggered(bool)), SLOT(homepage()));
 }
 
@@ -840,7 +841,7 @@ void KSudoku::optionsPreferences()
 	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), "games-config-options");
 	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
 
-    dialog->setHelp(QString(),"ksudoku");
+    //QT5 dialog->setHelp(QString(),"ksudoku");
 	connect(dialog, SIGNAL(settingsChanged(QString)), SLOT(updateSettings()));
 	dialog->show();
 }

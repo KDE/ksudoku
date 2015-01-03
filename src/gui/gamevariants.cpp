@@ -26,6 +26,7 @@
 #include <KLocale>
 #include <QPainter>
 #include <KIconLoader>
+#include <KIcon>
 #include <QEvent>
 
 #include "gamevariants.moc"

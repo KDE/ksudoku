@@ -3,5 +3,5 @@ set(ksudoku_logic_SRCS
 	puzzle.cpp
 )
 
-kde4_add_library(ksudoku_logic STATIC ${ksudoku_logic_SRCS})
-target_link_libraries(ksudoku_logic ${QT_QTCORE_LIBRARY})
+add_library(ksudoku_logic STATIC ${ksudoku_logic_SRCS})
+target_link_libraries(ksudoku_logic Qt5::Core)

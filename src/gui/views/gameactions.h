@@ -23,7 +23,7 @@
 #include <QVector>
 #include <QObject>
 
-class KAction;
+class QAction;
 class KActionCollection;
 class QSignalMapper;
 
@@ -51,7 +51,7 @@ private:
 	QSignalMapper* m_selectValueMapper;
 	QSignalMapper* m_enterValueMapper;
 	QSignalMapper* m_markValueMapper;
-	QVector<KAction*> m_actions;
+	QVector<QAction *> m_actions;
 };
 
 }

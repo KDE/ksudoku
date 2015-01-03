@@ -23,17 +23,17 @@ set(ksudoku_SRCS
 )
 
 kde4_add_app_icon(ksudoku_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/ksudoku.png")
-kde4_add_executable(ksudoku ${ksudoku_SRCS})
+add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
 	ksudoku_gui ksudoku_logic
-	kdegames kdegamesprivate
-	${KDE4_KIO_LIBS}
+	KF5KDEGames kdegamesprivate
+	KF5::KIOCore
 )
 
 if(OPENGL_SUPPORT)
 target_link_libraries(ksudoku
-	${QT_QTOPENGL_LIBRARY} ${OPENGL_LIBRARIES} ${CMAKE_DL_LIBS}
+	Qt5::OpenGL ${OPENGL_LIBRARIES} ${CMAKE_DL_LIBS}
 )
 endif(OPENGL_SUPPORT)
 
@@ -66,6 +66,6 @@ install( PROGRAMS gui/ksudoku.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
 install( FILES gui/ksudokuui.rc  DESTINATION  ${DATA_INSTALL_DIR}/ksudoku )
 install( FILES ksudokurc  DESTINATION ${CONFIG_INSTALL_DIR})
 
-kde4_install_icons(${ICON_INSTALL_DIR})
+ecm_install_icons(${ICON_INSTALL_DIR})
 
 
