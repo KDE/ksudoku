@@ -37,7 +37,7 @@
 #include <KLocalizedString>
 #include <KActionCollection>
 #include <KStandardAction>
-#include <KAction>
+#include <QAction>
 #include <KConfigDialog>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
@@ -390,19 +390,19 @@ void KSudoku::setupActions()
 	KStandardGameAction::hint(this, SLOT(giveHint()), actionCollection());
 	KStandardGameAction::solve(this, SLOT(autoSolve()), actionCollection());
 
-	KAction* a = new KAction(this);
+	QAction * a = new QAction(this);
 	actionCollection()->addAction( QLatin1String( "move_dub_puzzle" ), a);
 	a->setText(i18n("Check"));
 	a->setIcon(QIcon::fromTheme( QLatin1String( "games-endturn" )));
-	connect(a, &KAction::triggered, this, &KSudoku::dubPuzzle);
+	connect(a, &QAction::triggered, this, &KSudoku::dubPuzzle);
 	addAction(a);
 
 	//WEB
-	a = new KAction(this);
+	a = new QAction(this);
 	actionCollection()->addAction( QLatin1String( "home_page" ), a);
 	a->setText(i18n("Home Page"));
 	a->setIcon(QIcon::fromTheme( QLatin1String( "internet-web-browser" )));
-	connect(a, &KAction::triggered, this, &KSudoku::homepage);
+	connect(a, &QAction::triggered, this, &KSudoku::homepage);
 }
 
 void KSudoku::setupStatusBar (int difficulty, int symmetry)
