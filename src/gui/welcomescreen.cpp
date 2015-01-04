@@ -56,15 +56,15 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 
 	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(onCurrentVariantChange()));
 	
-	connect(getNewGameButton, SIGNAL(clicked(bool)), this, SLOT(getNewVariant()));
+	connect(getNewGameButton, &QPushButton::clicked, this, &WelcomeScreen::getNewVariant);
 	// TODO disabled due to missing per-game config dialog
 // 	connect(configureGameButton, SIGNAL(clicked(bool)), this, SLOT(configureVariant()));
 	// connect(playGameButton, SIGNAL(clicked(bool)), this, SLOT(playVariant()));			// Disable old create-game code.
 	// connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(playVariant()));	// Disable old create-game code.
 
-	connect(startEmptyButton, SIGNAL(clicked(bool)), this, SLOT(startEmptyGame()));
-	connect(puzzleGeneratorButton, SIGNAL(clicked(bool)), this, SLOT(generatePuzzle()));
-	connect(gameListWidget, SIGNAL(doubleClicked(QModelIndex)), this, SLOT(generatePuzzle()));
+	connect(startEmptyButton, &QPushButton::clicked, this, &WelcomeScreen::startEmptyGame);
+	connect(puzzleGeneratorButton, &QPushButton::clicked, this, &WelcomeScreen::generatePuzzle);
+	connect(gameListWidget, &QListView::doubleClicked, this, &WelcomeScreen::generatePuzzle);
 
 	// GHNS is not implemented yet, so don't show an unuseful button
 	getNewGameButton->hide();

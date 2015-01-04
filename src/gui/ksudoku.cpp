@@ -153,7 +153,7 @@ KSudoku::KSudoku()
 
 	m_welcomeScreen = new WelcomeScreen(wrapper, m_gameVariants);
 	wrapper->layout()->addWidget(m_welcomeScreen);
-	connect(m_welcomeScreen, SIGNAL(newGameStarted(const ::ksudoku::Game&,GameVariant*)), this, SLOT(startGame(const ::ksudoku::Game&)));
+	connect(m_welcomeScreen, &ksudoku::WelcomeScreen::newGameStarted, this, &KSudoku::startGame);
 
 	setupStatusBar(m_welcomeScreen->difficulty(),
 		       m_welcomeScreen->symmetry());
@@ -243,8 +243,8 @@ void KSudoku::startGame(const Game& game) {
 	view->setValueListWidget(m_valueListWidget);
 	view->createView();
 
-	connect(view, SIGNAL(valueSelected(int)), m_valueListWidget, SLOT(selectValue(int)));
-	connect(m_valueListWidget, SIGNAL(valueSelected(int)), view, SLOT(selectValue(int)));
+	connect(view, &KsView::valueSelected, m_valueListWidget, &ksudoku::ValueListWidget::selectValue);
+	connect(m_valueListWidget, &ksudoku::ValueListWidget::valueSelected, view, &KsView::selectValue);
 // 	connect(view, SIGNAL(valueSelected(int)), SLOT(updateStatusBar()));
 
 	QWidget* widget = view->widget();
@@ -394,7 +394,7 @@ void KSudoku::setupActions()
 	actionCollection()->addAction( QLatin1String( "move_dub_puzzle" ), a);
 	a->setText(i18n("Check"));
 	a->setIcon(QIcon::fromTheme( QLatin1String( "games-endturn" )));
-	connect(a, SIGNAL(triggered(bool)), SLOT(dubPuzzle()));
+	connect(a, &KAction::triggered, this, &KSudoku::dubPuzzle);
 	addAction(a);
 
 	//WEB
@@ -402,7 +402,7 @@ void KSudoku::setupActions()
 	actionCollection()->addAction( QLatin1String( "home_page" ), a);
 	a->setText(i18n("Home Page"));
 	a->setIcon(QIcon::fromTheme( QLatin1String( "internet-web-browser" )));
-	connect(a, SIGNAL(triggered(bool)), SLOT(homepage()));
+	connect(a, &KAction::triggered, this, &KSudoku::homepage);
 }
 
 void KSudoku::setupStatusBar (int difficulty, int symmetry)
@@ -439,8 +439,7 @@ void KSudoku::setupStatusBar (int difficulty, int symmetry)
 	// Set up a combo box for symmetry of puzzle layout.
 	statusBar()->addPermanentWidget (new QLabel (i18n("Symmetry")));
 	QComboBox * symmetryBox = new QComboBox (this);
-	QObject::connect(symmetryBox, SIGNAL(activated(int)),
-		    		this, SLOT(symmetryChanged(int)));
+	QObject::connect(symmetryBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &KSudoku::symmetryChanged);
 	symmetryBox->setToolTip(i18nc(
 		"Symmetry of layout of clues when puzzle starts", "Symmetry"));
 	symmetryBox->setWhatsThis(i18n(
@@ -843,7 +842,7 @@ void KSudoku::optionsPreferences()
 	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
 
     //QT5 dialog->setHelp(QString(),"ksudoku");
-	connect(dialog, SIGNAL(settingsChanged(QString)), SLOT(updateSettings()));
+	connect(dialog, &KConfigDialog::settingsChanged, this, &KSudoku::updateSettings);
 	dialog->show();
 }
 
