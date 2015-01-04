@@ -170,18 +170,19 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
             QWidget owner;
 	    int ans = 0;
 	    if (m_accum.nGuesses == 0) {
+                const QString rating = QString("%1").arg(bestRating, 0, 'f', 1);
                 ans = KMessageBox::questionYesNo (&owner,
 		       i18n("It will be possible to solve the generated puzzle "
 			    "by logic alone. No guessing will be required.\n"
 			    "\n"
 			    "The internal difficulty rating is %1. There are "
-			    "%2 clues at the start and %3 moves to go.")
-		            .arg(bestRating, 0, 'f', 1).arg(bestNClues)
-			    .arg(m_stats.nCells - bestNClues),
+			    "%2 clues at the start and %3 moves to go.", rating, bestNClues, (m_stats.nCells - bestNClues)),
 		       i18n("Difficulty Level"),
                        KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
 	    }
 	    else {
+                const QString average = QString::fromLatin1("%1").arg(((float) bestNGuesses) / 5.0, 0, 'f', 1);
+                const QString rating = QString::fromLatin1("%1").arg(bestRating, 0, 'f', 1);
                 ans = KMessageBox::questionYesNo (&owner,
 		       i18n("Solving the generated puzzle will require an "
 			    "average of %1 guesses or branch points and if you "
@@ -189,11 +190,7 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 			    "first guess should come after %2 moves.\n"
 			    "\n"
 			    "The internal difficulty rating is %3, there are "
-			    "%4 clues at the start and %5 moves to go.")
-		            .arg(((float) bestNGuesses) / 5.0, 0, 'f', 1)
-			    .arg(bestFirstGuessAt)
-			    .arg(bestRating, 0, 'f', 1).arg(bestNClues)
-			    .arg(m_stats.nCells - bestNClues),
+			    "%4 clues at the start and %5 moves to go.", average, bestFirstGuessAt, rating, (m_stats.nCells - bestNClues)),
                        i18n("Difficulty Level"),
                        KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
 	    }
