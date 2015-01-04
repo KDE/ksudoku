@@ -66,3 +66,5 @@ add_subdirectory( doc )
 
 #message(STATUS "ksudoku: DEBUG: ${DEBUG}")
 #message(STATUS "ksudoku: install prefix: ${CMAKE_INSTALL_PREFIX}")
+
+feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
