@@ -20,8 +20,8 @@
 
 #include <KMessageBox>
 #include <KConfigGroup>
-#include <KGlobal>
 #include <QDebug>
+#include <KSharedConfig>
 
 #include "ksudokugame.h"
 #include "globals.h"
