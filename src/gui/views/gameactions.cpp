@@ -82,28 +82,28 @@ void GameActions::init() {
 	a = new QAction(this);
 	m_collection->addAction("move_up", a);
 	a->setText(i18n("Move Up"));
-	a->setShortcut(Qt::Key_Up);
+	m_collection->setDefaultShortcut(a, Qt::Key_Up);
 	connect(a, SIGNAL(triggered(bool)), SLOT(moveUp()));
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction("move_down", a);
 	a->setText(i18n("Move Down"));
-	a->setShortcut(Qt::Key_Down);
+	m_collection->setDefaultShortcut(a, Qt::Key_Down);
 	connect(a, SIGNAL(triggered(bool)), SLOT(moveDown()));
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction("move_left", a);
 	a->setText(i18n("Move Left"));
-	a->setShortcut(Qt::Key_Left);
+	m_collection->setDefaultShortcut(a, Qt::Key_Left);
 	connect(a, SIGNAL(triggered(bool)), SLOT(moveLeft()));
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction("move_right", a);
 	a->setText(i18n("Move Right"));
-	a->setShortcut(Qt::Key_Right);
+	m_collection->setDefaultShortcut(a, Qt::Key_Right);
 	connect(a, SIGNAL(triggered(bool)), SLOT(moveRight()));
 	m_actions << a;
 
