@@ -25,7 +25,6 @@
 
 #include <QDragEnterEvent>
 #include <QDropEvent>
-#include <ksavefile.h>
 
 #include <QHBoxLayout>
 #include <QLabel>
@@ -49,7 +48,7 @@
 #include <KGlobal>
 #include <kmessagebox.h>
 #include <KLocalizedString>
-#include <kstatusbar.h>
+#include <qstatusbar.h>
 #include <kio/netaccess.h>
 #include <kfiledialog.h>
 #include <krun.h>
