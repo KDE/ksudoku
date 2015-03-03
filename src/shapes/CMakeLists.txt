@@ -14,7 +14,7 @@ install( FILES
 	DoubleRoxdoku.desktop DoubleRoxdoku.xml
 	RoxdokuTwin.desktop RoxdokuTwin.xml
 	SamuraiRoxdoku.desktop SamuraiRoxdoku.xml
-	DESTINATION  ${DATA_INSTALL_DIR}/ksudoku
+	DESTINATION  ${KDE_INSTALL_DATADIR}/ksudoku
 )
 
 ecm_install_icons(ICONS
@@ -30,4 +30,4 @@ hi128-action-ksudoku-roxdoku_5x5x5.png  hi16-action-ksudoku-roxdoku_5x5x5.png  h
 hi128-action-ksudoku-samurai.png        hi16-action-ksudoku-samurai.png        hi22-action-ksudoku-samurai.png        hi32-action-ksudoku-samurai.png        hi48-action-ksudoku-samurai.png        hi64-action-ksudoku-samurai.png
 hi128-action-ksudoku-tiny_samurai.png   hi16-action-ksudoku-tiny_samurai.png   hi22-action-ksudoku-tiny_samurai.png   hi32-action-ksudoku-tiny_samurai.png   hi48-action-ksudoku-tiny_samurai.png   hi64-action-ksudoku-tiny_samurai.png
 hi128-action-ksudoku-xsudoku.png        hi16-action-ksudoku-xsudoku.png        hi22-action-ksudoku-xsudoku.png        hi32-action-ksudoku-xsudoku.png        hi48-action-ksudoku-xsudoku.png        hi64-action-ksudoku-xsudoku.png
-DESTINATION ${DATA_INSTALL_DIR}/ksudoku/icons)
+DESTINATION ${KDE_INSTALL_DATADIR}/ksudoku/icons)

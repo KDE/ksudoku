@@ -37,7 +37,7 @@ target_link_libraries(ksudoku
 )
 endif(OPENGL_SUPPORT)
 
-install(TARGETS ksudoku  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+install(TARGETS ksudoku  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### next target ###############
 add_subdirectory( gui )
@@ -58,14 +58,14 @@ add_subdirectory( themes )
 
 
 
-#install(TARGETS ksudoku_client  ${INSTALL_TARGETS_DEFAULT_ARGS} )
+#install(TARGETS ksudoku_client  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### install files ###############
 
-install( PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${XDG_APPS_INSTALL_DIR} )
-install( FILES gui/ksudokuui.rc  DESTINATION  ${KXMLGUI_INSTALL_DIR}/ksudoku )
-install( FILES ksudokurc  DESTINATION ${CONFIG_INSTALL_DIR})
+install( PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
+install( FILES gui/ksudokuui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/ksudoku )
+install( FILES ksudokurc  DESTINATION ${KDE_INSTALL_CONFDIR})
 
-ecm_install_icons(ICONS hi128-apps-ksudoku.png  hi16-apps-ksudoku.png  hi32-apps-ksudoku.png DESTINATION ${ICON_INSTALL_DIR})
+ecm_install_icons(ICONS hi128-apps-ksudoku.png  hi16-apps-ksudoku.png  hi32-apps-ksudoku.png DESTINATION ${KDE_INSTALL_ICONDIR})
 
 
