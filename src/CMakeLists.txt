@@ -20,6 +20,7 @@ set(ksudoku_SRCS
 	main.cpp
 	generator/sudokuboard.cpp
 	generator/state.cpp
+        generator/dlxsolver.cpp
 )
 
 kde4_add_app_icon(ksudoku_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/ksudoku.png")
