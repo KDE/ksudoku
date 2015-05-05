@@ -43,38 +43,38 @@ DLXSolver::~DLXSolver()
 void DLXSolver::printDLX (bool forced)
 {
     if (!forced || (mGraph->order() > 5)) {
-	return;			// Skip large printouts, unless forced.
+        return;			// Skip large printouts, unless forced.
     }
 
     if ((mEndNodeNum < 0) || (mEndRowNum < 0) || (mEndColNum < 0)) {
-	fprintf (stderr, "\nDLXSolver::print(): EMPTY, mEndNodeNum %d, "
-		"mEndRowNum %d, mEndColNum %d\n\n",
-		mEndNodeNum, mEndRowNum, mEndColNum);
-	return;
+        fprintf (stderr, "\nDLXSolver::print(): EMPTY, mEndNodeNum %d, "
+                "mEndRowNum %d, mEndColNum %d\n\n",
+                mEndNodeNum, mEndRowNum, mEndColNum);
+        return;
     }
     fprintf (stderr, "\nDLX Matrix has %d cols, %d rows and %d ones\n\n",
-	        mEndColNum + 1, mEndRowNum + 1, mEndNodeNum + 1);
+                mEndColNum + 1, mEndRowNum + 1, mEndNodeNum + 1);
     DLXNode * colDLX = mCorner->right;
     if (colDLX == mCorner) {
-	fprintf (stderr, "ALL COLUMNS ARE HIDDEN\n");
+        fprintf (stderr, "ALL COLUMNS ARE HIDDEN\n");
     }
     int lastCol = -1;
     while (colDLX != mCorner) {
-	int col = mColumns.indexOf(colDLX);
+        int col = mColumns.indexOf(colDLX);
     // for (int col = 0; col <= mEndColNum; col++) {
-	fprintf (stderr, "Col %02d, %02d rows  ", col, mColumns.at(col)->value);
-	DLXNode * node = mColumns.at(col)->below;
-	while (node != mColumns.at(col)) {
+        fprintf (stderr, "Col %02d, %02d rows  ", col, mColumns.at(col)->value);
+        DLXNode * node = mColumns.at(col)->below;
+        while (node != mColumns.at(col)) {
             fprintf (stderr, "%02d ", node->value);
-	    node = node->below;
-	}
-	int gap = col - (lastCol + 1);
-	if (gap > 0) {
-	    fprintf (stderr, "covered %02d", gap);
-	}
-	fprintf (stderr, "\n");
-	colDLX = colDLX->right;
-	lastCol = col;
+            node = node->below;
+        }
+        int gap = col - (lastCol + 1);
+        if (gap > 0) {
+            fprintf (stderr, "covered %02d", gap);
+        }
+        fprintf (stderr, "\n");
+        colDLX = colDLX->right;
+        lastCol = col;
     }
     fprintf (stderr, "\n");
 }
@@ -83,13 +83,13 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
 {
     int order = mGraph->order();
     Q_FOREACH (DLXNode * node, solution) {
-	int rowNumDLX = node->value;
+        int rowNumDLX = node->value;
         int cellValue = (rowNumDLX % order) + 1;
-	int position  = rowNumDLX /order;
-	// int row       = position / order;
-	// int col       = position % order;
-	// mBoardValues [col*order + row] = cellValue;
-	mBoardValues [position] = cellValue;
+        int position  = rowNumDLX /order;
+        // int row       = position / order;
+        // int col       = position % order;
+        // mBoardValues [col*order + row] = cellValue;
+        mBoardValues [position] = cellValue;
     }
 
     fprintf (stderr, "\nSOLUTION %d\n\n", solutionNum);
@@ -115,9 +115,9 @@ void DLXSolver::printSudoku() // (const BoardContents & boardValues)
     for (int k = 0; k < sizeZ; k++) {
       int z = (sizeZ > 1) ? (sizeZ - k - 1) : k;
       for (int j = 0; j < sizeY; j++) {
-	if ((j != 0) && (j % blockSize == 0)) {
-	    fprintf (stderr, "\n");	// Gap between square blocks.
-	}
+        if ((j != 0) && (j % blockSize == 0)) {
+            fprintf (stderr, "\n");	// Gap between square blocks.
+        }
         int y = (sizeZ > 1) ? (sizeY - j - 1) : j;
         for (int x = 0; x < sizeX; x++) {
             index = mGraph->cellIndex (x, y, z);
@@ -171,27 +171,27 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     for (int index = 0; index < boardArea; index++) {
         int row    = graph->cellPosY (index);
         int col    = graph->cellPosX (index);
-	if (boardValues.at(index) == unusable) {	// e.g. For Samurai.
-	    qDebug() << "    Index" << index << "row" << row << "col" << col
-	             << "UNUSABLE";
-	    // Add dummy rows, so rowNumDLX always == index*order + value - 1.
-	    rowNumDLX = rowNumDLX + order;
-	    continue;
-	}
-	// Get a list of groups (row, column, etc.) that contain this cell.
+        if (boardValues.at(index) == unusable) {	// e.g. For Samurai.
+            qDebug() << "    Index" << index << "row" << row << "col" << col
+                     << "UNUSABLE";
+            // Add dummy rows, so rowNumDLX always == index*order + value - 1.
+            rowNumDLX = rowNumDLX + order;
+            continue;
+        }
+        // Get a list of groups (row, column, etc.) that contain this cell.
         QList<int> groups = graph->cliqueList (index);
         qDebug() << "    Index" << index << "row" << row << "col" << col
                  << "groups" << groups;
 
-	// Generate a row for each possible value of this cell in the Sudoku
-	// grid, representing part of a possible solution. Each row must have
-	// 1's in columns that correspond to a constraint on the cell and on the
-	// value (in each group to which the cell belongs --- row, column, etc).
+        // Generate a row for each possible value of this cell in the Sudoku
+        // grid, representing part of a possible solution. Each row must have
+        // 1's in columns that correspond to a constraint on the cell and on the
+        // value (in each group to which the cell belongs --- row, column, etc).
 
         for (int possValue = 0; possValue < order; possValue++) {
-	    addNode (rowNumDLX, index);		// Mark cell fill-in constraint.
+            addNode (rowNumDLX, index);		// Mark cell fill-in constraint.
             Q_FOREACH (int group, groups) {
-		// Mark possibly-satisfied constraints for row, column, etc.
+                // Mark possibly-satisfied constraints for row, column, etc.
                 addNode (rowNumDLX, boardArea + group*order + possValue);
             }
             rowNumDLX++;
@@ -202,37 +202,37 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     // Eliminate clues and unusable cells from the DLX matrix.
     int n = 0;
     for (int index = 0; index < boardArea; index++) {
-	int value = boardValues.at(index);
-	if ((value == vacant) || (value == unusable)) {
-	    if (value == unusable) {
-		// Cover the empty column: no value has to be entered here.
-		coverColumn (mColumns.at (index));
-	    }
-	    continue;
-	}
-	// Non-empty cell: eliminate the corresponding DLX row and columns.
-	rowNumDLX = index*order + value - 1;
-	qDebug() << "CLUE AT INDEX" << index << "value" << value
+        int value = boardValues.at(index);
+        if ((value == vacant) || (value == unusable)) {
+            if (value == unusable) {
+                // Cover the empty column: no value has to be entered here.
+                coverColumn (mColumns.at (index));
+            }
+            continue;
+        }
+        // Non-empty cell: eliminate the corresponding DLX row and columns.
+        rowNumDLX = index*order + value - 1;
+        qDebug() << "CLUE AT INDEX" << index << "value" << value
                  << "ELIMINATE DLX ROW" << rowNumDLX;
         DLXNode * start = mRows.at(rowNumDLX);
-	DLXNode * colDLX = start;
-	do {
-	    qDebug() << "Cover DLX column"
-	             << mColumns.indexOf(colDLX->columnHeader);
-	    coverColumn (colDLX->columnHeader);
-	    colDLX = colDLX->right;
-	} while (colDLX != start);
-	n++;
-	if (n >= 3) {
-	    // row = order; // /////////////// ??????????????????????????????
-	    // break; // ///////////////////// ??????????????????????????????
-	}
+        DLXNode * colDLX = start;
+        do {
+            qDebug() << "Cover DLX column"
+                     << mColumns.indexOf(colDLX->columnHeader);
+            coverColumn (colDLX->columnHeader);
+            colDLX = colDLX->right;
+        } while (colDLX != start);
+        n++;
+        if (n >= 3) {
+            // row = order; // /////////////// ??????????????????????????????
+            // break; // ///////////////////// ??????????????????????????????
+        }
     }
     printDLX (true);
     // return 0; // IDW test.
 
     fprintf (stderr, "\nMatrix had %d rows, %d columns and %d ones\n",
-	    mRows.count(), mColumns.count(), mRows.count()*4);
+            mRows.count(), mColumns.count(), mRows.count()*4);
     int nRowsLeft = 0;
     int nColsLeft = 0;
     int nNodes    = 0;
@@ -240,54 +240,54 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     rowsRemaining.fill (0, mRows.count());
     DLXNode * colDLX = mCorner->right;
     while (colDLX != mCorner) {
-	nColsLeft++;
-	DLXNode * node = colDLX->below;
-	while (node != colDLX) {
-	    int rowNum = node->value;
-	    if (rowsRemaining.at (rowNum) == 0) {
-		nRowsLeft++;
-	    }
-	    rowsRemaining[rowNum] = mRows.at (rowNum);
-	    nNodes++;
-	    node = node->below;
-	}
-	colDLX = colDLX->right;
+        nColsLeft++;
+        DLXNode * node = colDLX->below;
+        while (node != colDLX) {
+            int rowNum = node->value;
+            if (rowsRemaining.at (rowNum) == 0) {
+                nRowsLeft++;
+            }
+            rowsRemaining[rowNum] = mRows.at (rowNum);
+            nNodes++;
+            node = node->below;
+        }
+        colDLX = colDLX->right;
     }
 
     // Print a map of the (sparse) DLX matrix.
     fprintf (stderr, "Matrix NOW has %d rows, %d columns and %d ones\n\n",
-	    nRowsLeft, nColsLeft, nNodes);
+            nRowsLeft, nColsLeft, nNodes);
     int rowNum = 0;
     Q_FOREACH (DLXNode * r, rowsRemaining) {
-	if (nColsLeft > 64) {
-	    break;			// Would take two or more lines per row.
-	}
-	fprintf (stderr, "%3d ", rowNum);
-	rowNum++;
-	if (r == 0) {
-	    fprintf (stderr, "\n");	// Empty line: row was removed.
-	    continue;
-	}
-	QVector<char> colPrint;
-	colPrint.fill (' ', mColumns.count());
-	DLXNode * c = mCorner->right;
-	while (c != mCorner) {
-	    colPrint [mColumns.indexOf(c)] = '.';	// Column is present.
-	    c = c->right;
-	}
-	c = r;
-	do {
-	    colPrint [mColumns.indexOf(c->columnHeader)] = '1';	// 1 in row.
-	    c = c->right;
-	} while (c != r);
+        if (nColsLeft > 64) {
+            break;			// Would take two or more lines per row.
+        }
+        fprintf (stderr, "%3d ", rowNum);
+        rowNum++;
+        if (r == 0) {
+            fprintf (stderr, "\n");	// Empty line: row was removed.
+            continue;
+        }
+        QVector<char> colPrint;
+        colPrint.fill (' ', mColumns.count());
+        DLXNode * c = mCorner->right;
+        while (c != mCorner) {
+            colPrint [mColumns.indexOf(c)] = '.';	// Column is present.
+            c = c->right;
+        }
+        c = r;
+        do {
+            colPrint [mColumns.indexOf(c->columnHeader)] = '1';	// 1 in row.
+            c = c->right;
+        } while (c != r);
 
-	for (int n = 0; n < colPrint.count(); n++) {
-	    if (n%8 == 0) {
-		fprintf (stderr, "|");
-	    }
-	    fprintf (stderr, "%c", colPrint.at (n));
-	}
-	fprintf (stderr, "|\n");
+        for (int n = 0; n < colPrint.count(); n++) {
+            if (n%8 == 0) {
+                fprintf (stderr, "|");
+            }
+            fprintf (stderr, "%c", colPrint.at (n));
+        }
+        fprintf (stderr, "|\n");
     }
 
     // Solve the DLX-matrix equivalent of the Sudoku-style puzzle.
@@ -300,27 +300,27 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
 void DLXSolver::testDLX ()
 {
     const int test [6][7] = {
-	{1,0,0,1,0,0,1},
-	{1,0,0,1,0,0,0},
-	{0,0,0,1,1,0,1},
-	{0,0,1,0,1,1,0},
-	{0,1,1,0,0,1,1},
-	{0,1,0,0,0,0,1}
+        {1,0,0,1,0,0,1},
+        {1,0,0,1,0,0,0},
+        {0,0,0,1,1,0,1},
+        {0,0,1,0,1,1,0},
+        {0,1,1,0,0,1,1},
+        {0,1,0,0,0,0,1}
     };
     const int w = 7;
     const int h = 6;
     fprintf (stderr, "\nTEST MATRIX\n");
     for (int row = 0; row < h; row++) {
-	for (int col = 0; col < w; col++) {
-	    fprintf (stderr, " %d", test[row][col]);
-	}
-	fprintf (stderr, "\n");
+        for (int col = 0; col < w; col++) {
+            fprintf (stderr, " %d", test[row][col]);
+        }
+        fprintf (stderr, "\n");
     }
     fprintf (stderr, "\n");
     for (int row = 0; row < h; row++) {
-	for (int col = 0; col < w; col++) {
-	    if (test[row][col]) addNode (row, col);
-	}
+        for (int col = 0; col < w; col++) {
+            if (test[row][col]) addNode (row, col);
+        }
     }
     printDLX();
     solveDLX (0);
@@ -414,7 +414,7 @@ int DLXSolver::solveDLX (int solutionLimit)
         while (descending) {
             if (currNode != bestCol) {
                 // Found a row: cover all other cols of currNode's row (L to R).
-		// Those constraints are satisfied (for now) by this row.
+                // Those constraints are satisfied (for now) by this row.
                 DLXNode * p = currNode->right;
                 while (p != currNode) {
                     coverColumn (p->columnHeader);
@@ -428,15 +428,15 @@ int DLXSolver::solveDLX (int solutionLimit)
                 // All columns covered: a solution has been found.
                 solutionCount++;
                 recordSolution (solutionCount, solution);
-		if (solutionCount == solutionLimit) {
-		    return solutionCount;
-		}
+                if (solutionCount == solutionLimit) {
+                    return solutionCount;
+                }
             }
             else {
                 // No more rows to try in this column.
                 uncoverColumn (bestCol);
                 if (level > 0) {
-		    // Backtrack by one level.
+                    // Backtrack by one level.
                     solution.removeLast();
                     level--;
                     currNode = solution.at (level);
@@ -450,7 +450,7 @@ int DLXSolver::solveDLX (int solutionLimit)
             }
 
             // Uncover all other columns of currNode's row (R to L).
-	    // Restores those constraints to unsatisfied state in reverse order.
+            // Restores those constraints to unsatisfied state in reverse order.
             qDebug() << "RESTORE !!!";
             DLXNode * p = currNode->left;
             while (p != currNode) {
@@ -476,21 +476,21 @@ int DLXSolver::solveDLX (int solutionLimit)
 void DLXSolver::coverColumn (DLXNode * colDLX)
 {
     fprintf (stderr, "coverColumn: %d rows %d\n",
-	     mColumns.indexOf(colDLX), colDLX->value); 
+             mColumns.indexOf(colDLX), colDLX->value); 
     colDLX->left->right = colDLX->right;
     colDLX->right->left = colDLX->left;
 
     DLXNode * colNode = colDLX->below;
     while (colNode != colDLX) {
         DLXNode * rowNode = colNode->right;
-	qDebug() << "DLXSolver::coverColumn: remove DLX row" << rowNode->value;
-	while (rowNode != colNode) {
-	    rowNode->below->above = rowNode->above;
-	    rowNode->above->below = rowNode->below;
+        qDebug() << "DLXSolver::coverColumn: remove DLX row" << rowNode->value;
+        while (rowNode != colNode) {
+            rowNode->below->above = rowNode->above;
+            rowNode->above->below = rowNode->below;
             rowNode->columnHeader->value--;
-	    rowNode = rowNode->right;
-	}
-	colNode        = colNode->below;
+            rowNode = rowNode->right;
+        }
+        colNode        = colNode->below;
     }
 }
 
@@ -498,20 +498,20 @@ void DLXSolver::uncoverColumn (DLXNode * colDLX)
 {
     DLXNode * colNode = colDLX->below;
     while (colNode != colDLX) {
-	DLXNode * rowNode = colNode->right;
-	qDebug() << "DLXSolver::uncoverColumn: return DLX row"
-	         << rowNode->value;
-	while (rowNode != colNode) {
-	    rowNode->below->above = rowNode;
-	    rowNode->above->below = rowNode;
-	    rowNode->columnHeader->value++;
-	    rowNode = rowNode->right;
-	}
-	colNode        = colNode->below;
+        DLXNode * rowNode = colNode->right;
+        qDebug() << "DLXSolver::uncoverColumn: return DLX row"
+                 << rowNode->value;
+        while (rowNode != colNode) {
+            rowNode->below->above = rowNode;
+            rowNode->above->below = rowNode;
+            rowNode->columnHeader->value++;
+            rowNode = rowNode->right;
+        }
+        colNode        = colNode->below;
     }
 
     fprintf (stderr, "uncoverColumn: %d rows %d\n",
-	     mColumns.indexOf(colDLX), colDLX->value); 
+             mColumns.indexOf(colDLX), colDLX->value); 
     colDLX->left->right = colDLX;
     colDLX->right->left = colDLX;
 }
@@ -537,11 +537,11 @@ void DLXSolver::addNode (int rowNum, int colNum)
 
     // Circularly link the node onto the end of the row.
     if (mRows.at (rowNum) == 0) {
-	mRows[rowNum] = node;	// First in row.
-	initNode (node);	// Linked to itself at left and right.
+        mRows[rowNum] = node;	// First in row.
+        initNode (node);	// Linked to itself at left and right.
     }
     else {
-	addAtRight (node, mRows.at (rowNum));
+        addAtRight (node, mRows.at (rowNum));
     }
 
 
@@ -564,22 +564,22 @@ DLXNode * DLXSolver::getNode (int rowNum, int colNum)
         mEndColNum++;
        if (mEndColNum >= mColumns.count()) {
             // Allocate a column header only when needed, otherwise re-use one.
-	    mColumns.append (new DLXNode);
+            mColumns.append (new DLXNode);
         }
-	node = mColumns.at (mEndColNum);
+        node = mColumns.at (mEndColNum);
         initNode (node);
-	addAtRight (node, mCorner);
+        addAtRight (node, mCorner);
     }
 
     while (mEndRowNum < rowNum) {
         mEndRowNum++;
         if (mEndRowNum >= mRows.count()) {
-	    // Make space on the list if needed, otherwise re-use an entry.
-	    mRows.append (0);
+            // Make space on the list if needed, otherwise re-use an entry.
+            mRows.append (0);
         }
-	else {
-	    mRows[mEndRowNum] = 0;
-	}
+        else {
+            mRows[mEndRowNum] = 0;
+        }
     }
 
     mEndNodeNum++;
