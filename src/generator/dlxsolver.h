@@ -175,7 +175,7 @@ private:
     void      addNode       (int rowNum, int colNum);
 
     // Get a node-structure, allocating or re-using as needed.
-    DLXNode * getNode       (int rowNum, int colNum);
+    DLXNode * allocNode();
 
     // Initialise a node to point to itself and contain value 0.
     void      initNode      (DLXNode * node);
@@ -199,7 +199,7 @@ private:
 
     BoardContents    mBoardValues;	// Holds Sudoku problem and solution.
     SKGraph *        mGraph;
-   
+
     // Print the current state of the Sudoku puzzle.
     void printSudoku();
 
