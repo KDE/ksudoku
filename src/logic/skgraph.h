@@ -89,6 +89,20 @@
  * in jigsaw-type puzzles.  These structures also make it easier to write XML
  * files for new 2-D puzzle shapes and open the way for 3-D puzzles containing
  * more than one NxNxN cube overlapping in various ways.
+ *
+ * Cages, introduced in May-June 2015, are a new data-structure to support
+ * Killer Sudoku and Mathdoku (aka Kenken TM) types of puzzle. A cage is an
+ * irregular group of cells with size 1 to puzzle-order. Cages are imposed over
+ * a Latin Square of digits, as used in 2-D Sudokus. A cage of size 1 is
+ * equivalent to a clue or given value in a Sudoku. Cages of size 2 or more
+ * provide the rest of the clues. In Mathdoku, each such cage has an arithmetic
+ * operator (+-x/) and a value that is calculated, using that operator and
+ * the hidden solution-values of the cells in the cage. The user has to work
+ * out what the solutions are from the clues in the cages and the regular
+ * Sudoku rules for rows and columns (but not blocks). In Killer Sudoku, there
+ * are the usual 3x3 or 2x2 Sudoku blocks and the only operator is addition.
+ * Note that a Mathdoku puzzle can have any size from 3x3 up to 9x9, but a
+ * Killer Sudoku can have sizes 4x4 or 9x9 only.
  */
 
 class SKGraph
@@ -155,6 +169,29 @@ public:
 	// Add a special or irregularly-shaped group to the list of structures.
 	void addCliqueStructure(QVector<int> data);
 
+	// Add a cage (applicable to Mathdoku or Killer Sudoku puzzles only).
+	void addCage(const QVector<int> cage, CageOperator cageOperator,
+                     int cageValue);
+
+	// Get the total number of cages (0 if not Mathdoku or Killer Sudoku)..
+	inline int cageCount() const { return m_cages.count(); }
+
+	// Get a list of the cells in a cage.
+	QVector<int> cage(int i) const { return m_cages.at(i)->cage; }
+
+	// Get the mathematical operator of a cage (+ - * or /).
+	CageOperator cageOperator(int i) const
+                                         { return m_cages.at(i)->cageOperator; }
+
+	// Get the calculated value of the cells in a cage.
+	int cageValue(int i) const { return m_cages.at(i)->cageValue; }
+
+	// Get the top left cell in a cage.
+	int cageTopLeft(int i) const { return m_cages.at(i)->cageTopLeft; }
+
+	// Clear cages used in a previous puzzle, if any.
+	void clearCages();
+
 	inline const QString & name()     const { return m_name; }
 	inline ksudoku::GameType type()   const { return m_type; }
 	virtual SudokuType specificType() const { return m_specificType; }
@@ -185,6 +222,15 @@ protected:
 
 	QVector<int>        m_cellIndex;	// Index of cells to cliques.
 	QVector<int>        m_cellCliques;	// Second level of the index.
+
+	// Cages are for Mathdoku and Killer Sudoku puzzles only, else empty.
+	struct Cage {
+	    QVector<int>    cage;		// The cells in the cage.
+	    CageOperator    cageOperator;	// The mathematical operator.
+	    int             cageValue;		// The value to be calculated.
+	    int             cageTopLeft;	// The top-left (display) cell.
+	};
+	QVector<Cage *>     m_cages;
 
 	QString             m_name;
 	ksudoku::GameType   m_type;
