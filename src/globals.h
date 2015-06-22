@@ -25,13 +25,15 @@
 #define UNUSABLE -1
 
 enum SudokuType {Plain, XSudoku, Jigsaw, Samurai, TinySamurai, Roxdoku, Aztec,
-                 EndSudokuTypes};
+                 Mathdoku, KillerSudoku, EndSudokuTypes};
 
 enum Difficulty {VeryEasy  = 0, Easy = 1, Medium = 2, Hard = 3, Diabolical = 4,
                  Unlimited = 5};
 
 enum Symmetry   {DIAGONAL_1, CENTRAL, LEFT_RIGHT, SPIRAL, FOURWAY,
                  RANDOM_SYM, LAST_CHOICE = RANDOM_SYM, NONE, DIAGONAL_2};
+
+enum CageOperator {NoOperator, Divide, Subtract, Multiply, Add};
 
 typedef QVector<int>      BoardContents;
 

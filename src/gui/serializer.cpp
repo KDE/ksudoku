@@ -40,9 +40,11 @@
 namespace ksudoku {
 
 const char *     typeNames[] = {"Plain", "XSudoku", "Jigsaw", "Aztec",
-				"Samurai", "TinySamurai", "Roxdoku"};
+				"Samurai", "TinySamurai", "Roxdoku",
+				"Mathdoku", "KillerSudoku"};
 const SudokuType types[]     = {Plain, XSudoku, Jigsaw, Aztec,
-				Samurai, TinySamurai, Roxdoku};
+				Samurai, TinySamurai, Roxdoku,
+				Mathdoku, KillerSudoku};
 
 Game Serializer::deserializeGame(QDomElement element) {
 	bool hasPuzzle = false;
@@ -185,6 +187,7 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 	QString orderStr = element.attribute("order");
 	if(orderStr.isNull())
 		return 0;
+	// IDW TODO - Allow symbolic values for Mathdoku, set from user-config.
 	int order = orderStr.toInt(&noFailure, 0);
 	if(!noFailure)
 		return 0;
