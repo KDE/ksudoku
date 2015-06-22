@@ -63,12 +63,12 @@ public:
     virtual   ~DLXSolver();
 
     /** 
-     * Takes any of the various kinds of Sudoku puzzle supported by the KSudoku
-     * application program and converts it into a sparse matrix of constraints
-     * and possible solution values for each vacant Sudoku cell. It then calls
-     * the solveDLX method to solve the puzzle, using Donald Knuth's Dancing
-     * Links (DLX) algorithm. The algorithm can find zero, one or any number
-     * of solutions, each of which can be received in a Qt slot and converted
+     * Takes any of the various kinds of 2-D Sudoku or 3-D Roxdoku puzzle
+     * supported by the KSudoku application program and converts it into a
+     * sparse matrix of constraints and possible solution values for each
+     * vacant cell. It then calls the solveDLX method to solve the puzzle,
+     * using Donald Knuth's Dancing Links (DLX) algorithm. The algorithm can
+     * find zero, one or any number of solutions, each of which can converted
      * back into a KSudoku grid containing a solution.
      *
      * Each column in the DLX matrix represents a constraint that must be
@@ -123,7 +123,37 @@ public:
      */
     int       solveSudoku   (SKGraph * graph, const BoardContents & boardValues,
                                                 int solutionLimit = 2);
-    void      testDLX();	// TODO - Delete this eventually.
+
+    /**
+     * Takes a Mathdoku or Killer Sudoku puzzle and converts it into a sparse
+     * matrix of constraints and possible solution values for each cage. The
+     * constraints are that each cage must be filled in and that each column
+     * and row of the puzzle solution must follow Sudoku rules (blocks too, in
+     * Killer Sudoku). The possible solutions are represented by one DLX row per
+     * possible set of numbers for each cage. The solveDLX() method is then used
+     * to test that the puzzle has one and only one solution, which consists of
+     * a subset of the original DLX rows (i.e. one set of numbers per cage). For
+     * more detail, see solveSudoku().
+     *
+     * @param graph          An SKGraph object representing the size, geometric
+     *                       layout and rules of the particular kind of puzzle,
+     *                       as well as its cage layouts, values and operators.
+     * @param possibilities  A pointer to a list of possible values for all the
+     *                       cells in all the cages.
+     * @param possibilitiesIndex
+     *                       An index into the possibilities list, with one
+     *                       index-entry per cage, plus an end-of-list index.
+     * @param solutionLimit  A limit to the number of solutions to be delivered
+     *                       where 0 = no limit, 1 gets the first solution only
+     *                       and 2 is used to test if there is > 1 solution.
+     *
+     * @return               The number of solutions found (0 to solutionLimit).
+     */
+    int       solveMathdoku (SKGraph * graph, const QList<int> * possibilities,
+                             const QList<int> * possibilitiesIndex,
+                             int solutionLimit = 2);
+
+    // void      testDLX();  // TODO - Delete this eventually.
 
 private:
     /**
@@ -199,6 +229,8 @@ private:
 
     BoardContents    mBoardValues;	// Holds Sudoku problem and solution.
     SKGraph *        mGraph;
+    const QList<int> *     mPossibilities;
+    const QList<int> *     mPossibilitiesIndex;
 
     // Print the current state of the Sudoku puzzle.
     void printSudoku();
