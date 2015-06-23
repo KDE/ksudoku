@@ -91,7 +91,7 @@
  * more than one NxNxN cube overlapping in various ways.
  *
  * Cages, introduced in May-June 2015, are a new data-structure to support
- * Killer Sudoku and Mathdoku (aka Kenken TM) types of puzzle. A cage is an
+ * Killer Sudoku and Mathdoku (aka KenKen TM) types of puzzle. A cage is an
  * irregular group of cells with size 1 to puzzle-order. Cages are imposed over
  * a Latin Square of digits, as used in 2-D Sudokus. A cage of size 1 is
  * equivalent to a clue or given value in a Sudoku. Cages of size 2 or more
