@@ -37,6 +37,7 @@ enum GroupType {
 	GroupColumn            = 0x02,
 	GroupBlock             = 0x03,
 	GroupSpecial           = 0x04,
+	GroupCage              = 0x05, // IDW test.
 	GroupUnhighlightedMask = 0x07,
 	GroupHighlight         = 0x08
 };
@@ -97,12 +98,15 @@ private:
 private:
 	void fillNameHashes();
 private:
+	// TODO - The next 6 data items are unused.
+/*
 	bool m_hasRowAndColumn : 1;
 	bool m_hasRowAndColumnHighlight : 1;
 	bool m_hasBlock : 1;
 	bool m_hasBlockHighlight : 1;
 	bool m_hasSpecial : 1;
 	bool m_hasSpecialHighlight : 1;
+*/
 	QVector<QString> m_borderNames;
 	QVector<QString> m_borderTypes;
 	QVector<QString> m_specialNames;

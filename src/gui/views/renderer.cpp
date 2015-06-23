@@ -93,7 +93,10 @@ void Renderer::fillNameHashes() {
 	m_borderTypes << "column";
 	m_borderTypes << "block";
 	m_borderTypes << "special";
-	m_borderTypes << "special";
+	// IDW test. m_borderTypes << "special";
+	// m_borderTypes << "special_h"; // IDW test.
+	m_borderTypes << "block"; // IDW test.
+	// m_borderTypes << "cage"; // IDW test.
 	m_borderTypes << "special";
 	m_borderTypes << "special";
 	m_borderTypes << QString();
@@ -101,7 +104,8 @@ void Renderer::fillNameHashes() {
 	m_borderTypes << "column_h";
 	m_borderTypes << "block_h";
 	m_borderTypes << "special_h";
-	m_borderTypes << "special_h";
+	// IDW test. m_borderTypes << "special_h";
+	m_borderTypes << "block_h";
 	m_borderTypes << "special_h";
 	m_borderTypes << "special_h";
 	m_specialNames << "cell";
@@ -301,7 +305,8 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const {
 	// TODO maybe it would be good to directly integrate the renderMarker implementation and
 	// make renderMarker be based on this method. (same for renderSymbol and renderSymbolOn)
-	int size = pixmap.width();
+	// IDW TODO - Use smaller size in Mathdoku and Killer only.
+	int size = pixmap.width() * 8 / 10; // IDW test. ;
 	QPixmap symbolPixmap = renderMarker(symbol, range, size);
 	if(color) {
 		QPainter p(&symbolPixmap);
@@ -314,7 +319,10 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 		return symbolPixmap;
 	} else {
 		QPainter p(&pixmap);
-		p.drawPixmap(0, 0, symbolPixmap);
+		// IDW TODO - Use offset from 0,0 in Mathdoku and Killer only.
+		// IDW test. p.drawPixmap(0, 0, symbolPixmap);
+		int offset = (size + 10)/10; // IDW test.
+		p.drawPixmap(offset, 2*offset, symbolPixmap); // IDW test.
 		p.end();
 		return pixmap;
 	}
