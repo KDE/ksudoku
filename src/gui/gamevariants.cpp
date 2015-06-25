@@ -353,10 +353,12 @@ bool CustomGame::canStartEmpty() const {
 }
 
 Game CustomGame::startEmpty() {
-	if(!m_graph) {
-		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-		if(!m_graph) return Game();
+	if(m_graph) {
+	    delete m_graph;	// Create SKGraph every time, so that Mathdoku
+	    m_graph = 0;	// Settable always gets the latest size setting.
 	}
+	m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+	if(!m_graph) return Game();
 
 	Puzzle* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
@@ -365,10 +367,12 @@ Game CustomGame::startEmpty() {
 }
 
 Game CustomGame::createGame(int difficulty, int symmetry) {
-	if(!m_graph) {
-		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-		if(!m_graph) return Game();
+	if(m_graph) {
+	    delete m_graph;	// Create SKGraph every time, so that Mathdoku
+	    m_graph = 0;	// Settable always gets the latest size setting.
 	}
+	m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+	if(!m_graph) return Game();
 
 	Puzzle* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, symmetry);

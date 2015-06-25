@@ -36,6 +36,7 @@
 
 #include "ksudoku.h"
 #include "symbols.h"
+#include "settings.h"
 
 namespace ksudoku {
 
@@ -188,7 +189,9 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 	if(orderStr.isNull())
 		return 0;
 	// IDW TODO - Allow symbolic values for Mathdoku, set from user-config.
-	int order = orderStr.toInt(&noFailure, 0);
+	int order = (orderStr == QString("Mathdoku")) ?
+                     Settings::mathdokuSize() :
+                     orderStr.toInt(&noFailure, 0);
 	if(!noFailure)
 		return 0;
 
@@ -207,10 +210,21 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 		return graph;
 	} else if(type == "custom") {
 		int err=0;
-		int ncliques = readInt(element,"ncliques", &err);
-		int sizeX = readInt(element,"sizeX",&err);
-		int sizeY = readInt(element,"sizeY",&err);
-		int sizeZ = readInt(element,"sizeZ",&err);
+		int ncliques;
+		int sizeX;
+		int sizeY;
+		int sizeZ;
+		if (orderStr != QString("Mathdoku")) {
+		    ncliques = readInt(element,"ncliques", &err);
+		    sizeX = readInt(element,"sizeX",&err);
+		    sizeY = readInt(element,"sizeY",&err);
+		}
+		else {
+		    ncliques = 2 * order;
+		    sizeX = order;
+		    sizeY = order;
+		}
+		sizeZ = readInt(element,"sizeZ",&err);
 
 		QString name = element.attribute("name");
 		QString typeName = element.attribute("specific-type");
