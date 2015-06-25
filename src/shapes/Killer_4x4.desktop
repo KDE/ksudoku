@@ -1,0 +1,8 @@
+[KSudokuVariant]
+Name=Tiny Killer
+Description=4x4 Sudoku, but cages must add to totals shown
+Author=Ian Wadham
+FileName=Killer_4x4.xml
+Icon=ksudoku-ksudoku_4x4
+
+

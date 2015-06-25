@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Mathdoku - Settable Size
+Description=Size 3x3 to 9x9 grid, with calculated cages
+Author=Ian Wadham
+FileName=Mathdoku_Settable.xml
+Icon=ksudoku-ksudoku_9x9

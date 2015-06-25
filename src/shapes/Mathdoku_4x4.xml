@@ -1,0 +1,9 @@
+<!DOCTYPE ksudoku-graph>
+<ksudoku-graph>
+ <graph sizeX="4" sizeY="4" sizeZ="1" ncliques="8" order="4" 
+type="custom" specific-type="Mathdoku" name="Mathdoku_4x4">
+
+  <sudokugroups at="0" withblocks="0" />
+
+ </graph>
+</ksudoku-graph>
