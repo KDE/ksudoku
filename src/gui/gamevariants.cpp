@@ -353,13 +353,9 @@ bool CustomGame::canStartEmpty() const {
 }
 
 Game CustomGame::startEmpty() {
-	if(m_graph) {
-	    delete m_graph;	// Create SKGraph every time, so that Mathdoku
-	    m_graph = 0;	// Settable always gets the latest size setting.
+	if (! createSKGraphObject()) {
+	    return Game();
 	}
-	m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-	if(!m_graph) return Game();
-
 	Puzzle* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
 
@@ -367,13 +363,9 @@ Game CustomGame::startEmpty() {
 }
 
 Game CustomGame::createGame(int difficulty, int symmetry) {
-	if(m_graph) {
-	    delete m_graph;	// Create SKGraph every time, so that Mathdoku
-	    m_graph = 0;	// Settable always gets the latest size setting.
+	if (! createSKGraphObject()) {
+	    return Game();
 	}
-	m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-	if(!m_graph) return Game();
-
 	Puzzle* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, symmetry);
 
@@ -383,6 +375,18 @@ Game CustomGame::createGame(int difficulty, int symmetry) {
 KsView* CustomGame::createView(const Game& /*game*/) const {
 	qDebug() << "KsView* ksudoku::CustomGame::createView()";
 	return 0;
+}
+
+bool CustomGame::createSKGraphObject()
+{
+	if ((m_graph != 0) && (m_graph->specificType() == Mathdoku)) {
+	    delete m_graph;	// Re-create SKGraph for every Mathdoku game, so
+	    m_graph = 0;	// that it always gets the latest size setting.
+	}
+	if (m_graph == 0) {
+	    m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+	}
+	return (m_graph != 0);	// True if the shapes/*.xml file loaded OK.
 }
 
 }
