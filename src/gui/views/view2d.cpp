@@ -155,20 +155,7 @@ void CellGraphicsItem::updatePixmap() {
 		default: break; // TODO maybe assert as this is not allowed to occur
 	}
 	if (! m_cageLabel.isEmpty()) {
-		// TODO - Do this in gui/views/renderer.cpp.
-		// TODO - More work on layout of targets, markers and symbols.
-		// TODO - Leave everything unchanged for pure Sudoku puzzles.
-		// TODO - Do font setup once during resize? Put 0+-x/ in themes?
-		// TODO - Draw a background rectangle for the target text?
-		int size = pic.width();
-		QPainter p(&pic);
-		p.setPen(QString("white"));	// TODO - Scribble needs black?
-		QFont f = p.font();
-		f.setBold(true);
-		f.setPixelSize((size+5)/6);
-		p.setFont(f);
-		p.drawText(size/6, (size+4)/5, m_cageLabel);
-		p.end();
+		pic = Renderer::instance()->renderCageLabelOn(pic, m_cageLabel);
 	}
 	setPixmap(pic);
 	
@@ -217,9 +204,8 @@ GroupGraphicsItem::GroupGraphicsItem(QVector<QPoint> cells, bool isCage) {
 	detectType();
 	if (isCage) {
 	    // Draw border around cage, even if it is all in one row or column.
-	    // IDW test. m_type = GroupBlock;
-	    m_type = GroupCage; // IDW test.
-	    setZValue(4); // IDW test.
+	    m_type = GroupCage;
+	    setZValue(4);
 	}
 	createContour();
 
@@ -251,15 +237,10 @@ void GroupGraphicsItem::detectType() {
 	if(x==-1) m_type |= GroupRow;
 	if(y==-1) m_type |= GroupColumn;
 
-	// TODO - Does this code *really* affect highlights? See setHighlight().
 	// Row and column highlights must go above the GroupBlock boundary-line.
-	// IDW test. if(m_type == GroupColumn) setZValue(4);
-	// IDW test. else if(m_type == GroupRow) setZValue(4);
-	// IDW test. else if(m_type == GroupBlock) setZValue(3);
-	//
-	// TODO - It really looks better to have the block highlight on top of
-	//        the row and column, especially with cages or irregular blocks.
-	//        Might also be a good idea to reduce opacity of row and column.
+	// It really looks better to have the block highlight on top of the row
+	// and column highlights, especially with cages or jigsaw-type blocks.
+	// TODO - Might also be a good idea to reduce opacity of row and column.
 	if(m_type == GroupColumn) setZValue(3);
 	else if(m_type == GroupRow) setZValue(3);
 	else if(m_type == GroupBlock) setZValue(4);
@@ -281,10 +262,9 @@ void GroupGraphicsItem::createContour() {
 		idx[7] = m_cells.indexOf(QPoint(x,   y+1));	// South.
 		idx[8] = m_cells.indexOf(QPoint(x+1, y+1));	// South East.
 		
-		// IDW test. if(idx[1] == -1 && idx[3] == -1 && idx[5] == -1 && idx[7] == -1)
-		// IDW test. if(!m_isCage &&	// A cage can consist of one cell and a border.
-		if((m_type != GroupCage) &&	// A cage can consist of one cell and a border.
-		   idx[1] == -1 && idx[3] == -1 && idx[5] == -1 && idx[7] == -1) // IDW test.
+		// A cage can consist of one cell with a border.
+		if((m_type != GroupCage) &&
+		   idx[1] == -1 && idx[3] == -1 && idx[5] == -1 && idx[7] == -1)
 		{
 			// No adjoining neighbour to N, S, E or W.
 			m_type = GroupSpecial;	// Used in the "X" of XSudoku.
@@ -322,7 +302,7 @@ void GroupGraphicsItem::createSegment(const QPoint& pos, int shape) {
 			segment.standard = 0;
 			break;
 		case GroupBlock:
-		case GroupCage: // IDW test.
+		case GroupCage:
 			segment.standard = (shape == 15) ? 0	// No middle.
 					   : new QGraphicsPixmapItem(this);
 			break;
@@ -359,13 +339,11 @@ void GroupGraphicsItem::setHighlight(bool highlight) {
 	    if ((m_type & GroupBlock) == GroupBlock) {
 		// Block highlight goes on top of row, column and special
 		// highlights.  Block boundary-line goes underneath them.
-		// IDW test. setZValue(highlight ? 6 : 3);
 		setZValue(highlight ? 8 : 4);
 	    }
-	    // IDW test. if ((m_type & GroupSpecial) == GroupSpecial) {
-	    if (m_type == GroupSpecial) { // IDW test.
+	    if (m_type == GroupSpecial) {
 		// Special highlight goes on top of unhighlighted special cell.
-		setZValue(highlight ? 5 : 4);
+		setZValue(highlight ? 9 : 4);
 	    }
 	}
 	if(segment->standard) {
@@ -452,6 +430,8 @@ void View2DScene::init(const Game& game) {
 	addItem(m_cellLayer);
 	
 	SKGraph* g = m_game.puzzle()->graph();
+	Renderer::instance()->setMathdokuStyle((g->specificType() == Mathdoku)
+					|| (g->specificType() == KillerSudoku));
 	m_cells.resize(m_game.size());
 	m_cursorPos = -1;
 	for(int i = 0; i < m_game.size(); ++i) {
@@ -476,6 +456,8 @@ void View2DScene::init(const Game& game) {
 	}
 
 	m_groups.resize(g->cliqueCount() + g->cageCount());
+	// IDW TODO - Draw Killer Sudoku cages inside cell borders?
+	//            Anyway, show 3x3 and 2x2 blocks in Killer Sudoku somehow.
 	for(int i = 0; i < g->cliqueCount(); ++i) {
 		// Set the shape of each group.
 		QVector<int> idx = g->clique(i);
@@ -485,7 +467,6 @@ void View2DScene::init(const Game& game) {
 		}
 		m_groups[i] = new GroupGraphicsItem(pts);
 		m_groups[i]->setParentItem(m_groupLayer);
-		// IDW TODO - Draw Killer Sudoku cages inside cell borders?
 		// Avoid ugly crossings of cages and blocks in Killer Sudoku.
 		// Show borders of blocks only if there are no cages present.
 		m_groups[i]->hideBlockBorder((g->cageCount() > 0));

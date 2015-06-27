@@ -37,7 +37,7 @@ enum GroupType {
 	GroupColumn            = 0x02,
 	GroupBlock             = 0x03,
 	GroupSpecial           = 0x04,
-	GroupCage              = 0x05, // IDW test.
+	GroupCage              = 0x05, // For Mathdoku and Killer Sudoku only.
 	GroupUnhighlightedMask = 0x07,
 	GroupHighlight         = 0x08
 };
@@ -80,6 +80,11 @@ public:
 
 	bool loadTheme(const QString& themeName);
 
+	// In Mathdoku style, symbols and markers are drawn smaller than usual
+	// and re-positioned, to allow space at the top left of a cell for a
+	// cage label. The label contains the value and operator clues.
+	void setMathdokuStyle(bool onOff) { m_mathdokuStyle = onOff; }
+
 	QPixmap renderBackground(const QSize& size) const;
 	QPixmap renderSpecial(SpecialType type, int size) const;
 
@@ -90,6 +95,8 @@ public:
 
 	QPixmap renderMarker(int symbol, int range, int size) const;
 	QPixmap renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const;
+
+	QPixmap renderCageLabelOn(QPixmap pixmap, const QString & cageLabel);
 
 	QPixmap renderSpecial3D(SpecialType type, int size) const;
 private:
@@ -115,6 +122,7 @@ private:
 	QString m_currentTheme;
 	QSvgRenderer* m_renderer;
 	KPixmapCache* m_cache;
+	bool m_mathdokuStyle;
 };
 
 }
