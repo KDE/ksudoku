@@ -1,0 +1,6 @@
+[KSudokuVariant]
+Name=Mathdoku 101
+Description=Size 4x4 grid, with calculated cages
+Author=Ian Wadham
+FileName=Mathdoku_4x4.xml
+Icon=ksudoku-ksudoku_4x4

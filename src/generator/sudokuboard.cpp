@@ -20,6 +20,8 @@
 
 #include "sudokuboard.h"
 #include "state.h"
+#include "mathdokugenerator.h"
+#include <QDebug> // IDW test.
 
 #include <KLocale>
 #include <KMessageBox>
@@ -71,16 +73,48 @@ void SudokuBoard::setSeed()
     }
 }
 
-void SudokuBoard::generatePuzzle (BoardContents & puzzle,
-                                  BoardContents & solution,
-                                  Difficulty difficultyRequired,
-                                  Symmetry symmetry)
+void SudokuBoard::generatePuzzle             (BoardContents & puzzle,
+                                              BoardContents & solution,
+                                              Difficulty difficultyRequired,
+                                              Symmetry symmetry)
 {
     dbe "Entered generatePuzzle(): difficulty %d, symmetry %d\n",
         difficultyRequired, symmetry);
-    QTime t;
-    t.start();
     setSeed();
+
+    SudokuType puzzleType = m_graph->specificType();
+    if ((puzzleType == Mathdoku) || (puzzleType == KillerSudoku)) {
+	// Generate variants of Mathdoku (aka KenKen TM) or Killer Sudoku types.
+	int maxTries = 10;
+	int numTries = 0;
+	bool r = false;
+	while (numTries < maxTries) {
+	    MathdokuGenerator mg (m_graph);
+	    solution = fillBoard();
+	    numTries++;
+	    r = mg.generateMathdokuTypes (puzzle, solution, difficultyRequired);
+	    if (r) {
+		qDebug() << "SudokuBoard::generatePuzzle SUCCEEDED: numTries"
+		         << numTries;
+		return;
+	    }
+	}
+	// TODO - Issue a popup message for the user to decide how to proceed.
+	qDebug() << "SudokuBoard::generatePuzzle FAILED MISERABLY !!! numTries"
+		 << numTries;
+    }
+    else {
+	// Generate variants of Sudoku (2D) and Roxdoku (3D) types.
+	generateSudokuRoxdokuTypes (puzzle, solution,
+                                    difficultyRequired, symmetry);
+    }
+}
+
+void SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
+                                              BoardContents & solution,
+                                              Difficulty difficultyRequired,
+                                              Symmetry symmetry)
+{
     const int     maxTries = 20;
     int           count = 0;
     float         bestRating = 0.0;
@@ -91,6 +125,8 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     BoardContents currPuzzle;
     BoardContents currSolution;
 
+    QTime t;
+    t.start();
     if (m_graph->sizeZ() > 1) {
 	symmetry = NONE;		// Symmetry not implemented in 3-D.
     }

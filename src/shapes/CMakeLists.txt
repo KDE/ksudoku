@@ -14,6 +14,10 @@ install( FILES
 	DoubleRoxdoku.desktop DoubleRoxdoku.xml
 	RoxdokuTwin.desktop RoxdokuTwin.xml
 	SamuraiRoxdoku.desktop SamuraiRoxdoku.xml
+	Mathdoku_4x4.desktop Mathdoku_4x4.xml
+	Mathdoku_Settable.desktop Mathdoku_Settable.xml
+	Killer_4x4.desktop Killer_4x4.xml
+	# Killer_9x9.desktop Killer_9x9.xml # OUT - until 9x9 gameplay improves
 	DESTINATION  ${DATA_INSTALL_DIR}/ksudoku
 )
 

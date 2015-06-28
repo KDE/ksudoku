@@ -178,6 +178,7 @@ private:
 
 	KUrl m_url;
 	SKGraph* m_graph;
+	bool createSKGraphObject();
 };
 
 }

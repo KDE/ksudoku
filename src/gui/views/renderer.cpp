@@ -25,6 +25,7 @@ Renderer::Renderer() {
 	m_renderer = new QSvgRenderer();
 	m_cache = new KPixmapCache("ksudoku-cache");
 	m_cache->setCacheLimit(3*1024);
+	m_mathdokuStyle = false;
 	
 	if(!loadTheme(Settings::theme()))
 		kDebug() << "Failed to load any game theme!";
@@ -93,7 +94,7 @@ void Renderer::fillNameHashes() {
 	m_borderTypes << "column";
 	m_borderTypes << "block";
 	m_borderTypes << "special";
-	m_borderTypes << "special";
+	m_borderTypes << "block";	// Use block-type borders for cages.
 	m_borderTypes << "special";
 	m_borderTypes << "special";
 	m_borderTypes << QString();
@@ -101,7 +102,7 @@ void Renderer::fillNameHashes() {
 	m_borderTypes << "column_h";
 	m_borderTypes << "block_h";
 	m_borderTypes << "special_h";
-	m_borderTypes << "special_h";
+	m_borderTypes << "block_h";	// Use block-type borders for cages.
 	m_borderTypes << "special_h";
 	m_borderTypes << "special_h";
 	m_specialNames << "cell";
@@ -233,7 +234,10 @@ QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) c
 }
 
 QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, int max, SymbolType type) const {
-	int size = pixmap.width();
+	// We use a smaller size of symbol in Mathdoku and Killer
+	// Sudoku, to allow space for the cage labels.
+	int size = m_mathdokuStyle ? (pixmap.width()+1)*3/4 : pixmap.width();
+	int offset = m_mathdokuStyle ? (pixmap.width()+7)/8 : 0;
 	QPixmap symbolPixmap = renderSymbol(symbol, size, max, type);
 	if(color) {
 		// TODO this does not work, need some other way, maybe hardcode color into NumberType
@@ -247,7 +251,7 @@ QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, int max,
 		return symbolPixmap;
 	} else {
 		QPainter p(&pixmap);
-		p.drawPixmap(0, 0, symbolPixmap);
+		p.drawPixmap(offset, offset, symbolPixmap);
 		p.end();
 		return pixmap;
 	}
@@ -301,7 +305,10 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const {
 	// TODO maybe it would be good to directly integrate the renderMarker implementation and
 	// make renderMarker be based on this method. (same for renderSymbol and renderSymbolOn)
-	int size = pixmap.width();
+
+	// We use a smaller size of marker in Mathdoku and Killer
+	// Sudoku, to allow space for the cage labels.
+	int size = m_mathdokuStyle ? (pixmap.width()+1)*3/4 : pixmap.width();
 	QPixmap symbolPixmap = renderMarker(symbol, range, size);
 	if(color) {
 		QPainter p(&symbolPixmap);
@@ -314,10 +321,41 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 		return symbolPixmap;
 	} else {
 		QPainter p(&pixmap);
-		p.drawPixmap(0, 0, symbolPixmap);
+		// Offset the marker from 0,0 in Mathdoku and Killer Sudoku.
+		int offset = m_mathdokuStyle ? (size + 7)/8 : 0;
+		p.drawPixmap(offset, 2*offset, symbolPixmap);
 		p.end();
 		return pixmap;
 	}
+}
+
+QPixmap Renderer::renderCageLabelOn(QPixmap pixmap, const QString & cageLabel)
+{
+	// TODO - Do font setup once during resize? Put 0+-x/ in themes?
+	int size = pixmap.width();
+	QPainter p(&pixmap);
+	p.setPen(QString("white"));	// Text is white on a dark rectangle.
+	p.setBrush(Qt::SolidPattern);
+
+	// Cage label uses top 1/4 of pixmap and text is 1/6 height of pixmap.
+	QFont f = p.font();
+	f.setBold(true);
+	f.setPixelSize((size+5)/6);
+	p.setFont(f);
+
+	QFontMetrics fm(f);
+	int w = fm.width(cageLabel);	// Width of text.
+	int h = fm.height();		// Total height of font.
+	int a = fm.ascent();		// Height from baseline of font.
+	int m = fm.width(QChar('1'))/2;	// Left-right margin = 1/2 width of '1'.
+
+	// Paint background rect: text must be visible in light and dark themes.
+	p.fillRect(size/6 - m, (size + 3)/4 - a, w + 2*m, h, Qt::darkGray);
+	// Note: Origin of text is on baseline to left of first character.
+	p.drawText(size/6, (size+3)/4, cageLabel);
+
+	p.end();
+	return pixmap;
 }
 
 QPixmap Renderer::renderBorder(int border, GroupTypes type, int size) const {

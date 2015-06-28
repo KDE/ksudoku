@@ -52,6 +52,7 @@ public:
 	QPoint pos() const { return m_pos; }
 	void showCursor(QGraphicsItem* cursor);
 	void setType(SpecialType type);
+	void setCageLabel (const QString cageLabel);
 	
 	void setValues(QVector<ColoredValue> values);
 protected:
@@ -64,6 +65,7 @@ private:
 	QPoint m_pos;
 	SpecialType m_type;
 	QVector<ColoredValue> m_values;
+	QString m_cageLabel;
 	int m_id;
 	int m_size;
 	int m_range;
@@ -123,6 +125,10 @@ void CellGraphicsItem::setValues(QVector<ColoredValue> values) {
 	updatePixmap();
 }
 
+void CellGraphicsItem::setCageLabel(const QString cageLabel) {
+	m_cageLabel = cageLabel;
+}
+
 void CellGraphicsItem::updatePixmap() {
 	if(m_size == 0) return;
 
@@ -148,6 +154,9 @@ void CellGraphicsItem::updatePixmap() {
 			} break;
 		default: break; // TODO maybe assert as this is not allowed to occur
 	}
+	if (! m_cageLabel.isEmpty()) {
+		pic = Renderer::instance()->renderCageLabelOn(pic, m_cageLabel);
+	}
 	setPixmap(pic);
 	
 	show();
@@ -163,8 +172,9 @@ struct GroupGraphicItemSegment {
 
 class GroupGraphicsItem : public QGraphicsItemGroup {
 public:
-	GroupGraphicsItem(QVector<QPoint> cells);
+	GroupGraphicsItem(QVector<QPoint> cells, bool isCage = false);
 	~GroupGraphicsItem();
+	void hideBlockBorder (bool visible);
 public:
 	void resize(int gridSize, bool highlight);
 	void setHighlight(bool highlight);
@@ -178,16 +188,25 @@ private:
 	GroupTypes m_type;
 	QVector<QPoint> m_cells;
 	QVector<GroupGraphicItemSegment> m_segments;
+	bool m_isCage;	// Is the group a cage, as in Killer Sudoku or Mathdoku?
+	bool m_borderVisible;
 };
 
 
-GroupGraphicsItem::GroupGraphicsItem(QVector<QPoint> cells) {
+GroupGraphicsItem::GroupGraphicsItem(QVector<QPoint> cells, bool isCage) {
 	m_cells = cells;
+	m_isCage = isCage;
+	m_borderVisible = true;
 	
 	setEnabled(false);
 	setAcceptedMouseButtons(0);
 	
 	detectType();
+	if (isCage) {
+	    // Draw border around cage, even if it is all in one row or column.
+	    m_type = GroupCage;
+	    setZValue(4);
+	}
 	createContour();
 
 	if(!m_cells.contains(QPoint(1,1))) setHighlight(false);
@@ -198,6 +217,12 @@ GroupGraphicsItem::~GroupGraphicsItem() {
 	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
 		if(segment->highlighted) delete segment->highlighted;
 		if(segment->standard) delete segment->standard;
+	}
+}
+
+void GroupGraphicsItem::hideBlockBorder (bool hide) {
+	if ((m_type == GroupBlock) && hide) {
+	    m_borderVisible = false;
 	}
 }
 
@@ -213,9 +238,12 @@ void GroupGraphicsItem::detectType() {
 	if(y==-1) m_type |= GroupColumn;
 
 	// Row and column highlights must go above the GroupBlock boundary-line.
-	if(m_type == GroupColumn) setZValue(4);
-	else if(m_type == GroupRow) setZValue(4);
-	else if(m_type == GroupBlock) setZValue(3);
+	// It really looks better to have the block highlight on top of the row
+	// and column highlights, especially with cages or jigsaw-type blocks.
+	// TODO - Might also be a good idea to reduce opacity of row and column.
+	if(m_type == GroupColumn) setZValue(3);
+	else if(m_type == GroupRow) setZValue(3);
+	else if(m_type == GroupBlock) setZValue(4);
 }
 
 void GroupGraphicsItem::createContour() {
@@ -234,7 +262,9 @@ void GroupGraphicsItem::createContour() {
 		idx[7] = m_cells.indexOf(QPoint(x,   y+1));	// South.
 		idx[8] = m_cells.indexOf(QPoint(x+1, y+1));	// South East.
 		
-		if(idx[1] == -1 && idx[3] == -1 && idx[5] == -1 && idx[7] == -1)
+		// A cage can consist of one cell with a border.
+		if((m_type != GroupCage) &&
+		   idx[1] == -1 && idx[3] == -1 && idx[5] == -1 && idx[7] == -1)
 		{
 			// No adjoining neighbour to N, S, E or W.
 			m_type = GroupSpecial;	// Used in the "X" of XSudoku.
@@ -272,6 +302,7 @@ void GroupGraphicsItem::createSegment(const QPoint& pos, int shape) {
 			segment.standard = 0;
 			break;
 		case GroupBlock:
+		case GroupCage:
 			segment.standard = (shape == 15) ? 0	// No middle.
 					   : new QGraphicsPixmapItem(this);
 			break;
@@ -308,11 +339,11 @@ void GroupGraphicsItem::setHighlight(bool highlight) {
 	    if ((m_type & GroupBlock) == GroupBlock) {
 		// Block highlight goes on top of row, column and special
 		// highlights.  Block boundary-line goes underneath them.
-		setZValue(highlight ? 6 : 3);
+		setZValue(highlight ? 8 : 4);
 	    }
-	    if ((m_type & GroupSpecial) == GroupSpecial) {
+	    if (m_type == GroupSpecial) {
 		// Special highlight goes on top of unhighlighted special cell.
-		setZValue(highlight ? 5 : 4);
+		setZValue(highlight ? 9 : 4);
 	    }
 	}
 	if(segment->standard) {
@@ -337,13 +368,13 @@ void GroupGraphicsItem::resize(int gridSize, bool highlight) {
 	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
 		QPointF pos = segment->pos*gridSize;
 		// Has standard pixmap item?
-		if(segment->standard) {
+		if(m_borderVisible && segment->standard) {
 			QPixmap pic = r->renderBorder(segment->shape, standard, size);
 			segment->standard->setPixmap(pic);
 			segment->standard->setOffset(pos);
 		}
 		// Highlights on and has highlighted pixmap item?
-		if(highlight && segment->highlighted) {
+		if(m_borderVisible && highlight && segment->highlighted) {
 			QPixmap pic = r->renderBorder(segment->shape, highlighted, size);
 			segment->highlighted->setPixmap(pic);
 			segment->highlighted->setOffset(pos);
@@ -399,6 +430,8 @@ void View2DScene::init(const Game& game) {
 	addItem(m_cellLayer);
 	
 	SKGraph* g = m_game.puzzle()->graph();
+	Renderer::instance()->setMathdokuStyle((g->specificType() == Mathdoku)
+					|| (g->specificType() == KillerSudoku));
 	m_cells.resize(m_game.size());
 	m_cursorPos = -1;
 	for(int i = 0; i < m_game.size(); ++i) {
@@ -410,7 +443,9 @@ void View2DScene::init(const Game& game) {
 		m_cells[i] = new CellGraphicsItem(QPoint(g->cellPosX(i), g->cellPosY(i)), i, this);
 		m_cells[i]->setParentItem(m_cellLayer);
 		if(game.given(i))
+			// TODO - Implement allCellsLookSame preference.
 			m_cells[i]->setType(SpecialCellPreset);
+			// m_cells[i]->setType(SpecialCell); // IDW test.
 		else
 			m_cells[i]->setType(SpecialCell);
 		if(game.value(i))
@@ -419,16 +454,41 @@ void View2DScene::init(const Game& game) {
 			m_cells[i]->setValues(QVector<ColoredValue>());
 		if(m_cursorPos < 0) m_cursorPos = i;
 	}
-	
-	m_groups.resize(g->cliqueCount());
+
+	m_groups.resize(g->cliqueCount() + g->cageCount());
+	// IDW TODO - Draw Killer Sudoku cages inside cell borders?
+	//            Anyway, show 3x3 and 2x2 blocks in Killer Sudoku somehow.
 	for(int i = 0; i < g->cliqueCount(); ++i) {
+		// Set the shape of each group.
 		QVector<int> idx = g->clique(i);
 		QVector<QPoint> pts = QVector<QPoint>(idx.size());
 		for(int j = 0; j < idx.size(); ++j) {
-			pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
+		    pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
 		}
 		m_groups[i] = new GroupGraphicsItem(pts);
 		m_groups[i]->setParentItem(m_groupLayer);
+		// Avoid ugly crossings of cages and blocks in Killer Sudoku.
+		// Show borders of blocks only if there are no cages present.
+		m_groups[i]->hideBlockBorder((g->cageCount() > 0));
+	}
+	int offset = g->cliqueCount();
+	for(int i = 0; i < g->cageCount(); ++i) {
+		// Set the shape of each Mathdoku or KillerSudoku cage.
+		QVector<int> idx = g->cage(i);
+		QVector<QPoint> pts = QVector<QPoint>(idx.size());
+		for(int j = 0; j < idx.size(); ++j) {
+		    pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
+		}
+		m_groups[offset + i] = new GroupGraphicsItem(pts, true);
+		m_groups[offset + i]->setParentItem(m_groupLayer);
+		// Set the label of each cage (value and operator), but...
+		if (g->cage(i).size() > 1) {		 // Not in single cells.
+		    QString str = QString::number(g->cageValue(i));
+		    if (g->specificType() == Mathdoku) { // Not in KillerSudoku.
+			str = str + QString(" /-x+").mid(g->cageOperator(i), 1);
+		    }
+		    m_cells[g->cageTopLeft(i)]->setCageLabel(str);
+		}
 	}
 	
 	m_cursor = new QGraphicsPixmapItem();
@@ -514,7 +574,9 @@ void View2DScene::update(int cell) {
 		QVector<ColoredValue> values;
 		switch(cellInfo.state()) {
 			case GivenValue:
+				// TODO - Implement allCellsLookSame preference.
 				m_cells[cell]->setType(SpecialCellPreset);
+				// m_cells[cell]->setType(SpecialCell); // IDW test.
 				if(cellInfo.value()) values << ColoredValue(cellInfo.value(),0);
 				m_cells[cell]->setValues(values);
 				break;

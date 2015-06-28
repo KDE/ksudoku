@@ -25,10 +25,6 @@
 #include "skgraph.h"
 #include "globals.h"
 
-class QChar;
-class QObject;
-class SudokuBoard;
-
 namespace ksudoku {
 	
 class Puzzle {

@@ -1,0 +1,10 @@
+<!DOCTYPE ksudoku-graph>
+<ksudoku-graph>
+    <graph sizeX="Mathdoku" sizeY="Mathdoku" sizeZ="1"
+        ncliques="Mathdoku*2" order="Mathdoku" 
+        type="custom" specific-type="Mathdoku" name="Mathdoku_settable">
+
+        <sudokugroups at="0" withblocks="0" />
+
+    </graph>
+</ksudoku-graph>
