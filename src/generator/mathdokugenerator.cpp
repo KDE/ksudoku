@@ -35,7 +35,8 @@ bool MathdokuGenerator::generateMathdokuTypes (BoardContents & puzzle,
     int  maxSize   = qMin ((2 + difficultyRequired), mGraph->order());
     int  maxVal    = 1000;
     bool hideOps   = false;
-    int  maxCombos = 120;
+    // int  maxCombos = 120;
+    int  maxCombos = 2000;
 
     int  maxTries  = 20;
 
