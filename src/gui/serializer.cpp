@@ -188,7 +188,7 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 	QString orderStr = element.attribute("order");
 	if(orderStr.isNull())
 		return 0;
-	// IDW TODO - Allow symbolic values for Mathdoku, set from user-config.
+	// Allow symbolic values for Mathdoku, set from user-config dialog.
 	int order = (orderStr == QString("Mathdoku")) ?
                      Settings::mathdokuSize() :
                      orderStr.toInt(&noFailure, 0);
@@ -220,6 +220,7 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 		    sizeY = readInt(element,"sizeY",&err);
 		}
 		else {
+		    // In Mathdoku, there are row and column groups only.
 		    ncliques = 2 * order;
 		    sizeX = order;
 		    sizeY = order;

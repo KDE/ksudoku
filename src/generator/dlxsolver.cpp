@@ -241,7 +241,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
 
 #ifdef DLX_LOG
     fprintf (stderr, "\nTEST for DLXSolver\n\n");
-    printSudoku();			// IDW test.
+    printSudoku();
 
     qDebug() << "DLXSolver::solve: Order" << order << "boardArea" << boardArea
              << "nGroups" << nGroups;
@@ -554,7 +554,7 @@ int DLXSolver::solveDLX (int solutionLimit)
                     coverColumn (p->columnHeader);
                     p = p->right;
                 }
-                // printDLX(); // IDW test.
+                // printDLX();
 
                 if (mCorner->right != mCorner) {
                     break;	// Start searching a new sub-matrix.
@@ -595,7 +595,7 @@ int DLXSolver::solveDLX (int solutionLimit)
                 uncoverColumn (p->columnHeader);
                 p = p->left;
             }
-            // printDLX(); // IDW test.
+            // printDLX();
 
             // Select next row down and continue searching for a solution.
             currNode = currNode->below;
