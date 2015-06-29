@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 William Moreno <williamjmorenor@gmail.com> -->
+<!--
+     EmailAddress: wolfgang@rohdewald.de
+SentUpstream: 2014-09-24
+-->
+<component type="desktop">
+  <id>ksudoku.desktop</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <summary>Complete a numeric puzzle with the numbers from one to nine</summary>
+  <description>
+    <p>
+      KSudoku is a free version of the popular logic game Sudoku for the KDE desktop.
+      The game is to fill a nine by nine grid with the numbers from one to nine filling
+      the rows, columns and three by three squares without repeating a value on them.
+    </p>
+  </description>
+  <url type="homepage">https://projects.kde.org/projects/kde/kdegames/ksudoku</url>
+  <screenshots>
+    <screenshot type="default">
+      <image>http://games.kde.org/games/ksudoku/screenshots/originals/ksudoku01.jpg</image>
+    </screenshot>
+  </screenshots>
+</component>
