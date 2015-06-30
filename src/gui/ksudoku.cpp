@@ -265,6 +265,49 @@ void KSudoku::startGame(const Game& game) {
 	m_valueListWidget->setMaxValue(view->game().order());
 	m_valueListWidget->selectValue(1);
 	m_valueListWidget->show();
+
+	SudokuType t = game.puzzle()->graph()->specificType();
+	if (t == Mathdoku) {
+	    KMessageBox::information (this,
+		i18n("Mathdoku puzzles can have any size from 3x3 up to 9x9. "
+		     "The solution is a grid in which every row and every "
+		     "column contains the available digits (1-3 up to 1-9) "
+		     "exactly once. The grid is covered with irregularly "
+		     "shaped cages.\n"
+		     "\n"
+		     "Cages of size 1 are starting-values or clues, but there "
+		     "are not many of them. Cages of larger size have a target "
+		     "value and an arithmetic operator (+-x/). The digits in "
+		     "the cage must combine together, using the operator, to "
+		     "reach the target value, e.g. '12x' means that the digits "
+		     "must multiply together to make 12. A digit can occur "
+		     "more than once in a cage, provided it occurs in "
+		     "different rows and columns.\n"
+		     "\n"
+		     "In general, larger Mathdokus are more difficult and so "
+		     "are larger cages. You can select the puzzle size in "
+		     "KSudoku's Settings dialog and the maximum cage-size by "
+		     "using KSudoku's Difficulty button."),
+		i18n("Playing Mathdoku"), "PlayingMathdoku");
+	}
+	else if (t == KillerSudoku) {
+	    KMessageBox::information (this,
+		i18n("Killer Sudoku puzzles can have sizes 4x4 or 9x9, with "
+		     "either four 2x2 blocks or nine 3x3 blocks. The solution "
+		     "must follow Classic Sudoku rules. The difference is that "
+		     "there are few starting-values or clues (if any). Instead "
+		     "the grid is covered with irregularly shaped cages.\n"
+		     "\n"
+		     "Cages of size 1 are starting-values or clues. Cages of "
+		     "larger size have a target value and the digits in them "
+		     "must add up to that value. In Killer Sudoku, a cage "
+		     "cannot contain any digit more than once.\n"
+		     "\n"
+		     "In general, larger cages are more difficult. You can "
+		     "select the maximum cage-size by using KSudoku's "
+		     "Difficulty button."),
+		i18n("Playing Killer Sudoku"), "PlayingKillerSudoku");
+	}
 }
 
 void KSudoku::endCurrentGame() {
