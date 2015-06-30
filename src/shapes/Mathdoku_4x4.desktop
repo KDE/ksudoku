@@ -1,6 +1,18 @@
 [KSudokuVariant]
 Name=Mathdoku 101
+Name[ca]=Mathdoku 101
+Name[nl]=Mathdoku 101
+Name[pt]=Matedoku 101
+Name[sv]=Mattedoku 101
+Name[uk]=Матдоку 101
+Name[x-test]=xxMathdoku 101xx
 Description=Size 4x4 grid, with calculated cages
+Description[ca]=Mida de quadrícula 4x4, amb grups de cel·les calculades
+Description[nl]=Grootte 4x4 raster, met berekende kooien
+Description[pt]=Grelha de tamanho 4x4 com caixas controladas
+Description[sv]=Storlek 4x4 med beräknade avgränsningar
+Description[uk]=Ґратка розміром 4x4, із обчисленими блоками
+Description[x-test]=xxSize 4x4 grid, with calculated cagesxx
 Author=Ian Wadham
 FileName=Mathdoku_4x4.xml
 Icon=ksudoku-ksudoku_4x4

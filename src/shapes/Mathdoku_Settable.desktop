@@ -1,6 +1,18 @@
 [KSudokuVariant]
 Name=Mathdoku - Settable Size
+Name[ca]=Mathdoku - Mida definible
+Name[nl]=Mathdoku - instelbare grootte
+Name[pt]=Matedoku - Tamanho Variável
+Name[sv]=Mattedoku - Inställningsbar storlek
+Name[uk]=Матдоку — змінний розмір
+Name[x-test]=xxMathdoku - Settable Sizexx
 Description=Size 3x3 to 9x9 grid, with calculated cages
+Description[ca]=Mida de quadrícula 3x3 a 9x9, amb grups de cel·les calculades
+Description[nl]=Grootte 3x3 tot 9x9 raster, met berekende kooien
+Description[pt]=Grelha de 3x3 até 9x9, com caixas calculadas
+Description[sv]=Storlek 3x3 till 9x9 med beräknade avgränsningar
+Description[uk]=Ґратка розміром від 3x3 до 9x9, із обчисленими блоками
+Description[x-test]=xxSize 3x3 to 9x9 grid, with calculated cagesxx
 Author=Ian Wadham
 FileName=Mathdoku_Settable.xml
 Icon=ksudoku-ksudoku_9x9

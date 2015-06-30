@@ -1,6 +1,18 @@
 [KSudokuVariant]
 Name=Tiny Killer
+Name[ca]=Addoku/Tiny Killer
+Name[nl]=Tiny Killer
+Name[pt]=Pequeno Assassino
+Name[sv]=Liten mördare
+Name[uk]=Малий кілер
+Name[x-test]=xxTiny Killerxx
 Description=4x4 Sudoku, but cages must add to totals shown
+Description[ca]=Sudoku 4x4, però els grups de cel·les mostren totals visibles
+Description[nl]=4x4 Sudoku, maar kooien moeten worden toegevoegd bij getoonde totalen
+Description[pt]=Sudoku 4x4, mas são adicionadas as caixas aos totais apresentados
+Description[sv]=4x4 Sudoku, men avgränsningar måste adderas till visade summor
+Description[uk]=Судоку 4x4, але блоки мають додавати до загальних показаних сум
+Description[x-test]=xx4x4 Sudoku, but cages must add to totals shownxx
 Author=Ian Wadham
 FileName=Killer_4x4.xml
 Icon=ksudoku-ksudoku_4x4
