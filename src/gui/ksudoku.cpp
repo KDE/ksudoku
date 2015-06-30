@@ -303,6 +303,13 @@ void KSudoku::giveHint()
 {
 	Game game = currentGame();
 	if(!game.isValid()) return;
+	SudokuType t = game.puzzle()->graph()->specificType();
+	if ((t == Mathdoku) || (t == KillerSudoku)) {
+	    KMessageBox::information (this,
+		i18n("Sorry, hints for Mathdoku and Killer Sudoku "
+		     "puzzles are not yet provided."));
+	    return;
+	}
 	game.giveHint();
 }
 
@@ -605,6 +612,13 @@ void KSudoku::gameSave()
 
 	Game game = currentGame();
 	if(!game.isValid()) return;
+	SudokuType t = game.puzzle()->graph()->specificType();
+	if ((t == Mathdoku) || (t == KillerSudoku)) {
+	    KMessageBox::information (this,
+		i18n("Sorry, saving Mathdoku and Killer Sudoku "
+		     "puzzles is not yet supported."));
+	    return;
+	}
 
 	if(game.getUrl().isEmpty()) game.setUrl(KFileDialog::getSaveUrl(KUrl("kfiledialog:///ksudoku")));
  	if (!game.getUrl().isEmpty() && game.getUrl().isValid())
@@ -616,6 +630,13 @@ void KSudoku::gameSaveAs()
     // this slot is called whenever the Game->Save As menu is selected,
 	Game game = currentGame();
 	if(!game.isValid()) return;
+	SudokuType t = game.puzzle()->graph()->specificType();
+	if ((t == Mathdoku) || (t == KillerSudoku)) {
+	    KMessageBox::information (this,
+		i18n("Sorry, saving Mathdoku and Killer Sudoku "
+		     "puzzles is not yet supported."));
+	    return;
+	}
 
 	game.setUrl(KFileDialog::getSaveUrl(KUrl("kfiledialog:///ksudoku")));
     if (!game.getUrl().isEmpty() && game.getUrl().isValid())
@@ -631,6 +652,13 @@ void KSudoku::gamePrint()
         KMessageBox::information (this,
             i18n("There seems to be no puzzle to print."));
         return;
+    }
+    SudokuType t = game.puzzle()->graph()->specificType();
+    if ((t == Mathdoku) || (t == KillerSudoku)) {
+	KMessageBox::information (this,
+	    i18n("Sorry, printing Mathdoku and Killer Sudoku "
+		 "puzzles is not yet supported."));
+	return;
     }
     sendToPrinter (game.puzzle());
 }

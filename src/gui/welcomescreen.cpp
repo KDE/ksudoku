@@ -24,6 +24,7 @@
 
 #include "ksudokugame.h"
 #include "globals.h"
+#include "puzzle.h"
 
 Q_DECLARE_METATYPE(ksudoku::GameVariant*)
 
@@ -127,6 +128,14 @@ void WelcomeScreen::startEmptyGame() {
 	if(!variant) return;
 	
 	Game game = variant->startEmpty();
+	if (! game.isValid()) return;
+	SudokuType t = game.puzzle()->graph()->specificType();
+	if ((t == Mathdoku) || (t == KillerSudoku)) {
+	    KMessageBox::information (this,
+		i18n("Sorry, entering in Mathdoku and Killer Sudoku "
+		     "puzzles is not yet supported."));
+	    return;
+	}
 	
 	emit newGameStarted(game, variant);
 }
