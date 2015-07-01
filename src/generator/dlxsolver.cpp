@@ -27,7 +27,8 @@ DLXSolver::DLXSolver (QObject * parent)
     :
     QObject       (parent),
     mBoardValues  (0),
-    mGraph        (0)
+    mGraph        (0),
+    mSolutionMoves(0)
 {
 #ifdef DLX_LOG
     qDebug() << "DLXSolver constructor entered";
@@ -114,6 +115,9 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
     int order = mGraph->order();
     int nCages = mGraph->cageCount();
     SudokuType t = mGraph->specificType();
+    if (mSolutionMoves) {
+	mSolutionMoves->clear();
+    }
 #ifdef DLX_LOG
     qDebug() << "NUMBER OF ROWS IN SOLUTION" << solution.size();
 #endif
@@ -147,6 +151,10 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
 		    fprintf (stderr, "%d:%d ", cell,
 			    mPossibilities->at (comboValues));
 #endif
+		    // Record the sequence of cell-numbers, for use in hints.
+		    if (mSolutionMoves) {
+			mSolutionMoves->append (cell);
+		    }
 		    mBoardValues [cell] = mPossibilities->at (comboValues);
 		    comboValues++;
 		}
@@ -354,10 +362,12 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     return nSolutions;
 }
 
-int DLXSolver::solveMathdoku (SKGraph * graph, const QList<int> * possibilities,
+int DLXSolver::solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
+                              const QList<int> * possibilities,
                               const QList<int> * possibilitiesIndex,
                               int solutionLimit)
 {
+    mSolutionMoves = solutionMoves;
 #ifdef DLX_LOG
     qDebug() << "DLXSolver::solveMathdoku ENTERED" << possibilities->size()
              << "possibilities" << possibilitiesIndex->size() << "index size";

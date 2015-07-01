@@ -71,6 +71,8 @@ public:
      *
      * @param graph           An SKGraph object representing the size, geometric
      *                        layout and rules of the particular kind of puzzle.
+     * @param solutionMoves   A pointer that returns an ordered list of cells
+     *                        found by the solver when it reached a solution.
      * @param maxSize         The maximum number of cells a cage can have.
      * @param maxValue        The maximum total value a cage's cells can have.
      * @param hideOperators   Whether operators are to be hidden in a Mathdoku
@@ -84,8 +86,9 @@ public:
      *                        unique solution to the puzzle using the cages
      *                        generated (the caller may need to try again).
      */
-    int  makeCages (SKGraph * graph, int maxSize, int maxValue,
-                              bool hideOperators, int maxCombos);
+    int  makeCages (SKGraph * graph, QList<int> * solutionMoves,
+                    int maxSize, int maxValue,
+                    bool hideOperators, int maxCombos);
 
 private:
     SKGraph *     mGraph;		// The geometry of the puzzle.

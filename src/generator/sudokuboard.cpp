@@ -92,7 +92,8 @@ void SudokuBoard::generatePuzzle             (BoardContents & puzzle,
 	    MathdokuGenerator mg (m_graph);
 	    solution = fillBoard();
 	    numTries++;
-	    r = mg.generateMathdokuTypes (puzzle, solution, difficultyRequired);
+	    r = mg.generateMathdokuTypes (puzzle, solution, &m_KSudokuMoves,
+                                          difficultyRequired);
 	    if (r) {
 		qDebug() << "SudokuBoard::generatePuzzle SUCCEEDED: numTries"
 		         << numTries;

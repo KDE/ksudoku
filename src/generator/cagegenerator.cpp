@@ -44,7 +44,8 @@ CageGenerator::~CageGenerator()
     delete mPossibilitiesIndex;
 }
 
-int CageGenerator::makeCages (SKGraph * graph, int maxSize, int maxValue,
+int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
+                              int maxSize, int maxValue,
                               bool hideOperators, int maxCombos)
 {
     // TODO - Use maxValue when OK'ing cages(?).
@@ -240,7 +241,8 @@ int CageGenerator::makeCages (SKGraph * graph, int maxSize, int maxValue,
 #endif
 
     // Use the DLX solver to check if this puzzle has a unique solution.
-    int nSolutions = mDLXSolver->solveMathdoku (mGraph, mPossibilities,
+    int nSolutions = mDLXSolver->solveMathdoku (mGraph, solutionMoves,
+                                                mPossibilities,
                                                 mPossibilitiesIndex, 2);
     if (nSolutions == 0) {
 	qDebug() << "FAILED TO FIND A SOLUTION: nSolutions =" << nSolutions;

@@ -347,12 +347,6 @@ void KSudoku::giveHint()
 	Game game = currentGame();
 	if(!game.isValid()) return;
 	SudokuType t = game.puzzle()->graph()->specificType();
-	if ((t == Mathdoku) || (t == KillerSudoku)) {
-	    KMessageBox::information (this,
-		i18n("Sorry, hints for Mathdoku and Killer Sudoku "
-		     "puzzles are not yet provided."));
-	    return;
-	}
 	game.giveHint();
 }
 

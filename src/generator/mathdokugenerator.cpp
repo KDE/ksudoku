@@ -29,6 +29,7 @@ MathdokuGenerator::MathdokuGenerator (SKGraph * graph)
 
 bool MathdokuGenerator::generateMathdokuTypes (BoardContents & puzzle,
                                                BoardContents & solution,
+                                               QList<int> * solutionMoves,
                                                Difficulty difficultyRequired)
 {
     // Cage sizes must be no more than the number of cells in a column or row.
@@ -47,7 +48,8 @@ bool MathdokuGenerator::generateMathdokuTypes (BoardContents & puzzle,
     int  n = 0;
     while ((n <= 0) && (numTries < maxTries)) {
 	numTries++;
-	n = cageGen.makeCages (mGraph, maxSize, maxVal, hideOps, maxCombos);
+	n = cageGen.makeCages (mGraph, solutionMoves,
+                               maxSize, maxVal, hideOps, maxCombos);
 	if (n < 0) {
 	    numMultis++;
 	}

@@ -41,6 +41,8 @@ public:
      *
      * @param puzzle             The generated puzzle (returned).
      * @param solution           The values that must go into the solution.
+     * @param solutionMoves      A pointer that returns an ordered list of cells
+     *                           found by the solver when it reached a solution.
      * @param difficultyRequired The requested level of difficulty.
      *
      * @return                   True if puzzle-generation succeeded, false
@@ -48,6 +50,7 @@ public:
      */
     bool generateMathdokuTypes (BoardContents & puzzle,
                                 BoardContents & solution,
+                                QList<int> * solutionMoves,
                                 Difficulty difficultyRequired);
 
 private:

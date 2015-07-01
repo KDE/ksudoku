@@ -138,6 +138,8 @@ public:
      * @param graph          An SKGraph object representing the size, geometric
      *                       layout and rules of the particular kind of puzzle,
      *                       as well as its cage layouts, values and operators.
+     * @param solutionMoves  A pointer that returns an ordered list of cells
+     *                       found by the solver when it reaches a solution.
      * @param possibilities  A pointer to a list of possible values for all the
      *                       cells in all the cages.
      * @param possibilitiesIndex
@@ -149,7 +151,8 @@ public:
      *
      * @return               The number of solutions found (0 to solutionLimit).
      */
-    int       solveMathdoku (SKGraph * graph, const QList<int> * possibilities,
+    int       solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
+                             const QList<int> * possibilities,
                              const QList<int> * possibilitiesIndex,
                              int solutionLimit = 2);
 
@@ -228,6 +231,7 @@ private:
     int              mEndNodeNum;
 
     BoardContents    mBoardValues;	// Holds Sudoku problem and solution.
+    QList<int> *     mSolutionMoves;	// Sequence of cells used in solution.
     SKGraph *        mGraph;
     const QList<int> *     mPossibilities;
     const QList<int> *     mPossibilitiesIndex;
