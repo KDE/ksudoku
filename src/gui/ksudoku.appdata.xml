@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2014 William Moreno <williamjmorenor@gmail.com> -->
 <!--
      EmailAddress: wolfgang@rohdewald.de
@@ -8,12 +8,26 @@ SentUpstream: 2014-09-24
   <id>ksudoku.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <summary>Complete a numeric puzzle with the numbers from one to nine</summary>
+  <summary xml:lang="ca">Completeu un puzle numèric puzzle amb nombres des de l'u al nou.</summary>
+  <summary xml:lang="nl">Maak een numerieke puzzel met de cijfers vanaf één tot en met negen</summary>
+  <summary xml:lang="pt">Completar um 'puzzle' numérico com os números de um a nove</summary>
+  <summary xml:lang="pt-BR">Complete um puzzle numérico com os números de um a nove</summary>
+  <summary xml:lang="sv">Fyll i ett sifferpussel med siffrorna från ett till nio</summary>
+  <summary xml:lang="uk">Розв’яжіть числову головоломку із числами від одного до дев’яти</summary>
+  <summary xml:lang="x-test">xxComplete a numeric puzzle with the numbers from one to ninexx</summary>
   <description>
     <p>
       KSudoku is a free version of the popular logic game Sudoku for the KDE desktop.
       The game is to fill a nine by nine grid with the numbers from one to nine filling
       the rows, columns and three by three squares without repeating a value on them.
     </p>
+    <p xml:lang="ca">El KSudoku és una versió lliure del popular joc de lògica Sudoku per a l'escriptori del KDE. El joc consisteix en omplir una quadrícula de nou per nou amb els nombres des de l'u al nou a les files, columnes i els quadrats de tres per tres sense repetir cap valor en ells.</p>
+    <p xml:lang="nl">KSudoku is een vrije versie van het populaire logische spel Sudoku voor het KDE bureablad. Het spel gaat over het vullen van een negen bij negen raster met de cijfers vanaf één tot en met negen door het vullen van de rijen, de kolommen en drie bij drie vierkantjes zonder een waarde daarin te herhalen.</p>
+    <p xml:lang="pt">O KSudoku é uma versão livre do conhecido jogo de lógica Sudoku para o ambiente de trabalho KDE. No jogo pretende-se preencher uma grelha de nove por nove posições, com os números de um a nove a preencher as linhas, colunas e os quadrados de três por três, sem que se repita qualquer valor nestes.</p>
+    <p xml:lang="pt-BR">KSudoku é uma versão livre do conhecido jogo de lógica Sudoku para o KDE. No jogo deve-se preencher uma grade de nove por nove posições, com os números de um a nove preenchendo as linhas, colunas e os quadrados de três por três, sem repetir qualquer um dos números.</p>
+    <p xml:lang="sv">Ksudoku är en fri version av det populära logikspelet Sudoku för KDE-skrivbordet. Spelet går ut på att fylla i ett nio gånger nio rutmönster, där siffror från ett till nio ska fylla rader, kolumner och tre gånger tre fyrkanter utan att ett värde upprepas i någon av dem.</p>
+    <p xml:lang="uk">KSudoku — вільна версія популярної логічної гри, судоку, для середовища KDE. Гра полягає у заповненні таблиці дев’ять на дев’ять клітинок числами від одного до дев’яти так, щоб у кожному блоці таблиці розміром три на три клітинки ці числа не повторювалися.</p>
+    <p xml:lang="x-test">xxKSudoku is a free version of the popular logic game Sudoku for the KDE desktop. The game is to fill a nine by nine grid with the numbers from one to nine filling the rows, columns and three by three squares without repeating a value on them.xx</p>
   </description>
   <url type="homepage">https://projects.kde.org/projects/kde/kdegames/ksudoku</url>
   <screenshots>
