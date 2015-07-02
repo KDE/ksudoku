@@ -267,6 +267,12 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 				graph->initRoxdokuGroups(
 					e.attribute("at", "0").toInt());
 			    }
+			    else if (tag == "cage") {
+				if(! deserializeCage(graph, e)) {
+				    delete graph;	// Error return.
+				    return 0;
+				}
+			    }
 			}
 			child = child.nextSibling();
 		}
@@ -301,6 +307,34 @@ bool Serializer::deserializeClique(SKGraph * graph, const QString & size,
 	}
     }
     graph->addCliqueStructure(data);
+    return true;
+}
+
+bool Serializer::deserializeCage(SKGraph * graph, const QDomElement & e) {
+    QString sizeStr = e.attribute("size");
+    QString text    = e.text();
+    CageOperator op = (CageOperator) (e.attribute("operator").toInt());
+    int target      = e.attribute("value").toInt();
+    int size        = 0;
+    QVector<int> cage;
+    if(! sizeStr.isNull()) {
+	size = sizeStr.toInt();
+    }
+    if (size <= 0) {
+	return false;
+    }
+
+    QStringList cells = text.split(QString(" "), QString::SkipEmptyParts);
+    cage.clear();
+    Q_FOREACH (QString s, cells) {
+	cage << s.toInt();
+	size--;
+	if (size <= 0) {
+	    break;
+	}
+    }
+
+    graph->addCage(cage, op, target);
     return true;
 }
 
@@ -540,6 +574,24 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 				    createTextNode(contentStr));
 		    break;
 		}
+		element.appendChild(e);
+	    }
+
+	    // Add cages if this is a Mathdoku or Killer Sudoku puzzle.
+	    for (int n = 0; n < graph->cageCount(); n++) {
+		QDomElement e = parent.ownerDocument().createElement("cage");
+		QVector<int> cage = graph->cage(n);
+		e.setAttribute("operator", graph->cageOperator(n));
+		e.setAttribute("value", graph->cageValue(n));
+		e.setAttribute("size", cage.size());
+
+		// Serialize the cell-numbers in the cage.
+		QString contentStr = " ";
+		Q_FOREACH (int cell, cage) {
+		    contentStr += QString::number(cell) + ' ';
+		}
+		e.appendChild(parent.ownerDocument().
+			        createTextNode(contentStr));
 		element.appendChild(e);
 	    }
 	}

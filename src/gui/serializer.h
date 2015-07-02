@@ -52,6 +52,7 @@ private:
 	static SKGraph* deserializeGraph(QDomElement element);
 	static bool deserializeClique(SKGraph * graph, const QString & size,
 						       const QString & text);
+	static bool deserializeCage(SKGraph * graph, const QDomElement & e);
 	static QList<HistoryEvent> deserializeHistory(QDomElement element);
 	static HistoryEvent deserializeSimpleHistoryEvent(QDomElement element);
 	static HistoryEvent deserializeComplexHistoryEvent(QDomElement element);
