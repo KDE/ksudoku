@@ -53,6 +53,21 @@ public:
                                 QList<int> * solutionMoves,
                                 Difficulty difficultyRequired);
 
+    /**
+     * Solve a Mathdoku or Killer Sudoku and check how many solutions there are.
+     * The solver requires only the puzzle-graph, which contains all the cages.
+     *
+     * @param solution           The values returned as the solution.
+     * @param solutionMoves      A pointer that returns an ordered list of cells
+     *                           found by the solver when it reached a solution.
+     *
+     * @return                   0  = there is no solution,
+     *                           1  = there is a unique solution,
+     *                           >1 = there is more than one solution.
+     */
+    int solveMathdokuTypes     (BoardContents & solution,
+                                QList<int> * solutionMoves);
+
 private:
     SKGraph *  mGraph;		// The layout, rules and geometry of the puzzle.
 };

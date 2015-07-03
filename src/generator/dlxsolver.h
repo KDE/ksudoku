@@ -156,6 +156,13 @@ public:
                              const QList<int> * possibilitiesIndex,
                              int solutionLimit = 2);
 
+    /**
+     * Copy back to the caller the last solution found by the solver.
+     *
+     * @param solution       A BoardContents object to receive the solution.
+     */
+    void      retrieveSolution (BoardContents & solution);
+
     // void      testDLX();  // TODO - Delete this eventually.
 
 private:

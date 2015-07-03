@@ -180,6 +180,11 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
 #endif
 }
 
+void DLXSolver::retrieveSolution (BoardContents & solution)
+{
+    solution = mBoardValues;
+}
+
 void DLXSolver::printSudoku()
 {
     // TODO - The code at SudokuBoard::print() is VERY similar...

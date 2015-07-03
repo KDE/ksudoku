@@ -72,4 +72,14 @@ bool MathdokuGenerator::generateMathdokuTypes (BoardContents & puzzle,
     return true;
 }
 
+int MathdokuGenerator::solveMathdokuTypes (BoardContents & solution,
+                                           QList<int> * solutionMoves)
+{
+    bool hideOps = false;
+    int result   = 0;
+    CageGenerator cageGen (solution);
+    result = cageGen.checkPuzzle (mGraph, solution, solutionMoves, hideOps);
+    return result;
+}
+
 #include "mathdokugenerator.moc"

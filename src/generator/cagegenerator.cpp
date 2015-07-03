@@ -257,6 +257,53 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
     return mGraph->cageCount();
 }
 
+int CageGenerator::checkPuzzle (SKGraph * graph, BoardContents & solution,
+                                QList<int> * solutionMoves, bool hideOperators)
+{
+#ifdef MATHDOKU_LOG
+    qDebug() << "CageGenerator::checkPuzzle(): nCAGES" << graph->cageCount();
+#endif
+
+    int result       = 0;
+    mGraph           = graph;
+    mOrder           = graph->order();
+    mBoardArea       = mOrder * mOrder;
+    mKillerSudoku    = (graph->specificType() == KillerSudoku);
+    mHiddenOperators = mKillerSudoku ? true : hideOperators;
+    qDebug() << "\nCHECK PUZZLE: HIDDEN OPERATORS" << mHiddenOperators;
+
+    mPossibilities->clear();
+    mPossibilitiesIndex->clear();
+    mPossibilitiesIndex->append(0);
+
+    int nCages = graph->cageCount();
+    for (int n = 0; n < nCages; n++) {
+	// Add all the possibilities for each cage.
+#ifdef MATHDOKU_LOG
+	qDebug() << "SET ALL Possibilities: cage size" << graph->cage(n).size()
+	         << "operator" << graph->cageOperator(n) << "value"
+		 << graph->cageValue(n) << "cage" << graph->cage(n);
+#endif
+	setAllPossibilities (graph->cage(n), graph->cage(n).size(),
+                             graph->cageOperator(n), graph->cageValue(n));
+        mPossibilitiesIndex->append (mPossibilities->size());
+    }
+#ifdef MATHDOKU_LOG
+    qDebug() << "POSSIBILITIES SET: now check-solve the puzzle.";
+    qDebug() << "INDEX" << (*mPossibilitiesIndex);
+    qDebug() << "POSS:" << (*mPossibilities);
+#endif
+    // Use the DLX solver to check if this puzzle has a unique solution.
+    result = mDLXSolver->solveMathdoku (graph, solutionMoves,
+                                               mPossibilities,
+                                               mPossibilitiesIndex, 2);
+    if (result == 1) {
+	// If there is a unique solution, retrieve it from the solver.
+	mDLXSolver->retrieveSolution (solution);
+    }
+    return result;
+}
+
 QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
 {
     QVector<int> cage;
@@ -443,19 +490,7 @@ bool CageGenerator::cageIsOK (const QVector<int> cage,
 
     // Get all possibilities and keep checking, as we go, that the cage is OK.
     bool isOK = true;
-    if ((nDigits > 1) && mHiddenOperators && (! mKillerSudoku)) {
-	// Operators are hidden, so we must consider every possible operator.
-	if (nDigits == 2) {
-	    setPossibilities (cage, Divide, cageValue);
-	    setPossibilities (cage, Subtract, cageValue);
-	}
-        setPossibilities (cage, Add, cageValue);
-        setPossibilities (cage, Multiply, cageValue);
-    }
-    else {
-	// Operators are visible/fixed, so we can consider fewer possibilities.
-	setPossibilities (cage, cageOperator, cageValue);
-    }
+    setAllPossibilities (cage, nDigits, cageOperator, cageValue);
     int numPoss = (mPossibilities->size() - mPossibilitiesIndex->last());
 
     // There should be some possibilities and not too many (wrt difficulty).
@@ -476,6 +511,25 @@ bool CageGenerator::cageIsOK (const QVector<int> cage,
         }
     }
     return isOK;
+}
+
+void CageGenerator::setAllPossibilities (const QVector<int> cage, int nDigits,
+                                         CageOperator cageOperator,
+                                         int cageValue)
+{
+    if ((nDigits > 1) && mHiddenOperators && (! mKillerSudoku)) {
+	// Operators are hidden, so we must consider every possible operator.
+	if (nDigits == 2) {
+	    setPossibilities (cage, Divide, cageValue);
+	    setPossibilities (cage, Subtract, cageValue);
+	}
+        setPossibilities (cage, Add, cageValue);
+        setPossibilities (cage, Multiply, cageValue);
+    }
+    else {
+	// Operators are visible/fixed, so we can consider fewer possibilities.
+	setPossibilities (cage, cageOperator, cageValue);
+    }
 }
 
 void CageGenerator::setPossibilities (const QVector<int> cage,

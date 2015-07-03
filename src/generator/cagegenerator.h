@@ -90,6 +90,29 @@ public:
                     int maxSize, int maxValue,
                     bool hideOperators, int maxCombos);
 
+    /**
+     * Using just the puzzle-graph and its cages, solve a Mathdoku or Killer
+     * Sudoku puzzle and check that it has only one solution. This method can
+     * be used with a manually entered puzzle or one loaded from a saved file,
+     * to obtain solution values and a move-sequence for hints, as well as
+     * checking that the puzzle and its data are valid.
+     *
+     * @param graph           An SKGraph object representing the size, geometric
+     *                        layout and rules of the particular kind of puzzle.
+     * @param solution        The solution returned if a unique solution exists.
+     * @param solutionMoves   A pointer that returns an ordered list of cells
+     *                        found by the solver when it reached a solution.
+     * @param hideOperators   Whether operators are to be hidden in a Mathdoku
+     *                        puzzle. In a Killer Sudoku the operators are all +
+     *                        and are always hidden.
+     *
+     * @return                0  = there is no solution,
+     *                        1  = there is a unique solution,
+     *                        >1 = there is more than one solution.
+     */
+    int checkPuzzle (SKGraph * graph, BoardContents & solution,
+                     QList<int> * solutionMoves, bool hideOperators);
+
 private:
     SKGraph *     mGraph;		// The geometry of the puzzle.
     DLXSolver *   mDLXSolver;		// A solver for generated puzzles.
@@ -139,6 +162,10 @@ private:
                    int cageValue);
 
     // Set all possible values for the cells of a cage (used by the solver).
+    void setAllPossibilities (const QVector<int> cage, int nDigits,
+                              CageOperator cageOperator, int cageValue);
+
+    // Set all possible values for one operator in a cage (used by the solver).
     void setPossibilities (const QVector<int> cage, CageOperator cageOperator,
                            int cageValue);
 
