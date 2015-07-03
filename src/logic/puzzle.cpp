@@ -27,6 +27,7 @@
 #include <QtDebug>
 
 #include "sudokuboard.h"
+#include "mathdokugenerator.h"
 
 namespace ksudoku {
 
@@ -78,29 +79,37 @@ bool Puzzle::init(int difficulty, int symmetry) {
 
 int Puzzle::init(const BoardContents & values) {
 	if(m_initialized) return -1;
+	int result = -1;
+	SudokuType t = m_graph->specificType();
 
-	SudokuBoard * board = new SudokuBoard (m_graph);
-
-	// Save the puzzle values and SudokuBoard's solution (if any).
+	// Save the puzzle values and solution (if any).
 	m_puzzle = values;
-	m_solution = board->solveBoard (m_puzzle);
+	m_hintList.clear();
 
-	// Get SudokuBoard to check the solution.
-	int result = board->checkPuzzle (m_puzzle);
-	if (result >= 0) {
-	    result = 1;		// There is one solution.
-	}
-	else if (result == -1) {
-	    result = 0;		// There is no solution.
+	if ((t != Mathdoku) && (t != KillerSudoku)) {
+	    SudokuBoard * board = new SudokuBoard (m_graph);
+	    m_solution = board->solveBoard (m_puzzle);
+
+	    // Get SudokuBoard to check the solution.
+	    result = board->checkPuzzle (m_puzzle);
+	    if (result != 0) {
+		board->getMoveList (m_hintList);
+	    }
+	    if (result >= 0) {
+		result = 1;		// There is one solution.
+	    }
+	    else if (result == -1) {
+		result = 0;		// There is no solution.
+	    }
+	    else {
+		result = 2;		// There is more than one solution.
+	    }
+	    delete board;
 	}
 	else {
-	    result = 2;		// There is more than one solution.
+	    MathdokuGenerator mg (m_graph);
+	    result = mg.solveMathdokuTypes (m_solution, &m_hintList);
 	}
-	m_hintList.clear();
-	if (result != 0) {
-	    board->getMoveList (m_hintList);
-	}
-	delete board;
 	return result;
 }
 

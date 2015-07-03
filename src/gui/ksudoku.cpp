@@ -649,13 +649,6 @@ void KSudoku::gameSave()
 
 	Game game = currentGame();
 	if(!game.isValid()) return;
-	SudokuType t = game.puzzle()->graph()->specificType();
-	if ((t == Mathdoku) || (t == KillerSudoku)) {
-	    KMessageBox::information (this,
-		i18n("Sorry, saving Mathdoku and Killer Sudoku "
-		     "puzzles is not yet supported."));
-	    return;
-	}
 
 	if(game.getUrl().isEmpty()) game.setUrl(KFileDialog::getSaveUrl(KUrl("kfiledialog:///ksudoku")));
  	if (!game.getUrl().isEmpty() && game.getUrl().isValid())
