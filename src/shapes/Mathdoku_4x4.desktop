@@ -1,7 +1,9 @@
 [KSudokuVariant]
 Name=Mathdoku 101
 Name[ca]=Mathdoku 101
+Name[gl]=Introdución a Mathdoku
 Name[nl]=Mathdoku 101
+Name[pl]=Mathdoku 101
 Name[pt]=Matedoku 101
 Name[pt_BR]=Matedoku 101
 Name[sv]=Mattedoku 101
@@ -9,7 +11,9 @@ Name[uk]=Матдоку 101
 Name[x-test]=xxMathdoku 101xx
 Description=Size 4x4 grid, with calculated cages
 Description[ca]=Mida de quadrícula 4x4, amb grups de cel·les calculades
+Description[gl]=Grade de 4x4 con gaiolas calculadas.
 Description[nl]=Grootte 4x4 raster, met berekende kooien
+Description[pl]=Siataka w rozmiarze 4x4 z obliczonymi klatkami
 Description[pt]=Grelha de tamanho 4x4 com caixas controladas
 Description[pt_BR]=Grade de tamanho 4x4 com caixas controladas
 Description[sv]=Storlek 4x4 med beräknade avgränsningar
