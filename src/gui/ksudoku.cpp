@@ -346,7 +346,6 @@ void KSudoku::giveHint()
 {
 	Game game = currentGame();
 	if(!game.isValid()) return;
-	SudokuType t = game.puzzle()->graph()->specificType();
 	game.giveHint();
 }
 
@@ -660,13 +659,6 @@ void KSudoku::gameSaveAs()
     // this slot is called whenever the Game->Save As menu is selected,
 	Game game = currentGame();
 	if(!game.isValid()) return;
-	SudokuType t = game.puzzle()->graph()->specificType();
-	if ((t == Mathdoku) || (t == KillerSudoku)) {
-	    KMessageBox::information (this,
-		i18n("Sorry, saving Mathdoku and Killer Sudoku "
-		     "puzzles is not yet supported."));
-	    return;
-	}
 
 	game.setUrl(KFileDialog::getSaveUrl(KUrl("kfiledialog:///ksudoku")));
     if (!game.getUrl().isEmpty() && game.getUrl().isValid())
