@@ -3,6 +3,7 @@
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -171,6 +172,15 @@ void SKGraph::addCage(const QVector<int> cage, CageOperator cageOperator,
 	    topY  = cellPosY(cell);
 	    leftX = cellPosX(cell);
 	}
+}
+
+void SKGraph::dropCage(int cageNum)
+{
+	if (cageNum >= m_cages.count()) {
+	    return;
+	}
+	delete m_cages.at (cageNum);
+	m_cages.remove (cageNum);
 }
 
 void SKGraph::clearCages() {

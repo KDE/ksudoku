@@ -3,6 +3,7 @@
  *   Copyright 2006      Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -172,6 +173,9 @@ public:
 	// Add a cage (applicable to Mathdoku or Killer Sudoku puzzles only).
 	void addCage(const QVector<int> cage, CageOperator cageOperator,
                      int cageValue);
+
+	// Remove a cage (when keying in a Mathdoku or Killer Sudoku puzzle).
+	void dropCage(int cageNum);
 
 	// Get the total number of cages (0 if not Mathdoku or Killer Sudoku)..
 	inline int cageCount() const { return m_cages.count(); }
