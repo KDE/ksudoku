@@ -3,6 +3,7 @@
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -247,6 +248,8 @@ void KSudoku::startGame(const Game& game) {
 
 	QWidget* widget = view->widget();
 	m_gameUI = view;
+	Game g = currentGame();
+	g.setMessageParent(view->widget());
 
 	wrapper->layout()->addWidget(widget);
 	widget->show();
@@ -267,7 +270,8 @@ void KSudoku::startGame(const Game& game) {
 	m_valueListWidget->show();
 
 	SudokuType t = game.puzzle()->graph()->specificType();
-	if (t == Mathdoku) {
+	bool playing = game.puzzle()->hasSolution();
+	if (playing && (t == Mathdoku)) {
 	    KMessageBox::information (this,
 		i18n("Mathdoku puzzles can have any size from 3x3 up to 9x9. "
 		     "The solution is a grid in which every row and every "
@@ -288,9 +292,9 @@ void KSudoku::startGame(const Game& game) {
 		     "are larger cages. You can select the puzzle size in "
 		     "KSudoku's Settings dialog and the maximum cage-size by "
 		     "using KSudoku's Difficulty button."),
-		i18n("Playing Mathdoku"), "PlayingMathdoku");
+		i18n("Playing Mathdoku"), QString("PlayingMathdoku"));
 	}
-	else if (t == KillerSudoku) {
+	else if (playing && (t == KillerSudoku)) {
 	    KMessageBox::information (this,
 		i18n("Killer Sudoku puzzles can have sizes 4x4 or 9x9, with "
 		     "either four 2x2 blocks or nine 3x3 blocks. The solution "
@@ -306,7 +310,42 @@ void KSudoku::startGame(const Game& game) {
 		     "In general, larger cages are more difficult. You can "
 		     "select the maximum cage-size by using KSudoku's "
 		     "Difficulty button."),
-		i18n("Playing Killer Sudoku"), "PlayingKillerSudoku");
+		i18n("Playing Killer Sudoku"), QString("PlayingKillerSudoku"));
+	}
+	else if ((t == Mathdoku) || (t == KillerSudoku)) {
+	    KMessageBox::information (this,
+		i18n("Mathdoku and Killer Sudoku puzzles have to be keyed in "
+		     "by working on one cage at a time. To start a cage, left "
+		     "click on any unused cell or enter a number in the cell "
+		     "that is under the cursor or enter + - / or x there. A "
+		     "small cage-label will appear in that cell. To extend the "
+		     "cage in any direction, left-click on a neigbouring cell "
+		     "or move the cursor there and type a Space.\n"
+		     "\n"
+		     "The number you type is the cage's value and it can have "
+		     "one or more digits, including zero. A cell of size 1 has "
+		     "to have a 1-digit number, as in a normal Sudoku puzzle. "
+		     "It becomes a starting-value or clue for the player.\n"
+		     "\n"
+		     "The + - / or x is the operator (Add, Subtract, Divide or "
+		     "Multiply). You must have one in cages of size 2 or more. "
+		     "In Killer Sudoku, the operator is provided automatically "
+		     "because it is always + or none.\n"
+		     "\n"
+		     "You can enter digits, operators and cells in any order. "
+		     "To complete the cage and start another cage, always "
+		     "press Return. If you make a mistake, the only thing to "
+		     "do is delete a whole cage and re-enter it. Use right "
+		     "click in the current cage or any earlier cage, if you "
+		     "wish to delete it. Alternatively, use the cursor and the "
+		     "Delete or Backspace key.\n"
+		     "\n"
+		     "When the grid is filled with cages, hit the Check "
+		     "button, to solve the puzzle and make sure there is only "
+		     "one solution. If the check fails, you have probably made "
+		     "an error somewhere in one of the cages."),
+		i18n("Data-entry for Puzzles with Cages"),
+		QString("CageDataEntry"));
 	}
 }
 
