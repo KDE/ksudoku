@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright 2007      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -379,9 +380,10 @@ KsView* CustomGame::createView(const Game& /*game*/) const {
 
 bool CustomGame::createSKGraphObject()
 {
-	if ((m_graph != 0) && (m_graph->specificType() == Mathdoku)) {
-	    delete m_graph;	// Re-create SKGraph for every Mathdoku game, so
-	    m_graph = 0;	// that it always gets the latest size setting.
+	if ((m_graph != 0) && ((m_graph->specificType() == Mathdoku) ||
+		    (m_graph->specificType() == KillerSudoku))) {
+	    delete m_graph;	// Re-create SKGraph for every Mathdoku or
+	    m_graph = 0;	// Killer Sudoku game (re-inits cages and size).
 	}
 	if (m_graph == 0) {
 	    m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
