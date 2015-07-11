@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright 2007      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -129,13 +130,6 @@ void WelcomeScreen::startEmptyGame() {
 	
 	Game game = variant->startEmpty();
 	if (! game.isValid()) return;
-	SudokuType t = game.puzzle()->graph()->specificType();
-	if ((t == Mathdoku) || (t == KillerSudoku)) {
-	    KMessageBox::information (this,
-		i18n("Sorry, entering in Mathdoku and Killer Sudoku "
-		     "puzzles is not yet supported."));
-	    return;
-	}
 	
 	emit newGameStarted(game, variant);
 }
