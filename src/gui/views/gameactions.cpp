@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright 2008      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -40,9 +41,18 @@ void GameActions::init() {
 	connect(m_markValueMapper, SIGNAL(mapped(int)), SIGNAL(markValue(int)));
 
 
+	// NOTE: Qt::Key_Asterisk cannot be used for Multiply, because it
+	//       clashes with Shift+8, used for cancelling '8' or 'h' marker.
+	//       Instead, we use 'x' for Multiply, which is OK because Mathdoku
+	//       and Killer Sudoku puzzles require only digits 1 to 9.
+
+	// Extras: zero, divide, subtract, add, add cell, end cage, remove cell.
+	const Qt::Key extras[] = {Qt::Key_0, Qt::Key_Slash, Qt::Key_Minus,
+                            /* Qt::Key_Asterisk, */ Qt::Key_Plus, Qt::Key_Space,
+			    Qt::Key_Return, Qt::Key_Escape};
 	KAction* a;
 	KShortcut shortcut;
-	for(int i = 0; i < 25; ++i) {
+	for(int i = 0; i < 32; ++i) {
 		a = new KAction(this);
 		m_collection->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
@@ -54,14 +64,25 @@ void GameActions::init() {
 		m_collection->addAction(QString("val-enter%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Enter %1 (%2)", QChar('a'+i), i+1));
 		shortcut = a->shortcut();
-		shortcut.setPrimary( Qt::Key_A + i);
+		if (i < 25) {;
+		    // Keys A to Y, for Sudoku puzzles.
+		    shortcut.setPrimary( Qt::Key_A + i);
+		}
+		else {
+		    // Extras for keying in Mathdoku and Killer Sudoku puzzles.
+		    shortcut.setPrimary (extras[i - 25]);
+		}
 		if(i < 9) {
-			shortcut.setAlternate( Qt::Key_1 + i);
+		    // Keys 1 to 9, for puzzles of order 9 or less.
+		    shortcut.setAlternate( Qt::Key_1 + i);
 		}
 		a->setShortcut(shortcut);
 		m_enterValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_enterValueMapper, SLOT(map()));
 		m_actions << a;
+		if (i >= 25) {
+		    continue;
+		}
 
 		a = new KAction(this);
 		m_collection->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
