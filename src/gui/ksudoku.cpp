@@ -417,16 +417,24 @@ void KSudoku::dubPuzzle()
 	int state = puzzle->init(game.allValues());
 
 	if(state <= 0) {
-		KMessageBox::information(this, i18n("Sorry, no solutions have been found."));
+		KMessageBox::information (this,
+		    i18n("Sorry, no solutions have been found. Please check "
+			 "that you have entered in the puzzle completely and "
+			 "correctly."), i18n("Check Puzzle"));
 		delete puzzle;
 		return;
 	} else if(state == 1) {
-		KMessageBox::information(this, i18n("The Puzzle you entered has only one solution."));
+		KMessageBox::information (this,
+		    i18n("The Puzzle you entered has a unique solution and "
+			 "is ready to be played."), i18n("Check Puzzle"));
 	} else {
-		KMessageBox::information(this, i18n("The Puzzle you entered has multiple solutions."));
+		KMessageBox::information (this,
+		    i18n("The Puzzle you entered has multiple solutions. "
+			 "Please check that you have entered in the puzzle "
+			 "completely and correctly."), i18n("Check Puzzle"));
 	}
 
-	if(KMessageBox::questionYesNo(this, i18n("Do you want to play the puzzle now?"), i18n("Play Puzzle"), KGuiItem(i18n("Play")), KStandardGuiItem::cancel() ) == KMessageBox::Yes)
+	if(KMessageBox::questionYesNo(this, i18n("Do you wish to play the puzzle now?"), i18n("Play Puzzle"), KGuiItem(i18n("Play")), KStandardGuiItem::cancel() ) == KMessageBox::Yes)
 	{
 		startGame(ksudoku::Game(puzzle));
 	}
