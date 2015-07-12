@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright 2008      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -23,9 +24,7 @@
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneEvent>
-#include <QtDebug>
-// #include <QFile> // TODO only for debug
-// #include <QEvent> // TODO only for debug
+#include <QtDebug> // IDW test.
 
 #include <kdebug.h>
 
@@ -361,6 +360,8 @@ void GroupGraphicsItem::resize(int gridSize, bool highlight) {
 	int size = gridSize*2;
 	Renderer* r = Renderer::instance();
 
+	highlight = (m_type == GroupCage); // IDW test.
+	highlight = true; // IDW test.
 	GroupTypes standard = m_type & GroupUnhighlightedMask;
 	GroupTypes highlighted = m_type | GroupHighlight;
 	
@@ -458,6 +459,7 @@ void View2DScene::init(const Game& game) {
 	m_groups.resize(g->cliqueCount() + g->cageCount());
 	// IDW TODO - Draw Killer Sudoku cages inside cell borders?
 	//            Anyway, show 3x3 and 2x2 blocks in Killer Sudoku somehow.
+	bool hasBothBlocksAndCages = (g->specificType() == KillerSudoku);
 	for(int i = 0; i < g->cliqueCount(); ++i) {
 		// Set the shape of each group.
 		QVector<int> idx = g->clique(i);
@@ -468,27 +470,12 @@ void View2DScene::init(const Game& game) {
 		m_groups[i] = new GroupGraphicsItem(pts);
 		m_groups[i]->setParentItem(m_groupLayer);
 		// Avoid ugly crossings of cages and blocks in Killer Sudoku.
-		// Show borders of blocks only if there are no cages present.
-		m_groups[i]->hideBlockBorder((g->cageCount() > 0));
+		// Hide borders of blocks if there can be cages in the puzzle.
+		m_groups[i]->hideBlockBorder (hasBothBlocksAndCages);
 	}
-	int offset = g->cliqueCount();
 	for(int i = 0; i < g->cageCount(); ++i) {
-		// Set the shape of each Mathdoku or KillerSudoku cage.
-		QVector<int> idx = g->cage(i);
-		QVector<QPoint> pts = QVector<QPoint>(idx.size());
-		for(int j = 0; j < idx.size(); ++j) {
-		    pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
-		}
-		m_groups[offset + i] = new GroupGraphicsItem(pts, true);
-		m_groups[offset + i]->setParentItem(m_groupLayer);
-		// Set the label of each cage (value and operator), but...
-		if (g->cage(i).size() > 1) {		 // Not in single cells.
-		    QString str = QString::number(g->cageValue(i));
-		    if (g->specificType() == Mathdoku) { // Not in KillerSudoku.
-			str = str + QString(" /-x+").mid(g->cageOperator(i), 1);
-		    }
-		    m_cells[g->cageTopLeft(i)]->setCageLabel(str);
-		}
+		// Create a cage: draw the label for all cages except size 1.
+		initCageGroup (i, (g->cage(i).size() > 1));
 	}
 	
 	m_cursor = new QGraphicsPixmapItem();
@@ -498,6 +485,7 @@ void View2DScene::init(const Game& game) {
 	
 	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(update(int)));
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(update()));
+	connect(m_game.interface(), SIGNAL(cageChange(int,bool)), this, SLOT(updateCage(int,bool)));
 	connect(m_gameActions, SIGNAL(selectValue(int)), this, SLOT(selectValue(int)));
 	connect(m_gameActions, SIGNAL(enterValue(int)), this, SLOT(enterValue(int)));
 	connect(m_gameActions, SIGNAL(markValue(int)), this, SLOT(flipMarkValue(int)));
@@ -505,6 +493,32 @@ void View2DScene::init(const Game& game) {
 	// Fix bug 188162 by ensuring that all markers, as well as cells, are
 	// updated and displayed after a Load action.
 	update(-1);
+}
+
+void View2DScene::initCageGroup (int cageNum, bool drawLabel) {
+	// Set the graphical shape and look of a Mathdoku or KillerSudoku cage.
+	SKGraph* g = m_game.puzzle()->graph();
+	int offset = g->cliqueCount();
+	QVector<int> idx = g->cage(cageNum);
+	QVector<QPoint> pts = QVector<QPoint>(idx.size());
+	for(int j = 0; j < idx.size(); ++j) {
+	    pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
+	}
+	m_groups[offset + cageNum] = new GroupGraphicsItem(pts, true);
+	m_groups[offset + cageNum]->setParentItem(m_groupLayer);
+
+	// Set the label of the cage (value and operator), but, in a single-cell
+	// cage, draw it only during data-entry of the first cell of a cage.
+	if (! drawLabel) {
+	    m_cells[g->cageTopLeft(cageNum)]->setCageLabel(QString());
+	}
+	else if (drawLabel || (g->cage(cageNum).size() > 1)) {
+	    QString str = QString::number(g->cageValue(cageNum));
+	    if (g->specificType() == Mathdoku) { // No op shown in KillerSudoku.
+		str = str + QString(" /-x+").mid(g->cageOperator(cageNum), 1);
+	    }
+	    m_cells[g->cageTopLeft(cageNum)]->setCageLabel(str);
+	}
 }
 
 void View2DScene::setSceneSize(const QSize& size) {
@@ -549,6 +563,20 @@ void View2DScene::hover(int cell) {
 }
 
 void View2DScene::press(int cell, bool rightButton) {
+	// IDW TODO - Can we save the type and entry mode just once somewhere?
+	if (! m_game.puzzle()->hasSolution()) {
+	    // Keying in a puzzle. Is it a Mathdoku or Killer Sudoku type?
+	    // If so, right click ==> delete cage: left click ==> add a cell.
+	    SKGraph * g = m_game.puzzle()->graph();
+	    SudokuType t = g->specificType();
+	    if ((t == Mathdoku) || (t == KillerSudoku)) {
+		// If it is, delete or add a cell in the cage being entered.
+		if (m_game.addToCage (cell, rightButton ? 32 : 30)) {
+		    return;
+		}
+	    }
+	}
+	// Normal mouse actions for working on any kind of KSudoku puzzle.
 	if(rightButton) {
 		m_game.flipMarker(cell, m_selectedValue);
 	} else {
@@ -600,7 +628,54 @@ void View2DScene::update(int cell) {
 				m_cells[cell]->setValues(values);
 			} break;
 		}
+	}
 }
+
+void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
+	if (cageNumP1 == 0) {
+	    qDebug() << "ERROR: View2DScene::updateCage: cageNumP1 == 0.";
+	    return;
+	}
+	SKGraph* g    = m_game.puzzle()->graph();
+	int offset    = g->cliqueCount();
+	bool deleting = (cageNumP1 < 0);
+	int  cageNum  = deleting ? (-cageNumP1 - 1) : (cageNumP1 - 1);
+	qDebug() << "View2DScene::updateCage" << cageNum << "offset" << offset
+	         << "group count" << m_groups.count()
+		 << "cageNumP1" << cageNumP1;
+	if ((cageNum >= 0) && (m_groups.count() > (offset + cageNum))){
+	    // Remove the cage-label from its scene-cell item.
+	    m_cells[g->cageTopLeft(cageNum)]->setCageLabel(QString());
+	    // Remove the cage-graphics from the scene.
+	    removeItem (m_groups.at (offset + cageNum));
+	    qDebug() << "DELETING GROUP" << (offset + cageNum);
+	    delete m_groups.at (offset + cageNum);
+	    m_groups[offset + cageNum] = 0;	// Re-use or remove this later.
+	}
+	else {
+	    // Start adding a cage-group to the scene.
+	    m_groups.resize(g->cliqueCount() + g->cageCount());
+	}
+	if (!deleting && (cageNum >= 0)) {
+	    // Create or re-create the cage that is being entered in.
+	    qDebug() << "CREATING or RE-CREATING CAGE" << cageNum;
+	    initCageGroup (cageNum, drawLabel);
+	    // IDW TODO - Should NOT need hilite settings, NOT hilite row/col.
+	    // IDW TODO - May need to doctor LOCAL CLASS GroupGraphicsItem for
+	    //            hilite, deletion and removal of cage-label to happen.
+	    m_groups[offset + cageNum]->setHighlight (true);
+	}
+	else {
+	    // Deleting a cage: finish removing graphics item from scene-data.
+	    qDebug() << "REMOVE GROUP NUMBER" << (offset + cageNum)
+		     << "number of groups" << m_groups.size()
+		     << "cageNum" << cageNum;
+	    m_groups.remove (offset + cageNum);
+	    qDebug() << "    DONE: number of groups" << m_groups.size();
+	}
+
+	// Invoke the method in View2DScene that triggers a re-draw.
+	setSceneSize (views().first()->size());
 }
 
 void View2DScene::selectValue(int value) {

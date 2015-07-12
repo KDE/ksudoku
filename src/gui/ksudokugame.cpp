@@ -2,6 +2,7 @@
  *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,12 +26,18 @@
 
 #include "history.h"
 
+#include "globals.h"
+
+#include <KMessageBox>
+#include <KLocale>
+
 #include <QList>
 
 #include <QDebug> // IDW
 
 #include <kurl.h>
 
+class QWidget;
 
 namespace ksudoku {
 	
@@ -62,6 +69,8 @@ public:
 	}
 	inline void emitCellChange(int index) { emit cellChange(index); }
 	inline void emitFullChange() { emit fullChange(); }
+	inline void emitCageChange(int cageNumP1, bool showLabel)
+                                  { emit cageChange(cageNumP1, showLabel); }
 	
 public:
 	PuzzleState state;
@@ -75,6 +84,12 @@ public:
 	KUrl url;
 	QList<HistoryEvent> history;
 	int historyPos;
+
+	QVector<int>  m_cage;
+	int           m_cageValue;
+	CageOperator  m_cageOperator;
+	int           m_currentCageSaved;
+	QWidget *     m_messageParent;
 };
 
 void Game::Private::undo() {
@@ -148,6 +163,8 @@ Game::Game(Puzzle* puzzle)
 	
 	m_private->accumTime = 0;
 	m_private->time.start();
+
+	m_private->m_currentCageSaved = false;
 }
 
 Game::Game(const Game& game)
@@ -257,6 +274,14 @@ bool Game::setMarker(int index, int val, bool state) {
 
 void Game::setValue(int index, int val) {
 	if(!m_private) return;
+	// If entering in a puzzle, Mathdoku/KillerSudoku has its own procedure.
+	if (! m_private->puzzle->hasSolution()) {
+	    if (addToCage (index, val)) {
+		return;		// Value went in a Mathdoku/KillerSudoku puzzle.
+	    }
+	}
+
+	// Solve all kinds of puzzles or enter in a Sudoku or Roxdoku puzzle.
 	if(val > m_private->puzzle->order()) return;
 	
 	if(m_private->state.given(index)) return;
@@ -269,6 +294,270 @@ void Game::setValue(int index, int val) {
 
 	if(oldvalue != val)
 		checkCompleted();
+}
+
+bool Game::addToCage (int pos, int val)
+{
+	SKGraph * g = m_private->puzzle->graph();
+	SudokuType t = g->specificType();
+	if ((t != Mathdoku) && (t != KillerSudoku)) {
+	    return false;	// We are not keying in a cage.
+	}
+	qDebug() << "\nGame::addToCage: pos" << pos << "action" << val;
+	if (! m_private->m_currentCageSaved) {	// Start a new cage.
+	    m_private->m_cage.clear();
+	    m_private->m_cageValue = 0;
+	    m_private->m_cageOperator = NoOperator;
+	}
+	if ((val != 32) && (! validCell (pos, g))) {
+	    return true;	// Invalid pos and not deleting: go no further.
+	}
+	CageOperator cageOp = m_private->m_cageOperator;
+	if ((val >= 1) && (val <= 9)) {
+	    // Append a non-zero digit to the cage-value.
+	    m_private->m_cageValue = 10 * m_private->m_cageValue + val;
+	}
+	else {
+	    switch (val) {
+	    case 24:	// Qt::Key_X = multiply.
+		qDebug() << "    Set operator x";
+		cageOp = Multiply;
+		break;
+	    case 26:	// Qt::Key_0
+		if (m_private->m_cageValue > 0) {
+		    // Append a zero to the cage-value.
+		    qDebug() << "    Append 0 to" << m_private->m_cageValue;
+		    m_private->m_cageValue = 10 * m_private->m_cageValue;
+		}
+		break;
+	    case 27:	// Qt::Key_Slash.
+		qDebug() << "    Set operator /";
+		cageOp = Divide;
+		break;
+	    case 28:	// Qt::Key_Minus.
+		qDebug() << "    Set operator -";
+		cageOp = Subtract;
+		break;
+	    case 29:	// Qt::Key_Plus.
+		qDebug() << "    Set operator +";
+		cageOp = Add;
+		break;
+	    case 30:	// Left click or Qt::Key_Space = drop through and
+		break;	//                               add cell to cage.
+	    case 31:	// Qt::Key_Return = end cage.
+		finishCurrentCage (g);
+		return true;
+		break;
+	    case 32:	// Right click or Delete/Bkspace = delete a whole cage.
+		deleteCageAt (pos, g);
+		return true;
+		break;
+	    default:
+		return false;
+		break;
+	    }
+	}
+
+	// TODO - In Killer Sudoku, show the operator during data-entry.
+	if (t == KillerSudoku) {
+	    if (cageOp != NoOperator) {
+		KMessageBox::information (messageParent(),
+		    i18n("In Killer Sudoku, the operator is always + or none "
+			 "and KSudoku automatically sets the correct choice."),
+		    i18n("Killer Sudoku Cage"), QString("KillerCageInfo"));
+	    }
+	    // Set the operator to none or Add, depending on the cage-size.
+	    cageOp = (m_private->m_cage.size() > 1) ?  Add : NoOperator;
+	}
+
+	// Valid keystroke and position: store and display the current cage.
+	m_private->m_cageOperator = cageOp;
+	if (m_private->m_cage.indexOf (pos) < 0) {
+	    m_private->m_cage.append (pos);	// Add cell to current cage.
+	}
+
+	// Change the last cage in the data-model in the SKGraph object.
+	if (m_private->m_currentCageSaved) {	// If new cage, skip dropping.
+	    int cageNum = g->cageCount() - 1;
+	    qDebug() << "    DROPPING CAGE" << cageNum
+		     << "m_currentCageSaved" << m_private->m_currentCageSaved
+		     << "m_cage" << m_private->m_cage;
+	    g->dropCage (cageNum);
+	}
+	// Add a new cage or replace the previous version of the new cage.
+	g->addCage (m_private->m_cage,
+		    m_private->m_cageOperator, m_private->m_cageValue);
+	qDebug() << "    ADDED CAGE" << (g->cageCount() - 1)
+		 << "value" << m_private->m_cageValue
+		 << "op" << m_private->m_cageOperator
+		 << m_private->m_cage;
+	m_private->m_currentCageSaved = true;
+
+	// Re-draw the boundary and label of the cage just added to the graph.
+	// We always display the label while the cage is being keyed in.
+	m_private->emitCageChange (g->cageCount(), true);
+	return true;
+}
+
+bool Game::validCell (int pos, SKGraph * g)
+{
+	// No checks of selected cell needed if it is in the current cage.
+	if (m_private->m_cage.indexOf (pos) >= 0) {
+	    return true;
+	}
+	// Selected cell must not be already in another cage.
+	for (int n = 0; n < g->cageCount(); n++) {
+	    qDebug() << "    IS CELL" << pos << "IN CAGE" << n
+		     << "OF" << g->cageCount() << "?";
+	    if (g->cage(n).indexOf (pos) >= 0) {
+		KMessageBox::information (messageParent(),
+		    i18n("The cell you have selected has already been "
+			 "used in a cage."),
+		    i18n("Error in Cage"));
+		return false;
+	    }
+	}
+	// Cell must adjoin the current cage or be the first cell in it.
+	int cageSize = m_private->m_cage.size();
+	if (cageSize > 0) {
+	    int  ix = g->cellPosX(pos);
+	    int  iy = g->cellPosY(pos);
+	    int  max = g->order();
+	    bool adjoining = false;
+	    for (int n = 0; n < cageSize; n++) {
+		int cell = m_private->m_cage.at(n);
+		int dx = g->cellPosX(cell) - ix;
+		int dy = g->cellPosY(cell) - iy;
+		if ((dy == 0) && (((ix > 0) && (dx == -1)) ||
+				  ((ix < max) && (dx == 1)))) {
+		    adjoining = true;	// Adjoining to left or right.
+		    break;
+		}
+		if ((dx == 0) && (((iy > 0) && (dy == -1)) ||
+				  ((iy < max) && (dy == 1)))) {
+		    adjoining = true;	// Adjoining above or below.
+		    break;
+		}
+	    }
+	    if (! adjoining) {
+		KMessageBox::information (messageParent(),
+		    i18n("The cell you have selected is not next to "
+			 "any cell in the cage you are creating."),
+		    i18n("Error in Cage"));
+		return false;
+	    }
+	}
+	return true;
+}
+
+void Game::finishCurrentCage (SKGraph * g)
+{
+	qDebug() << "END CAGE: value" << m_private->m_cageValue
+		 << "op" << m_private->m_cageOperator
+		 << m_private->m_cage << "\n";
+	// If Killer Sudoku and cage-size > 1, force operator to be +.
+	if ((g->specificType() == KillerSudoku) &&
+	    (m_private->m_cage.size() > 1)) {
+	    m_private->m_cageOperator = Add;
+	}
+	// Validate the contents of the cage.
+	if ((! m_private->m_currentCageSaved) ||
+	    (m_private->m_cage.size() == 0)) {
+	    KMessageBox::information (messageParent(),
+		i18n("The cage you wish to complete has no cells in it yet. "
+		     "Please click on a cell or key in + - / x or a number."),
+		i18n("Error in Cage"));
+	    return;		// Invalid - cannot finalise the cage.
+	}
+	else if (m_private->m_cageValue == 0) {
+	    KMessageBox::information (messageParent(),
+		i18n("The cage you wish to complete has no value yet. "
+		     "Please key in a number with one or more digits."),
+		i18n("Error in Cage"));
+	    return;		// Invalid - cannot finalise the cage.
+	}
+	else if ((m_private->m_cage.size() > 1) &&
+	         (m_private->m_cageOperator == NoOperator)) {
+	    KMessageBox::information (messageParent(),
+		i18n("The cage you wish to complete has more than one cell, "
+		     "but it has no operator yet. Please key in + - / or x."),
+		i18n("Error in Cage"));
+	    return;		// Invalid - cannot finalise the cage.
+	}
+	else if ((m_private->m_cage.size() == 1) &&
+	         (m_private->m_cageValue > g->order())) {
+	    KMessageBox::information (messageParent(),
+		i18n("The cage you wish to complete has one cell, but its "
+		     "value is too large. A single-cell cage must have a value "
+		     "from 1 to %1 in a puzzle of this size.", g->order()),
+		i18n("Error in Cage"));
+	    return;		// Invalid - cannot finalise the cage.
+	}
+
+	// Save and display the completed cage.
+	if (m_private->m_cage.size() == 1) {	// Display digit.
+	    doEvent(HistoryEvent(m_private->m_cage.first(),
+		    CellInfo(CorrectValue, m_private->m_cageValue)));
+	    m_private->emitCellChange(m_private->m_cage.first());
+	    m_private->emitModified(true);
+	}
+	// IDW TODO - Unhighlight the cage that is being entered.
+	m_private->emitCageChange (g->cageCount(),	// No label in size 1.
+				   (m_private->m_cage.size() > 1));
+	// Start a new cage.
+	m_private->m_currentCageSaved = false;
+}
+
+void Game::deleteCageAt (int pos, SKGraph * g)
+{
+	int cageNumP1 = g->cageCount();
+	if (cageNumP1 > 0) {
+	    // IDW TODO - Hover-hilite the cage that is to be deleted.
+	    cageNumP1 = 0;
+	    for (int n = 0; n < g->cageCount(); n++) {
+		if (g->cage(n).indexOf (pos) >= 0) {
+		    cageNumP1 = n + 1;		// This cage is to be deleted.
+		    break;
+		}
+	    }
+	    // If the right-click was on a cage, delete it.
+	    if (cageNumP1 > 0) {
+		if(KMessageBox::questionYesNo (messageParent(),
+		       i18n("Do you wish to delete this cage?"),
+		       i18n("Delete Cage"), KGuiItem(i18n("Delete")),
+		       KStandardGuiItem::cancel(), QString("CageDelConfirm"))
+		       == KMessageBox::No) {
+		    return;
+		}
+		if (g->cage(cageNumP1-1).size() == 1) {	// Erase digit.
+		    // Delete the digit shown in a size-1 cage.
+		    doEvent(HistoryEvent(pos, CellInfo(CorrectValue, 0)));
+		    m_private->emitCellChange(pos);
+		    m_private->emitModified(true);
+		}
+		// Erase the cage boundary and label.
+		m_private->emitCageChange (-cageNumP1, false);
+		// Remove the cage from the puzzle's graph.
+		qDebug() << "    DROP CAGE" << (cageNumP1 - 1);
+		g->dropCage (cageNumP1 - 1);
+		if (m_private->m_cage.indexOf (pos) >= 0) {
+		    // The current cage was dropped.
+		    m_private->m_currentCageSaved = false;
+		}
+	    }
+	    else {
+		KMessageBox::information (messageParent(),
+		    i18n("The cell you have selected is not in any cage, "
+			 "so the Delete action will not delete anything."),
+		    i18n("Delete Cage"), QString("CageDelMissed"));
+	    }
+	}
+	else {
+	    KMessageBox::information (messageParent(),
+		i18n("The Delete action finds that there are no cages "
+		     "to delete."), i18n("Delete Cage"));
+	    qDebug() << "NO CAGES TO DELETE.";
+	}
 }
 
 void Game::checkCompleted() {
@@ -468,6 +757,18 @@ bool Game::wasFinished() const {
 void Game::setUserHadHelp(bool hadHelp) {
 	if(!m_private) return;
 	m_private->hadHelp = hadHelp;
+}
+
+void Game::setMessageParent(QWidget * messageParent)
+{
+	if (m_private) {
+	    m_private->m_messageParent = messageParent;
+	}
+}
+
+QWidget * Game::messageParent()
+{
+	return (m_private ? m_private->m_messageParent : 0);
 }
 
 }

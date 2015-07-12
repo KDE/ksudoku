@@ -2,6 +2,7 @@
  *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -28,6 +29,10 @@
 
 class KUrl;
 
+class SKGraph;
+
+class QWidget;
+
 namespace ksudoku {
 
 class Puzzle ;
@@ -51,6 +56,7 @@ signals:
 	void completed(bool isCorrect, const QTime& required, bool withHelp);
 	void cellChange(int index);
 	void fullChange();
+	void cageChange(int cageNum, bool showLabel);
 };
 
 /**
@@ -145,7 +151,21 @@ public:
 	 * Sets whether cell @p index is @p given (A given cell is not changeable by the player).
 	 */
 	void setGiven(int index, bool given);
-	
+
+	/**
+	 * Constructs a cage for a Mathdoku or Killer Sudoku puzzle which is
+	 * being entered in. Proceeds in steps of one keystroke at a time.
+	 *
+	 * @param[in] index The position of a cell.
+	 * @param[in] val   A digit for the value, an operator for the cage or
+	 *                  a code, e.g. add a cell to the cage or finish it.
+	 *
+	 * @return          True if the value was handled by addToCage(), false
+	 *                  if it should be processed by setValue(), as for a
+	 *                  Sudoku or Roxdoku puzzle.
+	 */
+	bool addToCage (int pos, int val);
+
 	/**
 	 * Gets the all current values of the game
 	 */
@@ -225,13 +245,22 @@ public:
 	 * Returns the hitory event at position @p i
 	 */
 	HistoryEvent historyEvent(int i) const;
-	
-	
+
+	/**
+	 * Set the parent of message-box dialogs (used in data-entry of cages).
+	 */
+	void setMessageParent (QWidget * messageParent);
+	QWidget * messageParent();
+
 private:
 	/**
 	 * When the game was finished this function emits a @c completed()
 	 */
 	void checkCompleted();
+
+	void finishCurrentCage (SKGraph * graph);
+	void deleteCageAt (int pos, SKGraph * graph);
+	bool validCell (int pos, SKGraph * graph);
 	
 private:
 	class Private;

@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright 2008      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -42,6 +43,22 @@ public:
 	~View2DScene();
 public:
 	void init(const Game& game);
+
+	/**
+	 * Set up the graphics for drawing a Mathdoku or Killer Sudoku cage.
+	 * The list of cages goes at the end of the list of rows, columns and
+	 * blocks, in the vector QVector<GroupGraphicsItem*> m_groups. Each
+	 * GroupGraphicsItem is a graphical structure having cells, an outline
+	 * or boundary and highlighting. In addition, cages have a cage-label
+	 * containing the cage's value and operator.
+	 *
+	 * @param cageNum      The position of the cage (0 to n) in model-data
+	 *                     in the puzzle's SKGraph. Its position in the
+	 *                     scene and view list is (offset + cageNum), where
+	 *                     "offset" is the number of rows, cols and blocks.
+	 * @param drawLabel    Whether the cage-label is to be drawn.
+	 */
+	void initCageGroup (int cageNum, bool drawLabel = true);
 	
 	void setSceneSize(const QSize& size);
 
@@ -57,6 +74,15 @@ public slots:
 	void flipMarkValue(int val, int cell=-1);
 	void moveCursor(int dx, int dy);
 	void update(int cell = -1);
+	/**
+	 * Add, replace or delete graphics for a Mathdoku or Killer Sudoku cage.
+	 *
+	 * @param cageNumP1    The cage-index (in lists of cages) + 1.
+	 *                     Value 1 to N: Add or replace the cage-graphics.
+	 *                     Value -1 to -N: delete the cage-graphics.
+	 *                     Value 0: invalid.
+	 */
+	void updateCage (int cageNumP1, bool drawLabel);
 signals:
 	void valueSelected(int val);
 protected:
