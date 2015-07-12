@@ -140,6 +140,8 @@ private slots:
 
 	void onModified(bool isModified);
 
+	void enableMessages();
+
 signals:
 	void settingsChanged();
 

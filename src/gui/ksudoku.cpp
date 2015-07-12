@@ -470,6 +470,10 @@ void KSudoku::setupActions()
 // 	createAction("game_export", SLOT(gameExport()), i18n("Export"));
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
+	// Settings: enable messages that the user marked "Do not show again".
+	KAction* enableMessagesAct = new KAction(i18n("Enable all messages"),0);
+	actionCollection()->addAction("enable_messages", enableMessagesAct);
+	connect(enableMessagesAct, SIGNAL(triggered()), SLOT(enableMessages()));
 
 	//History
 	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
@@ -1063,6 +1067,17 @@ void KSudoku::loadCustomShapeFromPath()
 
 	KIO::NetAccess::removeTempFile(tmpFile);
 	updateShapesList();
+}
+
+void KSudoku::enableMessages()
+{
+	// Enable all messages that the user has marked "Do not show again".
+	int result = KMessageBox::questionYesNo(this,
+					i18n("Enable all messages"));
+	if (result == KMessageBox::Yes) {
+		KMessageBox::enableAllMessages();
+		KGlobal::config()->sync();	// Save the changes to disk.
+	}
 }
 
 #if 0
