@@ -358,7 +358,10 @@ bool Game::addToCage (int pos, int val)
 	    }
 	}
 
-	// TODO - In Killer Sudoku, show the operator during data-entry.
+	// Valid keystroke and position: store and display the current cage.
+	if (m_private->m_cage.indexOf (pos) < 0) {
+	    m_private->m_cage.append (pos);	// Add cell to current cage.
+	}
 	if (t == KillerSudoku) {
 	    if (cageOp != NoOperator) {
 		KMessageBox::information (messageParent(),
@@ -369,12 +372,8 @@ bool Game::addToCage (int pos, int val)
 	    // Set the operator to none or Add, depending on the cage-size.
 	    cageOp = (m_private->m_cage.size() > 1) ?  Add : NoOperator;
 	}
-
-	// Valid keystroke and position: store and display the current cage.
+	// TODO - In Killer Sudoku, show the operator during data-entry.
 	m_private->m_cageOperator = cageOp;
-	if (m_private->m_cage.indexOf (pos) < 0) {
-	    m_private->m_cage.append (pos);	// Add cell to current cage.
-	}
 
 	// Change the last cage in the data-model in the SKGraph object.
 	if (m_private->m_currentCageSaved) {	// If new cage, skip dropping.
