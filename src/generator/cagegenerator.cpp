@@ -269,7 +269,9 @@ int CageGenerator::checkPuzzle (SKGraph * graph, BoardContents & solution,
     mOrder           = graph->order();
     mBoardArea       = mOrder * mOrder;
     mKillerSudoku    = (graph->specificType() == KillerSudoku);
-    mHiddenOperators = mKillerSudoku ? true : hideOperators;
+    // Only Mathdoku puzzles can have hidden operators as part of the *puzzle*.
+    // KillerSudoku has + or NoOp and makes the +'s hidden only in the *view*.
+    mHiddenOperators = mKillerSudoku ? false : hideOperators;
     qDebug() << "\nCHECK PUZZLE: HIDDEN OPERATORS" << mHiddenOperators;
 
     mPossibilities->clear();
@@ -690,8 +692,10 @@ void CageGenerator::init (SKGraph * graph, bool hideOperators)
     mOrder     = graph->order();
     mBoardArea = mOrder * mOrder;
 
+    // Only Mathdoku puzzles can have hidden operators as part of the *puzzle*.
+    // KillerSudoku has + or NoOp and makes the +'s hidden only in the *view*.
     mKillerSudoku    = (graph->specificType() == KillerSudoku);
-    mHiddenOperators = mKillerSudoku ? true : hideOperators;
+    mHiddenOperators = mKillerSudoku ? false : hideOperators;
     qDebug() << "\nMAKE CAGES init(): HIDDEN OPERATORS" << mHiddenOperators;
 
     mUnusedCells.clear();
