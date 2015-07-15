@@ -1,6 +1,16 @@
 [KSudokuVariant]
 Name=Killer Sudoku
+Name[ca]=Killer Sudoku
+Name[nl]=Killer Sudoku
+Name[pt]=Sudoku Assassino
+Name[sv]=Mördarsudoku
+Name[x-test]=xxKiller Sudokuxx
 Description=Classic Sudoku, but cages must add to totals shown
+Description[ca]=Sudoku clàssic, però els grups de cel·les s'han d'afegir als totals mostrats
+Description[nl]=Klassiek Sudoku, maar vakken moeten worden toegevoegd bij getoonde totalen
+Description[pt]=Sudoku clássico, mas são adicionadas as caixas aos totais apresentados
+Description[sv]=Klassisk Sudoku, men avgränsningar måste adderas till visade summor
+Description[x-test]=xxClassic Sudoku, but cages must add to totals shownxx
 Author=Ian Wadham
 FileName=Killer_9x9.xml
 Icon=ksudoku-ksudoku_9x9
