@@ -74,7 +74,7 @@ void SudokuBoard::setSeed()
     }
 }
 
-void SudokuBoard::generatePuzzle             (BoardContents & puzzle,
+bool SudokuBoard::generatePuzzle             (BoardContents & puzzle,
                                               BoardContents & solution,
                                               Difficulty difficultyRequired,
                                               Symmetry symmetry)
@@ -88,31 +88,39 @@ void SudokuBoard::generatePuzzle             (BoardContents & puzzle,
 	// Generate variants of Mathdoku (aka KenKen TM) or Killer Sudoku types.
 	int maxTries = 10;
 	int numTries = 0;
-	bool r = false;
-	while (numTries < maxTries) {
+	bool success = false;
+	while (true) {
 	    MathdokuGenerator mg (m_graph);
+	    // Find numbers to satisfy Sudoku rules: they will be the solution.
 	    solution = fillBoard();
+	    // Generate a Mathdoku or Killer Sudoku puzzle having this solution.
 	    numTries++;
-	    r = mg.generateMathdokuTypes (puzzle, solution, &m_KSudokuMoves,
-                                          difficultyRequired);
-	    if (r) {
-		qDebug() << "SudokuBoard::generatePuzzle SUCCEEDED: numTries"
-		         << numTries;
-		return;
+	    success = mg.generateMathdokuTypes (puzzle, solution,
+				    &m_KSudokuMoves, difficultyRequired);
+	    if (success) {
+		return true;
+	    }
+	    else if (numTries >= maxTries) {
+		QWidget owner;
+		if (KMessageBox::questionYesNo (&owner,
+			    i18n("Attempts to generate a puzzle failed after "
+				 "about 200 tries. Try again?"),
+			    i18n("Mathdoku or Killer Sudoku Puzzle"))
+			    == KMessageBox::No) {
+		    return false;	// Go back to the Welcome screen.
+		}
+		numTries = 0;		// Try again.
 	    }
 	}
-	// TODO - Issue a popup message for the user to decide how to proceed.
-	qDebug() << "SudokuBoard::generatePuzzle FAILED MISERABLY !!! numTries"
-		 << numTries;
     }
     else {
 	// Generate variants of Sudoku (2D) and Roxdoku (3D) types.
-	generateSudokuRoxdokuTypes (puzzle, solution,
+	return generateSudokuRoxdokuTypes (puzzle, solution,
                                     difficultyRequired, symmetry);
     }
 }
 
-void SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
+bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
                                               BoardContents & solution,
                                               Difficulty difficultyRequired,
                                               Symmetry symmetry)
@@ -252,6 +260,7 @@ void SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
         dbo "SOLUTION\n");
         print (solution);
     }
+    return true;
 }
 
 Difficulty SudokuBoard::calculateRating (const BoardContents & puzzle,

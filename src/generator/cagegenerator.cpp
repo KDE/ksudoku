@@ -245,15 +245,21 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
                                                 mPossibilities,
                                                 mPossibilitiesIndex, 2);
     if (nSolutions == 0) {
+#ifdef MATHDOKU_LOG
 	qDebug() << "FAILED TO FIND A SOLUTION: nSolutions =" << nSolutions;
+#endif
 	return -1;		// At least one solution must exist.
     }
     else if (nSolutions > 1) {
+#ifdef MATHDOKU_LOG
 	qDebug() << "NO UNIQUE SOLUTION: nSolutions =" << nSolutions;
+#endif
 	return -1;		// There must only one solution.
     }
 
+#ifdef MATHDOKU_LOG
     qDebug() << "UNIQUE SOLUTION FOUND: nSolutions =" << nSolutions;
+#endif
     return mGraph->cageCount();
 }
 
@@ -483,7 +489,9 @@ bool CageGenerator::cageIsOK (const QVector<int> cage,
 	for (int n = 0; n < nDigits; n++) {
 	    int digit = mSolution.at (cage.at(n));
 	    if (usedDigits.at (digit)) {
+#ifdef MATHDOKU_LOG
 		qDebug() << "SOLUTION VALUES CONTAIN DUPLICATE" << digit;
+#endif
 		return false;			// Cannot use this cage.
 	    }
 	    usedDigits[digit] = true;
@@ -505,8 +513,10 @@ bool CageGenerator::cageIsOK (const QVector<int> cage,
     }
     else {
 	// Discard the possibilities: this cage is no good.
+#ifdef MATHDOKU_LOG
 	qDebug() << "CAGE REJECTED: combos" << (numPoss / nDigits)
                  << "max" << mMaxCombos << cage << cageValue << cageOperator;
+#endif
 	while (numPoss > 0) {
 	    mPossibilities->removeLast();
 	    numPoss--;
@@ -696,7 +706,9 @@ void CageGenerator::init (SKGraph * graph, bool hideOperators)
     // KillerSudoku has + or NoOp and makes the +'s hidden only in the *view*.
     mKillerSudoku    = (graph->specificType() == KillerSudoku);
     mHiddenOperators = mKillerSudoku ? false : hideOperators;
+#ifdef MATHDOKU_LOG
     qDebug() << "\nMAKE CAGES init(): HIDDEN OPERATORS" << mHiddenOperators;
+#endif
 
     mUnusedCells.clear();
     mNeighbourFlags.clear();

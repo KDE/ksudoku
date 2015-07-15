@@ -137,8 +137,12 @@ public:
      * @param difficulty    The required level of difficulty (as defined in file
      *                      globals.h).
      * @param symmetry      The required symmetry of layout of the clues.
+     *
+     * @return              Normally true, but false if the user wishes to go
+     *                      back to the Welcome screen (e.g. to change reqs.)
+     *                      after too many attempts to generate a puzzle.
      */
-    void                    generatePuzzle (BoardContents & puzzle,
+    bool                    generatePuzzle (BoardContents & puzzle,
                                             BoardContents & solution,
                                             Difficulty      difficulty,
                                             Symmetry        symmetry);
@@ -268,7 +272,7 @@ protected:
     void                    randomSequence (QVector<int> & sequence);
 
 private:
-    void                    generateSudokuRoxdokuTypes (BoardContents & puzzle,
+    bool                    generateSudokuRoxdokuTypes (BoardContents & puzzle,
                                                        BoardContents & solution,
                                                        Difficulty    difficulty,
                                                        Symmetry      symmetry);

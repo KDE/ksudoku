@@ -71,11 +71,18 @@ bool Puzzle::init(int difficulty, int symmetry) {
 	SudokuBoard * board = new SudokuBoard (m_graph);
 
 	// Generate a puzzle and its solution.
-	board->generatePuzzle (m_puzzle, m_solution,
+	bool success =  board->generatePuzzle (m_puzzle, m_solution,
 			      (Difficulty) difficulty, (Symmetry) symmetry);
-	board->getMoveList (m_hintList);
+	if (success) {
+	    board->getMoveList (m_hintList);
+	}
+	// Too many tries at generating a puzzle that meets the user's reqs.
+	else {
+	    m_puzzle.clear();		// Wipe the puzzle and its solution.
+	    m_solution.clear();
+	}
 	delete board;
-	return true;
+	return success;
 }
 
 int Puzzle::init(const BoardContents & values) {

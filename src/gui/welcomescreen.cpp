@@ -160,7 +160,11 @@ void WelcomeScreen::generatePuzzle() {
 	gameGroup.writeEntry("Symmetry"  , m_symmetry);
 	gameGroup.sync();		// Ensure that the entry goes to disk.
 
-	emit newGameStarted(game, variant);
+	// If the user abandoned puzzle-generation, stay on the Welcome Screen
+	// and allow the user to change the Difficulty, etc. of the puzzle.
+	if (game.puzzle()->hasSolution()) {
+	    emit newGameStarted(game, variant);		// OK, start playing.
+	}
 }
 
 }
