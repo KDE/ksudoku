@@ -1,14 +1,20 @@
 [KSudokuVariant]
 Name=Killer Sudoku
 Name[ca]=Killer Sudoku
+Name[es]=Killer Sudoku
+Name[gl]=Sudoku imposíbel
 Name[nl]=Killer Sudoku
 Name[pt]=Sudoku Assassino
+Name[pt_BR]=Sudoku Assassino
 Name[sv]=Mördarsudoku
 Name[x-test]=xxKiller Sudokuxx
 Description=Classic Sudoku, but cages must add to totals shown
 Description[ca]=Sudoku clàssic, però els grups de cel·les s'han d'afegir als totals mostrats
+Description[es]=Sudoku clásico, pero las jaulas deben sumarse para obtener los totales mostrados
+Description[gl]=Sudoku clásico, pero as gaiolas deben sumar o valor indicado.
 Description[nl]=Klassiek Sudoku, maar vakken moeten worden toegevoegd bij getoonde totalen
 Description[pt]=Sudoku clássico, mas são adicionadas as caixas aos totais apresentados
+Description[pt_BR]=Sudoku clássico, mas as caixas devem ser adicionadas aos totais apresentados
 Description[sv]=Klassisk Sudoku, men avgränsningar måste adderas till visade summor
 Description[x-test]=xxClassic Sudoku, but cages must add to totals shownxx
 Author=Ian Wadham
