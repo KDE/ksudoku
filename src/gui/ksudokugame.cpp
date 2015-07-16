@@ -280,6 +280,9 @@ void Game::setValue(int index, int val) {
 		return;		// Value went in a Mathdoku/KillerSudoku puzzle.
 	    }
 	}
+	if ((val == 32) || (val == 26)) {	// Delete-action or Qt::Key_0.
+	    val = 0;				// Clear the cell.
+	}
 
 	// Solve all kinds of puzzles or enter in a Sudoku or Roxdoku puzzle.
 	if(val > m_private->puzzle->order()) return;

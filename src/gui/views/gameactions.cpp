@@ -49,10 +49,10 @@ void GameActions::init() {
 	// Extras: zero, divide, subtract, add, add cell, end cage, remove cell.
 	const Qt::Key extras[] = {Qt::Key_0, Qt::Key_Slash, Qt::Key_Minus,
                             /* Qt::Key_Asterisk, */ Qt::Key_Plus, Qt::Key_Space,
-			    Qt::Key_Return, Qt::Key_Escape};
+			    Qt::Key_Return};
 	KAction* a;
 	KShortcut shortcut;
-	for(int i = 0; i < 32; ++i) {
+	for(int i = 0; i < 31; ++i) {
 		a = new KAction(this);
 		m_collection->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
@@ -145,7 +145,7 @@ void GameActions::associateWidget(QWidget* widget) {
 }
 
 void GameActions::clearValue() {
-	emit enterValue(0);
+	emit enterValue(32);	// Delete: not always the same as Qt::Key_0.
 }
 
 void GameActions::moveUp() {
