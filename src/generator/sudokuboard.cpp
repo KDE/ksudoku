@@ -236,7 +236,9 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 			    "first guess should come after %2 moves.\n"
 			    "\n"
 			    "The internal difficulty rating is %3, there are "
-			    "%4 clues at the start and %5 moves to go.", average, bestFirstGuessAt, rating, (m_stats.nCells - bestNClues)),
+			    "%4 clues at the start and %5 moves to go.",
+			    average, bestFirstGuessAt, rating, bestNClues,
+			    (m_stats.nCells - bestNClues)),
                        i18n("Difficulty Level"),
                        KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
 	    }
