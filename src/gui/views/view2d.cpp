@@ -640,15 +640,11 @@ void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
 	int offset    = g->cliqueCount();
 	bool deleting = (cageNumP1 < 0);
 	int  cageNum  = deleting ? (-cageNumP1 - 1) : (cageNumP1 - 1);
-	qDebug() << "View2DScene::updateCage" << cageNum << "offset" << offset
-	         << "group count" << m_groups.count()
-		 << "cageNumP1" << cageNumP1;
 	if ((cageNum >= 0) && (m_groups.count() > (offset + cageNum))){
 	    // Remove the cage-label from its scene-cell item.
 	    m_cells[g->cageTopLeft(cageNum)]->setCageLabel(QString());
 	    // Remove the cage-graphics from the scene.
 	    removeItem (m_groups.at (offset + cageNum));
-	    qDebug() << "DELETING GROUP" << (offset + cageNum);
 	    delete m_groups.at (offset + cageNum);
 	    m_groups[offset + cageNum] = 0;	// Re-use or remove this later.
 	}
@@ -658,7 +654,6 @@ void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
 	}
 	if (!deleting && (cageNum >= 0)) {
 	    // Create or re-create the cage that is being entered in.
-	    qDebug() << "CREATING or RE-CREATING CAGE" << cageNum;
 	    initCageGroup (cageNum, drawLabel);
 	    // IDW TODO - Should NOT need hilite settings, NOT hilite row/col.
 	    // IDW TODO - May need to doctor LOCAL CLASS GroupGraphicsItem for
@@ -667,11 +662,7 @@ void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
 	}
 	else {
 	    // Deleting a cage: finish removing graphics item from scene-data.
-	    qDebug() << "REMOVE GROUP NUMBER" << (offset + cageNum)
-		     << "number of groups" << m_groups.size()
-		     << "cageNum" << cageNum;
 	    m_groups.remove (offset + cageNum);
-	    qDebug() << "    DONE: number of groups" << m_groups.size();
 	}
 
 	// Invoke the method in View2DScene that triggers a re-draw.
