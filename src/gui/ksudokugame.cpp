@@ -306,7 +306,9 @@ bool Game::addToCage (int pos, int val)
 	if ((t != Mathdoku) && (t != KillerSudoku)) {
 	    return false;	// We are not keying in a cage.
 	}
+#ifdef MATHDOKUENTRY_LOG
 	qDebug() << "\nGame::addToCage: pos" << pos << "action" << val;
+#endif
 	if (! m_private->m_currentCageSaved) {	// Start a new cage.
 	    m_private->m_cage.clear();
 	    m_private->m_cageValue = 0;
@@ -323,26 +325,21 @@ bool Game::addToCage (int pos, int val)
 	else {
 	    switch (val) {
 	    case 24:	// Qt::Key_X = multiply.
-		qDebug() << "    Set operator x";
 		cageOp = Multiply;
 		break;
 	    case 26:	// Qt::Key_0
 		if (m_private->m_cageValue > 0) {
 		    // Append a zero to the cage-value.
-		    qDebug() << "    Append 0 to" << m_private->m_cageValue;
 		    m_private->m_cageValue = 10 * m_private->m_cageValue;
 		}
 		break;
 	    case 27:	// Qt::Key_Slash.
-		qDebug() << "    Set operator /";
 		cageOp = Divide;
 		break;
 	    case 28:	// Qt::Key_Minus.
-		qDebug() << "    Set operator -";
 		cageOp = Subtract;
 		break;
 	    case 29:	// Qt::Key_Plus.
-		qDebug() << "    Set operator +";
 		cageOp = Add;
 		break;
 	    case 30:	// Left click or Qt::Key_Space = drop through and
@@ -381,18 +378,22 @@ bool Game::addToCage (int pos, int val)
 	// Change the last cage in the data-model in the SKGraph object.
 	if (m_private->m_currentCageSaved) {	// If new cage, skip dropping.
 	    int cageNum = g->cageCount() - 1;
+#ifdef MATHDOKUENTRY_LOG
 	    qDebug() << "    DROPPING CAGE" << cageNum
 		     << "m_currentCageSaved" << m_private->m_currentCageSaved
 		     << "m_cage" << m_private->m_cage;
+#endif
 	    g->dropCage (cageNum);
 	}
 	// Add a new cage or replace the previous version of the new cage.
 	g->addCage (m_private->m_cage,
 		    m_private->m_cageOperator, m_private->m_cageValue);
+#ifdef MATHDOKUENTRY_LOG
 	qDebug() << "    ADDED CAGE" << (g->cageCount() - 1)
 		 << "value" << m_private->m_cageValue
 		 << "op" << m_private->m_cageOperator
 		 << m_private->m_cage;
+#endif
 	m_private->m_currentCageSaved = true;
 
 	// Re-draw the boundary and label of the cage just added to the graph.
@@ -409,8 +410,6 @@ bool Game::validCell (int pos, SKGraph * g)
 	}
 	// Selected cell must not be already in another cage.
 	for (int n = 0; n < g->cageCount(); n++) {
-	    qDebug() << "    IS CELL" << pos << "IN CAGE" << n
-		     << "OF" << g->cageCount() << "?";
 	    if (g->cage(n).indexOf (pos) >= 0) {
 		KMessageBox::information (messageParent(),
 		    i18n("The cell you have selected has already been "
@@ -454,9 +453,11 @@ bool Game::validCell (int pos, SKGraph * g)
 
 void Game::finishCurrentCage (SKGraph * g)
 {
+#ifdef MATHDOKUENTRY_LOG
 	qDebug() << "END CAGE: value" << m_private->m_cageValue
 		 << "op" << m_private->m_cageOperator
 		 << m_private->m_cage << "\n";
+#endif
 	// If Killer Sudoku and cage-size > 1, force operator to be +.
 	if ((g->specificType() == KillerSudoku) &&
 	    (m_private->m_cage.size() > 1)) {
@@ -540,7 +541,9 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 		// Erase the cage boundary and label.
 		m_private->emitCageChange (-cageNumP1, false);
 		// Remove the cage from the puzzle's graph.
+#ifdef MATHDOKUENTRY_LOG
 		qDebug() << "    DROP CAGE" << (cageNumP1 - 1);
+#endif
 		g->dropCage (cageNumP1 - 1);
 		if (m_private->m_cage.indexOf (pos) >= 0) {
 		    // The current cage was dropped.
@@ -558,7 +561,9 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 	    KMessageBox::information (messageParent(),
 		i18n("The Delete action finds that there are no cages "
 		     "to delete."), i18n("Delete Cage"));
+#ifdef MATHDOKUENTRY_LOG
 	    qDebug() << "NO CAGES TO DELETE.";
+#endif
 	}
 }
 
