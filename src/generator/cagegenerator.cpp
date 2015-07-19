@@ -232,7 +232,9 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	int nCombos =  nVals / size;
 #ifdef MATHDOKU_LOG
 	qDebug() << "Cage" << n << "values" << nVals << "size" << size
-                 << "combos" << nCombos;
+                 << "combos" << nCombos << "target" << mGraph->cageValue(n)
+		 << "op" << mGraph->cageOperator(n)
+		 << "topleft" << mGraph->cageTopLeft(n);
 #endif
 	totCombos += nCombos;
     }
@@ -295,6 +297,15 @@ int CageGenerator::checkPuzzle (SKGraph * graph, BoardContents & solution,
 	setAllPossibilities (graph->cage(n), graph->cage(n).size(),
                              graph->cageOperator(n), graph->cageValue(n));
         mPossibilitiesIndex->append (mPossibilities->size());
+#ifdef MATHDOKU_LOG
+	int nVals = mPossibilitiesIndex->at (n+1) - mPossibilitiesIndex->at (n);
+	int size = mGraph->cage (n).size();
+	int nCombos =  nVals / size;
+	qDebug() << "Cage" << n << "values" << nVals << "size" << size
+                 << "combos" << nCombos << "target" << mGraph->cageValue(n)
+		 << "op" << mGraph->cageOperator(n)
+		 << "topleft" << mGraph->cageTopLeft(n);
+#endif
     }
 #ifdef MATHDOKU_LOG
     qDebug() << "POSSIBILITIES SET: now check-solve the puzzle.";
@@ -585,8 +596,11 @@ void CageGenerator::setPossibleAddsOrMultiplies
     int nDigits = cage.size();
     int currentValue;
     int nTarg = 0;
-    int nDupl = 0;
     int nCons = 0;
+#ifdef MATHDOKU_LOG
+    int nDupl = 0;
+    int nIncons = 0;
+#endif
     int loopCount = 1;
 
     // Calculate the number of possible sets of digits in the cage.
@@ -603,21 +617,34 @@ void CageGenerator::setPossibleAddsOrMultiplies
 #ifdef MATHDOKU_LOG
 	    qDebug() << "TARGET REACHED" << requiredValue
 		     << "OP" << cageOperator << "DIGITS" << digits;
-	    if (hasDuplicates (nDigits, digits)) {
-		nDupl++;
-	    }
-	    qDebug() << "CONTAINS DUPLICATE(S)"
-		     << hasDuplicates (nDigits, digits);
 #endif
-	    if (isSelfConsistent (cage, nDigits, digits)) {
-		// Include only the possibilities that satisfy Sudoku rules.
+	    bool digitsOK = false;
+	    // In Killer Sudoku, all digits in the cage must be unique.
+	    if (mKillerSudoku) {
+		// If so, there will be no breaches of Sudoku rules in the
+		// intersections of rows, columns and blocks with that cage,
+		// thus there is no need to do the isSelfConsistent() check.
+		digitsOK = ! hasDuplicates (nDigits, digits);
+	    }
+	    // In Mathdoku, duplicate digits are OK, subject to Sudoku rules.
+	    else {
+		digitsOK = isSelfConsistent (cage, nDigits, digits);
+	    }
+	    if (digitsOK) {
 		mPossibilities->append (QList<int>::fromVector (digits));
 		nCons++;
 	    }
 #ifdef MATHDOKU_LOG
-	    qDebug() << "SELF CONSISTENT"
-		     << isSelfConsistent (cage, nDigits, digits)
-		     << digits << "cage" << cage;
+	    if (mKillerSudoku) {
+		nDupl   = digitsOK ? nDupl : nDupl++;
+		qDebug() << "CONTAINS DUPLICATES: KillerSudoku cage" << digitsOK
+			 << digits << "cage" << cage;
+	    }
+	    else {
+		nIncons = digitsOK ? nIncons : nIncons++;
+		qDebug() << "SELF CONSISTENT: Mathdoku cage" << digitsOK
+			 << digits << "cage" << cage;
+	    }
 #endif
 	}
 
