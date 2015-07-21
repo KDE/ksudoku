@@ -591,7 +591,7 @@ void CageGenerator::setPossibilities (const QVector<int> cage,
 void CageGenerator::setPossibleAddsOrMultiplies
         (const QVector<int> cage, CageOperator cageOperator, int requiredValue)
 {
-    QVector<int> digits;
+    int digits[MaxMathOrder];	// Maximum order of maths-based puzzles == 9.
     int maxDigit = mOrder;
     int nDigits = cage.size();
     int currentValue;
@@ -606,10 +606,10 @@ void CageGenerator::setPossibleAddsOrMultiplies
     // Calculate the number of possible sets of digits in the cage.
     for (int n = 0; n < nDigits; n++) {
 	loopCount = loopCount * maxDigit;
+	digits[n] = 1;
     }
 
     // Start with a sum or product of all 1's, then check all possibilities.
-    digits.fill (1, nDigits);
     currentValue = (cageOperator == Add) ? nDigits : 1;
     for (int n = 0; n < loopCount; n++) {
 	if (currentValue == requiredValue) {
@@ -631,7 +631,9 @@ void CageGenerator::setPossibleAddsOrMultiplies
 		digitsOK = isSelfConsistent (cage, nDigits, digits);
 	    }
 	    if (digitsOK) {
-		mPossibilities->append (QList<int>::fromVector (digits));
+		for (int n = 0; n < nDigits; n++) {
+		    mPossibilities->append (digits[n]);
+		}
 		nCons++;
 	    }
 #ifdef MATHDOKU_LOG
@@ -651,21 +653,19 @@ void CageGenerator::setPossibleAddsOrMultiplies
 	// Calculate the next set of possible digits (as in an odometer).
 	for (int d = 0; d < nDigits; d++) {
 	    digits[d]++;
-	    if (digits.at (d) > maxDigit) {	// Carry 1.
-		digits[d]  -= maxDigit;
+	    currentValue++;			// Use prev sum, to save time.
+	    if (digits[d] > maxDigit) {		// Carry 1.
+		digits[d]    -= maxDigit;
+		currentValue -= maxDigit;
 	    }
 	    else {
 		break;				// No carry.
 	    }
 	}
 
-	// Calculate the sum or product of this set of digits.
-	currentValue = (cageOperator == Add) ? 0 : 1;
-	for (int d = 0; d < nDigits; d++) {
-	    if (cageOperator == Add) {
-		currentValue += digits[d];
-	    }
-	    else {
+	if (cageOperator == Multiply) {
+	    currentValue = 1;
+	    for (int d = 0; d < nDigits; d++) {
 		currentValue *= digits[d];
 	    }
 	}
@@ -676,35 +676,32 @@ void CageGenerator::setPossibleAddsOrMultiplies
 #endif
 }
 
-bool CageGenerator::hasDuplicates (int nDigits, QVector<int> digits)
+bool CageGenerator::hasDuplicates (int nDigits, int digits[])
 {
-    QVector<bool> usedDigits;
-    usedDigits.fill (false, mOrder + 1);	// Digits range is 1->order.
+    int usedDigits = 0;
+    int mask       = 0;
     for (int n = 0; n < nDigits; n++) {
-	int digit = digits.at (n);
-	if (usedDigits.at (digit)) {
+	mask = 1 << digits[n];
+	if (usedDigits & mask) {
 	    return true;
 	}
-	usedDigits[digit] = true;
+	usedDigits |= mask;
     }
     return false;
 }
 
 bool CageGenerator::isSelfConsistent (const QVector<int> cage,
-                                      int nDigits, QVector<int> digits)
+                                      int nDigits, int digits[])
 {
     QVector<int> usedGroups;
+    int mask = 0;
+    int cell;
     usedGroups.fill (0, mGraph->cliqueCount());
     for (int n = 0; n < nDigits; n++) {
-	int cell = cage.at (n);
-	int digit = digits.at (n);
-	int mask = 1 << digit;
+	cell = cage.at (n);
+	mask = 1 << digits[n];
 	QList<int> groupList = mGraph->cliqueList (cell);
 	Q_FOREACH (int group, groupList) {
-	    // qDebug() << "Digit" << (n + 1) << "value" << digit << "mask"
-		     // << mask << "position" << cell << "conflict group"
-		     // << group << "cells" << mGraph->clique (group)
-		     // << "group mask" << usedGroups.at (group);
 	    if (mask & usedGroups.at (group)) {
 		return false;
 	    }

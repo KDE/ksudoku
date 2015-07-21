@@ -38,6 +38,9 @@ enum CageOperator {NoOperator, Divide, Subtract, Multiply, Add};
 
 typedef QVector<int>      BoardContents;
 
+// The maximum digit that can be used in a Mathdoku or Killer Sudoku puzzle.
+const int MaxMathOrder = 9;
+
 typedef struct {
     char *     typeName;
     SudokuType type;

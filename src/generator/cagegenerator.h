@@ -174,12 +174,11 @@ private:
                                       CageOperator cageOperator, int cageValue);
 
     // Check if a cage contains duplicate digits (not allowed in Killer Sudoku).
-    bool hasDuplicates (int nDigits, QVector<int> digits);
+    bool hasDuplicates (int nDigits, int digits[]);
 
     // Check if a combo of digits in a cage satisfies Sudoku rules (a Mathdoku
     // cage can contain a digit more than once, but not in the same row/column).
-    bool isSelfConsistent (const QVector<int> cage, int nDigits,
-                           QVector<int> digits);
+    bool isSelfConsistent (const QVector<int> cage, int nDigits, int digits[]);
 
     // Initialise the cage generator for a particular size and type of puzzle.
     void init (SKGraph * graph, bool hiddenOperators);
