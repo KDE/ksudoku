@@ -3,6 +3,7 @@
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -44,6 +45,7 @@ class Puzzle;
 }
 
 class SKGraph;
+class PuzzlePrinter;
 
 /**
  * This class serves as the main window for ksudoku.  It handles the
@@ -151,9 +153,6 @@ private:
 
 	void adaptActions2View();
 
-	void sendToPrinter (const ksudoku::Puzzle * puzzle);
-	void endPrint();
-	
 private:
 	QWidget* wrapper;
 	
@@ -170,9 +169,7 @@ private:
 
 	ksudoku::GameActions* m_gameActions;
 
-	QPrinter * m_printer;
-	QPainter * m_p;
-	int m_quadrant;
+	PuzzlePrinter * m_puzzlePrinter;
 };
 
 #endif // _KSUDOKU_H_
