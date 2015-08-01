@@ -24,6 +24,8 @@
 #ifndef _PUZZLEPRINTER_H_
 #define _PUZZLEPRINTER_H_
 
+#include <QPen>
+
 namespace ksudoku {
 class Game;
 class Puzzle;
@@ -51,10 +53,36 @@ public:
 	void endPrint();
 
 private:
+	enum Edge {Left = 0, Right, Above, Below, Detached};
+
+	bool setupOutputDevices (int leastCellsToFit, int puzzleWidth);
+
+	void drawBlocks (const ksudoku::Puzzle * puzzle,
+			 const SKGraph * graph);
+	void drawCages  (const ksudoku::Puzzle * puzzle,
+			 const SKGraph * graph, bool killerStyle);
+	void drawKillerSudokuCages (const SKGraph* graph,
+                                    const QVector<int> & edges);
+	void markEdges  (const QVector<int> & cells,
+			 const ksudoku::Puzzle * puzzle, const SKGraph * graph,
+			 QVector<int> & edges);
+	void drawCell   (int posX, int posY, int edge);
+	void drawValues (const ksudoku::Game & game, const SKGraph * graph);
+	void drawCageLabel (const SKGraph* graph, int n, bool killerStyle);
+
 	QWidget  * m_parent;
 	QPrinter * m_printer;
 	QPainter * m_p;
 	int m_quadrant;
+	int m_across;
+	int m_down;
+	bool m_printMulti;
+	int m_sCell;
+	int m_topX;
+	int m_topY;
+	QPen m_heavy;
+	QPen m_light;
+	QPen m_dashes;
 };
 
 #endif // _PUZZLEPRINTER_H_
