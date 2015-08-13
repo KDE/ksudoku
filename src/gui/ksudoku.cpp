@@ -725,15 +725,6 @@ void KSudoku::gamePrint()
     if (! m_puzzlePrinter) {
 	m_puzzlePrinter = new PuzzlePrinter (this);
     }
-/* IDW DELETE.
-    SudokuType t = game.puzzle()->graph()->specificType();
-    if ((t == Mathdoku) || (t == KillerSudoku)) {
-	KMessageBox::information (this,
-	    i18n("Sorry, printing Mathdoku and Killer Sudoku "
-		 "puzzles is not yet supported."));
-	return;
-    }
-*/
     m_puzzlePrinter->print (game);
 }
 
