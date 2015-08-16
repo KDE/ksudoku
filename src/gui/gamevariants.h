@@ -102,7 +102,7 @@ public:
 	};
 
 public:
-	GameVariantDelegate(QObject* parent = 0);
+	GameVariantDelegate(QObject* parent = 0, QWidget * viewport = 0);
 public:
 	QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 	void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
@@ -116,11 +116,15 @@ public:
 	QString icon(const QModelIndex& index) const;
 	bool configurable(const QModelIndex& index) const;
 private:
+	QWidget * m_viewport;
+
 	static const int m_iconWidth = 48;
 	static const int m_iconHeight = 48;
 	static const int m_leftMargin = 16;
 	static const int m_rightMargin = 12;
 	static const int m_separatorPixels = 8;
+	static const int m_minWidth = m_leftMargin + m_rightMargin +
+				      4 * (m_iconWidth + m_separatorPixels*2);
 };
 
 class SudokuGame : public GameVariant {

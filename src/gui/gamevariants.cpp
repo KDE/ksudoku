@@ -119,32 +119,54 @@ GameVariant* GameVariantCollection::variant(const QModelIndex& index) const {
 // class GameVariantDelegate
 ////////////77/////////////////////////////////////////////////////////////////
 
-GameVariantDelegate::GameVariantDelegate(QObject* parent)
-	: QItemDelegate(parent)
+GameVariantDelegate::GameVariantDelegate(QObject* parent, QWidget * viewport)
+	: QItemDelegate(parent),
+	  m_viewport(viewport)
 {
 }
 
-QSize GameVariantDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
-	Q_UNUSED(option);
+QSize GameVariantDelegate::sizeHint(const QStyleOptionViewItem& option,
+				    const QModelIndex& index) const
+{
 	Q_UNUSED(index);
-	QSize size(m_leftMargin+m_iconWidth+m_rightMargin+m_separatorPixels*2, 0);
 
-	if( m_iconHeight < option.fontMetrics.height()*3 )
-		size.setHeight( option.fontMetrics.height()*3 + m_separatorPixels*3);
-	else
-		size.setHeight( m_iconHeight+m_separatorPixels*2);
+	// Fit a varying number of minimum-width columns into the list-view.
+	int viewportWidth = m_viewport->width();
+	int nItemsPerRow  = viewportWidth / m_minWidth;
+	int adjustment    = (viewportWidth % nItemsPerRow) ? 0 : 1;
+	// The adjustment works around a graphics glitch, when nItemsPerRow
+	// exactly divides viewportWidth and instead of nItemsPerRow columns
+	// we suddenly get one column less, plus a large empty space, even
+	// though QListView::spacing() is zero.
 
+	QSize size ((viewportWidth - adjustment) / nItemsPerRow, 0);
+	int fontHeight = option.fontMetrics.height();
+	if (m_iconHeight < fontHeight*4) {
+		size.setHeight (fontHeight*4 + m_separatorPixels*3);
+	}
+	else {
+		size.setHeight (m_iconHeight + m_separatorPixels*2);
+	}
 	return size;
 }
 
 void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
 
-	// show background
 	QColor bkgColor;
+
+	// Calculate item's column num in list-view. Add 1 in odd-numbered rows.
+	int nItemsPerRow = m_viewport->width() / option.rect.width();
+	int oddColumn = index.row() % nItemsPerRow;
+	oddColumn = oddColumn + ((index.row() / nItemsPerRow) % 2);
+
 	if (option.state & QStyle::State_Selected) {
 		bkgColor = option.palette.color(QPalette::Highlight);
 		painter->fillRect(option.rect, bkgColor);
-	} else if(index.row() % 2) {
+	} else if (oddColumn % 2) {
+		// The shading alternates along each row in the list view and
+		// each odd-numbered row starts with a shaded item, so we have
+		// a checkerboard pattern, regardless of whether nItemsPerRow
+		// is odd or even (see the above calculation).
 		bkgColor = option.palette.color(QPalette::AlternateBase);
 		painter->fillRect(option.rect, bkgColor);
 	} else {
@@ -190,8 +212,10 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	painter->setFont(previousFont);
 
 	// Show Description
-	QString descrStr = painter->fontMetrics().elidedText(description(index), Qt::ElideRight, contentRect.width());
-	painter->drawText(contentRect, descrStr);
+	QTextOption wrap(Qt::AlignLeft);
+	wrap.setWrapMode(QTextOption::WordWrap);
+	QString descrStr = description(index);
+	painter->drawText(contentRect, descrStr, wrap);
 
 	painter->setPen(previousPen);
 }

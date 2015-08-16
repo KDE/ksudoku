@@ -34,9 +34,20 @@ namespace ksudoku {
 WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	: QFrame(parent), m_collection(collection)
 {
-	QItemDelegate* delegate = new GameVariantDelegate(this);
-	
-	setupUi(this);
+	setupUi(this);	// Get gameListWidget by loading from welcomescreen.ui.
+
+	// Set the screen to display a multi-column list of puzzle-types, with
+	// vertical scrolling.  GameVariantDelegate::sizeHint() calculates the
+	// number of columns and their width when it works out the size of the
+	// item's display-area.
+
+	QItemDelegate* delegate =
+		new GameVariantDelegate(this, gameListWidget->viewport());
+	gameListWidget->setWrapping(true);
+	gameListWidget->setResizeMode(QListView::Adjust);
+	gameListWidget->setUniformItemSizes(true);
+	gameListWidget->setFlow(QListView::LeftToRight);
+
 	gameListWidget->setModel(m_collection);
 	gameListWidget->setItemDelegate(delegate);
 	gameListWidget->setVerticalScrollMode(QListView::ScrollPerPixel);
