@@ -48,6 +48,10 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	gameListWidget->setUniformItemSizes(true);
 	gameListWidget->setFlow(QListView::LeftToRight);
 
+	// Avoid a resize loop (with the scrollbar appearing and disappearing)
+	// if ever the number of items and display-columns hits a bad combo.
+	gameListWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
 	gameListWidget->setModel(m_collection);
 	gameListWidget->setItemDelegate(delegate);
 	gameListWidget->setVerticalScrollMode(QListView::ScrollPerPixel);
