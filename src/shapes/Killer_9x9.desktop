@@ -1,6 +1,7 @@
 [KSudokuVariant]
 Name=Killer Sudoku
 Name[ca]=Killer Sudoku
+Name[ca@valencia]=Killer Sudoku
 Name[de]=Killer-Sudoku
 Name[en_GB]=Killer Sudoku
 Name[es]=Killer Sudoku
@@ -21,6 +22,7 @@ Name[uk]=Судоку-кілер
 Name[x-test]=xxKiller Sudokuxx
 Description=Classic Sudoku, but cages must add to totals shown
 Description[ca]=Sudoku clàssic, però les caixes s'han d'afegir als totals mostrats
+Description[ca@valencia]=Sudoku clàssic, però les caixes s'han d'afegir als totals mostrats
 Description[en_GB]=Classic Sudoku, but cages must add to totals shown
 Description[es]=Sudoku clásico, pero las jaulas deben sumarse para obtener los totales mostrados
 Description[et]=Klassikaline sudoku, kuid plokid sisaldavad summat
