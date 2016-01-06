@@ -63,6 +63,8 @@ int main(int argc, char **argv)
 	KCmdLineArgs::addCmdLineOptions(options);
 	KApplication app;
 
+    KLocalizedString::setApplicationDomain("ksudoku");
+
 	// register ourselves as a dcop client
 //	app.dcopClient()->registerAs(app.name(), false); //TODO PORT
 	

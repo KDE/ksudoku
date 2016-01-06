@@ -59,9 +59,6 @@ if(OPENGL_SUPPORT)
 	add_definitions(-DOPENGL_SUPPORT)
 endif(OPENGL_SUPPORT)
 
-add_definitions(-DTRANSLATION_DOMAIN="ksudoku")
-
-
 add_subdirectory( src )
 add_subdirectory( doc )
 
