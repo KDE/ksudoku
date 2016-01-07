@@ -92,5 +92,7 @@ int main(int argc, char **argv)
 		args->clear();
 	//} //TODO PORT
 
+	app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksudoku")));
+
 	return app.exec();
 }
