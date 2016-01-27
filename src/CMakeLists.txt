@@ -26,9 +26,12 @@ kde4_add_app_icon(ksudoku_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/ksudoku.p
 add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
-	ksudoku_gui ksudoku_logic
-	KF5KDEGames KF5KDEGamesPrivate
-	KF5::KIOCore
+    ksudoku_gui
+    ksudoku_logic
+    KF5KDEGames
+    KF5KDEGamesPrivate
+    KF5::KIOCore
+    KF5::Crash
 )
 
 if(OPENGL_SUPPORT)
@@ -40,10 +43,10 @@ endif(OPENGL_SUPPORT)
 install(TARGETS ksudoku  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
 
 ########### next target ###############
-add_subdirectory( gui )
-add_subdirectory( logic  )
-add_subdirectory( shapes )
-add_subdirectory( themes )
+add_subdirectory(gui)
+add_subdirectory(logic)
+add_subdirectory(shapes)
+add_subdirectory(themes)
 
 
 #set(ksudoku_client_SRCS
@@ -62,10 +65,14 @@ add_subdirectory( themes )
 
 ########### install files ###############
 
-install( PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${KDE_INSTALL_APPDIR} )
-install( FILES gui/ksudokuui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/ksudoku )
-install( FILES ksudokurc  DESTINATION ${KDE_INSTALL_CONFDIR})
+install(PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
+install(FILES gui/ksudokuui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/ksudoku)
+install(FILES ksudokurc  DESTINATION ${KDE_INSTALL_CONFDIR})
 
-ecm_install_icons(ICONS hi128-apps-ksudoku.png  hi16-apps-ksudoku.png  hi32-apps-ksudoku.png DESTINATION ${KDE_INSTALL_ICONDIR})
-
+ecm_install_icons(ICONS
+    hi128-apps-ksudoku.png
+    hi16-apps-ksudoku.png
+    hi32-apps-ksudoku.png
+    DESTINATION ${KDE_INSTALL_ICONDIR}
+)
 

@@ -2,27 +2,29 @@ project(ksudoku)
 
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.3.0")
+set (KF5_MIN_VERSION "5.15.0")
 
 find_package(ECM 1.7.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test OpenGL)
-find_package(KF5 REQUIRED COMPONENTS 
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    Config
+    ConfigWidgets
     CoreAddons
-    Config
-    ItemModels
-    WidgetsAddons
-    WindowSystem
-    Config
+    Crash
     DBusAddons
     I18n
-    ConfigWidgets
-    TextWidgets
-    XmlGui
+    ItemModels
+    KDELibs4Support
     KIO
-    NotifyConfig
     NewStuff
-    KDELibs4Support)
+    NotifyConfig
+    TextWidgets
+    WidgetsAddons
+    WindowSystem
+    XmlGui
+)
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
@@ -59,8 +61,8 @@ if(OPENGL_SUPPORT)
 	add_definitions(-DOPENGL_SUPPORT)
 endif(OPENGL_SUPPORT)
 
-add_subdirectory( src )
-add_subdirectory( doc )
+add_subdirectory(src)
+add_subdirectory(doc)
 
 #message(STATUS "ksudoku: DEBUG: ${DEBUG}")
 #message(STATUS "ksudoku: install prefix: ${CMAKE_INSTALL_PREFIX}")

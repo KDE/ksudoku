@@ -23,6 +23,7 @@
 #include <kapplication.h>
 //#include <dcopclient.h>
 #include <K4AboutData>
+#include <KCrash>
 #include <kcmdlineargs.h>
 #include <KLocalizedString>
 #include <kconfigdialogmanager.h>
@@ -64,6 +65,8 @@ int main(int argc, char **argv)
 	KApplication app;
 
     KLocalizedString::setApplicationDomain("ksudoku");
+
+    KCrash::initialize();
 
 	// register ourselves as a dcop client
 //	app.dcopClient()->registerAs(app.name(), false); //TODO PORT
