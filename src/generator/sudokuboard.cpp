@@ -29,7 +29,7 @@
 #include <QTime>
 
 #include <stdio.h>
-#include <time.h>
+#include <ctime>
 
 SudokuBoard::SudokuBoard (SKGraph * graph)
     :
@@ -65,7 +65,7 @@ void SudokuBoard::setSeed()
     }
     else {
         started = true;
-        m_stats.seed = time(0);
+        m_stats.seed = std::time(nullptr);
         qsrand (m_stats.seed);
         dbo1 "setSeed(): SEED = %d\n", m_stats.seed);
     }
@@ -821,7 +821,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
 
                 guesses.clear();
                 for (int i = 0; i < original.count(); i++) {
-                    guesses.append (original.at (sequence.at (i))); 
+                    guesses.append (original.at (sequence.at (i)));
                 }
             }
             dbo2 "Guess    ");
@@ -856,7 +856,7 @@ void SudokuBoard::clear (BoardContents & boardValues)
 BoardContents & SudokuBoard::fillBoard()
 {
     // Solve the empty board, thus filling it with values at random.  These
-    // values can be the starting point for generating a puzzle and also the 
+    // values can be the starting point for generating a puzzle and also the
     // final solution of that puzzle.
 
     clear (m_currentValues);
@@ -960,7 +960,7 @@ void SudokuBoard::setUpValueRequirements (BoardContents & boardValues)
 	    int cell = cellList.at (n);
             m_validCellValues [cell] &= m_requiredGroupValues.at (group);
             index++;
-        }   
+        }
     }
     dbo2 "Finished setUpValueRequirements()\n");
 
@@ -995,7 +995,7 @@ void SudokuBoard::updateValueRequirements (BoardContents & boardValues, int cell
         for (int n = 0; n < m_order; n++) {
 	    int cell = cellList.at (n);
             m_validCellValues [cell] &= bitPattern;
-        }   
+        }
     }
 }
 

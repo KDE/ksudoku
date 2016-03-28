@@ -21,9 +21,8 @@
 
 #include "puzzle.h"
 #include <cstdlib>
-#include <time.h>
-#include <qstring.h>
 
+#include <QString>
 #include <QtDebug>
 
 #include "sudokuboard.h"
@@ -52,7 +51,7 @@ int Puzzle::hintIndex(int moveNum) const {
 
 bool Puzzle::init() {
 	if(m_initialized) return false;
-	
+
 	if(m_withSolution)
 		return false;
 

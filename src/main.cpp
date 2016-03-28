@@ -27,11 +27,10 @@
 #include <kcmdlineargs.h>
 #include <KLocalizedString>
 #include <kconfigdialogmanager.h>
+#include <KUrl>
 
 #include <cstdlib>
-#include <time.h>
-
-#include <KUrl>
+#include <ctime>
 
 
 static const char description[] =
@@ -42,7 +41,7 @@ static const char version[] = "1.2.1";
 
 int main(int argc, char **argv)
 {
-	std::srand(time(0));
+	qsrand(std::time(nullptr));
 
 	K4AboutData about("ksudoku", 0,
 	                 ki18n("KSudoku"),
@@ -70,7 +69,7 @@ int main(int argc, char **argv)
 
 	// register ourselves as a dcop client
 //	app.dcopClient()->registerAs(app.name(), false); //TODO PORT
-	
+
 	 KConfigDialogManager::changedMap()->insert("ksudoku::SymbolConfigListWidget", SIGNAL(itemChanged(QListWidgetItem*)));
 
 	// see if we are starting with session management
