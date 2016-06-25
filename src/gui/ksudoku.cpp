@@ -931,12 +931,11 @@ ksudoku::KsView* KSudoku::currentView() const{
 
 void KSudoku::loadCustomShapeFromPath()
 {
-	KUrl Url = KFileDialog::getOpenUrl( KUrl(), QString(), this, i18n("Open Location") );
+	QUrl Url = KFileDialog::getOpenUrl( QUrl(), QString(), this, i18n("Open Location") );
 
 	if ( Url.isEmpty() || !Url.isValid() )
 	{
-		//TODO ERROR
-		return;
+		return; // user cancelled
 	}
 
 	QString tmpFile;
@@ -961,7 +960,7 @@ void KSudoku::loadCustomShapeFromPath()
 	else
 	{
 		//just copy
-		KIO::file_copy (Url, destDir);
+		KIO::file_copy (Url, QUrl::fromLocalFile(destDir + '/' + Url.fileName()));
 	}
 
 	KIO::NetAccess::removeTempFile(tmpFile);
