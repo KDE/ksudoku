@@ -69,7 +69,7 @@ add_subdirectory(themes)
 ########### install files ###############
 
 install(PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
-install(FILES gui/org.kde.ksudoku.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/metainfo)
+install(FILES gui/org.kde.ksudoku.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 install(FILES gui/ksudokuui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/ksudoku)
 install(FILES ksudokurc  DESTINATION ${KDE_INSTALL_CONFDIR})
 
