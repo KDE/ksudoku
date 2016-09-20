@@ -20,6 +20,9 @@ set(ksudoku_SRCS
 	main.cpp
 	generator/sudokuboard.cpp
 	generator/state.cpp
+	generator/dlxsolver.cpp
+	generator/cagegenerator.cpp
+	generator/mathdokugenerator.cpp
 )
 
 kde4_add_app_icon(ksudoku_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/ksudoku.png")
@@ -66,6 +69,7 @@ add_subdirectory(themes)
 ########### install files ###############
 
 install(PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
+install(FILES gui/org.kde.ksudoku.appdata.xml DESTINATION ${SHARE_INSTALL_PREFIX}/metainfo)
 install(FILES gui/ksudokuui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/ksudoku)
 install(FILES ksudokurc  DESTINATION ${KDE_INSTALL_CONFDIR})
 

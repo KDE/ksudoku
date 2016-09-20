@@ -2,6 +2,7 @@
  *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -36,13 +37,16 @@
 
 #include "ksudoku.h"
 #include "symbols.h"
+#include "settings.h"
 
 namespace ksudoku {
 
 const char *     typeNames[] = {"Plain", "XSudoku", "Jigsaw", "Aztec",
-				"Samurai", "TinySamurai", "Roxdoku"};
+				"Samurai", "TinySamurai", "Roxdoku",
+				"Mathdoku", "KillerSudoku"};
 const SudokuType types[]     = {Plain, XSudoku, Jigsaw, Aztec,
-				Samurai, TinySamurai, Roxdoku};
+				Samurai, TinySamurai, Roxdoku,
+				Mathdoku, KillerSudoku};
 
 Game Serializer::deserializeGame(QDomElement element) {
 	bool hasPuzzle = false;
@@ -185,7 +189,10 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 	QString orderStr = element.attribute("order");
 	if(orderStr.isNull())
 		return 0;
-	int order = orderStr.toInt(&noFailure, 0);
+	// Allow symbolic values for Mathdoku, set from user-config dialog.
+	int order = (orderStr == QString("Mathdoku")) ?
+                     Settings::mathdokuSize() :
+                     orderStr.toInt(&noFailure, 0);
 	if(!noFailure)
 		return 0;
 
@@ -204,10 +211,22 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 		return graph;
 	} else if(type == "custom") {
 		int err=0;
-		int ncliques = readInt(element,"ncliques", &err);
-		int sizeX = readInt(element,"sizeX",&err);
-		int sizeY = readInt(element,"sizeY",&err);
-		int sizeZ = readInt(element,"sizeZ",&err);
+		int ncliques;
+		int sizeX;
+		int sizeY;
+		int sizeZ;
+		if (orderStr != QString("Mathdoku")) {
+		    ncliques = readInt(element,"ncliques", &err);
+		    sizeX = readInt(element,"sizeX",&err);
+		    sizeY = readInt(element,"sizeY",&err);
+		}
+		else {
+		    // In Mathdoku, there are row and column groups only.
+		    ncliques = 2 * order;
+		    sizeX = order;
+		    sizeY = order;
+		}
+		sizeZ = readInt(element,"sizeZ",&err);
 
 		QString name = element.attribute("name");
 		QString typeName = element.attribute("specific-type");
@@ -249,6 +268,12 @@ SKGraph* Serializer::deserializeGraph(QDomElement element) {
 				graph->initRoxdokuGroups(
 					e.attribute("at", "0").toInt());
 			    }
+			    else if (tag == "cage") {
+				if(! deserializeCage(graph, e)) {
+				    delete graph;	// Error return.
+				    return 0;
+				}
+			    }
 			}
 			child = child.nextSibling();
 		}
@@ -283,6 +308,34 @@ bool Serializer::deserializeClique(SKGraph * graph, const QString & size,
 	}
     }
     graph->addCliqueStructure(data);
+    return true;
+}
+
+bool Serializer::deserializeCage(SKGraph * graph, const QDomElement & e) {
+    QString sizeStr = e.attribute("size");
+    QString text    = e.text();
+    CageOperator op = (CageOperator) (e.attribute("operator").toInt());
+    int target      = e.attribute("value").toInt();
+    int size        = 0;
+    QVector<int> cage;
+    if(! sizeStr.isNull()) {
+	size = sizeStr.toInt();
+    }
+    if (size <= 0) {
+	return false;
+    }
+
+    QStringList cells = text.split(QString(" "), QString::SkipEmptyParts);
+    cage.clear();
+    Q_FOREACH (QString s, cells) {
+	cage << s.toInt();
+	size--;
+	if (size <= 0) {
+	    break;
+	}
+    }
+
+    graph->addCage(cage, op, target);
     return true;
 }
 
@@ -522,6 +575,24 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 				    createTextNode(contentStr));
 		    break;
 		}
+		element.appendChild(e);
+	    }
+
+	    // Add cages if this is a Mathdoku or Killer Sudoku puzzle.
+	    for (int n = 0; n < graph->cageCount(); n++) {
+		QDomElement e = parent.ownerDocument().createElement("cage");
+		QVector<int> cage = graph->cage(n);
+		e.setAttribute("operator", graph->cageOperator(n));
+		e.setAttribute("value", graph->cageValue(n));
+		e.setAttribute("size", cage.size());
+
+		// Serialize the cell-numbers in the cage.
+		QString contentStr = " ";
+		Q_FOREACH (int cell, cage) {
+		    contentStr += QString::number(cell) + ' ';
+		}
+		e.appendChild(parent.ownerDocument().
+			        createTextNode(contentStr));
 		element.appendChild(e);
 	    }
 	}

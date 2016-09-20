@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright 2007      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -119,38 +120,65 @@ GameVariant* GameVariantCollection::variant(const QModelIndex& index) const {
 // class GameVariantDelegate
 ////////////77/////////////////////////////////////////////////////////////////
 
-GameVariantDelegate::GameVariantDelegate(QObject* parent)
-	: QItemDelegate(parent)
+GameVariantDelegate::GameVariantDelegate(QObject* parent, QWidget * viewport)
+	: QItemDelegate(parent),
+	  m_viewport(viewport)
 {
 }
 
-QSize GameVariantDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
-	Q_UNUSED(option);
+QSize GameVariantDelegate::sizeHint(const QStyleOptionViewItem& option,
+				    const QModelIndex& index) const
+{
 	Q_UNUSED(index);
-	QSize size(m_leftMargin+m_iconWidth+m_rightMargin+m_separatorPixels*2, 0);
 
-	if( m_iconHeight < option.fontMetrics.height()*3 )
-		size.setHeight( option.fontMetrics.height()*3 + m_separatorPixels*3);
-	else
-		size.setHeight( m_iconHeight+m_separatorPixels*2);
+	// Fit a varying number of columns into the list-view.
+	int viewportWidth = m_viewport->width();
+	int hintWidth     = m_minWidth;
+	int nItemsPerRow  = viewportWidth / m_minWidth;
 
+	// Expand the hinted width, so that the columns will fill the viewport.
+	if (nItemsPerRow > 0) {
+	    int adjustment = (viewportWidth % nItemsPerRow) ? 0 : 1;
+	    // The adjustment works around a graphics glitch, when nItemsPerRow
+	    // exactly divides viewportWidth and instead of nItemsPerRow columns
+	    // we suddenly get one column less, plus a large empty space, even
+	    // though QListView::spacing() is zero.
+	    hintWidth      = (viewportWidth - adjustment) / nItemsPerRow;
+	}
+
+	// Set the height to contain the icon or 4 lines of text.
+	QSize size (hintWidth, 0);
+	int fontHeight = option.fontMetrics.height();
+	if (m_iconHeight < fontHeight*4) {
+		size.setHeight (fontHeight*4 + m_separatorPixels*3);
+	}
+	else {
+		size.setHeight (m_iconHeight + m_separatorPixels*2);
+	}
 	return size;
 }
 
 void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
 
-	// show background
 	QColor bkgColor;
+
+	// Calculate item's column num in list-view. Add 1 in odd-numbered rows.
+	int nItemsPerRow = qMax (m_viewport->width() / option.rect.width(), 1);
+	int oddColumn = index.row() % nItemsPerRow;
+	oddColumn = oddColumn + ((index.row() / nItemsPerRow) % 2);
+
 	if (option.state & QStyle::State_Selected) {
 		bkgColor = option.palette.color(QPalette::Highlight);
-		painter->fillRect(option.rect, bkgColor);
-	} else if(index.row() % 2) {
+	} else if (oddColumn % 2) {
+		// The shading alternates along each row in the list view and
+		// each odd-numbered row starts with a shaded item, so we have
+		// a checkerboard pattern, regardless of whether nItemsPerRow
+		// is odd or even (see the above calculation).
 		bkgColor = option.palette.color(QPalette::AlternateBase);
-		painter->fillRect(option.rect, bkgColor);
 	} else {
 		bkgColor = option.palette.color(QPalette::Base);
-		painter->fillRect(option.rect, bkgColor);
 	}
+	painter->fillRect(option.rect, bkgColor);
 
 	QRect contentRect = option.rect.adjusted(m_leftMargin, m_separatorPixels, -m_rightMargin, -m_separatorPixels);
 
@@ -190,8 +218,10 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	painter->setFont(previousFont);
 
 	// Show Description
-	QString descrStr = painter->fontMetrics().elidedText(description(index), Qt::ElideRight, contentRect.width());
-	painter->drawText(contentRect, descrStr);
+	QTextOption wrap(Qt::AlignLeft);
+	wrap.setWrapMode(QTextOption::WordWrap);
+	QString descrStr = description(index);
+	painter->drawText(contentRect, descrStr, wrap);
 
 	painter->setPen(previousPen);
 }
@@ -354,11 +384,9 @@ bool CustomGame::canStartEmpty() const {
 }
 
 Game CustomGame::startEmpty() {
-	if(!m_graph) {
-		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-		if(!m_graph) return Game();
+	if (! createSKGraphObject()) {
+	    return Game();
 	}
-
 	Puzzle* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
 
@@ -366,11 +394,9 @@ Game CustomGame::startEmpty() {
 }
 
 Game CustomGame::createGame(int difficulty, int symmetry) {
-	if(!m_graph) {
-		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
-		if(!m_graph) return Game();
+	if (! createSKGraphObject()) {
+	    return Game();
 	}
-
 	Puzzle* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, symmetry);
 
@@ -380,6 +406,19 @@ Game CustomGame::createGame(int difficulty, int symmetry) {
 KsView* CustomGame::createView(const Game& /*game*/) const {
 	qDebug() << "KsView* ksudoku::CustomGame::createView()";
 	return 0;
+}
+
+bool CustomGame::createSKGraphObject()
+{
+	if ((m_graph != 0) && ((m_graph->specificType() == Mathdoku) ||
+		    (m_graph->specificType() == KillerSudoku))) {
+	    delete m_graph;	// Re-create SKGraph for every Mathdoku or
+	    m_graph = 0;	// Killer Sudoku game (re-inits cages and size).
+	}
+	if (m_graph == 0) {
+	    m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+	}
+	return (m_graph != 0);	// True if the shapes/*.xml file loaded OK.
 }
 
 }

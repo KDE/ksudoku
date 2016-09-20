@@ -17,6 +17,9 @@
     <entry name="ShowHighlights3D" type="Bool" key="showHighlights3D">
       <default>true</default>
     </entry>
+    <entry name="MathdokuSize" type="Int" key="mathdokuSize">
+      <default>6</default>
+    </entry>
     <entry name="OverallSize3D" type="Int" key="overallSize3D">
       <default>10</default>
     </entry>

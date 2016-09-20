@@ -2,6 +2,7 @@
  *   Copyright 2005-2007 Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -36,7 +37,7 @@
 static const char description[] =
     I18N_NOOP("KSudoku - Sudokus and more");
 
-static const char version[] = "1.2.1";
+static const char version[] = "1.3";
 
 
 int main(int argc, char **argv)

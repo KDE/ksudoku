@@ -2,6 +2,7 @@
  *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006      Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -52,6 +53,7 @@ private:
 	static SKGraph* deserializeGraph(QDomElement element);
 	static bool deserializeClique(SKGraph * graph, const QString & size,
 						       const QString & text);
+	static bool deserializeCage(SKGraph * graph, const QDomElement & e);
 	static QList<HistoryEvent> deserializeHistory(QDomElement element);
 	static HistoryEvent deserializeSimpleHistoryEvent(QDomElement element);
 	static HistoryEvent deserializeComplexHistoryEvent(QDomElement element);

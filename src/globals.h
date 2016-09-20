@@ -1,5 +1,6 @@
 /****************************************************************************
  *    Copyright 2011  Ian Wadham <iandw.au@gmail.com>                       *
+ *    Copyright 2015  Ian Wadham <iandw.au@gmail.com>                       *
  *                                                                          *
  *    This program is free software; you can redistribute it and/or         *
  *    modify it under the terms of the GNU General Public License as        *
@@ -25,7 +26,7 @@
 #define UNUSABLE -1
 
 enum SudokuType {Plain, XSudoku, Jigsaw, Samurai, TinySamurai, Roxdoku, Aztec,
-                 EndSudokuTypes};
+                 Mathdoku, KillerSudoku, EndSudokuTypes};
 
 enum Difficulty {VeryEasy  = 0, Easy = 1, Medium = 2, Hard = 3, Diabolical = 4,
                  Unlimited = 5};
@@ -33,7 +34,12 @@ enum Difficulty {VeryEasy  = 0, Easy = 1, Medium = 2, Hard = 3, Diabolical = 4,
 enum Symmetry   {DIAGONAL_1, CENTRAL, LEFT_RIGHT, SPIRAL, FOURWAY,
                  RANDOM_SYM, LAST_CHOICE = RANDOM_SYM, NONE, DIAGONAL_2};
 
+enum CageOperator {NoOperator, Divide, Subtract, Multiply, Add};
+
 typedef QVector<int>      BoardContents;
+
+// The maximum digit that can be used in a Mathdoku or Killer Sudoku puzzle.
+const int MaxMathOrder = 9;
 
 typedef struct {
     char *     typeName;

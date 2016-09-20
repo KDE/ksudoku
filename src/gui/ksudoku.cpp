@@ -3,6 +3,7 @@
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -60,6 +61,8 @@
 #include "puzzle.h" // TODO
 #include "skgraph.h"
 #include "serializer.h"
+
+#include "puzzleprinter.h"
 
 #include <ktar.h>
 #include <kstandarddirs.h>
@@ -124,9 +127,7 @@ KSudoku::KSudoku()
 	:
 	KXmlGuiWindow(),
 	m_gameVariants(new GameVariantCollection(this, true)),
-	m_printer(0),
-	m_p(0),
-	m_quadrant(0)
+	m_puzzlePrinter(0)
 {
 	setObjectName( QLatin1String("ksudoku" ));
 
@@ -172,8 +173,7 @@ KSudoku::KSudoku()
 
 KSudoku::~KSudoku()
 {
-	delete m_p;
-	delete m_printer;
+	delete m_puzzlePrinter;
 	endCurrentGame();
 }
 
@@ -248,6 +248,8 @@ void KSudoku::startGame(const Game& game) {
 
 	QWidget* widget = view->widget();
 	m_gameUI = view;
+	Game g = currentGame();
+	g.setMessageParent(view->widget());
 
 	wrapper->layout()->addWidget(widget);
 	widget->show();
@@ -266,6 +268,85 @@ void KSudoku::startGame(const Game& game) {
 	m_valueListWidget->setMaxValue(view->game().order());
 	m_valueListWidget->selectValue(1);
 	m_valueListWidget->show();
+
+	SudokuType t = game.puzzle()->graph()->specificType();
+	bool playing = game.puzzle()->hasSolution();
+	if (playing && (t == Mathdoku)) {
+	    KMessageBox::information (this,
+		i18n("Mathdoku puzzles can have any size from 3x3 up to 9x9. "
+		     "The solution is a grid in which every row and every "
+		     "column contains the available digits (1-3 up to 1-9) "
+		     "exactly once. The grid is covered with irregularly "
+		     "shaped cages.\n"
+		     "\n"
+		     "Cages of size 1 are starting-values or clues, but there "
+		     "are not many of them. Cages of larger size have a target "
+		     "value and an arithmetic operator (+-x/). The digits in "
+		     "the cage must combine together, using the operator, to "
+		     "reach the target value, e.g. '12x' means that the digits "
+		     "must multiply together to make 12. A digit can occur "
+		     "more than once in a cage, provided it occurs in "
+		     "different rows and columns.\n"
+		     "\n"
+		     "In general, larger Mathdokus are more difficult and so "
+		     "are larger cages. You can select the puzzle size in "
+		     "KSudoku's Settings dialog and the maximum cage-size by "
+		     "using KSudoku's Difficulty button."),
+		i18n("Playing Mathdoku"), QString("PlayingMathdoku"));
+	}
+	else if (playing && (t == KillerSudoku)) {
+	    KMessageBox::information (this,
+		i18n("Killer Sudoku puzzles can have sizes 4x4 or 9x9, with "
+		     "either four 2x2 blocks or nine 3x3 blocks. The solution "
+		     "must follow Classic Sudoku rules. The difference is that "
+		     "there are few starting-values or clues (if any). Instead "
+		     "the grid is covered with irregularly shaped cages.\n"
+		     "\n"
+		     "Cages of size 1 are starting-values or clues. Cages of "
+		     "larger size have a target value and the digits in them "
+		     "must add up to that value. In Killer Sudoku, a cage "
+		     "cannot contain any digit more than once.\n"
+		     "\n"
+		     "In general, larger cages are more difficult. You can "
+		     "select the maximum cage-size by using KSudoku's "
+		     "Difficulty button."),
+		i18n("Playing Killer Sudoku"), QString("PlayingKillerSudoku"));
+	}
+	else if ((t == Mathdoku) || (t == KillerSudoku)) {
+	    KMessageBox::information (this,
+		i18n("Mathdoku and Killer Sudoku puzzles have to be keyed in "
+		     "by working on one cage at a time. To start a cage, left "
+		     "click on any unused cell or enter a number in the cell "
+		     "that is under the cursor or enter + - / or x there. A "
+		     "small cage-label will appear in that cell. To extend the "
+		     "cage in any direction, left-click on a neigbouring cell "
+		     "or move the cursor there and type a Space.\n"
+		     "\n"
+		     "The number you type is the cage's value and it can have "
+		     "one or more digits, including zero. A cell of size 1 has "
+		     "to have a 1-digit number, as in a normal Sudoku puzzle. "
+		     "It becomes a starting-value or clue for the player.\n"
+		     "\n"
+		     "The + - / or x is the operator (Add, Subtract, Divide or "
+		     "Multiply). You must have one in cages of size 2 or more. "
+		     "In Killer Sudoku, the operator is provided automatically "
+		     "because it is always + or none.\n"
+		     "\n"
+		     "You can enter digits, operators and cells in any order. "
+		     "To complete the cage and start another cage, always "
+		     "press Return. If you make a mistake, the only thing to "
+		     "do is delete a whole cage and re-enter it. Use right "
+		     "click in the current cage or any earlier cage, if you "
+		     "wish to delete it. Alternatively, use the cursor and the "
+		     "Delete or Backspace key.\n"
+		     "\n"
+		     "When the grid is filled with cages, hit the Check "
+		     "button, to solve the puzzle and make sure there is only "
+		     "one solution. If the check fails, you have probably made "
+		     "an error somewhere in one of the cages."),
+		i18n("Data-entry for Puzzles with Cages"),
+		QString("CageDataEntry"));
+	}
 }
 
 void KSudoku::endCurrentGame() {
@@ -336,16 +417,24 @@ void KSudoku::dubPuzzle()
 	int state = puzzle->init(game.allValues());
 
 	if(state <= 0) {
-		KMessageBox::information(this, i18n("Sorry, no solutions have been found."));
+		KMessageBox::information (this,
+		    i18n("Sorry, no solutions have been found. Please check "
+			 "that you have entered in the puzzle completely and "
+			 "correctly."), i18n("Check Puzzle"));
 		delete puzzle;
 		return;
 	} else if(state == 1) {
-		KMessageBox::information(this, i18n("The Puzzle you entered has only one solution."));
+		KMessageBox::information (this,
+		    i18n("The Puzzle you entered has a unique solution and "
+			 "is ready to be played."), i18n("Check Puzzle"));
 	} else {
-		KMessageBox::information(this, i18n("The Puzzle you entered has multiple solutions."));
+		KMessageBox::information (this,
+		    i18n("The Puzzle you entered has multiple solutions. "
+			 "Please check that you have entered in the puzzle "
+			 "completely and correctly."), i18n("Check Puzzle"));
 	}
 
-	if(KMessageBox::questionYesNo(this, i18n("Do you want to play the puzzle now?"), i18n("Play Puzzle"), KGuiItem(i18n("Play")), KStandardGuiItem::cancel() ) == KMessageBox::Yes)
+	if(KMessageBox::questionYesNo(this, i18n("Do you wish to play the puzzle now?"), i18n("Play Puzzle"), KGuiItem(i18n("Play")), KStandardGuiItem::cancel() ) == KMessageBox::Yes)
 	{
 		startGame(ksudoku::Game(puzzle));
 	}
@@ -381,6 +470,10 @@ void KSudoku::setupActions()
 // 	createAction("game_export", SLOT(gameExport()), i18n("Export"));
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
+	// Settings: enable messages that the user marked "Do not show again".
+	QAction* enableMessagesAct = new QAction(i18n("Enable all messages"),0);
+	actionCollection()->addAction("enable_messages", enableMessagesAct);
+	connect(enableMessagesAct, SIGNAL(triggered()), SLOT(enableMessages()));
 
 	//History
 	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
@@ -632,188 +725,17 @@ void KSudoku::gamePrint()
             i18n("There seems to be no puzzle to print."));
         return;
     }
-    sendToPrinter (game.puzzle());
-}
-
-void KSudoku::sendToPrinter (const Puzzle * puzzle)
-{
-    const SKGraph * graph = puzzle->graph();
-    if (graph->sizeZ() > 1) {
-        KMessageBox::information (this,
-            i18n("Sorry, cannot print three-dimensional puzzles."));
-        return;
+    if (! m_puzzlePrinter) {
+	m_puzzlePrinter = new PuzzlePrinter (this);
     }
-    const bool printMulti = Settings::printMulti();
-    const int  across  = 2;
-    const int  down    = 2;
-    const QString labels = (graph->base() <= 3) ? "123456789" :
-                                                  "ABCDEFGHIJKLMNOPQRSTUVWXY";
-    enum Edge {Left = 0, Right, Above, Below, Detached};
-    const int All = (1 << Left) + (1 << Right) + (1 << Above) + (1 << Below);
-
-    // The printer and painter objects can persist between print requests, so
-    // (if required) we can print several puzzles per page and defer printing
-    // until the page is full or KSudoku terminates and the painter ends itself.
-    // NOTE: Must create painter before using functions like m_printer->width().
-    if (m_printer == 0) {
-        m_printer = new QPrinter (QPrinter::HighResolution);
-        QPrintDialog * dialog = new QPrintDialog(m_printer, this);
-        dialog->setWindowTitle(i18n("Print Sudoku Puzzle"));
-        if (dialog->exec() != QDialog::Accepted) {
-            delete m_printer;
-            m_printer = 0;
-            return;
-        }
-    }
-    if (m_p == 0) {
-        m_p = new QPainter (m_printer);	// Start a new print job.
-    }
-
-    QVector<int> edges (graph->size(), 0);
-    int order = graph->order();
-
-    for (int n = 0; n < graph->cliqueCount(); n++) {
-        // Find out which groups are blocks of cells, not rows or columns.
-        QVector<int> clique = graph->clique (n);
-        int x = graph->cellPosX (clique.at (0));
-        int y = graph->cellPosY (clique.at (0));
-        bool isRow = true;
-        bool isCol = true;
-        for (int k = 1; k < order; k++) {
-            if (graph->cellPosX (clique.at (k)) != x) isRow = false;
-            if (graph->cellPosY (clique.at (k)) != y) isCol = false;
-        }
-        if (isRow || isCol) continue;	// Skip rows and columns.
-
-        // Mark the outside edges of each block.
-        for (int k = 0; k < order; k++) {
-            int cell = clique.at (k);
-            int x = graph->cellPosX (cell);
-            int y = graph->cellPosY (cell);
-            int nb[4] = {-1, -1, -1, -1};
-            int lim = graph->sizeX() - 1;
-
-            // Start with all edges: remove them as neighbours are found.
-            int edge = All;
-            nb[Left]  = (x > 0)   ? graph->cellIndex (x-1, y) : -1;
-            nb[Right] = (x < lim) ? graph->cellIndex (x+1, y) : -1;
-            nb[Above] = (y > 0)   ? graph->cellIndex (x, y-1) : -1;
-            nb[Below] = (y < lim) ? graph->cellIndex (x, y+1) : -1;
-            for (int neighbour = 0; neighbour < 4; neighbour++) {
-                if ((nb[neighbour] < 0) || (puzzle->value(nb[neighbour]) < 0)) {
-                    continue;		// No neighbour on this side.
-                }
-                for (int cl = 0; cl < order; cl++) {
-                    if (clique.at (cl) == nb[neighbour]) {
-                        edge = edge - (1 << neighbour);
-                    }
-                }
-            }
-            edge = (edge == All) ? (1 << Detached) : edge;
-            edges [cell] |= edge;	// Merge the edges found for this cell.
-        }
-    }
-
-    // Calculate the printed dimensions of the puzzle.
-    m_printer->setFullPage (false);		// Allow minimal margins.
-    int pixels  = qMin (m_printer->width(), m_printer->height());
-    int size    = pixels - (pixels / 20);	// Allow about 2.5% each side.
-    int divs    = (graph->sizeX() > 20) ? graph->sizeX() : 20;
-    int sCell   = size / divs;			// Size of each cell.
-    size        = graph->sizeX() * sCell;	// Size of the whole puzzle.
-
-    // Check if we require more than one puzzle per page and if they would fit.
-    bool manyUp = printMulti && (pixels > (across * size));
-    int margin1 = manyUp ? (pixels - across * size) / (across + 1)	// > 1.
-                         : (pixels - size) / 2;				// = 1.
-    pixels      = qMax (m_printer->width(), m_printer->height());
-    int margin2 = manyUp ? (pixels - down * size) / (down + 1)		// > 1.
-                         : (pixels - size) / 2;				// = 1.
-
-    // Check for landscape vs. portrait mode and set the margins accordingly.
-    int topX    = (m_printer->width() < m_printer->height())? margin1 : margin2;
-    int topY    = (m_printer->width() < m_printer->height())? margin2 : margin1;
-
-    if ((m_quadrant > 0) && (! manyUp)) {
-        bool test = m_printer->newPage();	// Page has previous output.
-        m_quadrant = 0;
-    }
-    topX = manyUp ? topX + (m_quadrant % across) * (topX + size) : topX;
-    topY = manyUp ? topY + (m_quadrant / across) * (topY + size) : topY;
-    m_quadrant = manyUp ? (m_quadrant + 1) : (across * down);
-
-    // Set up parameters for the heavy and light line-drawing.
-    int thin    = sCell / 40;	// Allow 2.5%.
-    int thick   = (thin > 0) ? 3 * thin : 3;
-    int nLines  = graph->order() + 1;
-
-    QPen light (QColor("#888888"));
-    QPen heavy (QColor(QString("black")));
-    light.setWidth (thin);
-    heavy.setWidth (thick);
-    heavy.setCapStyle (Qt::RoundCap);
-
-    // Set font size 60% height of cell. Do not draw gray lines on top of black.
-    QFont    f = m_p->font();
-    f.setPixelSize ((sCell * 6) / 10);
-    m_p->setFont (f);
-    m_p->setCompositionMode (QPainter::CompositionMode_Darken);
-
-    // Draw each cell in the puzzle.
-    for (int n = 0; n < graph->size(); n++) {
-        if (puzzle->value (n) < 0) {
-            continue;				// Do not draw unused cells.
-        }
-        int x = topX + sCell * graph->cellPosX (n);
-        int y = topY + sCell * graph->cellPosY (n);
-        QRect rect (x, y, sCell, sCell);
-        int edge = edges.at (n);
-        if (edge & (1 << Detached)) {		// Shade a cell, as in XSudoku.
-            m_p->fillRect (rect, QColor ("#DDDDDD"));
-        }
-        m_p->setPen (light);			// First draw every cell light.
-        m_p->drawRect (rect);
-        m_p->setPen (heavy);			// Draw block boundaries heavy.
-        if (edge & (1<<Left))  m_p->drawLine (x, y, x, y + sCell);
-        if (edge & (1<<Right)) m_p->drawLine (x+sCell, y, x+sCell, y+sCell);
-        if (edge & (1<<Above)) m_p->drawLine (x, y, x+sCell, y);
-        if (edge & (1<<Below)) m_p->drawLine (x, y+sCell, x+sCell, y+sCell);
-
-        // Draw original puzzle values heavy: filled-in/solution values light.
-        int v = currentGame().value (n) - 1;
-        if (v >= 0) {				// Skip empty cells.
-            m_p->setPen ((puzzle->value (n) > 0) ? heavy : light);
-            m_p->drawText (rect, Qt::AlignCenter, labels.mid (v, 1));
-        }
-    }
-    if ((! manyUp) || (m_quadrant >= (across * down))) {
-        endPrint();				// Print immediately.
-    }
-    else {
-        KMessageBox::information (this,
-            i18n ("The KSudoku setting for printing several puzzles per page "
-                  "is currently selected.\n\n"
-                  "Your puzzle will be printed when no more will fit on the "
-                  "page or when KSudoku terminates."));
-    }
-}
-
-void KSudoku::endPrint()
-{
-    if (m_p != 0) {
-        // The current print output goes to the printer when the painter ends.
-        m_p->end();
-        delete m_p;
-        m_p = 0;
-        m_quadrant = 0;
-        KMessageBox::information (this,
-            i18n ("KSudoku has sent output to your printer."));
-    }
+    m_puzzlePrinter->print (game);
 }
 
 bool KSudoku::queryClose()
 {
-    endPrint();
+    if (m_puzzlePrinter) {
+	m_puzzlePrinter->endPrint();
+    }
     return true;
 }
 
@@ -965,6 +887,17 @@ void KSudoku::loadCustomShapeFromPath()
 
 	KIO::NetAccess::removeTempFile(tmpFile);
 	updateShapesList();
+}
+
+void KSudoku::enableMessages()
+{
+	// Enable all messages that the user has marked "Do not show again".
+	int result = KMessageBox::questionYesNo(this,
+					i18n("Enable all messages"));
+	if (result == KMessageBox::Yes) {
+		KMessageBox::enableAllMessages();
+		KGlobal::config()->sync();	// Save the changes to disk.
+	}
 }
 
 #if 0

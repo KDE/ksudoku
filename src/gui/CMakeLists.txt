@@ -9,6 +9,7 @@ set(ksudoku_SRCS
 	symbols.cpp
 	gamevariants.cpp
 	welcomescreen.cpp
+	puzzleprinter.cpp
 )
 
 set(ksudoku_views_SRCS

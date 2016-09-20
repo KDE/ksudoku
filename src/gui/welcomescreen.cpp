@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright 2007      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,6 +26,7 @@
 
 #include "ksudokugame.h"
 #include "globals.h"
+#include "puzzle.h"
 
 Q_DECLARE_METATYPE(ksudoku::GameVariant*)
 
@@ -33,9 +35,24 @@ namespace ksudoku {
 WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 	: QFrame(parent), m_collection(collection)
 {
-	QItemDelegate* delegate = new GameVariantDelegate(this);
-	
-	setupUi(this);
+	setupUi(this);	// Get gameListWidget by loading from welcomescreen.ui.
+
+	// Set the screen to display a multi-column list of puzzle-types, with
+	// vertical scrolling.  GameVariantDelegate::sizeHint() calculates the
+	// number of columns and their width when it works out the size of the
+	// item's display-area.
+
+	QItemDelegate* delegate =
+		new GameVariantDelegate(this, gameListWidget->viewport());
+	gameListWidget->setWrapping(true);
+	gameListWidget->setResizeMode(QListView::Adjust);
+	gameListWidget->setUniformItemSizes(true);
+	gameListWidget->setFlow(QListView::LeftToRight);
+
+	// Avoid a resize loop (with the scrollbar appearing and disappearing)
+	// if ever the number of items and display-columns hits a bad combo.
+	gameListWidget->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
 	gameListWidget->setModel(m_collection);
 	gameListWidget->setItemDelegate(delegate);
 	gameListWidget->setVerticalScrollMode(QListView::ScrollPerPixel);
@@ -128,6 +145,7 @@ void WelcomeScreen::startEmptyGame() {
 	if(!variant) return;
 	
 	Game game = variant->startEmpty();
+	if (! game.isValid()) return;
 	
 	emit newGameStarted(game, variant);
 }
@@ -158,7 +176,11 @@ void WelcomeScreen::generatePuzzle() {
 	gameGroup.writeEntry("Symmetry"  , m_symmetry);
 	gameGroup.sync();		// Ensure that the entry goes to disk.
 
-	emit newGameStarted(game, variant);
+	// If the user abandoned puzzle-generation, stay on the Welcome Screen
+	// and allow the user to change the Difficulty, etc. of the puzzle.
+	if (game.puzzle()->hasSolution()) {
+	    emit newGameStarted(game, variant);		// OK, start playing.
+	}
 }
 
 }

@@ -2,6 +2,7 @@
  *   Copyright 2007      Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2007 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -24,10 +25,6 @@
 
 #include "skgraph.h"
 #include "globals.h"
-
-class QChar;
-class QObject;
-class SudokuBoard;
 
 namespace ksudoku {
 	

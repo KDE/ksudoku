@@ -1,0 +1,7 @@
+<!DOCTYPE ksudoku-graph>
+<ksudoku-graph>
+ <graph sizeX="9" sizeY="9" sizeZ="1" ncliques="27" order="9" 
+type="custom" specific-type="KillerSudoku" name="KillerSudoku_9x9">
+  <sudokugroups at="0" withblocks="1" />
+ </graph>
+</ksudoku-graph>

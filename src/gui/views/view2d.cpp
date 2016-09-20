@@ -1,5 +1,6 @@
 /***************************************************************************
  *   Copyright 2008      Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com                    *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -23,9 +24,7 @@
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneEvent>
-#include <QtDebug>
-// #include <QFile> // TODO only for debug
-// #include <QEvent> // TODO only for debug
+#include <QtDebug> // IDW test.
 
 #include <kdebug.h>
 
@@ -52,6 +51,7 @@ public:
 	QPoint pos() const { return m_pos; }
 	void showCursor(QGraphicsItem* cursor);
 	void setType(SpecialType type);
+	void setCageLabel (const QString cageLabel);
 	
 	void setValues(QVector<ColoredValue> values);
 protected:
@@ -64,6 +64,7 @@ private:
 	QPoint m_pos;
 	SpecialType m_type;
 	QVector<ColoredValue> m_values;
+	QString m_cageLabel;
 	int m_id;
 	int m_size;
 	int m_range;
@@ -123,6 +124,10 @@ void CellGraphicsItem::setValues(QVector<ColoredValue> values) {
 	updatePixmap();
 }
 
+void CellGraphicsItem::setCageLabel(const QString cageLabel) {
+	m_cageLabel = cageLabel;
+}
+
 void CellGraphicsItem::updatePixmap() {
 	if(m_size == 0) return;
 
@@ -148,6 +153,9 @@ void CellGraphicsItem::updatePixmap() {
 			} break;
 		default: break; // TODO maybe assert as this is not allowed to occur
 	}
+	if (! m_cageLabel.isEmpty()) {
+		pic = Renderer::instance()->renderCageLabelOn(pic, m_cageLabel);
+	}
 	setPixmap(pic);
 	
 	show();
@@ -163,8 +171,9 @@ struct GroupGraphicItemSegment {
 
 class GroupGraphicsItem : public QGraphicsItemGroup {
 public:
-	GroupGraphicsItem(QVector<QPoint> cells);
+	GroupGraphicsItem(QVector<QPoint> cells, bool isCage = false);
 	~GroupGraphicsItem();
+	void hideBlockBorder (bool visible);
 public:
 	void resize(int gridSize, bool highlight);
 	void setHighlight(bool highlight);
@@ -178,16 +187,25 @@ private:
 	GroupTypes m_type;
 	QVector<QPoint> m_cells;
 	QVector<GroupGraphicItemSegment> m_segments;
+	bool m_isCage;	// Is the group a cage, as in Killer Sudoku or Mathdoku?
+	bool m_borderVisible;
 };
 
 
-GroupGraphicsItem::GroupGraphicsItem(QVector<QPoint> cells) {
+GroupGraphicsItem::GroupGraphicsItem(QVector<QPoint> cells, bool isCage) {
 	m_cells = cells;
+	m_isCage = isCage;
+	m_borderVisible = true;
 	
 	setEnabled(false);
 	setAcceptedMouseButtons(0);
 	
 	detectType();
+	if (isCage) {
+	    // Draw border around cage, even if it is all in one row or column.
+	    m_type = GroupCage;
+	    setZValue(4);
+	}
 	createContour();
 
 	if(!m_cells.contains(QPoint(1,1))) setHighlight(false);
@@ -198,6 +216,12 @@ GroupGraphicsItem::~GroupGraphicsItem() {
 	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
 		if(segment->highlighted) delete segment->highlighted;
 		if(segment->standard) delete segment->standard;
+	}
+}
+
+void GroupGraphicsItem::hideBlockBorder (bool hide) {
+	if ((m_type == GroupBlock) && hide) {
+	    m_borderVisible = false;
 	}
 }
 
@@ -213,9 +237,12 @@ void GroupGraphicsItem::detectType() {
 	if(y==-1) m_type |= GroupColumn;
 
 	// Row and column highlights must go above the GroupBlock boundary-line.
-	if(m_type == GroupColumn) setZValue(4);
-	else if(m_type == GroupRow) setZValue(4);
-	else if(m_type == GroupBlock) setZValue(3);
+	// It really looks better to have the block highlight on top of the row
+	// and column highlights, especially with cages or jigsaw-type blocks.
+	// TODO - Might also be a good idea to reduce opacity of row and column.
+	if(m_type == GroupColumn) setZValue(3);
+	else if(m_type == GroupRow) setZValue(3);
+	else if(m_type == GroupBlock) setZValue(4);
 }
 
 void GroupGraphicsItem::createContour() {
@@ -234,7 +261,9 @@ void GroupGraphicsItem::createContour() {
 		idx[7] = m_cells.indexOf(QPoint(x,   y+1));	// South.
 		idx[8] = m_cells.indexOf(QPoint(x+1, y+1));	// South East.
 		
-		if(idx[1] == -1 && idx[3] == -1 && idx[5] == -1 && idx[7] == -1)
+		// A cage can consist of one cell with a border.
+		if((m_type != GroupCage) &&
+		   idx[1] == -1 && idx[3] == -1 && idx[5] == -1 && idx[7] == -1)
 		{
 			// No adjoining neighbour to N, S, E or W.
 			m_type = GroupSpecial;	// Used in the "X" of XSudoku.
@@ -272,6 +301,7 @@ void GroupGraphicsItem::createSegment(const QPoint& pos, int shape) {
 			segment.standard = 0;
 			break;
 		case GroupBlock:
+		case GroupCage:
 			segment.standard = (shape == 15) ? 0	// No middle.
 					   : new QGraphicsPixmapItem(this);
 			break;
@@ -308,11 +338,11 @@ void GroupGraphicsItem::setHighlight(bool highlight) {
 	    if ((m_type & GroupBlock) == GroupBlock) {
 		// Block highlight goes on top of row, column and special
 		// highlights.  Block boundary-line goes underneath them.
-		setZValue(highlight ? 6 : 3);
+		setZValue(highlight ? 8 : 4);
 	    }
-	    if ((m_type & GroupSpecial) == GroupSpecial) {
+	    if (m_type == GroupSpecial) {
 		// Special highlight goes on top of unhighlighted special cell.
-		setZValue(highlight ? 5 : 4);
+		setZValue(highlight ? 9 : 4);
 	    }
 	}
 	if(segment->standard) {
@@ -330,6 +360,8 @@ void GroupGraphicsItem::resize(int gridSize, bool highlight) {
 	int size = gridSize*2;
 	Renderer* r = Renderer::instance();
 
+	highlight = (m_type == GroupCage); // IDW test.
+	highlight = true; // IDW test.
 	GroupTypes standard = m_type & GroupUnhighlightedMask;
 	GroupTypes highlighted = m_type | GroupHighlight;
 	
@@ -337,13 +369,13 @@ void GroupGraphicsItem::resize(int gridSize, bool highlight) {
 	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
 		QPointF pos = segment->pos*gridSize;
 		// Has standard pixmap item?
-		if(segment->standard) {
+		if(m_borderVisible && segment->standard) {
 			QPixmap pic = r->renderBorder(segment->shape, standard, size);
 			segment->standard->setPixmap(pic);
 			segment->standard->setOffset(pos);
 		}
 		// Highlights on and has highlighted pixmap item?
-		if(highlight && segment->highlighted) {
+		if(m_borderVisible && highlight && segment->highlighted) {
 			QPixmap pic = r->renderBorder(segment->shape, highlighted, size);
 			segment->highlighted->setPixmap(pic);
 			segment->highlighted->setOffset(pos);
@@ -399,6 +431,8 @@ void View2DScene::init(const Game& game) {
 	addItem(m_cellLayer);
 	
 	SKGraph* g = m_game.puzzle()->graph();
+	Renderer::instance()->setMathdokuStyle((g->specificType() == Mathdoku)
+					|| (g->specificType() == KillerSudoku));
 	m_cells.resize(m_game.size());
 	m_cursorPos = -1;
 	for(int i = 0; i < m_game.size(); ++i) {
@@ -410,7 +444,9 @@ void View2DScene::init(const Game& game) {
 		m_cells[i] = new CellGraphicsItem(QPoint(g->cellPosX(i), g->cellPosY(i)), i, this);
 		m_cells[i]->setParentItem(m_cellLayer);
 		if(game.given(i))
+			// TODO - Implement allCellsLookSame preference.
 			m_cells[i]->setType(SpecialCellPreset);
+			// m_cells[i]->setType(SpecialCell); // IDW test.
 		else
 			m_cells[i]->setType(SpecialCell);
 		if(game.value(i))
@@ -419,16 +455,27 @@ void View2DScene::init(const Game& game) {
 			m_cells[i]->setValues(QVector<ColoredValue>());
 		if(m_cursorPos < 0) m_cursorPos = i;
 	}
-	
-	m_groups.resize(g->cliqueCount());
+
+	m_groups.resize(g->cliqueCount() + g->cageCount());
+	// IDW TODO - Draw Killer Sudoku cages inside cell borders?
+	//            Anyway, show 3x3 and 2x2 blocks in Killer Sudoku somehow.
+	bool hasBothBlocksAndCages = (g->specificType() == KillerSudoku);
 	for(int i = 0; i < g->cliqueCount(); ++i) {
+		// Set the shape of each group.
 		QVector<int> idx = g->clique(i);
 		QVector<QPoint> pts = QVector<QPoint>(idx.size());
 		for(int j = 0; j < idx.size(); ++j) {
-			pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
+		    pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
 		}
 		m_groups[i] = new GroupGraphicsItem(pts);
 		m_groups[i]->setParentItem(m_groupLayer);
+		// Avoid ugly crossings of cages and blocks in Killer Sudoku.
+		// Hide borders of blocks if there can be cages in the puzzle.
+		m_groups[i]->hideBlockBorder (hasBothBlocksAndCages);
+	}
+	for(int i = 0; i < g->cageCount(); ++i) {
+		// Create a cage: draw the label for all cages except size 1.
+		initCageGroup (i, (g->cage(i).size() > 1));
 	}
 	
 	m_cursor = new QGraphicsPixmapItem();
@@ -438,6 +485,7 @@ void View2DScene::init(const Game& game) {
 	
 	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(update(int)));
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(update()));
+	connect(m_game.interface(), SIGNAL(cageChange(int,bool)), this, SLOT(updateCage(int,bool)));
 	connect(m_gameActions, SIGNAL(selectValue(int)), this, SLOT(selectValue(int)));
 	connect(m_gameActions, SIGNAL(enterValue(int)), this, SLOT(enterValue(int)));
 	connect(m_gameActions, SIGNAL(markValue(int)), this, SLOT(flipMarkValue(int)));
@@ -445,6 +493,32 @@ void View2DScene::init(const Game& game) {
 	// Fix bug 188162 by ensuring that all markers, as well as cells, are
 	// updated and displayed after a Load action.
 	update(-1);
+}
+
+void View2DScene::initCageGroup (int cageNum, bool drawLabel) {
+	// Set the graphical shape and look of a Mathdoku or KillerSudoku cage.
+	SKGraph* g = m_game.puzzle()->graph();
+	int offset = g->cliqueCount();
+	QVector<int> idx = g->cage(cageNum);
+	QVector<QPoint> pts = QVector<QPoint>(idx.size());
+	for(int j = 0; j < idx.size(); ++j) {
+	    pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
+	}
+	m_groups[offset + cageNum] = new GroupGraphicsItem(pts, true);
+	m_groups[offset + cageNum]->setParentItem(m_groupLayer);
+
+	// Set the label of the cage (value and operator), but, in a single-cell
+	// cage, draw it only during data-entry of the first cell of a cage.
+	if (! drawLabel) {
+	    m_cells[g->cageTopLeft(cageNum)]->setCageLabel(QString());
+	}
+	else if (drawLabel || (g->cage(cageNum).size() > 1)) {
+	    QString str = QString::number(g->cageValue(cageNum));
+	    if (g->specificType() == Mathdoku) { // No op shown in KillerSudoku.
+		str = str + QString(" /-x+").mid(g->cageOperator(cageNum), 1);
+	    }
+	    m_cells[g->cageTopLeft(cageNum)]->setCageLabel(str);
+	}
 }
 
 void View2DScene::setSceneSize(const QSize& size) {
@@ -489,6 +563,20 @@ void View2DScene::hover(int cell) {
 }
 
 void View2DScene::press(int cell, bool rightButton) {
+	// IDW TODO - Can we save the type and entry mode just once somewhere?
+	if (! m_game.puzzle()->hasSolution()) {
+	    // Keying in a puzzle. Is it a Mathdoku or Killer Sudoku type?
+	    // If so, right click ==> delete cage: left click ==> add a cell.
+	    SKGraph * g = m_game.puzzle()->graph();
+	    SudokuType t = g->specificType();
+	    if ((t == Mathdoku) || (t == KillerSudoku)) {
+		// If it is, delete or add a cell in the cage being entered.
+		if (m_game.addToCage (cell, rightButton ? 32 : 30)) {
+		    return;
+		}
+	    }
+	}
+	// Normal mouse actions for working on any kind of KSudoku puzzle.
 	if(rightButton) {
 		m_game.flipMarker(cell, m_selectedValue);
 	} else {
@@ -514,7 +602,9 @@ void View2DScene::update(int cell) {
 		QVector<ColoredValue> values;
 		switch(cellInfo.state()) {
 			case GivenValue:
+				// TODO - Implement allCellsLookSame preference.
 				m_cells[cell]->setType(SpecialCellPreset);
+				// m_cells[cell]->setType(SpecialCell); // IDW test.
 				if(cellInfo.value()) values << ColoredValue(cellInfo.value(),0);
 				m_cells[cell]->setValues(values);
 				break;
@@ -538,7 +628,45 @@ void View2DScene::update(int cell) {
 				m_cells[cell]->setValues(values);
 			} break;
 		}
+	}
 }
+
+void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
+	if (cageNumP1 == 0) {
+	    qDebug() << "ERROR: View2DScene::updateCage: cageNumP1 == 0.";
+	    return;
+	}
+	SKGraph* g    = m_game.puzzle()->graph();
+	int offset    = g->cliqueCount();
+	bool deleting = (cageNumP1 < 0);
+	int  cageNum  = deleting ? (-cageNumP1 - 1) : (cageNumP1 - 1);
+	if ((cageNum >= 0) && (m_groups.count() > (offset + cageNum))){
+	    // Remove the cage-label from its scene-cell item.
+	    m_cells[g->cageTopLeft(cageNum)]->setCageLabel(QString());
+	    // Remove the cage-graphics from the scene.
+	    removeItem (m_groups.at (offset + cageNum));
+	    delete m_groups.at (offset + cageNum);
+	    m_groups[offset + cageNum] = 0;	// Re-use or remove this later.
+	}
+	else {
+	    // Start adding a cage-group to the scene.
+	    m_groups.resize(g->cliqueCount() + g->cageCount());
+	}
+	if (!deleting && (cageNum >= 0)) {
+	    // Create or re-create the cage that is being entered in.
+	    initCageGroup (cageNum, drawLabel);
+	    // IDW TODO - Should NOT need hilite settings, NOT hilite row/col.
+	    // IDW TODO - May need to doctor LOCAL CLASS GroupGraphicsItem for
+	    //            hilite, deletion and removal of cage-label to happen.
+	    m_groups[offset + cageNum]->setHighlight (true);
+	}
+	else {
+	    // Deleting a cage: finish removing graphics item from scene-data.
+	    m_groups.remove (offset + cageNum);
+	}
+
+	// Invoke the method in View2DScene that triggers a re-draw.
+	setSceneSize (views().first()->size());
 }
 
 void View2DScene::selectValue(int value) {

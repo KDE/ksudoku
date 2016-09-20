@@ -1,6 +1,7 @@
 /****************************************************************************
  *    Copyright 2011  Ian Wadham <iandw.au@gmail.com>                       *
  *    Copyright 2006  David Bau <david bau @ gmail com> Original algorithms *
+ *    Copyright 2015  Ian Wadham <iandw.au@gmail.com>                       *
  *                                                                          *
  *    This program is free software; you can redistribute it and/or         *
  *    modify it under the terms of the GNU General Public License as        *
@@ -20,6 +21,8 @@
 
 #include "sudokuboard.h"
 #include "state.h"
+#include "mathdokugenerator.h"
+#include <QDebug> // IDW test.
 
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -71,16 +74,57 @@ void SudokuBoard::setSeed()
     }
 }
 
-void SudokuBoard::generatePuzzle (BoardContents & puzzle,
-                                  BoardContents & solution,
-                                  Difficulty difficultyRequired,
-                                  Symmetry symmetry)
+bool SudokuBoard::generatePuzzle             (BoardContents & puzzle,
+                                              BoardContents & solution,
+                                              Difficulty difficultyRequired,
+                                              Symmetry symmetry)
 {
     dbe "Entered generatePuzzle(): difficulty %d, symmetry %d\n",
         difficultyRequired, symmetry);
-    QTime t;
-    t.start();
     setSeed();
+
+    SudokuType puzzleType = m_graph->specificType();
+    if ((puzzleType == Mathdoku) || (puzzleType == KillerSudoku)) {
+	// Generate variants of Mathdoku (aka KenKen TM) or Killer Sudoku types.
+	int maxTries = 10;
+	int numTries = 0;
+	bool success = false;
+	while (true) {
+	    MathdokuGenerator mg (m_graph);
+	    // Find numbers to satisfy Sudoku rules: they will be the solution.
+	    solution = fillBoard();
+	    // Generate a Mathdoku or Killer Sudoku puzzle having this solution.
+	    numTries++;
+	    success = mg.generateMathdokuTypes (puzzle, solution,
+				    &m_KSudokuMoves, difficultyRequired);
+	    if (success) {
+		return true;
+	    }
+	    else if (numTries >= maxTries) {
+		QWidget owner;
+		if (KMessageBox::questionYesNo (&owner,
+			    i18n("Attempts to generate a puzzle failed after "
+				 "about 200 tries. Try again?"),
+			    i18n("Mathdoku or Killer Sudoku Puzzle"))
+			    == KMessageBox::No) {
+		    return false;	// Go back to the Welcome screen.
+		}
+		numTries = 0;		// Try again.
+	    }
+	}
+    }
+    else {
+	// Generate variants of Sudoku (2D) and Roxdoku (3D) types.
+	return generateSudokuRoxdokuTypes (puzzle, solution,
+                                    difficultyRequired, symmetry);
+    }
+}
+
+bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
+                                              BoardContents & solution,
+                                              Difficulty difficultyRequired,
+                                              Symmetry symmetry)
+{
     const int     maxTries = 20;
     int           count = 0;
     float         bestRating = 0.0;
@@ -91,6 +135,8 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
     BoardContents currPuzzle;
     BoardContents currSolution;
 
+    QTime t;
+    t.start();
     if (m_graph->sizeZ() > 1) {
 	symmetry = NONE;		// Symmetry not implemented in 3-D.
     }
@@ -144,6 +190,9 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 	    puzzle           = currPuzzle;
 	}
 
+	// Express the rating to 1 decimal place in whatever locale we have.
+	QString ratingStr = ki18n("%1").subs(bestRating, 0, 'f', 1).toString();
+	// Check and explain the Sudoku/Roxdoku puzzle-generator's results.
 	if ((d < difficultyRequired) && (count >= maxTries)) {
             // Exit after max attempts?
             QWidget owner;
@@ -155,9 +204,9 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 			   "\n"
 			   "If you accept the puzzle, it may help to change to "
 			   "No Symmetry or some low symmetry type, then use "
-			   "Game->New and try generating another puzzle.")
-		      .arg(maxTries).arg(bestDifficulty)
-		      .arg(bestRating, 0, 'f', 1).arg(difficultyRequired),
+			   "Game->New and try generating another puzzle.",
+			   maxTries, bestDifficulty,
+			   ratingStr, difficultyRequired),
                       i18n("Difficulty Level"),
                       KGuiItem(i18n("&Try Again")), KGuiItem(i18n("&Accept")));
             if (ans == KMessageBox::Yes) {
@@ -170,19 +219,20 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
             QWidget owner;
 	    int ans = 0;
 	    if (m_accum.nGuesses == 0) {
-                const QString rating = QString("%1").arg(bestRating, 0, 'f', 1);
                 ans = KMessageBox::questionYesNo (&owner,
 		       i18n("It will be possible to solve the generated puzzle "
 			    "by logic alone. No guessing will be required.\n"
 			    "\n"
 			    "The internal difficulty rating is %1. There are "
-			    "%2 clues at the start and %3 moves to go.", rating, bestNClues, (m_stats.nCells - bestNClues)),
+			    "%2 clues at the start and %3 moves to go.",
+			    ratingStr, bestNClues,
+			    (m_stats.nCells - bestNClues)),
 		       i18n("Difficulty Level"),
                        KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
 	    }
 	    else {
-                const QString average = QString::fromLatin1("%1").arg(((float) bestNGuesses) / 5.0, 0, 'f', 1);
-                const QString rating = QString::fromLatin1("%1").arg(bestRating, 0, 'f', 1);
+                QString avGuessStr = ki18n("%1").subs(((float) bestNGuesses) /
+			5.0, 0, 'f', 1).toString(); // Format as for ratingStr.
                 ans = KMessageBox::questionYesNo (&owner,
 		       i18n("Solving the generated puzzle will require an "
 			    "average of %1 guesses or branch points and if you "
@@ -190,7 +240,9 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
 			    "first guess should come after %2 moves.\n"
 			    "\n"
 			    "The internal difficulty rating is %3, there are "
-			    "%4 clues at the start and %5 moves to go.", average, bestFirstGuessAt, rating, (m_stats.nCells - bestNClues)),
+			    "%4 clues at the start and %5 moves to go.",
+			    avGuessStr, bestFirstGuessAt, ratingStr,
+			    bestNClues, (m_stats.nCells - bestNClues)),
                        i18n("Difficulty Level"),
                        KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
 	    }
@@ -214,6 +266,7 @@ void SudokuBoard::generatePuzzle (BoardContents & puzzle,
         dbo "SOLUTION\n");
         print (solution);
     }
+    return true;
 }
 
 Difficulty SudokuBoard::calculateRating (const BoardContents & puzzle,

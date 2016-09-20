@@ -1,6 +1,7 @@
 /****************************************************************************
  *    Copyright 2011  Ian Wadham <iandw.au@gmail.com>                       *
  *    Copyright 2006  David Bau <david bau @ gmail com> Original algorithms *
+ *    Copyright 2015  Ian Wadham <iandw.au@gmail.com>                       *
  *                                                                          *
  *    This program is free software; you can redistribute it and/or         *
  *    modify it under the terms of the GNU General Public License as        *
@@ -38,6 +39,13 @@ enum                 GuessingMode {Random, NotRandom};
 
 class SKGraph;
 class State;
+
+// TODO - SudokuBoard, MathdokuGenerator, CageGenerator and DLXSolver could be
+//        factored better. At the moment, MathdokuGenerator needs SudokuBoard's
+//        fillBoard() method to create a square that satisfies Sudoku rules for
+//        Killer Sudoku or Mathdoku puzzles. But fillBoard() depends on large
+//        parts of SudokuBoard's solver logic... so we have two solver objects
+//        co-existing for now, but this happens only for a second or so.
 
 /**
  * @class SudokuBoard  sudokuboard.h
@@ -90,7 +98,7 @@ class State;
  * Classic Sudoku in several sizes and variants, Samurai Sudoku with five
  * overlapping grids and the three-dimensional Roxdoku in several sizes.
  *
- * Each group (row, column, blocki or plane) contains N cells in which the
+ * Each group (row, column, block or plane) contains N cells in which the
  * numbers 1 to N must appear exactly once.  N can be 4, 9, 16 or 25, but not
  * all types of puzzle support all four sizes.
  *
@@ -129,8 +137,12 @@ public:
      * @param difficulty    The required level of difficulty (as defined in file
      *                      globals.h).
      * @param symmetry      The required symmetry of layout of the clues.
+     *
+     * @return              Normally true, but false if the user wishes to go
+     *                      back to the Welcome screen (e.g. to change reqs.)
+     *                      after too many attempts to generate a puzzle.
      */
-    void                    generatePuzzle (BoardContents & puzzle,
+    bool                    generatePuzzle (BoardContents & puzzle,
                                             BoardContents & solution,
                                             Difficulty      difficulty,
                                             Symmetry        symmetry);
@@ -196,6 +208,16 @@ public:
                                               GuessingMode gMode = Random);
 
     /**
+     * Fill the board with randomly chosen valid values, thus generating a
+     * solution from which a puzzle can be created (virtual).  It is made
+     * public so that it can be used to fill a Mathdoku or Killer Sudoku
+     * board with numbers that satisfy Sudoku constraints.
+     *
+     * @return              The filled board-vector.
+     */
+    virtual BoardContents & fillBoard();
+
+    /**
      * Initialize or re-initialize the random number generator.
      */
     void                    setSeed();
@@ -241,14 +263,6 @@ protected:
      */
     virtual void            clear (BoardContents & boardValues);
 
-    /**
-     * Fill the board with randomly chosen valid values, thus generating a
-     * solution from which a puzzle can be created (virtual).
-     *
-     * @return              The filled board-vector.
-     */
-    virtual BoardContents & fillBoard();
-
     /*
      * Fill a vector of integers with values from 1 up to the size of the
      * vector, then shuffle the integers into a random order.
@@ -258,6 +272,11 @@ protected:
     void                    randomSequence (QVector<int> & sequence);
 
 private:
+    bool                    generateSudokuRoxdokuTypes (BoardContents & puzzle,
+                                                       BoardContents & solution,
+                                                       Difficulty    difficulty,
+                                                       Symmetry      symmetry);
+
     SKGraph *               m_graph;
     int                     m_vacant;
     int                     m_unusable;

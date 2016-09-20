@@ -3,6 +3,7 @@
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
  *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
+ *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -40,6 +41,7 @@ SKGraph::SKGraph(int order, ksudoku::GameType type)
 
 SKGraph::~SKGraph()
 {
+	clearCages();
 }
 
 void SKGraph::initSudoku()
@@ -61,7 +63,7 @@ void SKGraph::initSudokuGroups(int pos, bool withBlocks)
 	// (m_order*m_order) cells. Its first parameter (usually 0) shows where
 	// on the whole board the grid goes. This is relevant in Samurai and
 	// related layouts. Its second attribute is true if square-block groups
-	// are required or false if not (e.g. as in a Jigsaw type).
+	// are required or false if not (e.g. as in a Jigsaw or Mathdoku type).
 
 	m_structures << SudokuGroups << pos << (withBlocks ? 1 : 0);
 
@@ -142,6 +144,50 @@ void SKGraph::addClique(QVector<int> data) {
 	for (int n = 0; n < data.size(); n++) {
 	    // Set cells in groups VACANT: cells not in groups are UNUSABLE.
 	    m_emptyBoard [data.at(n)] = VACANT;
+	}
+}
+
+void SKGraph::addCage(const QVector<int> cage, CageOperator cageOperator,
+                      int cageValue)
+{
+	// Add to the cages list.
+	m_cages.append (new Cage);
+	Cage * newCage        = m_cages.last();
+	newCage->cage         = cage;
+	newCage->cageOperator = cageOperator;
+	newCage->cageValue    = cageValue;
+
+	// Calculate cageTopLeft cell (used for displaying operator and value).
+	int topY              = m_order;
+	int leftX             = m_order;
+	newCage->cageTopLeft  = 0;
+	Q_FOREACH (int cell, cage) {
+	    if (cellPosY(cell) > topY) {
+		continue;		// Below the best so far.
+	    }
+	    else if ((cellPosY(cell) == topY) && (cellPosX(cell) > leftX)) {
+		continue;		// Same height as best but to the right.
+	    }
+	    newCage->cageTopLeft = cell;
+	    topY  = cellPosY(cell);
+	    leftX = cellPosX(cell);
+	}
+}
+
+void SKGraph::dropCage(int cageNum)
+{
+	if (cageNum >= m_cages.count()) {
+	    return;
+	}
+	delete m_cages.at (cageNum);
+	m_cages.remove (cageNum);
+}
+
+void SKGraph::clearCages() {
+	// Clear previous cages (if any).
+	if (! m_cages.isEmpty()) {
+	    qDeleteAll (m_cages);
+	    m_cages.clear();
 	}
 }
 
