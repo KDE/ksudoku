@@ -5,7 +5,7 @@
 SentUpstream: 2014-09-24
 -->
 <component type="desktop">
-  <id>ksudoku.desktop</id>
+  <id>org.kde.ksudoku.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <summary>Complete a numeric puzzle with the numbers from one to nine</summary>
   <summary xml:lang="ca">Completeu un puzle numèric puzzle amb nombres des de l'u al nou.</summary>
