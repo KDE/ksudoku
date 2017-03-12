@@ -22,16 +22,78 @@ install( FILES
 )
 
 ecm_install_icons(ICONS
-hi128-action-ksudoku-jigsaw.png         hi16-action-ksudoku-jigsaw.png         hi22-action-ksudoku-jigsaw.png         hi32-action-ksudoku-jigsaw.png         hi48-action-ksudoku-jigsaw.png         hi64-action-ksudoku-jigsaw.png
-hi128-action-ksudoku-ksudoku_16x16.png  hi16-action-ksudoku-ksudoku_16x16.png  hi22-action-ksudoku-ksudoku_16x16.png  hi32-action-ksudoku-ksudoku_16x16.png  hi48-action-ksudoku-ksudoku_16x16.png  hi64-action-ksudoku-ksudoku_16x16.png
-hi128-action-ksudoku-ksudoku_25x25.png  hi16-action-ksudoku-ksudoku_25x25.png  hi22-action-ksudoku-ksudoku_25x25.png  hi32-action-ksudoku-ksudoku_25x25.png  hi48-action-ksudoku-ksudoku_25x25.png  hi64-action-ksudoku-ksudoku_25x25.png
-hi128-action-ksudoku-ksudoku_4x4.png    hi16-action-ksudoku-ksudoku_4x4.png    hi22-action-ksudoku-ksudoku_4x4.png    hi32-action-ksudoku-ksudoku_4x4.png    hi48-action-ksudoku-ksudoku_4x4.png    hi64-action-ksudoku-ksudoku_4x4.png
-hi128-action-ksudoku-ksudoku_9x9.png    hi16-action-ksudoku-ksudoku_9x9.png    hi22-action-ksudoku-ksudoku_9x9.png    hi32-action-ksudoku-ksudoku_9x9.png    hi48-action-ksudoku-ksudoku_9x9.png    hi64-action-ksudoku-ksudoku_9x9.png
-hi128-action-ksudoku.png                hi16-action-ksudoku.png                hi22-action-ksudoku.png                hi32-action-ksudoku.png                hi48-action-ksudoku.png                hi64-action-ksudoku.png
-hi128-action-ksudoku-roxdoku_3x3x3.png  hi16-action-ksudoku-roxdoku_3x3x3.png  hi22-action-ksudoku-roxdoku_3x3x3.png  hi32-action-ksudoku-roxdoku_3x3x3.png  hi48-action-ksudoku-roxdoku_3x3x3.png  hi64-action-ksudoku-roxdoku_3x3x3.png
-hi128-action-ksudoku-roxdoku_4x4x4.png  hi16-action-ksudoku-roxdoku_4x4x4.png  hi22-action-ksudoku-roxdoku_4x4x4.png  hi32-action-ksudoku-roxdoku_4x4x4.png  hi48-action-ksudoku-roxdoku_4x4x4.png  hi64-action-ksudoku-roxdoku_4x4x4.png
-hi128-action-ksudoku-roxdoku_5x5x5.png  hi16-action-ksudoku-roxdoku_5x5x5.png  hi22-action-ksudoku-roxdoku_5x5x5.png  hi32-action-ksudoku-roxdoku_5x5x5.png  hi48-action-ksudoku-roxdoku_5x5x5.png  hi64-action-ksudoku-roxdoku_5x5x5.png
-hi128-action-ksudoku-samurai.png        hi16-action-ksudoku-samurai.png        hi22-action-ksudoku-samurai.png        hi32-action-ksudoku-samurai.png        hi48-action-ksudoku-samurai.png        hi64-action-ksudoku-samurai.png
-hi128-action-ksudoku-tiny_samurai.png   hi16-action-ksudoku-tiny_samurai.png   hi22-action-ksudoku-tiny_samurai.png   hi32-action-ksudoku-tiny_samurai.png   hi48-action-ksudoku-tiny_samurai.png   hi64-action-ksudoku-tiny_samurai.png
-hi128-action-ksudoku-xsudoku.png        hi16-action-ksudoku-xsudoku.png        hi22-action-ksudoku-xsudoku.png        hi32-action-ksudoku-xsudoku.png        hi48-action-ksudoku-xsudoku.png        hi64-action-ksudoku-xsudoku.png
-DESTINATION ${KDE_INSTALL_DATADIR}/ksudoku/icons)
+    128-actions-ksudoku-jigsaw.png
+    128-actions-ksudoku-ksudoku_16x16.png
+    128-actions-ksudoku-ksudoku_25x25.png
+    128-actions-ksudoku-ksudoku_4x4.png
+    128-actions-ksudoku-ksudoku_9x9.png
+    128-actions-ksudoku-roxdoku_3x3x3.png
+    128-actions-ksudoku-roxdoku_4x4x4.png
+    128-actions-ksudoku-roxdoku_5x5x5.png
+    128-actions-ksudoku-samurai.png
+    128-actions-ksudoku-tiny_samurai.png
+    128-actions-ksudoku-xsudoku.png
+    128-actions-ksudoku.png
+    16-actions-ksudoku-jigsaw.png
+    16-actions-ksudoku-ksudoku_16x16.png
+    16-actions-ksudoku-ksudoku_25x25.png
+    16-actions-ksudoku-ksudoku_4x4.png
+    16-actions-ksudoku-ksudoku_9x9.png
+    16-actions-ksudoku-roxdoku_3x3x3.png
+    16-actions-ksudoku-roxdoku_4x4x4.png
+    16-actions-ksudoku-roxdoku_5x5x5.png
+    16-actions-ksudoku-samurai.png
+    16-actions-ksudoku-tiny_samurai.png
+    16-actions-ksudoku-xsudoku.png
+    16-actions-ksudoku.png
+    22-actions-ksudoku-jigsaw.png
+    22-actions-ksudoku-ksudoku_16x16.png
+    22-actions-ksudoku-ksudoku_25x25.png
+    22-actions-ksudoku-ksudoku_4x4.png
+    22-actions-ksudoku-ksudoku_9x9.png
+    22-actions-ksudoku-roxdoku_3x3x3.png
+    22-actions-ksudoku-roxdoku_4x4x4.png
+    22-actions-ksudoku-roxdoku_5x5x5.png
+    22-actions-ksudoku-samurai.png
+    22-actions-ksudoku-tiny_samurai.png
+    22-actions-ksudoku-xsudoku.png
+    22-actions-ksudoku.png
+    32-actions-ksudoku-jigsaw.png
+    32-actions-ksudoku-ksudoku_16x16.png
+    32-actions-ksudoku-ksudoku_25x25.png
+    32-actions-ksudoku-ksudoku_4x4.png
+    32-actions-ksudoku-ksudoku_9x9.png
+    32-actions-ksudoku-roxdoku_3x3x3.png
+    32-actions-ksudoku-roxdoku_4x4x4.png
+    32-actions-ksudoku-roxdoku_5x5x5.png
+    32-actions-ksudoku-samurai.png
+    32-actions-ksudoku-tiny_samurai.png
+    32-actions-ksudoku-xsudoku.png
+    32-actions-ksudoku.png
+    48-actions-ksudoku-jigsaw.png
+    48-actions-ksudoku-ksudoku_16x16.png
+    48-actions-ksudoku-ksudoku_25x25.png
+    48-actions-ksudoku-ksudoku_4x4.png
+    48-actions-ksudoku-ksudoku_9x9.png
+    48-actions-ksudoku-roxdoku_3x3x3.png
+    48-actions-ksudoku-roxdoku_4x4x4.png
+    48-actions-ksudoku-roxdoku_5x5x5.png
+    48-actions-ksudoku-samurai.png
+    48-actions-ksudoku-tiny_samurai.png
+    48-actions-ksudoku-xsudoku.png
+    48-actions-ksudoku.png
+    64-actions-ksudoku-jigsaw.png
+    64-actions-ksudoku-ksudoku_16x16.png
+    64-actions-ksudoku-ksudoku_25x25.png
+    64-actions-ksudoku-ksudoku_4x4.png
+    64-actions-ksudoku-ksudoku_9x9.png
+    64-actions-ksudoku-roxdoku_3x3x3.png
+    64-actions-ksudoku-roxdoku_4x4x4.png
+    64-actions-ksudoku-roxdoku_5x5x5.png
+    64-actions-ksudoku-samurai.png
+    64-actions-ksudoku-tiny_samurai.png
+    64-actions-ksudoku-xsudoku.png
+    64-actions-ksudoku.png
+    DESTINATION ${KDE_INSTALL_DATADIR}/ksudoku/icons
+    THEME hicolor
+)

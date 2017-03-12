@@ -74,9 +74,10 @@ install(FILES gui/ksudokuui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUI5DIR}/ksudoku)
 install(FILES ksudokurc  DESTINATION ${KDE_INSTALL_CONFDIR})
 
 ecm_install_icons(ICONS
-    hi128-apps-ksudoku.png
-    hi16-apps-ksudoku.png
-    hi32-apps-ksudoku.png
+    128-apps-ksudoku.png
+    16-apps-ksudoku.png
+    32-apps-ksudoku.png
     DESTINATION ${KDE_INSTALL_ICONDIR}
+    THEME hicolor
 )
 
