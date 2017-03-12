@@ -26,8 +26,7 @@
 #include <KMessageBox>
 #include <KLocalizedString>
 #include <QPainter>
-#include <KIconLoader>
-#include <KIcon>
+#include <QIcon>
 #include <QEvent>
 
 
@@ -184,13 +183,13 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 
 	// Show icon
 
-	QPixmap iconPixmap = KIcon(icon(index), KIconLoader::global()).pixmap(m_iconWidth, m_iconHeight);
+	QPixmap iconPixmap = QIcon::fromTheme(icon(index)).pixmap(m_iconWidth, m_iconHeight);
 	painter->drawPixmap(contentRect.left(), (contentRect.height() - iconPixmap.height()) / 2 + contentRect.top(), iconPixmap);
 	contentRect.adjust(iconPixmap.width() + m_separatorPixels*2, 0, 0, 0);
 
 // 	// Show configuration icon
 // 	if(configurable(index)) {
-// 		QPixmap configPixmap = KIcon( QLatin1String( "configure" ), KIconLoader::global()).pixmap(32, 32);
+// 		QPixmap configPixmap = QIcon::fromTheme( QLatin1String( "configure" ) ).pixmap(32, 32);
 // 		painter->drawPixmap(contentRect.right() - configPixmap.width(), (contentRect.height() - configPixmap.height()) / 2 + contentRect.top(), configPixmap);
 // 		contentRect.adjust(0, 0, -(configPixmap.width() + separatorPixels), 0);
 // 	}
