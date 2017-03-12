@@ -25,7 +25,8 @@ set(ksudoku_SRCS
 	generator/mathdokugenerator.cpp
 )
 
-kde4_add_app_icon(ksudoku_SRCS "${KDE4_ICON_INSTALL_DIR}/oxygen/*/apps/ksudoku.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-ksudoku.png")
+ecm_add_app_icon(ksudoku_SRCS ICONS ${ICONS_SRCS})
 add_executable(ksudoku ${ksudoku_SRCS})
 
 target_link_libraries(ksudoku
