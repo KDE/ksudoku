@@ -33,6 +33,7 @@
 
 #include <QPrinter>
 #include <QPrintDialog>
+#include <QStandardPaths>
 
 #include <KLocalizedString>
 #include <KActionCollection>
@@ -44,9 +45,6 @@
 #include <libkdegamesprivate/kgamethemeselector.h>
 #include <KShortcut>
 #include <KUrl>
-#include <KCmdLineArgs>
-#include <K4AboutData>
-#include <KGlobal>
 #include <kmessagebox.h>
 #include <KLocalizedString>
 #include <qstatusbar.h>
@@ -65,10 +63,10 @@
 #include "puzzleprinter.h"
 
 #include <ktar.h>
-#include <kstandarddirs.h>
 #include <kio/job.h>
 #include <kstandardgameaction.h>
 #include <QDir>
+#include <KSharedConfig>
 
 #include "gamevariants.h"
 #include "welcomescreen.h"
@@ -160,9 +158,6 @@ KSudoku::KSudoku()
 
 	showWelcomeScreen();
 
-	// Register the gamevariants resource
-	KGlobal::dirs()->addResourceType ("gamevariant", "data", KCmdLineArgs::aboutData()->appName());
-
 	updateShapesList();
 
 // 	QTimer *timer = new QTimer( this );
@@ -191,7 +186,17 @@ void KSudoku::updateShapesList()
 	variant->setIcon("ksudoku-roxdoku_3x3x3");
 #endif
 
-    QStringList filepaths = KGlobal::dirs()->findAllResources("gamevariant", "*.desktop", KStandardDirs::NoDuplicates); // Find files.
+	QStringList gamevariantdirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "ksudoku", QStandardPaths::LocateDirectory);
+
+	QStringList filepaths;
+	Q_FOREACH (const QString& gamevariantdir, gamevariantdirs) {
+		const QStringList fileNames = QDir(gamevariantdir).entryList(QStringList() << QStringLiteral("*.desktop"));
+		Q_FOREACH (const QString &file, fileNames) {
+			if (!filepaths.contains(gamevariantdir + '/' + file)) {
+				filepaths.append(gamevariantdir + '/' + file);
+			}
+		}
+	}
 
 	QString variantName;
 	QString variantDescr;
@@ -867,8 +872,7 @@ void KSudoku::loadCustomShapeFromPath()
 		return;
 	}
 
-	KStandardDirs myStdDir;
-	const QString destDir = myStdDir.saveLocation( "data", /*kapp->instanceName() + TODO PORT */"ksudoku/", true );
+	const QString destDir = QStandardPaths::writableLocation( QStandardPaths::GenericDataLocation ) + QStringLiteral("/ksudoku/");
 	QDir().mkpath( destDir );
 
 	KTar archive( tmpFile );
@@ -896,7 +900,7 @@ void KSudoku::enableMessages()
 					i18n("Enable all messages"));
 	if (result == KMessageBox::Yes) {
 		KMessageBox::enableAllMessages();
-		KGlobal::config()->sync();	// Save the changes to disk.
+		KSharedConfig::openConfig()->sync();	// Save the changes to disk.
 	}
 }
 
@@ -914,8 +918,7 @@ bool KSudokuNewStuff::install( const QString &fileName )
 		return false;
 
 	const KArchiveDirectory *archiveDir = archive.directory();
-	KStandardDirs myStdDir;
-	const QString destDir = myStdDir.saveLocation("data", /*kapp->instanceName() + TODO PORT*/"ksudoku/", true);
+	const QString destDir = QStandardPaths::writableLocation( QStandardPaths::GenericDataLocation ) + QStringLiteral("/ksudoku/");
 	QDir().mkpath(destDir);
 
 	archiveDir->copyTo(destDir);

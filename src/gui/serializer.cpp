@@ -33,7 +33,7 @@
 #include <kio/netaccess.h>
 #include <qfile.h>
 #include <KLocalizedString>
-#include <kstandarddirs.h>
+
 
 #include "ksudoku.h"
 #include "symbols.h"

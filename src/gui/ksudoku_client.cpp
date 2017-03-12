@@ -18,14 +18,17 @@
  ***************************************************************************/
 
 
-#include <kapplication.h>
+
 #include <dcopclient.h>
 #include <qdatastream.h>
 #include <qstring.h>
+#include <QApplication>
+#include <KAboutData>
+#include <KLocalizedString>
 
 int main(int argc, char **argv)
 {
-    KApplication app(argc, argv, "ksudoku_client", false);
+    QApplication app(argc, argv);
 
     // get our DCOP client and attach so that we may use it
     DCOPClient *client = app.dcopClient();

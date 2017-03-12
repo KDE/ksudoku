@@ -21,7 +21,7 @@
 #include "renderer.h"
 
 #include <QSvgRenderer>
-#include <KStandardDirs>
+
 #include <kpixmapcache.h>
 #include <KDebug>
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API

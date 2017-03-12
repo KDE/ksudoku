@@ -21,14 +21,19 @@
  ***************************************************************************/
 
 #include "ksudoku.h"
-#include <kapplication.h>
+
 //#include <dcopclient.h>
-#include <K4AboutData>
+#include <KAboutData>
 #include <KCrash>
-#include <kcmdlineargs.h>
+
 #include <KLocalizedString>
 #include <kconfigdialogmanager.h>
 #include <KUrl>
+
+#include <QApplication>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+#include <QDir>
 
 #include <cstdlib>
 #include <ctime>
@@ -43,35 +48,42 @@ static const char version[] = "1.3";
 int main(int argc, char **argv)
 {
 	qsrand(std::time(nullptr));
+	QApplication app(argc, argv);
+	KLocalizedString::setApplicationDomain("ksudoku");
 
-	K4AboutData about("ksudoku", 0,
-	                 ki18n("KSudoku"),
+	KAboutData about("ksudoku",
+	                 i18n("KSudoku"),
 	                 version,
-	                 ki18n("KSudoku - Sudoku games and more"),
-	                 K4AboutData::License_GPL_V2,
-	                 ki18n("(c) 2005-2007 The KSudoku Authors"),
-	                 KLocalizedString(), "http://ksudoku.sourceforge.net/");
-	about.addAuthor( ki18n("Francesco Rossi"), ki18n("KSudoku Author"), "redsh@email.it" );
-	about.addAuthor( ki18n("Johannes Bergmeier"), ki18n("Maintainer"), "Johannes.Bergmeier@gmx.net" );
-	about.addAuthor( ki18n("Ian Wadham"), ki18n("New puzzle generator and solver"), "iandw.au@gmail.com" );
-	about.addAuthor( ki18n("Mick Kappenburg"), ki18n("Printing and export of 0.4"), "ksudoku@kappendburg.net");
-	about.addAuthor( ki18n("Thanks to NeHe for OpenGL tutorials"), KLocalizedString(), "nehe.gamedev.net");
-	about.addCredit( ki18n("David Bau"), ki18n("Algorithms for new puzzle generator and solver at davidbau.com/archives/2006/09/04/sudoku_generator.html"), "");
-	KCmdLineArgs::init(argc, argv, &about);
+	                 i18n(description),
+	                 KAboutLicense::GPL_V2,
+	                 i18n("(c) 2005-2007 The KSudoku Authors"),
+	                 QString(), "https://games.kde.org/game.php?game=ksudoku");
+	about.addAuthor( i18n("Francesco Rossi"), i18n("KSudoku Author"), "redsh@email.it" );
+	about.addAuthor( i18n("Johannes Bergmeier"), i18n("Maintainer"), "Johannes.Bergmeier@gmx.net" );
+	about.addAuthor( i18n("Ian Wadham"), i18n("New puzzle generator and solver"), "iandw.au@gmail.com" );
+	about.addAuthor( i18n("Mick Kappenburg"), i18n("Printing and export of 0.4"), "ksudoku@kappendburg.net");
+	about.addAuthor( i18n("Thanks to NeHe for OpenGL tutorials"), QString(), "nehe.gamedev.net");
+	about.addCredit( i18n("David Bau"), i18n("Algorithms for new puzzle generator and solver at davidbau.com/archives/2006/09/04/sudoku_generator.html"), "");
 
-	KCmdLineOptions options;
-	options.add("+[URL]", ki18n( "Document to open" ));
-	KCmdLineArgs::addCmdLineOptions(options);
-	KApplication app;
+	KAboutData::setApplicationData(about);
+	app.setOrganizationDomain(QStringLiteral("kde.org"));
+	app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksudoku")));
 
-    KLocalizedString::setApplicationDomain("ksudoku");
+	QCommandLineParser parser;
+	about.setupCommandLine(&parser);
+	parser.addVersionOption();
+	parser.addHelpOption();
+	parser.addPositionalArgument(QLatin1String("[URL]"), i18n( "Document to open" ));
 
-    KCrash::initialize();
+	parser.process(app);
+	about.processCommandLine(&parser);
+
+	KCrash::initialize();
 
 	// register ourselves as a dcop client
 //	app.dcopClient()->registerAs(app.name(), false); //TODO PORT
 
-	 KConfigDialogManager::changedMap()->insert("ksudoku::SymbolConfigListWidget", SIGNAL(itemChanged(QListWidgetItem*)));
+	KConfigDialogManager::changedMap()->insert("ksudoku::SymbolConfigListWidget", SIGNAL(itemChanged(QListWidgetItem*)));
 
 	// see if we are starting with session management
 	/*if (app.isRestored())
@@ -84,18 +96,15 @@ int main(int argc, char **argv)
 		widget->show();
 
 		// no session.. just start up normally
-		KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-		if (args->count() != 0)
+		if (parser.positionalArguments().count() != 0)
 		{
-			for (int i = 0; i < args->count(); ++i)
+			for (int i = 0; i < parser.positionalArguments().count(); ++i)
 			{
-				widget->loadGame(args->url(i));
+				widget->loadGame(QUrl::fromUserInput(parser.positionalArguments().at(i), QDir::currentPath()));
 			}
 		}
-		args->clear();
-	//} //TODO PORT
 
-	app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksudoku")));
+	//} //TODO PORT
 
 	return app.exec();
 }
