@@ -21,9 +21,11 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "ksudoku_logging.h"
 #include "globals.h"
 #include "ksudoku.h"
 
+#include <QDebug>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 
@@ -792,7 +794,7 @@ void KSudoku::updateSettings() {
 
 void KSudoku::difficultyChanged (KGameDifficulty::standardLevel difficulty)
 {
-    qDebug() << "Set difficulty =" << difficulty;
+    qCDebug(KSudokuLog) << "Set difficulty =" << difficulty;
     int newDifficulty = VeryEasy;
     switch (difficulty) {
     case KGameDifficulty::VeryEasy:
@@ -810,14 +812,14 @@ void KSudoku::difficultyChanged (KGameDifficulty::standardLevel difficulty)
     default:
 	return;
     }
-    qDebug() << "Set new difficulty =" << newDifficulty;
+    qCDebug(KSudokuLog) << "Set new difficulty =" << newDifficulty;
     m_welcomeScreen->setDifficulty(newDifficulty);
     return;
 }
 
 void KSudoku::difficultyChanged (int difficulty)
 {
-    qDebug() << "Set custom difficulty =" << difficulty;
+    qCDebug(KSudokuLog) << "Set custom difficulty =" << difficulty;
     m_welcomeScreen->setDifficulty(difficulty);
     if (difficulty == Unlimited) {
 	KMessageBox::information (this,
@@ -831,7 +833,7 @@ void KSudoku::difficultyChanged (int difficulty)
 
 void KSudoku::symmetryChanged (int symmetry)
 {
-    qDebug() << "Set symmetry =" << symmetry;
+    qCDebug(KSudokuLog) << "Set symmetry =" << symmetry;
     m_welcomeScreen->setSymmetry(symmetry);
 }
 

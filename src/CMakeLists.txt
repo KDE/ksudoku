@@ -5,6 +5,7 @@ include_directories(
         ${CMAKE_CURRENT_SOURCE_DIR}/gui
         ${CMAKE_CURRENT_SOURCE_DIR}/gui/views
         ${CMAKE_CURRENT_SOURCE_DIR}/logic
+        ${CMAKE_CURRENT_BINARY_DIR}
         ${CMAKE_CURRENT_BINARY_DIR}/gui
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export
 #        ${CMAKE_CURRENT_BINARY_DIR}/gui/export/draw
@@ -23,6 +24,13 @@ set(ksudoku_SRCS
 	generator/dlxsolver.cpp
 	generator/cagegenerator.cpp
 	generator/mathdokugenerator.cpp
+)
+
+ecm_qt_declare_logging_category(ksudoku_SRCS
+    HEADER ksudoku_logging.h
+    IDENTIFIER KSudokuLog
+    CATEGORY_NAME org.kde.ksudoku
+    DEFAULT_SEVERITY Warning
 )
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-ksudoku.png")

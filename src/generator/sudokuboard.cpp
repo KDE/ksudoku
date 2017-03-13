@@ -18,11 +18,12 @@
  ****************************************************************************/
 
 #include "debug.h"
+#include "ksudoku_logging.h"
 
 #include "sudokuboard.h"
 #include "state.h"
 #include "mathdokugenerator.h"
-#include <QDebug> // IDW test.
+#include <QDebug>
 
 #include <KLocalizedString>
 #include <KMessageBox>
@@ -48,29 +49,27 @@ SudokuBoard::SudokuBoard (SKGraph * graph)
     m_vacant       (VACANT),
     m_unusable     (UNUSABLE)
 {
-    dbgLevel = 0;
-
     m_stats.type      = m_type;
     m_stats.blockSize = m_blockSize;
     m_stats.order     = m_order;
     m_boardSize       = graph->sizeX(); // TODO - IDW. Rationalise grid sizes.
-    dbe "SudokuBoard: type %d %s, block %d, order %d, BoardArea %d\n",
-	m_type, graph->name().toAscii().constData(),
-        m_blockSize, m_order, m_boardArea);
+    qCDebug(KSudokuLog) << "SudokuBoard: type " << m_type << graph->name()
+                        << ", block " << m_blockSize << ", order " << m_order
+                        << ", BoardArea " << m_boardArea;
 }
 
 void SudokuBoard::setSeed()
 {
     static bool started = false;
     if (started) {
-        dbo1 "setSeed(): RESET IS TURNED OFF\n");
+        qCDebug(KSudokuLog) << "setSeed(): RESET IS TURNED OFF";
         // qsrand (m_stats.seed); // IDW test.
     }
     else {
         started = true;
         m_stats.seed = std::time(nullptr);
         qsrand (m_stats.seed);
-        dbo1 "setSeed(): SEED = %d\n", m_stats.seed);
+        qCDebug(KSudokuLog) << "setSeed(): SEED = " << m_stats.seed;
     }
 }
 
@@ -79,8 +78,8 @@ bool SudokuBoard::generatePuzzle             (BoardContents & puzzle,
                                               Difficulty difficultyRequired,
                                               Symmetry symmetry)
 {
-    dbe "Entered generatePuzzle(): difficulty %d, symmetry %d\n",
-        difficultyRequired, symmetry);
+    qCDebug(KSudokuLog) << "Entered generatePuzzle(): difficulty "
+                        << difficultyRequired << ", symmetry " << symmetry;
     setSeed();
 
     SudokuType puzzleType = m_graph->specificType();
@@ -143,41 +142,40 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
     if (symmetry == RANDOM_SYM) {	// Choose a symmetry at random.
         symmetry = (Symmetry) (qrand() % (int) LAST_CHOICE);
     }
-    dbo1 "SYMMETRY IS %d\n", (int) symmetry);
+    qCDebug(KSudokuLog) << "SYMMETRY IS" << symmetry;
     if (symmetry == DIAGONAL_1) {
 	// If diagonal symmetry, choose between NW->SE and NE->SW diagonals.
         symmetry = (qrand() % 2 == 0) ? DIAGONAL_1 : DIAGONAL_2;
-	dbo1 "Diagonal symmetry, choosing %s\n",
-            (symmetry == DIAGONAL_1) ? "DIAGONAL_1" : "DIAGONAL_2");
+        qCDebug(KSudokuLog) << "Diagonal symmetry, choosing " <<
+            ((symmetry == DIAGONAL_1) ? "DIAGONAL_1" : "DIAGONAL_2");
     }
 
     while (true) {
         // Fill the board with values that satisfy the Sudoku rules but are
         // chosen in a random way: these values are the solution of the puzzle.
         currSolution = this->fillBoard();
-        dbo1 "RETURN FROM fillBoard()\n");
-        dbo1 "Time to fill board: %d msec\n", t.elapsed());
+        qCDebug(KSudokuLog) << "Return from fillBoard() - time to fill board:"
+                            << t.elapsed() << " msec";
 
         // Randomly insert solution-values into an empty board until a point is
         // reached where all the cells in the solution can be logically deduced.
         currPuzzle = insertValues (currSolution, difficultyRequired, symmetry);
-        dbo1 "RETURN FROM insertValues()\n");
-        dbo1 "Time to do insertValues: %d msec\n", t.elapsed());
+        qCDebug(KSudokuLog) << "Return from insertValues() - duration:"
+                            << t.elapsed() << " msec";
 
         if (difficultyRequired > m_stats.difficulty) {
             // Make the puzzle harder by removing values at random.
             currPuzzle = removeValues (currSolution, currPuzzle,
                                        difficultyRequired, symmetry);
-            dbo1 "RETURN FROM removeValues()\n");
-            dbo1 "Time to do removeValues: %d msec\n", t.elapsed());
+            qCDebug(KSudokuLog) << "Return from removeValues() - duration:"
+                                << t.elapsed() << " msec";
         }
 
         Difficulty d = calculateRating (currPuzzle, 5);
         count++;
-        dbo1 "CYCLE %d, achieved difficulty %d, required %d, rating %3.1f\n",
-                         count, d, difficultyRequired, m_accum.rating);
-        dbe1 "CYCLE %d, achieved difficulty %d, required %d, rating %3.1f\n",
-                         count, d, difficultyRequired, m_accum.rating);
+        qCInfo(KSudokuLog) <<  "CYCLE" << count << ", achieved difficulty" << d
+                           << ", required" << difficultyRequired << ", rating"
+                           << m_accum.rating;
 
 	// Use the highest rated puzzle so far.
 	if (m_accum.rating > bestRating) {
@@ -260,12 +258,8 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
         }
     }
 
-    if (dbgLevel > 0) {
-        dbo "FINAL PUZZLE\n");
-        print (puzzle);
-        dbo "SOLUTION\n");
-        print (solution);
-    }
+    qCDebug(KSudokuLog) << "FINAL PUZZLE" << puzzle;
+
     return true;
 }
 
@@ -351,10 +345,7 @@ void SudokuBoard::getMoveList (QList<int> & moveList)
 BoardContents & SudokuBoard::solveBoard (const BoardContents & boardValues,
                                                GuessingMode gMode)
 {
-    if (dbgLevel >= 2) {
-        dbo "solveBoard()\n");
-        print (boardValues);
-    }
+    qCInfo(KSudokuLog) << "solveBoard()" << boardValues;
     m_currentValues = boardValues;
     return solve (gMode);
 }
@@ -471,13 +462,10 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
             changeClues (filled, cell, symmetry, solution);
 
             deduceValues (filled, Random /* NotRandom */);
-            if (dbgLevel >= 3) {
-                print (puzzle);
-                print (filled);
-            }
+            qCDebug(KSudokuLog) << "Puzzle:" << puzzle << "; filled" << filled;
         }
     }
-    if (dbgLevel > 0) print (puzzle);
+    qCDebug(KSudokuLog) << "Puzzle:" << puzzle;
 
     while (true) {
         // Check the difficulty of the puzzle.
@@ -500,7 +488,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
                 index, solution.at (cell),
                 cell, cell/m_boardSize + 1, cell%m_boardSize + 1);
     }
-    if (dbgLevel > 0) print (puzzle);
+    qCDebug(KSudokuLog) << "Puzzle:" << puzzle;
     return puzzle;
 }
 
@@ -574,10 +562,9 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
 
             else if (m_stats.difficulty > required) {
                 // Finish if the required difficulty is exceeded.
-                dbo1 "BREAK on difficulty %d\n", m_stats.difficulty);
-                dbe1 "BREAK on difficulty %d\n", m_stats.difficulty);
-                dbo1 "Replaced %d at cell %d, overshoot is %d\n",
-                        value, cell, tailOfRemoved.count());
+                qCInfo(KSudokuLog) << "Break on difficulty - replaced" << value
+                                   << "at cell" << cell << ", overshoot is"
+                                   << tailOfRemoved.count();
                 // Replace the value involved.
 	        changeClues (puzzle, cell, symmetry, solution);
                 break;

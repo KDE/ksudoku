@@ -18,15 +18,15 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "ksudoku_logging.h"
+
 #include "view2d.h"
 
  
 
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneEvent>
-#include <QtDebug> // IDW test.
-
-#include <kdebug.h>
+#include <QDebug>
 
 #include "puzzle.h"
 #include "gameactions.h"
@@ -553,7 +553,7 @@ void View2DScene::setSceneSize(const QSize& size) {
 
 void View2DScene::hover(int cell) {
 	m_cursorPos = cell;
-// 	qDebug() << "hover cell" << cell << m_cells[cell];
+// 	qCDebug(KSudokuLog) << "hover cell" << cell << m_cells[cell];
 	QPoint pos(m_cells[cell]->pos());
 	foreach(GroupGraphicsItem* item, m_groups) {
 		item->setHighlight(pos, m_highlightsOn);
@@ -633,7 +633,7 @@ void View2DScene::update(int cell) {
 
 void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
 	if (cageNumP1 == 0) {
-	    qDebug() << "ERROR: View2DScene::updateCage: cageNumP1 == 0.";
+	    qCDebug(KSudokuLog) << "ERROR: View2DScene::updateCage: cageNumP1 == 0.";
 	    return;
 	}
 	SKGraph* g    = m_game.puzzle()->graph();

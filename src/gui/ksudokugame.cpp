@@ -20,6 +20,7 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "ksudoku_logging.h"
 #include "ksudokugame.h"
 
 #include "puzzle.h"
@@ -33,7 +34,7 @@
 
 #include <QList>
 
-#include <QDebug> // IDW
+#include <QDebug>
 
 #include <QUrl>
 
@@ -193,7 +194,7 @@ bool Game::simpleCheck() const { // IDW TODO - This does nothing useful now
                                  //            that connections have gone.
 	if(!m_private) return false;
 
-	qDebug() << "BYPASSED Game::simpleCheck()";
+	qCDebug(KSudokuLog) << "BYPASSED Game::simpleCheck()";
 	return true; // IDW: disabled rest of test.
 
 // IDW test. Eliminated optimized[] arrays and xxxConnection() functions.
@@ -307,7 +308,7 @@ bool Game::addToCage (int pos, int val)
 	    return false;	// We are not keying in a cage.
 	}
 #ifdef MATHDOKUENTRY_LOG
-	qDebug() << "\nGame::addToCage: pos" << pos << "action" << val;
+	qCDebug(KSudokuLog) << "Game::addToCage: pos" << pos << "action" << val;
 #endif
 	if (! m_private->m_currentCageSaved) {	// Start a new cage.
 	    m_private->m_cage.clear();
@@ -379,7 +380,7 @@ bool Game::addToCage (int pos, int val)
 	if (m_private->m_currentCageSaved) {	// If new cage, skip dropping.
 	    int cageNum = g->cageCount() - 1;
 #ifdef MATHDOKUENTRY_LOG
-	    qDebug() << "    DROPPING CAGE" << cageNum
+	    qCDebug(KSudokuLog) << "    DROPPING CAGE" << cageNum
 		     << "m_currentCageSaved" << m_private->m_currentCageSaved
 		     << "m_cage" << m_private->m_cage;
 #endif
@@ -389,7 +390,7 @@ bool Game::addToCage (int pos, int val)
 	g->addCage (m_private->m_cage,
 		    m_private->m_cageOperator, m_private->m_cageValue);
 #ifdef MATHDOKUENTRY_LOG
-	qDebug() << "    ADDED CAGE" << (g->cageCount() - 1)
+	qCDebug(KSudokuLog) << "    ADDED CAGE" << (g->cageCount() - 1)
 		 << "value" << m_private->m_cageValue
 		 << "op" << m_private->m_cageOperator
 		 << m_private->m_cage;
@@ -454,9 +455,9 @@ bool Game::validCell (int pos, SKGraph * g)
 void Game::finishCurrentCage (SKGraph * g)
 {
 #ifdef MATHDOKUENTRY_LOG
-	qDebug() << "END CAGE: value" << m_private->m_cageValue
+	qCDebug(KSudokuLog) << "END CAGE: value" << m_private->m_cageValue
 		 << "op" << m_private->m_cageOperator
-		 << m_private->m_cage << "\n";
+		 << m_private->m_cage;
 #endif
 	// If Killer Sudoku and cage-size > 1, force operator to be +.
 	if ((g->specificType() == KillerSudoku) &&
@@ -542,7 +543,7 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 		m_private->emitCageChange (-cageNumP1, false);
 		// Remove the cage from the puzzle's graph.
 #ifdef MATHDOKUENTRY_LOG
-		qDebug() << "    DROP CAGE" << (cageNumP1 - 1);
+		qCDebug(KSudokuLog) << "    DROP CAGE" << (cageNumP1 - 1);
 #endif
 		g->dropCage (cageNumP1 - 1);
 		if (m_private->m_cage.indexOf (pos) >= 0) {
@@ -562,7 +563,7 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 		i18n("The Delete action finds that there are no cages "
 		     "to delete."), i18n("Delete Cage"));
 #ifdef MATHDOKUENTRY_LOG
-	    qDebug() << "NO CAGES TO DELETE.";
+	    qCDebug(KSudokuLog) << "NO CAGES TO DELETE.";
 #endif
 	}
 }

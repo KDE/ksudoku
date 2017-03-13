@@ -15,6 +15,7 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ****************************************************************************/
 
+#include "ksudoku_logging.h"
 #include "globals.h"
 #include "skgraph.h"
 #include "dlxsolver.h"
@@ -31,7 +32,7 @@ DLXSolver::DLXSolver (QObject * parent)
     mSolutionMoves(0)
 {
 #ifdef DLX_LOG
-    qDebug() << "DLXSolver constructor entered";
+    qCDebug(KSudokuLog) << "DLXSolver constructor entered";
 #endif
     mCorner = new DLXNode;
     clear();
@@ -40,7 +41,7 @@ DLXSolver::DLXSolver (QObject * parent)
 DLXSolver::~DLXSolver()
 {
 #ifdef DLX_LOG
-    qDebug() << "DLXSolver destructor entered";
+    qCDebug(KSudokuLog) << "DLXSolver destructor entered";
 #endif
     deleteAll();
     delete mCorner;
@@ -52,8 +53,9 @@ void DLXSolver::printDLX (bool forced)
     bool verbose = (forced || (mGraph->order() <= 5));
 
     if ((mEndNodeNum < 0) || (mEndColNum < 0)) {
-        fprintf (stderr, "\nDLXSolver::printDLX(): EMPTY, mEndNodeNum %d, "
-                "mEndRowNum %d, mEndColNum %d\n\n",
+
+        qCDebug(KSudokuLog, "DLXSolver::printDLX(): EMPTY, mEndNodeNum %d, "
+                "mEndRowNum %d, mEndColNum %d",
                 mEndNodeNum, mEndRowNum, mEndColNum);
         return;
     }
@@ -119,14 +121,14 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
 	mSolutionMoves->clear();
     }
 #ifdef DLX_LOG
-    qDebug() << "NUMBER OF ROWS IN SOLUTION" << solution.size();
+    qCDebug(KSudokuLog) << "NUMBER OF ROWS IN SOLUTION" << solution.size();
 #endif
     if ((t == Mathdoku) || (t == KillerSudoku)) {
 	for (int n = 0; n < solution.size(); n++) {
 	    int rowNumDLX = solution.at (n)->value;
 	    int searchRow = 0;
 #ifdef DLX_LOG
-	    qDebug() << "    Node" << n << "row number" << rowNumDLX;
+	    qCDebug(KSudokuLog) << "    Node" << n << "row number" << rowNumDLX;
 #endif
 	    for (int nCage = 0; nCage < nCages; nCage++) {
 		int cageSize = mGraph->cage (nCage).size();
@@ -140,9 +142,9 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
 		int comboValues = mPossibilitiesIndex->at (nCage)
                                   + (comboNum * cageSize);
 #ifdef DLX_LOG
-		qDebug() << "Solution node" << n << "cage" << nCage
+		qCDebug(KSudokuLog) << "Solution node" << n << "cage" << nCage
                          << mGraph->cage (nCage) << "combos" << nCombos;
-		qDebug() << "Search row" << searchRow << "DLX row" << rowNumDLX
+		qCDebug(KSudokuLog) << "Search row" << searchRow << "DLX row" << rowNumDLX
                          << "cageSize" << cageSize << "combo" << comboNum
 			 << "values at" << comboValues;
 #endif
@@ -253,10 +255,10 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     int unusable     = UNUSABLE;
 
 #ifdef DLX_LOG
-    fprintf (stderr, "\nTEST for DLXSolver\n\n");
+    qCDebug(KSudokuLog) << "TEST for DLXSolver";
     printSudoku();
 
-    qDebug() << "DLXSolver::solve: Order" << order << "boardArea" << boardArea
+    qCDebug(KSudokuLog) << "DLXSolver::solve: Order" << order << "boardArea" << boardArea
              << "nGroups" << nGroups;
 #endif
 
@@ -276,7 +278,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     for (int index = 0; index < boardArea; index++) {
         if (boardValues.at(index) != vacant) {
 #ifdef DLX_LOG
-            qDebug() << "EXCLUDE CONSTRAINT for cell" << index
+            qCDebug(KSudokuLog) << "EXCLUDE CONSTRAINT for cell" << index
                      << "value" << boardValues.at(index);
 #endif
             mColumns[index] = 0;
@@ -291,14 +293,14 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
 #ifdef DLX_LOG
             int row    = graph->cellPosY (index);
             int col    = graph->cellPosX (index);
-            qDebug() << "CLUE AT INDEX" << index
+            qCDebug(KSudokuLog) << "CLUE AT INDEX" << index
                      << "value" << boardValues.at(index)
                      << "row" << row << "col" << col << "groups" << groups;
 #endif
             int val = boardValues.at(index) - 1;
             Q_FOREACH (int group, groups) {
 #ifdef DLX_LOG
-                qDebug() << "EXCLUDE CONSTRAINT" << (boardArea+group*order+val);
+                qCDebug(KSudokuLog) << "EXCLUDE CONSTRAINT" << (boardArea+group*order+val);
 #endif
                 mColumns[boardArea + group*order + val] = 0;
                 Q_FOREACH (int cell, graph->clique (group)) {
@@ -328,7 +330,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
 #ifdef DLX_LOG
         int row    = graph->cellPosY (index);
         int col    = graph->cellPosX (index);
-        qDebug() << "    Index" << index << "row" << row << "col" << col
+        qCDebug(KSudokuLog) << "    Index" << index << "row" << row << "col" << col
                  << "groups" << groups;
 #endif
 
@@ -340,7 +342,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
         for (int possValue = 0; possValue < order; possValue++) {
 #ifdef DLX_LOG
             QString s = (mRows.at (rowNumDLX) == 0) ? "DROPPED" : "OK";
-            qDebug() << "Row" << rowNumDLX << s;
+            qCDebug(KSudokuLog) << "Row" << rowNumDLX << s;
 #endif
             if (mRows.at (rowNumDLX) != 0) {	// Skip already-excluded rows.
                 mRows[rowNumDLX] = 0;		// Re-initialise a "live" row.
@@ -355,14 +357,14 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     }
 #ifdef DLX_LOG
     printDLX(true);
-    fprintf (stderr, "Matrix MAX had %d rows, %d columns and %d ones\n\n",
-            mRows.count(), mColumns.count(), (boardArea + nGroups*order)*order);
-    qDebug() << "\nCALL solveDLX(), solution limit" << solutionLimit;
+    qCDebug(KSudokuLog) << "Matrix MAX had " << mRows.count() << " rows, " << mColumns.count()
+                        << " columns and " << ((boardArea + nGroups*order)*order) << " ones";
+    qCDebug(KSudokuLog) << "CALL solveDLX(), solution limit" << solutionLimit;
 #endif
     // Solve the DLX-matrix equivalent of the Sudoku-style puzzle.
     nSolutions = solveDLX (solutionLimit);
 #ifdef DLX_LOG
-    qDebug() << "FOUND" << nSolutions << "solutions, limit" << solutionLimit;
+    qCDebug(KSudokuLog) << "FOUND" << nSolutions << "solutions, limit" << solutionLimit;
 #endif
     return nSolutions;
 }
@@ -374,7 +376,7 @@ int DLXSolver::solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
 {
     mSolutionMoves = solutionMoves;
 #ifdef DLX_LOG
-    qDebug() << "DLXSolver::solveMathdoku ENTERED" << possibilities->size()
+    qCDebug(KSudokuLog) << "DLXSolver::solveMathdoku ENTERED" << possibilities->size()
              << "possibilities" << possibilitiesIndex->size() << "index size";
 #endif
     int nSolutions   = 0;
@@ -411,7 +413,7 @@ int DLXSolver::solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
 	int nCombos = nVals / size;
 	int index = possibilitiesIndex->at (n);
 #ifdef DLX_LOG
-	qDebug() << "CAGE" << n << "of" << nCages << "size" << size
+	qCDebug(KSudokuLog) << "CAGE" << n << "of" << nCages << "size" << size
                  << "nCombos" << nCombos << "nVals" << nVals
 		 << "index" << index << "of" << possibilities->size();
 #endif
@@ -420,12 +422,12 @@ int DLXSolver::solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
 	    addNode (rowNumDLX, n);	// Mark the cage's fill-in constraint.
 	    counter++;
 #ifdef DLX_LOG
-	    qDebug() << "Add cage-node: row" << rowNumDLX << "cage" << n
+	    qCDebug(KSudokuLog) << "Add cage-node: row" << rowNumDLX << "cage" << n
                      << graph->cage (n);
 #endif
 	    Q_FOREACH (int cell, graph->cage (n)) {
                 int possVal = possibilities->at (index);
-		// qDebug() << "    Cell" << cell << "possVal" << possVal;
+		// qCDebug(KSudokuLog) << "    Cell" << cell << "possVal" << possVal;
 		Q_FOREACH (int group, graph->cliqueList (cell)) {
 		    // Poss values go from 0 to (order - 1) in DLX (so -1 here).
 		    addNode (rowNumDLX, nCages + group * order + possVal - 1);
@@ -436,7 +438,7 @@ int DLXSolver::solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
 	    rowNumDLX++;
 	}
     }
-    qDebug() << "DLX MATRIX HAS" << mColumns.size() << "cols" << mRows.size() << "rows" << counter << "nodes";
+    qCDebug(KSudokuLog) << "DLX MATRIX HAS" << mColumns.size() << "cols" << mRows.size() << "rows" << counter << "nodes";
     nSolutions = solveDLX (solutionLimit);
     return nSolutions;
 }
@@ -531,7 +533,7 @@ int DLXSolver::solveDLX (int solutionLimit)
 
     if (mCorner->right == mCorner) {
 	// Empty matrix, nothing to solve.
-        qDebug() << "solveDLX(): EMPTY MATRIX, NOTHING TO SOLVE.";
+        qCDebug(KSudokuLog) << "solveDLX(): EMPTY MATRIX, NOTHING TO SOLVE.";
         return solutionCount;
     }
 
@@ -546,8 +548,8 @@ int DLXSolver::solveDLX (int solutionLimit)
             }
         }
 #ifdef DLX_LOG
-        fprintf (stderr, "\nsolveDLX: BEST COLUMN %d level %d rows %d\n",
-                 mColumns.indexOf (bestCol), level, bestCol->value);
+        qCDebug(KSudokuLog) << "solveDLX: BEST COLUMN " << mColumns.indexOf(bestCol)
+                            << " level " << level << " rows " << bestCol->value;
 #endif
 
         coverColumn (bestCol);
@@ -591,7 +593,7 @@ int DLXSolver::solveDLX (int solutionLimit)
                     currNode = solution.at (level);
                     bestCol  = currNode->columnHeader;
 #ifdef DLX_LOG
-                    qDebug() << "BACKTRACKED TO LEVEL" << level;
+                    qCDebug(KSudokuLog) << "BACKTRACKED TO LEVEL" << level;
 #endif
                 }
                 else {
@@ -603,7 +605,7 @@ int DLXSolver::solveDLX (int solutionLimit)
             // Uncover all other columns of currNode's row (R to L).
             // Restores those constraints to unsatisfied state in reverse order.
 #ifdef DLX_LOG
-            qDebug() << "RESTORE !!!";
+            qCDebug(KSudokuLog) << "RESTORE !!!";
 #endif
             DLXNode * p = currNode->left;
             while (p != currNode) {
@@ -616,7 +618,7 @@ int DLXSolver::solveDLX (int solutionLimit)
             currNode = currNode->below;
             solution [level] = currNode;
 #ifdef DLX_LOG
-            qDebug() << "SELECT ROW" << currNode->value
+            qCDebug(KSudokuLog) << "SELECT ROW" << currNode->value
                      << "FROM COL" << mColumns.indexOf (currNode->columnHeader);
 #endif
         } // End while (descending)
@@ -641,7 +643,7 @@ void DLXSolver::coverColumn (DLXNode * colDLX)
     while (colNode != colDLX) {
         DLXNode * rowNode = colNode->right;
 #ifdef DLX_LOG
-        qDebug() << "DLXSolver::coverColumn: remove DLX row" << rowNode->value;
+        qCDebug(KSudokuLog) << "DLXSolver::coverColumn: remove DLX row" << rowNode->value;
 #endif
         while (rowNode != colNode) {
             rowNode->below->above = rowNode->above;
@@ -659,7 +661,7 @@ void DLXSolver::uncoverColumn (DLXNode * colDLX)
     while (colNode != colDLX) {
         DLXNode * rowNode = colNode->right;
 #ifdef DLX_LOG
-        qDebug() << "DLXSolver::uncoverColumn: return DLX row"
+        qCDebug(KSudokuLog) << "DLXSolver::uncoverColumn: return DLX row"
                  << rowNode->value;
 #endif
         while (rowNode != colNode) {
@@ -682,8 +684,8 @@ void DLXSolver::uncoverColumn (DLXNode * colDLX)
 void DLXSolver::clear()
 {
 #ifdef DLX_LOG
-    qDebug() << "=============================================================";
-    qDebug() << "DLXSolver::clear";
+    qCDebug(KSudokuLog) << "=============================================================";
+    qCDebug(KSudokuLog) << "DLXSolver::clear";
 #endif
     // Logically clear the DLX matrix, but leave all previous nodes allocated.
     // This is to support faster DLX solving on second and subsequent puzzles.
@@ -761,7 +763,7 @@ void DLXSolver::addBelow (DLXNode * node, DLXNode * start)
 void DLXSolver::deleteAll()
 {
 #ifdef DLX_LOG
-    qDebug() << "DLXSolver::deleteAll() CALLED";
+    qCDebug(KSudokuLog) << "DLXSolver::deleteAll() CALLED";
 #endif
     qDeleteAll (mNodes);	// Deallocate the nodes pointed to.
     mNodes.clear();

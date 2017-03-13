@@ -15,6 +15,7 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ****************************************************************************/
 
+#include "ksudoku_logging.h"
 #include "globals.h"
 #include "skgraph.h"
 #include "dlxsolver.h"
@@ -68,7 +69,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 
 #ifdef MATHDOKU_LOG
     usedCells.fill ('-', mBoardArea);
-    qDebug() << "USED CELLS     " << usedCells;
+    qCDebug(KSudokuLog) << "USED CELLS     " << usedCells;
 #endif
 
     // TODO - Will probably need to limit the number of size-1 cages and maybe
@@ -134,7 +135,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 		index = n;		// Enclosed on three sides: start here.
 		chosenSize = qrand() % (maxSize - 1) + 2;
 #ifdef MATHDOKU_LOG
-		qDebug() << "CHOSE CUL-DE-SAC" << mNeighbourFlags.at (n)
+		qCDebug(KSudokuLog) << "CHOSE CUL-DE-SAC" << mNeighbourFlags.at (n)
 		       << "at" << index;
 #endif
 		break;
@@ -142,7 +143,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 		index = n;		// Isolated cell: size 1 is forced.
 		chosenSize = 1;
 #ifdef MATHDOKU_LOG
-		qDebug() << "CHOSE ISOLATED" << mNeighbourFlags.at (n)
+		qCDebug(KSudokuLog) << "CHOSE ISOLATED" << mNeighbourFlags.at (n)
 		       << "at" << index;
 #endif
 		break;
@@ -159,7 +160,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 		chosenSize = 1;				// Start with size 1.
 		mSingles++;
 #ifdef MATHDOKU_LOG
-		qDebug() << "INITIAL SINGLE" << mSingles;
+		qCDebug(KSudokuLog) << "INITIAL SINGLE" << mSingles;
 #endif
 	    }
 	    else {
@@ -167,13 +168,13 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	    }
 	}
 #ifdef MATHDOKU_LOG
-	qDebug() << "chosenSize" << chosenSize << "cell" << index;
+	qCDebug(KSudokuLog) << "chosenSize" << chosenSize << "cell" << index;
 #endif
 
 	saveUnusedCells = mUnusedCells;
 	saveNeighbourFlags = mNeighbourFlags;
 #ifdef MATHDOKU_LOG
-	qDebug() << "CALL makeOneCage: index" << index << "size" << chosenSize;
+	qCDebug(KSudokuLog) << "CALL makeOneCage: index" << index << "size" << chosenSize;
 #endif
 
 	cage = makeOneCage (index, chosenSize);
@@ -182,11 +183,11 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	    mUnusedCells = saveUnusedCells;
 	    mNeighbourFlags = saveNeighbourFlags;
 #ifdef MATHDOKU_LOG
-	    qDebug() << "CAGE IS NOT OK - unused" << mUnusedCells << "\n";
+	    qCDebug(KSudokuLog) << "CAGE IS NOT OK - unused" << mUnusedCells;
 #endif
 	    numFailures++;
 	    if (numFailures >= maxFailures) {
-		qDebug() << "makeOneCage() HAD" << numFailures << "failures"
+		qCDebug(KSudokuLog) << "makeOneCage() HAD" << numFailures << "failures"
 		         << "maximum is" << maxFailures;
 		return 0;	// Too many problems with making cages.
 	    }
@@ -197,12 +198,12 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	mGraph->addCage (cage, cageOperator, cageValue);
 
 #ifdef MATHDOKU_LOG
-	qDebug() << "CAGE" << mGraph->cageCount() << cage;
+	qCDebug(KSudokuLog) << "CAGE" << mGraph->cageCount() << cage;
 	char tag = 'a' + mGraph->cageCount() - 1;
 	Q_FOREACH (int cell, cage) {
 	    usedCells[cell] = tag;
 	}
-	qDebug() << "LAYOUT" << tag << usedCells << "\n";
+	qCDebug(KSudokuLog) << "LAYOUT" << tag << usedCells;
 	for (int row = 0; row < mOrder; row++) {
 	    for (int col = 0; col < mOrder; col++) {
 		fprintf (stderr, "%c ", usedCells.at (col * mOrder + row));
@@ -216,13 +217,13 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	    flagsList.append (mNeighbourFlags.at (cell));
 	}
 #ifdef MATHDOKU_LOG
-	qDebug() << "FLAGS" << flagsList;
-	qDebug() << "UNUSED" << mUnusedCells << "\n";
+	qCDebug(KSudokuLog) << "FLAGS" << flagsList;
+	qCDebug(KSudokuLog) << "UNUSED" << mUnusedCells;
 #endif
     }
     int nCages = mPossibilitiesIndex->count() - 1;
 #ifdef MATHDOKU_LOG
-    qDebug() << "Cages in mPossibilitiesIndex" << nCages
+    qCDebug(KSudokuLog) << "Cages in mPossibilitiesIndex" << nCages
              << "generated cages" << mGraph->cageCount();
 #endif
     int totCombos = 0;
@@ -231,7 +232,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	int size = mGraph->cage (n).size();
 	int nCombos =  nVals / size;
 #ifdef MATHDOKU_LOG
-	qDebug() << "Cage" << n << "values" << nVals << "size" << size
+	qCDebug(KSudokuLog) << "Cage" << n << "values" << nVals << "size" << size
                  << "combos" << nCombos << "target" << mGraph->cageValue(n)
 		 << "op" << mGraph->cageOperator(n)
 		 << "topleft" << mGraph->cageTopLeft(n);
@@ -239,7 +240,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	totCombos += nCombos;
     }
 #ifdef MATHDOKU_LOG
-    qDebug() << "TOTAL COMBOS" << totCombos << "\n";
+    qCDebug(KSudokuLog) << "TOTAL COMBOS" << totCombos;
 #endif
 
     // Use the DLX solver to check if this puzzle has a unique solution.
@@ -248,19 +249,19 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
                                                 mPossibilitiesIndex, 2);
     if (nSolutions == 0) {
 #ifdef MATHDOKU_LOG
-	qDebug() << "FAILED TO FIND A SOLUTION: nSolutions =" << nSolutions;
+	qCDebug(KSudokuLog) << "FAILED TO FIND A SOLUTION: nSolutions =" << nSolutions;
 #endif
 	return -1;		// At least one solution must exist.
     }
     else if (nSolutions > 1) {
 #ifdef MATHDOKU_LOG
-	qDebug() << "NO UNIQUE SOLUTION: nSolutions =" << nSolutions;
+	qCDebug(KSudokuLog) << "NO UNIQUE SOLUTION: nSolutions =" << nSolutions;
 #endif
 	return -1;		// There must only one solution.
     }
 
 #ifdef MATHDOKU_LOG
-    qDebug() << "UNIQUE SOLUTION FOUND: nSolutions =" << nSolutions;
+    qCDebug(KSudokuLog) << "UNIQUE SOLUTION FOUND: nSolutions =" << nSolutions;
 #endif
     return mGraph->cageCount();
 }
@@ -269,7 +270,7 @@ int CageGenerator::checkPuzzle (SKGraph * graph, BoardContents & solution,
                                 QList<int> * solutionMoves, bool hideOperators)
 {
 #ifdef MATHDOKU_LOG
-    qDebug() << "CageGenerator::checkPuzzle(): nCAGES" << graph->cageCount();
+    qCDebug(KSudokuLog) << "CageGenerator::checkPuzzle(): nCAGES" << graph->cageCount();
 #endif
 
     int result       = 0;
@@ -280,7 +281,7 @@ int CageGenerator::checkPuzzle (SKGraph * graph, BoardContents & solution,
     // Only Mathdoku puzzles can have hidden operators as part of the *puzzle*.
     // KillerSudoku has + or NoOp and makes the +'s hidden only in the *view*.
     mHiddenOperators = mKillerSudoku ? false : hideOperators;
-    qDebug() << "\nCHECK PUZZLE: HIDDEN OPERATORS" << mHiddenOperators;
+    qCDebug(KSudokuLog) << "CHECK PUZZLE: HIDDEN OPERATORS" << mHiddenOperators;
 
     mPossibilities->clear();
     mPossibilitiesIndex->clear();
@@ -290,7 +291,7 @@ int CageGenerator::checkPuzzle (SKGraph * graph, BoardContents & solution,
     for (int n = 0; n < nCages; n++) {
 	// Add all the possibilities for each cage.
 #ifdef MATHDOKU_LOG
-	qDebug() << "SET ALL Possibilities: cage size" << graph->cage(n).size()
+	qCDebug(KSudokuLog) << "SET ALL Possibilities: cage size" << graph->cage(n).size()
 	         << "operator" << graph->cageOperator(n) << "value"
 		 << graph->cageValue(n) << "cage" << graph->cage(n);
 #endif
@@ -301,16 +302,16 @@ int CageGenerator::checkPuzzle (SKGraph * graph, BoardContents & solution,
 	int nVals = mPossibilitiesIndex->at (n+1) - mPossibilitiesIndex->at (n);
 	int size = mGraph->cage (n).size();
 	int nCombos =  nVals / size;
-	qDebug() << "Cage" << n << "values" << nVals << "size" << size
+	qCDebug(KSudokuLog) << "Cage" << n << "values" << nVals << "size" << size
                  << "combos" << nCombos << "target" << mGraph->cageValue(n)
 		 << "op" << mGraph->cageOperator(n)
 		 << "topleft" << mGraph->cageTopLeft(n);
 #endif
     }
 #ifdef MATHDOKU_LOG
-    qDebug() << "POSSIBILITIES SET: now check-solve the puzzle.";
-    qDebug() << "INDEX" << (*mPossibilitiesIndex);
-    qDebug() << "POSS:" << (*mPossibilities);
+    qCDebug(KSudokuLog) << "POSSIBILITIES SET: now check-solve the puzzle.";
+    qCDebug(KSudokuLog) << "INDEX" << (*mPossibilitiesIndex);
+    qCDebug(KSudokuLog) << "POSS:" << (*mPossibilities);
 #endif
     // Use the DLX solver to check if this puzzle has a unique solution.
     result = mDLXSolver->solveMathdoku (graph, solutionMoves,
@@ -350,7 +351,7 @@ QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
 	    }
 	}
 #ifdef MATHDOKU_LOG
-	qDebug() << "index" << index << "NEIGHBOURS" << unusedNeighbours;
+	qCDebug(KSudokuLog) << "index" << index << "NEIGHBOURS" << unusedNeighbours;
 #endif
 	mUnusedCells.removeAt (mUnusedCells.indexOf (index));
 	mNeighbourFlags[index] = TAKEN;
@@ -397,13 +398,13 @@ void CageGenerator::setCageTarget (QVector<int> cage,
     QVector<int> digits;
     digits.fill (0, size);
 #ifdef MATHDOKU_LOG
-    qDebug() << "CAGE SIZE" << size << "CONTENTS" << cage;
+    qCDebug(KSudokuLog) << "CAGE SIZE" << size << "CONTENTS" << cage;
 #endif
     for (int n = 0; n < size; n++) {
 	int digit = mSolution.at (cage.at(n));
 	digits[n] = digit;
 #ifdef MATHDOKU_LOG
-	qDebug() << "Add cell" << cage.at(n)
+	qCDebug(KSudokuLog) << "Add cell" << cage.at(n)
 		 << "value" << mSolution.at (cage.at(n))
 		 << (n + 1) << "cells"; // : total" << value;
 #endif
@@ -412,7 +413,7 @@ void CageGenerator::setCageTarget (QVector<int> cage,
 	cageOperator = NoOperator;
 	cageValue = digits[0];
 #ifdef MATHDOKU_LOG
-	qDebug() << "SINGLE CELL: #" << mSingles << "val" << cageValue;
+	qCDebug(KSudokuLog) << "SINGLE CELL: #" << mSingles << "val" << cageValue;
 #endif
 	return;
     }
@@ -439,7 +440,7 @@ void CageGenerator::setCageTarget (QVector<int> cage,
 	int roll = qrand() % (weights[0]+weights[1]+weights[2]+weights[3]);
 #ifdef MATHDOKU_LOG
 	int wTotal = (weights[0]+weights[1]+weights[2]+weights[3]);
-	qDebug() << "ROLL" << roll << "VERSUS" << wTotal << "WEIGHTS"
+	qCDebug(KSudokuLog) << "ROLL" << roll << "VERSUS" << wTotal << "WEIGHTS"
 		 << weights[0] << weights[1] << weights[2] << weights[3];
 #endif
 	int n = 0;
@@ -476,7 +477,7 @@ void CageGenerator::setCageTarget (QVector<int> cage,
 	break;
     }
 #ifdef MATHDOKU_LOG
-    qDebug() << "CHOSE OPERATOR" << op << "value" << value << digits;
+    qCDebug(KSudokuLog) << "CHOSE OPERATOR" << op << "value" << value << digits;
 #endif
     cageOperator = op;
     cageValue = value;
@@ -501,7 +502,7 @@ bool CageGenerator::cageIsOK (const QVector<int> cage,
 	    int digit = mSolution.at (cage.at(n));
 	    if (usedDigits.at (digit)) {
 #ifdef MATHDOKU_LOG
-		qDebug() << "SOLUTION VALUES CONTAIN DUPLICATE" << digit;
+		qCDebug(KSudokuLog) << "SOLUTION VALUES CONTAIN DUPLICATE" << digit;
 #endif
 		return false;			// Cannot use this cage.
 	    }
@@ -525,7 +526,7 @@ bool CageGenerator::cageIsOK (const QVector<int> cage,
     else {
 	// Discard the possibilities: this cage is no good.
 #ifdef MATHDOKU_LOG
-	qDebug() << "CAGE REJECTED: combos" << (numPoss / nDigits)
+	qCDebug(KSudokuLog) << "CAGE REJECTED: combos" << (numPoss / nDigits)
                  << "max" << mMaxCombos << cage << cageValue << cageOperator;
 #endif
 	while (numPoss > 0) {
@@ -615,7 +616,7 @@ void CageGenerator::setPossibleAddsOrMultiplies
 	if (currentValue == requiredValue) {
 	    nTarg++;
 #ifdef MATHDOKU_LOG
-	    qDebug() << "TARGET REACHED" << requiredValue
+	    qCDebug(KSudokuLog) << "TARGET REACHED" << requiredValue
 		     << "OP" << cageOperator << "DIGITS" << digits;
 #endif
 	    bool digitsOK = false;
@@ -639,12 +640,12 @@ void CageGenerator::setPossibleAddsOrMultiplies
 #ifdef MATHDOKU_LOG
 	    if (mKillerSudoku) {
 		nDupl   = digitsOK ? nDupl : nDupl++;
-		qDebug() << "CONTAINS DUPLICATES: KillerSudoku cage" << digitsOK
+		qCDebug(KSudokuLog) << "CONTAINS DUPLICATES: KillerSudoku cage" << digitsOK
 			 << digits << "cage" << cage;
 	    }
 	    else {
 		nIncons = digitsOK ? nIncons : nIncons++;
-		qDebug() << "SELF CONSISTENT: Mathdoku cage" << digitsOK
+		qCDebug(KSudokuLog) << "SELF CONSISTENT: Mathdoku cage" << digitsOK
 			 << digits << "cage" << cage;
 	    }
 #endif
@@ -671,7 +672,7 @@ void CageGenerator::setPossibleAddsOrMultiplies
 	}
     }
 #ifdef MATHDOKU_LOG
-    qDebug() << loopCount << "possibles" << nTarg << "hit target"
+    qCDebug(KSudokuLog) << loopCount << "possibles" << nTarg << "hit target"
 	     << nDupl << "had duplicate(s)" << nCons << "consistent";
 #endif
 }
@@ -731,7 +732,7 @@ void CageGenerator::init (SKGraph * graph, bool hideOperators)
     mKillerSudoku    = (graph->specificType() == KillerSudoku);
     mHiddenOperators = mKillerSudoku ? false : hideOperators;
 #ifdef MATHDOKU_LOG
-    qDebug() << "\nMAKE CAGES init(): HIDDEN OPERATORS" << mHiddenOperators;
+    qCDebug(KSudokuLog) << "MAKE CAGES init(): HIDDEN OPERATORS" << mHiddenOperators;
 #endif
 
     mUnusedCells.clear();
@@ -762,8 +763,8 @@ void CageGenerator::init (SKGraph * graph, bool hideOperators)
         mNeighbourFlags.append (neighbours);
     }
 #ifdef MATHDOKU_LOG
-    qDebug() << "UNUSED CELLS   " << mUnusedCells;
-    qDebug() << "NEIGHBOUR-FLAGS" << mNeighbourFlags;
+    qCDebug(KSudokuLog) << "UNUSED CELLS   " << mUnusedCells;
+    qCDebug(KSudokuLog) << "NEIGHBOUR-FLAGS" << mNeighbourFlags;
 #endif
 }
 

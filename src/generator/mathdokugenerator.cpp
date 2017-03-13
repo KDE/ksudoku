@@ -15,6 +15,7 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ****************************************************************************/
 
+#include "ksudoku_logging.h"
 #include "mathdokugenerator.h"
 #include "skgraph.h"
 #include "cagegenerator.h"
@@ -55,12 +56,12 @@ bool MathdokuGenerator::generateMathdokuTypes (BoardContents & puzzle,
 	}
     }
     if (numTries >= maxTries) {
-	qDebug() << "makeCages() FAILED after" << numTries << "tries"
+	qCDebug(KSudokuLog) << "makeCages() FAILED after" << numTries << "tries"
 	         << numMultis << "multi-solutions";
         return false;		// Try another set of Sudoku cell-values.
     }
 
-    qDebug() << "makeCages() required" << numTries << "tries"
+    qCDebug(KSudokuLog) << "makeCages() required" << numTries << "tries"
              << numMultis << "multi-solutions";;
     puzzle = mGraph->emptyBoard();
     for (int n = 0; n < mGraph->cageCount(); n++) {

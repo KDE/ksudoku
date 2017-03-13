@@ -18,11 +18,11 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "ksudoku_logging.h"
 #include "renderer.h"
 
 #include <QSvgRenderer>
 
-#include <KDebug>
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgametheme.h>
 
@@ -31,7 +31,7 @@
 #include <QPixmap>
 #include <QPainter>
 
-#include <QtDebug>
+#include <QDebug>
 
 namespace ksudoku {
 
@@ -46,7 +46,7 @@ Renderer::Renderer() {
 	m_mathdokuStyle = false;
 	
 	if(!loadTheme(Settings::theme()))
-		kDebug() << "Failed to load any game theme!";
+		qCDebug(KSudokuLog) << "Failed to load any game theme!";
 }
 
 Renderer::~Renderer() {
@@ -58,7 +58,7 @@ bool Renderer::loadTheme(const QString& themeName) {
 	bool discardCache = !m_currentTheme.isEmpty();
 	
 	if(!m_currentTheme.isEmpty() && m_currentTheme == themeName) {
-		kDebug() << "Notice: loading the same theme";
+		qCDebug(KSudokuLog) << "Notice: loading the same theme";
 		return true; // this is not an error
 	}
 	
@@ -66,8 +66,8 @@ bool Renderer::loadTheme(const QString& themeName) {
 	
 	KGameTheme theme;
 	if(themeName.isEmpty() || !theme.load(themeName)) {
-		kDebug()<< "Failed to load theme" << Settings::theme();
-		kDebug() << "Trying to load default";
+		qCDebug(KSudokuLog) << "Failed to load theme" << Settings::theme();
+		qCDebug(KSudokuLog) << "Trying to load default";
 		if(!theme.loadDefault())
 			return false;
 		
@@ -76,12 +76,12 @@ bool Renderer::loadTheme(const QString& themeName) {
 	}
 	
 	bool res = m_renderer->load(theme.graphics());
-	kDebug() << "loading" << theme.graphics();
+	qCDebug(KSudokuLog) << "loading" << theme.graphics();
 	if(!res)
 		return false;
 	
 	if(discardCache) {
-		kDebug() << "discarding cache";
+		qCDebug(KSudokuLog) << "discarding cache";
 		m_cache->clear();
 	}
 	

@@ -18,11 +18,12 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "ksudoku_logging.h"
 #include "gamevariants.h"
 #include "ksudokugame.h"
 #include "serializer.h"
 
-#include <QtDebug>
+#include <QDebug>
 #include <KMessageBox>
 #include <KLocalizedString>
 #include <QPainter>
@@ -303,7 +304,7 @@ Game SudokuGame::createGame(int difficulty, int symmetry) {
 }
 
 KsView* SudokuGame::createView(const Game& /*game*/) const {
-	qDebug() << "KsView* ksudoku::SudokuGame::createView()";
+	qCDebug(KSudokuLog) << "KsView* ksudoku::SudokuGame::createView()";
 	return 0;
 }
 
@@ -355,7 +356,7 @@ Game RoxdokuGame::createGame(int difficulty, int symmetry) {
 }
 
 KsView* RoxdokuGame::createView(const Game& /*game*/) const {
-	qDebug() << "KsView* ksudoku::RoxdokuGame::createView()";
+	qCDebug(KSudokuLog) << "KsView* ksudoku::RoxdokuGame::createView()";
 	return 0;
 }
 
@@ -403,7 +404,7 @@ Game CustomGame::createGame(int difficulty, int symmetry) {
 }
 
 KsView* CustomGame::createView(const Game& /*game*/) const {
-	qDebug() << "KsView* ksudoku::CustomGame::createView()";
+	qCDebug(KSudokuLog) << "KsView* ksudoku::CustomGame::createView()";
 	return 0;
 }
 
