@@ -697,7 +697,7 @@ const BoardContents Game::allValues() const {
 
 QTime Game::time() const {
 	if(!m_private) return QTime();
-	return QTime().addMSecs(msecsElapsed());
+	return QTime(0,0).addMSecs(msecsElapsed());
 }
 
 int Game::msecsElapsed() const {
