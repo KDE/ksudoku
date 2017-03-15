@@ -43,7 +43,7 @@
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
-#include <KShortcut>
+#include <QKeySequence>
 #include <KUrl>
 #include <kmessagebox.h>
 #include <KLocalizedString>
@@ -461,7 +461,7 @@ void KSudoku::setupActions()
 	m_gameActions = new ksudoku::GameActions(actionCollection());
 	m_gameActions->init();
 
-	KShortcut shortcut;
+	QKeySequence shortcut;
 
 	setAcceptDrops(true);
 

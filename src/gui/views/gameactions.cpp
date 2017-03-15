@@ -24,7 +24,7 @@
 #include <QAction>
 #include <KActionCollection>
 #include <QSignalMapper>
-#include <KShortcut>
+#include <QKeySequence>
 namespace ksudoku {
 
 GameActions::GameActions(KActionCollection* collection) {
@@ -51,8 +51,9 @@ void GameActions::init() {
                             /* Qt::Key_Asterisk, */ Qt::Key_Plus, Qt::Key_Space,
 			    Qt::Key_Return};
 	QAction * a;
-	//QT5 KShortcut shortcut;
-	for(int i = 0; i < 25; ++i) {
+	QList<QKeySequence> shortcuts;
+	for(int i = 0; i < 31; ++i) {
+		shortcuts.clear();
 		a = new QAction(this);
 		m_collection->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
@@ -63,38 +64,35 @@ void GameActions::init() {
 		a = new QAction(this);
 		m_collection->addAction(QString("val-enter%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Enter %1 (%2)", QChar('a'+i), i+1));
-#if 0 //QT5
-		shortcut = a->shortcut();
-		if (i < 25) {;
-		    // Keys A to Y, for Sudoku puzzles.
-		    shortcut.setPrimary( Qt::Key_A + i);
+		if (i < 25) {
+			// Keys A to Y, for Sudoku puzzles.
+			shortcuts << QKeySequence(Qt::Key_A + i);
 		}
 		else {
-		    // Extras for keying in Mathdoku and Killer Sudoku puzzles.
-		    shortcut.setPrimary (extras[i - 25]);
+			// Extras for keying in Mathdoku and Killer Sudoku puzzles.
+			shortcuts << QKeySequence(extras[i - 25]);
 		}
-		if(i < 9) {
-		    // Keys 1 to 9, for puzzles of order 9 or less.
-		    shortcut.setAlternate( Qt::Key_1 + i);
+		if (i < 9) {
+			// Keys 1 to 9, for puzzles of order 9 or less.
+			shortcuts << QKeySequence(Qt::Key_1 + i);
 		}
-		a->setShortcut(shortcut);
-#endif
+		m_collection->setDefaultShortcuts(a, shortcuts);
 		m_enterValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_enterValueMapper, SLOT(map()));
 		m_actions << a;
 		if (i >= 25) {
-		    continue;
+			continue;
 		}
 
+		shortcuts.clear();
 		a = new QAction(this);
 		m_collection->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Mark %1 (%2)", QChar('a'+i), i+1));
-		//QT5 shortcut = a->shortcut();
-		//QT5 shortcut.setPrimary( QKeySequence(Qt::ShiftModifier | Qt::Key_A + i));
+		shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_A + i));
 		if(i < 9) {
-			//QT5 shortcut.setAlternate( QKeySequence(Qt::ShiftModifier | Qt::Key_1 + i));
+			shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_1 + i));
 		}
-		//QT5 a->setShortcut(shortcut);
+		m_collection->setDefaultShortcuts(a, shortcuts);
 		m_markValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_markValueMapper, SLOT(map()));
 		m_actions << a;
@@ -131,10 +129,9 @@ void GameActions::init() {
 	a = new QAction(this);
 	m_collection->addAction("move_clear_cell", a);
 	a->setText(i18n("Clear Cell"));
-	//QT5 shortcut = a->shortcut();
-	//QT5 shortcut.setPrimary(Qt::Key_Backspace);
-	//QT5 shortcut.setAlternate(Qt::Key_Delete);
-	//QT5 a->setShortcut(shortcut);
+	m_collection->setDefaultShortcuts(a, QList<QKeySequence>()
+		<< QKeySequence(Qt::Key_Backspace)
+		<< QKeySequence(Qt::Key_Delete));
 	connect(a, SIGNAL(triggered(bool)), SLOT(clearValue()));
 	m_actions << a;
 }
