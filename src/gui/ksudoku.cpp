@@ -475,10 +475,16 @@ void KSudoku::setupActions()
 	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
 	KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
 
-	KStandardGameAction::hint(this, SLOT(giveHint()), actionCollection());
+	KAction * a = KStandardGameAction::hint(this, SLOT(giveHint()), actionCollection());
+	// The default value (H) conflicts with the keys assigned
+	// to add letter/numbers to the board.
+	shortcut = a->shortcut();
+	shortcut.setPrimary(QKeySequence(Qt::Key_F2));
+	a->setShortcut(shortcut);
+
 	KStandardGameAction::solve(this, SLOT(autoSolve()), actionCollection());
 
-	KAction* a = new KAction(this);
+	a = new KAction(this);
 	actionCollection()->addAction( QLatin1String( "move_dub_puzzle" ), a);
 	a->setText(i18n("Check"));
 	a->setIcon(KIcon( QLatin1String( "games-endturn" )));
