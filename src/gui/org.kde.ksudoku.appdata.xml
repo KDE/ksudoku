@@ -8,6 +8,14 @@ SentUpstream: 2014-09-24
   <id>org.kde.ksudoku.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <name>KSudoku</name>
+  <name xml:lang="ca">KSudoku</name>
+  <name xml:lang="cs">KSudoku</name>
+  <name xml:lang="de">KSudoku</name>
+  <name xml:lang="nl">KSudoku</name>
+  <name xml:lang="pt">KSudoku</name>
+  <name xml:lang="sv">Ksudoku</name>
+  <name xml:lang="uk">KSudoku</name>
+  <name xml:lang="x-test">xxKSudokuxx</name>
   <summary>Complete a numeric puzzle with the numbers from one to nine</summary>
   <summary xml:lang="ca">Completeu un puzle numèric puzzle amb nombres des de l'u al nou.</summary>
   <summary xml:lang="ca-valencia">Completeu un puzle numèric puzzle amb nombres des de l'u al nou.</summary>
