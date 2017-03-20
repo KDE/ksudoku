@@ -49,7 +49,6 @@
 #include <KLocalizedString>
 #include <qstatusbar.h>
 #include <kio/netaccess.h>
-#include <kfiledialog.h>
 #include <krun.h>
 
 #include "ksview.h"
@@ -67,6 +66,7 @@
 #include <kstandardgameaction.h>
 #include <QDir>
 #include <KSharedConfig>
+#include <QFileDialog>
 
 #include "gamevariants.h"
 #include "welcomescreen.h"
@@ -680,7 +680,7 @@ void KSudoku::gameOpen()
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
 	// button is clicked
 	// standard filedialog
-	KUrl Url = KFileDialog::getOpenUrl(KUrl("kfiledialog:///ksudoku"), QString(), this, i18n("Open Location"));
+	KUrl Url = QFileDialog::getOpenFileUrl(this, i18n("Open Location"), QUrl::fromLocalFile(QDir::homePath()), QString());
 
 	if (!Url.isEmpty() && Url.isValid())
 	{
@@ -708,7 +708,7 @@ void KSudoku::gameSave()
 	Game game = currentGame();
 	if(!game.isValid()) return;
 
-	if(game.getUrl().isEmpty()) game.setUrl(KFileDialog::getSaveUrl(KUrl("kfiledialog:///ksudoku")));
+	if(game.getUrl().isEmpty()) game.setUrl(QFileDialog::getSaveFileUrl());
  	if (!game.getUrl().isEmpty() && game.getUrl().isValid())
 		ksudoku::Serializer::store(game, game.getUrl(), this);
 }
@@ -719,7 +719,7 @@ void KSudoku::gameSaveAs()
 	Game game = currentGame();
 	if(!game.isValid()) return;
 
-	game.setUrl(KFileDialog::getSaveUrl(KUrl("kfiledialog:///ksudoku")));
+	game.setUrl(QFileDialog::getSaveFileUrl());
     if (!game.getUrl().isEmpty() && game.getUrl().isValid())
     	gameSave();
 }
@@ -862,7 +862,7 @@ ksudoku::KsView* KSudoku::currentView() const{
 
 void KSudoku::loadCustomShapeFromPath()
 {
-	QUrl Url = KFileDialog::getOpenUrl( QUrl(), QString(), this, i18n("Open Location") );
+	QUrl Url = QFileDialog::getOpenFileUrl(this, i18n("Open Location"), QUrl(), QString());
 
 	if ( Url.isEmpty() || !Url.isValid() )
 	{
