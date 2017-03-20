@@ -29,7 +29,7 @@
 #include <QList>
 #include <QTextStream>
 #include <kurl.h>
-#include <ktemporaryfile.h>
+#include <QTemporaryFile>
 #include <kio/netaccess.h>
 #include <qfile.h>
 #include <KLocalizedString>
@@ -689,7 +689,7 @@ bool Serializer::store(const Game& game, const KUrl& url, QWidget* window) {
 
 	serializeGame(root, game);
 
-	KTemporaryFile file;
+	QTemporaryFile file;
 	file.open();
 
 	QTextStream stream(&file);
