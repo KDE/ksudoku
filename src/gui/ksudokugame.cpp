@@ -29,7 +29,7 @@
 #include "globals.h"
 
 #include <KMessageBox>
-#include <KLocale>
+#include <KLocalizedString>
 
 #include <QList>
 

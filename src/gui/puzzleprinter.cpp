@@ -28,7 +28,7 @@
 #include <QPainter>
 #include <QLine>
 
-#include <KLocale>
+#include <KLocalizedString>
 
 #include "puzzle.h"
 #include "skgraph.h"
