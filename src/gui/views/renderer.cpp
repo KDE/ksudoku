@@ -22,7 +22,6 @@
 
 #include <QSvgRenderer>
 
-#include <kpixmapcache.h>
 #include <KDebug>
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgametheme.h>
@@ -43,8 +42,7 @@ Renderer* Renderer::instance() {
 	
 Renderer::Renderer() {
 	m_renderer = new QSvgRenderer();
-	m_cache = new KPixmapCache("ksudoku-cache");
-	m_cache->setCacheLimit(3*1024);
+	m_cache = new KImageCache(QStringLiteral("ksudoku-cache"), 3*1024);
 	m_mathdokuStyle = false;
 	
 	if(!loadTheme(Settings::theme()))
@@ -84,7 +82,7 @@ bool Renderer::loadTheme(const QString& themeName) {
 	
 	if(discardCache) {
 		kDebug() << "discarding cache";
-		m_cache->discard();
+		m_cache->clear();
 	}
 	
 	fillNameHashes();
@@ -148,14 +146,14 @@ QPixmap Renderer::renderBackground(const QSize& size) const {
 
 	QPixmap pix;
 	QString cacheName = QString("background_%1x%2").arg(size.width()).arg(size.height());
-	if(!m_cache->find(cacheName, pix))
+	if(!m_cache->findPixmap(cacheName, &pix))
 	{
 		pix = QPixmap(size);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
 		m_renderer->render(&p, "background");
 		p.end();
-		m_cache->insert(cacheName, pix);
+		m_cache->insertPixmap(cacheName, pix)
 	}
 	return pix;
 }
@@ -184,7 +182,7 @@ QPixmap Renderer::renderSpecial(SpecialType type, int size) const {
 	
 	QString cacheName = QString("special_%1_%2").arg(m_specialNames[type]).arg(size);
 	QPixmap pix;
-	if(!m_cache->find(cacheName, pix)) {
+	if(!m_cache->findPixmap(cacheName, &pix)) {
 		pix = QPixmap(size, size);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
@@ -198,7 +196,7 @@ QPixmap Renderer::renderSpecial(SpecialType type, int size) const {
 		
 		m_renderer->render(&p, m_specialNames[type], r);
 		p.end();
-		m_cache->insert(cacheName, pix);
+		m_cache->insertPixmap(cacheName, pix);
 	}
 
 	return pix;
@@ -216,7 +214,7 @@ QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) c
 
 	QString cacheName = QString("%1_%2_%3_%4").arg(set).arg(symbol).arg(size).arg(type);
 	QPixmap pix;
-	if(!m_cache->find(cacheName, pix)) {
+	if(!m_cache->findPixmap(cacheName, &pix)) {
 		pix = QPixmap(size, size);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
@@ -247,7 +245,7 @@ QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) c
 				break;
 		}
 		p.end();
-		m_cache->insert(cacheName, pix);
+		m_cache->insertPixmap(cacheName, pix);
 	}
 
 	return pix;
@@ -300,7 +298,7 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 	QString groupName = QString("markers%1").arg(range);
 	QString cacheName = QString("%1_%2_%3").arg(groupName).arg(symbol).arg(size);
 	QPixmap pix;
-	if(!m_cache->find(cacheName, pix)) {
+	if(!m_cache->findPixmap(cacheName, &pix)) {
 		pix = QPixmap(size, size);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
@@ -316,7 +314,7 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 
 		m_renderer->render(&p, QString("%1_%2").arg(set).arg(symbol), r);
 		p.end();
-		m_cache->insert(cacheName, pix);
+		m_cache->insertPixmap(cacheName, pix);
 	}
 
 	return pix;
@@ -383,7 +381,7 @@ QPixmap Renderer::renderBorder(int border, GroupTypes type, int size) const {
 	
 	QString cacheName = QString("contour_%1_%2_%3").arg(m_borderTypes[type]).arg(m_borderNames[border]).arg(size);
 	QPixmap pix;
-	if(!m_cache->find(cacheName, pix)) {
+	if(!m_cache->findPixmap(cacheName, &pix)) {
 		pix = QPixmap(size, size);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
@@ -397,7 +395,7 @@ QPixmap Renderer::renderBorder(int border, GroupTypes type, int size) const {
 		
 		m_renderer->render(&p, QString("%1_%2").arg(m_borderTypes[type]).arg(m_borderNames[border]), r);
 		p.end();
-		m_cache->insert(cacheName, pix);
+		m_cache->insertPixmap(cacheName, pix);
 	}
 
 	return pix;
@@ -408,7 +406,7 @@ QPixmap Renderer::renderSpecial3D(SpecialType type, int size) const {
 
 	QString cacheName = QString("special_%1_%2").arg(m_special3dNames[type]).arg(size);
 	QPixmap pix;
-	if(!m_cache->find(cacheName, pix)) {
+	if(!m_cache->findPixmap(cacheName, &pix)) {
 		pix = QPixmap(size, size);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
@@ -422,7 +420,7 @@ QPixmap Renderer::renderSpecial3D(SpecialType type, int size) const {
 		
 		m_renderer->render(&p, m_special3dNames[type], r);
 		p.end();
-		m_cache->insert(cacheName, pix);
+		m_cache->insertPixmap(cacheName, pix);
 	}
 
 	return pix;

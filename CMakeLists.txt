@@ -14,6 +14,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     CoreAddons
     Crash
     DBusAddons
+    GuiAddons
     I18n
     ItemModels
     KDELibs4Support

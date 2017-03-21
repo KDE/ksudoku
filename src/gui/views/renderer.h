@@ -21,6 +21,8 @@
 #ifndef _KSUDOKU_RENDERER_H_
 #define _KSUDOKU_RENDERER_H_
 
+#include <KImageCache>
+
 #include <QVector>
 // #include <QPixmap>
 #include <QString>
@@ -28,7 +30,6 @@
 class QPixmap;
 class QSize;
 class QSvgRenderer;
-class KPixmapCache;
 
 namespace ksudoku {
 
@@ -122,7 +123,7 @@ private:
 	QVector<QString> m_markerNames;
 	QString m_currentTheme;
 	QSvgRenderer* m_renderer;
-	KPixmapCache* m_cache;
+	KImageCache* m_cache;
 	bool m_mathdokuStyle;
 };
 
