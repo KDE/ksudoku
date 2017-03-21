@@ -153,7 +153,7 @@ QPixmap Renderer::renderBackground(const QSize& size) const {
 		QPainter p(&pix);
 		m_renderer->render(&p, "background");
 		p.end();
-		m_cache->insertPixmap(cacheName, pix)
+		m_cache->insertPixmap(cacheName, pix);
 	}
 	return pix;
 }
