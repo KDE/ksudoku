@@ -16,6 +16,10 @@ SentUpstream: 2014-09-24
   <name xml:lang="it">KSudoku</name>
   <name xml:lang="nl">KSudoku</name>
   <name xml:lang="pt">KSudoku</name>
+  <name xml:lang="sr">К‑судоку</name>
+  <name xml:lang="sr-Latn">K‑sudoku</name>
+  <name xml:lang="sr-ijekavian">К‑судоку</name>
+  <name xml:lang="sr-ijekavianlatin">K‑sudoku</name>
   <name xml:lang="sv">Ksudoku</name>
   <name xml:lang="uk">KSudoku</name>
   <name xml:lang="x-test">xxKSudokuxx</name>
@@ -57,6 +61,10 @@ SentUpstream: 2014-09-24
     <p xml:lang="it">KSudoku è una versione libera del popolare gioco di logica Sudoku sviluppato dalla comunità KDE. Il gioco consiste nel riempire una griglia nove per nove con le cifre da uno a nove. facendo in modo che nelle righe, nelle colonne e nei quadrati di dimensione tre per tre non si ripetano gli stessi valori.</p>
     <p xml:lang="nl">KSudoku is een vrije versie van het populaire logische spel Sudoku ontwikkeld door de KDE gemeenschap. Het spel gaat over het vullen van een negen bij negen raster met de cijfers vanaf één tot en met negen door het vullen van de rijen, de kolommen en drie bij drie vierkantjes zonder een waarde daarin te herhalen.</p>
     <p xml:lang="pt">O KSudoku é uma versão livre do conhecido jogo de lógica Sudoku desenvolvido pela comunidade do KDE. No jogo pretende-se preencher uma grelha de nove por nove posições, com os números de um a nove a preencher as linhas, colunas e os quadrados de três por três, sem que se repita qualquer valor nestes.</p>
+    <p xml:lang="sr">К‑судоку је слободна верзија популарне логичке игре судоку из заједнице КДЕ. Игра се састоји у попуњавању мреже девет пута девет бројевима од један до девет, тако да ниједна врста, колона, или квадрат три пута три не садржи поновљене вредности.</p>
+    <p xml:lang="sr-Latn">K‑sudoku je slobodna verzija popularne logičke igre sudoku iz zajednice KDE. Igra se sastoji u popunjavanju mreže devet puta devet brojevima od jedan do devet, tako da nijedna vrsta, kolona, ili kvadrat tri puta tri ne sadrži ponovljene vrednosti.</p>
+    <p xml:lang="sr-ijekavian">К‑судоку је слободна верзија популарне логичке игре судоку из заједнице КДЕ. Игра се састоји у попуњавању мреже девет пута девет бројевима од један до девет, тако да ниједна врста, колона, или квадрат три пута три не садржи поновљене вредности.</p>
+    <p xml:lang="sr-ijekavianlatin">K‑sudoku je slobodna verzija popularne logičke igre sudoku iz zajednice KDE. Igra se sastoji u popunjavanju mreže devet puta devet brojevima od jedan do devet, tako da nijedna vrsta, kolona, ili kvadrat tri puta tri ne sadrži ponovljene vrednosti.</p>
     <p xml:lang="sv">Ksudoku är en fri version av det populära logikspelet Sudoku utvecklat av KDE-gemenskapen. Spelet går ut på att fylla i ett nio gånger nio rutmönster, där siffror från ett till nio ska fylla rader, kolumner och tre gånger tre fyrkanter utan att ett värde upprepas i någon av dem.</p>
     <p xml:lang="uk">KSudoku — вільна версія популярної логічної гри, судоку, яку розроблено спільнотою KDE. Гра полягає у заповненні таблиці дев’ять на дев’ять клітинок числами від одного до дев’яти так, щоб у кожному блоці таблиці розміром три на три клітинки ці числа не повторювалися.</p>
     <p xml:lang="x-test">xxKSudoku is a free version of the popular logic game Sudoku developed by the KDE community. The game is to fill a nine by nine grid with the numbers from one to nine filling the rows, columns and three by three squares without repeating a value on them.xx</p>
