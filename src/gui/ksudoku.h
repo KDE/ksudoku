@@ -24,6 +24,8 @@
 #ifndef _KSUDOKU_H_
 #define _KSUDOKU_H_
 
+#include <QUrl>
+
 #include <kxmlguiwindow.h>
 #if 0
 #include <knewstuff/knewstuff.h>
@@ -31,8 +33,8 @@
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamedifficulty.h>
+
 class QPrinter;
-class KUrl;
 
 namespace ksudoku {
 class KsView;
@@ -85,7 +87,7 @@ public:
      */
 	virtual ~KSudoku();
 	
-	void loadGame(const KUrl& url);
+	void loadGame(const QUrl& url);
 	
 public:
 	void updateShapesList();

@@ -24,10 +24,8 @@
 #define _KSUDOKUGAME_H_
 
 #include <qobject.h>
+#include <QUrl>
 #include "history.h"
-
-
-class KUrl;
 
 class SKGraph;
 
@@ -201,12 +199,12 @@ public:
 	/**
 	 * Sets the URL. Game itself doesn't use the URL, but remembers it for other users.
 	 */
-	void setUrl(const KUrl& url);
+	void setUrl(const QUrl& url);
 	
 	/**
 	 * Gets the URL. Game itself doesn't use the URL, but remembers it for other users.
 	 */
-	KUrl getUrl() const;
+	QUrl getUrl() const;
 	
 	/**
 	 * Returns whether the user requested some hint.

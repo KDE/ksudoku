@@ -24,12 +24,12 @@
 #define _KSUDOKUSERIALIZER_H_
 
 #include <QList>
+#include <QString>
+#include <QUrl>
 
 class SKGraph;
 class QDomElement;
-class KUrl;
 class QWidget;
-class QString;
 
 namespace ksudoku {
 
@@ -39,11 +39,11 @@ class HistoryEvent;
 class Serializer {
 public:
 	static SKGraph* loadCustomShape
-		    (const KUrl& url, QWidget* window, QString* errorMsg = 0);
+		    (const QUrl& url, QWidget* window, QString* errorMsg = 0);
 	static bool store
-		    (const Game& game, const KUrl& url, QWidget* window);
+		    (const Game& game, const QUrl& url, QWidget* window);
 	static Game load
-		    (const KUrl& url, QWidget* window, QString* errorMsg = 0);
+		    (const QUrl& url, QWidget* window, QString* errorMsg = 0);
 
 private:
 	// TODO - IDW. Maybe there should be shared methods for file handling.

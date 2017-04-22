@@ -31,6 +31,8 @@
 #include <QLabel>
 #include <QComboBox>
 
+#include <QMimeData>
+
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QStandardPaths>
@@ -44,7 +46,7 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
 #include <QKeySequence>
-#include <KUrl>
+#include <QUrl>
 #include <kmessagebox.h>
 #include <KLocalizedString>
 #include <qstatusbar.h>
@@ -67,6 +69,7 @@
 #include <QDir>
 #include <KSharedConfig>
 #include <QFileDialog>
+#include <QFileInfo>
 
 #include "gamevariants.h"
 #include "welcomescreen.h"
@@ -204,18 +207,20 @@ void KSudoku::updateShapesList()
 	QString variantIcon;
 
 	foreach(const QString &filepath, filepaths) {
+		const QFileInfo configFileInfo(filepath);
+		const QDir variantDir = configFileInfo.dir();
 		KConfig variantConfig(filepath, KConfig::SimpleConfig);
 		KConfigGroup group = variantConfig.group ("KSudokuVariant");
 
 		variantName = group.readEntry("Name", i18n("Missing Variant Name")); // Translated.
 		variantDescr = group.readEntry("Description", ""); // Translated.
 		variantIcon = group.readEntry("Icon", "ksudoku-ksudoku_9x9");
-		variantDataPath = group.readEntry("FileName", "");
-		if(variantDataPath == "") continue;
+		const QString variantDataFile = group.readEntry("FileName", "");
+		if(variantDataFile == "") continue;
 
-		variantDataPath = filepath.left(filepath.lastIndexOf("/")+1) + variantDataPath;
+		variantDataPath = variantDir.filePath(variantDataFile);
 
-		variant = new CustomGame(variantName, variantDataPath, m_gameVariants);
+		variant = new CustomGame(variantName, QUrl::fromLocalFile(variantDataPath), m_gameVariants);
 		variant->setDescription(variantDescr);
 		variant->setIcon(variantIcon);
 	}
@@ -364,7 +369,7 @@ void KSudoku::endCurrentGame() {
 
 }
 
-void KSudoku::loadGame(const KUrl& Url) {
+void KSudoku::loadGame(const QUrl& Url) {
 	QString errorMsg;
 	Game game = ksudoku::Serializer::load(Url, this, &errorMsg);
 	if(!game.isValid()) {
@@ -383,7 +388,7 @@ void KSudoku::showWelcomeScreen() {
 
 void KSudoku::homepage()
 {
-	KRun::runUrl (KUrl("http://ksudoku.sourceforge.net/"), "text/html", this);
+	KRun::runUrl (QUrl("http://ksudoku.sourceforge.net/"), "text/html", this, KRun::RunFlags());
 }
 
 void KSudoku::giveHint()
@@ -622,35 +627,30 @@ void KSudoku::pop()
 // 	if(glwin) glwin->pop();
 }
 
-void KSudoku::dragEnterEvent(QDragEnterEvent */*event*/)
+void KSudoku::dragEnterEvent(QDragEnterEvent * event)
 {
     // accept uri drops only
-
-	//TODO PORT
-    //KUrl::List::fromMimeData( e->mimeData() )
-
-    //event->accept(KUrlDrag::canDecode(event));
+    if(event->mimeData()->hasUrls())
+        event->accept();
 }
 
 void KSudoku::dropEvent(QDropEvent *event)
 {
-	//TODO PORT
-   KUrl::List Urls = KUrl::List::fromMimeData( event->mimeData() );
-
-
-    if ( !Urls.isEmpty() )
+    const QMimeData * data = event->mimeData();
+    if(data->hasUrls())
     {
-        // okay, we have a URI.. process it
-        const KUrl &Url = Urls.first();
+        QList<QUrl> Urls = data->urls();
 
-		Game game = ksudoku::Serializer::load(Url, this);
-// 		if(game)
-// 			(new KSudoku(game))->show();
-		if(game.isValid())
-			startGame(game);
-// 		delete game;
+        if ( !Urls.isEmpty() )
+        {
+            // okay, we have a URI.. process it
+            const QUrl &Url = Urls.first();
+
+            Game game = ksudoku::Serializer::load(Url, this);
+            if(game.isValid())
+                startGame(game);
+        }
     }
-
 }
 
 void KSudoku::gameNew()
@@ -680,7 +680,7 @@ void KSudoku::gameOpen()
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
 	// button is clicked
 	// standard filedialog
-	KUrl Url = QFileDialog::getOpenFileUrl(this, i18n("Open Location"), QUrl::fromLocalFile(QDir::homePath()), QString());
+	const QUrl Url = QFileDialog::getOpenFileUrl(this, i18n("Open Location"), QUrl::fromLocalFile(QDir::homePath()), QString());
 
 	if (!Url.isEmpty() && Url.isValid())
 	{

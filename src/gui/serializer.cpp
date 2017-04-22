@@ -28,7 +28,7 @@
 //Added by qt3to4:
 #include <QList>
 #include <QTextStream>
-#include <kurl.h>
+#include <QUrl>
 #include <QTemporaryFile>
 #include <kio/netaccess.h>
 #include <qfile.h>
@@ -398,7 +398,7 @@ HistoryEvent Serializer::deserializeComplexHistoryEvent(QDomElement /*element*/)
 	return HistoryEvent();
 }
 
-SKGraph *Serializer::loadCustomShape(const KUrl &url, QWidget* window, QString *errorMsg) {
+SKGraph *Serializer::loadCustomShape(const QUrl &url, QWidget* window, QString *errorMsg) {
 	if ( url.isEmpty() ) return 0;
 	QString tmpFile;
 	bool success = false;
@@ -436,7 +436,7 @@ SKGraph *Serializer::loadCustomShape(const KUrl &url, QWidget* window, QString *
 	return 0;
 }
 
-Game Serializer::load(const KUrl& url, QWidget* window, QString *errorMsg) {
+Game Serializer::load(const QUrl& url, QWidget* window, QString *errorMsg) {
 	if ( url.isEmpty() ) return Game();
 	QString tmpFile;
 	bool success = false;
@@ -682,7 +682,7 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 	return true;
 }
 
-bool Serializer::store(const Game& game, const KUrl& url, QWidget* window) {
+bool Serializer::store(const Game& game, const QUrl& url, QWidget* window) {
 	QDomDocument doc( "ksudoku" );
 	QDomElement root = doc.createElement( "ksudoku" );
 	doc.appendChild( root );

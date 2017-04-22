@@ -35,7 +35,7 @@
 
 #include <QDebug> // IDW
 
-#include <kurl.h>
+#include <QUrl>
 
 class QWidget;
 
@@ -81,7 +81,7 @@ public:
 	Puzzle* puzzle;
 	QTime time;
 	int   accumTime;
-	KUrl url;
+	QUrl url;
 	QList<HistoryEvent> history;
 	int historyPos;
 
@@ -218,14 +218,14 @@ Puzzle* Game::puzzle() const {
 	return m_private->puzzle;
 }
 
-void Game::setUrl(const KUrl& url) {
+void Game::setUrl(const QUrl& url) {
 	if(!m_private) return;
 	
 	m_private->url = url;
 }
 
-KUrl Game::getUrl() const {
-	if(!m_private) return KUrl();
+QUrl Game::getUrl() const {
+	if(!m_private) return QUrl();
 	return m_private->url;
 }
 

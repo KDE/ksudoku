@@ -23,7 +23,7 @@
 
 #include <QObject>
 #include <QList>
-#include <KUrl>
+#include <QUrl>
 #include <QItemDelegate>
 #include <QAbstractListModel>
 
@@ -167,7 +167,7 @@ private:
 
 class CustomGame : public GameVariant {
 public:
-	CustomGame(const QString& name, const KUrl& url, GameVariantCollection* collection=0);
+	CustomGame(const QString& name, const QUrl& url, GameVariantCollection* collection=0);
 
 public:
 	bool canConfigure() const;
@@ -181,7 +181,7 @@ private:
 	uint m_order;
 	uint m_symmetry;
 
-	KUrl m_url;
+	QUrl m_url;
 	SKGraph* m_graph;
 	bool createSKGraphObject();
 };

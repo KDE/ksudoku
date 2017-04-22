@@ -363,7 +363,7 @@ KsView* RoxdokuGame::createView(const Game& /*game*/) const {
 // class CustomGame
 ///////////////////////////////////////////////////////////////////////////////
 
-CustomGame::CustomGame(const QString& name, const KUrl& url,
+CustomGame::CustomGame(const QString& name, const QUrl& url,
                        GameVariantCollection* collection)
 	: GameVariant(name, collection), m_url(url), m_graph(0)
 {

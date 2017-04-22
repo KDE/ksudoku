@@ -28,7 +28,7 @@
 
 #include <KLocalizedString>
 #include <kconfigdialogmanager.h>
-#include <KUrl>
+#include <QUrl>
 
 #include <QApplication>
 #include <QCommandLineParser>
