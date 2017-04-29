@@ -22,8 +22,6 @@
 
 #include "view2d.h"
 
- 
-
 #include <QDebug>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneEvent>
@@ -544,8 +542,8 @@ void View2DScene::setSceneSize(const QSize& size) {
 		m_cells[i]->resize(grid);
 	}
 	
-	for(int i = 0; i < m_groups.size(); ++i) {
-		m_groups[i]->resize(grid, m_highlightsOn);
+	for (ksudoku::GroupGraphicsItem* group : qAsConst(m_groups)) {
+		group->resize(grid, m_highlightsOn);
 	}
 	
 	m_cursor->setPixmap(Renderer::instance()->renderSpecial(SpecialCursor, grid*2));
@@ -555,7 +553,7 @@ void View2DScene::hover(int cell) {
 	m_cursorPos = cell;
 // 	qCDebug(KSudokuLog) << "hover cell" << cell << m_cells[cell];
 	QPoint pos(m_cells[cell]->pos());
-	foreach(GroupGraphicsItem* item, m_groups) {
+	for (GroupGraphicsItem* item : qAsConst(m_groups)) {
 		item->setHighlight(pos, m_highlightsOn);
 	}
 	

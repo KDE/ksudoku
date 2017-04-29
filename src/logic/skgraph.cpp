@@ -161,7 +161,7 @@ void SKGraph::addCage(const QVector<int> cage, CageOperator cageOperator,
 	int topY              = m_order;
 	int leftX             = m_order;
 	newCage->cageTopLeft  = 0;
-	Q_FOREACH (int cell, cage) {
+	for (const int cell : cage) {
 	    if (cellPosY(cell) > topY) {
 		continue;		// Below the best so far.
 	    }
@@ -227,8 +227,8 @@ void SKGraph::indexCellsToCliques()
 	int index = 0;
 	for (int cell = 0; cell < nCells; cell++) {
 	    m_cellIndex [cell] = index;
-	    QList<int> cliqueList = cellsToCliques.values (cell);
-	    foreach (int g, cliqueList) {
+	    const QList<int> cliqueList = cellsToCliques.values (cell);
+	    for (int g : cliqueList) {
 		m_cellCliques [index] = g;
 		index++;
 	    }

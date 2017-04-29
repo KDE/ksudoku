@@ -297,10 +297,10 @@ bool Serializer::deserializeClique(SKGraph * graph, const QString & size,
 	return false;
     }
 
-    QStringList  splitData = text.split(QString(" "), QString::SkipEmptyParts);
+    const QStringList  splitData = text.split(QString(" "), QString::SkipEmptyParts);
     QVector<int> data;
     data.clear();
-    foreach (QString s, splitData) {
+    for (QString s : splitData) {
 	--cellCount;
 	data << s.toInt();
 	if(cellCount <= 0) {
@@ -325,9 +325,9 @@ bool Serializer::deserializeCage(SKGraph * graph, const QDomElement & e) {
 	return false;
     }
 
-    QStringList cells = text.split(QString(" "), QString::SkipEmptyParts);
+    const QStringList cells = text.split(QString(" "), QString::SkipEmptyParts);
     cage.clear();
-    Q_FOREACH (QString s, cells) {
+    for (const QString& s : cells) {
 	cage << s.toInt();
 	size--;
 	if (size <= 0) {
@@ -584,14 +584,14 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 	    // Add cages if this is a Mathdoku or Killer Sudoku puzzle.
 	    for (int n = 0; n < graph->cageCount(); n++) {
 		QDomElement e = parent.ownerDocument().createElement("cage");
-		QVector<int> cage = graph->cage(n);
+		const QVector<int> cage = graph->cage(n);
 		e.setAttribute("operator", graph->cageOperator(n));
 		e.setAttribute("value", graph->cageValue(n));
 		e.setAttribute("size", cage.size());
 
 		// Serialize the cell-numbers in the cage.
 		QString contentStr = " ";
-		Q_FOREACH (int cell, cage) {
+		for (const int cell : cage) {
 		    contentStr += QString::number(cell) + ' ';
 		}
 		e.appendChild(parent.ownerDocument().

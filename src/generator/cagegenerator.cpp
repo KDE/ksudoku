@@ -126,7 +126,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	int          cageValue;
 	int          chosenSize;
 	int          index = -1;
-	Q_FOREACH (int n, mUnusedCells) {
+	for (const int n : qAsConst(mUnusedCells)) {
 	    switch (mNeighbourFlags.at (n)){
 	    case 7:
 	    case 11:
@@ -200,7 +200,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 #ifdef MATHDOKU_LOG
 	qCDebug(KSudokuLog) << "CAGE" << mGraph->cageCount() << cage;
 	char tag = 'a' + mGraph->cageCount() - 1;
-	Q_FOREACH (int cell, cage) {
+	for (const int cell : qAsConst(cage)) {
 	    usedCells[cell] = tag;
 	}
 	qCDebug(KSudokuLog) << "LAYOUT" << tag << usedCells;
@@ -213,7 +213,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	fprintf (stderr, "\n");
 #endif
 	QList<int> flagsList;
-	Q_FOREACH (int cell, mUnusedCells) {
+	for (const int cell : qAsConst(mUnusedCells)) {
 	    flagsList.append (mNeighbourFlags.at (cell));
 	}
 #ifdef MATHDOKU_LOG
@@ -371,7 +371,7 @@ QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
 
 	// Pick a neighbour to be added to the cage.
 	index = -1;
-	Q_FOREACH (unb, unusedNeighbours) {
+	for (unb : qAsConst(unusedNeighbours)) {
             flags = mNeighbourFlags.at (unb);
 	    if (flags == 15) {
 		// Choose a cell that has been surrounded and isolated.
@@ -701,8 +701,8 @@ bool CageGenerator::isSelfConsistent (const QVector<int> cage,
     for (int n = 0; n < nDigits; n++) {
 	cell = cage.at (n);
 	mask = 1 << digits[n];
-	QList<int> groupList = mGraph->cliqueList (cell);
-	Q_FOREACH (int group, groupList) {
+	const QList<int> groupList = mGraph->cliqueList (cell);
+	for (const int group : groupList) {
 	    if (mask & usedGroups.at (group)) {
 		return false;
 	    }

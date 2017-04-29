@@ -185,12 +185,12 @@ void KSudoku::updateShapesList()
 	variant->setIcon("ksudoku-roxdoku_3x3x3");
 #endif
 
-	QStringList gamevariantdirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "ksudoku", QStandardPaths::LocateDirectory);
+	const QStringList gamevariantdirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "ksudoku", QStandardPaths::LocateDirectory);
 
 	QStringList filepaths;
-	Q_FOREACH (const QString& gamevariantdir, gamevariantdirs) {
+	for (const QString& gamevariantdir : gamevariantdirs) {
 		const QStringList fileNames = QDir(gamevariantdir).entryList(QStringList() << QStringLiteral("*.desktop"));
-		Q_FOREACH (const QString &file, fileNames) {
+		for (const QString &file : fileNames) {
 			if (!filepaths.contains(gamevariantdir + '/' + file)) {
 				filepaths.append(gamevariantdir + '/' + file);
 			}
@@ -202,7 +202,7 @@ void KSudoku::updateShapesList()
 	QString variantDataPath;
 	QString variantIcon;
 
-	foreach(const QString &filepath, filepaths) {
+	for (const QString &filepath : qAsConst(filepaths)) {
 		const QFileInfo configFileInfo(filepath);
 		const QDir variantDir = configFileInfo.dir();
 		KConfig variantConfig(filepath, KConfig::SimpleConfig);

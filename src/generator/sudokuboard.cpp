@@ -1026,8 +1026,8 @@ void SudokuBoard::updateValueRequirements (BoardContents & boardValues, int cell
     m_validCellValues [cell] = 0;
 
     // Update the requirements for each group to which this cell belongs.
-    QList<int> groupList = m_graph->cliqueList(cell);
-    foreach (int group, groupList) {
+    const QList<int> groupList = m_graph->cliqueList(cell);
+    for (int group : groupList) {
         m_requiredGroupValues [group] &= bitPattern;
 
 	QVector<int> cellList = m_graph->clique (group);

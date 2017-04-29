@@ -148,7 +148,8 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
                          << "cageSize" << cageSize << "combo" << comboNum
 			 << "values at" << comboValues;
 #endif
-		Q_FOREACH (int cell, mGraph->cage (nCage)) {
+		const QVector<int> cage = mGraph->cage (nCage);
+		for (const int cell : cage) {
 #ifdef DLX_LOG
 		    fprintf (stderr, "%d:%d ", cell,
 			    mPossibilities->at (comboValues));
@@ -168,7 +169,7 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
 	}
     }
     else {	// Sudoku or Roxdoku variant.
-	Q_FOREACH (DLXNode * node, solution) {
+	for (DLXNode * node : qAsConst(solution)) {
 	    int rowNumDLX = node->value;
 	    mBoardValues [rowNumDLX/order] = (rowNumDLX % order) + 1;
 	}
@@ -289,7 +290,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
                 continue;
             }
             // Get a list of groups (row, column, etc.) that contain this cell.
-            QList<int> groups = graph->cliqueList (index);
+            const QList<int> groups = graph->cliqueList (index);
 #ifdef DLX_LOG
             int row    = graph->cellPosY (index);
             int col    = graph->cellPosX (index);
@@ -298,12 +299,13 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
                      << "row" << row << "col" << col << "groups" << groups;
 #endif
             int val = boardValues.at(index) - 1;
-            Q_FOREACH (int group, groups) {
+            for (const int group : groups) {
 #ifdef DLX_LOG
                 qCDebug(KSudokuLog) << "EXCLUDE CONSTRAINT" << (boardArea+group*order+val);
 #endif
                 mColumns[boardArea + group*order + val] = 0;
-                Q_FOREACH (int cell, graph->clique (group)) {
+                const QVector<int> clique = graph->clique (group);
+                for (const int cell : clique) {
                     mRows[cell*order + val] = 0;	// Drop row.
                 }
             }
@@ -311,7 +313,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     }
 
     // Create the initial set of columns.
-    Q_FOREACH (DLXNode * colDLX, mColumns) {
+    for (DLXNode * colDLX : qAsConst(mColumns)) {
         mEndColNum++;
         // If the constraint is not excluded, put an empty column in the matrix.
         if (colDLX != 0) {
@@ -326,7 +328,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     int rowNumDLX = 0;
     for (int index = 0; index < boardArea; index++) {
         // Get a list of groups (row, column, etc.) that contain this cell.
-        QList<int> groups = graph->cliqueList (index);
+        const QList<int> groups = graph->cliqueList (index);
 #ifdef DLX_LOG
         int row    = graph->cellPosY (index);
         int col    = graph->cellPosX (index);
@@ -347,7 +349,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
             if (mRows.at (rowNumDLX) != 0) {	// Skip already-excluded rows.
                 mRows[rowNumDLX] = 0;		// Re-initialise a "live" row.
                 addNode (rowNumDLX, index);	// Mark cell fill-in constraint.
-                Q_FOREACH (int group, groups) {
+                for (const int group : groups) {
                     // Mark possibly-satisfied constraints for row, column, etc.
                     addNode (rowNumDLX, boardArea + group*order + possValue);
                 }
@@ -425,10 +427,12 @@ int DLXSolver::solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
 	    qCDebug(KSudokuLog) << "Add cage-node: row" << rowNumDLX << "cage" << n
                      << graph->cage (n);
 #endif
-	    Q_FOREACH (int cell, graph->cage (n)) {
-                int possVal = possibilities->at (index);
+		const QVector<int> cage = graph->cage (n);
+		for (const int cell : cage ) {
+		int possVal = possibilities->at (index);
 		// qCDebug(KSudokuLog) << "    Cell" << cell << "possVal" << possVal;
-		Q_FOREACH (int group, graph->cliqueList (cell)) {
+		const QList<int> cliqueList = graph->cliqueList (cell);
+		for (const int group : cliqueList) {
 		    // Poss values go from 0 to (order - 1) in DLX (so -1 here).
 		    addNode (rowNumDLX, nCages + group * order + possVal - 1);
 		    counter++;
@@ -557,7 +561,7 @@ int DLXSolver::solveDLX (int solutionLimit)
         solution.append (currNode);
 #ifdef DLX_LOG
         fprintf (stderr, "CURRENT SOLUTION: %d rows:", solution.size());
-        Q_FOREACH (DLXNode * q, solution) {
+        for (DLXNode * q : qAsConst(solution)) {
             fprintf (stderr, " %d", q->value);
         }
         fprintf (stderr, "\n");
