@@ -23,7 +23,7 @@
 #ifndef _KSUDOKUGAME_H_
 #define _KSUDOKUGAME_H_
 
-#include <qobject.h>
+#include <QObject>
 #include <QUrl>
 #include "history.h"
 

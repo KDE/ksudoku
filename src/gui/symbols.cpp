@@ -22,7 +22,7 @@
 #include "symbols.h"
 #include "globals.h"
 
-#include <QtCore/QChar>
+#include <QChar>
 
 namespace ksudoku {
 

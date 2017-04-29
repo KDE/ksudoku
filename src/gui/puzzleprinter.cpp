@@ -29,6 +29,7 @@
 #include <QLine>
 
 #include <KLocalizedString>
+#include <KMessageBox>
 
 #include "puzzle.h"
 #include "skgraph.h"
@@ -36,8 +37,6 @@
 #include "puzzleprinter.h"
 
 #include "settings.h"
-
-#include <KMessageBox>
 
 PuzzlePrinter::PuzzlePrinter(QWidget * parent)
 	:

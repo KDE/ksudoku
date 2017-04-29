@@ -26,7 +26,7 @@
 
 #include <QUrl>
 
-#include <kxmlguiwindow.h>
+#include <KXmlGuiWindow>
 #if 0
 #include <knewstuff/knewstuff.h>
 #endif

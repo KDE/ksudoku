@@ -23,16 +23,15 @@
 #include "sudokuboard.h"
 #include "state.h"
 #include "mathdokugenerator.h"
-#include <QDebug>
 
 #include <KLocalizedString>
 #include <KMessageBox>
 
+#include <QDebug>
 #include <QMultiMap>
-
 #include <QTime>
 
-#include <stdio.h>
+#include <cstdio>
 #include <ctime>
 
 SudokuBoard::SudokuBoard (SKGraph * graph)

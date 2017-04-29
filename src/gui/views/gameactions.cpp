@@ -20,11 +20,13 @@
 
 #include "gameactions.h"
 
-#include <KLocalizedString>
 #include <QAction>
-#include <KActionCollection>
-#include <QSignalMapper>
 #include <QKeySequence>
+#include <QSignalMapper>
+
+#include <KActionCollection>
+#include <KLocalizedString>
+
 namespace ksudoku {
 
 GameActions::GameActions(KActionCollection* collection) {

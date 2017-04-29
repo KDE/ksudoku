@@ -17,7 +17,7 @@
 
 #include "state.h"
 
-#include <stdio.h>
+#include <cstdio>
 
 State::State (QObject *             parent,
               const GuessesList &   guesses,

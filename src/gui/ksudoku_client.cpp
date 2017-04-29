@@ -18,11 +18,10 @@
  ***************************************************************************/
 
 
-
-#include <dcopclient.h>
-#include <qdatastream.h>
-#include <qstring.h>
 #include <QApplication>
+#include <QDataStream>
+#include <QString>
+
 #include <KAboutData>
 #include <KLocalizedString>
 

@@ -24,9 +24,9 @@
 
  
 
+#include <QDebug>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneEvent>
-#include <QDebug>
 
 #include "puzzle.h"
 #include "gameactions.h"

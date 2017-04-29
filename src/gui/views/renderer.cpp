@@ -21,17 +21,15 @@
 #include "ksudoku_logging.h"
 #include "renderer.h"
 
+#include <QDebug>
+#include <QPainter>
+#include <QPixmap>
 #include <QSvgRenderer>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgametheme.h>
 
 #include "settings.h"
-
-#include <QPixmap>
-#include <QPainter>
-
-#include <QDebug>
 
 namespace ksudoku {
 

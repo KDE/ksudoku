@@ -23,9 +23,8 @@
 
 #include <KImageCache>
 
-#include <QVector>
-// #include <QPixmap>
 #include <QString>
+#include <QVector>
 
 class QPixmap;
 class QSize;

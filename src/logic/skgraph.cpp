@@ -23,9 +23,9 @@
 
 #include "skgraph.h"
 
+#include <QMultiMap>
 #include <QString>
 #include <QStringList>
-#include <QMultiMap>
 
 SKGraph::SKGraph(int order, ksudoku::GameType type)
 {

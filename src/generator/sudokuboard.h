@@ -23,8 +23,8 @@
 #include "globals.h"
 #include "skgraph.h"
 
-#include <QObject>
 #include <QList>
+#include <QObject>
 #include <QStack>
 
 typedef qint32       Pair;		// Two small integers packed into one.

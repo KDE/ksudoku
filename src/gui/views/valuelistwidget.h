@@ -20,8 +20,8 @@
 #ifndef _KSUDOKUVALUELISTWIDGET_H_
 #define _KSUDOKUVALUELISTWIDGET_H_
 
-#include <QGraphicsView>
 #include <QGraphicsItem>
+#include <QGraphicsView>
 #include <QList>
 
 #include "symbols.h"

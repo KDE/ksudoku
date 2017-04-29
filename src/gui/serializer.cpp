@@ -34,7 +34,6 @@
 #include <KIO/FileCopyJob>
 #include <KJobWidgets>
 #include <KLocalizedString>
-#include <KMessageBox>
 
 #include "ksudoku.h"
 #include "symbols.h"

@@ -22,18 +22,16 @@
 
 #include "ksudoku.h"
 
-//#include <dcopclient.h>
 #include <KAboutData>
 #include <KCrash>
-
 #include <KLocalizedString>
-#include <kconfigdialogmanager.h>
-#include <QUrl>
+#include <KConfigDialogManager>
 
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 #include <QDir>
+#include <QUrl>
 
 #include <cstdlib>
 #include <ctime>

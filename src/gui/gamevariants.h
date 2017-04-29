@@ -21,11 +21,11 @@
 #ifndef _KSUDOKUGAMEVARIANTS_H_
 #define _KSUDOKUGAMEVARIANTS_H_
 
-#include <QObject>
-#include <QList>
-#include <QUrl>
-#include <QItemDelegate>
 #include <QAbstractListModel>
+#include <QItemDelegate>
+#include <QList>
+#include <QObject>
+#include <QUrl>
 
 class SKGraph;
 namespace ksudoku {

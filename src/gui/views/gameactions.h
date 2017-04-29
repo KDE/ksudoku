@@ -20,8 +20,8 @@
 #ifndef _KSUDOKU_GAMEACTIONS_H_
 #define _KSUDOKU_GAMEACTIONS_H_
 
-#include <QVector>
 #include <QObject>
+#include <QVector>
 
 class QAction;
 class KActionCollection;

@@ -19,9 +19,10 @@
  ***************************************************************************/
 #include "welcomescreen.h"
 
-#include <KMessageBox>
-#include <KConfigGroup>
 #include <QDebug>
+
+#include <KConfigGroup>
+#include <KMessageBox>
 #include <KSharedConfig>
 
 #include "ksudokugame.h"

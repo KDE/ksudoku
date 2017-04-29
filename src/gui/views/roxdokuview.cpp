@@ -26,11 +26,9 @@
 #include "ksudoku.h"
 #include "skgraph.h"
 
-#include <kmessagebox.h>
-#include <qcursor.h>
-//Added by qt3to4:
-#include <QPixmap>
+#include <QCursor>
 #include <QMouseEvent>
+#include <QPixmap>
 #include <KLocalizedString>
 
 #include "settings.h"

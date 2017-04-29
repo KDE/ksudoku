@@ -18,8 +18,8 @@
 #ifndef DLXSOLVER_H
 #define DLXSOLVER_H
 
-#include <QObject>
 #include <QList>
+#include <QObject>
 
 #include "globals.h"
 

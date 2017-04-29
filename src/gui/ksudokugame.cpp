@@ -32,10 +32,8 @@
 #include <KMessageBox>
 #include <KLocalizedString>
 
-#include <QList>
-
 #include <QDebug>
-
+#include <QList>
 #include <QUrl>
 
 class QWidget;

@@ -24,9 +24,9 @@
 #ifndef SKGRAPH_H
 #define SKGRAPH_H
 
+#include <QList>
 #include <QString>
 #include <QVector>
-#include <QList>
 
 #include "ksudoku_types.h"
 #include "globals.h"

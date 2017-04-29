@@ -19,7 +19,7 @@
 
 #include "ArcBall.h"                                            // ArcBall header
 
-#include <stdio.h>
+#include <cstdio>
 
 //Arcball sphere constants:
 //Diameter is       2.0f

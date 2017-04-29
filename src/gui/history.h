@@ -20,10 +20,10 @@
 #ifndef _KSUDOKUHISTORY_H_
 #define _KSUDOKUHISTORY_H_
 
-#include <qbitarray.h>
+#include <QBitArray>
+#include <QDateTime>
+#include <QObject>
 #include <QVector>
-#include <qobject.h>
-#include <qdatetime.h>
 
 #include "globals.h"
 #include "ksudoku_types.h"

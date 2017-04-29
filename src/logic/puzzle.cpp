@@ -24,7 +24,6 @@
 #include <cstdlib>
 
 #include <QString>
-#include <QtDebug>
 
 #include "sudokuboard.h"
 #include "mathdokugenerator.h"

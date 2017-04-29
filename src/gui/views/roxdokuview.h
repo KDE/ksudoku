@@ -23,14 +23,13 @@
 #ifndef ROXDOKUVIEW_h
 #define ROXDOKUVIEW_h
 
-#include <qgl.h>
-#include <qpixmap.h>
-#include <qpainter.h>
-#include <qimage.h>
-//Added by qt3to4:
-#include <QWheelEvent>
+#include <QGL>
+#include <QImage>
 #include <QMouseEvent>
+#include <QPainter>
+#include <QPixmap>
 #include <QTimer>
+#include <QWheelEvent>
 
 #include "ArcBall.h"
 
