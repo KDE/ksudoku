@@ -91,7 +91,6 @@ public:
 	
 public:
 	void updateShapesList();
-	void loadCustomShapeFromPath();
 	void createCustomShape();
 
 	ksudoku::Game    currentGame() const;

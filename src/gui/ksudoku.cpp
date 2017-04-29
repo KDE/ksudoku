@@ -2,8 +2,7 @@
  *   Copyright 2005-2007 Francesco Rossi <redsh@email.it>                  *
  *   Copyright 2006-2007 Mick Kappenburg <ksudoku@kappendburg.net>         *
  *   Copyright 2006-2008 Johannes Bergmeier <johannes.bergmeier@gmx.net>   *
- *   Copyright 2012      Ian Wadham <iandw.au@gmail.com>                   *
- *   Copyright 2015      Ian Wadham <iandw.au@gmail.com>                   *
+ *   Copyright 2012,2015 Ian Wadham <iandw.au@gmail.com>                   *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
@@ -25,35 +24,39 @@
 #include "globals.h"
 #include "ksudoku.h"
 
+#include <QAction>
+#include <QComboBox>
+#include <QDir>
 #include <QDebug>
 #include <QDragEnterEvent>
 #include <QDropEvent>
-
-#include <QHBoxLayout>
-#include <QLabel>
-#include <QComboBox>
-
+#include <QFileDialog>
+#include <QFileInfo>
 #include <QMimeData>
-
+#include <QLabel>
+#include <QHBoxLayout>
+#include <QKeySequence>
 #include <QPrinter>
 #include <QPrintDialog>
 #include <QStandardPaths>
+#include <QStatusBar>
+#include <QTemporaryFile>
+#include <QUrl>
 
-#include <KLocalizedString>
 #include <KActionCollection>
-#include <KStandardAction>
-#include <QAction>
 #include <KConfigDialog>
+#include <KIO/Job>
+#include <KJobWidgets>
+#include <KLocalizedString>
+#include <KMessageBox>
+#include <KRun>
+#include <KSharedConfig>
+#include <KStandardAction>
+#include <KStandardGameAction>
+#include <KTar>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
-#include <QKeySequence>
-#include <QUrl>
-#include <kmessagebox.h>
-#include <KLocalizedString>
-#include <qstatusbar.h>
-#include <kio/netaccess.h>
-#include <krun.h>
 
 #include "ksview.h"
 #include "gameactions.h"
@@ -64,14 +67,6 @@
 #include "serializer.h"
 
 #include "puzzleprinter.h"
-
-#include <ktar.h>
-#include <kio/job.h>
-#include <kstandardgameaction.h>
-#include <QDir>
-#include <KSharedConfig>
-#include <QFileDialog>
-#include <QFileInfo>
 
 #include "gamevariants.h"
 #include "welcomescreen.h"
@@ -373,7 +368,7 @@ void KSudoku::endCurrentGame() {
 
 void KSudoku::loadGame(const QUrl& Url) {
 	QString errorMsg;
-	Game game = ksudoku::Serializer::load(Url, this, &errorMsg);
+	const Game game = ksudoku::Serializer::load(Url, this, errorMsg);
 	if(!game.isValid()) {
 		KMessageBox::information(this, errorMsg);
 		return;
@@ -648,9 +643,12 @@ void KSudoku::dropEvent(QDropEvent *event)
             // okay, we have a URI.. process it
             const QUrl &Url = Urls.first();
 
-            Game game = ksudoku::Serializer::load(Url, this);
+            QString errorMsg;
+            const Game game = ksudoku::Serializer::load(Url, this, errorMsg);
             if(game.isValid())
                 startGame(game);
+            else
+                KMessageBox::error(this, errorMsg, i18n("Could not load game."));
         }
     }
 }
@@ -686,9 +684,10 @@ void KSudoku::gameOpen()
 
 	if (!Url.isEmpty() && Url.isValid())
 	{
-		Game game = ksudoku::Serializer::load(Url, this);
+		QString errorMsg;
+		Game game = ksudoku::Serializer::load(Url, this, errorMsg);
 		if(!game.isValid()) {
-			KMessageBox::error(this, i18n("Could not load game."));
+			KMessageBox::error(this, errorMsg, i18n("Could not load game."));
 			return;
 		}
 
@@ -711,8 +710,12 @@ void KSudoku::gameSave()
 	if(!game.isValid()) return;
 
 	if(game.getUrl().isEmpty()) game.setUrl(QFileDialog::getSaveFileUrl());
- 	if (!game.getUrl().isEmpty() && game.getUrl().isValid())
-		ksudoku::Serializer::store(game, game.getUrl(), this);
+	if (!game.getUrl().isEmpty() && game.getUrl().isValid())
+	{
+		QString errorMsg;
+		if (!ksudoku::Serializer::store(game, game.getUrl(), this, errorMsg))
+			KMessageBox::error(this, errorMsg, i18n("Error Writing File"));
+	}
 }
 
 void KSudoku::gameSaveAs()
@@ -860,43 +863,6 @@ Game KSudoku::currentGame() const {
 
 ksudoku::KsView* KSudoku::currentView() const{
 	return m_gameUI;
-}
-
-void KSudoku::loadCustomShapeFromPath()
-{
-	QUrl Url = QFileDialog::getOpenFileUrl(this, i18n("Open Location"), QUrl(), QString());
-
-	if ( Url.isEmpty() || !Url.isValid() )
-	{
-		return; // user cancelled
-	}
-
-	QString tmpFile;
-	if(!KIO::NetAccess::download( Url, tmpFile, this ))
-	{
-		//TODO ERROR
-		return;
-	}
-
-	const QString destDir = QStandardPaths::writableLocation( QStandardPaths::GenericDataLocation ) + QStringLiteral("/ksudoku/");
-	QDir().mkpath( destDir );
-
-	KTar archive( tmpFile );
-
-	if ( archive.open( QIODevice::ReadOnly ) )
-	{
-		const KArchiveDirectory *archiveDir = archive.directory();
-		archiveDir->copyTo( destDir );
-		archive.close();
-	}
-	else
-	{
-		//just copy
-		KIO::file_copy (Url, QUrl::fromLocalFile(destDir + '/' + Url.fileName()));
-	}
-
-	KIO::NetAccess::removeTempFile(tmpFile);
-	updateShapesList();
 }
 
 void KSudoku::enableMessages()

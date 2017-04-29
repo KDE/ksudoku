@@ -39,11 +39,11 @@ class HistoryEvent;
 class Serializer {
 public:
 	static SKGraph* loadCustomShape
-		    (const QUrl& url, QWidget* window, QString* errorMsg = 0);
+		    (const QUrl& url, QWidget* window, QString& errorMsg);
 	static bool store
-		    (const Game& game, const QUrl& url, QWidget* window);
+		    (const Game& game, const QUrl& url, QWidget* window, QString& errorMsg);
 	static Game load
-		    (const QUrl& url, QWidget* window, QString* errorMsg = 0);
+		    (const QUrl& url, QWidget* window, QString& errorMsg);
 
 private:
 	// TODO - IDW. Maybe there should be shared methods for file handling.

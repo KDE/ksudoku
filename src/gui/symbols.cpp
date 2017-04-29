@@ -26,7 +26,7 @@
 
 namespace ksudoku {
 
-/// returns the symbol vor a value used for loading and saving
+/// returns the symbol for a value used for loading and saving
 QChar Symbols::ioValue2Symbol(int value) {
 	if (value == VACANT) return '_';
 	if (value == UNUSABLE) return '.';
@@ -35,7 +35,7 @@ QChar Symbols::ioValue2Symbol(int value) {
 
 /// returns the number of the index
 int Symbols::ioSymbol2Value(const QChar& symbol) {
-	char c = symbol.toAscii();
+	char c = symbol.toLatin1();
 	if(symbol == '_') return VACANT;
 	if(symbol == '.') return UNUSABLE;
 	return c - 'a';

@@ -7,18 +7,20 @@ set (KF5_MIN_VERSION "5.31.0")
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test OpenGL)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets PrintSupport Svg Test OpenGL)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    Archive
     Config
     ConfigWidgets
     CoreAddons
     Crash
     DBusAddons
+    DocTools
     GuiAddons
     I18n
     ItemModels
-    KDELibs4Support
     KIO
+    JobWidgets
     NewStuff
     NotifyConfig
     TextWidgets

@@ -24,11 +24,12 @@
 #include "serializer.h"
 
 #include <QDebug>
-#include <KMessageBox>
-#include <KLocalizedString>
-#include <QPainter>
-#include <QIcon>
 #include <QEvent>
+#include <QIcon>
+#include <QPainter>
+
+#include <KLocalizedString>
+#include <KMessageBox>
 
 
 
@@ -416,7 +417,8 @@ bool CustomGame::createSKGraphObject()
 	    m_graph = 0;	// Killer Sudoku game (re-inits cages and size).
 	}
 	if (m_graph == 0) {
-	    m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, 0);
+		QString errorMsg;
+		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, errorMsg);
 	}
 	return (m_graph != 0);	// True if the shapes/*.xml file loaded OK.
 }

@@ -71,7 +71,7 @@ private:
 };
 
 CellGraphicsItem::CellGraphicsItem(QPoint pos, int id, View2DScene* scene) {
-	setAcceptsHoverEvents(true);
+	setAcceptHoverEvents(true);
 	setShapeMode(QGraphicsPixmapItem::BoundingRectShape);
 	m_pos = pos;
 	m_size = 0;

@@ -36,11 +36,14 @@ add_library(ksudoku_gui STATIC ${ksudoku_SRCS} ${ksudoku_views_SRCS})
 target_link_libraries(ksudoku_gui 
 	ksudoku_logic
     KF5KDEGames
-        KF5::Archive	 
-	KF5::KDELibs4Support 
+	KF5::Archive
+	KF5::GuiAddons
 	KF5::KIOCore
+	KF5::KIOWidgets
+	KF5::XmlGui
 	Qt5::Core 
 	Qt5::Gui
+	Qt5::PrintSupport
         Qt5::Svg
 	)
 

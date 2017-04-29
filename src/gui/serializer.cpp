@@ -24,16 +24,17 @@
 #include "ksudokugame.h"
 #include "puzzle.h"
 
-#include <qdom.h>
-//Added by qt3to4:
+#include <QDomDocument>
+#include <QFile>
 #include <QList>
 #include <QTextStream>
 #include <QUrl>
 #include <QTemporaryFile>
-#include <kio/netaccess.h>
-#include <qfile.h>
-#include <KLocalizedString>
 
+#include <KIO/FileCopyJob>
+#include <KJobWidgets>
+#include <KLocalizedString>
+#include <KMessageBox>
 
 #include "ksudoku.h"
 #include "symbols.h"
@@ -398,29 +399,32 @@ HistoryEvent Serializer::deserializeComplexHistoryEvent(QDomElement /*element*/)
 	return HistoryEvent();
 }
 
-SKGraph *Serializer::loadCustomShape(const QUrl &url, QWidget* window, QString *errorMsg) {
-	if ( url.isEmpty() ) return 0;
-	QString tmpFile;
-	bool success = false;
-	QDomDocument doc;
-	if(KIO::NetAccess::download(url, tmpFile, window) ) {
-		QFile file(tmpFile);
-		if(file.open(QIODevice::ReadOnly)) {
-			int errorLine;
-			if(!doc.setContent(&file, 0, &errorLine)) {
-				if(errorMsg)
-					*errorMsg = i18n("Cannot read XML file on line %1", errorLine);
-
-				return 0;
-			}
-			success = true;
-		}
-		KIO::NetAccess::removeTempFile(tmpFile);
+SKGraph *Serializer::loadCustomShape(const QUrl& url, QWidget* window, QString& errorMsg) {
+	if ( url.isEmpty() ) {
+		errorMsg = i18n("Unable to download file: URL is empty.");
+		return nullptr;
 	}
-	if ( !success ) {
-		if(errorMsg)
-			*errorMsg = i18n("Cannot load file.");
-		return 0;
+	QDomDocument doc;
+
+	QTemporaryFile tmpFile;
+	if ( !tmpFile.open() ) {
+		errorMsg = i18n("Unable to create temporary file.");
+		return nullptr;
+	}
+	KIO::FileCopyJob *downloadJob = KIO::file_copy(url, QUrl::fromLocalFile(tmpFile.fileName()), -1, KIO::Overwrite);
+	KJobWidgets::setWindow(downloadJob, window);
+	downloadJob->exec();
+
+	if( downloadJob->error() ) {
+		errorMsg = i18n("Unable to download file.");
+		return nullptr;
+	}
+
+	int errorLine;
+	if(!doc.setContent(&tmpFile, 0, &errorLine)) {
+		errorMsg = i18n("Cannot read XML file on line %1", errorLine);
+
+		return nullptr;
 	}
 
 	QDomNode child = doc.documentElement().firstChild();
@@ -433,30 +437,30 @@ SKGraph *Serializer::loadCustomShape(const QUrl &url, QWidget* window, QString *
 		child = child.nextSibling();
 	}
 
-	return 0;
+	return nullptr;
 }
 
-Game Serializer::load(const QUrl& url, QWidget* window, QString *errorMsg) {
+Game Serializer::load(const QUrl& url, QWidget* window, QString& errorMsg) {
 	if ( url.isEmpty() ) return Game();
-	QString tmpFile;
-	bool success = false;
 	QDomDocument doc;
-	if(KIO::NetAccess::download(url, tmpFile, window) ) {
-		QFile file(tmpFile);
-		if(file.open(QIODevice::ReadOnly)) {
-			int errorLine;
-			if(!doc.setContent(&file, 0, &errorLine)) {
-				if(errorMsg)
-					*errorMsg = i18n("Cannot read XML file on line %1", errorLine);
-				return Game();
-			}
-			success = true;
-		}
-		KIO::NetAccess::removeTempFile(tmpFile);
+
+	QTemporaryFile tmpFile;
+	if ( !tmpFile.open() ) {
+		errorMsg = i18n("Unable to create temporary file.");
+		return Game();
 	}
-	if ( !success ) {
-		if(errorMsg)
-			*errorMsg = i18n("Cannot load file.");
+	KIO::FileCopyJob *downloadJob = KIO::file_copy(url, QUrl::fromLocalFile(tmpFile.fileName()), -1, KIO::Overwrite);
+	KJobWidgets::setWindow(downloadJob, window);
+	downloadJob->exec();
+
+	if( downloadJob->error() ) {
+		errorMsg = i18n("Unable to download file.");
+		return Game();
+	}
+
+	int errorLine;
+	if(!doc.setContent(&tmpFile, 0, &errorLine)) {
+		errorMsg = i18n("Cannot read XML file on line %1", errorLine);
 		return Game();
 	}
 
@@ -682,7 +686,7 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 	return true;
 }
 
-bool Serializer::store(const Game& game, const QUrl& url, QWidget* window) {
+bool Serializer::store(const Game& game, const QUrl& url, QWidget* window, QString& errorMsg) {
 	QDomDocument doc( "ksudoku" );
 	QDomElement root = doc.createElement( "ksudoku" );
 	doc.appendChild( root );
@@ -690,13 +694,23 @@ bool Serializer::store(const Game& game, const QUrl& url, QWidget* window) {
 	serializeGame(root, game);
 
 	QTemporaryFile file;
-	file.open();
+	if ( !file.open() ) {
+		errorMsg = i18n("Unable to create temporary file.");
+		return false;
+	}
 
 	QTextStream stream(&file);
 	stream << doc.toString();
 	stream.flush();
 
-	KIO::NetAccess::upload(file.fileName(), url, window);
+	KIO::FileCopyJob *copyJob = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), url);
+	KJobWidgets::setWindow(copyJob , window);
+	copyJob->exec();
+	if(copyJob->error())
+	{
+		errorMsg = i18n("Unable to upload file.");
+		return false;
+	}
 	return true;
 }
 
