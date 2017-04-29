@@ -14,18 +14,13 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     ConfigWidgets
     CoreAddons
     Crash
-    DBusAddons
     DocTools
     GuiAddons
     I18n
-    ItemModels
+    IconThemes
     KIO
     JobWidgets
-    NewStuff
-    NotifyConfig
-    TextWidgets
     WidgetsAddons
-    WindowSystem
     XmlGui
 )
 
