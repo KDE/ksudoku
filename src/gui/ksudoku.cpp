@@ -49,7 +49,6 @@
 #include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KRun>
 #include <KSharedConfig>
 #include <KStandardAction>
 #include <KStandardGameAction>
@@ -383,11 +382,6 @@ void KSudoku::showWelcomeScreen() {
 	m_welcomeScreen->show();
 }
 
-void KSudoku::homepage()
-{
-	KRun::runUrl (QUrl("http://ksudoku.sourceforge.net/"), "text/html", this, KRun::RunFlags());
-}
-
 void KSudoku::giveHint()
 {
 	Game game = currentGame();
@@ -499,13 +493,6 @@ void KSudoku::setupActions()
 	a->setIcon(QIcon::fromTheme( QLatin1String( "games-endturn" )));
 	connect(a, &QAction::triggered, this, &KSudoku::dubPuzzle);
 	addAction(a);
-
-	//WEB
-	a = new QAction(this);
-	actionCollection()->addAction( QLatin1String( "home_page" ), a);
-	a->setText(i18n("Home Page"));
-	a->setIcon(QIcon::fromTheme( QLatin1String( "internet-web-browser" )));
-	connect(a, &QAction::triggered, this, &KSudoku::homepage);
 }
 
 void KSudoku::setupStatusBar (int difficulty, int symmetry)

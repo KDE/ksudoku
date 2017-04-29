@@ -138,9 +138,6 @@ private slots:
 //  void updateStatusBar();
 //  void changeStatusbar(const QString& text);
 
-	void homepage();
-
-
 	void onModified(bool isModified);
 
 	void enableMessages();
