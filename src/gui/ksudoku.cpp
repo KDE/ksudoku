@@ -187,14 +187,10 @@ void KSudoku::updateShapesList()
 
 	const QStringList gamevariantdirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "ksudoku", QStandardPaths::LocateDirectory);
 
-	QStringList filepaths;
+	QFileInfoList filepaths;
 	for (const QString& gamevariantdir : gamevariantdirs) {
-		const QStringList fileNames = QDir(gamevariantdir).entryList(QStringList() << QStringLiteral("*.desktop"));
-		for (const QString &file : fileNames) {
-			if (!filepaths.contains(gamevariantdir + '/' + file)) {
-				filepaths.append(gamevariantdir + '/' + file);
-			}
-		}
+		const auto fileNames = QDir(gamevariantdir).entryInfoList(QStringList() << QStringLiteral("*.desktop"), QDir::Files | QDir::Readable | QDir::NoDotAndDotDot);
+		filepaths.append(fileNames);
 	}
 
 	QString variantName;
@@ -202,10 +198,9 @@ void KSudoku::updateShapesList()
 	QString variantDataPath;
 	QString variantIcon;
 
-	for (const QString &filepath : qAsConst(filepaths)) {
-		const QFileInfo configFileInfo(filepath);
+	for (const QFileInfo &configFileInfo : qAsConst(filepaths)) {
 		const QDir variantDir = configFileInfo.dir();
-		KConfig variantConfig(filepath, KConfig::SimpleConfig);
+		KConfig variantConfig(configFileInfo.filePath(), KConfig::SimpleConfig);
 		KConfigGroup group = variantConfig.group ("KSudokuVariant");
 
 		variantName = group.readEntry("Name", i18n("Missing Variant Name")); // Translated.
