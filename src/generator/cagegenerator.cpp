@@ -371,7 +371,7 @@ QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
 
 	// Pick a neighbour to be added to the cage.
 	index = -1;
-	for (unb : qAsConst(unusedNeighbours)) {
+	for (const int unb : qAsConst(unusedNeighbours)) {
             flags = mNeighbourFlags.at (unb);
 	    if (flags == 15) {
 		// Choose a cell that has been surrounded and isolated.
