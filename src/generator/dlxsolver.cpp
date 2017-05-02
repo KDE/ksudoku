@@ -28,8 +28,8 @@ DLXSolver::DLXSolver (QObject * parent)
     :
     QObject       (parent),
     mBoardValues  (0),
-    mGraph        (0),
-    mSolutionMoves(0)
+    mSolutionMoves(0),
+    mGraph        (0)
 {
 #ifdef DLX_LOG
     qCDebug(KSudokuLog) << "DLXSolver constructor entered";
