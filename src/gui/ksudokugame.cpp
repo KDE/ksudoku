@@ -526,7 +526,7 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 	    if (cageNumP1 > 0) {
 		if(KMessageBox::questionYesNo (messageParent(),
 		       i18n("Do you wish to delete this cage?"),
-		       i18n("Delete Cage"), KGuiItem(i18n("Delete")),
+		       i18n("Delete Cage"), KStandardGuiItem::del(),
 		       KStandardGuiItem::cancel(), QString("CageDelConfirm"))
 		       == KMessageBox::No) {
 		    return;

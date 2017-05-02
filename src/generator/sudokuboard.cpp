@@ -26,6 +26,7 @@
 
 #include <KLocalizedString>
 #include <KMessageBox>
+#include <KStandardGuiItem>
 
 #include <QDebug>
 #include <QMultiMap>
@@ -225,7 +226,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 			    ratingStr, bestNClues,
 			    (m_stats.nCells - bestNClues)),
 		       i18n("Difficulty Level"),
-                       KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
+                       KStandardGuiItem::ok(), KGuiItem(i18n("&Retry")));
 	    }
 	    else {
                 QString avGuessStr = ki18n("%1").subs(((float) bestNGuesses) /
@@ -241,7 +242,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 			    avGuessStr, bestFirstGuessAt, ratingStr,
 			    bestNClues, (m_stats.nCells - bestNClues)),
                        i18n("Difficulty Level"),
-                       KGuiItem(i18n("&OK")), KGuiItem(i18n("&Retry")));
+                       KStandardGuiItem::ok(), KGuiItem(i18n("&Retry")));
 	    }
 	    // Exit when the required difficulty or number of tries is reached.
             if (ans == KMessageBox::No) {
