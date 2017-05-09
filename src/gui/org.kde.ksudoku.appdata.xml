@@ -25,6 +25,7 @@ SentUpstream: 2014-09-24
   <name xml:lang="sv">Ksudoku</name>
   <name xml:lang="uk">KSudoku</name>
   <name xml:lang="x-test">xxKSudokuxx</name>
+  <name xml:lang="zh-CN">KSudoku</name>
   <summary>Complete a numeric puzzle with the numbers from one to nine</summary>
   <summary xml:lang="ca">Completeu un puzle numèric puzzle amb nombres des de l'u al nou.</summary>
   <summary xml:lang="ca-valencia">Completeu un puzle numèric puzzle amb nombres des de l'u al nou.</summary>
@@ -50,6 +51,7 @@ SentUpstream: 2014-09-24
   <summary xml:lang="sv">Fyll i ett sifferpussel med siffrorna från ett till nio</summary>
   <summary xml:lang="uk">Розв’яжіть числову головоломку із числами від одного до дев’яти</summary>
   <summary xml:lang="x-test">xxComplete a numeric puzzle with the numbers from one to ninexx</summary>
+  <summary xml:lang="zh-CN">用数字一到九完成数字拼图</summary>
   <description>
     <p>
       KSudoku is a free version of the popular logic game Sudoku developed by the KDE community.
