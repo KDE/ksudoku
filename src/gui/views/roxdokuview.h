@@ -56,14 +56,14 @@ public:
 
 	virtual QString status() const;
 
-	void initializeGL();
+	void initializeGL() Q_DECL_OVERRIDE;
 
-	void resizeGL(int w, int h );
+	void resizeGL(int w, int h ) Q_DECL_OVERRIDE;
 
-	QWidget* widget() { return this; }
+	QWidget* widget() Q_DECL_OVERRIDE { return this; }
 
 public slots:
-	void selectValue(int value);
+	void selectValue(int value) Q_DECL_OVERRIDE;
 	void settingsChanged();
 	void enterValue(int value);
 
@@ -71,22 +71,22 @@ signals:
 	void valueSelected(int value); // Never used but connected to
 
 protected:
-	void paintGL();
+	void paintGL() Q_DECL_OVERRIDE;
 
 	void myDrawCube(bool highlight, int cell,
 			GLfloat x, GLfloat y, GLfloat z,
 			bool outside);
 
 	void Selection(int mouse_x, int mouse_y);
-	void mouseReleaseEvent ( QMouseEvent * e ){
+	void mouseReleaseEvent ( QMouseEvent * e )Q_DECL_OVERRIDE {
 		if(e->button() == Qt::LeftButton) m_isClicked = false;
 	}
-	void mousePressEvent ( QMouseEvent * e ){
+	void mousePressEvent ( QMouseEvent * e )Q_DECL_OVERRIDE {
 		if(e->button() == Qt::LeftButton) m_isClicked = true;
 	}	
-	void mouseMoveEvent(QMouseEvent* e) ;
-	void mouseDoubleClickEvent(QMouseEvent* e);
-	void wheelEvent (QWheelEvent* e){
+	void mouseMoveEvent(QMouseEvent* e)  Q_DECL_OVERRIDE;
+	void mouseDoubleClickEvent(QMouseEvent* e) Q_DECL_OVERRIDE;
+	void wheelEvent (QWheelEvent* e)Q_DECL_OVERRIDE {
 		m_wheelmove += e->delta() * .02;
 		updateGL();
 	}

@@ -37,7 +37,7 @@ public:
 	int value() const;
 	int maxValue() const;
 	void setSize(double size);
-	void mousePressEvent(QGraphicsSceneMouseEvent* event);
+	void mousePressEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
 private:
 	int m_value;
 	int m_maxValue;

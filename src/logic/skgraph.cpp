@@ -113,7 +113,7 @@ void SKGraph::initRoxdokuGroups(int pos)
 	int y = cellPosY(pos);
 	int z = cellPosZ(pos);
 
-	for (uint i = 0; i < m_base; i++) {
+	for (int i = 0; i < m_base; i++) {
 		xFace.clear();
 		yFace.clear();
 		zFace.clear();

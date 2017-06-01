@@ -43,7 +43,7 @@ public:
 // 	void setCurrentTable(SymbolTable* table, int maxValue);
 	void setMaxValue(int maxValue);
 	
-	void resizeEvent(QResizeEvent*);
+	void resizeEvent(QResizeEvent*) Q_DECL_OVERRIDE;
 	
 public slots:
 	void selectValue(int value);
@@ -58,7 +58,7 @@ signals:
 protected:
 	inline QGraphicsScene* scene() { return m_scene; }
 	void selectValueItem(int value);
-	void wheelEvent (QWheelEvent* e);
+	void wheelEvent (QWheelEvent* e) Q_DECL_OVERRIDE;
 	
 private:
 // 	SymbolTable* m_table;
