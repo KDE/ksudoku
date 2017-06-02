@@ -53,8 +53,8 @@ public:
 	
 	void setValues(QVector<ColoredValue> values);
 protected:
-	void hoverEnterEvent(QGraphicsSceneHoverEvent* event) Q_DECL_OVERRIDE;
-	void mousePressEvent(QGraphicsSceneMouseEvent* event) Q_DECL_OVERRIDE;
+	void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
+	void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
 private:
 	void updatePixmap();
 private:

@@ -97,8 +97,8 @@ public:
 	ksudoku::KsView* currentView() const;
 
 protected:
-	void dragEnterEvent(QDragEnterEvent *event) Q_DECL_OVERRIDE;
-	void dropEvent(QDropEvent *event) Q_DECL_OVERRIDE;
+	void dragEnterEvent(QDragEnterEvent *event) override;
+	void dropEvent(QDropEvent *event) override;
 
 public slots:
 	void onCompleted(bool isCorrect, const QTime& required, bool withHelp = false);
@@ -108,7 +108,7 @@ public slots:
 	void startGame(const ::ksudoku::Game& game);
 	void endCurrentGame();
 
-	bool queryClose() Q_DECL_OVERRIDE;
+	bool queryClose() override;
 	
 private slots:
 	void difficultyChanged (KGameDifficulty::standardLevel difficulty);

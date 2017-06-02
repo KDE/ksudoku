@@ -86,7 +86,7 @@ public slots:
 signals:
 	void valueSelected(int val);
 protected:
-	void wheelEvent(QGraphicsSceneWheelEvent* event) Q_DECL_OVERRIDE;
+	void wheelEvent(QGraphicsSceneWheelEvent* event) override;
 private:
 	QGraphicsPixmapItem* m_background;
 	QGraphicsItem* m_groupLayer;
@@ -110,14 +110,14 @@ public:
 	~View2D();
 
 public:
-	QWidget* widget() Q_DECL_OVERRIDE { return this; }
+	QWidget* widget() override { return this; }
 public slots:
-	void selectValue(int value) Q_DECL_OVERRIDE;
+	void selectValue(int value) override;
 	void settingsChanged();
 signals:
 	void valueSelected(int value);
 protected:
-	void resizeEvent(QResizeEvent* e) Q_DECL_OVERRIDE;
+	void resizeEvent(QResizeEvent* e) override;
 private:
 	View2DScene* m_scene;
 };

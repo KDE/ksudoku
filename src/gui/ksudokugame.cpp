@@ -56,10 +56,10 @@ private:
 	int m_refCount;
 	
 public: // The slots of GameIFace
-	void undo() Q_DECL_OVERRIDE;
-	void redo() Q_DECL_OVERRIDE;
-	void addCheckpoint() Q_DECL_OVERRIDE;
-	void undo2Checkpoint() Q_DECL_OVERRIDE;
+	void undo() override;
+	void redo() override;
+	void addCheckpoint() override;
+	void undo2Checkpoint() override;
 	
 public:
 	inline void emitModified(bool isModified) { emit modified(isModified); }

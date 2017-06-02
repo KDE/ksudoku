@@ -81,9 +81,9 @@ public:
 	void addVariant(GameVariant* variant);
 
 public:
-	QVariant data(const QModelIndex &index, int role) const Q_DECL_OVERRIDE;
-	int rowCount(const QModelIndex&) const Q_DECL_OVERRIDE;
-	QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
+	QVariant data(const QModelIndex &index, int role) const override;
+	int rowCount(const QModelIndex&) const override;
+	QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
 	GameVariant* variant(const QModelIndex&) const;
 
 signals:
@@ -104,11 +104,11 @@ public:
 public:
 	GameVariantDelegate(QObject* parent = 0, QWidget * viewport = 0);
 public:
-	QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const Q_DECL_OVERRIDE;
-	void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const Q_DECL_OVERRIDE;
+	QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
+	void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 
 protected:
-	bool eventFilter(QObject* watched, QEvent* event) Q_DECL_OVERRIDE;
+	bool eventFilter(QObject* watched, QEvent* event) override;
 
 public:
 	QString title(const QModelIndex& index) const;
@@ -132,12 +132,12 @@ public:
 	SudokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
 
 public:
-	bool canConfigure() const Q_DECL_OVERRIDE;
-	bool configure() Q_DECL_OVERRIDE;
-	bool canStartEmpty() const Q_DECL_OVERRIDE;
-	Game startEmpty() Q_DECL_OVERRIDE;
-	Game createGame(int difficulty, int symmetry) Q_DECL_OVERRIDE;
-	KsView* createView(const Game& game) const Q_DECL_OVERRIDE;
+	bool canConfigure() const override;
+	bool configure() override;
+	bool canStartEmpty() const override;
+	Game startEmpty() override;
+	Game createGame(int difficulty, int symmetry) override;
+	KsView* createView(const Game& game) const override;
 
 private:
 	uint m_order;
@@ -151,12 +151,12 @@ public:
 	RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
 
 public:
-	bool canConfigure() const Q_DECL_OVERRIDE;
-	bool configure() Q_DECL_OVERRIDE;
-	bool canStartEmpty() const Q_DECL_OVERRIDE;
-	Game startEmpty() Q_DECL_OVERRIDE;
-	Game createGame(int difficulty, int symmetry) Q_DECL_OVERRIDE;
-	KsView* createView(const Game& game) const Q_DECL_OVERRIDE;
+	bool canConfigure() const override;
+	bool configure() override;
+	bool canStartEmpty() const override;
+	Game startEmpty() override;
+	Game createGame(int difficulty, int symmetry) override;
+	KsView* createView(const Game& game) const override;
 
 private:
 	uint m_order;
@@ -170,12 +170,12 @@ public:
 	CustomGame(const QString& name, const QUrl& url, GameVariantCollection* collection=0);
 
 public:
-	bool canConfigure() const Q_DECL_OVERRIDE;
-	bool configure() Q_DECL_OVERRIDE;
-	bool canStartEmpty() const Q_DECL_OVERRIDE;
-	Game startEmpty() Q_DECL_OVERRIDE;
-	Game createGame(int difficulty, int symmetry) Q_DECL_OVERRIDE;
-	KsView* createView(const Game& game) const Q_DECL_OVERRIDE;
+	bool canConfigure() const override;
+	bool configure() override;
+	bool canStartEmpty() const override;
+	Game startEmpty() override;
+	Game createGame(int difficulty, int symmetry) override;
+	KsView* createView(const Game& game) const override;
 
 private:
 	uint m_order;
