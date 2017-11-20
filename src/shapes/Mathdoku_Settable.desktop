@@ -2,6 +2,7 @@
 Name=Mathdoku - Settable Size
 Name[ca]=Mathdoku - Mida definible
 Name[ca@valencia]=Mathdoku - Mida definible
+Name[da]=Mathdoku - Sætbordstørrelse
 Name[de]=MathDoku - Einstellbare Größe
 Name[en_GB]=Mathdoku - Settable Size
 Name[es]=Mathdoku - Tamaño ajustable
@@ -29,6 +30,7 @@ Name[zh_TW]=Mathdoku - 可設定的大小
 Description=Size 3x3 to 9x9 grid, with calculated cages
 Description[ca]=Mida de quadrícula 3x3 a 9x9, amb caixes calculades
 Description[ca@valencia]=Mida de quadrícula 3x3 a 9x9, amb caixes calculades
+Description[da]=Størrelse 3x3 til 9x9-gitter, med beregnede burer
 Description[en_GB]=Size 3x3 to 9x9 grid, with calculated cages
 Description[es]=Rejilla de tamaño 3x3 a 9x9, con jaulas calculadas
 Description[et]=3x3 kuni 9x9 ruudustiku ja arvutamist nõudvate plokkidega
