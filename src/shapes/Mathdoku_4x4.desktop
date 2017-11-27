@@ -2,6 +2,7 @@
 Name=Mathdoku 101
 Name[ca]=Mathdoku 101
 Name[ca@valencia]=Mathdoku 101
+Name[da]=Mathdoku alene
 Name[de]=MathDoku 101
 Name[en_GB]=Mathdoku 101
 Name[es]=Mathdoku 101
@@ -29,6 +30,7 @@ Name[zh_TW]=Mathdoku 101
 Description=Size 4x4 grid, with calculated cages
 Description[ca]=Mida de quadrícula 4x4, amb caixes calculades
 Description[ca@valencia]=Mida de quadrícula 4x4, amb caixes calculades
+Description[da]=Størrelse 4x4-gitter, med beregnede burer
 Description[en_GB]=Size 4x4 grid, with calculated cages
 Description[es]=Rejilla de tamaño 4x4, con jaulas calculadas
 Description[et]=4x4 ruudustiku ja arvutamist nõudvate plokkidega
