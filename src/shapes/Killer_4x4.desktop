@@ -31,6 +31,7 @@ Description=4x4 Sudoku, but cages must add to totals shown
 Description[ca]=Sudoku 4x4, però les caixes s'han d'afegir als totals mostrats
 Description[ca@valencia]=Sudoku 4x4, però les caixes s'han d'afegir als totals mostrats
 Description[da]=4x4 Sudoku, men burer skal tilføjes til viste samlet
+Description[de]=4x4 Sudoku, die Summe der Blöcke muss den angezeigten Wert ergeben
 Description[en_GB]=4x4 Sudoku, but cages must add to totals shown
 Description[es]=Sudoku 4x4, pero las jaulas deben sumarse para obtener los totales mostrados
 Description[et]=4x4 sudoku, kuid plokid sisaldavad summat
