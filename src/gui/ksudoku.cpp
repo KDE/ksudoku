@@ -114,9 +114,9 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 // // 		m = view->status();
 // // 	if(currentView())
 // // 		m = currentView()->status();
-// 
+//
 // 	// TODO fix this: add new status bar generation code
-// 
+//
 // 	statusBar()->showMessage(m);
 // }
 
@@ -236,8 +236,8 @@ void KSudoku::updateShapesList()
 void KSudoku::startGame(const Game& game) {
 	m_welcomeScreen->hide();
 	endCurrentGame();
-	
-	
+
+
 	KsView* view = new KsView(game, m_gameActions, this);
 
 	view->setValueListWidget(m_valueListWidget);
@@ -352,10 +352,10 @@ void KSudoku::startGame(const Game& game) {
 
 void KSudoku::endCurrentGame() {
 	m_valueListWidget->hide();
-	
+
 	delete m_gameUI;
 	m_gameUI = 0;
-	
+
 	adaptActions2View();
 
 }
@@ -457,6 +457,7 @@ void KSudoku::setupActions()
 	setAcceptDrops(true);
 
 	KStandardGameAction::gameNew(this, SLOT(gameNew()), actionCollection());
+	KStandardGameAction::restart(this, SLOT(gameRestart()), actionCollection());
 	KStandardGameAction::load(this, SLOT(gameOpen()), actionCollection());
 	m_gameSave = KStandardGameAction::save(this, SLOT(gameSave()), actionCollection());
 	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(gameSaveAs()), actionCollection());
@@ -545,6 +546,9 @@ void KSudoku::adaptActions2View() {
 
 	m_gameSave->setEnabled(game.isValid());
 	m_gameSaveAs->setEnabled(game.isValid());
+	action("game_new")->setEnabled(game.isValid());
+	action("game_restart")->setEnabled(game.isValid());
+	action("game_print")->setEnabled(game.isValid());
 	if(game.isValid()) {
 		action("move_undo")->setEnabled(game.canUndo());
 		action("move_redo")->setEnabled(game.canRedo());
@@ -647,13 +651,33 @@ void KSudoku::gameNew()
 	if(!m_gameUI->game().wasFinished()) {
 		if(KMessageBox::questionYesNo(this,
 	                              i18n("Do you really want to end this game in order to start a new one?"),
-	                              i18nc("window title", "Restart Game"),
-	                              KGuiItem(i18nc("button label", "Restart Game")),
+	                              i18nc("window title", "New Game"),
+	                              KGuiItem(i18nc("button label", "New Game")),
 	                              KStandardGuiItem::cancel() ) != KMessageBox::Yes)
 			return;
 	}
 
 	showWelcomeScreen();
+}
+
+void KSudoku::gameRestart()
+{
+	if (!currentView()) return;
+
+	auto game = currentGame();
+
+	// only show question when the current game hasn't been finished until now
+	if (!game.wasFinished()) {
+		if (KMessageBox::questionYesNo(this,
+                                i18n("Do you really want to restart this game?"),
+                                i18nc("window title", "Restart Game"),
+                                KGuiItem(i18nc("button label", "Restart Game")),
+                                KStandardGuiItem::cancel() ) != KMessageBox::Yes) {
+			return;
+		}
+	}
+
+	game.restart();
 }
 
 void KSudoku::gameOpen()

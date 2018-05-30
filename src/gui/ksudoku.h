@@ -86,9 +86,9 @@ public:
      * Default Destructor
      */
 	virtual ~KSudoku();
-	
+
 	void loadGame(const QUrl& url);
-	
+
 public:
 	void updateShapesList();
 	void createCustomShape();
@@ -102,20 +102,21 @@ protected:
 
 public slots:
 	void onCompleted(bool isCorrect, const QTime& required, bool withHelp = false);
-	
+
 	void showWelcomeScreen();
 
 	void startGame(const ::ksudoku::Game& game);
 	void endCurrentGame();
 
 	bool queryClose() override;
-	
+
 private slots:
 	void difficultyChanged (KGameDifficulty::standardLevel difficulty);
 	void difficultyChanged (int difficulty); // IDW test.
 	void symmetryChanged   (int symmetry);
 
 	void gameNew();
+	void gameRestart();
 	void gameOpen();
 	void gameSave();
 	void gameSaveAs();
@@ -153,16 +154,16 @@ private:
 
 private:
 	QWidget* wrapper;
-	
+
 	QAction* m_gameSave;
 	QAction* m_gameSaveAs;
 
 	ksudoku::GameVariantCollection* m_gameVariants;
 	ksudoku::WelcomeScreen* m_welcomeScreen;
-	
+
 	QWidget* m_gameWidget;
 	ksudoku::ValueListWidget* m_valueListWidget;
-	
+
 	ksudoku::KsView* m_gameUI;
 
 	ksudoku::GameActions* m_gameActions;

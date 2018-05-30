@@ -198,6 +198,15 @@ bool Game::simpleCheck() const { // IDW TODO - This does nothing useful now
 // IDW test. Eliminated optimized[] arrays and xxxConnection() functions.
 }
 
+void Game::restart() {
+	while (canUndo()) {
+		interface()->undo();
+	}
+	m_private->history.clear(); // otherwise we could do redo
+	m_private->wasFinished = false;
+	m_private->emitModified(true); // e.g. to update undo/redo action state
+}
+
 int Game::order() const {
 	if(!m_private) return 0;
 	return m_private->puzzle->order();

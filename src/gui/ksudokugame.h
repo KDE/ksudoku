@@ -114,6 +114,11 @@ public:
 	Game& operator=(const Game& game);
 	
 public:
+	/**
+	 * Restarts the game and marks it as unfinished
+	 */
+	void restart();
+
 	int order() const;
 
 	int  value(int index) const;
