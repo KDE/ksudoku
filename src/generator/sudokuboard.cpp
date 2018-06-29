@@ -195,14 +195,15 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
             // Exit after max attempts?
             QWidget owner;
             int ans = KMessageBox::questionYesNo (&owner,
-                      i18n("After %1 tries, the best difficulty level achieved "
+                      i18n("After %1 tries, the best difficulty level achieved by the generator "
 			   "is %2, with internal difficulty rating %3, but you "
-			   "requested difficulty level %4. Do you wish to try "
-			   "again or accept the puzzle as is?\n"
+			   "requested difficulty level %4.\n"
 			   "\n"
-			   "If you accept the puzzle, it may help to change to "
-			   "No Symmetry or some low symmetry type, then use "
-			   "Game->New and try generating another puzzle.",
+			   "Do you wish to let the generator try again or accept the puzzle as is?\n"
+			   "\n"
+			   "Hint: you can try to increase the difficulty rating by doing the following: "
+			   "Continue with the 'Accept' button, choose Game -> New, then change the Symmetry setting "
+			   "to 'No Symmetry' or some low symmetry type and then use 'Generate A Puzzle' again.",
 			   maxTries, bestDifficulty,
 			   ratingStr, difficultyRequired),
                       i18n("Difficulty Level"),

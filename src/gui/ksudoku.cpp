@@ -844,7 +844,10 @@ void KSudoku::difficultyChanged (int difficulty)
 		i18n("Warning: The Unlimited difficulty level has no limit on "
 		     "how many guesses or branch points are required to solve "
 		     "the puzzle and there is no lower limit on how soon "
-		     "guessing becomes necessary."),
+		     "guessing becomes necessary.\n\n"
+		     "Please also note that the generation of this type of puzzle "
+		     "might take much longer than other ones. During this time "
+		     "KSudoku will not respond."),
 		i18n("Warning"), "WarningReUnlimited");
     }
 }
@@ -884,7 +887,9 @@ void KSudoku::enableMessages()
 {
 	// Enable all messages that the user has marked "Do not show again".
 	int result = KMessageBox::questionYesNo(this,
-					i18n("Enable all messages"));
+					i18n("This will enable all the dialogs that you had disabled by marking "
+						 "the 'Do not show this message again' option.\n\n"
+						 "Do you want to continue?"));
 	if (result == KMessageBox::Yes) {
 		KMessageBox::enableAllMessages();
 		KSharedConfig::openConfig()->sync();	// Save the changes to disk.
