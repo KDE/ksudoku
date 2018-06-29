@@ -102,6 +102,8 @@ void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) 
 		else
 			msg = i18nc("The two parameters are strings like '2 minutes' or '1 second'.", "Congratulations! You made it in %1 and %2.", i18np("1 minute", "%1 minutes", mins), i18np("1 second", "%1 seconds", secs));
 
+    onModified(true); // make sure buttons have the correct enabled state
+
 	KMessageBox::information(this, msg);
 
 }
@@ -550,6 +552,11 @@ void KSudoku::adaptActions2View() {
 	action("game_restart")->setEnabled(game.isValid());
 	action("game_print")->setEnabled(game.isValid());
 	if(game.isValid()) {
+		bool isEnterPuzzleMode = !game.puzzle()->hasSolution();
+		action("move_hint")->setVisible(!isEnterPuzzleMode);
+		action("move_solve")->setVisible(!isEnterPuzzleMode);
+		action("move_dub_puzzle")->setVisible(isEnterPuzzleMode);
+
 		action("move_undo")->setEnabled(game.canUndo());
 		action("move_redo")->setEnabled(game.canRedo());
 
@@ -560,9 +567,9 @@ void KSudoku::adaptActions2View() {
 		action("move_undo")->setEnabled(false);
 		action("move_redo")->setEnabled(false);
 
-		action("move_hint")->setEnabled(false);
-		action("move_solve")->setEnabled(false);
-		action("move_dub_puzzle")->setEnabled(false);
+		action("move_hint")->setVisible(false);
+		action("move_solve")->setVisible(false);
+		action("move_dub_puzzle")->setVisible(false);
 	}
 }
 
@@ -571,6 +578,8 @@ void KSudoku::onModified(bool /*isModified*/) {
 	if(game.isValid()) {
 		action("move_undo")->setEnabled(game.canUndo());
 		action("move_redo")->setEnabled(game.canRedo());
+		action("move_hint")->setEnabled(!game.allValuesSetAndUsable());
+		action("move_solve")->setEnabled(!game.wasFinished());
 	}
 }
 

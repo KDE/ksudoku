@@ -218,7 +218,7 @@ public:
 	bool userHadHelp() const;
 
 	/**
-	 * Returns whether the game was allready solved.
+	 * Returns whether the game was already solved.
 	 */
 	bool wasFinished() const;
 	
@@ -254,6 +254,12 @@ public:
 	 */
 	void setMessageParent (QWidget * messageParent);
 	QWidget * messageParent();
+
+	/*
+	 * Returns true if all values are filled in (not empty)
+	 * and in usable areas (as in Samurai); false otherwise
+	 */
+	bool allValuesSetAndUsable() const;
 
 private:
 	/**
