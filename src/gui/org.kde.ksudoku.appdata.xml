@@ -38,7 +38,7 @@ SentUpstream: 2014-09-24
   <name xml:lang="zh-CN">KSudoku</name>
   <summary>Complete a numeric puzzle with the numbers from one to nine</summary>
   <summary xml:lang="ca">Completeu un puzle numèric amb nombres des de l'u al nou.</summary>
-  <summary xml:lang="ca-valencia">Completeu un puzle numèric puzzle amb nombres des de l'u al nou.</summary>
+  <summary xml:lang="ca-valencia">Completeu un puzle numèric amb nombres des de l'u al nou.</summary>
   <summary xml:lang="cs">Vyplňte číselné puzzle čísly od jedné do devíti</summary>
   <summary xml:lang="de">Vervollständigen Sie ein Zahlenrätsel mit Zahlen von eins bis neun</summary>
   <summary xml:lang="en-GB">Complete a numeric puzzle with the numbers from one to nine</summary>
