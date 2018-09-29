@@ -80,6 +80,7 @@ Description[sv]=6x6 spel med rektangulära block
 Description[tr]=Dikdörtgen bloklu 6x6 bulmaca
 Description[uk]=Поле 6x6 з прямокутними блоками
 Description[x-test]=xx6x6 puzzle with rectangular blocksxx
+Description[zh_CN]=带矩形块的6x6数独谜题
 Description[zh_TW]=6x6 矩形區塊謎題
 Author=Ian Wadham
 FileName=6x6.xml
