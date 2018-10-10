@@ -1,6 +1,5 @@
 [Desktop Entry]
 Name=KSudoku
-Name[ast]=KSudoku
 Name[bs]=KSudoku
 Name[ca]=KSudoku
 Name[ca@valencia]=KSudoku
@@ -55,7 +54,6 @@ Icon=ksudoku
 Type=Application
 X-DocPath=ksudoku/index.html
 GenericName=Sudoku Game
-GenericName[ast]=Xuegu de Sudoku
 GenericName[bs]=Sudoku igra
 GenericName[ca]=Joc de Sudoku
 GenericName[ca@valencia]=Joc de Sudoku
