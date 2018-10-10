@@ -78,6 +78,7 @@ Description[sv]=Sohei-pussel med fyra överlappande 9x9 kvadrater
 Description[tr]=Dörtlü birbirine geçmiş olan 9x9 kareli Sohei bulmacası
 Description[uk]=Варіант сохей з чотирма квадратами 9x9, що перекриваються
 Description[x-test]=xxSohei puzzle with four overlapping 9x9 squaresxx
+Description[zh_CN]=四个9x9方块层叠起来的Sohei拼图
 Description[zh_TW]=四個相疊的 9x9 方塊
 Author=Ian Wadham
 FileName=Sohei.xml
