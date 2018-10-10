@@ -18,8 +18,8 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "ksudoku_logging.h"
 #include "gamevariants.h"
+#include "ksudoku_logging.h"
 #include "ksudokugame.h"
 #include "serializer.h"
 

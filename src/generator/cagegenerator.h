@@ -60,7 +60,7 @@ class CageGenerator : public QObject
 {
     Q_OBJECT
 public:
-    CageGenerator (const BoardContents & solution);
+    explicit CageGenerator (const BoardContents & solution);
     virtual ~CageGenerator();
 
     /**

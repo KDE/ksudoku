@@ -34,7 +34,7 @@ class SKGraph;
 class MathdokuGenerator
 {
 public:
-    MathdokuGenerator (SKGraph * graph);
+    explicit MathdokuGenerator (SKGraph * graph);
 
     /**
      * Generate a Mathdoku or Killer Sudoku puzzle.

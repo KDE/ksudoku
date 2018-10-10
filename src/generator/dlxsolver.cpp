@@ -15,10 +15,9 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ****************************************************************************/
 
+#include "dlxsolver.h"
 #include "ksudoku_logging.h"
 #include "globals.h"
-#include "skgraph.h"
-#include "dlxsolver.h"
 
 #include <QDebug>
 
@@ -775,4 +774,3 @@ void DLXSolver::deleteAll()
     mRows.clear();
 }
 
-#include "dlxsolver.moc"

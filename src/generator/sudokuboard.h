@@ -127,7 +127,7 @@ public:
      *                      the grouping of cells into rows, columns and blocks,
      *                      as required by the type of puzzle being played.
      */
-    SudokuBoard (SKGraph * graph);
+    explicit SudokuBoard (SKGraph * graph);
 
     /**
      * Generate a puzzle and its solution (see details in the class-header doc).
@@ -319,7 +319,7 @@ private:
      * Clear a board-vector and insert values into it from a solved board.  As
      * each value is inserted, it is copied into a parallel board along with
      * cells that can now be deduced logically.  The positions of values to be
-     * inserted are chosen at random.  The procees finishes when the parallel
+     * inserted are chosen at random.  The process finishes when the parallel
      * board is filled, leaving a puzzle board that is only partly filled but
      * for which the solution can be entirely deduced without any need to guess
      * or backtrack.  However this could still be a difficult puzzle for a human

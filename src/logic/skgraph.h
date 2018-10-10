@@ -77,7 +77,7 @@
  *
  * For example, the XSudoku puzzle type has order 9 and 29 groups (or cliques)
  * of 9 cells each: 9 rows, 9 columns and 9 blocks 3x3 square, plus 2 diagonals,
- * which must also comtain the numbers 1 to 9 in that type of Sudoku.  A Roxdoku
+ * which must also contain the numbers 1 to 9 in that type of Sudoku.  A Roxdoku
  * puzzle of order 16 has a cubic grid containing 12 planes, each 4x4 cells
  * square and each having 16 cells to be filled with the letters A to P.  There
  * are three sets of 4 planes, which are perpendicular to the X, Y and Z

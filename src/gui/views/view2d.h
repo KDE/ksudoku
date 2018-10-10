@@ -39,7 +39,7 @@ class GameActions;
 class View2DScene : public QGraphicsScene {
 	Q_OBJECT
 public:
-	View2DScene(GameActions* gameActions);
+	explicit View2DScene(GameActions* gameActions);
 	~View2DScene();
 public:
 	void init(const Game& game);

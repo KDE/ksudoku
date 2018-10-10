@@ -15,8 +15,8 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ****************************************************************************/
 
-#include "ksudoku_logging.h"
 #include "mathdokugenerator.h"
+#include "ksudoku_logging.h"
 #include "skgraph.h"
 #include "cagegenerator.h"
 
@@ -83,4 +83,3 @@ int MathdokuGenerator::solveMathdokuTypes (BoardContents & solution,
     return result;
 }
 
-#include "mathdokugenerator.moc"

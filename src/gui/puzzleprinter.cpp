@@ -21,9 +21,9 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
+#include "puzzleprinter.h"
 #include "globals.h"
 
-#include <QPrinter>
 #include <QPrintDialog>
 #include <QPainter>
 #include <QLine>
@@ -34,7 +34,6 @@
 #include "puzzle.h"
 #include "skgraph.h"
 #include "ksudokugame.h"
-#include "puzzleprinter.h"
 
 #include "settings.h"
 
@@ -425,4 +424,3 @@ void PuzzlePrinter::drawCageLabel (const SKGraph* graph, int n,
     m_p->drawText (cellX + m, cellY + a, cLabel);
 }
 
-#include "puzzleprinter.moc"

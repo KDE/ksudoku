@@ -183,7 +183,7 @@ class HistoryEvent {
 	public:
 		HistoryEvent();
 		HistoryEvent(int index, const CellInfo& changedCell);
-		HistoryEvent(const PuzzleState& newState);
+		explicit HistoryEvent(const PuzzleState& newState);
 		
 		bool applyTo(PuzzleState& puzzle);
 		bool undoOn(PuzzleState& puzzle) const;

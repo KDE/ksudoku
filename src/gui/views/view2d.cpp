@@ -18,9 +18,9 @@
  *   51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.         *
  ***************************************************************************/
 
-#include "ksudoku_logging.h"
-
 #include "view2d.h"
+
+#include "ksudoku_logging.h"
 
 #include <QDebug>
 #include <QGraphicsPixmapItem>

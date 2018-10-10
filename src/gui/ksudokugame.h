@@ -137,7 +137,7 @@ public:
 	 * Sets one marker in a cell
 	 * @param[in] index The index of the cell
 	 * @param[in] val   The value of the marker
-	 * @param[in] state Whether the marker shoudl be set or unset
+	 * @param[in] state Whether the marker should be set or unset
 	 * @return Whether this function was executed successfully
 	 */
 	bool setMarker(int index, int val, bool state);
@@ -245,7 +245,7 @@ public:
 	int historyLength() const;
 	
 	/**
-	 * Returns the hitory event at position @p i
+	 * Returns the history event at position @p i
 	 */
 	HistoryEvent historyEvent(int i) const;
 

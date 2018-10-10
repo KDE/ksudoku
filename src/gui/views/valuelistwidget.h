@@ -36,7 +36,7 @@ class ValueListWidget : public QGraphicsView {
 	Q_OBJECT
 	friend class SymbolItem;
 public:
-	ValueListWidget(QWidget* parent = 0);
+	explicit ValueListWidget(QWidget* parent = 0);
 	~ValueListWidget();
 	
 // 	SymbolTable* currentTable() const;

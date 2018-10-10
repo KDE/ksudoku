@@ -15,11 +15,11 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ****************************************************************************/
 
+#include "cagegenerator.h"
 #include "ksudoku_logging.h"
 #include "globals.h"
 #include "skgraph.h"
 #include "dlxsolver.h"
-#include "cagegenerator.h"
 
 #include <QDebug>
 
@@ -768,4 +768,3 @@ void CageGenerator::init (SKGraph * graph, bool hideOperators)
 #endif
 }
 
-#include "cagegenerator.moc"

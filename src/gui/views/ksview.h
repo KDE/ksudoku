@@ -64,7 +64,7 @@ class KsView : public QObject
 	Q_OBJECT
 private:
 	// prevent copy constructor (not implemented)
-	KsView(KsView const& other);
+	explicit KsView(KsView const& other);
 	// prevent assignment (not implemented)
 	KsView& operator=(KsView const& other);
 

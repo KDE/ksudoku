@@ -17,10 +17,11 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>. *
  ****************************************************************************/
 
+#include "sudokuboard.h"
+
 #include "debug.h"
 #include "ksudoku_logging.h"
 
-#include "sudokuboard.h"
 #include "state.h"
 #include "mathdokugenerator.h"
 

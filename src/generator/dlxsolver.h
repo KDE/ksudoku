@@ -22,6 +22,7 @@
 #include <QObject>
 
 #include "globals.h"
+#include "skgraph.h"
 
 struct DLXNode			// Represents a 1 in a sparse matrix
 				// containing only ones and zeroes.
@@ -59,7 +60,7 @@ class DLXSolver : public QObject
 {
     Q_OBJECT
 public:
-    DLXSolver (QObject * parent);
+    explicit DLXSolver (QObject * parent);
     virtual   ~DLXSolver();
 
     /** 

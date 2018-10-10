@@ -25,6 +25,7 @@
 #define _PUZZLEPRINTER_H_
 
 #include <QPen>
+#include <QPrinter>
 
 namespace ksudoku {
 class Game;
@@ -42,7 +43,7 @@ public:
     /**
      * Default Constructor
      */
-	PuzzlePrinter (QWidget * parent);
+	explicit PuzzlePrinter (QWidget * parent);
 
     /**
      * Default Destructor
