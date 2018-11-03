@@ -94,6 +94,7 @@ SentUpstream: 2014-09-24
     <p xml:lang="tr">KSudoku, KDE topluluğu tarafından geliştirilen popüler mantık oyunu Sudoku'nun ücretsiz bir sürümüdür. Oyun, satırları, sütunları ve üçe üç olan kareleri, değerleri tekrarlamadan doldurma üzerine kuruludur.</p>
     <p xml:lang="uk">KSudoku — вільна версія популярної логічної гри, судоку, яку розроблено спільнотою KDE. Гра полягає у заповненні таблиці дев’ять на дев’ять клітинок числами від одного до дев’яти так, щоб у кожному блоці таблиці розміром три на три клітинки ці числа не повторювалися.</p>
     <p xml:lang="x-test">xxKSudoku is a free version of the popular logic game Sudoku developed by the KDE community. The game is to fill a nine by nine grid with the numbers from one to nine filling the rows, columns and three by three squares without repeating a value on them.xx</p>
+    <p xml:lang="zh-CN">KSudoku 是由 KDE 社区开发的自由版本的数独——一种流行的逻辑游戏。游戏需要用一到九的数字不重复地填满九乘九的格子。</p>
   </description>
   <url type="homepage">https://games.kde.org/game.php?game=ksudoku</url>
   <screenshots>
