@@ -95,6 +95,7 @@ SentUpstream: 2014-09-24
     <p xml:lang="x-test">xxKSudoku is a free version of the popular logic game Sudoku developed by the KDE community. The game is to fill a nine by nine grid with the numbers from one to nine filling the rows, columns and three by three squares without repeating a value on them.xx</p>
   </description>
   <url type="homepage">https://games.kde.org/game.php?game=ksudoku</url>
+  <url type="donation">https://www.kde.org/community/donations/?app=ksudoku&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
       <image>http://games.kde.org/games/ksudoku/screenshots/originals/ksudoku01.jpg</image>
