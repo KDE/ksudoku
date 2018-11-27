@@ -29,7 +29,9 @@
 
 namespace ksudoku {
 
-GameActions::GameActions(KActionCollection* collection) {
+GameActions::GameActions(KActionCollection* collection, QObject *parent)
+    : QObject(parent)
+{
 	m_collection = collection;
 
 }

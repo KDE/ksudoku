@@ -451,7 +451,7 @@ void KSudoku::genMultiple()
 
 void KSudoku::setupActions()
 {
-	m_gameActions = new ksudoku::GameActions(actionCollection());
+	m_gameActions = new ksudoku::GameActions(actionCollection(), this);
 	m_gameActions->init();
 
 	QKeySequence shortcut;
@@ -470,7 +470,7 @@ void KSudoku::setupActions()
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
 	// Settings: enable messages that the user marked "Do not show again".
-	QAction* enableMessagesAct = new QAction(i18n("Enable all messages"),0);
+	QAction* enableMessagesAct = new QAction(i18n("Enable all messages"),this);
 	actionCollection()->addAction("enable_messages", enableMessagesAct);
 	connect(enableMessagesAct, SIGNAL(triggered()), SLOT(enableMessages()));
 

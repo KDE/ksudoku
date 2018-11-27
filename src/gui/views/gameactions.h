@@ -31,8 +31,8 @@ namespace ksudoku {
 
 class GameActions : public QObject {
 	Q_OBJECT
-public:
-	explicit GameActions(KActionCollection* collection);
+public:	
+	explicit GameActions(KActionCollection* collection, QObject *parent);
 	void init();
 	void associateWidget(QWidget* widget);
 signals:

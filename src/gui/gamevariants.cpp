@@ -261,10 +261,15 @@ bool GameVariantDelegate::eventFilter(QObject* watched, QEvent* event) {
 ///////////////////////////////////////////////////////////////////////////////
 
 SudokuGame::SudokuGame(const QString& name, uint order, GameVariantCollection* collection)
-	: GameVariant(name, collection), m_order(order), m_graph(0)
+	: GameVariant(name, collection), m_order(order), m_graph(nullptr)
 {
 	// TODO load from settings
 	m_symmetry = 0;
+}
+
+SudokuGame::~SudokuGame()
+{
+	delete m_graph;
 }
 
 bool SudokuGame::canConfigure() const {
@@ -272,7 +277,7 @@ bool SudokuGame::canConfigure() const {
 }
 
 bool SudokuGame::configure() {
-	KMessageBox::information(0, i18n("Configuration not yet implemented"), "");
+	KMessageBox::information(nullptr, i18n("Configuration not yet implemented"), "");
 	return false;
 }
 
@@ -306,7 +311,7 @@ Game SudokuGame::createGame(int difficulty, int symmetry) {
 
 KsView* SudokuGame::createView(const Game& /*game*/) const {
 	qCDebug(KSudokuLog) << "KsView* ksudoku::SudokuGame::createView()";
-	return 0;
+	return nullptr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -314,9 +319,14 @@ KsView* SudokuGame::createView(const Game& /*game*/) const {
 ///////////////////////////////////////////////////////////////////////////////
 
 RoxdokuGame::RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection)
-	: GameVariant(name, collection), m_order(order), m_graph(0)
+	: GameVariant(name, collection), m_order(order), m_graph(nullptr)
 {
 	m_symmetry = 0;
+}
+
+RoxdokuGame::~RoxdokuGame()
+{
+	delete m_graph;
 }
 
 bool RoxdokuGame::canConfigure() const {
@@ -324,7 +334,7 @@ bool RoxdokuGame::canConfigure() const {
 }
 
 bool RoxdokuGame::configure() {
-	KMessageBox::information(0, i18n("Configuration not yet implemented"), "");
+	KMessageBox::information(nullptr, i18n("Configuration not yet implemented"), "");
 	return false;
 }
 
@@ -367,9 +377,14 @@ KsView* RoxdokuGame::createView(const Game& /*game*/) const {
 
 CustomGame::CustomGame(const QString& name, const QUrl& url,
                        GameVariantCollection* collection)
-	: GameVariant(name, collection), m_url(url), m_graph(0)
+    : GameVariant(name, collection), m_url(url), m_graph(nullptr)
 {
 	m_symmetry = 0;
+}
+
+CustomGame::~CustomGame()
+{
+	delete m_graph;
 }
 
 bool CustomGame::canConfigure() const {
