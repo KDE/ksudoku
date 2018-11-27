@@ -130,6 +130,7 @@ private:
 class SudokuGame : public GameVariant {
 public:
 	SudokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
+	~SudokuGame();
 
 public:
 	bool canConfigure() const override;
@@ -149,6 +150,7 @@ private:
 class RoxdokuGame : public GameVariant {
 public:
 	RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
+	~RoxdokuGame();
 
 public:
 	bool canConfigure() const override;
@@ -168,6 +170,7 @@ private:
 class CustomGame : public GameVariant {
 public:
 	CustomGame(const QString& name, const QUrl& url, GameVariantCollection* collection=0);
+	~CustomGame();
 
 public:
 	bool canConfigure() const override;
