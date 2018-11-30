@@ -85,7 +85,7 @@ bool HistoryEvent::applyTo(PuzzleState& puzzle) {
 }
 
 bool HistoryEvent::undoOn(PuzzleState& puzzle) const {
-	if(m_cellsBefore.size() == 0 || m_cellsBefore.size() != m_cellsIndex.size())
+        if(m_cellsBefore.isEmpty() || m_cellsBefore.size() != m_cellsIndex.size())
 		return false;
 	
 	for(int i = 0; i < m_cellsIndex.count(); ++i) {
@@ -95,7 +95,7 @@ bool HistoryEvent::undoOn(PuzzleState& puzzle) const {
 }
 
 bool HistoryEvent::redoOn(PuzzleState& puzzle) const {
-	if(m_cellsBefore.size() == 0 || m_cellsBefore.size() != m_cellsIndex.size())
+        if(m_cellsBefore.isEmpty() || m_cellsBefore.size() != m_cellsIndex.size())
 		return false;
 	
 	for(int i = 0; i < m_cellsIndex.count(); ++i) {

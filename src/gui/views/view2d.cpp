@@ -135,12 +135,12 @@ void CellGraphicsItem::updatePixmap() {
 	switch(m_type) {
 		case SpecialCell:
 		case SpecialCellMistake:
-			if(m_values.size() > 0) {
+                        if(!m_values.isEmpty()) {
 				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, m_values[0].color, m_range, SymbolEdited);
 			}
 			break;
 		case SpecialCellPreset:
-			if(m_values.size() > 0) {
+                        if(!m_values.isEmpty()) {
 				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, 0, m_range, SymbolPreset);
 			}
 			break;

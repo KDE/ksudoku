@@ -399,7 +399,7 @@ BoardContents & SudokuBoard::tryGuesses (GuessingMode gMode = Random)
         if ((n >= guesses.count()) || (guesses.at (0) == -1)) {
             dbo2 "POP: Out of guesses at level %d\n", m_states.count());
             delete m_states.pop();
-            if (m_states.count() > 0) {
+            if (!m_states.isEmpty()) {
                 m_moves.clear();
                 m_moveTypes.clear();
                 m_moves = m_states.top()->moves();
