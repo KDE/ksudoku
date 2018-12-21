@@ -27,7 +27,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
 find_package(OpenGL)
-set_package_properties(OpenGL PROPERTIES DESCRIPTION "API for developing portable, interactive 2D and 3Dgraphics applications" TYPE OPTIONAL PURPOSE "Kubrick will not be built and KSudoku will not have Roxdoku support without OpenGL.")
+set_package_properties(OpenGL PROPERTIES DESCRIPTION "API for developing portable, interactive 2D and 3Dgraphics applications" TYPE OPTIONAL PURPOSE "KSudoku will not have Roxdoku support without OpenGL.")
 
 include(FeatureSummary)
 include(ECMAddAppIcon)
