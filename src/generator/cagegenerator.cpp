@@ -388,7 +388,7 @@ QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
     return cage;
 }
 
-void CageGenerator::setCageTarget (QVector<int> cage,
+void CageGenerator::setCageTarget (const QVector<int> &cage,
                                    CageOperator & cageOperator,
                                    int & cageValue)
 {
@@ -483,7 +483,7 @@ void CageGenerator::setCageTarget (QVector<int> cage,
     cageValue = value;
 }
 
-bool CageGenerator::cageIsOK (const QVector<int> cage,
+bool CageGenerator::cageIsOK (const QVector<int> &cage,
                               CageOperator cageOperator, int cageValue)
 {
     // TODO - Is it worth checking for duplicate digits in Mathdoku, before
@@ -537,7 +537,7 @@ bool CageGenerator::cageIsOK (const QVector<int> cage,
     return isOK;
 }
 
-void CageGenerator::setAllPossibilities (const QVector<int> cage, int nDigits,
+void CageGenerator::setAllPossibilities (const QVector<int> &cage, int nDigits,
                                          CageOperator cageOperator,
                                          int cageValue)
 {
@@ -556,7 +556,7 @@ void CageGenerator::setAllPossibilities (const QVector<int> cage, int nDigits,
     }
 }
 
-void CageGenerator::setPossibilities (const QVector<int> cage,
+void CageGenerator::setPossibilities (const QVector<int> &cage,
                                       CageOperator cageOperator, int cageValue)
 {
     // Generate sets of possible solution-values from the range 1 to mOrder.
@@ -590,7 +590,7 @@ void CageGenerator::setPossibilities (const QVector<int> cage,
 }
 
 void CageGenerator::setPossibleAddsOrMultiplies
-        (const QVector<int> cage, CageOperator cageOperator, int requiredValue)
+        (const QVector<int> &cage, CageOperator cageOperator, int requiredValue)
 {
     int digits[MaxMathOrder];	// Maximum order of maths-based puzzles == 9.
     int maxDigit = mOrder;
@@ -691,7 +691,7 @@ bool CageGenerator::hasDuplicates (int nDigits, int digits[])
     return false;
 }
 
-bool CageGenerator::isSelfConsistent (const QVector<int> cage,
+bool CageGenerator::isSelfConsistent (const QVector<int> &cage,
                                       int nDigits, int digits[])
 {
     QVector<int> usedGroups;

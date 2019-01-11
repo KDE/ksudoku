@@ -154,23 +154,23 @@ private:
     QVector<int> makeOneCage (int seedCell, int requiredSize);
 
     // Choose an operator for the cage and calculate the cage's value.
-    void setCageTarget (QVector<int> cage, CageOperator & cageOperator,
+    void setCageTarget (const QVector<int> &cage, CageOperator & cageOperator,
                         int & cageValue);
 
     // Check whether a generated cage is within parameter requirements.
-    bool cageIsOK (const QVector<int> cage, CageOperator cageOperator,
+    bool cageIsOK (const QVector<int> &cage, CageOperator cageOperator,
                    int cageValue);
 
     // Set all possible values for the cells of a cage (used by the solver).
-    void setAllPossibilities (const QVector<int> cage, int nDigits,
+    void setAllPossibilities (const QVector<int> &cage, int nDigits,
                               CageOperator cageOperator, int cageValue);
 
     // Set all possible values for one operator in a cage (used by the solver).
-    void setPossibilities (const QVector<int> cage, CageOperator cageOperator,
+    void setPossibilities (const QVector<int> &cage, CageOperator cageOperator,
                            int cageValue);
 
     // Set all possible values for a cage that has a multiply or add operator.
-    void setPossibleAddsOrMultiplies (const QVector<int> cage,
+    void setPossibleAddsOrMultiplies (const QVector<int> &cage,
                                       CageOperator cageOperator, int cageValue);
 
     // Check if a cage contains duplicate digits (not allowed in Killer Sudoku).
@@ -178,7 +178,7 @@ private:
 
     // Check if a combo of digits in a cage satisfies Sudoku rules (a Mathdoku
     // cage can contain a digit more than once, but not in the same row/column).
-    bool isSelfConsistent (const QVector<int> cage, int nDigits, int digits[]);
+    bool isSelfConsistent (const QVector<int> &cage, int nDigits, int digits[]);
 
     // Initialise the cage generator for a particular size and type of puzzle.
     void init (SKGraph * graph, bool hiddenOperators);

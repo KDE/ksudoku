@@ -62,7 +62,7 @@ Matrix3fT ThisRot     = {{  {1.0f},  {0.0f},  {0.0f},          // NEW: This Rota
                             {0.0f},  {0.0f},  {1.0f} }};
 
 
-RoxdokuView::RoxdokuView(ksudoku::Game game, GameActions * gameActions,
+RoxdokuView::RoxdokuView(const ksudoku::Game &game, GameActions * gameActions,
 				QWidget * parent)
 	: QGLWidget(parent)
 {

@@ -49,9 +49,9 @@ public:
 	QPoint pos() const { return m_pos; }
 	void showCursor(QGraphicsItem* cursor);
 	void setType(SpecialType type);
-	void setCageLabel (const QString cageLabel);
+	void setCageLabel (const QString &cageLabel);
 	
-	void setValues(QVector<ColoredValue> values);
+	void setValues(const QVector<ColoredValue> &values);
 protected:
 	void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
 	void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
@@ -116,13 +116,13 @@ void CellGraphicsItem::setType(SpecialType type) {
 	updatePixmap();
 }
 
-void CellGraphicsItem::setValues(QVector<ColoredValue> values) {
+void CellGraphicsItem::setValues(const QVector<ColoredValue> &values) {
 	m_values = values;
 	
 	updatePixmap();
 }
 
-void CellGraphicsItem::setCageLabel(const QString cageLabel) {
+void CellGraphicsItem::setCageLabel(const QString &cageLabel) {
 	m_cageLabel = cageLabel;
 }
 
@@ -169,7 +169,7 @@ struct GroupGraphicItemSegment {
 
 class GroupGraphicsItem : public QGraphicsItemGroup {
 public:
-	GroupGraphicsItem(QVector<QPoint> cells, bool isCage = false);
+	GroupGraphicsItem(const QVector<QPoint> &cells, bool isCage = false);
 	~GroupGraphicsItem();
 	void hideBlockBorder (bool visible);
 public:
@@ -190,7 +190,7 @@ private:
 };
 
 
-GroupGraphicsItem::GroupGraphicsItem(QVector<QPoint> cells, bool isCage) {
+GroupGraphicsItem::GroupGraphicsItem(const QVector<QPoint> &cells, bool isCage) {
 	m_cells = cells;
 	m_isCage = isCage;
 	m_borderVisible = true;

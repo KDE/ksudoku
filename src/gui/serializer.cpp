@@ -48,7 +48,7 @@ const SudokuType types[]     = {Plain, XSudoku, Jigsaw, Aztec,
 				Samurai, TinySamurai, Roxdoku,
 				Mathdoku, KillerSudoku};
 
-Game Serializer::deserializeGame(QDomElement element) {
+Game Serializer::deserializeGame(const QDomElement &element) {
 	bool hasPuzzle = false;
 	Puzzle* puzzle = 0;
 	bool hasHistory = false;
@@ -95,7 +95,7 @@ Game Serializer::deserializeGame(QDomElement element) {
 	return game;
 }
 
-Puzzle* Serializer::deserializePuzzle(QDomElement element) {
+Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
 	bool hasGraph = false;
 	SKGraph* graph = 0;
 	bool hasValues = false;
@@ -169,7 +169,7 @@ Puzzle* Serializer::deserializePuzzle(QDomElement element) {
 	return puzzle;
 }
 
-static int readInt(QDomElement element, const QString& name, int* err)
+static int readInt(const QDomElement &element, const QString& name, int* err)
 { //out of class, cannot be static
 	*err = 1;
 	QString Str = element.attribute(name);
@@ -183,7 +183,7 @@ static int readInt(QDomElement element, const QString& name, int* err)
 	return num;
 }
 
-SKGraph* Serializer::deserializeGraph(QDomElement element) {
+SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 	bool noFailure = true;
 
 	QString orderStr = element.attribute("order");
@@ -339,7 +339,7 @@ bool Serializer::deserializeCage(SKGraph * graph, const QDomElement & e) {
     return true;
 }
 
-QList<HistoryEvent> Serializer::deserializeHistory(QDomElement element) {
+QList<HistoryEvent> Serializer::deserializeHistory(const QDomElement &element) {
 	QList<HistoryEvent> history;
 
 	QDomNode child = element.firstChild();
@@ -356,7 +356,7 @@ QList<HistoryEvent> Serializer::deserializeHistory(QDomElement element) {
 	return history;
 }
 
-HistoryEvent Serializer::deserializeSimpleHistoryEvent(QDomElement element) {
+HistoryEvent Serializer::deserializeSimpleHistoryEvent(const QDomElement &element) {
 	QString indexStr = element.attribute("index");
 	QString markerStr = element.attribute("markers");
 	QString valueStr = element.attribute("value");
@@ -393,7 +393,7 @@ HistoryEvent Serializer::deserializeSimpleHistoryEvent(QDomElement element) {
 	return HistoryEvent();
 }
 
-HistoryEvent Serializer::deserializeComplexHistoryEvent(QDomElement /*element*/) {
+HistoryEvent Serializer::deserializeComplexHistoryEvent(const QDomElement /*element*/&) {
 	// TODO implement this
 	return HistoryEvent();
 }

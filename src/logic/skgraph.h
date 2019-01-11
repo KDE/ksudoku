@@ -168,10 +168,10 @@ public:
 				{ return m_structures.at(n*3 + 2); }
 
 	// Add a special or irregularly-shaped group to the list of structures.
-	void addCliqueStructure(QVector<int> data);
+	void addCliqueStructure(const QVector<int> &data);
 
 	// Add a cage (applicable to Mathdoku or Killer Sudoku puzzles only).
-	void addCage(const QVector<int> cage, CageOperator cageOperator,
+	void addCage(const QVector<int> &cage, CageOperator cageOperator,
                      int cageValue);
 
 	// Remove a cage (when keying in a Mathdoku or Killer Sudoku puzzle).
@@ -243,7 +243,7 @@ protected:
 	BoardContents       m_emptyBoard;
 
 private:
-	void addClique(QVector<int> data);
+	void addClique(const QVector<int> &data);
 
 	// For efficiency, make an index from cells to the groups (cliques)
 	// where they belong.
