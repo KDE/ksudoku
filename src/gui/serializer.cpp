@@ -404,23 +404,18 @@ SKGraph *Serializer::loadCustomShape(const QUrl& url, QWidget* window, QString& 
 		return nullptr;
 	}
 	QDomDocument doc;
+	QFile file(url.toLocalFile());
 
-	QTemporaryFile tmpFile;
-	if ( !tmpFile.open() ) {
-		errorMsg = i18n("Unable to create temporary file.");
-		return nullptr;
-	}
-	KIO::FileCopyJob *downloadJob = KIO::file_copy(url, QUrl::fromLocalFile(tmpFile.fileName()), -1, KIO::Overwrite);
-	KJobWidgets::setWindow(downloadJob, window);
-	downloadJob->exec();
-
-	if( downloadJob->error() ) {
-		errorMsg = i18n("Unable to download file.");
+	if ( !file.open(QIODevice::ReadOnly) ) {
+		errorMsg = i18n("Unable to open file.");
 		return nullptr;
 	}
 
 	int errorLine;
-	if(!doc.setContent(&tmpFile, 0, &errorLine)) {
+	int errorColumn;
+	QString errorMessage;
+	if(!doc.setContent(&file, &errorMessage, &errorLine, &errorColumn)) {
+		qDebug() << "Error " << errorMessage << " from line " << errorLine << ":" << errorColumn << " from file " << url.toString();
 		errorMsg = i18n("Cannot read XML file on line %1", errorLine);
 
 		return nullptr;
