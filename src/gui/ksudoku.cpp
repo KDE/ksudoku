@@ -128,7 +128,7 @@ KSudoku::KSudoku()
 	m_gameVariants(new GameVariantCollection(this, true)),
 	m_puzzlePrinter(0)
 {
-	setObjectName( QLatin1String("ksudoku" ));
+	setObjectName( QStringLiteral("ksudoku" ));
 
 	m_gameWidget = 0;
 	m_gameUI = 0;
@@ -180,14 +180,14 @@ void KSudoku::updateShapesList()
 
 	variant = new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The classic and fashionable game"));
-	variant->setIcon("ksudoku-ksudoku_9x9");
+	variant->setIcon(QStringLiteral("ksudoku-ksudoku_9x9"));
 #ifdef OPENGL_SUPPORT
 	variant = new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D Sudoku"));
-	variant->setIcon("ksudoku-roxdoku_3x3x3");
+	variant->setIcon(QStringLiteral("ksudoku-roxdoku_3x3x3"));
 #endif
 
-	const QStringList gamevariantdirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, "ksudoku", QStandardPaths::LocateDirectory);
+	const QStringList gamevariantdirs = QStandardPaths::locateAll(QStandardPaths::GenericDataLocation, QStringLiteral("ksudoku"), QStandardPaths::LocateDirectory);
 
 	QFileInfoList filepaths;
 	for (const QString& gamevariantdir : gamevariantdirs) {
@@ -209,7 +209,7 @@ void KSudoku::updateShapesList()
 		variantDescr = group.readEntry("Description", ""); // Translated.
 		variantIcon = group.readEntry("Icon", "ksudoku-ksudoku_9x9");
 		const QString variantDataFile = group.readEntry("FileName", "");
-		if(variantDataFile == "") continue;
+		if(variantDataFile == QLatin1String("")) continue;
 
 		variantDataPath = variantDir.filePath(variantDataFile);
 
@@ -221,17 +221,17 @@ void KSudoku::updateShapesList()
 	// Put variants first and extra sizes last.
 	variant = new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 16 symbols"));
-	variant->setIcon("ksudoku-ksudoku_16x16");
+	variant->setIcon(QStringLiteral("ksudoku-ksudoku_16x16"));
 	variant = new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 25 symbols"));
-	variant->setIcon("ksudoku-ksudoku_25x25");
+	variant->setIcon(QStringLiteral("ksudoku-ksudoku_25x25"));
 #ifdef OPENGL_SUPPORT
 	variant = new RoxdokuGame(i18n("Roxdoku 16 (4x4x4)"), 16, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku with 16 symbols"));
-	variant->setIcon("ksudoku-roxdoku_4x4x4");
+	variant->setIcon(QStringLiteral("ksudoku-roxdoku_4x4x4"));
 	variant = new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku with 25 symbols"));
-	variant->setIcon("ksudoku-roxdoku_5x5x5");
+	variant->setIcon(QStringLiteral("ksudoku-roxdoku_5x5x5"));
 #endif
 }
 
@@ -258,8 +258,8 @@ void KSudoku::startGame(const Game& game) {
 	widget->show();
 	widget->setFocus();
 
-	connect(game.interface(), SIGNAL(completed(bool,QTime,bool)), SLOT(onCompleted(bool,QTime,bool)));
-	connect(game.interface(), SIGNAL(modified(bool)), SLOT(onModified(bool)));
+	connect(game.interface(), &GameIFace::completed, this, &KSudoku::onCompleted);
+	connect(game.interface(), &GameIFace::modified, this, &KSudoku::onModified);
 
 	adaptActions2View();
 
@@ -295,7 +295,7 @@ void KSudoku::startGame(const Game& game) {
 		     "are larger cages. You can select the puzzle size in "
 		     "KSudoku's Settings dialog and the maximum cage-size by "
 		     "using KSudoku's Difficulty button."),
-		i18n("Playing Mathdoku"), QString("PlayingMathdoku"));
+		i18n("Playing Mathdoku"), QStringLiteral("PlayingMathdoku"));
 	}
 	else if (playing && (t == KillerSudoku)) {
 	    KMessageBox::information (this,
@@ -313,7 +313,7 @@ void KSudoku::startGame(const Game& game) {
 		     "In general, larger cages are more difficult. You can "
 		     "select the maximum cage-size by using KSudoku's "
 		     "Difficulty button."),
-		i18n("Playing Killer Sudoku"), QString("PlayingKillerSudoku"));
+		i18n("Playing Killer Sudoku"), QStringLiteral("PlayingKillerSudoku"));
 	}
 	else if ((t == Mathdoku) || (t == KillerSudoku)) {
 	    KMessageBox::information (this,
@@ -348,7 +348,7 @@ void KSudoku::startGame(const Game& game) {
 		     "one solution. If the check fails, you have probably made "
 		     "an error somewhere in one of the cages."),
 		i18n("Data-entry for Puzzles with Cages"),
-		QString("CageDataEntry"));
+		QStringLiteral("CageDataEntry"));
 	}
 }
 
@@ -471,8 +471,8 @@ void KSudoku::setupActions()
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
 	// Settings: enable messages that the user marked "Do not show again".
 	QAction* enableMessagesAct = new QAction(i18n("Enable all messages"),this);
-	actionCollection()->addAction("enable_messages", enableMessagesAct);
-	connect(enableMessagesAct, SIGNAL(triggered()), SLOT(enableMessages()));
+	actionCollection()->addAction(QStringLiteral("enable_messages"), enableMessagesAct);
+	connect(enableMessagesAct, &QAction::triggered, this, &KSudoku::enableMessages);
 
 	//History
 	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
@@ -486,9 +486,9 @@ void KSudoku::setupActions()
 	KStandardGameAction::solve(this, SLOT(autoSolve()), actionCollection());
 
 	a = new QAction(this);
-	actionCollection()->addAction( QLatin1String( "move_dub_puzzle" ), a);
+	actionCollection()->addAction( QStringLiteral( "move_dub_puzzle" ), a);
 	a->setText(i18n("Check"));
-	a->setIcon(QIcon::fromTheme( QLatin1String( "games-endturn" )));
+	a->setIcon(QIcon::fromTheme( QStringLiteral( "games-endturn" )));
 	connect(a, &QAction::triggered, this, &KSudoku::dubPuzzle);
 	addAction(a);
 }
@@ -783,13 +783,13 @@ void KSudoku::gameExport()
 
 void KSudoku::optionsPreferences()
 {
-	if ( KConfigDialog::showDialog("settings") ) return;
+	if ( KConfigDialog::showDialog(QStringLiteral("settings")) ) return;
 
-	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
+	KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral("settings"), Settings::self());
 
 	GameConfig* gameConfig = new GameConfig();
-	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), "games-config-options");
-	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
+	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), QStringLiteral("games-config-options"));
+	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), QStringLiteral("games-config-theme"));
 
     //QT5 dialog->setHelp(QString(),"ksudoku");
 	connect(dialog, &KConfigDialog::settingsChanged, this, &KSudoku::updateSettings);
@@ -848,7 +848,7 @@ void KSudoku::difficultyChanged (int difficulty)
 		     "Please also note that the generation of this type of puzzle "
 		     "might take much longer than other ones. During this time "
 		     "KSudoku will not respond."),
-		i18n("Warning"), "WarningReUnlimited");
+		i18n("Warning"), QStringLiteral("WarningReUnlimited"));
     }
 }
 

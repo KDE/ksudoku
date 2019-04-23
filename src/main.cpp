@@ -49,19 +49,19 @@ int main(int argc, char **argv)
 	QApplication app(argc, argv);
 	KLocalizedString::setApplicationDomain("ksudoku");
 
-	KAboutData about("ksudoku",
+	KAboutData about(QStringLiteral("ksudoku"),
 	                 i18n("KSudoku"),
 	                 version,
 	                 i18n(description),
 	                 KAboutLicense::GPL_V2,
 	                 i18n("(c) 2005-2007 The KSudoku Authors"),
-	                 QString(), "https://games.kde.org/game.php?game=ksudoku");
-	about.addAuthor( i18n("Francesco Rossi"), i18n("KSudoku Author"), "redsh@email.it" );
-	about.addAuthor( i18n("Johannes Bergmeier"), i18n("Maintainer"), "Johannes.Bergmeier@gmx.net" );
-	about.addAuthor( i18n("Ian Wadham"), i18n("New puzzle generator and solver"), "iandw.au@gmail.com" );
-	about.addAuthor( i18n("Mick Kappenburg"), i18n("Printing and export of 0.4"), "ksudoku@kappendburg.net");
-	about.addAuthor( i18n("Thanks to NeHe for OpenGL tutorials"), QString(), "nehe.gamedev.net");
-	about.addCredit( i18n("David Bau"), i18n("Algorithms for new puzzle generator and solver at davidbau.com/archives/2006/09/04/sudoku_generator.html"), "");
+	                 QString(), QStringLiteral("https://games.kde.org/game.php?game=ksudoku"));
+	about.addAuthor( i18n("Francesco Rossi"), i18n("KSudoku Author"), QStringLiteral("redsh@email.it") );
+	about.addAuthor( i18n("Johannes Bergmeier"), i18n("Maintainer"), QStringLiteral("Johannes.Bergmeier@gmx.net") );
+	about.addAuthor( i18n("Ian Wadham"), i18n("New puzzle generator and solver"), QStringLiteral("iandw.au@gmail.com") );
+	about.addAuthor( i18n("Mick Kappenburg"), i18n("Printing and export of 0.4"), QStringLiteral("ksudoku@kappendburg.net"));
+	about.addAuthor( i18n("Thanks to NeHe for OpenGL tutorials"), QString(), QStringLiteral("nehe.gamedev.net"));
+	about.addCredit( i18n("David Bau"), i18n("Algorithms for new puzzle generator and solver at davidbau.com/archives/2006/09/04/sudoku_generator.html"), QLatin1String(""));
 
 	KAboutData::setApplicationData(about);
 	app.setOrganizationDomain(QStringLiteral("kde.org"));
@@ -69,7 +69,7 @@ int main(int argc, char **argv)
 
 	QCommandLineParser parser;
 	about.setupCommandLine(&parser);
-	parser.addPositionalArgument(QLatin1String("[URL]"), i18n( "Document to open" ));
+	parser.addPositionalArgument(QStringLiteral("[URL]"), i18n( "Document to open" ));
 
 	parser.process(app);
 	about.processCommandLine(&parser);
@@ -79,7 +79,7 @@ int main(int argc, char **argv)
 	// register ourselves as a dcop client
 //	app.dcopClient()->registerAs(app.name(), false); //TODO PORT
 
-	KConfigDialogManager::changedMap()->insert("ksudoku::SymbolConfigListWidget", SIGNAL(itemChanged(QListWidgetItem*)));
+	KConfigDialogManager::changedMap()->insert(QStringLiteral("ksudoku::SymbolConfigListWidget"), SIGNAL(itemChanged(QListWidgetItem*)));
 
 	// see if we are starting with session management
 	/*if (app.isRestored())

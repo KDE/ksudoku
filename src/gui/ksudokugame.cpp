@@ -375,7 +375,7 @@ bool Game::addToCage (int pos, int val)
 		KMessageBox::information (messageParent(),
 		    i18n("In Killer Sudoku, the operator is always + or none "
 			 "and KSudoku automatically sets the correct choice."),
-		    i18n("Killer Sudoku Cage"), QString("KillerCageInfo"));
+		    i18n("Killer Sudoku Cage"), QStringLiteral("KillerCageInfo"));
 	    }
 	    // Set the operator to none or Add, depending on the cage-size.
 	    cageOp = (m_private->m_cage.size() > 1) ?  Add : NoOperator;
@@ -536,7 +536,7 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 		if(KMessageBox::questionYesNo (messageParent(),
 		       i18n("Do you wish to delete this cage?"),
 		       i18n("Delete Cage"), KStandardGuiItem::del(),
-		       KStandardGuiItem::cancel(), QString("CageDelConfirm"))
+		       KStandardGuiItem::cancel(), QStringLiteral("CageDelConfirm"))
 		       == KMessageBox::No) {
 		    return;
 		}
@@ -562,7 +562,7 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 		KMessageBox::information (messageParent(),
 		    i18n("The cell you have selected is not in any cage, "
 			 "so the Delete action will not delete anything."),
-		    i18n("Delete Cage"), QString("CageDelMissed"));
+		    i18n("Delete Cage"), QStringLiteral("CageDelMissed"));
 	    }
 	}
 	else {

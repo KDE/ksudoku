@@ -76,9 +76,9 @@ RoxdokuView::RoxdokuView(const ksudoku::Game &game, GameActions * gameActions,
 	m_height = m_graph->sizeY();
 	m_depth  = m_graph->sizeZ();
 
-	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(updateGL()));
-	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(updateGL()));
-	connect(gameActions, SIGNAL(enterValue(int)), SLOT(enterValue(int)));
+	connect(m_game.interface(), &GameIFace::cellChange, this, &QGLWidget::updateGL);
+	connect(m_game.interface(), &GameIFace::fullChange, this, &QGLWidget::updateGL);
+	connect(gameActions, &GameActions::enterValue, this, &RoxdokuView::enterValue);
 
 	// IDW test. m_wheelmove = 0.0f;
 	m_wheelmove = -5.0f; // IDW test. Makes the viewport bigger, can see more.
@@ -96,7 +96,7 @@ RoxdokuView::RoxdokuView(const ksudoku::Game &game, GameActions * gameActions,
 	m_highlights.fill(0, m_size);
 	m_timeDelay = false;
 	m_delayTimer = new QTimer(this);
-	connect(m_delayTimer, SIGNAL(timeout()), SLOT(delayOver()));
+	connect(m_delayTimer, &QTimer::timeout, this, &RoxdokuView::delayOver);
 }
 
 RoxdokuView::~RoxdokuView()

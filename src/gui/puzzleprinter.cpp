@@ -165,10 +165,10 @@ bool PuzzlePrinter::setupOutputDevices (int leastCellsToFit, int puzzleWidth)
 
     m_light.setColor (QColor("#888888"));
     m_light.setWidth (thin);
-    m_heavy.setColor (QColor(QString("black")));
+    m_heavy.setColor (QColor(QStringLiteral("black")));
     m_heavy.setWidth (thick);
     m_heavy.setCapStyle (Qt::RoundCap);
-    m_dashes.setColor (QColor(QString("black")));
+    m_dashes.setColor (QColor(QStringLiteral("black")));
     m_dashes.setWidth (thin);
     m_dashes.setStyle (Qt::DashLine);
 
@@ -404,7 +404,7 @@ void PuzzlePrinter::drawCageLabel (const SKGraph* graph, int n,
 
     QString cLabel = QString::number (graph->cageValue (n));
     if (! killerStyle) {	// No operator is shown in KillerSudoku.
-	cLabel = cLabel + QString(" /-x+").mid(graph->cageOperator (n), 1);
+	cLabel = cLabel + QStringLiteral(" /-x+").mid(graph->cageOperator (n), 1);
     }
 
     QFont f = m_p->font();

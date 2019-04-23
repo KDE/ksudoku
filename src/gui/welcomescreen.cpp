@@ -72,7 +72,7 @@ WelcomeScreen::WelcomeScreen(QWidget* parent, GameVariantCollection* collection)
 		                   Qt::QueuedConnection,
 				   Q_ARG (int, m_selectedPuzzle));
 
-	connect(gameListWidget->selectionModel(), SIGNAL(currentChanged(QModelIndex,QModelIndex)), this, SLOT(onCurrentVariantChange()));
+	connect(gameListWidget->selectionModel(), &QItemSelectionModel::currentChanged, this, &WelcomeScreen::onCurrentVariantChange);
 	
 	connect(getNewGameButton, &QPushButton::clicked, this, &WelcomeScreen::getNewVariant);
 	// TODO disabled due to missing per-game config dialog
@@ -131,7 +131,7 @@ void WelcomeScreen::onCurrentVariantChange() {
 }
 
 void WelcomeScreen::getNewVariant() {
-	KMessageBox::information(this, i18n("GetNewVariant not implemented"), "");
+	KMessageBox::information(this, i18n("GetNewVariant not implemented"), QLatin1String(""));
 }
 
 void WelcomeScreen::configureVariant() {

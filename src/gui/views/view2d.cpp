@@ -483,11 +483,11 @@ void View2DScene::init(const Game& game) {
 	
 	connect(m_game.interface(), SIGNAL(cellChange(int)), this, SLOT(update(int)));
 	connect(m_game.interface(), SIGNAL(fullChange()), this, SLOT(update()));
-	connect(m_game.interface(), SIGNAL(cageChange(int,bool)), this, SLOT(updateCage(int,bool)));
-	connect(m_gameActions, SIGNAL(selectValue(int)), this, SLOT(selectValue(int)));
+	connect(m_game.interface(), &GameIFace::cageChange, this, &View2DScene::updateCage);
+	connect(m_gameActions, &GameActions::selectValue, this, &View2DScene::selectValue);
 	connect(m_gameActions, SIGNAL(enterValue(int)), this, SLOT(enterValue(int)));
 	connect(m_gameActions, SIGNAL(markValue(int)), this, SLOT(flipMarkValue(int)));
-	connect(m_gameActions, SIGNAL(move(int,int)), this, SLOT(moveCursor(int,int)));
+	connect(m_gameActions, &GameActions::move, this, &View2DScene::moveCursor);
 	// Fix bug 188162 by ensuring that all markers, as well as cells, are
 	// updated and displayed after a Load action.
 	update(-1);
@@ -513,7 +513,7 @@ void View2DScene::initCageGroup (int cageNum, bool drawLabel) {
 	else if (drawLabel || (g->cage(cageNum).size() > 1)) {
 	    QString str = QString::number(g->cageValue(cageNum));
 	    if (g->specificType() == Mathdoku) { // No op shown in KillerSudoku.
-		str = str + QString(" /-x+").mid(g->cageOperator(cageNum), 1);
+		str = str + QStringLiteral(" /-x+").mid(g->cageOperator(cageNum), 1);
 	    }
 	    m_cells[g->cageTopLeft(cageNum)]->setCageLabel(str);
 	}
@@ -779,7 +779,7 @@ View2D::View2D(QWidget *parent, const Game& game, GameActions* gameActions) : QG
 
 	gameActions->associateWidget(this);
 	
-	connect(m_scene, SIGNAL(valueSelected(int)), this, SIGNAL(valueSelected(int)));
+	connect(m_scene, &View2DScene::valueSelected, this, &View2D::valueSelected);
 }
 
 View2D::~View2D() {

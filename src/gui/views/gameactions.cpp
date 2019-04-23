@@ -59,14 +59,14 @@ void GameActions::init() {
 	for(int i = 0; i < 31; ++i) {
 		shortcuts.clear();
 		a = new QAction(this);
-		m_collection->addAction(QString("val-select%1").arg(i+1,2,10,QChar('0')), a);
+		m_collection->addAction(QStringLiteral("val-select%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
 		m_selectValueMapper->setMapping(a, i+1);
 		connect(a, SIGNAL(triggered(bool)), m_selectValueMapper, SLOT(map()));
 		m_actions << a;
 
 		a = new QAction(this);
-		m_collection->addAction(QString("val-enter%1").arg(i+1,2,10,QChar('0')), a);
+		m_collection->addAction(QStringLiteral("val-enter%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Enter %1 (%2)", QChar('a'+i), i+1));
 		if (i < 25) {
 			// Keys A to Y, for Sudoku puzzles.
@@ -90,7 +90,7 @@ void GameActions::init() {
 
 		shortcuts.clear();
 		a = new QAction(this);
-		m_collection->addAction(QString("val-mark%1").arg(i+1,2,10,QChar('0')), a);
+		m_collection->addAction(QStringLiteral("val-mark%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Mark %1 (%2)", QChar('a'+i), i+1));
 		shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_A + i));
 		if(i < 9) {
@@ -103,40 +103,40 @@ void GameActions::init() {
 	}
 	
 	a = new QAction(this);
-	m_collection->addAction("move_up", a);
+	m_collection->addAction(QStringLiteral("move_up"), a);
 	a->setText(i18n("Move Up"));
 	m_collection->setDefaultShortcut(a, Qt::Key_Up);
-	connect(a, SIGNAL(triggered(bool)), SLOT(moveUp()));
+	connect(a, &QAction::triggered, this, &GameActions::moveUp);
 	m_actions << a;
 
 	a = new QAction(this);
-	m_collection->addAction("move_down", a);
+	m_collection->addAction(QStringLiteral("move_down"), a);
 	a->setText(i18n("Move Down"));
 	m_collection->setDefaultShortcut(a, Qt::Key_Down);
-	connect(a, SIGNAL(triggered(bool)), SLOT(moveDown()));
+	connect(a, &QAction::triggered, this, &GameActions::moveDown);
 	m_actions << a;
 
 	a = new QAction(this);
-	m_collection->addAction("move_left", a);
+	m_collection->addAction(QStringLiteral("move_left"), a);
 	a->setText(i18n("Move Left"));
 	m_collection->setDefaultShortcut(a, Qt::Key_Left);
-	connect(a, SIGNAL(triggered(bool)), SLOT(moveLeft()));
+	connect(a, &QAction::triggered, this, &GameActions::moveLeft);
 	m_actions << a;
 
 	a = new QAction(this);
-	m_collection->addAction("move_right", a);
+	m_collection->addAction(QStringLiteral("move_right"), a);
 	a->setText(i18n("Move Right"));
 	m_collection->setDefaultShortcut(a, Qt::Key_Right);
-	connect(a, SIGNAL(triggered(bool)), SLOT(moveRight()));
+	connect(a, &QAction::triggered, this, &GameActions::moveRight);
 	m_actions << a;
 
 	a = new QAction(this);
-	m_collection->addAction("move_clear_cell", a);
+	m_collection->addAction(QStringLiteral("move_clear_cell"), a);
 	a->setText(i18n("Clear Cell"));
 	m_collection->setDefaultShortcuts(a, QList<QKeySequence>()
 		<< QKeySequence(Qt::Key_Backspace)
 		<< QKeySequence(Qt::Key_Delete));
-	connect(a, SIGNAL(triggered(bool)), SLOT(clearValue()));
+	connect(a, &QAction::triggered, this, &GameActions::clearValue);
 	m_actions << a;
 }
 

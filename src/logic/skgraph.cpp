@@ -46,7 +46,7 @@ SKGraph::~SKGraph()
 
 void SKGraph::initSudoku()
 {
-	m_name = "PlainSudoku";
+	m_name = QStringLiteral("PlainSudoku");
 	m_specificType = Plain;
 
 	m_sizeX = m_order;
@@ -89,7 +89,7 @@ void SKGraph::initSudokuGroups(int pos, bool withBlocks)
 
 void SKGraph::initRoxdoku()
 {
-	m_name = "Roxdoku";
+	m_name = QStringLiteral("Roxdoku");
 	m_specificType = Roxdoku;
 
 	m_sizeX = m_base;
