@@ -32,6 +32,7 @@
 #include <QTemporaryFile>
 
 #include <KIO/FileCopyJob>
+#include <KIO/StoredTransferJob>
 #include <KJobWidgets>
 #include <KLocalizedString>
 
@@ -438,12 +439,7 @@ Game Serializer::load(const QUrl& url, QWidget* window, QString& errorMsg) {
 	if ( url.isEmpty() ) return Game();
 	QDomDocument doc;
 
-	QTemporaryFile tmpFile;
-	if ( !tmpFile.open() ) {
-		errorMsg = i18n("Unable to create temporary file.");
-		return Game();
-	}
-	KIO::FileCopyJob *downloadJob = KIO::file_copy(url, QUrl::fromLocalFile(tmpFile.fileName()), -1, KIO::Overwrite);
+	KIO::StoredTransferJob *downloadJob = KIO::storedGet(url);
 	KJobWidgets::setWindow(downloadJob, window);
 	downloadJob->exec();
 
@@ -453,7 +449,7 @@ Game Serializer::load(const QUrl& url, QWidget* window, QString& errorMsg) {
 	}
 
 	int errorLine;
-	if(!doc.setContent(&tmpFile, 0, &errorLine)) {
+	if(!doc.setContent(downloadJob->data(), 0, &errorLine)) {
 		errorMsg = i18n("Cannot read XML file on line %1", errorLine);
 		return Game();
 	}
