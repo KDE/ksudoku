@@ -41,7 +41,6 @@ class SKGraph;
 namespace ksudoku{
 
 class Game;
-class Symbols;
 class GameActions;
 
 /**

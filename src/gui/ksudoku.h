@@ -34,7 +34,6 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamedifficulty.h>
 
-class QPrinter;
 
 namespace ksudoku {
 class KsView;
@@ -46,7 +45,6 @@ class Game;
 class Puzzle;
 }
 
-class SKGraph;
 class PuzzlePrinter;
 
 /**
