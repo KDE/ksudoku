@@ -6,6 +6,7 @@ SentUpstream: 2014-09-24
 -->
 <component type="desktop">
   <id>org.kde.ksudoku.desktop</id>
+  <project_license>GPL-2.0</project_license>
   <metadata_license>CC0-1.0</metadata_license>
   <name>KSudoku</name>
   <name xml:lang="ca">KSudoku</name>
