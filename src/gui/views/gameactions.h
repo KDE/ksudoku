@@ -25,7 +25,6 @@
 
 class QAction;
 class KActionCollection;
-class QSignalMapper;
 
 namespace ksudoku {
 
@@ -48,9 +47,6 @@ private slots:
 	void moveRight();
 private:
 	KActionCollection* m_collection;
-	QSignalMapper* m_selectValueMapper;
-	QSignalMapper* m_enterValueMapper;
-	QSignalMapper* m_markValueMapper;
 	QVector<QAction *> m_actions;
 };
 

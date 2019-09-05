@@ -22,7 +22,6 @@
 
 #include <QAction>
 #include <QKeySequence>
-#include <QSignalMapper>
 
 #include <KActionCollection>
 #include <KLocalizedString>
@@ -37,14 +36,6 @@ GameActions::GameActions(KActionCollection* collection, QObject *parent)
 }
 
 void GameActions::init() {
-	m_selectValueMapper = new QSignalMapper(this);
-	connect(m_selectValueMapper, SIGNAL(mapped(int)), SIGNAL(selectValue(int)));
-	m_enterValueMapper = new QSignalMapper(this);
-	connect(m_enterValueMapper, SIGNAL(mapped(int)), SIGNAL(enterValue(int)));
-	m_markValueMapper = new QSignalMapper(this);
-	connect(m_markValueMapper, SIGNAL(mapped(int)), SIGNAL(markValue(int)));
-
-
 	// NOTE: Qt::Key_Asterisk cannot be used for Multiply, because it
 	//       clashes with Shift+8, used for cancelling '8' or 'h' marker.
 	//       Instead, we use 'x' for Multiply, which is OK because Mathdoku
@@ -61,8 +52,7 @@ void GameActions::init() {
 		a = new QAction(this);
 		m_collection->addAction(QStringLiteral("val-select%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
-		m_selectValueMapper->setMapping(a, i+1);
-		connect(a, SIGNAL(triggered(bool)), m_selectValueMapper, SLOT(map()));
+		connect(a, &QAction::triggered, this, [this, i] { selectValue(i + 1); });
 		m_actions << a;
 
 		a = new QAction(this);
@@ -81,8 +71,7 @@ void GameActions::init() {
 			shortcuts << QKeySequence(Qt::Key_1 + i);
 		}
 		m_collection->setDefaultShortcuts(a, shortcuts);
-		m_enterValueMapper->setMapping(a, i+1);
-		connect(a, SIGNAL(triggered(bool)), m_enterValueMapper, SLOT(map()));
+		connect(a, &QAction::triggered, this, [this, i] { enterValue(i + 1); });
 		m_actions << a;
 		if (i >= 25) {
 			continue;
@@ -97,8 +86,7 @@ void GameActions::init() {
 			shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_1 + i));
 		}
 		m_collection->setDefaultShortcuts(a, shortcuts);
-		m_markValueMapper->setMapping(a, i+1);
-		connect(a, SIGNAL(triggered(bool)), m_markValueMapper, SLOT(map()));
+		connect(a, &QAction::triggered, this, [this, i] { markValue(i + 1); });
 		m_actions << a;
 	}
 	
