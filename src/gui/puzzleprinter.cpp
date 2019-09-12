@@ -412,9 +412,9 @@ void PuzzlePrinter::drawCageLabel (const SKGraph* graph, int n,
     f.setBold (true);
     m_p->setFont(f);
     QFontMetrics fm(f);
-    int w = fm.width(cLabel);
+    int w = fm.boundingRect(cLabel).width();
     int a = fm.ascent();
-    int m = (fm.width(QChar('1'))+1)/3;	// Left margin = 1/3 width of '1'.
+    int m = (fm.boundingRect(QChar('1')).width()+1)/3;	// Left margin = 1/3 width of '1'.
 
     if (killerStyle) {
 	// Cover part of the dashed line, to make a background for the text.

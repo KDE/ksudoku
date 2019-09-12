@@ -1,8 +1,8 @@
 project(ksudoku)
 
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
-set (QT_MIN_VERSION "5.9.0")
-set (KF5_MIN_VERSION "5.31.0")
+set (QT_MIN_VERSION "5.11.0")
+set (KF5_MIN_VERSION "5.46.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
@@ -36,6 +36,9 @@ include(ECMInstallIcons)
 include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
+if (EXISTS "${CMAKE_SOURCE_DIR}/.git")
+   add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x060000)
+endif()
 
 if (OPENGL_FOUND)
      set(OPENGL_SUPPORT true)

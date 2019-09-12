@@ -360,10 +360,10 @@ QPixmap Renderer::renderCageLabelOn(QPixmap pixmap, const QString & cageLabel)
 	p.setFont(f);
 
 	QFontMetrics fm(f);
-	int w = fm.width(cageLabel);	// Width of text.
+        int w = fm.boundingRect(cageLabel).width();	// Width of text.
 	int h = fm.height();		// Total height of font.
 	int a = fm.ascent();		// Height from baseline of font.
-	int m = fm.width(QChar('1'))/2;	// Left-right margin = 1/2 width of '1'.
+        int m = fm.boundingRect(QChar('1')).width()/2;	// Left-right margin = 1/2 width of '1'.
 
 	// Paint background rect: text must be visible in light and dark themes.
 	p.fillRect(size/6 - m, (size + 3)/4 - a, w + 2*m, h, Qt::darkGray);
