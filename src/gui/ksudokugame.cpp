@@ -35,6 +35,7 @@
 #include <QDebug>
 #include <QList>
 #include <QUrl>
+#include <QElapsedTimer>
 
 class QWidget;
 
@@ -78,7 +79,7 @@ public:
 	bool wasFinished : 1;
 	
 	Puzzle* puzzle;
-	QTime time;
+	QElapsedTimer time;
 	int   accumTime;
 	QUrl url;
 	QList<HistoryEvent> history;

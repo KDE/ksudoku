@@ -181,7 +181,7 @@ void ValueListWidget::selectValueItem(int value) {
 }
 
 void ValueListWidget::wheelEvent (QWheelEvent* e) {
-	int value = (m_selectedValue - e->delta()/120) % m_maxValue;
+	int value = (m_selectedValue - e->angleDelta().y()/120) % m_maxValue;
 	if(value <= 0) value = m_maxValue - value;
 	selectValueItem(value);
 }

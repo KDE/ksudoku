@@ -86,7 +86,7 @@ protected:
 	void mouseMoveEvent(QMouseEvent* e)  override;
 	void mouseDoubleClickEvent(QMouseEvent* e) override;
 	void wheelEvent (QWheelEvent* e)override {
-		m_wheelmove += e->delta() * .02;
+        	m_wheelmove += e->angleDelta().y() * .02;
 		updateGL();
 	}
 

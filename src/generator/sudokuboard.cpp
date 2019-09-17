@@ -31,7 +31,7 @@
 
 #include <QDebug>
 #include <QMultiMap>
-#include <QTime>
+#include <QElapsedTimer>
 
 #include <cstdio>
 #include <ctime>
@@ -135,7 +135,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
     BoardContents currPuzzle;
     BoardContents currSolution;
 
-    QTime t;
+    QElapsedTimer t;
     t.start();
     if (m_graph->sizeZ() > 1) {
 	symmetry = NONE;		// Symmetry not implemented in 3-D.
