@@ -39,7 +39,7 @@ int main(int argc, char **argv)
     if (argc > 1)
         ds << QString(argv[1]);
     else
-        ds << QString("http://www.kde.org");
+        ds << QString("https://www.kde.org");
     client->send("ksudoku", "ksudokuIface", "openURL(QString)", data);
 
     return app.exec();
