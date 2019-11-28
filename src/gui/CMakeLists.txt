@@ -55,15 +55,3 @@ if(OPENGL_SUPPORT)
 		${OPENGL_LIBRARIES}
 		Qt5::OpenGL)
 endif(OPENGL_SUPPORT)
-
-	
-########### next target ###############
-
-set(ksudoku_client_SRCS
-    ksudoku_client.cpp
-)
-
-#add_executable(ksudoku_client ${ksudoku_client_SRCS})
-
-#target_link_libraries(ksudoku_client ${QT_AND_KDECORE_LIBRARIES} kdeui)
-
