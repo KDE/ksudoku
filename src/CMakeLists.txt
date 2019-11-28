@@ -60,21 +60,6 @@ add_subdirectory(logic)
 add_subdirectory(shapes)
 add_subdirectory(themes)
 
-
-#set(ksudoku_client_SRCS
-#    ksudoku_client.cpp
-#)
-
-#kde3_automoc( ${ksudoku_client_SRCS} )
-
-#kde3_add_executable(ksudoku_client ${ksudoku_client_SRCS})
-
-#target_link_libraries(ksudoku_client ${QT_AND_KDECORE_LIBRARIES} kdeui)
-
-
-
-#install(TARGETS ksudoku_client  ${KDE_INSTALL_TARGETS_DEFAULT_ARGS} )
-
 ########### install files ###############
 
 install(PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
@@ -89,4 +74,3 @@ ecm_install_icons(ICONS
     DESTINATION ${KDE_INSTALL_ICONDIR}
     THEME hicolor
 )
-
