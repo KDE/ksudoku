@@ -45,8 +45,6 @@
 
 #include <KActionCollection>
 #include <KConfigDialog>
-#include <KIO/Job>
-#include <KJobWidgets>
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KSharedConfig>

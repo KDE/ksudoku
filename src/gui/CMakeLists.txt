@@ -40,7 +40,6 @@ target_link_libraries(ksudoku_gui
 	KF5::Crash
 	KF5::GuiAddons
 	KF5::KIOCore
-	KF5::KIOWidgets
 	KF5::JobWidgets
 	KF5::WidgetsAddons
 	KF5::XmlGui
