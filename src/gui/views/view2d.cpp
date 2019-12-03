@@ -196,7 +196,7 @@ GroupGraphicsItem::GroupGraphicsItem(const QVector<QPoint> &cells, bool isCage) 
 	m_borderVisible = true;
 	
 	setEnabled(false);
-	setAcceptedMouseButtons(0);
+    setAcceptedMouseButtons(Qt::NoButton);
 	
 	detectType();
 	if (isCage) {
