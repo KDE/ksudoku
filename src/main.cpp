@@ -29,7 +29,6 @@
 
 #include <QApplication>
 #include <QCommandLineParser>
-#include <QCommandLineOption>
 #include <QDir>
 #include <QUrl>
 

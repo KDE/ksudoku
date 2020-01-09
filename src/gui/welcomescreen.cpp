@@ -19,7 +19,6 @@
  ***************************************************************************/
 #include "welcomescreen.h"
 
-#include <QDebug>
 
 #include <KConfigGroup>
 #include <KMessageBox>

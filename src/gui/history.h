@@ -21,8 +21,6 @@
 #define _KSUDOKUHISTORY_H_
 
 #include <QBitArray>
-#include <QDateTime>
-#include <QObject>
 #include <QVector>
 
 #include "globals.h"

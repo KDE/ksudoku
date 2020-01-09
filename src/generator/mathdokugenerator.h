@@ -20,7 +20,6 @@
 
 #include "globals.h"
 
-#include <QVector>
 
 class SKGraph;
 

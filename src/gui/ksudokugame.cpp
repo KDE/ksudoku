@@ -32,10 +32,10 @@
 #include <KMessageBox>
 #include <KLocalizedString>
 
-#include <QDebug>
 #include <QList>
 #include <QUrl>
 #include <QElapsedTimer>
+#include <QTime>
 
 class QWidget;
 

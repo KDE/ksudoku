@@ -21,7 +21,6 @@
 #include "skgraph.h"
 #include "dlxsolver.h"
 
-#include <QDebug>
 
 // #define MATHDOKU_LOG
 

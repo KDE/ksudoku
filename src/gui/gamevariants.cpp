@@ -23,7 +23,6 @@
 #include "ksudokugame.h"
 #include "serializer.h"
 
-#include <QDebug>
 #include <QEvent>
 #include <QIcon>
 #include <QPainter>

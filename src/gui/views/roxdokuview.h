@@ -24,10 +24,7 @@
 #define ROXDOKUVIEW_h
 
 #include <QGL>
-#include <QImage>
 #include <QMouseEvent>
-#include <QPainter>
-#include <QPixmap>
 #include <QTimer>
 #include <QWheelEvent>
 

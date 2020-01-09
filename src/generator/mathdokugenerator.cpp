@@ -20,7 +20,6 @@
 #include "skgraph.h"
 #include "cagegenerator.h"
 
-#include <QDebug>
 
 MathdokuGenerator::MathdokuGenerator (SKGraph * graph)
     :

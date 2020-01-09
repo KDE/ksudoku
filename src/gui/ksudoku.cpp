@@ -27,7 +27,6 @@
 #include <QAction>
 #include <QComboBox>
 #include <QDir>
-#include <QDebug>
 #include <QDragEnterEvent>
 #include <QDropEvent>
 #include <QFileDialog>
@@ -36,11 +35,8 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QKeySequence>
-#include <QPrinter>
-#include <QPrintDialog>
 #include <QStandardPaths>
 #include <QStatusBar>
-#include <QTemporaryFile>
 #include <QUrl>
 
 #include <KActionCollection>

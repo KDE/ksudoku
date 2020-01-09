@@ -31,7 +31,6 @@
 # define assert(x) { }
 #endif
 
-#include <QtGlobal>
 #ifdef Q_OS_MAC
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>

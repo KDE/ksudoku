@@ -19,7 +19,6 @@
 #define STATE_H
 
 #include <QObject>
-#include <QVector>
 
 #include "globals.h"
 #include "sudokuboard.h"

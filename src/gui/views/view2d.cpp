@@ -22,7 +22,6 @@
 
 #include "ksudoku_logging.h"
 
-#include <QDebug>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneEvent>
 

@@ -25,8 +25,6 @@
 #include "ksudokugame.h"
 #include "settings.h"
 
-#include <QPainter>
-#include <QPixmap>
 
 
 #include "puzzle.h"

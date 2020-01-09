@@ -29,8 +29,6 @@
 #include <KMessageBox>
 #include <KStandardGuiItem>
 
-#include <QDebug>
-#include <QMultiMap>
 #include <QElapsedTimer>
 
 #include <cstdio>

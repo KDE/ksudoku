@@ -22,8 +22,6 @@
 #include <QDataStream>
 #include <QString>
 
-#include <KAboutData>
-#include <KLocalizedString>
 
 int main(int argc, char **argv)
 {

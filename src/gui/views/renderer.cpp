@@ -21,7 +21,6 @@
 #include "renderer.h"
 #include "ksudoku_logging.h"
 
-#include <QDebug>
 #include <QPainter>
 #include <QPixmap>
 #include <QSvgRenderer>

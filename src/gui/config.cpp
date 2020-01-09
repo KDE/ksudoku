@@ -19,9 +19,6 @@
 
 #include "config.h"
 
-#include <KLocalizedString>
-#include <QListWidget>
-#include <QVBoxLayout>
 
 #include "symbols.h"
 

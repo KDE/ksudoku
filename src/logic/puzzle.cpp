@@ -23,7 +23,6 @@
 #include "puzzle.h"
 #include <cstdlib>
 
-#include <QString>
 
 #include "sudokuboard.h"
 #include "mathdokugenerator.h"

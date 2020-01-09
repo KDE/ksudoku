@@ -21,7 +21,6 @@
 #define _KSUDOKUCONFIG_H_
 
 #include <QList>
-#include <QListWidget>
 #include <QWidget>
 
 #include "ui_configgame.h"

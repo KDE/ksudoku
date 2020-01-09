@@ -19,7 +19,6 @@
 #include "ksudoku_logging.h"
 #include "globals.h"
 
-#include <QDebug>
 
 // #define DLX_LOG
 
