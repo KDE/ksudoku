@@ -298,7 +298,11 @@ bool Serializer::deserializeClique(SKGraph * graph, const QString & size,
 	return false;
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     const QStringList  splitData = text.split(QStringLiteral(" "), QString::SkipEmptyParts);
+#else
+    const QStringList  splitData = text.split(QStringLiteral(" "), Qt::SkipEmptyParts);
+#endif
     QVector<int> data;
     data.clear();
     for (const QString &s : splitData) {
@@ -326,7 +330,11 @@ bool Serializer::deserializeCage(SKGraph * graph, const QDomElement & e) {
 	return false;
     }
 
+#if QT_VERSION < QT_VERSION_CHECK(5, 15, 0)
     const QStringList cells = text.split(QStringLiteral(" "), QString::SkipEmptyParts);
+#else
+    const QStringList cells = text.split(QStringLiteral(" "), Qt::SkipEmptyParts);
+#endif
     cage.clear();
     for (const QString& s : cells) {
 	cage << s.toInt();
