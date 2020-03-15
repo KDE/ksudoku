@@ -21,6 +21,7 @@
  ***************************************************************************/
 
 #include "ksudoku.h"
+#include "ksudoku_version.h"
 
 #include <KAboutData>
 #include <KCrash>
@@ -39,9 +40,6 @@
 static const char description[] =
     I18N_NOOP("KSudoku - Sudokus and more");
 
-static const char version[] = "1.4";
-
-
 int main(int argc, char **argv)
 {
 	qsrand(std::time(nullptr));
@@ -50,7 +48,7 @@ int main(int argc, char **argv)
 
 	KAboutData about(QStringLiteral("ksudoku"),
 	                 i18n("KSudoku"),
-	                 version,
+	                 KSUDOKU_VERSION_STRING,
 	                 i18n(description),
 	                 KAboutLicense::GPL_V2,
 	                 i18n("(c) 2005-2007 The KSudoku Authors"),

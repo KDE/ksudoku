@@ -26,6 +26,8 @@ set(ksudoku_SRCS
 	generator/mathdokugenerator.cpp
 )
 
+ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX KSUDOKU VERSION_HEADER ksudoku_version.h)
+
 ecm_qt_declare_logging_category(ksudoku_SRCS
     HEADER ksudoku_logging.h
     IDENTIFIER KSudokuLog
