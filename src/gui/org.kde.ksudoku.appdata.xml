@@ -15,6 +15,7 @@ SentUpstream: 2014-09-24
   <name xml:lang="en-GB">KSudoku</name>
   <name xml:lang="es">KSudoku</name>
   <name xml:lang="et">KSudoku</name>
+  <name xml:lang="eu">KSudoku</name>
   <name xml:lang="fi">KSudoku</name>
   <name xml:lang="fr">KSudoku</name>
   <name xml:lang="gl">KSudoku</name>
@@ -47,6 +48,7 @@ SentUpstream: 2014-09-24
   <summary xml:lang="en-GB">Complete a numeric puzzle with the numbers from one to nine</summary>
   <summary xml:lang="es">Completar un rompecabezas numérico con los números del uno al nueve</summary>
   <summary xml:lang="et">Arvmõistatus arvude paigutamiseks ühest üheksani</summary>
+  <summary xml:lang="eu">Osatu zenbakien buru-hausgarri bat, bat eta bederatzi arteko zenbakiak erabiliz</summary>
   <summary xml:lang="fi">Täydennä lukupalapeli numeroin yhdestä yhdeksään</summary>
   <summary xml:lang="fr">Réalisez un casse-tête numérique avec des chiffres compris entre un et neuf</summary>
   <summary xml:lang="gl">Complete un quebracabezas numérico cos números do 1 ao 9</summary>
@@ -81,6 +83,7 @@ SentUpstream: 2014-09-24
     <p xml:lang="en-GB">KSudoku is a free version of the popular logic game Sudoku developed by the KDE community. The game is to fill a nine by nine grid with the numbers from one to nine filling the rows, columns and three by three squares without repeating a value on them.</p>
     <p xml:lang="es">KSudoku es una versión libre del popular juego de lógica Sudoku desarrollado por la comunidad KDE. El juego consiste en rellenar una rejilla de nueve por nueve celdas con los números del uno al nueve rellenando las filas, las columnas y los cuadros de tres por tres celdas sin repetir ningún valor en estos elementos.</p>
     <p xml:lang="et">KSudoku on KDE kogukonna arendatud populaarse loogikamängu sudoku vaba versioon. Mängu eesmärk on täitsa üheksa korda üheksa ruudustik arvudega ühest üheksani nii, et üheski reas, veerus ega kolm korda kolm ruudustikust koosnevas plokid arvud ei korduks.</p>
+    <p xml:lang="eu">KSudoku KDE komunitateak garatu duen Sudoku logika joko ezagunaren bertsio aske bat da. Jokoa bederatzi bider bederatziko sareta bateko errenkadak, zutabeak eta hiru bider hiruko karratuak, batetik bederatzira arteko zenbakiekin, baliorik errepikatu gabe, betetzean datza.</p>
     <p xml:lang="fi">KSudoku on KDE-yhteisön vapaa versio suositusta logiikkapelistä sudokusta. Ajatuksena on täyttää 9 × 9 ruudun ruudukko numeroin yhdestä yhdeksään toistamatta numeroita 3 × 3 ruudun lohkoissa.</p>
     <p xml:lang="fr">KSudoku est une version libre et développée par la communauté KDE du célèbre jeu de logique Sudoku. Le jeu consiste à remplir une grille de neuf cases par neuf avec des chiffres allant de un à neuf de manière à ce que les lignes, les colonnes et les carrés de trois cases par trois ne contiennent pas deux fois la même valeur.</p>
     <p xml:lang="gl">KSudoku é unha versión libre do popular xogo de lóxica Sudoku desenvolvido pola comunidade KDE. O xogo consiste en encher a grade de 9x9 cos números do 1 ao 9, enchendo as filas, columnas e bloques de 3x3 con valores que non se repitan.</p>
