@@ -116,4 +116,7 @@ SentUpstream: 2014-09-24
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="1.4.20040" date="2020-04-23"/>
+  </releases>
 </component>
