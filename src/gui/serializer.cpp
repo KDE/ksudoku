@@ -700,7 +700,7 @@ bool Serializer::store(const Game& game, const QUrl& url, QWidget* window, QStri
 	stream << doc.toString();
 	stream.flush();
 
-	KIO::FileCopyJob *copyJob = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), url);
+	KIO::FileCopyJob *copyJob = KIO::file_copy(QUrl::fromLocalFile(file.fileName()), url, -1, KIO::Overwrite);
 	KJobWidgets::setWindow(copyJob , window);
 	copyJob->exec();
 	if(copyJob->error())
