@@ -102,8 +102,8 @@ public slots:
 	void settingsChanged();
 	
 signals:
-	void flagsChanged(ViewFlags flags);
-	void symbolsChanged(SymbolTable* table);
+    void flagsChanged(ksudoku::ViewFlags flags);
+    void symbolsChanged(ksudoku::SymbolTable* table);
 	void valueSelected(int value);
 	
 

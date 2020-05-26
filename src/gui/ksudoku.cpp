@@ -39,6 +39,7 @@
 #include <QStatusBar>
 #include <QUrl>
 
+
 #include <KActionCollection>
 #include <KConfigDialog>
 #include <KLocalizedString>
@@ -47,6 +48,7 @@
 #include <KStandardAction>
 #include <KStandardGameAction>
 #include <KTar>
+
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
@@ -70,7 +72,7 @@
 
 using namespace ksudoku;
 
-void KSudoku::onCompleted(bool isCorrect, const QTime& required, bool withHelp) {
+void KSudoku::onCompleted(bool isCorrect, QTime required, bool withHelp) {
 	if(!isCorrect) {
 		KMessageBox::information(this, i18n("Sorry, your solution contains mistakes.\n\nEnable \"Show errors\" in the settings to highlight them."));
 		return;

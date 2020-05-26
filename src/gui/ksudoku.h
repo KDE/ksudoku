@@ -25,7 +25,7 @@
 #define _KSUDOKU_H_
 
 #include <QUrl>
-
+#include <QTime>
 #include <KXmlGuiWindow>
 #if 0
 #include <knewstuff/knewstuff.h>
@@ -99,7 +99,7 @@ protected:
 	void dropEvent(QDropEvent *event) override;
 
 public slots:
-	void onCompleted(bool isCorrect, const QTime& required, bool withHelp = false);
+    void onCompleted(bool isCorrect, QTime required, bool withHelp = false);
 
 	void showWelcomeScreen();
 

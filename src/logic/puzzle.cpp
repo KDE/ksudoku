@@ -32,8 +32,6 @@ namespace ksudoku {
 Puzzle::Puzzle(SKGraph *graph, bool withSolution)
 	: m_withSolution(withSolution)
 	, m_graph(graph)
-	, m_difficulty(0)
-	, m_symmetry(0)
 	, m_initialized(false)
 { }
 

@@ -29,7 +29,7 @@ namespace ksudoku {
 class Symbols {
 public:
 	static QChar ioValue2Symbol(int value);
-	static int ioSymbol2Value(const QChar& symbol);
+    static int ioSymbol2Value(QChar symbol);
 };
 
 }

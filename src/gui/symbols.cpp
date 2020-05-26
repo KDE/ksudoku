@@ -28,16 +28,16 @@ namespace ksudoku {
 
 /// returns the symbol for a value used for loading and saving
 QChar Symbols::ioValue2Symbol(int value) {
-	if (value == VACANT) return '_';
-	if (value == UNUSABLE) return '.';
+    if (value == VACANT) return QLatin1Char('_');
+    if (value == UNUSABLE) return QLatin1Char('.');
 	return 'a' + value;
 }
 
 /// returns the number of the index
-int Symbols::ioSymbol2Value(const QChar& symbol) {
+int Symbols::ioSymbol2Value(QChar symbol) {
 	char c = symbol.toLatin1();
-	if(symbol == '_') return VACANT;
-	if(symbol == '.') return UNUSABLE;
+    if(symbol == QLatin1Char('_')) return VACANT;
+    if(symbol == QLatin1Char('.')) return UNUSABLE;
 	return c - 'a';
 }
 

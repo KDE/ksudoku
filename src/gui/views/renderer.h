@@ -92,12 +92,12 @@ public:
 	QPixmap renderBorder(int border, GroupTypes type, int size) const;
 
 	QPixmap renderSymbol(int symbol, int size, int max, SymbolType type) const;
-	QPixmap renderSymbolOn(QPixmap pixmap, int symbol, int color, int max, SymbolType type) const;
+    QPixmap renderSymbolOn(QPixmap pixmap, int symbol, int color, int max, SymbolType type) const;
 
 	QPixmap renderMarker(int symbol, int range, int size) const;
-	QPixmap renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const;
+    QPixmap renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const;
 
-	QPixmap renderCageLabelOn(QPixmap pixmap, const QString & cageLabel);
+    QPixmap renderCageLabelOn(QPixmap pixmap, const QString & cageLabel);
 
 	QPixmap renderSpecial3D(SpecialType type, int size) const;
 private:

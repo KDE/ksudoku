@@ -663,7 +663,7 @@ void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
 	}
 
 	// Invoke the method in View2DScene that triggers a re-draw.
-	setSceneSize (views().first()->size());
+    setSceneSize (views().constFirst()->size());
 }
 
 void View2DScene::selectValue(int value) {

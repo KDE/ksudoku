@@ -97,9 +97,6 @@ private:
 	BoardContents m_solution;
 	QList<int> m_hintList;
 
-	int m_difficulty;
-	int m_symmetry;
-
 	bool m_initialized;
 };
 

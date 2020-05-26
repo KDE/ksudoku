@@ -52,7 +52,7 @@ void GameActions::init() {
 		a = new QAction(this);
 		m_collection->addAction(QStringLiteral("val-select%1").arg(i+1,2,10,QChar('0')), a);
 		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
-		connect(a, &QAction::triggered, this, [this, i] { selectValue(i + 1); });
+        connect(a, &QAction::triggered, this, [this, i] { Q_EMIT selectValue(i + 1); });
 		m_actions << a;
 
 		a = new QAction(this);
@@ -71,7 +71,7 @@ void GameActions::init() {
 			shortcuts << QKeySequence(Qt::Key_1 + i);
 		}
 		m_collection->setDefaultShortcuts(a, shortcuts);
-		connect(a, &QAction::triggered, this, [this, i] { enterValue(i + 1); });
+        connect(a, &QAction::triggered, this, [this, i] { Q_EMIT enterValue(i + 1); });
 		m_actions << a;
 		if (i >= 25) {
 			continue;
@@ -86,7 +86,7 @@ void GameActions::init() {
 			shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_1 + i));
 		}
 		m_collection->setDefaultShortcuts(a, shortcuts);
-		connect(a, &QAction::triggered, this, [this, i] { markValue(i + 1); });
+        connect(a, &QAction::triggered, this, [this, i] { Q_EMIT markValue(i + 1); });
 		m_actions << a;
 	}
 	

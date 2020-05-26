@@ -201,7 +201,6 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 	if(type.isNull())
 		return 0;
 
-	bool d3 = false;
 	if(type == QLatin1String("sudoku")) {
 		SKGraph *graph = new SKGraph(order, TypeSudoku);
 		graph->initSudoku();
