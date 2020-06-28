@@ -664,20 +664,6 @@
 <!-- !!!do not change ANYTHING after this line!!!! -->
 </chapter>
 
-<appendix id="installation">
-<title>Installation</title>
-
-&install.intro.documentation;
-
-
-<sect1 id="Compilation">
-<title>Compilation and Installation</title>
-
-&install.compile.documentation;
-
-</sect1>
-</appendix>
-
 &documentation.index;
 </book>
 <!--
