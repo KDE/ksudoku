@@ -21,6 +21,7 @@ SentUpstream: 2014-09-24
   <name xml:lang="fi">KSudoku</name>
   <name xml:lang="fr">KSudoku</name>
   <name xml:lang="gl">KSudoku</name>
+  <name xml:lang="hi">के-सुडोकु</name>
   <name xml:lang="id">KSudoku</name>
   <name xml:lang="it">KSudoku</name>
   <name xml:lang="ko">KSudoku</name>
@@ -54,6 +55,7 @@ SentUpstream: 2014-09-24
   <summary xml:lang="fi">Täydennä lukupalapeli numeroin yhdestä yhdeksään</summary>
   <summary xml:lang="fr">Réalisez un casse-tête numérique avec des chiffres compris entre un et neuf</summary>
   <summary xml:lang="gl">Complete un quebracabezas numérico cos números do 1 ao 9</summary>
+  <summary xml:lang="hi">संख्या पहेली पूर्ण करें अंक १ से ९ लेकर</summary>
   <summary xml:lang="id">Melengkapi sebuah teka-teki penomoran dengan angka dari satu sampai sembilan</summary>
   <summary xml:lang="it">Completa un rompicapo numerico con le cifra da uno a nove</summary>
   <summary xml:lang="ko">1부터 9까지 숫자를 채워 넣는 수학 퍼즐 게임</summary>
