@@ -120,9 +120,9 @@ SentUpstream: 2014-09-24
   </screenshots>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="1.4.20081" date="2020-09-03"/>
     <release version="1.4.20080" date="2020-08-13"/>
     <release version="1.4.20043" date="2020-07-09"/>
     <release version="1.4.20042" date="2020-06-11"/>
-    <release version="1.4.20041" date="2020-05-14"/>
   </releases>
 </component>
