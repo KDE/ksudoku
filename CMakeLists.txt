@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
+cmake_minimum_required (VERSION 3.11 FATAL_ERROR)
 
 set (RELEASE_SERVICE_VERSION_MAJOR "20")
 set (RELEASE_SERVICE_VERSION_MINOR "11")
@@ -45,7 +45,7 @@ include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 
-if (OPENGL_FOUND)
+if (OPENGL_FOUND AND OPENGL_GLU_FOUND)
      set(OPENGL_SUPPORT true)
 endif()
 
