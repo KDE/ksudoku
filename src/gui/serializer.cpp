@@ -26,9 +26,7 @@
 
 #include <QDomDocument>
 #include <QFile>
-#include <QList>
 #include <QTextStream>
-#include <QUrl>
 #include <QTemporaryFile>
 
 #include <KIO/FileCopyJob>

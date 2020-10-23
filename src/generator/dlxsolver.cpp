@@ -17,7 +17,6 @@
 
 #include "dlxsolver.h"
 #include "ksudoku_logging.h"
-#include "globals.h"
 
 
 // #define DLX_LOG

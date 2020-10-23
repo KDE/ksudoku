@@ -17,7 +17,6 @@
 
 #include "cagegenerator.h"
 #include "ksudoku_logging.h"
-#include "globals.h"
 #include "skgraph.h"
 #include "dlxsolver.h"
 

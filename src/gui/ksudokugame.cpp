@@ -25,7 +25,6 @@
 
 #include "puzzle.h"
 
-#include "history.h"
 
 #include "globals.h"
 
@@ -33,7 +32,6 @@
 #include <KLocalizedString>
 
 #include <QList>
-#include <QUrl>
 #include <QElapsedTimer>
 #include <QTime>
 

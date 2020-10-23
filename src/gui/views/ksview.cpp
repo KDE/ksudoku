@@ -22,7 +22,6 @@
 
 #include "ksview.h"
 
-#include "ksudokugame.h"
 #include "settings.h"
 
 

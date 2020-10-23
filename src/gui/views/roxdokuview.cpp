@@ -27,7 +27,6 @@
 #include "skgraph.h"
 
 #include <QCursor>
-#include <QMouseEvent>
 #include <QPixmap>
 #include <KLocalizedString>
 
