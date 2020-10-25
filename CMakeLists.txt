@@ -14,7 +14,7 @@ set (KF5_MIN_VERSION "5.46.0")
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
 
-find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets PrintSupport Svg Test OpenGL)
+find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets PrintSupport Svg Test)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Archive
     Config
@@ -33,6 +33,7 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 
+find_package(Qt5OpenGL ${QT_MIN_VERSION})
 find_package(OpenGL)
 set_package_properties(OpenGL PROPERTIES DESCRIPTION "API for developing portable, interactive 2D and 3Dgraphics applications" TYPE OPTIONAL PURPOSE "KSudoku will not have Roxdoku support without OpenGL.")
 
@@ -45,8 +46,8 @@ include(KDEInstallDirs)
 include(KDECompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 
-if (OPENGL_FOUND AND OPENGL_GLU_FOUND)
-     set(OPENGL_SUPPORT true)
+if (Qt5OpenGL_FOUND AND OPENGL_FOUND AND OPENGL_GLU_FOUND)
+    set(OPENGL_SUPPORT true)
 endif()
 
 
