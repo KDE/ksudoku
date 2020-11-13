@@ -30,6 +30,7 @@ SentUpstream: 2014-09-24
   <name xml:lang="pl">KSudoku</name>
   <name xml:lang="pt">KSudoku</name>
   <name xml:lang="pt-BR">KSudoku</name>
+  <name xml:lang="ro">KSudoku</name>
   <name xml:lang="ru">KSudoku</name>
   <name xml:lang="sk">KSudoku</name>
   <name xml:lang="sl">KSudoku</name>
@@ -64,6 +65,7 @@ SentUpstream: 2014-09-24
   <summary xml:lang="pl">Uzupełnij układankę numeryczną cyframi od jeden do dziwięciu</summary>
   <summary xml:lang="pt">Completar um 'puzzle' numérico com os números de um a nove</summary>
   <summary xml:lang="pt-BR">Complete um quebra-cabela numérico com os números de um a nove</summary>
+  <summary xml:lang="ro">Completează un puzzle numeric cu numere de la unu la nouă</summary>
   <summary xml:lang="sk">Úplné číselné puzzle s číslami od jedna do deväť</summary>
   <summary xml:lang="sl">Rešite številčno uganko s številkami med 1 in 9</summary>
   <summary xml:lang="sr">Саставите бројевну слагалицу са бројевима од један до девет</summary>
