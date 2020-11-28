@@ -20,17 +20,6 @@
 #ifndef _ArcBall_h
 #define _ArcBall_h
 
-#include "math.h"                                               // Needed for sqrtf
-
-// 8<--Snip here if you have your own math types/funcs-->8 
-
-//Only support assertions in debug builds
-#ifdef _DEBUG
-# include "assert.h"
-#else
-# define assert(x) { }
-#endif
-
 #ifdef Q_OS_MAC
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
@@ -41,6 +30,17 @@
 #else
 #include <GL/gl.h>                                                                                             // Header File For The OpenGL32 Library
 #include <GL/glu.h>                                                                                            // Header File For The GLu32 Library
+#endif
+
+#include <math.h>                                               // Needed for sqrtf
+
+// 8<--Snip here if you have your own math types/funcs-->8 
+
+//Only support assertions in debug builds
+#ifdef _DEBUG
+# include "assert.h"
+#else
+# define assert(x) { }
 #endif
 
 //Math types derived from the KempoApi tMath library
