@@ -20,10 +20,12 @@
 #ifndef _ArcBall_h
 #define _ArcBall_h
 
+#include <QtGlobal>
+
 #ifdef Q_OS_MAC
 #include <OpenGL/gl.h>
 #include <OpenGL/glu.h>
-#elif defined(Q_WS_WIN)
+#elif defined(Q_OS_WIN)
 #include <windows.h>
 #include <GL/gl.h>                                                                                             // Header File For The OpenGL32 Library
 #include <GL/glu.h>                                                                                            // Header File For The GLu32 Library
