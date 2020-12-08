@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-<!ENTITY ksudoku "KSudoku">
-<!ENTITY kappname "&ksudoku;">
+  <!ENTITY ksudoku "KSudoku">
   <!ENTITY package "kdegames">  <!-- do not change this! -->
   <!ENTITY % English "INCLUDE" > <!-- change language only here -->
   <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
@@ -9,7 +8,7 @@
 
 <book id="ksudoku" lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-	<title>The &kappname; Handbook</title> <!-- This is the title of this docbook. -->
+	<title>The &ksudoku; Handbook</title> <!-- This is the title of this docbook. -->
 <!-- List of immediate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
@@ -41,12 +40,12 @@
 </copyright>
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2020-05-21</date><!-- Date of (re)writing, or update.-->
-<releaseinfo>1.4.200400</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
+<date>2020-12-10</date><!-- Date of (re)writing, or update.-->
+<releaseinfo>1.4.20120</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
 
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para>This documentation describes the game of &kappname;, a logic-based symbol placement puzzle.</para>
+	<para>This documentation describes the game of &ksudoku;, a logic-based symbol placement puzzle.</para>
 </abstract>
 
 <!--List of relevant keywords-->
@@ -75,22 +74,22 @@
 	<note><title>Number of possible players:</title><para>
 		One</para></note>
 
-<para>&kappname; is a logic-based symbol placement puzzle.</para>
+<para>&ksudoku; is a logic-based symbol placement puzzle.</para>
 
 <para>The player has to fill a grid with symbols so that each column, row
 	and block on the game board contains only one instance of each
-	symbol. In &kappname; the symbols are usually the numbers 1 to 9,
+	symbol. In &ksudoku; the symbols are usually the numbers 1 to 9,
 	but may be the letters A to P or A to Y in larger puzzles. Puzzles
 	start with the board partially filled and it is your job to fill
 	in the rest. Some types of puzzle have less than nine symbols.</para>
 
 <para>When you start a game, you can choose from several Sudoku types
-	and sizes. You can then have &kappname; generate a puzzle for
+	and sizes. You can then have &ksudoku; generate a puzzle for
 	you to solve or you can start with an empty board and enter in
 	a puzzle from another source, such as a newspaper, then get
-	&kappname; to check it and maybe solve it.</para>
+	&ksudoku; to check it and maybe solve it.</para>
 
-<para>There are many variations of Sudoku in existence and &kappname;
+<para>There are many variations of Sudoku in existence and &ksudoku;
 	provides a good selection of them. The most common type, Standard Sudoku, has
 	a 9x9 square grid and uses Arabic numerals 1 to 9 as symbols. The
 	grid has 9 rows and 9 columns and is divided into 9 blocks of
@@ -111,7 +110,7 @@
 
 <para>When the game starts you are prompted to choose which game type and board
 	size you are interested in. You can enter in a puzzle from another
-	source or have &kappname; generate a puzzle. The generator has several
+	source or have &ksudoku; generate a puzzle. The generator has several
 	difficulty settings and some symmetry settings, which affect
 	the pattern in which the puzzle is generated. Your game experience will
 	depend on which of all these options you choose.</para>
@@ -132,8 +131,8 @@
 	To do that, select the symbol you wish to enter from the selection
 	list on the left, then use the mouse to click on a vacant square
 	in the board. Alternatively, you can hover with the mouse over a
-	vacant square or use the cursor keys to move around, 
-        then use the keyboard to enter a symbol.</para>
+	vacant square or use the cursor keys to move around,
+    then use the keyboard to enter a symbol.</para>
 
 <para>In Roxdoku (three-dimensional) puzzles, always use the mouse to set a
 	small cube to a value and use a <emphasis>double</emphasis>
@@ -147,26 +146,26 @@
 	but they can help you keep track of ideas you have had, especially
 	when there is a choice between two alternatives and you do not
 	yet have enough information to decide between them. To enter a
-	marker or note, click with the right mouse button or hold down
-	the &Shift; key when using the keyboard.</para>
+	marker or note, click with the &RMB; or hold down the &Shift; key
+    when using the keyboard.</para>
 
 <para>To clear symbols from a square, hover over the square with the
-	mouse and hit <keycap>Delete</keycap> or <keycap>Backspace</keycap> on the
-	keyboard or click with the &RMB; on the square.</para>
+	mouse and hit &Del; or &Backspace; on the keyboard or click with
+    the &RMB; on the square.</para>
 
 <para>Notice that the squares change color while you hover the mouse over
-	them. This is to help you keep up with the rules of &kappname;. Use
+	them. This is to help you keep up with the rules of &ksudoku;. Use
 	the vertical and horizontal lines to check if the symbol you are
 	about to enter into a vacant spot is already in use anywhere in
 	the vertical or horizontal line that square is a part of. The coloring
 	also highlights the block which, if you remember, must also contain
 	only one instance of each symbol. If you do not need the highlighting,
 	you can use the <menuchoice><guimenu>Settings</guimenu>
-	<guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>
+	<guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice>
 	menu item to turn it off.</para>
 
 <para>Keep entering symbols in accordance with the rules until the whole
-	game field is filled up. At this point &kappname; will check if all
+	game field is filled up. At this point &ksudoku; will check if all
 	the entries are valid and will either correct you or accept your
 	solution.</para>
 </chapter>
@@ -175,11 +174,11 @@
 
 <sect1 id="rules"><title>General Game Rules</title>
 
-<para>The rules of &kappname; are quite simple.</para>
+<para>The rules of &ksudoku; are quite simple.</para>
 	<itemizedlist>
 	<listitem><para>Depending on the size of the game board, the type
 		of puzzle and the difficulty level chosen an individual
-		&kappname; puzzle may take from a few minutes to a few
+		&ksudoku; puzzle may take from a few minutes to a few
 		hours to solve.</para></listitem>
 	<listitem><para>Each square may hold one and only one
 		symbol.</para></listitem>
@@ -197,14 +196,14 @@
 
 	<itemizedlist>
 	<listitem><para>Knowledge of mathematics or language is not required
-		to solve &kappname; puzzles, but a little ability with 
+		to solve &ksudoku; puzzles, but a little ability with 
 		arithmetic is needed in Killer Sudoku and Mathdoku 
 		puzzles.</para></listitem>
 	<listitem><para>The symbols already on the game board when the
 		puzzle starts cannot be changed.</para></listitem>
 	<listitem><para>You can only modify the symbols you have previously
 		entered.</para></listitem>
-	<listitem><para>Puzzles generated by &kappname; have one solution
+	<listitem><para>Puzzles generated by &ksudoku; have one solution
 		only.</para></listitem>
 	<listitem><para>Puzzles you enter in might have no solution or
 		more than one solution, but if they are from a published
@@ -213,7 +212,7 @@
 	</itemizedlist>
 </sect1>
 
-<sect1 id="variants"><title>&kappname; Variations</title>
+<sect1 id="variants"><title>&ksudoku; Variations</title>
 
 <sect2 id="standard_sudoku"><title>Sudoku Puzzles</title>
 
@@ -227,7 +226,7 @@
 	<listitem><para>The XSudoku variation is exactly the same as Standard
 		Sudoku with an additional requirement: the two main
 		diagonals must also each contain the symbols 1 to 9 once
-		and once only. &kappname; highlights the diagonals to make
+		and once only. &ksudoku; highlights the diagonals to make
 		this easier to see.</para></listitem>
 	<listitem><para>The Nonomino 9x9, Pentomino 5x5 and Tetromino 4x4 
 		variations are the same as a Standard Sudoku 
@@ -336,7 +335,7 @@
 <sect1 id="tips"><title>Strategies and Tips</title>
 
 	<itemizedlist>
-	<listitem><para>Take your time and do not rush. &kappname; is not
+	<listitem><para>Take your time and do not rush. &ksudoku; is not
 		a quick game.</para></listitem>
 	<listitem><para>Pay attention to the row, column, and block
 		colorings. They are there to help you.</para></listitem>
@@ -364,9 +363,9 @@
 		<guimenuitem>Redo</guimenuitem></menuchoice> menu
 		items, repeatedly if necessary, and there is a setting
 		in <menuchoice><guimenu>Settings</guimenu>
-		<guimenuitem>Configure &kappname;...</guimenuitem></menuchoice>
+		<guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice>
 		that highlights errors.</para></listitem>
-	<listitem><para>Even though &kappname; provides a 'Hint' option
+	<listitem><para>Even though &ksudoku; provides a 'Hint' option
 		for you, try not to use it often. Remember, solving the
 		puzzle all by yourself enhances your brain activity,
 		while using the 'Hint' feature too often is
@@ -388,37 +387,37 @@
 <sect1 id="welcome-screen"><title>The Welcome Screen</title>
 
 <para>The Welcome Screen is the first thing you see when you start
-	&kappname; or use the toolbar or menu to request a new game.
+	&ksudoku; or use the toolbar or menu to request a new game.
 	It has a list of all the puzzle types and sizes and you can
 	click on one of them to make a selection.</para>
 
-<para>If you click the button marked <guilabel>Enter In A Puzzle</guilabel>, an empty board
+<para>If you click the button marked <guibutton>Enter In A Puzzle</guibutton>, an empty board
 	of the selected type and size appears. Here you can use the mouse
 	or keyboard to enter in a puzzle from another source, such as
 	a newspaper. When you have finished, use the <guilabel>Check</guilabel> action, on
 	toolbar or menu, to check the puzzle. It should have just one
 	solution. If so, you can start solving the puzzle or perhaps
-	get &kappname; to solve it. If there is no solution or more
+	get &ksudoku; to solve it. If there is no solution or more
 	than one solution, it probably means you have made a data-entry
 	error somewhere.</para>
 
-<para>If you click the button marked <guilabel>Generate A Puzzle</guilabel>, &kappname;
+<para>If you click the button marked <guibutton>Generate A Puzzle</guibutton>, &ksudoku;
 	will display a board with some squares already filled in. It
 	is up to you to fill in the rest.</para>
 
 <para>Before you generate a puzzle, check that the settings of the
-	<guilabel>Difficulty</guilabel> and <guilabel>Symmetry</guilabel>
-	buttons are to your liking. You can change them during a game, but
+	<guilabel>Difficulty:</guilabel> and <guilabel>Symmetry:</guilabel>
+	drop down boxes are to your liking. You can change them during a game, but
 	then they will have no effect until the next puzzle is
 	generated.</para>
 
-	<note><para>If you cannot see the <guilabel>Difficulty</guilabel> and <guilabel>Symmetry</guilabel>
-		buttons, use the <menuchoice><guimenu>Settings</guimenu>
+	<note><para>If you cannot see the <guilabel>Difficulty:</guilabel> and <guilabel>Symmetry:</guilabel>
+		drop down boxes, use the <menuchoice><guimenu>Settings</guimenu>
 		<guimenuitem>Show Statusbar</guimenuitem></menuchoice>
 		menu item to make sure that the statusbar is
 		visible.</para></note>
 
-<para>The <guilabel>Difficulty</guilabel> button provides six levels of difficulty, from
+<para>The <guilabel>Difficulty:</guilabel> drop down box provides six levels of difficulty, from
 	<guimenuitem>Very Easy</guimenuitem> up to <guimenuitem>Hard</guimenuitem>,
 	<guimenuitem>Diabolical</guimenuitem> and <guimenuitem>Unlimited</guimenuitem>. The easier
 	levels may take a few minutes to solve on a 9x9 board. The
@@ -428,21 +427,21 @@
 	puzzles will take longer to solve, simply because there are
 	more rows, columns and blocks and more squares to fill in.</para>
 
-<para>The Diabolical level typically requires one or more guesses,
+<para>The <guimenuitem>Diabolical</guimenuitem> level typically requires one or more guesses,
 	with backtracking if you guess wrong. Lower levels can usually
-	be solved by logic alone. The Unlimited level has no limits
+	be solved by logic alone. The <guimenuitem>Unlimited</guimenuitem> level has no limits
 	on the number of guesses required, how soon the first guess
 	is needed or how complex the logic might be. It is provided
 	for the interest of expert players, but tends to generate
-	uninteresting 'inhuman' puzzles and is not recommended for
-	general use.</para>
+    uninteresting <quote>inhuman</quote> puzzles and is not recommended
+    for general use.</para>
 
- <para>The <guilabel>Symmetry</guilabel> button provides seven types of symmetry, including
+ <para>The <guilabel>Symmetry:</guilabel> drop down box provides seven types of symmetry, including
 	<guimenuitem>No Symmetry</guimenuitem>. This controls the layout and appearance of the
 	squares that are filled in at the start of a puzzle and has
 	mainly aesthetic effect, except that puzzles with no symmetry
 	tend to be slightly harder than those with high symmetry and
-	it is less likely that &kappname; can generate a puzzle with
+	it is less likely that &ksudoku; can generate a puzzle with
 	high difficulty and high symmetry combined.</para>
 </sect1>
 
@@ -502,7 +501,7 @@
 					<guimenu>Game</guimenu>
 					<guimenuitem>Quit</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Quits</action> &kappname;.</para></listitem>
+				<listitem><para><action>Quits</action> &ksudoku;.</para></listitem>
 			</varlistentry>
 		</variablelist>
 </sect1>
@@ -555,9 +554,9 @@
 			<varlistentry id="settings-menu-settings">
 				<term><menuchoice>
 					<guimenu>Settings</guimenu>
-					<guimenuitem>Configure &kappname;...</guimenuitem>
+					<guimenuitem>Configure &ksudoku;...</guimenuitem>
 				</menuchoice></term>
-				<listitem><para><action>Open a dialog to configure &kappname;.</action> See <link linkend="configuration">Game Configuration</link> section for details.</para></listitem>
+				<listitem><para><action>Open a dialog to configure &ksudoku;.</action> See <link linkend="configuration">Game Configuration</link> section for details.</para></listitem>
 			</varlistentry>
 		</variablelist>
 		<para>
@@ -575,15 +574,15 @@
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>Sudoku games are traditionally played using a square grid. Themes do not make much sense here, but you can select some color schemes and backgrounds. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &kappname;...</guimenuitem></menuchoice> on the menubar.</para></answer>
+ <answer><para>Sudoku games are traditionally played using a square grid. Themes do not make much sense here, but you can select some color schemes and backgrounds. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use the keyboard to play this game? </para></question>
- <answer><para>Yes. In &kappname; keyboard play is always enabled. Please use the cursor keys to move the selection, numeric or alphabetic characters to enter the symbols and the &Shift; key to apply markers.</para></answer>
+ <answer><para>Yes. In &ksudoku; keyboard play is always enabled. Please use the cursor keys to move the selection, numeric or alphabetic characters to enter the symbols and the &Shift; key to apply markers.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Where are the high scores?</para></question>
- <answer><para>&kappname; does not have this feature.</para></answer>
+ <answer><para>&ksudoku; does not have this feature.</para></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
 
@@ -600,13 +599,13 @@
 			<listitem>
 			<para>Toggle the option to print more than one puzzle per page whenever they will fit.</para>
 			<para>If this option is checked, puzzles will be printed when no more will fit on a page 
-			      or when &kappname; terminates. Otherwise a puzzle is printed immediately.</para>
+			      or when &ksudoku; terminates. Otherwise a puzzle is printed immediately.</para>
 			<para>Three-dimensional puzzles cannot be printed.</para>
 			</listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Show Highlights in 2-D puzzles</guilabel></term>
-			<listitem><para>Toggle the &kappname; highlight option for two-dimensional puzzles.</para></listitem>
+			<listitem><para>Toggle the &ksudoku; highlight option for two-dimensional puzzles.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Show Errors</guilabel></term>
@@ -614,7 +613,7 @@
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Show Highlights in 3-D puzzles</guilabel></term>
-			<listitem><para>Toggle the &kappname; highlight option for three-dimensional puzzles.</para></listitem>
+			<listitem><para>Toggle the &ksudoku; highlight option for three-dimensional puzzles.</para></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term><guilabel>Mathdoku puzzle size (3-9)</guilabel></term>
@@ -632,7 +631,7 @@
 <chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
 
 <para>
-&kappname;  <!-- do not change this! -->
+&ksudoku;  <!-- do not change this! -->
 </para>
 
 <!--List all the copyright holders here-->

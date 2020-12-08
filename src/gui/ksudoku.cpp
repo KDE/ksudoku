@@ -497,7 +497,7 @@ void KSudoku::setupStatusBar (int difficulty, int symmetry)
 			{KGameDifficulty::VeryEasy, KGameDifficulty::Easy,
 			 KGameDifficulty::Medium,   KGameDifficulty::Hard};
 
-	statusBar()->addPermanentWidget (new QLabel (i18n("Difficulty")));
+	statusBar()->addPermanentWidget (new QLabel (i18nc("@option drop down box", "Difficulty:")));
 	KGameDifficulty::init (this, this,
 		SLOT (difficultyChanged(KGameDifficulty::standardLevel)),
 		SLOT (difficultyChanged(int)));
@@ -521,7 +521,7 @@ void KSudoku::setupStatusBar (int difficulty, int symmetry)
 	KGameDifficulty::setEnabled (true);
 
 	// Set up a combo box for symmetry of puzzle layout.
-	statusBar()->addPermanentWidget (new QLabel (i18n("Symmetry")));
+	statusBar()->addPermanentWidget (new QLabel (i18nc("@option drop down box", "Symmetry:")));
 	QComboBox * symmetryBox = new QComboBox (this);
 	QObject::connect(symmetryBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &KSudoku::symmetryChanged);
 	symmetryBox->setToolTip(i18nc(
