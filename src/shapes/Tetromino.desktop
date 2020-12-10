@@ -1,8 +1,8 @@
 [KSudokuVariant]
 Name=Tetromino 4x4
 Name[bs]=Tetromino 4x4
-Name[ca]=Tetromino 4x4
-Name[ca@valencia]=Tetromino 4x4
+Name[ca]=Tetrominó 4x4
+Name[ca@valencia]=Tetrominó 4x4
 Name[da]=Tetromino 4x4
 Name[de]=Tetromino 4x4
 Name[el]=Tetromino 4x4
@@ -45,8 +45,8 @@ Name[zh_CN]=4x4 四格骨牌
 Name[zh_TW]=Tetromino 4x4
 Description=Jigsaw with Tetromino blocks (Tetris pieces)
 Description[bs]=Slagalica sa Tetromino blokovima (Tetris komadi)
-Description[ca]=Puzle amb blocs tetromino (peces de Tetris)
-Description[ca@valencia]=Puzle amb blocs tetromino (peces de Tetris)
+Description[ca]=Jigsaw amb blocs tetrominó (peces de Tetris)
+Description[ca@valencia]=Jigsaw amb blocs tetrominó (peces de Tetris)
 Description[da]=Puslespil med Tetromino-blokke (Tetris-brikker)
 Description[de]=Stichsägen-Variante mit 4er-Blöcken (Tetris-Steine)
 Description[el]=Παζλ με τμήματα Tetromino (κομμάτια Tetris)

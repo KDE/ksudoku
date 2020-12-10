@@ -1,8 +1,8 @@
 [KSudokuVariant]
 Name=Pentomino 5x5
 Name[bs]=Pentomino 5x5
-Name[ca]=Pentomino 5x5
-Name[ca@valencia]=Pentomino 5x5
+Name[ca]=Pentominó 5x5
+Name[ca@valencia]=Pentominó 5x5
 Name[da]=Pentomino 5x5
 Name[de]=Pentomino 5x5
 Name[el]=Pentomino 5x5
@@ -45,8 +45,8 @@ Name[zh_CN]=五连块 5x5
 Name[zh_TW]=Pentomino 5x5
 Description=Jigsaw variant with irregularly shaped Pentomino blocks
 Description[bs]=Varijanta slagalice sa neravnomjerno oblikovanim Pentomino blokovima
-Description[ca]=Variant de puzle amb forma de blocs pentomino irregulars
-Description[ca@valencia]=Variant de puzle amb forma de blocs pentomino irregulars
+Description[ca]=Variant Jigsaw amb forma de blocs pentominó irregulars
+Description[ca@valencia]=Variant Jigsaw amb forma de blocs pentominó irregulars
 Description[da]=Puslespilsvariant med uregelmæssigt formede Pentomono-blokke
 Description[de]=Stichsägen-Variante mit unregelmäßig geformten 5er-Blöcken
 Description[el]=Παραλλαγή jigsaw με ακανόνιστου σχήματος τμήματα Pentomino
