@@ -89,7 +89,6 @@ public:
 
 public:
 	void updateShapesList();
-	void createCustomShape();
 
 	ksudoku::Game    currentGame() const;
 	ksudoku::KsView* currentView() const;
