@@ -54,7 +54,7 @@ int main(int argc, char **argv)
 	                 i18n(description),
 	                 KAboutLicense::GPL_V2,
 	                 i18n("(c) 2005-2007 The KSudoku Authors"),
-	                 QString(), QStringLiteral("https://games.kde.org/game.php?game=ksudoku"));
+	                 QString(), QStringLiteral("https://games.kde.org/games/ksudoku"));
 	about.addAuthor( i18n("Francesco Rossi"), i18n("KSudoku Author"), QStringLiteral("redsh@email.it") );
 	about.addAuthor( i18n("Johannes Bergmeier"), i18n("Maintainer"), QStringLiteral("Johannes.Bergmeier@gmx.net") );
 	about.addAuthor( i18n("Ian Wadham"), i18n("New puzzle generator and solver"), QStringLiteral("iandw.au@gmail.com") );
