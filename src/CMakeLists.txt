@@ -50,7 +50,7 @@ target_link_libraries(ksudoku
 
 if(OPENGL_SUPPORT)
 target_link_libraries(ksudoku
-	Qt5::OpenGL OpenGL::GL OpenGL::GLU ${CMAKE_DL_LIBS}
+	Qt::OpenGL OpenGL::GL OpenGL::GLU ${CMAKE_DL_LIBS}
 )
 endif(OPENGL_SUPPORT)
 

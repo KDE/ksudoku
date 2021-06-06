@@ -43,14 +43,14 @@ target_link_libraries(ksudoku_gui
 	KF5::JobWidgets
 	KF5::WidgetsAddons
 	KF5::XmlGui
-	Qt5::Core 
-	Qt5::Gui
-	Qt5::PrintSupport
-        Qt5::Svg
+	Qt::Core 
+	Qt::Gui
+	Qt::PrintSupport
+        Qt::Svg
 	)
 
 if(OPENGL_SUPPORT)
 	target_link_libraries(ksudoku_gui 
 		${OPENGL_LIBRARIES}
-		Qt5::OpenGL)
+		Qt::OpenGL)
 endif(OPENGL_SUPPORT)
