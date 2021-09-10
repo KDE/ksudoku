@@ -87,7 +87,7 @@ int main(int argc, char **argv)
 	}
 	else
 	{*/
-		KSudoku *widget = new KSudoku;
+		auto *widget = new KSudoku;
 		widget->show();
 
 		// no session.. just start up normally

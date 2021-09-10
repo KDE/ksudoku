@@ -63,7 +63,7 @@ bool Puzzle::init() {
 bool Puzzle::init(int difficulty, int symmetry) {
 	if(m_initialized) return false;
 
-	SudokuBoard * board = new SudokuBoard (m_graph);
+	auto * board = new SudokuBoard (m_graph);
 
 	// Generate a puzzle and its solution.
 	bool success =  board->generatePuzzle (m_puzzle, m_solution,
@@ -90,7 +90,7 @@ int Puzzle::init(const BoardContents & values) {
 	m_hintList.clear();
 
 	if ((t != Mathdoku) && (t != KillerSudoku)) {
-	    SudokuBoard * board = new SudokuBoard (m_graph);
+	    auto * board = new SudokuBoard (m_graph);
 	    m_solution = board->solveBoard (m_puzzle);
 
 	    // Get SudokuBoard to check the solution.

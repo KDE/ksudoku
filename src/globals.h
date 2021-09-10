@@ -36,12 +36,12 @@ enum Symmetry   {DIAGONAL_1, CENTRAL, LEFT_RIGHT, SPIRAL, FOURWAY,
 
 enum CageOperator {NoOperator, Divide, Subtract, Multiply, Add};
 
-typedef QVector<int>      BoardContents;
+using BoardContents = QVector<int>;
 
 // The maximum digit that can be used in a Mathdoku or Killer Sudoku puzzle.
 const int MaxMathOrder = 9;
 
-typedef struct {
+using Statistics = struct {
     char *     typeName;
     SudokuType type;
     int        blockSize;
@@ -57,6 +57,6 @@ typedef struct {
     int        firstGuessAt;
     float      rating;
     Difficulty difficulty;
-}                         Statistics;
+};
 
 #endif // GLOBALS_H

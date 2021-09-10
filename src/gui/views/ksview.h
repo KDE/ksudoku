@@ -36,7 +36,7 @@ enum ViewFlag {
 	ShowHighlights    = 0x04
 };
 
-typedef QFlags<ViewFlag> ViewFlags;
+using ViewFlags = QFlags<ViewFlag>;
 	
 class Game;
 struct SymbolTable;

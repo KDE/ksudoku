@@ -147,7 +147,7 @@ Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
 		return 0;
 	}
 
-	Puzzle* puzzle = new Puzzle(graph, hasSolution);
+	auto* puzzle = new Puzzle(graph, hasSolution);
 
 	BoardContents values;
 	values.resize(graph->size());
@@ -200,11 +200,11 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 		return 0;
 
 	if(type == QLatin1String("sudoku")) {
-		SKGraph *graph = new SKGraph(order, TypeSudoku);
+		auto *graph = new SKGraph(order, TypeSudoku);
 		graph->initSudoku();
 		return graph;
 	} else if(type == QLatin1String("roxdoku")) {
-		SKGraph *graph = new SKGraph(order, TypeRoxdoku);
+		auto *graph = new SKGraph(order, TypeRoxdoku);
 		graph->initRoxdoku();
 		return graph;
 	} else if(type == QLatin1String("custom")) {
@@ -241,7 +241,7 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 		if(err==1) return 0;
 		if(sizeX<1 || sizeY<1 || sizeZ<1) return 0;
 
-		SKGraph* graph = new SKGraph(order, TypeCustom);
+		auto* graph = new SKGraph(order, TypeCustom);
 		graph->initCustom(name, puzzleType, order,
 			    sizeX, sizeY, sizeZ, ncliques);
 

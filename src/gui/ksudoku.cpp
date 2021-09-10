@@ -122,14 +122,14 @@ KSudoku::KSudoku()
 	:
 	KXmlGuiWindow(),
 	m_gameVariants(new GameVariantCollection(this, true)),
-	m_puzzlePrinter(0)
+    m_puzzlePrinter(nullptr)
 {
 	setObjectName( QStringLiteral("ksudoku" ));
 
-	m_gameWidget = 0;
-	m_gameUI = 0;
+    m_gameWidget = nullptr;
+    m_gameUI = nullptr;
 
-	m_gameActions = 0;
+    m_gameActions = nullptr;
 
 	// then, setup our actions
 	setupActions();
@@ -172,7 +172,7 @@ KSudoku::~KSudoku()
 void KSudoku::updateShapesList()
 {
 	// TODO clear the list
-	GameVariant* variant = 0;
+    GameVariant* variant = nullptr;
 
 	variant = new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The classic and fashionable game"));
@@ -236,7 +236,7 @@ void KSudoku::startGame(const Game& game) {
 	endCurrentGame();
 
 
-	KsView* view = new KsView(game, m_gameActions, this);
+	auto* view = new KsView(game, m_gameActions, this);
 
 	view->setValueListWidget(m_valueListWidget);
 	view->createView();
@@ -352,7 +352,7 @@ void KSudoku::endCurrentGame() {
 	m_valueListWidget->hide();
 
 	delete m_gameUI;
-	m_gameUI = 0;
+    m_gameUI = nullptr;
 
 	adaptActions2View();
 
@@ -466,7 +466,7 @@ void KSudoku::setupActions()
 
 	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
 	// Settings: enable messages that the user marked "Do not show again".
-	QAction* enableMessagesAct = new QAction(i18n("Enable all messages"),this);
+	auto* enableMessagesAct = new QAction(i18n("Enable all messages"),this);
 	actionCollection()->addAction(QStringLiteral("enable_messages"), enableMessagesAct);
 	connect(enableMessagesAct, &QAction::triggered, this, &KSudoku::enableMessages);
 
@@ -522,7 +522,7 @@ void KSudoku::setupStatusBar (int difficulty, int symmetry)
 
 	// Set up a combo box for symmetry of puzzle layout.
 	statusBar()->addPermanentWidget (new QLabel (i18nc("@option drop down box", "Symmetry:")));
-	QComboBox * symmetryBox = new QComboBox (this);
+	auto * symmetryBox = new QComboBox (this);
 	QObject::connect(symmetryBox, static_cast<void (QComboBox::*)(int)>(&QComboBox::activated), this, &KSudoku::symmetryChanged);
 	symmetryBox->setToolTip(i18nc(
 		"Symmetry of layout of clues when puzzle starts", "Symmetry"));
@@ -781,9 +781,9 @@ void KSudoku::optionsPreferences()
 {
 	if ( KConfigDialog::showDialog(QStringLiteral("settings")) ) return;
 
-	KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral("settings"), Settings::self());
+	auto *dialog = new KConfigDialog(this, QStringLiteral("settings"), Settings::self());
 
-	GameConfig* gameConfig = new GameConfig();
+	auto* gameConfig = new GameConfig();
 	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), QStringLiteral("games-config-options"));
 	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), QStringLiteral("games-config-theme"));
 

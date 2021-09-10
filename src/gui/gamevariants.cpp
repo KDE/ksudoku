@@ -98,7 +98,7 @@ QVariant GameVariantCollection::data(const QModelIndex &index, int role) const {
 	if (!index.internalPointer())
 		return QVariant();
 
-	GameVariant* gameVariant = static_cast<GameVariant*>(index.internalPointer());
+	auto* gameVariant = static_cast<GameVariant*>(index.internalPointer());
 
 	switch(role) {
 		case Qt::DisplayRole:
@@ -239,7 +239,7 @@ QString GameVariantDelegate::icon(const QModelIndex& index) const {
 }
 
 bool GameVariantDelegate::configurable(const QModelIndex& index) const {
-	const GameVariantCollection* collection = dynamic_cast<const GameVariantCollection*>(index.model());
+	const auto* collection = dynamic_cast<const GameVariantCollection*>(index.model());
 	if(!collection) return false;
 
 	return collection->variant(index)->canConfigure();
@@ -290,7 +290,7 @@ Game SudokuGame::startEmpty() {
 		m_graph->initSudoku();
 	}
 
-	Puzzle* puzzle = new Puzzle(m_graph, false);
+	auto* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
@@ -302,7 +302,7 @@ Game SudokuGame::createGame(int difficulty, int symmetry) {
 		m_graph->initSudoku();
 	}
 	
-	Puzzle* puzzle = new Puzzle(m_graph, true);
+	auto* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, symmetry);
 
 	return Game(puzzle);
@@ -347,7 +347,7 @@ Game RoxdokuGame::startEmpty() {
 		m_graph->initRoxdoku();
 	}
 
-	Puzzle* puzzle = new Puzzle(m_graph, false);
+	auto* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
@@ -359,7 +359,7 @@ Game RoxdokuGame::createGame(int difficulty, int symmetry) {
 		m_graph->initRoxdoku();
 	}
 
-	Puzzle* puzzle = new Puzzle(m_graph, true);
+	auto* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, symmetry);
 
 	return Game(puzzle);
@@ -402,7 +402,7 @@ Game CustomGame::startEmpty() {
 	if (! createSKGraphObject()) {
 	    return Game();
 	}
-	Puzzle* puzzle = new Puzzle(m_graph, false);
+	auto* puzzle = new Puzzle(m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
@@ -412,7 +412,7 @@ Game CustomGame::createGame(int difficulty, int symmetry) {
 	if (! createSKGraphObject()) {
 	    return Game();
 	}
-	Puzzle* puzzle = new Puzzle(m_graph, true);
+	auto* puzzle = new Puzzle(m_graph, true);
 	puzzle->init(difficulty, symmetry);
 
 	return Game(puzzle);

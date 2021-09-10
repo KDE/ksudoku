@@ -27,13 +27,13 @@
 #include <QObject>
 #include <QStack>
 
-typedef qint32       Pair;		// Two small integers packed into one.
+using Pair = qint32;		// Two small integers packed into one.
 
-typedef Pair         Move;
-typedef QList<Move>  MoveList;
+using Move = Pair;
+using MoveList = QList<Move>;
 
-typedef Move         Guess;
-typedef MoveList     GuessesList;
+using Guess = Move;
+using GuessesList = MoveList;
 
 enum                 GuessingMode {Random, NotRandom};
 

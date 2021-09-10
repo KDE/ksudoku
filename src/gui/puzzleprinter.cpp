@@ -117,7 +117,7 @@ bool PuzzlePrinter::setupOutputDevices (int leastCellsToFit, int puzzleWidth)
     // NOTE: Must create painter before using functions like m_printer->width().
     if (m_printer == 0) {
         m_printer = new QPrinter (QPrinter::HighResolution);
-        QPrintDialog * dialog = new QPrintDialog(m_printer, m_parent);
+        auto * dialog = new QPrintDialog(m_printer, m_parent);
         dialog->setWindowTitle(i18n("Print Sudoku Puzzle"));
         if (dialog->exec() != QDialog::Accepted) {
             delete m_printer;
