@@ -76,7 +76,7 @@ void GameVariantCollection::addVariant(GameVariant* variant) {
 	beginInsertRows(QModelIndex(), count, count);
 	m_variants.append(variant);
 	endInsertRows();
-	emit newVariant(variant);
+	Q_EMIT newVariant(variant);
 }
 
 int GameVariantCollection::rowCount(const QModelIndex& parent) const {

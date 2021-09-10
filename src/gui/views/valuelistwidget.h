@@ -45,13 +45,13 @@ public:
 	
 	void resizeEvent(QResizeEvent*) override;
 	
-public slots:
+public Q_SLOTS:
 	void selectValue(int value);
 	
-signals:
+Q_SIGNALS:
 	/**
 	 * This signal gets emitted when the ValueListWidget itself changed the
-	 * selected value. A call of selectValue(int) will not cause an emit.
+	 * selected value. A call of selectValue(int) will not cause an Q_EMIT.
 	 */
 	void valueSelected(int value);
 	

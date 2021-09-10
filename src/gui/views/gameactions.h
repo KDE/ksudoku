@@ -34,12 +34,12 @@ public:
 	explicit GameActions(KActionCollection* collection, QObject *parent);
 	void init();
 	void associateWidget(QWidget* widget);
-signals:
+Q_SIGNALS:
 	void selectValue(int value);
 	void enterValue(int value = -1);
 	void markValue(int value = -1);
 	void move(int dx, int dy);
-private slots:
+private Q_SLOTS:
 	void clearValue();
 	void moveUp();
 	void moveDown();

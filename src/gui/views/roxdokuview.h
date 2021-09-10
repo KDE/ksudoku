@@ -58,12 +58,12 @@ public:
 
 	QWidget* widget() override { return this; }
 
-public slots:
+public Q_SLOTS:
 	void selectValue(int value) override;
 	void settingsChanged();
 	void enterValue(int value);
 
-signals:
+Q_SIGNALS:
 	void valueSelected(int value); // Never used but connected to
 
 protected:
@@ -87,7 +87,7 @@ protected:
 		updateGL();
 	}
 
-private slots:
+private Q_SLOTS:
 	void delayOver();
 
 private:

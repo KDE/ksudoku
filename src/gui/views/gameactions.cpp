@@ -136,23 +136,23 @@ void GameActions::associateWidget(QWidget* widget) {
 }
 
 void GameActions::clearValue() {
-	emit enterValue(32);	// Delete: not always the same as Qt::Key_0.
+	Q_EMIT enterValue(32);	// Delete: not always the same as Qt::Key_0.
 }
 
 void GameActions::moveUp() {
-	emit move(0, -1);
+	Q_EMIT move(0, -1);
 }
 
 void GameActions::moveDown() {
-	emit move(0, +1);
+	Q_EMIT move(0, +1);
 }
 
 void GameActions::moveLeft() {
-	emit move(-1, 0);
+	Q_EMIT move(-1, 0);
 }
 
 void GameActions::moveRight() {
-	emit move(+1, 0);
+	Q_EMIT move(+1, 0);
 }
 
 }

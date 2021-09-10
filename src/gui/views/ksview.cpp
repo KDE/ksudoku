@@ -95,7 +95,7 @@ void KsView::createView() {
 void KsView::selectValue(int value) {
 	if(value == m_currentValue) return;
 	m_currentValue = value;
-	emit valueSelected(value);
+	Q_EMIT valueSelected(value);
 }
 
 SymbolTable* KsView::symbolTable() const {
@@ -104,13 +104,13 @@ SymbolTable* KsView::symbolTable() const {
 
 void KsView::setSymbolTable(SymbolTable* table) {
 	m_symbolTable = table;
-	emit symbolsChanged(table);
+	Q_EMIT symbolsChanged(table);
 }
 
 void KsView::setWidget(QWidget* widget) {
 	m_viewWidget = widget;
-	emit flagsChanged(m_flags);
-	emit symbolsChanged(m_symbolTable);
+	Q_EMIT flagsChanged(m_flags);
+	Q_EMIT symbolsChanged(m_symbolTable);
 	
 	m_view = dynamic_cast<ViewInterface*>(widget);
 }

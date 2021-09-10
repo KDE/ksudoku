@@ -153,7 +153,7 @@ void WelcomeScreen::startEmptyGame() {
 		return;
 	}
 	
-	emit newGameStarted(game, variant);
+	Q_EMIT newGameStarted(game, variant);
 }
 
 void WelcomeScreen::playVariant() {
@@ -170,7 +170,7 @@ void WelcomeScreen::playVariant() {
 		return;
 	}
 
-	emit newGameStarted(game, variant);
+	Q_EMIT newGameStarted(game, variant);
 }
 
 void WelcomeScreen::generatePuzzle() {
@@ -199,7 +199,7 @@ void WelcomeScreen::generatePuzzle() {
 	// If the user abandoned puzzle-generation, stay on the Welcome Screen
 	// and allow the user to change the Difficulty, etc. of the puzzle.
 	if (game.puzzle()->hasSolution()) {
-	    emit newGameStarted(game, variant);		// OK, start playing.
+	    Q_EMIT newGameStarted(game, variant);		// OK, start playing.
 	}
 }
 

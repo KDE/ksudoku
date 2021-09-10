@@ -668,7 +668,7 @@ void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
 
 void View2DScene::selectValue(int value) {
  	m_selectedValue = value;
- 	emit valueSelected( value );
+ 	Q_EMIT valueSelected( value );
 }
 
 void View2DScene::enterValue(int value, int cell) {
@@ -762,7 +762,7 @@ void View2DScene::wheelEvent(QGraphicsSceneWheelEvent* event) {
 		if(m_selectedValue < 1)
 			m_selectedValue = m_game.order();
 	}
-	emit valueSelected(m_selectedValue);
+	Q_EMIT valueSelected(m_selectedValue);
 }
 
 

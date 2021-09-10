@@ -67,7 +67,7 @@ public:
 
 	inline int maxValue() const { return m_game.order(); }
 
-public slots:
+public Q_SLOTS:
 	void selectValue(int val);
 	void enterValue(int val, int cell=-1);
 	void markValue(int val, int cell=-1, bool set=true);
@@ -83,7 +83,7 @@ public slots:
 	 *                     Value 0: invalid.
 	 */
 	void updateCage (int cageNumP1, bool drawLabel);
-signals:
+Q_SIGNALS:
 	void valueSelected(int val);
 protected:
 	void wheelEvent(QGraphicsSceneWheelEvent* event) override;
@@ -111,10 +111,10 @@ public:
 
 public:
 	QWidget* widget() override { return this; }
-public slots:
+public Q_SLOTS:
 	void selectValue(int value) override;
 	void settingsChanged();
-signals:
+Q_SIGNALS:
 	void valueSelected(int value);
 protected:
 	void resizeEvent(QResizeEvent* e) override;

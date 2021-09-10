@@ -86,7 +86,7 @@ public:
 	QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
 	GameVariant* variant(const QModelIndex&) const;
 
-signals:
+Q_SIGNALS:
 	void newVariant(GameVariant* variant);
 
 public:

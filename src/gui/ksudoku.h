@@ -97,7 +97,7 @@ protected:
 	void dragEnterEvent(QDragEnterEvent *event) override;
 	void dropEvent(QDropEvent *event) override;
 
-public slots:
+public Q_SLOTS:
     void onCompleted(bool isCorrect, QTime required, bool withHelp = false);
 
 	void showWelcomeScreen();
@@ -107,7 +107,7 @@ public slots:
 
 	bool queryClose() override;
 
-private slots:
+private Q_SLOTS:
 	void difficultyChanged (KGameDifficulty::standardLevel difficulty);
 	void difficultyChanged (int difficulty); // IDW test.
 	void symmetryChanged   (int symmetry);
@@ -140,7 +140,7 @@ private slots:
 
 	void enableMessages();
 
-signals:
+Q_SIGNALS:
 	void settingsChanged();
 
 private:

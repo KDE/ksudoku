@@ -43,13 +43,13 @@ class Puzzle ;
 class GameIFace : public QObject {
 	Q_OBJECT
 
-public slots:
+public Q_SLOTS:
 	virtual void undo() = 0;
 	virtual void redo() = 0;
 	virtual void addCheckpoint() = 0;
 	virtual void undo2Checkpoint() = 0;
 	
-signals:
+Q_SIGNALS:
 	void modified(bool isModified);
 	void completed(bool isCorrect, const QTime& required, bool withHelp);
 	void cellChange(int index);

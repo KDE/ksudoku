@@ -41,7 +41,7 @@ public:
 	int symmetry() const;
 	void setSymmetry(int symmetry);
 
-private slots:
+private Q_SLOTS:
 	void onCurrentVariantChange();
 	
 	void getNewVariant();
@@ -57,7 +57,7 @@ private slots:
 	// otherwise selection fails and no selection is shown.
 	void setSelectedVariant(int row);
 
-signals:
+Q_SIGNALS:
 	void newGameStarted(const ::ksudoku::Game& game, GameVariant* variant);
 	
 private:

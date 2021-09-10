@@ -177,7 +177,7 @@ void ValueListWidget::selectValue(int value) {
 
 void ValueListWidget::selectValueItem(int value) {
 	selectValue(value);
-	emit valueSelected(value);
+	Q_EMIT valueSelected(value);
 }
 
 void ValueListWidget::wheelEvent (QWheelEvent* e) {

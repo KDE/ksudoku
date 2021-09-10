@@ -803,7 +803,7 @@ void KSudoku::updateSettings() {
 		view->settingsChanged();
 	}
 
-	emit settingsChanged();
+	Q_EMIT settingsChanged();
 }
 
 void KSudoku::difficultyChanged (KGameDifficulty::standardLevel difficulty)

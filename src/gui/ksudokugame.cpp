@@ -61,14 +61,14 @@ public: // The slots of GameIFace
 	void undo2Checkpoint() override;
 	
 public:
-	inline void emitModified(bool isModified) { emit modified(isModified); }
+	inline void emitModified(bool isModified) { Q_EMIT modified(isModified); }
 	inline void emitCompleted(bool isCorrect, const QTime& required, bool withHelp) {
-		emit completed(isCorrect, required, withHelp);
+		Q_EMIT completed(isCorrect, required, withHelp);
 	}
-	inline void emitCellChange(int index) { emit cellChange(index); }
-	inline void emitFullChange() { emit fullChange(); }
+	inline void emitCellChange(int index) { Q_EMIT cellChange(index); }
+	inline void emitFullChange() { Q_EMIT fullChange(); }
 	inline void emitCageChange(int cageNumP1, bool showLabel)
-                                  { emit cageChange(cageNumP1, showLabel); }
+                                  { Q_EMIT cageChange(cageNumP1, showLabel); }
 	
 public:
 	PuzzleState state;
@@ -98,12 +98,12 @@ void Game::Private::undo() {
 	
 	const QVector<int>& indices = event.cellIndices();
 	if(indices.count() > 10) {
-		emit fullChange();
+		Q_EMIT fullChange();
 	} else {
 		for(int i = 0; i < indices.count(); ++i)
-			emit cellChange(indices[i]);
+			Q_EMIT cellChange(indices[i]);
 	}
-	emit modified(true);
+	Q_EMIT modified(true);
 }
 
 void Game::Private::redo() {
@@ -114,12 +114,12 @@ void Game::Private::redo() {
 
 	const QVector<int>& indices = event.cellIndices();
 	if(indices.count() > 10) {
-		emit fullChange();
+		Q_EMIT fullChange();
 	} else {
 		for(int i = 0; i < indices.count(); ++i)
-			emit cellChange(indices[i]);
+			Q_EMIT cellChange(indices[i]);
 	}
-	emit modified(true);
+	Q_EMIT modified(true);
 }
 
 void Game::Private::addCheckpoint() {

@@ -90,18 +90,18 @@ public:
 	ViewFlags flags() const { return m_flags; }
 	void setFlags(ViewFlags flags) {
 		m_flags = flags;
-		emit flagsChanged(flags);
+		Q_EMIT flagsChanged(flags);
 	}
 
 public:
 	void createView();
 	
-public slots:
+public Q_SLOTS:
 	void selectValue(int value);
 	
 	void settingsChanged();
 	
-signals:
+Q_SIGNALS:
     void flagsChanged(ksudoku::ViewFlags flags);
     void symbolsChanged(ksudoku::SymbolTable* table);
 	void valueSelected(int value);
