@@ -541,7 +541,7 @@ void View2DScene::setSceneSize(const QSize& size) {
 		m_cells[i]->resize(grid);
 	}
 	
-	for (ksudoku::GroupGraphicsItem* group : qAsConst(m_groups)) {
+	for (ksudoku::GroupGraphicsItem* group : std::as_const(m_groups)) {
 		group->resize(grid, m_highlightsOn);
 	}
 	
@@ -552,7 +552,7 @@ void View2DScene::hover(int cell) {
 	m_cursorPos = cell;
 // 	qCDebug(KSudokuLog) << "hover cell" << cell << m_cells[cell];
 	QPoint pos(m_cells[cell]->pos());
-	for (GroupGraphicsItem* item : qAsConst(m_groups)) {
+	for (GroupGraphicsItem* item : std::as_const(m_groups)) {
 		item->setHighlight(pos, m_highlightsOn);
 	}
 	

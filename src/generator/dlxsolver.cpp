@@ -166,7 +166,7 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
 	}
     }
     else {	// Sudoku or Roxdoku variant.
-	for (DLXNode * node : qAsConst(solution)) {
+	for (DLXNode * node : std::as_const(solution)) {
 	    int rowNumDLX = node->value;
 	    mBoardValues [rowNumDLX/order] = (rowNumDLX % order) + 1;
 	}
@@ -310,7 +310,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     }
 
     // Create the initial set of columns.
-    for (DLXNode * colDLX : qAsConst(mColumns)) {
+    for (DLXNode * colDLX : std::as_const(mColumns)) {
         mEndColNum++;
         // If the constraint is not excluded, put an empty column in the matrix.
         if (colDLX != 0) {
@@ -558,7 +558,7 @@ int DLXSolver::solveDLX (int solutionLimit)
         solution.append (currNode);
 #ifdef DLX_LOG
         fprintf (stderr, "CURRENT SOLUTION: %d rows:", solution.size());
-        for (DLXNode * q : qAsConst(solution)) {
+        for (DLXNode * q : std::as_const(solution)) {
             fprintf (stderr, " %d", q->value);
         }
         fprintf (stderr, "\n");

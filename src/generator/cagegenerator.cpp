@@ -124,7 +124,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	int          cageValue;
 	int          chosenSize;
 	int          index = -1;
-	for (const int n : qAsConst(mUnusedCells)) {
+	for (const int n : std::as_const(mUnusedCells)) {
 	    switch (mNeighbourFlags.at (n)){
 	    case 7:
 	    case 11:
@@ -198,7 +198,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 #ifdef MATHDOKU_LOG
 	qCDebug(KSudokuLog) << "CAGE" << mGraph->cageCount() << cage;
 	char tag = 'a' + mGraph->cageCount() - 1;
-	for (const int cell : qAsConst(cage)) {
+	for (const int cell : std::as_const(cage)) {
 	    usedCells[cell] = tag;
 	}
 	qCDebug(KSudokuLog) << "LAYOUT" << tag << usedCells;
@@ -211,7 +211,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	fprintf (stderr, "\n");
 #endif
 	QList<int> flagsList;
-	for (const int cell : qAsConst(mUnusedCells)) {
+	for (const int cell : std::as_const(mUnusedCells)) {
 	    flagsList.append (mNeighbourFlags.at (cell));
 	}
 #ifdef MATHDOKU_LOG
@@ -369,7 +369,7 @@ QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
 
 	// Pick a neighbour to be added to the cage.
 	index = -1;
-	for (const int unb : qAsConst(unusedNeighbours)) {
+	for (const int unb : std::as_const(unusedNeighbours)) {
             flags = mNeighbourFlags.at (unb);
 	    if (flags == 15) {
 		// Choose a cell that has been surrounded and isolated.
