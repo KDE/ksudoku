@@ -49,8 +49,8 @@ int main(int argc, char **argv)
 	KLocalizedString::setApplicationDomain("ksudoku");
 
 	KAboutData about(QStringLiteral("ksudoku"),
-	                 i18n("KSudoku"),
-	                 KSUDOKU_VERSION_STRING,
+                     i18n("KSudoku"),
+                     QLatin1String(KSUDOKU_VERSION_STRING),
 	                 i18n(description),
 	                 KAboutLicense::GPL_V2,
 	                 i18n("(c) 2005-2007 The KSudoku Authors"),

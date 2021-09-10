@@ -50,13 +50,13 @@ void GameActions::init() {
 	for(int i = 0; i < 31; ++i) {
 		shortcuts.clear();
 		a = new QAction(this);
-		m_collection->addAction(QStringLiteral("val-select%1").arg(i+1,2,10,QChar('0')), a);
+        m_collection->addAction(QStringLiteral("val-select%1").arg(i+1,2,10,QLatin1Char('0')), a);
 		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
         connect(a, &QAction::triggered, this, [this, i] { Q_EMIT selectValue(i + 1); });
 		m_actions << a;
 
 		a = new QAction(this);
-		m_collection->addAction(QStringLiteral("val-enter%1").arg(i+1,2,10,QChar('0')), a);
+        m_collection->addAction(QStringLiteral("val-enter%1").arg(i+1,2,10,QLatin1Char('0')), a);
 		a->setText(i18n("Enter %1 (%2)", QChar('a'+i), i+1));
 		if (i < 25) {
 			// Keys A to Y, for Sudoku puzzles.
@@ -79,7 +79,7 @@ void GameActions::init() {
 
 		shortcuts.clear();
 		a = new QAction(this);
-		m_collection->addAction(QStringLiteral("val-mark%1").arg(i+1,2,10,QChar('0')), a);
+        m_collection->addAction(QStringLiteral("val-mark%1").arg(i+1,2,10,QLatin1Char('0')), a);
 		a->setText(i18n("Mark %1 (%2)", QChar('a'+i), i+1));
 		shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_A + i));
 		if(i < 9) {

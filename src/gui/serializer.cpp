@@ -49,7 +49,7 @@ const SudokuType types[]     = {Plain, XSudoku, Jigsaw, Aztec,
 
 Game Serializer::deserializeGame(const QDomElement &element) {
 	bool hasPuzzle = false;
-	Puzzle* puzzle = 0;
+    Puzzle* puzzle = nullptr;
 	bool hasHistory = false;
 	QList<HistoryEvent> history;
 
@@ -96,7 +96,7 @@ Game Serializer::deserializeGame(const QDomElement &element) {
 
 Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
 	bool hasGraph = false;
-	SKGraph* graph = 0;
+    SKGraph* graph = nullptr;
 	bool hasValues = false;
 	QString valuesStr;
 	bool hasSolution = false;
@@ -109,7 +109,7 @@ Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
 			if(child.nodeName() == QLatin1String("graph")) {
 				if(hasGraph) {
 					delete graph;
-					return 0;
+                    return nullptr;
 				}
 
 				graph = deserializeGraph(child.toElement());
@@ -117,7 +117,7 @@ Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
 			} else if(child.nodeName() == QLatin1String("values")) {
 				if(hasValues) {
 					delete graph;
-					return 0;
+                    return nullptr;
 				}
 
 				valuesStr = child.toElement().text();
@@ -126,7 +126,7 @@ Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
 				// TODO remove deserialization of solution, it is no longer required
 				if(hasSolution) {
 					delete graph;
-					return 0;
+                    return nullptr;
 				}
 
 				solutionStr = child.toElement().text();
@@ -136,15 +136,15 @@ Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
 		child = child.nextSibling();
 	}
 
-	if(!graph) return 0;
+    if(!graph) return nullptr;
 	if(valuesStr.length() != graph->size()) {
 		delete graph;
-		return 0;
+        return nullptr;
 	}
 	// TODO remove deserialization of solution, it is no longer required
 	if(solutionStr.length() != 0 && solutionStr.length() != graph->size()) {
 		delete graph;
-		return 0;
+        return nullptr;
 	}
 
 	auto* puzzle = new Puzzle(graph, hasSolution);
@@ -187,17 +187,17 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 
 	QString orderStr = element.attribute(QStringLiteral("order"));
 	if(orderStr.isNull())
-		return 0;
+        return nullptr;
 	// Allow symbolic values for Mathdoku, set from user-config dialog.
 	int order = (orderStr == QStringLiteral("Mathdoku")) ?
                      Settings::mathdokuSize() :
                      orderStr.toInt(&noFailure, 0);
 	if(!noFailure)
-		return 0;
+        return nullptr;
 
 	QString type = element.attribute(QStringLiteral("type"));
 	if(type.isNull())
-		return 0;
+        return nullptr;
 
 	if(type == QLatin1String("sudoku")) {
 		auto *graph = new SKGraph(order, TypeSudoku);
@@ -230,7 +230,7 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 		QString typeName = element.attribute(QStringLiteral("specific-type"));
 		SudokuType puzzleType = Plain; // Default puzzle-type.
 	        for (int n = 0; n < EndSudokuTypes; n++) {
-		    QString lookup = QString (typeNames [n]);
+            QString lookup = QLatin1String(typeNames [n]);
 	            if (QString::compare (typeName, lookup, Qt::CaseInsensitive)
 			== 0) {
 		        puzzleType = types [n];
@@ -238,8 +238,8 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 	            }
 		}
 
-		if(err==1) return 0;
-		if(sizeX<1 || sizeY<1 || sizeZ<1) return 0;
+        if(err==1) return nullptr;
+        if(sizeX<1 || sizeY<1 || sizeZ<1) return nullptr;
 
 		auto* graph = new SKGraph(order, TypeCustom);
 		graph->initCustom(name, puzzleType, order,
@@ -254,7 +254,7 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 				QString sz = e.attribute(QStringLiteral("size"));
 				if(! deserializeClique(graph, sz, e.text())) {
 				    delete graph;	// Error return.
-				    return 0;
+                    return nullptr;
 				}
 			    }
 			    else if (tag == QLatin1String("sudokugroups")) {
@@ -269,7 +269,7 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 			    else if (tag == QLatin1String("cage")) {
 				if(! deserializeCage(graph, e)) {
 				    delete graph;	// Error return.
-				    return 0;
+                    return nullptr;
 				}
 			    }
 			}
@@ -278,7 +278,7 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 		graph->endCustom();	// Finalise the structure of the graph.
 		return graph;
 	}
-	return 0;
+    return nullptr;
 }
 
 bool Serializer::deserializeClique(SKGraph * graph, const QString & size,
@@ -380,8 +380,8 @@ HistoryEvent Serializer::deserializeSimpleHistoryEvent(const QDomElement &elemen
 
 	if(!markerStr.isNull()) {
 		QBitArray markers(markerStr.length());
-		for(int i = 0; i < markerStr.length(); ++i)
-			markers[i] = markerStr[i] != '0';
+        for(int i = 0; i < markerStr.length(); ++i)
+            markers[i] = markerStr[i] != QLatin1Char('0');
 
 		return HistoryEvent(index, CellInfo(markers));
 	} else {
@@ -454,7 +454,7 @@ Game Serializer::load(const QUrl& url, QWidget* window, QString& errorMsg) {
 	}
 
 	int errorLine;
-	if(!doc.setContent(downloadJob->data(), 0, &errorLine)) {
+    if(!doc.setContent(downloadJob->data(), nullptr, &errorLine)) {
 		errorMsg = i18n("Cannot read XML file on line %1", errorLine);
 		return Game();
 	}
@@ -524,9 +524,9 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 	QDomElement element = parent.ownerDocument().createElement(QStringLiteral("graph"));
 	element.setAttribute(QStringLiteral("order"), graph->order());
 
-	GameType type = graph->type();
-	element.setAttribute(QStringLiteral("type") , (type == TypeSudoku) ? "sudoku" :
-				(type == TypeRoxdoku) ? "roxdoku" : "custom");
+    GameType type = graph->type();
+    element.setAttribute(QStringLiteral("type") , (type == TypeSudoku) ? QStringLiteral("sudoku") :
+                                                     (type == TypeRoxdoku) ? QStringLiteral("roxdoku") : QStringLiteral("custom"));
 
 	int n = -1;
 	SudokuType puzzleType = graph->specificType();
@@ -534,8 +534,8 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 	    if (puzzleType == types [n]) {
 		break;
 	    }
-	}
-	element.setAttribute(QStringLiteral("specific-type"), (n < 0) ? "Plain" : typeNames[n]);
+    }
+    element.setAttribute(QStringLiteral("specific-type"), (n < 0) ? QStringLiteral("Plain") : QLatin1String(typeNames[n]));
 
 	if(type == TypeCustom) {
 	    element.setAttribute(QStringLiteral("name"), graph->name());
@@ -551,8 +551,8 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 		case SKGraph::SudokuGroups:
 		    e = parent.ownerDocument().createElement(QStringLiteral("sudokugroups"));
 		    e.setAttribute(QStringLiteral("at"), graph->structurePosition(n));
-		    e.setAttribute(QStringLiteral("withblocks"),
-				    graph->structureHasBlocks(n) ? "1" : "0");
+            e.setAttribute(QStringLiteral("withblocks"),
+                           graph->structureHasBlocks(n) ? QStringLiteral("1") : QStringLiteral("0"));
 		    break;
 		case SKGraph::RoxdokuGroups:
 		    e = parent.ownerDocument().createElement(QStringLiteral("roxdokugroups"));
@@ -567,8 +567,8 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 		    // Serialize the cell-numbers in the clique (or group).
 		    QString contentStr = QLatin1String("");
 		    for(int j=0; j < cSize; j++) {
-			contentStr += QString::number
-				    (graph->clique(cNum).at(j)) + ' ';
+            contentStr += QString::number
+                              (graph->clique(cNum).at(j)) + QLatin1Char(' ');
 		    }
 		    e.appendChild(parent.ownerDocument().
 				    createTextNode(contentStr));
@@ -587,8 +587,8 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 
 		// Serialize the cell-numbers in the cage.
 		QString contentStr = QStringLiteral(" ");
-		for (const int cell : cage) {
-		    contentStr += QString::number(cell) + ' ';
+        for (const int cell : cage) {
+            contentStr += QString::number(cell) + QLatin1Char(' ');
 		}
 		e.appendChild(parent.ownerDocument().
 			        createTextNode(contentStr));
@@ -638,8 +638,8 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 				QString str;
 
 				QBitArray markers = changes[0].markers();
-				for(int j = 0; j < markers.size(); ++j) {
-					str += markers[j] ? '1' : '0';
+                for(int j = 0; j < markers.size(); ++j) {
+                    str += markers[j] ? QLatin1Char('1') : QLatin1Char('0');
 				}
 
 				element.setAttribute(QStringLiteral("markers"), str);
@@ -665,8 +665,8 @@ bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& 
 					QString str;
 
 					QBitArray markers = changes[i].markers();
-					for(int j = 0; j < markers.size(); ++j) {
-						str += markers[i] ? '1' : '0';
+                    for(int j = 0; j < markers.size(); ++j) {
+                        str += markers[i] ? QLatin1Char('1') : QLatin1Char('0');
 					}
 
 					subElement.setAttribute(QStringLiteral("markers"), str);

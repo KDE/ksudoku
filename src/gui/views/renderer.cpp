@@ -88,8 +88,8 @@ bool Renderer::loadTheme(const QString& themeName) {
 }
 
 void Renderer::fillNameHashes() {
-	m_borderNames = QVector<QString>();
-	m_borderNames << "";
+    m_borderNames = QVector<QString>();
+    m_borderNames << QStringLiteral("");
     m_borderNames << QStringLiteral("1");
     m_borderNames << QStringLiteral("2");
     m_borderNames << QStringLiteral("12");
@@ -148,8 +148,8 @@ QPixmap Renderer::renderBackground(const QSize& size) const {
 	{
 		pix = QPixmap(size);
 		pix.fill(Qt::transparent);
-		QPainter p(&pix);
-		m_renderer->render(&p, "background");
+        QPainter p(&pix);
+        m_renderer->render(&p, QStringLiteral("background"));
 		p.end();
 		m_cache->insertPixmap(cacheName, pix);
 	}
@@ -217,9 +217,9 @@ QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) c
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
 		
-		// NOTE fix for Qt's QSvgRenderer size reporting bug
-		QRectF r(m_renderer->boundsOnElement("symbol_1"));
-		QRectF from(m_renderer->boundsOnElement("cell_symbol"));
+        // NOTE fix for Qt's QSvgRenderer size reporting bug
+        QRectF r(m_renderer->boundsOnElement(QStringLiteral("symbol_1")));
+        QRectF from(m_renderer->boundsOnElement(QStringLiteral("cell_symbol")));
 		from.adjust(+0.5,+0.5,-0.5,-0.5); // << this is the fix
 		QRectF to(QRectF(0,0,size,size));
 		

@@ -291,8 +291,8 @@ void PuzzlePrinter::drawCell (int posX, int posY, int edge)
 
 void PuzzlePrinter::drawValues (const ksudoku::Game& game, const SKGraph* graph)
 {
-    const QString labels = (graph->base() <= 3) ? "123456789" :
-                                                  "ABCDEFGHIJKLMNOPQRSTUVWXY";
+    const QString labels = (graph->base() <= 3) ? QStringLiteral("123456789") :
+                               QStringLiteral("ABCDEFGHIJKLMNOPQRSTUVWXY");
     // Set font size 60% height of cell.
     QFont f = m_p->font();
     f.setPixelSize ((m_sCell * 6) / 10);
@@ -414,7 +414,7 @@ void PuzzlePrinter::drawCageLabel (const SKGraph* graph, int n,
     QFontMetrics fm(f);
     int w = fm.boundingRect(cLabel).width();
     int a = fm.ascent();
-    int m = (fm.boundingRect(QChar('1')).width()+1)/3;	// Left margin = 1/3 width of '1'.
+    int m = (fm.boundingRect(QLatin1Char('1')).width()+1)/3;	// Left margin = 1/3 width of '1'.
 
     if (killerStyle) {
 	// Cover part of the dashed line, to make a background for the text.
