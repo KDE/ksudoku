@@ -83,7 +83,7 @@ public:
     /**
      * Default Destructor
      */
-	virtual ~KSudoku();
+	~KSudoku() override;
 
 	void loadGame(const QUrl& url);
 

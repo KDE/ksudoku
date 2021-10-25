@@ -153,7 +153,7 @@ void ValueListWidget::setMaxValue(int maxValue) {
 	
 	if(m_selectedValue > m_maxValue) m_selectedValue = 1;
 
-	resizeEvent(0);
+	resizeEvent(nullptr);
 }
 
 void ValueListWidget::resizeEvent(QResizeEvent*)

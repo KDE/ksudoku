@@ -367,7 +367,7 @@ Game RoxdokuGame::createGame(int difficulty, int symmetry) {
 
 KsView* RoxdokuGame::createView(const Game& /*game*/) const {
 	qCDebug(KSudokuLog) << "KsView* ksudoku::RoxdokuGame::createView()";
-	return 0;
+	return nullptr;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -420,21 +420,21 @@ Game CustomGame::createGame(int difficulty, int symmetry) {
 
 KsView* CustomGame::createView(const Game& /*game*/) const {
 	qCDebug(KSudokuLog) << "KsView* ksudoku::CustomGame::createView()";
-	return 0;
+	return nullptr;
 }
 
 bool CustomGame::createSKGraphObject()
 {
-	if ((m_graph != 0) && ((m_graph->specificType() == Mathdoku) ||
+	if ((m_graph != nullptr) && ((m_graph->specificType() == Mathdoku) ||
 		    (m_graph->specificType() == KillerSudoku))) {
 	    delete m_graph;	// Re-create SKGraph for every Mathdoku or
-	    m_graph = 0;	// Killer Sudoku game (re-inits cages and size).
+	    m_graph = nullptr;	// Killer Sudoku game (re-inits cages and size).
 	}
-	if (m_graph == 0) {
+	if (m_graph == nullptr) {
 		QString errorMsg;
-		m_graph = ksudoku::Serializer::loadCustomShape(m_url, 0, errorMsg);
+		m_graph = ksudoku::Serializer::loadCustomShape(m_url, nullptr, errorMsg);
 	}
-	return (m_graph != 0);	// True if the shapes/*.xml file loaded OK.
+	return (m_graph != nullptr);	// True if the shapes/*.xml file loaded OK.
 }
 
 }

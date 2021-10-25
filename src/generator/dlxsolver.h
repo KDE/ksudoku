@@ -61,7 +61,7 @@ class DLXSolver : public QObject
     Q_OBJECT
 public:
     explicit DLXSolver (QObject * parent);
-    virtual   ~DLXSolver();
+    ~DLXSolver() override;
 
     /** 
      * Takes any of the various kinds of 2-D Sudoku or 3-D Roxdoku puzzle

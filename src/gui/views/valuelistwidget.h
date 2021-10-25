@@ -36,8 +36,8 @@ class ValueListWidget : public QGraphicsView {
 	Q_OBJECT
 	friend class SymbolItem;
 public:
-	explicit ValueListWidget(QWidget* parent = 0);
-	~ValueListWidget();
+	explicit ValueListWidget(QWidget* parent = nullptr);
+	~ValueListWidget() override;
 	
 // 	SymbolTable* currentTable() const;
 // 	void setCurrentTable(SymbolTable* table, int maxValue);

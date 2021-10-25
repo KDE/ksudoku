@@ -41,8 +41,8 @@ PuzzlePrinter::PuzzlePrinter(QWidget * parent)
 	:
 	QObject(parent),
 	m_parent(parent),
-	m_printer(0),
-	m_p(0),
+	m_printer(nullptr),
+	m_p(nullptr),
 	m_quadrant(0),
 	m_across(2),
 	m_down(2)
@@ -98,11 +98,11 @@ void PuzzlePrinter::print (const ksudoku::Game & game)
 
 void PuzzlePrinter::endPrint()
 {
-    if (m_p != 0) {
+    if (m_p != nullptr) {
         // The current print output goes to the printer when the painter ends.
         m_p->end();
         delete m_p;
-        m_p = 0;
+        m_p = nullptr;
         m_quadrant = 0;
         KMessageBox::information (m_parent,
             i18n ("KSudoku has sent output to your printer."));
@@ -115,17 +115,17 @@ bool PuzzlePrinter::setupOutputDevices (int leastCellsToFit, int puzzleWidth)
     // (if required) we can print several puzzles per page and defer printing
     // until the page is full or KSudoku terminates and the painter ends itself.
     // NOTE: Must create painter before using functions like m_printer->width().
-    if (m_printer == 0) {
+    if (m_printer == nullptr) {
         m_printer = new QPrinter (QPrinter::HighResolution);
         auto * dialog = new QPrintDialog(m_printer, m_parent);
         dialog->setWindowTitle(i18n("Print Sudoku Puzzle"));
         if (dialog->exec() != QDialog::Accepted) {
             delete m_printer;
-            m_printer = 0;
+            m_printer = nullptr;
             return false;
         }
     }
-    if (m_p == 0) {
+    if (m_p == nullptr) {
         m_p = new QPainter (m_printer);	// Start a new print job.
     }
     m_printMulti = Settings::printMulti();

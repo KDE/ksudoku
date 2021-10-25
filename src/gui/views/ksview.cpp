@@ -37,11 +37,11 @@
 namespace ksudoku{
 
 KsView::KsView(const Game& game, GameActions* gameActions, QObject* parent)
-	: QObject(parent), m_game(game), m_gameActions(gameActions), m_viewWidget(0)
+	: QObject(parent), m_game(game), m_gameActions(gameActions), m_viewWidget(nullptr)
 {
-	m_symbolTable = 0;
+	m_symbolTable = nullptr;
 	m_currentValue = 1;
-	m_valueListWidget = 0;
+	m_valueListWidget = nullptr;
 }
 
 KsView::~KsView()
@@ -53,17 +53,17 @@ void KsView::createView() {
 	GameType type = m_game.puzzle()->gameType();
 	switch(type) {
 		case TypeSudoku: {
-			setWidget(new View2D(0, m_game, m_gameActions));
+			setWidget(new View2D(nullptr, m_game, m_gameActions));
 			break;
 		}
 		case TypeCustom: {
 #ifdef OPENGL_SUPPORT
 			if(m_game.puzzle()->graph()->sizeZ() > 1) {
 			    // TODO - IDW - Add a parent widget. Memory leak?
-			    setWidget(new RoxdokuView(m_game, m_gameActions, 0));
+			    setWidget(new RoxdokuView(m_game, m_gameActions, nullptr));
 			}
 			else {
-			    setWidget(new View2D(0, m_game, m_gameActions));
+			    setWidget(new View2D(nullptr, m_game, m_gameActions));
 			}
 #else
 			setWidget(new View2D(0, m_game, m_gameActions));
@@ -73,7 +73,7 @@ void KsView::createView() {
 #ifdef OPENGL_SUPPORT
 		case TypeRoxdoku: {
 			// TODO - IDW - Add a parent widget. Memory leak?
-			setWidget(new RoxdokuView(m_game, m_gameActions, 0));
+			setWidget(new RoxdokuView(m_game, m_gameActions, nullptr));
 			break;
 		}
 #endif

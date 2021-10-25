@@ -169,7 +169,7 @@ struct GroupGraphicItemSegment {
 class GroupGraphicsItem : public QGraphicsItemGroup {
 public:
 	GroupGraphicsItem(const QVector<QPoint> &cells, bool isCage = false);
-	~GroupGraphicsItem();
+	~GroupGraphicsItem() override;
 	void hideBlockBorder (bool visible);
 public:
 	void resize(int gridSize, bool highlight);
@@ -295,11 +295,11 @@ void GroupGraphicsItem::createSegment(const QPoint& pos, int shape) {
 	switch(m_type & GroupUnhighlightedMask) {
 		case GroupRow:
 		case GroupColumn:
-			segment.standard = 0;
+			segment.standard = nullptr;
 			break;
 		case GroupBlock:
 		case GroupCage:
-			segment.standard = (shape == 15) ? 0	// No middle.
+			segment.standard = (shape == 15) ? nullptr	// No middle.
 					   : new QGraphicsPixmapItem(this);
 			break;
 		default: // Special Group
@@ -382,11 +382,11 @@ void GroupGraphicsItem::resize(int gridSize, bool highlight) {
 
 View2DScene::View2DScene(GameActions* gameActions) {
 	m_gameActions = gameActions;
-	m_background = 0;
-	m_groupLayer = 0;
-	m_cellLayer = 0;
+	m_background = nullptr;
+	m_groupLayer = nullptr;
+	m_cellLayer = nullptr;
 	m_cursorPos = 0;
-	m_cursor = 0;
+	m_cursor = nullptr;
 	m_highlightsOn = false;
 }
 
@@ -435,7 +435,7 @@ void View2DScene::init(const Game& game) {
 	for(int i = 0; i < m_game.size(); ++i) {
 		// Do not paint unusable cells (e.g. gaps in Samurai puzzles).
 		if (game.value(i) == UNUSABLE) {
-			m_cells[i] = 0;
+			m_cells[i] = nullptr;
 			continue;
 		}
 		m_cells[i] = new CellGraphicsItem(QPoint(g->cellPosX(i), g->cellPosY(i)), i, this);
@@ -537,7 +537,7 @@ void View2DScene::setSceneSize(const QSize& size) {
 	m_cellLayer->setPos(offsetX, offsetY);
 	
 	for(int i = 0; i < m_game.size(); ++i) {
-		if(m_cells[i] == 0) continue;
+		if(m_cells[i] == nullptr) continue;
 		m_cells[i]->resize(grid);
 	}
 	
@@ -589,11 +589,11 @@ void View2DScene::press(int cell, bool rightButton) {
 void View2DScene::update(int cell) {
 	if(cell < 0) {
 		for(int i = 0; i < m_game.size(); ++i) {
-			if(m_cells[i] == 0) continue;
+			if(m_cells[i] == nullptr) continue;
 			update(i);
 		}
 	} else {
-		if(m_cells[cell] == 0) return;
+		if(m_cells[cell] == nullptr) return;
 		CellInfo cellInfo = m_game.cellInfo(cell);
 
 		QVector<ColoredValue> values;
@@ -643,7 +643,7 @@ void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
 	    // Remove the cage-graphics from the scene.
 	    removeItem (m_groups.at (offset + cageNum));
 	    delete m_groups.at (offset + cageNum);
-	    m_groups[offset + cageNum] = 0;	// Re-use or remove this later.
+	    m_groups[offset + cageNum] = nullptr;	// Re-use or remove this later.
 	}
 	else {
 	    // Start adding a cage-group to the scene.
@@ -737,7 +737,7 @@ void View2DScene::moveCursor(int dx, int dy) {
 		if(newPos.y() >= g->sizeY()) newPos.setY(0);
 		
 		for(int i = 0; i < m_game.size(); ++i) {
-			if(m_cells[i] == 0) continue;
+			if(m_cells[i] == nullptr) continue;
 			if(m_cells[i]->pos() == newPos) {
 				newCursorPos = i;
 				break;

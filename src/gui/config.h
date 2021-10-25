@@ -32,7 +32,7 @@ struct SymbolTable;
 class GameConfig : public QWidget, private Ui::ConfigGame {
 Q_OBJECT
 public:
-	explicit GameConfig(QWidget* parent = 0);
+	explicit GameConfig(QWidget* parent = nullptr);
 };
 
 }

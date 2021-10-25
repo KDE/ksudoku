@@ -69,8 +69,8 @@ private:
 	KsView& operator=(KsView const& other);
 
 public:
-	KsView(const Game& game, GameActions* gameActions, QObject* parent = 0);
-	virtual ~KsView();
+	KsView(const Game& game, GameActions* gameActions, QObject* parent = nullptr);
+	~KsView() override;
 
 	//getters
 	///return game used by the view

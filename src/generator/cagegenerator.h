@@ -61,7 +61,7 @@ class CageGenerator : public QObject
     Q_OBJECT
 public:
     explicit CageGenerator (const BoardContents & solution);
-    virtual ~CageGenerator();
+    ~CageGenerator() override;
 
     /**
      * Fill the puzzle area with Mathdoku or Killer Sudoku cages. The graph

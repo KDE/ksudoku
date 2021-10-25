@@ -40,7 +40,7 @@ class View2DScene : public QGraphicsScene {
 	Q_OBJECT
 public:
 	explicit View2DScene(GameActions* gameActions);
-	~View2DScene();
+	~View2DScene() override;
 public:
 	void init(const Game& game);
 
@@ -107,7 +107,7 @@ class View2D : public QGraphicsView, public ViewInterface {
 	Q_OBJECT
 public:
 	View2D(QWidget* parent, const Game& game, GameActions* gameActions);
-	~View2D();
+	~View2D() override;
 
 public:
 	QWidget* widget() override { return this; }

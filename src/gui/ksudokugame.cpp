@@ -45,7 +45,7 @@ namespace ksudoku {
 class Game::Private : public GameIFace {
 public:
 	inline Private() : m_refCount(1) { }
-	inline ~Private() {
+	inline ~Private() override {
 		delete puzzle;
 	}
 public:
@@ -133,12 +133,12 @@ void Game::Private::undo2Checkpoint() {
  */
 
 Game::Game()
-	: m_private(0)
+	: m_private(nullptr)
 {
 }
 
 Game::Game(Puzzle* puzzle)
-	: m_private(0)
+	: m_private(nullptr)
 {
 	if(!puzzle) return;
 
@@ -221,7 +221,7 @@ GameIFace* Game::interface() const {
 }
 
 Puzzle* Game::puzzle() const {
-	if(!m_private) return 0;
+	if(!m_private) return nullptr;
 	return m_private->puzzle;
 }
 
@@ -791,7 +791,7 @@ void Game::setMessageParent(QWidget * messageParent)
 
 QWidget * Game::messageParent()
 {
-	return (m_private ? m_private->m_messageParent : 0);
+	return (m_private ? m_private->m_messageParent : nullptr);
 }
 
 }

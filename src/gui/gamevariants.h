@@ -35,7 +35,7 @@ class Game;
 class GameVariantCollection;
 class GameVariant {
 public:
-	explicit GameVariant(const QString& name, GameVariantCollection* collection=0);
+	explicit GameVariant(const QString& name, GameVariantCollection* collection=nullptr);
 	virtual ~GameVariant() {}
 
 public:
@@ -75,7 +75,7 @@ friend class GameVariant;
 Q_OBJECT
 public:
 	GameVariantCollection(QObject* parent, bool autoDel);
-	~GameVariantCollection();
+	~GameVariantCollection() override;
 
 public:
 	void addVariant(GameVariant* variant);
@@ -102,7 +102,7 @@ public:
 	};
 
 public:
-	explicit GameVariantDelegate(QObject* parent = 0, QWidget * viewport = 0);
+	explicit GameVariantDelegate(QObject* parent = nullptr, QWidget * viewport = 0);
 public:
 	QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 	void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;
@@ -129,8 +129,8 @@ private:
 
 class SudokuGame : public GameVariant {
 public:
-	SudokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
-	~SudokuGame();
+	SudokuGame(const QString& name, uint order, GameVariantCollection* collection=nullptr);
+	~SudokuGame() override;
 
 public:
 	bool canConfigure() const override;
@@ -149,8 +149,8 @@ private:
 
 class RoxdokuGame : public GameVariant {
 public:
-	RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection=0);
-	~RoxdokuGame();
+	RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection=nullptr);
+	~RoxdokuGame() override;
 
 public:
 	bool canConfigure() const override;
@@ -169,8 +169,8 @@ private:
 
 class CustomGame : public GameVariant {
 public:
-	CustomGame(const QString& name, const QUrl& url, GameVariantCollection* collection=0);
-	~CustomGame();
+	CustomGame(const QString& name, const QUrl& url, GameVariantCollection* collection=nullptr);
+	~CustomGame() override;
 
 public:
 	bool canConfigure() const override;

@@ -48,7 +48,7 @@ public:
     /**
      * Default Destructor
      */
-	virtual ~PuzzlePrinter();
+	~PuzzlePrinter() override;
 	
 	void print (const ksudoku::Game & game);
 	void endPrint();

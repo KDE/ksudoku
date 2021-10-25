@@ -47,8 +47,8 @@ class RoxdokuView : public QGLWidget, public ViewInterface
 {
 Q_OBJECT
 public:
-	RoxdokuView(const ksudoku::Game &game, GameActions * gameActions, QWidget * parent = 0);
-	~RoxdokuView();
+	RoxdokuView(const ksudoku::Game &game, GameActions * gameActions, QWidget * parent = nullptr);
+	~RoxdokuView() override;
 
 	virtual QString status() const;
 

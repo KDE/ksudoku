@@ -25,8 +25,8 @@ DLXSolver::DLXSolver (QObject * parent)
     :
     QObject       (parent),
     mBoardValues  (0),
-    mSolutionMoves(0),
-    mGraph        (0)
+    mSolutionMoves(nullptr),
+    mGraph        (nullptr)
 {
 #ifdef DLX_LOG
     qCDebug(KSudokuLog) << "DLXSolver constructor entered";
@@ -279,9 +279,9 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
             qCDebug(KSudokuLog) << "EXCLUDE CONSTRAINT for cell" << index
                      << "value" << boardValues.at(index);
 #endif
-            mColumns[index] = 0;
+            mColumns[index] = nullptr;
             for (int n = 0; n < order; n++) {
-                mRows[index*order + n] = 0;		// Drop row.
+                mRows[index*order + n] = nullptr;		// Drop row.
             }
             if (boardValues.at(index) == unusable) {
                 continue;
@@ -300,10 +300,10 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
 #ifdef DLX_LOG
                 qCDebug(KSudokuLog) << "EXCLUDE CONSTRAINT" << (boardArea+group*order+val);
 #endif
-                mColumns[boardArea + group*order + val] = 0;
+                mColumns[boardArea + group*order + val] = nullptr;
                 const QVector<int> clique = graph->clique (group);
                 for (const int cell : clique) {
-                    mRows[cell*order + val] = 0;	// Drop row.
+                    mRows[cell*order + val] = nullptr;	// Drop row.
                 }
             }
         }
@@ -313,7 +313,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
     for (DLXNode * colDLX : std::as_const(mColumns)) {
         mEndColNum++;
         // If the constraint is not excluded, put an empty column in the matrix.
-        if (colDLX != 0) {
+        if (colDLX != nullptr) {
             DLXNode * node = allocNode();
             mColumns[mEndColNum] = node;
             initNode (node);
@@ -343,8 +343,8 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
             QString s = (mRows.at (rowNumDLX) == 0) ? "DROPPED" : "OK";
             qCDebug(KSudokuLog) << "Row" << rowNumDLX << s;
 #endif
-            if (mRows.at (rowNumDLX) != 0) {	// Skip already-excluded rows.
-                mRows[rowNumDLX] = 0;		// Re-initialise a "live" row.
+            if (mRows.at (rowNumDLX) != nullptr) {	// Skip already-excluded rows.
+                mRows[rowNumDLX] = nullptr;		// Re-initialise a "live" row.
                 addNode (rowNumDLX, index);	// Mark cell fill-in constraint.
                 for (const int group : groups) {
                     // Mark possibly-satisfied constraints for row, column, etc.
@@ -417,7 +417,7 @@ int DLXSolver::solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
 		 << "index" << index << "of" << possibilities->size();
 #endif
 	for (int nCombo = 0; nCombo < nCombos; nCombo++) {
-	    mRows.append (0);		// Start a row for each combo.
+	    mRows.append (nullptr);		// Start a row for each combo.
 	    addNode (rowNumDLX, n);	// Mark the cage's fill-in constraint.
 	    counter++;
 #ifdef DLX_LOG
@@ -526,8 +526,8 @@ int DLXSolver::solveDLX (int solutionLimit)
 {
     int solutionCount  = 0;
     int level          = 0;
-    DLXNode * currNode = 0;
-    DLXNode * bestCol  = 0;
+    DLXNode * currNode = nullptr;
+    DLXNode * bestCol  = nullptr;
     QList<DLXNode *> solution;
     bool searching     = true;
     bool descending    = true;
@@ -699,7 +699,7 @@ void DLXSolver::clear()
 void DLXSolver::addNode (int rowNum, int colNum)
 {
     DLXNode * header = mColumns.at (colNum);
-    if (header == 0) {
+    if (header == nullptr) {
         return;			// This constraint is excluded (clue or unused).
     }
 
@@ -707,7 +707,7 @@ void DLXSolver::addNode (int rowNum, int colNum)
     DLXNode * node = allocNode();
 
     // Circularly link the node onto the end of the row.
-    if (mRows.at (rowNum) == 0) {
+    if (mRows.at (rowNum) == nullptr) {
         mRows[rowNum] = node;	// First in row.
         initNode (node);	// Linked to itself at left and right.
     }
