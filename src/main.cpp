@@ -37,9 +37,6 @@
 #include <ctime>
 
 
-static const char description[] =
-    I18N_NOOP("KSudoku - Sudokus and more");
-
 int main(int argc, char **argv)
 {
 	qsrand(std::time(nullptr));
@@ -51,7 +48,7 @@ int main(int argc, char **argv)
 	KAboutData about(QStringLiteral("ksudoku"),
                      i18n("KSudoku"),
                      QLatin1String(KSUDOKU_VERSION_STRING),
-	                 i18n(description),
+	                 i18n("KSudoku - Sudokus and more"),
 	                 KAboutLicense::GPL_V2,
 	                 i18n("(c) 2005-2007 The KSudoku Authors"),
 	                 QString(), QStringLiteral("https://games.kde.org/games/ksudoku"));
