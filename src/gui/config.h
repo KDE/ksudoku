@@ -20,7 +20,6 @@
 #ifndef _KSUDOKUCONFIG_H_
 #define _KSUDOKUCONFIG_H_
 
-#include <QList>
 #include <QWidget>
 
 #include "ui_configgame.h"
