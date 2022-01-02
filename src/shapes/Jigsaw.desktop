@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Jigsaw
+Name[ar]=مقطع
 Name[br]=Jigsaw
 Name[bs]=Slagalica
 Name[ca]=Jigsaw
@@ -53,6 +54,7 @@ Name[x-test]=xxJigsawxx
 Name[zh_CN]=拼图
 Name[zh_TW]=拼圖
 Description=Jigsaw shape puzzle
+Description[ar]=لغز على شكل مقطع
 Description[bs]=Igra slagalice
 Description[ca]=Trencaclosques amb forma Jigsaw
 Description[ca@valencia]=Trencaclosques amb forma Jigsaw

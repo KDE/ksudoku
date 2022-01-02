@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Aztec
+Name[ar]=أزتك
 Name[bs]=Astek
 Name[ca]=Asteca
 Name[ca@valencia]=Asteca
@@ -50,6 +51,7 @@ Name[x-test]=xxAztecxx
 Name[zh_CN]=阿兹特克
 Name[zh_TW]=阿茲特克
 Description=Jigsaw variant shaped like an Aztec pyramid
+Description[ar]=تنويعة مقطعة على شكل هرم أزتك
 Description[bs]=Varijanta slagalice oblikovana poput Astec piramide
 Description[ca]=Variant Jigsaw en forma de piràmide asteca
 Description[ca@valencia]=Variant Jigsaw en forma de piràmide asteca

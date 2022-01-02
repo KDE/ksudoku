@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Mathdoku 101
+Name[ar]=رياضيات-دوكو 101
 Name[ca]=Mathdoku 101
 Name[ca@valencia]=Mathdoku 101
 Name[da]=Mathdoku alene
@@ -35,6 +36,7 @@ Name[x-test]=xxMathdoku 101xx
 Name[zh_CN]=算独 101
 Name[zh_TW]=Mathdoku 101
 Description=Size 4x4 grid, with calculated cages
+Description[ar]=شبكة مقاس 4×4 مع أقفاص محسوبة
 Description[ca]=Mida de quadrícula 4x4, amb caixes calculades
 Description[ca@valencia]=Mida de quadrícula 4x4, amb caixes calculades
 Description[da]=Størrelse 4x4-gitter, med beregnede burer

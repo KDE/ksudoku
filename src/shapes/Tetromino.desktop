@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Tetromino 4x4
+Name[ar]=٤-مربعات ٤×٤
 Name[bs]=Tetromino 4x4
 Name[ca]=Tetrominó 4x4
 Name[ca@valencia]=Tetrominó 4x4
@@ -44,6 +45,7 @@ Name[x-test]=xxTetromino 4x4xx
 Name[zh_CN]=4x4 四格骨牌
 Name[zh_TW]=Tetromino 4x4
 Description=Jigsaw with Tetromino blocks (Tetris pieces)
+Description[ar]=تنويعة مقطعة بكتل ٤-مربعات (قطع أتاري)
 Description[bs]=Slagalica sa Tetromino blokovima (Tetris komadi)
 Description[ca]=Jigsaw amb blocs tetrominó (peces de Tetris)
 Description[ca@valencia]=Jigsaw amb blocs tetrominó (peces de Tetris)

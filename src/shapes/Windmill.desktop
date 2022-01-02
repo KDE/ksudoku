@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Windmill
+Name[ar]=طاحونة
 Name[bs]=Vjetrenjača
 Name[ca]=Molí de vent
 Name[ca@valencia]=Molí de vent
@@ -45,6 +46,7 @@ Name[x-test]=xxWindmillxx
 Name[zh_CN]=风车
 Name[zh_TW]=風車
 Description=Windmill puzzle with five overlapping 9x9 squares
+Description[ar]=لغز طاحونة الهواء مع خمسة مربعات متداخلة 9×9
 Description[bs]=Slagalica vjetrenjača sa pet preklapanja 9x9 kvadrata
 Description[ca]=Trencaclosques molí de vent amb cinc quadrats sobreposats de 9x9
 Description[ca@valencia]=Trencaclosques molí de vent amb cinc quadrats sobreposats de 9x9

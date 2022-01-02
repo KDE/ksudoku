@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=6x6
+Name[ar]=6×6
 Name[bs]=6x6
 Name[ca]=6x6
 Name[ca@valencia]=6x6
@@ -45,6 +46,7 @@ Name[x-test]=xx6x6xx
 Name[zh_CN]=6x6
 Name[zh_TW]=6x6
 Description=6x6 puzzle with rectangular blocks
+Description[ar]=لغز 6×6 مع مكعبات مستطيلة
 Description[bs]=6x6 slagalica sa pravougaonim blokovima
 Description[ca]=Un trencaclosques de 6x6 amb blocs rectangulars
 Description[ca@valencia]=Un trencaclosques de 6x6 amb blocs rectangulars

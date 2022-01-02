@@ -1,5 +1,6 @@
 [KSudokuVariant]
 Name=Roxdoku Twin
+Name[ar]=روكسدوكو توأم
 Name[bs]=Roxdoku Twin
 Name[ca]=Roxdoku bessó
 Name[ca@valencia]=Roxdoku bessó
@@ -42,6 +43,7 @@ Name[x-test]=xxRoxdoku Twinxx
 Name[zh_CN]=双子数独魔方
 Name[zh_TW]=Roxdoku Twin
 Description=Three-dimensional puzzle with two 3x3x3 cubes which share a corner
+Description[ar]=لغز ثلاثي الأبعاد بمكعبين 3×3×3 يتشاركان الزاوية
 Description[bs]=Trodimenzionalni puzzle sa dvije 3x3x3 kocke koje dijele ugao
 Description[ca]=Trencaclosques tridimensional amb dos cubs 3x3x3 que comparteixen una cantonada
 Description[ca@valencia]=Trencaclosques tridimensional amb dos cubs 3x3x3 que comparteixen una cantonada
