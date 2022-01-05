@@ -4,4 +4,4 @@ set(ksudoku_logic_SRCS
 )
 
 add_library(ksudoku_logic STATIC ${ksudoku_logic_SRCS})
-target_link_libraries(ksudoku_logic Qt::Core)
+target_link_libraries(ksudoku_logic Qt${QT_MAJOR_VERSION}::Core)
