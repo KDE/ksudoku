@@ -74,9 +74,6 @@ int main(int argc, char **argv)
 
 	KCrash::initialize();
 
-	// register ourselves as a dcop client
-//	app.dcopClient()->registerAs(app.name(), false); //TODO PORT
-
 	KConfigDialogManager::changedMap()->insert(QStringLiteral("ksudoku::SymbolConfigListWidget"), SIGNAL(itemChanged(QListWidgetItem*)));
 
 	// see if we are starting with session management
