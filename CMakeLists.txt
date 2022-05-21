@@ -77,6 +77,9 @@ endif(OPENGL_SUPPORT)
 add_subdirectory(src)
 add_subdirectory(doc)
 
+ki18n_install(po)
+kdoctools_install(po)
+
 #message(STATUS "ksudoku: DEBUG: ${DEBUG}")
 #message(STATUS "ksudoku: install prefix: ${CMAKE_INSTALL_PREFIX}")
 
