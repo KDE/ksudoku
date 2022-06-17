@@ -14,14 +14,15 @@ set (KF5_MIN_VERSION "5.90.0")
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
 
+include(KDEInstallDirs)
+include(KDECMakeSettings)
+include(KDECompilerSettings NO_POLICY_SCOPE)
+
 include(FeatureSummary)
 include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
-include(KDEInstallDirs)
-include(KDECompilerSettings NO_POLICY_SCOPE)
-include(KDECMakeSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets PrintSupport Svg Test)
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
