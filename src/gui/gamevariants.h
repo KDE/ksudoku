@@ -102,7 +102,7 @@ public:
 	};
 
 public:
-	explicit GameVariantDelegate(QObject* parent = nullptr, QWidget * viewport = 0);
+	explicit GameVariantDelegate(QObject* parent = nullptr, QWidget * viewport = nullptr);
 public:
 	QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const override;
 	void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const override;

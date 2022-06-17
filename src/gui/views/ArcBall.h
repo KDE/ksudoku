@@ -442,7 +442,7 @@
 
         assert(NewObj && m1);
 
-        scale = Matrix4fSVD(NewObj, NULL, NULL);
+        scale = Matrix4fSVD(NewObj, nullptr, nullptr);
 
         Matrix4fSetRotationScaleFromMatrix3f(NewObj, m1);
         Matrix4fMulRotationScale(NewObj, scale);
