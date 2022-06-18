@@ -24,7 +24,12 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
 
-find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets PrintSupport Svg Test)
+find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
+    Widgets
+    PrintSupport
+    Svg
+)
+
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     Archive
     Config
@@ -34,7 +39,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     DocTools
     GuiAddons
     I18n
-    IconThemes
     KIO
     JobWidgets
     WidgetsAddons
