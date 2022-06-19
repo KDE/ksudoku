@@ -46,12 +46,10 @@
 #include <KMessageBox>
 #include <KSharedConfig>
 #include <KStandardAction>
-#include <KStandardGameAction>
 #include <KTar>
 
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamethemeselector.h>
+#include <KStandardGameAction>
+#include <KgThemeSelector>
 
 #include "ksview.h"
 #include "gameactions.h"
@@ -156,6 +154,8 @@ KSudoku::KSudoku()
 	showWelcomeScreen();
 
 	updateShapesList();
+
+	connect(Renderer::instance()->themeProvider(), &KgThemeProvider::currentThemeChanged, this, &KSudoku::updateSettings);
 
 // 	QTimer *timer = new QTimer( this );
 // 	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
@@ -785,7 +785,7 @@ void KSudoku::optionsPreferences()
 
 	auto* gameConfig = new GameConfig();
 	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), QStringLiteral("games-config-options"));
-	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), QStringLiteral("games-config-theme"));
+	dialog->addPage(new KgThemeSelector(Renderer::instance()->themeProvider()), i18n("Theme"), QStringLiteral("games-config-theme"));
 
     //QT5 dialog->setHelp(QString(),"ksudoku");
 	connect(dialog, &KConfigDialog::settingsChanged, this, &KSudoku::updateSettings);
@@ -793,8 +793,6 @@ void KSudoku::optionsPreferences()
 }
 
 void KSudoku::updateSettings() {
-	Renderer::instance()->loadTheme(Settings::theme());
-
 	KsView* view = currentView();
 	if(view) {
 		int order = view->game().order();

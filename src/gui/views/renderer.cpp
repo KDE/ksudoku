@@ -25,9 +25,9 @@
 #include <QPixmap>
 #include <QSvgRenderer>
 
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgametheme.h>
+#include <kdegames_version.h>
+#include <KgTheme>
+#include <KgThemeProvider>
 
 #include "settings.h"
 
@@ -39,49 +39,56 @@ Renderer* Renderer::instance() {
 }
 	
 Renderer::Renderer() {
+	m_themeProvider = new KgThemeProvider(QByteArray()); // empty config key to disable internal config storage
 	m_renderer = new QSvgRenderer();
 	m_cache = new KImageCache(QStringLiteral("ksudoku-cache"), 3*1024);
 	m_mathdokuStyle = false;
 	
-	if(!loadTheme(Settings::theme()))
-		qCDebug(KSudokuLog) << "Failed to load any game theme!";
+	m_themeProvider->discoverThemes(
+#if KDEGAMES_VERSION < QT_VERSION_CHECK(7, 4, 0)
+	    "appdata",
+#endif
+	    QStringLiteral("themes"), // theme file location
+	    QStringLiteral("default") // default theme file name
+	);
+	const QByteArray themeIdentifier = Settings::theme().toUtf8();
+	KgThemeProvider *provider = themeProvider();
+	const QList<const KgTheme *> themes = provider->themes();
+	for (auto* theme : themes) {
+		if (theme->identifier() == themeIdentifier) {
+		    provider->setCurrentTheme(theme);
+		    loadTheme(theme);
+		    break;
+		}
+	}
+	QObject::connect(m_themeProvider, &KgThemeProvider::currentThemeChanged, [this](const KgTheme* theme) {
+		loadTheme(theme);
+	});
+
 }
 
 Renderer::~Renderer() {
+	delete m_themeProvider;
 	delete m_cache;
 	delete m_renderer;
 }
 
-bool Renderer::loadTheme(const QString& themeName) {
-	bool discardCache = !m_currentTheme.isEmpty();
-	
-	if(!m_currentTheme.isEmpty() && m_currentTheme == themeName) {
-		qCDebug(KSudokuLog) << "Notice: loading the same theme";
-		return true; // this is not an error
-	}
-	
-	m_currentTheme = themeName;
-	
-	KGameTheme theme;
-	if(themeName.isEmpty() || !theme.load(themeName)) {
-		qCDebug(KSudokuLog) << "Failed to load theme" << Settings::theme();
-		qCDebug(KSudokuLog) << "Trying to load default";
-		if(!theme.loadDefault())
-			return false;
-		
-		discardCache = true;
-        m_currentTheme = QStringLiteral("default");
-	}
-	
-	bool res = m_renderer->load(theme.graphics());
-	qCDebug(KSudokuLog) << "loading" << theme.graphics();
+KgThemeProvider * Renderer::themeProvider() const
+{
+	return m_themeProvider;
+}
+
+bool Renderer::loadTheme(const KgTheme* theme) {
+	bool res = m_renderer->load(theme->graphicsPath());
+	qCDebug(KSudokuLog) << "loading" << theme->graphicsPath();
 	if(!res)
 		return false;
+
+	Settings::setTheme(QString::fromUtf8(theme->identifier()));
+	Settings::self()->save();
 	
-	if(discardCache) {
-		qCDebug(KSudokuLog) << "discarding cache";
-		m_cache->clear();
-	}
+	qCDebug(KSudokuLog) << "discarding cache";
+	m_cache->clear();
 	
 	fillNameHashes();
 	return true;

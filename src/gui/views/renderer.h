@@ -26,6 +26,9 @@
 #include <QString>
 #include <QVector>
 
+class KgTheme;
+class KgThemeProvider;
+
 class QPixmap;
 class QSize;
 class QSvgRenderer;
@@ -79,7 +82,7 @@ enum SupportFlag {
 public:
 	static Renderer* instance();
 
-	bool loadTheme(const QString& themeName);
+	bool loadTheme(const KgTheme* theme);
 
 	// In Mathdoku style, symbols and markers are drawn smaller than usual
 	// and re-positioned, to allow space at the top left of a cell for a
@@ -100,6 +103,9 @@ public:
     QPixmap renderCageLabelOn(QPixmap pixmap, const QString & cageLabel);
 
 	QPixmap renderSpecial3D(SpecialType type, int size) const;
+
+	KgThemeProvider *themeProvider() const;
+
 private:
 	Renderer();
 	~Renderer();
@@ -120,7 +126,7 @@ private:
 	QVector<QString> m_specialNames;
 	QVector<QString> m_special3dNames;
 	QVector<QString> m_markerNames;
-	QString m_currentTheme;
+	KgThemeProvider *m_themeProvider;
 	QSvgRenderer* m_renderer;
 	KImageCache* m_cache;
 	bool m_mathdokuStyle;
