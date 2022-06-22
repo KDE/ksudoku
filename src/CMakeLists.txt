@@ -43,7 +43,6 @@ target_link_libraries(ksudoku
     ksudoku_gui
     ksudoku_logic
     KF5KDEGames
-    KF5KDEGamesPrivate
     KF5::KIOCore
     KF5::Crash
 )

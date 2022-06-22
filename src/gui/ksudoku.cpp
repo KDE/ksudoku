@@ -50,6 +50,7 @@
 
 #include <KStandardGameAction>
 #include <KgThemeSelector>
+#include <KgDifficulty>
 
 #include "ksview.h"
 #include "gameactions.h"
@@ -492,33 +493,28 @@ void KSudoku::setupActions()
 void KSudoku::setupStatusBar (int difficulty, int symmetry)
 {
 	// Use the standard combo box for difficulty, from KDE Games library.
-	const int nStandardLevels = 4;
-	const KGameDifficulty::standardLevel standardLevels[nStandardLevels] =
-			{KGameDifficulty::VeryEasy, KGameDifficulty::Easy,
-			 KGameDifficulty::Medium,   KGameDifficulty::Hard};
+	Kg::difficulty()->addStandardLevelRange(KgDifficultyLevel::VeryEasy, KgDifficultyLevel::Hard);
+	// and add our custom ones
+	enum CustomHardness {
+	    DiabolicalHardness = KgDifficultyLevel::Hard + 1,
+	    UnlimitedHardness
+	};
+	Kg::difficulty()->addLevel(new KgDifficultyLevel(DiabolicalHardness, "Diabolical",
+		i18nc("A level of difficulty in Sudoku puzzles", "Diabolical")));
+	Kg::difficulty()->addLevel(new KgDifficultyLevel(UnlimitedHardness, "Unlimited",
+		i18nc("A level of difficulty in Sudoku puzzles", "Unlimited")));
+
+	// Set default value of difficulty
+	const KgDifficultyLevel * level = Kg::difficulty()->levels().value(difficulty);
+	if (level) {
+	    Kg::difficulty()->select(level);
+	}
+
+	connect(Kg::difficulty(), &KgDifficulty::currentLevelChanged,
+		this, &KSudoku::handleCurrentDifficultyLevelChanged);
 
 	statusBar()->addPermanentWidget (new QLabel (i18nc("@option drop down box", "Difficulty:")));
-	KGameDifficulty::init (this, this,
-		SLOT (difficultyChanged(KGameDifficulty::standardLevel)),
-		SLOT (difficultyChanged(int)));
-	KGameDifficulty::addStandardLevel(KGameDifficulty::VeryEasy);
-	KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
-	KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
-	KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
-	KGameDifficulty::addCustomLevel(Diabolical,
-		i18nc("A level of difficulty in Sudoku puzzles", "Diabolical"));
-	KGameDifficulty::addCustomLevel(Unlimited,
-		i18nc("A level of difficulty in Sudoku puzzles", "Unlimited"));
-	KGameDifficulty::setRestartOnChange(KGameDifficulty::NoRestartOnChange);
-
-	// Set default value of difficulty.
-	if (difficulty < nStandardLevels) {
-	    KGameDifficulty::setLevel (standardLevels[difficulty]);
-	}
-	else {
-	    KGameDifficulty::setLevelCustom (difficulty);
-	}
-	KGameDifficulty::setEnabled (true);
+	KgDifficultyGUI::init(this);
 
 	// Set up a combo box for symmetry of puzzle layout.
 	statusBar()->addPermanentWidget (new QLabel (i18nc("@option drop down box", "Symmetry:")));
@@ -804,35 +800,17 @@ void KSudoku::updateSettings() {
 	Q_EMIT settingsChanged();
 }
 
-void KSudoku::difficultyChanged (KGameDifficulty::standardLevel difficulty)
+void KSudoku::handleCurrentDifficultyLevelChanged(const KgDifficultyLevel *level)
 {
-    qCDebug(KSudokuLog) << "Set difficulty =" << difficulty;
-    int newDifficulty = VeryEasy;
-    switch (difficulty) {
-    case KGameDifficulty::VeryEasy:
-	newDifficulty = VeryEasy;
-	break;
-    case KGameDifficulty::Easy:
-	newDifficulty = Easy;
-	break;
-    case KGameDifficulty::Medium:
-	newDifficulty = Medium;
-	break;
-    case KGameDifficulty::Hard:
-	newDifficulty = Hard;
-	break;
-    default:
+    const int difficulty = Kg::difficulty()->levels().indexOf(level);
+
+    if (difficulty == -1) {
 	return;
     }
-    qCDebug(KSudokuLog) << "Set new difficulty =" << newDifficulty;
-    m_welcomeScreen->setDifficulty(newDifficulty);
-    return;
-}
 
-void KSudoku::difficultyChanged (int difficulty)
-{
-    qCDebug(KSudokuLog) << "Set custom difficulty =" << difficulty;
+    qCDebug(KSudokuLog) << "Set new difficulty =" << difficulty;
     m_welcomeScreen->setDifficulty(difficulty);
+
     if (difficulty == Unlimited) {
 	KMessageBox::information (this,
 		i18n("Warning: The Unlimited difficulty level has no limit on "

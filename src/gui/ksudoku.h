@@ -31,9 +31,7 @@
 #include <knewstuff/knewstuff.h>
 #endif
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamedifficulty.h>
-
+class KgDifficultyLevel;
 
 namespace ksudoku {
 class KsView;
@@ -108,8 +106,7 @@ public Q_SLOTS:
 	bool queryClose() override;
 
 private Q_SLOTS:
-	void difficultyChanged (KGameDifficulty::standardLevel difficulty);
-	void difficultyChanged (int difficulty); // IDW test.
+	void handleCurrentDifficultyLevelChanged(const KgDifficultyLevel *level);
 	void symmetryChanged   (int symmetry);
 
 	void gameNew();
