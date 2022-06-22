@@ -24,6 +24,8 @@ set(ksudoku_SRCS
 	generator/dlxsolver.cpp
 	generator/cagegenerator.cpp
 	generator/mathdokugenerator.cpp
+
+	ksudoku.qrc
 )
 
 ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX KSUDOKU VERSION_HEADER ksudoku_version.h)
@@ -65,7 +67,6 @@ add_subdirectory(themes)
 
 install(PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
 install(FILES gui/org.kde.ksudoku.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
-install(FILES gui/ksudokuui.rc  DESTINATION  ${KDE_INSTALL_KXMLGUIDIR}/ksudoku)
 install(FILES ksudokurc  DESTINATION ${KDE_INSTALL_CONFDIR})
 
 ecm_install_icons(ICONS

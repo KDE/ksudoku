@@ -1,0 +1,5 @@
+<RCC>
+<qresource prefix="/kxmlgui5/ksudoku">
+<file alias="ksudokuui.rc">gui/ksudokuui.rc</file>
+</qresource>
+</RCC>
