@@ -23,7 +23,7 @@
 #ifndef ROXDOKUVIEW_h
 #define ROXDOKUVIEW_h
 
-#include <QGL>
+#include <QGLWidget>
 #include <QMouseEvent>
 #include <QTimer>
 #include <QWheelEvent>
