@@ -143,13 +143,13 @@ void WelcomeScreen::configureVariant() {
 void WelcomeScreen::startEmptyGame() {
 	GameVariant* variant = selectedVariant();
 	if(!variant) {
-		KMessageBox::eror(this, i18n("Please select a puzzle variant."), i18n("Unable to start puzzle"));
+		KMessageBox::error(this, i18n("Please select a puzzle variant."), i18n("Unable to start puzzle"));
 		return;
 	}
 	
 	Game game = variant->startEmpty();
 	if (! game.isValid()) {
-		KMessageBox::eror(this, i18n("Unable to create an empty puzzle of the chosen variant; please try another."), i18n("Unable to start puzzle"));
+		KMessageBox::error(this, i18n("Unable to create an empty puzzle of the chosen variant; please try another."), i18n("Unable to start puzzle"));
 		return;
 	}
 	
@@ -160,13 +160,13 @@ void WelcomeScreen::playVariant() {
 	return;		// Disable old game-creation code.
 	GameVariant* variant = selectedVariant();
 	if(!variant) {
-		KMessageBox::eror(this, i18n("Please select a puzzle variant."), i18n("Unable to start puzzle"));
+		KMessageBox::error(this, i18n("Please select a puzzle variant."), i18n("Unable to start puzzle"));
 		return;
 	}
 	
 	Game game = variant->createGame(difficulty(), 0);
 	if(!game.isValid()) {
-		KMessageBox::eror(this, i18n("Unable to start a puzzle of the chosen variant; please try another."), i18n("Unable to start puzzle"));
+		KMessageBox::error(this, i18n("Unable to start a puzzle of the chosen variant; please try another."), i18n("Unable to start puzzle"));
 		return;
 	}
 
@@ -176,13 +176,13 @@ void WelcomeScreen::playVariant() {
 void WelcomeScreen::generatePuzzle() {
 	GameVariant* variant = selectedVariant();
 	if(!variant) {
-		KMessageBox::eror(this, i18n("Please select a puzzle variant."), i18n("Unable to start puzzle"));
+		KMessageBox::error(this, i18n("Please select a puzzle variant."), i18n("Unable to start puzzle"));
 		return;
 	}
 
 	Game game = variant->createGame(difficulty(), symmetry());
 	if(!game.isValid()) {
-		KMessageBox::eror(this, i18n("Unable to generate a puzzle of the chosen variant; please try another."), i18n("Unable to start puzzle"));
+		KMessageBox::error(this, i18n("Unable to generate a puzzle of the chosen variant; please try another."), i18n("Unable to start puzzle"));
 		return;
 	}
 
