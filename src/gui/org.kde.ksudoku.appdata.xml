@@ -122,6 +122,8 @@ SentUpstream: 2014-09-24
     <p xml:lang="zh-CN">KSudoku 是由 KDE 社区开发的自由版本的数独——一种流行的逻辑游戏。游戏需要用一到九的数字不重复地填满九乘九的格子。</p>
   </description>
   <url type="homepage">https://apps.kde.org/ksudoku</url>
+  <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=ksudoku</url>
+  <url type="help">https://docs.kde.org/?application=ksudoku</url>
   <url type="donation">https://www.kde.org/community/donations/?app=ksudoku&amp;source=appdata</url>
   <screenshots>
     <screenshot type="default">
@@ -129,6 +131,10 @@ SentUpstream: 2014-09-24
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1"/>
+  <launchable type="desktop-id">org.kde.ksudoku.desktop</launchable>
+  <provides>
+    <binary>ksudoku</binary>
+  </provides>
   <releases>
     <release version="1.4.22081" date="2022-09-08"/>
     <release version="1.4.22080" date="2022-08-18"/>
