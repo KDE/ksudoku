@@ -1,0 +1,1051 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksudoku "KSudoku">
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Italian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="ksudoku" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manuale di &ksudoku;</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immediate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Ian</firstname
+> <surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+	</author>
+<othercredit role="translator"
+><firstname
+>Valter</firstname
+><surname
+>Mura</surname
+><affiliation
+><address
+><email
+>valtermura@gmail.com</email
+></address
+></affiliation
+><contrib
+>Traduzione della documentazione</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Federico</firstname
+><surname
+>Zenith</surname
+><affiliation
+><address
+><email
+>federico.zenith@member.fsf.org</email
+></address
+></affiliation
+><contrib
+>Traduzione in italiano</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<copyright>
+	<year
+>2011</year>
+	<holder
+>Ian Wadham</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2020-12-10</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>1.4.20120</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Questa documentazione descrive il gioco &ksudoku;, un rompicapo di posizionamento di simboli basato sulla logica.</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>gioco</keyword
+> <!-- do not change this! -->
+	<keyword
+>ksudoku</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>logica</keyword>
+	<keyword
+>da tavola</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>un giocatore</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>puzzle</keyword>
+</keywordset>
+</bookinfo>
+
+<!--Content begins here: -->
+
+<chapter id="introduction"
+><title
+>Introduzione</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Tipo del gioco:</title
+><para
+>Logica, da tavola</para
+></note>
+
+	<note
+><title
+>Numero di giocatori possibile:</title
+><para
+>Uno</para
+></note>
+
+<para
+>&ksudoku; è un rompicapo logico di posizionamento di simboli.</para>
+
+<para
+>Il giocatore deve riempire una griglia con dei simboli in modo che ogni colonna, riga e blocco sulla tavola contenga un solo esemplare di ogni simbolo. In &ksudoku; i simboli sono solitamente i numeri da 1 a 9, ma potrebbero essere le lettere da A a P o da A a Y in sudoku più grandi. I sudoku partono con la tavola parzialmente riempita ed è compito tuo riempire il resto. Alcuni tipi di sudoku hanno meno di nove simboli.</para>
+
+<para
+>Quando cominci una partita, puoi scegliere tra diversi tipi e dimensioni di sudoku. Puoi quindi farne generare uno a &ksudoku;, o puoi partire con una tavola vuota e inserire il sudoku da un'altra fonte, come una rivista, e farla controllare e magari risolvere a &ksudoku;.</para>
+
+<para
+>Esistono molte versioni del sudoku e &ksudoku; ne fornisce una buona parte. Il tipo più comune, il sudoku normale, ha una griglia quadrata 9×9 e usa i numeri arabi da 1 a 9 come simboli. La griglia ha nove righe e nove colonne, ed è divisa in nove blocchi 3×3. Il problema è che ogni simbolo può essere usato solo una volta per ogni riga, colonna e blocco.</para>
+
+	<note
+><para
+>Ci vuole tempo e concentrazione per completare una partita. Però, risolvere i sudoku aiuta ad aumentare l'attività cerebrale complessiva ed è quindi raccomandabile.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Come si gioca</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Obbiettivo:</title
+><para
+>Riempi la griglia in modo che ogni colonna, riga e blocco contenga un solo esemplare di ogni simbolo.</para
+></note>
+
+<para
+>All'inizio della partita ti si chiede quale tipo e dimensione del sudoku desideri. Puoi inserire un sudoku da un'altra fonte o farlo generare a &ksudoku;. Il generatore ha diverse impostazioni di difficoltà e alcune di simmetria che influenzano come viene generato il sudoku. La tua partita dipenderà da quali opzioni scegli tra queste.</para>
+
+<para
+>Quando appare la tavola da gioco, dài un'occhiata al lato sinistro. C'è un elenco selezionabile che contiene tutti i simboli disponibili nella partita attuale. L'insieme di simboli dipende dalle dimensioni del gioco che scegli. I giochi possono avere 4, 9, 16 o 25 simboli. I primi due insiemi usano i numeri da 1 a 4 o da 1 a 9; gli altri usano le lettere da A a P o da A a Y.</para>
+
+<para
+>Per prima cosa, nota i confini nella tavola da gioco. Le linee spesse delimitano i blocchi. Ognuno di questi deve essere completato usando i simboli disponibili, e ogni simbolo va usato solo una volta nel blocco. Lo stesso vale per le righe e le colonne della tavola.</para>
+
+<para
+>Adesso puoi cominciare ad inserire i simboli nelle caselle vuote nella tavola da gioco. Per farlo, seleziona il simbolo che vuoi inserire dall'elenco a sinistra, quindi usa il mouse per fare clic su una casella vuota sulla tavola da gioco. In alternativa, puoi far passare il mouse su una casella vuota o usare i tasti freccia per spostarti, quindi usare la tastiera per inserire un simbolo.</para>
+
+<para
+>Nei roxdoku (sudoku tridimensionali), usa sempre il mouse per impostare un cubetto a un certo valore, e usa un clic <emphasis
+>doppio</emphasis
+>. Quando ruoti il cubo grande, facendo clic e trascinando col mouse, è più facile vedere quali valori sono sui cubetti sullo sfondo se fai clic <emphasis
+>tra</emphasis
+> i cubetti, invece che su di loro.</para>
+
+<para
+>A volte è utile inserire segni o appunti, nella forma di piccoli simboli in una casella. Questi non influenzano la soluzione, ma possono aiutarti a tenere a mente le idee che hai, specialmente se c'è una scelta tra due alternative e non hai ancora abbastanza informazioni per decidere tra di loro. Per inserire un segno o un appunto, fai clic col &RMB; o premi &Shift; mentre usi la tastiera.</para>
+
+<para
+>Per rimuovere i simboli da una casella, passaci sopra con il mouse e premi &Del; o &Backspace; sulla tastiera o premi il &RMB; sulla casella.</para>
+
+<para
+>Nota che le caselle cambiano colore quando ci fai passare sopra il mouse. Ciò serve ad aiutarti a seguire le regole di &ksudoku;. Usa le righe verticali ed orizzontali per controllare se il simbolo che stai per inserire in una casella vuota è già in uso da qualche parte nella riga verticale od orizzontale di cui la casella fa parte. La colorazione evidenzia anche il blocco, che anch'esso deve contenere un solo esemplare di ogni simbolo. Se non ti serve l'evidenziazione, puoi usare l'elemento del menu <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Configura &ksudoku;...</guimenuitem
+></menuchoice
+> per disattivarla.</para>
+
+<para
+>Continua ad inserire i simboli secondo le regole finché il campo da gioco viene riempito. A questo punto &ksudoku; controllerà se tutte le voci sono valide; se sì, accetterà la soluzione, altrimenti ti correggerà.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Regole del gioco, strategie e suggerimenti</title
+> <!-- do not change this! -->
+
+<sect1 id="rules"
+><title
+>Regole generali del gioco</title>
+
+<para
+>Le regole di &ksudoku; sono piuttosto semplici.</para>
+	<itemizedlist>
+	<listitem
+><para
+>A seconda delle dimensioni della tavola da gioco, del tipo di sudoku e del livello di difficoltà scelto, ogni singolo sudoku di &ksudoku; può richiedere da pochi minuti a qualche ora per essere risolto.</para
+></listitem>
+	<listitem
+><para
+>Ogni casella può contenere un solo simbolo.</para
+></listitem>
+	<listitem
+><para
+>Ogni riga orizzontale (come disegnata sulla tavola da gioco) può contenere ogni simbolo esattamente una volta.</para
+></listitem>
+	<listitem
+><para
+>Ogni colonna verticale (come disegnata sulla tavola da gioco) può contenere ogni simbolo esattamente una volta.</para
+></listitem>
+	<listitem
+><para
+>Ogni blocco (come disegnato sulla tavola da gioco) può contenere ogni simbolo esattamente una volta.</para
+></listitem>
+	</itemizedlist>
+
+	<note
+><title
+>Nota:</title
+><para
+>L'insieme di simboli dipende dalle dimensioni del gioco scelto.</para
+></note>
+
+	<itemizedlist>
+	<listitem
+><para
+>Non sono richieste conoscenze matematiche o linguistiche per risolvere i sudoku di &ksudoku;, ma è richiesta un po' di abilità con l'aritmetica nel sudoku killer e in quelli mathdoku.</para
+></listitem>
+	<listitem
+><para
+>I simboli presenti sulla tavola da gioco all'inizio del sudoku non possono essere modificati.</para
+></listitem>
+	<listitem
+><para
+>Puoi modificare solo i simboli che hai inserito tu.</para
+></listitem>
+	<listitem
+><para
+>I sudoku generati da &ksudoku; hanno solo una soluzione.</para
+></listitem>
+	<listitem
+><para
+>I sudoku che inserisci potrebbero non avere soluzione o averne più di una, ma se sono da una pubblicazione potresti aver fatto un errore di trascrizione.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="variants"
+><title
+>Versioni di &ksudoku;</title>
+
+<sect2 id="standard_sudoku"
+><title
+>Sudoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Il normale sudoku 9×9 ha nove righe, nove colonne e nove blocchi quadrati di dimensioni 3×3.</para
+></listitem>
+	<listitem
+><para
+>Altre dimensioni del sudoku normale sono 4×4 (molto facile), 16×16 e 25×25 (non altrettanto facili).</para
+></listitem>
+	<listitem
+><para
+>Le versioni a incastro e quella atzeca sono come il sudoku normale 9x9, solo che alcuni blocchi non sono quadrati.</para
+></listitem>
+	<listitem
+><para
+>La versione xsudoku è come il sudoku normale ma con un requisito in più: anche le due diagonali principali devono contenere i simboli da 1 a 9 solo una volta. &ksudoku; evidenzia le diagonali per facilitarne la visione.</para
+></listitem>
+	<listitem
+><para
+>Le versioni nonomino 9x9, pentomino 5x5 e Tetromino 4x4 sono come il sudoku normale, solo che alcuni blocchi non sono quadrati.</para
+></listitem>
+	<listitem
+><para
+>La versione 6x6 è come un sudoku normale, solo che i blocchi sono sei rettangoli 3x2.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="samurai"
+><title
+>Sudoku samurai</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Il sudoku samurai consiste di cinque sudoku normali di 9×9 caselle ciascuno, che si sovrappongono negli angoli con quattro blocchi 3×3. Ciascuno dei cinque sudoku ha nove colonne e nove righe e nove blocchi da risolvere e i simboli nei quadrati in sovrapposizione devono adattarsi alle soluzioni di due sudoku normali 9x9.</para
+></listitem>
+	<listitem
+><para
+>Il sudoku samurai piccolo contiene cinque sudoku 4×4, sovrapposti negli angoli con quattro caselle. Ciascuno dei cinque sudoku ha quattro righe, quattro colonne e quattro blocchi da risolvere.</para
+></listitem>
+	<listitem
+><para
+>La versione Mulino a vento consiste di cinque sudoku 9x9 normali, con sovrapposizione negli angoli con due blocchi 3x3. È come il sudoku samurai, ma il sudoku 9x9 centrale è più difficile da vedere. Otto dei suoi blocchi 3x3 sono condivisi con le vele del mulino a vento e solo il blocco 3x3 centrale non lo è. </para
+></listitem>
+	<listitem
+><para
+>La versione sohei è un altro tipo samurai e contiene quattro sudoku 9x9, con sovrapposizione nei due angoli con un blocco 3x3. Il blocco 3x3 centrale della griglia è vuoto. </para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="roxdoku"
+><title
+>Sudoku 3D roxdoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Le varianti roxdoku si basano su cubi tridimensionali, ma sono più facili di quel che ti potresti aspettare. Non ci sono righe e colonne. Un roxdoku 3×3×3 ha 27 cubetti disposti in un cubo più grande 3×3×3. Questo contiene nove fette, ciascuna con 3×3 cubetti, e questi sono i blocchi quadrati che vanno riempiti con i numeri da 1 a 9. Un roxdoku 4×4×4 ha 12 fette 4×4 e uno 5×5×5 ha 15 fette 5×5.</para
+></listitem>
+	<listitem
+><para
+>La variante Roxdoku Twin contiene due roxdoku 3x3x3 che condividono un angolo. Il pezzo dell'angolo deve essere parte della soluzione di entrambi i cubi 3x3x3.</para
+></listitem>
+	<listitem
+><para
+>La variante Roxdoku doppia contiene due roxdoku 3x3x3 che condividono tre pezzi lungo un bordo. I pezzi del bordo devono essere parte della soluzione di entrambi i cubi 3x3x3. </para
+></listitem>
+	<listitem
+><para
+>La variante roxdoku samurai contiene nove roxdoku 3x3x3. Una si trova al centro e gli altri otto cubi 3x3x3 vi si sovrappongono, uno per ciascuno degli angoli del cubo centrale. Quegli angoli devono essere parte della soluzione di due cubi 3x3x3.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="killer"
+><title
+>Versioni killer e mathdoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>I killer hanno due varianti: killer piccola (4x4) e killer sudoku (9x9). Entrambe hanno righe, colonne e blocchi quadrati, esattamente come i sudoku normali e seguono esattamente le stesse regole. Possiedono anche aree di forma irregolare chiamate riquadri, in cui le cifre di ciascun riquadro devono essere sommate al numero scritto in piccolo nell'angolo del riquadro e nessuna cifra può essere ripetuta all'interno del riquadro. Tipicamente il sudoku inizia solo con pochi quadrati contenenti simboli. Devi usare assieme l'aritmetica e le solite regole del sudoku per trovare la soluzione. La grafica dello schermo rende difficile visualizzare i blocchi quadrati presenti, che sono comunque più facili da vedere se stampi il sudoku utilizzando l'elemento del menu <menuchoice
+><guimenu
+>Partita</guimenu
+> <guimenuitem
+>Stampa...</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+	<listitem
+><para
+>Le varianti mathdoku, conosciute anche come <trademark
+>Kenken</trademark
+>, non hanno blocchi, ma solo restrizioni di righe e colonne e possiedono riquadri in cui le cifre devono essere sommate, sottratte, divise o moltiplicate in base ai valori e i simboli aritmetici scritti in piccolo nei loro angoli. In un riquadro mathdoku una cifra può essere ripetuta, ma non nella stessa riga o colonna. Per esempio, una forma a L di tre quadrati con un requisito 5+ può avere soluzioni 1 3 1 o 2 1 2, sempre che le une o le altre non si trovino nella stessa riga o colonna come ogni altra. Nota che i riquadri di sottrazione e divisione hanno sempre due quadrati e le due cifre della soluzione possono apparire in qualunque ordine. Per esempio, un riquadro a due potrebbe avere soluzioni 1 3 o 3 1 o 2 4 o 4 2, &etc;</para
+></listitem>
+	<listitem
+><para
+>Dato che in un mathdoku non sono presenti blocchi, esso può avere qualsiasi dimensione, da 3x3 fino a 9x9, mentre quella predefinita è 6x6. Per dettagli, consulta il capitolo <link linkend="configuration"
+>Configurazione del gioco</link
+>. Per iniziare, esiste una variante chiamata Mathdoku 101 di dimensione 4x4.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+</sect1>
+
+<sect1 id="tips"
+><title
+>Strategie e suggerimenti</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Prenditela comoda e non aver fretta. &ksudoku; non è un gioco veloce.</para
+></listitem>
+	<listitem
+><para
+>Fai attenzione alla colorazioni di righe, colonne e blocchi. Ci sono per aiutarti.</para
+></listitem>
+	<listitem
+><para
+>Assicurati che i simboli non abbiano duplicati nella riga, colonna o blocco in cui li inserisci.</para
+></listitem>
+	<listitem
+><para
+>Se hai un dubbio, prova a prevedere se la casella in cui stai inserendo un simbolo potrebbe essere necessaria ad un altro, che altrimenti non potrebbe andare da nessuna parte senza violare le regole di riga, colonna e blocco.</para
+></listitem>
+	<listitem
+><para
+>Usa Internet per cercare suggerimenti e strategie generali per risolvere i sudoku.</para
+></listitem>
+	<listitem
+><para
+>Usa gli appunti quando vedi una casella che può avere solo alcuni valori, ma non puoi decidere subito quali. Gli appunti ti fanno risparmiare tempo e memoria per quando saranno state riempite più caselle. Vedi <link linkend="howto"
+>Come si gioca</link
+> per i dettagli su come usare gli appunti.</para
+></listitem>
+	<listitem
+><para
+>Se hai difficoltà, puoi ritracciare i tuoi passi e vedere a che punto hai fatto un errore. Puoi usare gli elementi del menu <menuchoice
+><guimenu
+>Mossa</guimenu
+><guimenuitem
+>Annulla</guimenuitem
+></menuchoice
+> e <menuchoice
+><guimenu
+>Mossa</guimenu
+><guimenuitem
+>Rifai</guimenuitem
+></menuchoice
+>, più volte se necessario; c'è inoltre un'impostazione, sotto <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Configura &ksudoku;...</guimenuitem
+></menuchoice
+>, per evidenziare gli errori.</para
+></listitem>
+	<listitem
+><para
+>Anche se &ksudoku; può darti dei suggerimenti, cerca di non usarli spesso. Ricordati che risolvere il sudoku da te migliora la tua attività cerebrale, invece usare troppo spesso i suggerimenti è come barare.</para
+></listitem>
+	<listitem
+><para
+>Se hai troppe difficoltà a risolvere un certo sudoku, e ti serve davvero un suggerimento, potresti provare a ridurre il livello di difficoltà, o a giocare con un sudoku più semplice.</para
+></listitem>
+	<listitem
+><para
+>Alcuni schemi di gioco includono forme della tavola da gioco molto particolari. È una buona idea attivare l'opzione di evidenziazione anche se ti consideri un giocatore esperto.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Panoramica dell'interfaccia</title
+> <!-- do not change this! -->
+
+<sect1 id="welcome-screen"
+><title
+>La schermata di benvenuto</title>
+
+<para
+>La schermata di benvenuto è la prima cosa che vedi all'avvio di &ksudoku; o quando usi la barra per richiedere una nuova partita. Contiene un elenco di tutti i tipi e dimensioni di sudoku, e puoi sceglierne uno facendoci clic.</para>
+
+<para
+>Se fai clic sul pulsante <guibutton
+>Inserisci un sudoku</guibutton
+>, appare una tavola vuota del tipo e dimensioni che hai scelto. Qui puoi usare il mouse o la tastiera per inserire un sudoku proveniente per esempio da un giornale. Quando hai finito, usa l'azione <guilabel
+>Controlla</guilabel
+>, sulla barra degli strumenti o nel menu, per controllare il sudoku: dovrebbe avere una sola soluzione. Se così è, puoi iniziare a risolverlo o magari farlo risolvere a &ksudoku;. Se non c'è una soluzione o ce ne sono più di una, probabilmente hai sbagliato a inserire qualche simbolo.</para>
+
+<para
+>Se fai clic sul pulsante <guibutton
+>Genera un sudoku</guibutton
+>, &ksudoku; mostrerà una tavola con alcune caselle già riempite. A te il compito di completare le altre.</para>
+
+<para
+>Prima di generare un sudoku, controlla che le impostazioni delle caselle a tendina <guilabel
+>Difficoltà</guilabel
+> e <guilabel
+>Simmetria</guilabel
+> siano come le vuoi. Puoi cambiarle durante il gioco, ma non avranno effetto fino alla generazione del prossimo sudoku.</para>
+
+	<note
+><para
+>Se non vedi le caselle a tendina <guilabel
+>Difficoltà</guilabel
+> e <guilabel
+>Simmetria</guilabel
+>, usa l'elemento del menu <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Mostra la barra di stato</guimenuitem
+></menuchoice
+> per assicurarti che la barra di stato sia visibile.</para
+></note>
+
+<para
+>La casella a tendina <guilabel
+>Difficoltà</guilabel
+> fornisce sei livelli di difficoltà, da <guimenuitem
+>Molto facile</guimenuitem
+> a <guimenuitem
+>Difficile</guimenuitem
+>, <guimenuitem
+>Diabolico</guimenuitem
+> e <guimenuitem
+>Illimitato</guimenuitem
+>. Ci potrebbero volere pochi minuti a risolvere una tavola 9×9 ai livelli più facili. Per i livelli <guimenuitem
+>Difficile</guimenuitem
+> e <guimenuitem
+>Diabolico</guimenuitem
+> ci potrebbe volere un'ora circa, e questi livelli sono simili a quelli presenti nelle riviste. I sudoku samurai e i sudoku 16×16 e 25×25 richiederanno più tempo per essere risolti, semplicemente perché hanno più righe, colonne e blocchi e più caselle da riempire.</para>
+
+<para
+>Il livello <guimenuitem
+>diabolico</guimenuitem
+> richiede spesso di tirare a indovinare, e tornare indietro se non si ha indovinato. I livelli inferiori possono essere spesso risolti con la logica. Il livello <guimenuitem
+>illimitato</guimenuitem
+> non ha limiti sul numero di volte che si deve tirare a indovinare, quando si deve indovinare per la prima volta o quanto complessa debba essere la logica. È incluso come curiosità per solutori esperti, ma tende a generare sudoku poco interessanti e <quote
+>disumani</quote
+>, e non se ne raccomanda l'uso.</para>
+
+ <para
+>La casella a tendina <guilabel
+>Simmetria</guilabel
+> fornisce sette tipi di simmetria, incluso il caso <guimenuitem
+>Senza simmetria</guimenuitem
+>. Questo controlla la disposizione e l'aspetto delle caselle riempite all'inizio della partita e ha un effetto principalmente estetico, tranne che i sudoku senza simmetria tendono a essere leggermente più difficili di quelli simmetrici, ed è leggermente meno probabile che &ksudoku; generi un sudoku con alta difficoltà e alta simmetria contemporaneamente.</para>
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu"
+><title
+>Il menu <guimenu
+>Partita</guimenu
+></title>
+
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Nuova</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Comincia una nuova partita</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Carica...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Carica una partita salvata.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Salva</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Salva</action
+> la partita in corso come un file di salvataggio predefinito.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>Partita</guimenu
+> <guimenuitem
+>Salva come...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Salva</action
+> la partita in corso come un file a tua scelta.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Stampa</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Stampa</action
+> lo stato attuale di una partita bidimensionale su una stampante di tua scelta. Le righe che delimitano i blocchi e valori iniziali del sudoku sono stampati in nero. Le altre celle, i valori inseriti e quelli della soluzione sono stampati in grigio. C'è la possibilità di stampare solo un sudoku o più di uno per pagina. Vedi la <link linkend="configuration"
+>configurazione del gioco</link
+>.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Partita</guimenu
+> <guimenuitem
+>Esci</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Esce</action
+> da &ksudoku;.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+>Il menu <guimenu
+>Mossa</guimenu
+></title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mossa</guimenu
+> <guimenuitem
+>Annulla</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Annulla</action
+> l'ultima mossa.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mossa</guimenu
+> <guimenuitem
+>Rifai</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Rifai</action
+> una mossa annullata.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mossa</guimenu
+> <guimenuitem
+>Suggerimento</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Dai un suggerimento</action
+> riempiendo una casella vuota.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>Mossa</guimenu
+><guimenuitem
+>Risolvi</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Risolve immediatamente</action
+> il sudoku.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>Mossa</guimenu
+><guimenuitem
+>Controlla</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Controlla</action
+> la validità di un sudoku inserito. Se ha una sola soluzione, diventa giocabile. Se non ha nessuna o ha più di una soluzione, è probabilmente un errore di inserimento.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>Il menu <guimenu
+>Impostazioni</guimenu
+></title>
+		<variablelist>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>Impostazioni</guimenu
+> <guimenuitem
+>Configura &ksudoku;...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Apri una finestra per configurare &ksudoku;</action
+>. Vedi <link linkend="configuration"
+>Configurazione del gioco</link
+> per i dettagli.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+		<para
+>Inoltre, &ksudoku; ha le normali voci del menu di &kde; <guimenu
+>Impostazioni</guimenu
+> e <guimenu
+>Aiuto</guimenu
+>; per maggiori informazioni leggi la sezione sul <ulink url="help:/fundamentals/menus.html#menus-settings"
+>menu Impostazioni</ulink
+> e sul <ulink url="help:/fundamentals/menus.html#menus-help"
+>menu Aiuto</ulink
+> dei fondamentali di &kde;. </para>
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Domande ricorrenti</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Voglio cambiare l'aspetto del gioco. Posso? </para
+></question>
+ <answer
+><para
+>Il sudoku viene giocato tradizionalmente con una griglia quadrata. I temi non hanno molto senso qui, ma puoi selezionare alcuni schemi di colori e sfondi.Per farlo usa <menuchoice
+><guimenu
+>Impostazioni</guimenu
+><guimenuitem
+>Configura &ksudoku;...</guimenuitem
+></menuchoice
+> nella barra dei menu.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Posso usare la tastiera per questo gioco? </para
+></question>
+ <answer
+><para
+>Sì. Il gioco via tastiera è sempre attivo in &ksudoku;. Usa i tasti freccia per spostare la selezione, i caratteri numerici o alfabetici per inserire i simboli e il tasto &Shift; per impostare i segni.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Dov'è la classifica?</para
+></question>
+ <answer
+><para
+>&ksudoku; non ne ha una.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Configurazione del gioco</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+>Opzioni del gioco</title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Cerca di stampare più di un sudoku su una pagina</guilabel
+></term>
+			<listitem>
+			<para
+>Attiva o disattiva la stampa di più di un sudoku per pagina ogni volta che ci possono stare.</para>
+			<para
+>Se questa opzione è attiva, i sudoku verranno stampati solo quando non ce ne staranno più su una pagina, o quando &ksudoku; verrà chiuso; altrimenti, il sudoku verrà stampato subito.</para>
+			<para
+>I sudoku tridimensionali non si possono stampare.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostra le evidenziazioni nei sudoku bidimensionali</guilabel
+></term>
+			<listitem
+><para
+>Attiva o disattiva l'opzione di evidenziazione di &ksudoku; per i sudoku bidimensionali.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostra errori</guilabel
+></term>
+			<listitem
+><para
+>Attiva o disattiva l'evidenziazione degli errori.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostra le evidenziazioni nei sudoku bidimensionali</guilabel
+></term>
+			<listitem
+><para
+>Attiva o disattiva l'opzione di evidenziazione di &ksudoku; per i sudoku tridimensionali.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Dimensione del mathdoku (3-9)</guilabel
+></term>
+			<listitem
+><para
+>Scegli una dimensione per le griglie mathdoku, da 3 (molto facile) a 9 (molto difficile) con la dimensione 6 come predefinita.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Impostazioni per i soli sudoku tridimensionali</guilabel
+></term>
+			<listitem
+><para
+>Queste cinque opzioni regolano l'evidenziazione e la visibilità delle celle nei sudoku tridimensionali. Il concetto è rendere più facile vedere le relazioni tra le celle, soprattutto se sono dietro ad altre celle.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+		<note
+><title
+>Nota:</title
+><para
+>Si raccomanda di abilitare le opzioni di evidenziazione anche per i giocatori più avanzati, perché aiuta a vedere i vincoli presenti della tavola da gioco.</para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Riconoscimenti e licenza</title
+> <!-- do not change this! -->
+
+<para
+>&ksudoku; </para>
+
+<!--List all the copyright holders here-->
+<para
+>Copyright 2005-2007 di Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Copyright 2006-2007 di Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+> e Johannes Bergmeier <email
+>johannes.bergmeier@gmx.net</email
+></para>
+
+<para
+>Copyright 2011 di Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Nuovi algoritmi di risoluzione e generazione © 2011 di David Bau, <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
+>vedi il sito Web</ulink
+>.</para>
+
+<para
+>Copyright della documentazione 2005 di Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Copyright della documentazione 2007 di Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+> ed Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+></para>
+
+<para
+>Copyright della documentazione 2011-2020 di Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Traduzione di Federico Zenith<email
+>federico.zenith@member.fsf.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

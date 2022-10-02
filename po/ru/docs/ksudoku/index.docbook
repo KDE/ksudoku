@@ -1,0 +1,884 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY ksudoku "Ksudoku">
+<!ENTITY kappname "&ksudoku;"
+> 
+  <!ENTITY kappversion "0.5"
+><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Russian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Руководство &kappname;</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Евгений</firstname
+> <surname
+>Трунев</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+<othercredit role="translator"
+><firstname
+>Даниил</firstname
+><surname
+>Королёв</surname
+><affiliation
+><address
+><email
+>denbrubeck@gmail.com</email
+></address
+></affiliation
+><contrib
+>Перевод на русский язык</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>14 ноября 2007 г.</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion;</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Это документация описывает игру &kappname; версии &kappversion;</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>Игра</keyword
+> <!-- do not change this! -->
+	<keyword
+>ksudoku</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>логическая</keyword>
+	<keyword
+>настольная</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>один игрок</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>головоломка</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Вступление</title
+> <!-- do not change this! -->
+	<note
+><title
+>Жанр:</title
+><para
+>Логическая, настольная</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Количество игроков:</title
+><para
+>Один игрок</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 	<para
+>&kappname; — логическая головоломка.</para>
+<para
+>Игрок должен заполнить сетку таким образом, чтобы каждое число встречалось в каждой строке, в каждом столбце и в каждом квадрате только один раз.</para>
+<para
+>В зависимости от параметров и уровня сложности игровое поле иногда может быть уже частично заполнено, однако, чаще всего вы начинаете с пустого игрового поля.</para>
+<para
+>Существуют сотни различных вариаций судоку. Чаще всего игровое поле представляет собой квадрат размером 9x9, разделённый на меньшие квадраты со стороной в 3 клетки, и для игры используются арабские цифры. Сложность игры в том, что каждая цифра может быть использована только единственный раз в каждом столбце, в каждой строке и в каждом квадрате. </para>
+	<note>
+		<title
+>Заметка:</title>
+		<para
+>Для игры требуется много времени и внимания. Однако игра не только в целом повышает мозговую активность, но и вообще, очень полезна.</para>
+	</note>
+</chapter>
+ 
+<chapter id="howto"
+><title
+>Правила игры</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Цель:</title
+><para
+>Игрок должен заполнить сетку таким образом, чтобы каждое число встречалось в каждой строке, в каждом столбце и в каждом квадрате только один раз.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>В начале игры вам нужно выбрать один из возможных вариантов игры.</para>
+<note
+><title
+>Заметка:</title
+><para
+>В зависимости от выбранного варианта, процесс игры может изменяться.</para
+></note>
+<para
+>Слева указаны все символы, доступные для использования в данной игре.</para>
+<note
+><title
+>Заметка:</title
+><para
+>Набор символов меняется, в зависимости от выбранного варианта.</para
+></note>
+<para
+>Для начала посмотрите на границы игрового поля. Толстая чёрная линия разделяет поле на сектора. Каждый из этих секторов должен быть заполнен доступными вам символами, так, чтобы каждый символ в секторе встречался только один раз.</para>
+<para
+>Теперь можно начинать заполнять игровое поле нужными символами. Это можно сделать, выбрав нужный вам символ из колонки слева и затем щёлкнув мышью в нужном квадрате на игровом поле. Квадраты меняют цвет при наведении курсора мыши.</para>
+<para
+>Квадраты меняют цвет при наведении курсора мыши. Это поможет вам в освоении правил &kappname;. Смотрите по вертикальными и горизонтальным линиям, чтобы проверить, нет ли в них символа, который вы хотите поставить. Изменение цвета также указывает на сектор, в котором каждый символ может быть использован только один раз.</para>
+<para
+>Продолжайте заполнять поле в соответствии с правилами. Когда поле будет полностью заполнено, программа проверит правильность постановки символов. Программа может указать вам на ошибки или принять ваше решение. </para>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Основные правила, стратегии и подсказки</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Основные правила</title>
+		<para
+>Правила &kappname; довольно просты.</para>
+		<itemizedlist>
+		<listitem
+><para
+>В зависимости от размера игрового поля и сложности уровня каждая головоломка может отнять у вас несколько часов.</para
+></listitem>
+		<listitem
+><para
+>В каждом квадрате может находиться только один символ.</para
+></listitem>
+		<listitem
+><para
+>В каждом горизонтальном ряду каждый символ может быть поставлен только один раз.</para
+></listitem>
+		<listitem
+><para
+>В каждом вертикальном ряду каждый символ может быть поставлен только один раз.</para
+></listitem>
+		<listitem
+><para
+>В каждой подсетке или части (как указано в типе игрового поля) каждый символ может быть поставлен только один раз.</para
+></listitem>
+		</itemizedlist>
+		<note
+><title
+>Заметка:</title
+><para
+>Набор символов меняется, в зависимости от выбранного варианта.</para
+></note>
+		<itemizedlist>
+			<listitem
+><para
+>Не нужно никаких дополнительных знаний для решения головоломок &kappname;.</para
+></listitem>
+			<listitem
+><para
+>В зависимости от сложности некоторые головоломки могут быть изначально частично решены. В таком случае предустановленные символы уже не могут быть изменены.</para
+></listitem>
+			<listitem
+><para
+>Можно изменять символы, которые вы уже поставили.</para
+></listitem>
+			<listitem
+><para
+>У головоломок в игре &kappname; есть только единственное решение.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Стратегии и подсказки</title>
+		<itemizedlist>
+			<listitem
+><para
+>Главное не торопиться. &kappname; игра не на время.</para
+></listitem>
+		<listitem
+><para
+>Обращайте внимание на раскраски столбцов и строк. Они сделаны вам в помощь.</para
+></listitem>
+		<listitem
+><para
+>Убедитесь, что вы не ставите символ в строку/столбец/секцию, в которой данный символ уже существует.</para
+></listitem>
+		<listitem
+><para
+>Если вы в затруднении, рассмотрите другой символ, подходящий для этой клетки. Возможно, кроме как в эту клетки, его никуда нельзя будет поставить.</para
+></listitem>
+		<listitem
+><para
+>Если у вас возникли проблемы, попробуйте вернуться на несколько ходов и заметить, где же вы ошиблись.</para
+></listitem>
+		<listitem
+><para
+>Хоть в &kappname; и есть возможность «подсказки», попытайтесь не использовать её часто. Помните, что самостоятельное решение головоломок повышает мозговую активность, а частое использование подсказок — мошенничество.</para
+></listitem>
+			<listitem
+><para
+>Если у вас есть трудности с решением головоломки и вам просто необходимо воспользоваться функцией «Помощь», то может стоит понизить уровень сложности? Попробовать головоломку полегче?</para
+></listitem>
+		<listitem
+><para
+>Некоторые головоломки могут иметь необычную форму игрового поля. Даже если вы считаете себя профессиональным игроком лучше включить параметр подсвечивания.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+  
+<chapter id="interface"
+><title
+>Обзор интерфейса</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu">
+	<title
+>Меню <guimenu
+>Игра</guimenu
+></title>
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Начать игру</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Начало новой игры.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Загрузить...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Загрузить сохранённую игру.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Сохранить</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Сохранить</action
+> текущую игру в файл по умолчанию.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>Игра</guimenu
+> <guimenuitem
+>Сохранить как...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Сохранить</action
+> игру в выбранный файл.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Выйти</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Выход</action
+> из &kappname;</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+> Меню <guimenu
+>Ход</guimenu
+></title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Ход</guimenu
+> <guimenuitem
+>Отменить</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Отменить</action
+> последний ход.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Ход</guimenu
+> <guimenuitem
+>Вернуть</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Вернуть</action
+> отменённый ход.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Ход</guimenu
+> <guimenuitem
+>Подсказка</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Даёт подсказку</action
+>, подсвечивая пару клеток.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>Ход</guimenu
+> <guimenuitem
+>Решение</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Немедленно решает </action
+> головоломку.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>Ход</guimenu
+> <guimenuitem
+>Проверить</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Проверяет</action
+> правильность решения.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>Меню <guimenu
+>Настройка</guimenu
+></title>
+		<variablelist>
+			<varlistentry>
+				<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Видимые панели инструментов</guisubmenu
+> <guimenuitem
+>Основная панель инструментов</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Показывает или скрывает основную панель инструментов.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-hide-matching">
+				<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Видимые панели инструментов</guisubmenu
+> <guimenuitem
+>Панель действий</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Показывает или скрывает панель действий.</para
+></listitem>
+			</varlistentry>
+
+			<varlistentry id="settings-menu-statusbar">
+				<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Строка состояния</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Показать или скрыть строку состояния</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-shortcuts">
+				<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Комбинации клавиш...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Открывает стандартное окно настройки комбинаций клавиш &kde; </action
+> для смены назначений клавиш в &kappname;.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-toolbar">
+				<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Панели инструментов...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Открывает стандартное окно &kde;, где можно настроить панели инструментов.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить &kappname;...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Открывает окно для настройки &kappname;.</action
+> Пройдите по этой ссылке <link linkend="configuration"
+>Параметры игры</link
+>, чтобы узнать поподробней.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>Меню <guimenu
+>Справка</guimenu
+> </title>
+<para
+>В &kappname; обычное &kde; меню <guimenu
+>Справка</guimenu
+>, с одним дополнением:</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Справка</guimenu
+> <guimenuitem
+>Домашняя страница</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Открывает сайт &kappname; на sourceforge.net в программе &konqueror;.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Стандартные меню <guimenu
+>Справка</guimenu
+> в &kde;:</para>
+&help.menu.documentation; </sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Часто задаваемые вопросы</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Я хочу поменять вид игры. Возможно ли это? </para
+></question>
+ <answer
+><para
+>Игра в судоку обычно происходит на квадратном поле. Различные темы не многое поменяют. С другой стороны, можно выбрать другой набор символов. Чтобы это сделать, используйте пункт <menuchoice
+><guimenu
+>Настройка</guimenu
+><guimenuitem
+>Настроить &kappname;...</guimenuitem
+></menuchoice
+> в меню.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Я поменял символы в окне настроек. Теперь все моё игровое поле заполнено вопросительными знаками. В чем проблема?</para
+></question>
+ <answer
+><para
+>Каждый набор символов содержит их ограниченное количество. Если вы выбрали такой набор, в котором количество символов меньше, чем требуется для данного типа игры, программа выведет на экран такие вопросительные знаки. Решением проблемы является смена набора символов.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Могу ли я использовать клавиатуру для игры? </para
+></question>
+ <answer
+><para
+>Да. В &kappname; можно использовать клавиатуру. Используйте стрелки, чтобы менять выбранный объект, числа для заполнения клеток и клавишу &Shift;, чтобы подтвердить метки.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Где можно посмотреть таблицу рекордов?</para
+></question>
+ <answer
+><para
+>В &kappname; нет данной возможности.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Параметры игры</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+><guilabel
+>Параметры игры</guilabel
+> </title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Показывать подсветку</guilabel
+></term>
+			<listitem
+><para
+>Включает подсветку в &kappname;.</para>
+					<note
+><title
+>Заметка:</title
+><para
+>Рекомендуется использовать этот параметр даже самым опытным игрокам, так как он помогает увидеть реальные границы игрового поля.</para
+></note
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Показывать ошибки</guilabel
+></term>
+			<listitem
+><para
+>Включает подсветку неверных постановок символов.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+
+<sect1 id="layout-options"
+><title
+><guilabel
+>Символы</guilabel
+> </title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Обычные символы</guilabel
+></term>
+			<listitem
+><para
+>Включает или выключает использование простых символов для использования в игре.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Кубы</guilabel
+></term>
+			<listitem
+><para
+>Включает или выключает использование кубиков для использования в игре.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Цифры</guilabel
+></term>
+			<listitem
+><para
+>Включает или выключает использование арабских цифр для использования в игре.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Прописные буквы</guilabel
+></term>
+			<listitem
+><para
+>Включает или выключает использование прописных букв для использования в игре.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Заглавные буквы</guilabel
+></term>
+			<listitem
+><para
+>Включает/выключает использование заглавных букв для внутриигровых иконок.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+	<note
+><title
+>Заметка:</title
+><para
+>Каждый набор символов содержит их ограниченное количество. Если вы выбрали такой набор, в котором количество символов меньше, чем требуется для данного типа игры, программа выведет на экран такие вопросительные знаки. Решением проблемы является смена набора символов.</para
+></note>
+</sect1>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Авторские права и лицензия</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kappname; </para>
+
+<!--List all the copyright holders here-->
+<para
+>&kappname; — © 2005-2007, Francesco Rossi <email
+>redsh@email.it</email
+> </para>
+<para
+>Авторские права на программу © 2006-2007, Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Johannes Bergmeier <email
+>johannes.bergmeier@gmx.net</email
+> </para>
+<para
+>Авторские права на документацию © 2005, Francesco Rossi <email
+>redsh@email.it</email
+> </para>
+<para
+>Авторские права на документацию © 2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> </para>
+
+<para
+>Перевод на русский: Королёв Даниил <email
+>denbrubeck@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+<title
+>Установка</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Сборка и установка</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

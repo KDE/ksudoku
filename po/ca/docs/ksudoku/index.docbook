@@ -1,0 +1,1015 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksudoku "KSudoku">
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Catalan  "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="ksudoku" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>El manual del &ksudoku;</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immediate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Ian</firstname
+> <surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+	</author>
+&traductor.Antoni.Bella; 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<copyright>
+	<year
+>2011</year>
+	<holder
+>Ian Wadham</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>10 de desembre de 2020</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>1.4.20120</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Aquesta documentació descriu el joc &ksudoku;, un trencaclosques de col·locació de símbols basat en la lògica.</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>joc</keyword
+> <!-- do not change this! -->
+	<keyword
+>ksudoku</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>lògica</keyword>
+	<keyword
+>tauler</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>un jugador</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>trencaclosques</keyword>
+</keywordset>
+</bookinfo>
+
+<!--Content begins here: -->
+
+<chapter id="introduction"
+><title
+>Introducció</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Tipus de joc:</title
+><para
+>Lògica, Tauler</para
+></note>
+
+	<note
+><title
+>Nombre de possibles jugadors:</title
+><para
+>Un</para
+></note>
+
+<para
+>El &ksudoku; és un trencaclosques de col·locació de símbols basat en la lògica.</para>
+
+<para
+>El jugador ha d'emplenar una quadrícula amb símbols de manera que cada columna, fila i bloc en el tauler de joc només contingui una instància de cada símbol. En el &ksudoku;, els símbols solen ser els números de l'1 fins al 9, però poden ser les lletres de l'A fins a la P o de l'A fins a la Y en trencaclosques més grans. Els trencaclosques comencen amb el tauler parcialment ple i és treball vostre completar la resta. Alguns tipus de trencaclosques tenen menys de nou símbols.</para>
+
+<para
+>Quan comenceu una partida, podreu triar entre diversos tipus i mides de Sudoku. Després podreu fer que el &ksudoku; generi un trencaclosques per a resoldre'l o podreu començar amb un tauler buit i introduir un trencaclosques des d'una altra font, com un diari, per a després fer que el &ksudoku; el revisi i potser, que el resolgui.</para>
+
+<para
+>Hi ha moltes variants de Sudoku i el &ksudoku; n'ofereix una bona selecció. El tipus més comú, el Sudoku estàndard, té una quadrícula de 9x9 i utilitza nombres aràbics de l'1 fins al 9 com a símbols. La quadrícula té 9 files i 9 columnes, i està dividida en 9 blocs de 3x3 quadrats. El problema és que cada símbol només es pot utilitzar una vegada per fila, columna o bloc.</para>
+
+	<note
+><para
+>Es necessita temps i concentració per a completar una partida. No obstant això, resoldre els trencaclosques de Sudoku ajuda a augmentar l'activitat cerebral general i, per tant, és molt recomanable.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Com jugar</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Objectiu:</title
+><para
+>Emplenar la quadrícula de manera que cada columna, fila i bloc només contingui una instància de cada símbol.</para
+></note>
+
+<para
+>Quan comenceu la partida, se us demanarà que trieu el tipus de joc i la mida del tauler que us interessa. Podeu introduir un trencaclosques des d'una altra font o fer que el &ksudoku; en generi un. El generador té diverses opcions de dificultat i algunes opcions de simetria, les quals afectaran el patró en el qual es generarà el trencaclosques. La vostra experiència de joc dependrà de quina de totes aquestes opcions trieu.</para>
+
+<para
+>Quan aparegui el tauler del trencaclosques, mireu al costat esquerre. Hi ha una llista de selecció que conté tots els símbols disponibles en el joc actual. El conjunt de símbols dependrà de la mida del joc que trieu. Els jocs poden tenir 4, 9, 16 o 25 símbols. Els dos primers conjunts utilitzen els números de l'1 fins al 4 o de l'1 fins al 9: els altres utilitzen les lletres de l'A fins a la P o de l'A fins a la Y.</para>
+
+<para
+>Primer, observeu els límits en el tauler de joc. Les línies gruixudes delineen els blocs. Cadascun d'aquests blocs s'ha de completar emprant els símbols disponibles, cada símbol només s'ha d'emprar un cop i un cop dins del bloc. El mateix passa amb les files i columnes en el tauler.</para>
+
+<para
+>Ara podeu començar a introduir símbols en els quadrats buits en el tauler. Per a fer això, seleccioneu el símbol que voleu introduir des de la llista de selecció a l'esquerra, després utilitzeu el ratolí per a fer clic sobre un quadrat buit en el tauler. De manera alternativa, podeu passar el ratolí per sobre d'un quadrat buit o utilitzar les tecles del cursor per a moure, i aleshores utilitzar el teclat per a introduir un símbol.</para>
+
+<para
+>En els trencaclosques de Roxdoku (tridimensionals), sempre s'utilitza el ratolí per a establir un petit cub a un valor i es fa <emphasis
+>doble</emphasis
+> clic. Quan gireu el cub gran, fent clic i arrossegant amb el ratolí, és més fàcil veure quins valors hi ha en els cubs petits que estan en el fons si feu clic <emphasis
+>entre</emphasis
+> els cubs petits, no sobre seu.</para>
+
+<para
+>De vegades és útil introduir marcadors o notes, els quals són petits símbols dins d'un quadrat. Aquests no influeixen en la solució, però poden ajudar-vos a realitzar un seguiment de les idees que heu tingut, especialment quan hi ha una elecció entre dues alternatives i encara no teniu prou informació per a decidir entre elles. Per a introduir un marcador o nota, feu clic amb el &BDR; o premeu la tecla &Maj; quan utilitzeu el teclat.</para>
+
+<para
+>Per a esborrar els símbols d'un quadrat, passeu el cursor del ratolí sobre el quadrat i premeu &Del; o &Retro; en el teclat, o feu clic amb el &BDR; sobre el quadrat.</para>
+
+<para
+>Observeu que els quadrats canvien de color mentre es passa el ratolí sobre seu. Això és per a ajudar a mantenir-vos al dia amb les regles del &ksudoku;. Utilitzeu les línies verticals i horitzontals per a verificar si el símbol que esteu a punt d'introduir en un lloc vacant ja està en ús en qualsevol lloc de la línia vertical o horitzontal de la qual forma part el quadrat. El color també ressalta el bloc que, si recordeu, també haurà de contenir només una instància de cada símbol. Si no us cal el ressaltat, podeu utilitzar l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &ksudoku;...</guimenuitem
+></menuchoice
+> per a desactivar-lo.</para>
+
+<para
+>Seguiu introduint símbols d'acord amb les regles fins que s'empleni tot el camp de joc. En aquest punt, el &ksudoku; verificarà si totes les entrades són vàlides i corregirà o acceptarà la vostra solució.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Les regles del joc, estratègies i consells</title
+> <!-- do not change this! -->
+
+<sect1 id="rules"
+><title
+>Regles generals del joc</title>
+
+<para
+>Les regles del &ksudoku; són força senzilles.</para>
+	<itemizedlist>
+	<listitem
+><para
+>Depenent de la mida del tauler de joc, el tipus de trencaclosques i el nivell de dificultat escollit, es pot trigar des d'uns minuts fins a algunes hores a resoldre un trencaclosques del &ksudoku;.</para
+></listitem>
+	<listitem
+><para
+>Cada quadrat pot contenir un únic símbol.</para
+></listitem>
+	<listitem
+><para
+>Cada fila horitzontal (definida pel tauler de joc) pot contenir cada símbol exactament una vegada.</para
+></listitem>
+	<listitem
+><para
+>Cada columna vertical (definida pel tauler de joc) pot contenir cada símbol exactament una vegada.</para
+></listitem>
+	<listitem
+><para
+>Cada bloc (definit pel tauler de joc) pot contenir cada símbol exactament una vegada.</para
+></listitem>
+	</itemizedlist>
+
+	<note
+><title
+>Nota:</title
+><para
+>El conjunt de símbols dependrà de la mida del joc que trieu.</para
+></note>
+
+	<itemizedlist>
+	<listitem
+><para
+>No es requereixen coneixements de matemàtiques o d'idioma per a resoldre els trencaclosques del &ksudoku;, però en els trencaclosques de Sudoku de Killer i de Mathdoku es necessita una mica d'habilitat amb l'aritmètica.</para
+></listitem>
+	<listitem
+><para
+>Els símbols que ja estan en el tauler de joc quan es comença el trencaclosques no es poden canviar.</para
+></listitem>
+	<listitem
+><para
+>Només podreu modificar els símbols que heu introduït prèviament.</para
+></listitem>
+	<listitem
+><para
+>Els trencaclosques generats pel &ksudoku; tenen una única solució.</para
+></listitem>
+	<listitem
+><para
+>És possible que els trencaclosques que introduïu no tinguin solució o que en tinguin més d'una, però si provenen d'una font publicada, això probablement vol dir que heu comès un error en introduir les dades.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="variants"
+><title
+>Variants del &ksudoku;</title>
+
+<sect2 id="standard_sudoku"
+><title
+>Trencaclosques de Sudoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>El Sudoku 9x9 estàndard té 9 files, 9 columnes i 9 blocs quadrats de mida 3x3.</para
+></listitem>
+	<listitem
+><para
+>Altres mides del Sudoku estàndard són 4x4 (molt fàcil), 16x16 i 25x25 (no tan fàcils).</para
+></listitem>
+	<listitem
+><para
+>Les variants Jigsaw i Asteca són les mateixes que les del Sudoku 9x9 estàndard, excepte que alguns blocs no són quadrats.</para
+></listitem>
+	<listitem
+><para
+>La variant XSudoku és exactament igual que el Sudoku estàndard amb un requisit addicional: les dues diagonals principals també han de contenir els símbols de l'1 fins al 9 una vegada, i només una vegada. El &ksudoku; ressaltarà les diagonals perquè sigui més fàcil de veure.</para
+></listitem>
+	<listitem
+><para
+>Les variants Nonominó 9x9, Pentominó 5x5 i Tetrominó 4x4 són les mateixes que en un Sudoku estàndard, excepte que alguns blocs no són quadrats.</para
+></listitem>
+	<listitem
+><para
+>La variant 6x6 és la mateixa que la d'un Sudoku estàndard, excepte que els blocs són sis rectangles de 3x2.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="samurai"
+><title
+>Trencaclosques de Samurai</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>El Sudoku Samurai consta de cinc trencaclosques de Sudoku estàndard de 9x9 quadrats cadascun, superposats a les cantonades per quatre blocs de 3x3. Cadascun dels cinc trencaclosques té 9 files, 9 columnes i 9 blocs per a resoldre, i els símbols en els quadrats superposats hauran d'encaixar en les solucions dels dos Sudoku 9x9 estàndard.</para
+></listitem>
+	<listitem
+><para
+>El Sudoku Petit samurai conté cinc Sudokus de 4x4, superposats a les cantonades per quatre quadrats. Cadascun dels cinc trencaclosques té 4 files, 4 columnes i 4 blocs per a resoldre.</para
+></listitem>
+	<listitem
+><para
+>La variant Molí de vent consta de cinc Sudokus de 9x9 estàndard, superposats a les cantonades per dos blocs de 3x3. És com un Sudoku Samurai, però el Sudoku de 9x9 central és més difícil de veure. Vuit dels seus blocs de 3x3 es comparteixen amb les aspes del molí de vent i només el bloc central de 3x3 no ho és. </para
+></listitem>
+	<listitem
+><para
+>La variant Sohei és un altre tipus de Samurai i té quatre trencaclosques Sudoku de 9x9, superposats en dues cantonades per un bloc de 3x3. El bloc de 3x3 central del trencaclosques està buit. </para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="roxdoku"
+><title
+>Trencaclosques en 3D de Roxdoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Les variants Roxdoku es basen en cubs en tres dimensions, però són més fàcils del que semblen. No hi ha files ni columnes. Un trencaclosques Roxdoku de 3x3x3 té 27 cubs petits disposats en un cub més gran de 3x3x3. Aquest conté nou llesques, cadascuna amb cubs petits de 3x3, i aquests són els blocs quadrats que s'han d'emplenar amb els números de l'1 fins al 9. Un Roxdoku de 4x4x4 té dotze llesques de 4x4 i un Roxdoku de 5x5x5 té quinze llesques de 5x5.</para
+></listitem>
+	<listitem
+><para
+>La variant Roxdoku bessó té dos trencaclosques Roxdoku de 3x3x3 que comparteixen una cantonada. La peça de cantonada haurà de formar part de la solució d'ambdós cubs de 3x3x3.</para
+></listitem>
+	<listitem
+><para
+>La variant Roxdoku doble conté dos trencaclosques Roxdoku de 3x3x3 que comparteixen tres peces al llarg d'una vora. Les peces a la vora hauran de formar part de la solució d'ambdós cubs de 3x3x3. </para
+></listitem>
+	<listitem
+><para
+>La variant Roxdoku samurai té nou trencaclosques Roxdoku de 3x3x3. Un cub està al centre i els altres vuit de 3x3x3 se superposen, un a cadascuna de les cantonades del cub central. Cadascuna d'aquestes peces de cantonada haurà de formar part de la solució dels dos cubs de 3x3x3.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="killer"
+><title
+>Variants de Killer i Mathdoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Els trencaclosques Killer tenen dues variants: Tiny Killer (4x4) i Killer Sudoku (9x9). Ambdós tenen files, columnes i blocs quadrats, exactament com en els Sudokus estàndards i segueixen exactament les mateixes regles. També tenen àrees de forma irregular que s'anomenen caixes, on els dígits de cada caixa han de sumar el nombre en lletra petita a la cantonada de la caixa i cap dígit podrà repetir-se dins de la caixa. Normalment, el trencaclosques comença amb només uns pocs quadrats que contenen símbols. Per a trobar la solució, caldrà que utilitzeu l'aritmètica i les regles habituals del Sudoku juntes. Els gràfics de la pantalla dificulten la visualització dels blocs quadrats que hi ha presents, però seran més fàcils de veure si imprimiu el trencaclosques, utilitzant l'element de menú <menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Imprimeix...</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+	<listitem
+><para
+>Les variants Mathdoku, també conegudes com a <trademark
+>Kenken</trademark
+>, no tenen blocs, només restriccions de files i columnes, i tenen caixes on els dígits s'han de sumar, restar, dividir o multiplicar segons els valors i símbols aritmètics en lletra petita que hi ha a les seves cantonades. Es pot repetir un dígit en una caixa de Mathdoku, però no en la mateixa columna o fila. Per exemple, una forma de L de tres quadrats amb un requisit de 5+ podria tenir les solucions 1 3 1 o 2 1 2, sempre que els uns o els dosos no estiguin en la mateixa fila o columna que l'altre. Recordeu que les caixes de resta i de divisió sempre tindran dos quadrats, i els dos dígits de la solució podran aparèixer en qualsevol ordre. Per exemple, una caixa de 2 podria tenir les solucions 1 3 o 3 1, o 2 4, o 4 2, &etc;</para
+></listitem>
+	<listitem
+><para
+>A causa que no hi ha blocs en un trencaclosques Mathdoku, pot tenir qualsevol mida des de 3x3 fins a 9x9, sent el valor predeterminat 6x6. Per a més detalls, vegeu la secció <link linkend="configuration"
+>Configuració del joc</link
+>. Per a començar, hi ha una variant anomenada Mathdoku 101 de mida 4x4.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+</sect1>
+
+<sect1 id="tips"
+><title
+>Les estratègies i consells</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Preneu-vos el vostre temps i no tingueu pressa. El &ksudoku; no és un joc ràpid.</para
+></listitem>
+	<listitem
+><para
+>Pareu atenció en els colors de les files, columnes i blocs. Estan per a ajudar-vos.</para
+></listitem>
+	<listitem
+><para
+>Comproveu que no hi hagi cap símbol duplicat a la fila, columna o bloc on esteu introduint un símbol.</para
+></listitem>
+	<listitem
+><para
+>En cas de dubte, intenteu preveure si un quadrat en el qual ja s'ha introduït un símbol pot ser necessari per a algun altre símbol, el qual d'altra manera no podrà anar a cap altre lloc a causa de les regles amb les files, columnes i blocs.</para
+></listitem>
+	<listitem
+><para
+>Utilitzeu Internet per a cercar consells i estratègies generals per a resoldre els trencaclosques de Sudoku.</para
+></listitem>
+	<listitem
+><para
+>Utilitzeu marcadors de jugada quan detecteu un quadrat o quadrats que tenen poques alternatives, però no podeu decidir immediatament. Els marcadors us permetran estalviar temps i esforç de memòria més endavant, quan s'hagin completat més quadrats. Per als detalls sobre com utilitzar els marcadors, vegeu <link linkend="howto"
+>Com jugar</link
+>.</para
+></listitem>
+	<listitem
+><para
+>Si teniu cap problema, intenteu tornar sobre els vostres passos i vegeu exactament on heu comès un error. Podeu utilitzar els elements de menú <menuchoice
+><guimenu
+>Mou</guimenu
+> <guimenuitem
+>Desfés</guimenuitem
+></menuchoice
+> i <menuchoice
+><guimenu
+>Mou</guimenu
+> <guimenuitem
+>Refés</guimenuitem
+></menuchoice
+>, repetidament si cal, i hi ha una configuració a <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &ksudoku;...</guimenuitem
+></menuchoice
+> que ressalta els errors.</para
+></listitem>
+	<listitem
+><para
+>Fins i tot, el &ksudoku; ofereix una opció de «Consell», intenteu no emprar-la sovint. Recordeu, que si resoleu el trencaclosques millorarà l'activitat cerebral, mentre que utilitzar aquesta característica massa sovint, és fer trampa.</para
+></listitem>
+	<listitem
+><para
+>Si teniu massa problemes per a resoldre cert trencaclosques i heu d'emprar la característica «Consell», llavors potser hauríeu d'intentar-ho fent disminuir el nivell de dificultat, o provar amb un trencaclosques més senzill i bàsic.</para
+></listitem>
+	<listitem
+><para
+>Algunes disposicions de trencaclosques presenten formes de tauler de joc molt específiques. És una bona idea tenir habilitada l'opció de ressaltat fins i tot si us considereu un jugador experimentat.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Resum de la interfície</title
+> <!-- do not change this! -->
+
+<sect1 id="welcome-screen"
+><title
+>La pantalla de benvinguda</title>
+
+<para
+>La pantalla de benvinguda és la primera que veureu quan inicieu el &ksudoku;, utilitzeu la barra d'eines o de menús per a sol·licitar una partida nova. Teniu una llista de tots els tipus i mides de trencaclosques, i podeu fer clic sobre un d'ells per a fer una selecció.</para>
+
+<para
+>Si feu clic al botó marcat com <guibutton
+>Entra a un puzle</guibutton
+>, apareixerà un tauler buit del tipus i mida seleccionats. Aquí podreu utilitzar el ratolí o el teclat per a introduir un trencaclosques des d'una altra font, com un diari. En acabar, utilitzeu l'acció <guilabel
+>Comprova</guilabel
+>, a la barra d'eines o de menús, per a verificar el trencaclosques. Hauria de tenir una única solució. Si és així, podreu començar a resoldre el trencaclosques o potser fer que el &ksudoku; el resolgui. Si no hi ha solució o més d'una solució, probablement vol dir que heu comès un error en algun lloc en introduir les dades.</para>
+
+<para
+>Si feu clic al botó marcat com <guibutton
+>Genera un puzle</guibutton
+>, el &ksudoku; mostrarà un tauler amb alguns quadrats ja emplenats. Dependrà de vosaltres emplenar la resta.</para>
+
+<para
+>Abans de generar un trencaclosques, verifiqueu que la configuració de les llistes desplegables <guilabel
+>Dificultat:</guilabel
+> i <guilabel
+>Simetria:</guilabel
+> sigui del vostre grat. Podreu canviar-les durant una partida, però si es fa després, no tindran cap efecte fins que es generi el següent trencaclosques.</para>
+
+	<note
+><para
+>Si no podeu veure les llistes desplegables <guilabel
+>Dificultat:</guilabel
+> i <guilabel
+>Simetria:</guilabel
+>, utilitzeu l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Mostra la barra d'estat</guimenuitem
+></menuchoice
+> per a assegurar-vos que la barra d'estat està visible.</para
+></note>
+
+<para
+>La llista desplegable <guilabel
+>Dificultat:</guilabel
+> proporciona sis nivells de dificultat, des de <guimenuitem
+>Molt fàcil</guimenuitem
+> fins a <guimenuitem
+>Difícil</guimenuitem
+>, <guimenuitem
+>Diabòlica</guimenuitem
+> i <guimenuitem
+>Sense límits</guimenuitem
+>. Els nivells més fàcils es pot trigar uns minuts a resoldre'ls en un tauler de 9x9. Els nivells de dificultat <guimenuitem
+>Difícil</guimenuitem
+> i <guimenuitem
+>Diabòlica</guimenuitem
+> poden prendre aproximadament una hora i estan destinats a ser equivalents als graus difícils que apareixen als diaris. Els trencaclosques de Samurai i les mides de trencaclosques de 16x16 o 25x25 es trigaran més a resoldre, senzillament perquè hi ha més files, columnes i blocs, i més quadrats a completar.</para>
+
+<para
+>El nivell de dificultat <guimenuitem
+>Diabòlica</guimenuitem
+> generalment requereix una o més conjectures, amb retrocés si l'endevineu incorrectament. Els nivells més baixos generalment es poden resoldre només amb la lògica. El nivell de dificultat <guimenuitem
+>Sense límits</guimenuitem
+> no té cap límit en el nombre de conjectures requerides, com d'aviat es necessita la primera conjectura o com pot de complexa ser la lògica. Es proporciona per a l'interès de jugadors experts, però tendeix a generar trencaclosques <quote
+>inhumans</quote
+> poc interessants i no es recomana per a un ús general.</para>
+
+ <para
+>La llista desplegable <guilabel
+>Simetria:</guilabel
+> proporciona set tipus de simetria, inclosa <guimenuitem
+>Sense simetria</guimenuitem
+>. Això controla la disposició i l'aparença dels quadrats que s'emplenen al començament d'un trencaclosques i té un efecte principalment estètic, excepte que els trencaclosques sense simetria tendeixen a ser una mica més difícils que aquells amb una simetria alta i és menys probable que el &ksudoku; pugui generar un trencaclosques amb dificultat i simetria altes combinades.</para>
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu"
+><title
+>El menú Joc</title>
+
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Comença una partida nova.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Carrega...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Carrega una partida desada.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Desa</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Desa</action
+> el joc a un fitxer de desament predeterminat.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Desa com a...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Desa</action
+> el joc a un fitxer de la vostra elecció.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+></shortcut
+><guimenu
+>Joc</guimenu
+> <guimenuitem
+>Imprimeix...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Imprimeix</action
+> l'estat actual d'un joc bidimensional en una impressora de la vostra elecció. Els contorns dels blocs i els valors originals del trencaclosques estaran impresos en negre. Les altres cel·les, amb els valors emplenats i els valors de la solució s'imprimiran en gris. Hi ha l'opció de només imprimir un trencaclosques o més d'un trencaclosques per pàgina. Vegeu la secció <link linkend="configuration"
+>Configuració del joc</link
+>.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Surt</action
+> del &ksudoku;.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+>El menú Mou</title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Desfés</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Desfà</action
+> la vostra última jugada, repetidament si cal.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Z</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Refés</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Torna a fer</action
+> una jugada que s'ha desfet, repetidament si cal.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mou</guimenu
+> <guimenuitem
+>Consell</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Dona una pista</action
+> emplenant un quadrat buit.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>Mou</guimenu
+> <guimenuitem
+>Resol</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Resol</action
+> el trencaclosques a l'instant.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>Mou</guimenu
+> <guimenuitem
+>Comprova</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Verifica</action
+> la validesa d'un trencaclosques introduït. Si només té una solució, estarà disponible per a jugar. Si no té solució o en té més d'una, probablement ha estat un error en introduir les dades.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>El menú Arranjament</title>
+		<variablelist>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &ksudoku;...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Obre un diàleg per a configurar el &ksudoku;.</action
+> Per a més detalls, vegeu la secció <link linkend="configuration"
+>Configuració del joc</link
+>.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+		<para
+>De manera addicional, el &ksudoku; té la configuració comuna al &kde; i els elements dels menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. Per a obtenir més informació, llegiu les seccions sobre <ulink url="help:/fundamentals/menus.html#menus-settings"
+>El menú Arranjament</ulink
+> i <ulink url="help:/fundamentals/menus.html#menus-help"
+>El menú Ajuda</ulink
+> en els Fonaments del &kde;. </para>
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Preguntes més freqüents</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Vull canviar l'aparença d'aquest joc. Puc fer-ho? </para
+></question>
+ <answer
+><para
+>Els jocs de Sudoku es juguen tradicionalment utilitzant una quadrícula. Els temes no tenen molt sentit aquí, però podreu seleccionar alguns esquemes de color i fons. Per a fer-ho, utilitzeu <menuchoice
+><guimenu
+>Arranjament</guimenu
+><guimenuitem
+>Configura el &ksudoku;...</guimenuitem
+></menuchoice
+> a la barra de menús.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Puc utilitzar el teclat per a jugar a aquest joc? </para
+></question>
+ <answer
+><para
+>Sí. En el &ksudoku;, el teclat sempre està habilitat. Utilitzeu les tecles del cursor per a moure la selecció, els caràcters numèrics o alfabètics per a introduir els símbols i la tecla &Maj; per a aplicar els marcadors.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>On es troben les puntuacions més altes?</para
+></question>
+ <answer
+><para
+>El &ksudoku; no té aquesta característica.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Configuració del joc</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+>Opcions del joc</title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>En imprimir, intenta ajustar més d'un puzle en una pàgina</guilabel
+></term>
+			<listitem>
+			<para
+>Alterna l'opció per a imprimir més d'un trencaclosques per pàgina quan hi caben.</para>
+			<para
+>Si aquesta opció està marcada, els trencaclosques s'imprimiran quan no n'hi càpiguen més en una pàgina o quan finalitzi el &ksudoku;. En cas contrari, s'imprimirà un trencaclosques immediatament.</para>
+			<para
+>No es poden imprimir els trencaclosques en tres dimensions.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostra el ressaltat en els puzles en 2D</guilabel
+></term>
+			<listitem
+><para
+>Alterna l'opció de ressaltat del &ksudoku; per als trencaclosques bidimensionals.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostra els errors</guilabel
+></term>
+			<listitem
+><para
+>Alterna l'opció per a ressaltar els errors.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostra el ressaltat en els puzles en 3D</guilabel
+></term>
+			<listitem
+><para
+>Alterna l'opció de ressaltat del &ksudoku; per als trencaclosques tridimensionals.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mida del puzle Mathdoku (3-9)</guilabel
+></term>
+			<listitem
+><para
+>Tria una mida per als trencaclosques Mathdoku, des de 3 (molt fàcil) fins a 9 (molt difícil), i la mida 6 com a predeterminada.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Configuració només per als puzles en 3D</guilabel
+></term>
+			<listitem
+><para
+>Aquestes cinc opcions de configuració ajusten el ressaltat i la visibilitat de les cel·les en els trencaclosques tridimensionals. La idea és facilitar la visualització de les relacions entre les cel·les, especialment si es troben al darrere d'altres cel·les.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+		<note
+><title
+>Nota:</title
+><para
+>Es recomana tenir habilitades les opcions de ressaltat, fins i tot per als jugadors més experimentats, ja que els ajudarà a veure les limitacions reals del tauler de joc.</para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Crèdits i llicència</title
+> <!-- do not change this! -->
+
+<para
+>&ksudoku; </para>
+
+<!--List all the copyright holders here-->
+<para
+>Copyright 2005-2007 Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Copyright 2006-2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Johannes Bergmeier <email
+>johannes.bergmeier@gmx.net</email
+></para>
+
+<para
+>Copyright 2011 Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Algorismes nous per a la resolució i generació 2011 per en David Bau, <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
+>vegeu el lloc web</ulink
+>.</para>
+
+<para
+>Copyright de la documentació 2005 Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Copyright de la documentació 2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+></para>
+
+<para
+>Copyright de la documentació 2011-2020 Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

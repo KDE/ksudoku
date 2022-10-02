@@ -1,0 +1,868 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY ksudoku "Ksudoku">
+<!ENTITY kappname "&ksudoku;"
+> 
+  <!ENTITY kappversion "0.5"
+><!--Applicaion version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % French "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+ 
+<book lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Le manuel de &kappname;</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immidiate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+&traducteurStanislasZeller; 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+ 
+<date
+>2007-11-14</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion;</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+ 
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Cette documentation décrit le jeu &kappname; version &kappversion;</para>
+</abstract>
+ 
+<!--List of relevan keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>jeu</keyword
+> <!-- do not change this! -->
+	<keyword
+>ksudoku</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>logique</keyword>
+	<keyword
+>plateau</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>un joueur</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>puzzle</keyword>
+</keywordset>
+</bookinfo>
+<!--Content begins here: -->
+<chapter id="introduction"
+><title
+>Introduction</title
+> <!-- do not change this! -->
+	<note
+><title
+>Type de jeu : </title
+><para
+>Logique, plateau</para
+></note
+><!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<note
+><title
+>Nombre possible de joueurs : </title
+><para
+>Un</para
+></note
+><!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+ 	<para
+>&kappname; est un puzzle utilisant la logique.</para>
+<para
+>Le joueur doit remplir une grille pour que chaque colonne, ligne et bloc de cases du plateau de jeu contient une instance de chaque chiffre.</para>
+<para
+>Selon les préférences et le niveau de difficulté, quelques parties démarrent avec un plateau partiellement rempli, pendant que d'autres s'affichent avec un plateau vierge.</para>
+<para
+>Il existe une centaine de variations différentes du Sudoku. La variante la plus commune du jeu a une grille de 9x9 cases et utilise l'alphabet Arabe numérique pour les chiffres. La grille est elle même divisée en 9 secteurs de 3x3 chiffres. Le problème est que chaque chiffre ne peut être utilisé qu'une fois par ligne, colonne et secteur. </para>
+	<note>
+		<title
+>Remarque : </title>
+		<para
+>Cela prend du temps et de la concentration pour compléter chaque partie. Cependant, résoudre une partie de Sudoku augmente l'activité générale du cerveau et par conséquent est hautement recommandé.</para>
+	</note>
+</chapter>
+ 
+<chapter id="howto"
+><title
+>Comment jouer</title
+> <!-- do not change this! -->
+<!--IMPORTANT: If the game has no defined objective, please remove the below line.-->
+	<note
+><title
+>Objectif : </title
+><para
+>Remplir la grille pour que chaque colonne, ligne et case de secteur sur le plateau de jeu contient seulement une instance de chaque chiffre.</para
+></note
+><!--Describe the objective of the game.-->
+<!--How to play description. Don't be to specific on rules as they have a separate section in this document-->
+	<para
+>Quand le jeu démarre, vous êtes invité à choisir quel type de jeu vous intéresse.</para>
+<note
+><title
+>Remarque : </title
+><para
+>L'expérience de jeu peut être légèrement modifié selon le type de jeu que vous choisissez.</para
+></note>
+<para
+>Observez le champ gauche du jeu. Il y a une liste de sélection qui contient tous les chiffres disponibles que vous utilisez dans la partie actuelle.</para>
+<note
+><title
+>Remarque : </title
+><para
+>La configuration de ces chiffres varie selon le type de jeu que vous choisissez.</para
+></note>
+<para
+>Remarque sur l'extrémité du plateau de jeu. Les lignes épaisses qui entourent les secteurs. Tous les secteurs doivent être complétés en utilisant les chiffres disponibles, de telle façon que chaque chiffre est utilisé à l'intérieur d'un secteur une fois et une seule fois.</para>
+<para
+>Maintenant vous pouvez saisir les chiffres à l'intérieur des cases vacantes sur le plateau de jeu. Vous pouvez le faire en sélectionnant le chiffre que vous souhaitez à partir de la liste de sélection sur la gauche, et ensuite en utilisant votre souris pour cliquer sur la case vacante sur le plateau de jeu.</para>
+<para
+>Remarquez que les cases modifient leurs couleurs quand vous passez la souris sur elles. Cela permet de vous aider à suivre les règles de &kappname;. Utilisez les lignes verticales et horizontales pour vérifier si le chiffre, que vous souhaitez saisir dans la case vacante, est toujours utilisé dans une ligne verticale ou horizontale dont la case fait parti. La coloration met aussi en valeur le secteur lequel, si vous vous rappelez, ne doit aussi contenir qu'une instance de chaque chiffre.</para>
+<para
+>Saisissez les chiffres en accord avec les règles jusqu'à ce que la grille est rempli. Ksudoku va vérifier toutes les entrées, vous corriger ou vous donner la solution. </para>
+</chapter>
+ 
+<chapter id="rules_and_tips"
+><title
+>Règles du jeu, stratégies et astuces</title
+> <!-- do not change this! -->
+	<!--This section has to do with game rules. Please give a detailed description of those using lists or paragraphs.-->
+	<sect1 id="rules">
+		<title
+>Règles du jeu générale</title>
+		<para
+>Les règles de &kappname; sont assez simples</para>
+		<itemizedlist>
+		<listitem
+><para
+>Chaque &kappname; peut prendre quelques heures pour être résolu, cela dépend de la taille du plateau de jeu et du niveau de difficulté.</para
+></listitem>
+		<listitem
+><para
+>Chaque case ne peut accueillir qu'un et un seul chiffre.</para
+></listitem>
+		<listitem
+><para
+>Chaque ligne horizontale (comme définie par le plateau de jeu) ne peut contenir seulement qu'un chiffre.</para
+></listitem>
+		<listitem
+><para
+>Chaque ligne verticale (comme définie par le plateau de jeu) ne peut contenir seulement qu'un chiffre.</para
+></listitem>
+		<listitem
+><para
+>Chaque sous-grille ou section (comme définie par le plateau de jeu) ne peut contenir seulement qu'un chiffre.</para
+></listitem>
+		</itemizedlist>
+		<note
+><title
+>Remarque : </title
+><para
+>La configuration de ces chiffres varie selon le type de jeu que vous choisissez.</para
+></note>
+		<itemizedlist>
+			<listitem
+><para
+>Un savoir mathématique ou linguistique n'est pas requis pour résoudre &kappname;.</para
+></listitem>
+			<listitem
+><para
+>La partie peut apparaître partiellement résolu, cela dépend de la difficulté choisie. Dans tous les cas, les chiffres sur le plateau de jeu ne sont pas modifiables.</para
+></listitem>
+			<listitem
+><para
+>Vous pouvez seulement modifier les chiffres que vous avez saisi précédemment.</para
+></listitem>
+			<listitem
+><para
+>Les parties générées par &kappname; n'ont qu'une seule solution.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+	<sect1 id="tips">
+		<title
+>Stratégies et astuces</title>
+		<itemizedlist>
+			<listitem
+><para
+>Prenez votre temps et ne vous précipitez pas. &kappname; n'est pas un jeu de rapidité.</para
+></listitem>
+		<listitem
+><para
+>Fixez votre attention sur la couleur des lignes, colonnes et sections. Ils sont la pour vous aider dans le jeu.</para
+></listitem>
+		<listitem
+><para
+>Soyez sur qu'un chiffre dupliqué existe toujours dans la ligne/colonne/section que vous allez remplir.</para
+></listitem>
+		<listitem
+><para
+>En cas de doute, essayez de prévoir si une case que vous allez remplir avec un chiffre n'est pas destinée à un autre chiffre, lequel ne peut pas aller autre part à cause de la violation de la règle ligne/colonne/section.</para
+></listitem>
+		<listitem
+><para
+>Si vous avez des problèmes, essayez de revenir sur vos pas et voir exactement où vous avez fait une erreur.</para
+></listitem>
+		<listitem
+><para
+>Même si &kappname; vous fournit une option « Conseil », n'essayez pas de l'utiliser trop souvent. Souvenez vous que résoudre le jeu par vous même stimule votre activité cérébrale, alors que l'utilisation de la fonctionnalité « Conseil » vous permet de tricher trop souvent.</para
+></listitem>
+			<listitem
+><para
+>Si vous avez trop de problèmes pour résoudre certaines parties, utilisez simplement la fonctionnalité « Conseil ». Ensuite vous pourrez peut être baisser le niveau de difficulté, ou essayer simplement un niveau de jeu plus basique.</para
+></listitem>
+		<listitem
+><para
+>Fonctionnalité d'affichage du jeu spécifique aux formes de l'aire de jeu. C'est une bonne idée d'avoir l'option de coloration activée même si vous vous considérez comme un joueur expérimenté.</para
+></listitem>
+		</itemizedlist>
+	</sect1>
+</chapter>
+  
+<chapter id="interface"
+><title
+>Vue générale de l'interface</title
+> <!-- do not change this! -->
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu">
+	<title
+>Le menu <guimenu
+>Jeu</guimenu
+></title>
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Nouveau</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Démarre une nouvelle partie</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Charger...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Charge une partie enregistrée</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Enregistrer</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Enregistre</action
+> la partie actuelle comme fichier par défaut.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Enregistrer comme...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Enregistre</action
+> la partie actuelle comme un fichier de votre choix.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Quitter</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Quitte</action
+> &kappname;.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+>Le menu <guimenu
+>Déplacer</guimenu
+></title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Annuler</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Annuler</action
+> votre dernier coup.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Maj;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Rétablir</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Rétablir</action
+> un coup qui a été annulé.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Conseil</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Donne un conseil</action
+> par le clignotement d'une paire de cases correspondante.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Résoudre</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Résoudre instantanément</action
+> la partie.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>Déplacer</guimenu
+> <guimenuitem
+>Vérifier</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Vérifie</action
+> la validité des entrées.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>Le menu <guimenu
+>Configuration</guimenu
+></title>
+		<variablelist>
+			<varlistentry>
+				<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guisubmenu
+>Barre d'outils</guisubmenu
+> <guimenuitem
+>Barre principale</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Affiche ou cache la barre principale.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-hide-matching">
+				<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guisubmenu
+>Barre d'outils</guisubmenu
+> <guimenuitem
+>Barre d'outils d'actions</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Affiche ou cache la barre d'actions.</para
+></listitem>
+			</varlistentry>
+
+			<varlistentry id="settings-menu-statusbar">
+				<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Afficher la barre d'état</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Affiche ou cache la barre d'état.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-shortcuts">
+				<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer les raccourcis clavier...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Affiche une boîte de dialogue de configuration des raccourcis &kde; standard</action
+> pour modifier les raccourcis clavier de &kappname;.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-toolbar">
+				<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer la barre d'outils...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Affiche une boîte de dialogue &kde; standard où vous pouvez configurer les icônes de la barre d'outils.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer &kappname;...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Ouvre une boîte de dialogue pour configurer &kappname;.</action
+> Se référer à la section de <link linkend="configuration"
+>Configuration du jeu</link
+> pour plus de détails.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>Le menu <guimenu
+>Aide</guimenu
+></title>
+<para
+>&kappname; a un menu par défaut &kde; <guimenu
+>Aide</guimenu
+> comme décrit ci dessous, avec un ajout : </para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Aide</guimenu
+> <guimenuitem
+>Page personnelle</guimenuitem
+> </menuchoice
+></term>
+<listitem>
+<para
+>Ouvre le site web de &kappname; de Sourceforge.net dans &konqueror;.</para>
+</listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Les entrées par défaut &kde; du menu <guimenu
+>Aide</guimenu
+> sont : </para>
+&help.menu.documentation; </sect1>
+</chapter>
+  
+<chapter id="faq"
+><title
+>Foire aux questions</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Je veux modifier la façon dont le jeux s'affiche. Est-ce possible ? </para
+></question>
+ <answer
+><para
+>Les jeux de Sudoku sont traditionnellement joués en utilisant une grille. Les thèmes n'auraient pas vraiment de sens ici. Cependant, vous pouvez sélectionner le réglage des chiffres utilisé dans le jeu. Utilisez <menuchoice
+><guimenu
+>Configuration</guimenu
+><guimenuitem
+>Configurer &kappname;...</guimenuitem
+></menuchoice
+> sur la barre de menu.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>J'ai modifié les chiffres dans la boîte de dialogue de configuration et maintenant le plateau de jeu entier est rempli de point d'interrogation. Quel est le problème ?</para
+></question>
+ <answer
+><para
+>Chaque réglage contient un nombre limité de chiffres possibles. Si vous avez choisi le réglage qui contient le moins de chiffres que votre partie actuelle requiert, l'application affichera des points d'interrogation pour compléter. Modifiez le réglage pour éviter ces problèmes.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Puis-je utiliser le clavier pour jouer à ce jeu ? </para
+></question>
+ <answer
+><para
+>Oui. Dans &kappname;, le clavier est toujours activé. Veuillez utiliser les flèches pour déplacer la sélection, les caractères numériques pour saisir les chiffres, et la touche &Maj; pour appliquer le choix.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Où se trouve les meilleurs scores ?</para
+></question>
+ <answer
+><para
+>&kappname; n'implante pas cette fonctionnalité.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+ 
+</qandaset>
+</chapter>
+ 
+<chapter id="configuration"
+><title
+>Configuration du jeu</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+>Options du <guilabel
+>jeu</guilabel
+></title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Afficher le surlignage</guilabel
+></term>
+			<listitem
+><para
+>Afficher l'option de surlignage &kappname;</para>
+					<note
+><title
+>Remarque : </title
+><para
+>Avoir cette option activée est recommandé même pour les joueurs expérimentés, cela aide pour voir les difficultés de la partie en cours.</para
+></note
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Afficher les erreurs</guilabel
+></term>
+			<listitem
+><para
+>Afficher en surlignage l'entrée non-valable.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+</sect1>
+
+<sect1 id="layout-options"
+><title
+>Options de <guilabel
+>thèmes des chiffres</guilabel
+></title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Formes simples</guilabel
+></term>
+			<listitem
+><para
+>Affiche ou cache l'utilisation des formes simples pour les pictogrammes du jeu.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Dés</guilabel
+></term>
+			<listitem
+><para
+>Affiche ou cache l'utilisation des dés pour les pictogrammes du jeu.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Digitales</guilabel
+></term>
+			<listitem
+><para
+>Affiche ou cache l'utilisation des nombres Arabe pour les pictogrammes du jeu.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Petites lettres</guilabel
+></term>
+			<listitem
+><para
+>Affiche ou cache l'utilisation des petites lettres latines pour les pictogrammes du jeu.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Lettres majuscules</guilabel
+></term>
+			<listitem
+><para
+>Affiche ou cache l'utilisation des lettres majuscules latines pour les pictogrammes du jeu.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+	<note
+><title
+>Remarque : </title
+><para
+>Chaque réglage contient un nombre limité de chiffres possibles. Si vous avez choisi le réglage qui contient le moins de chiffres que votre partie actuelle requiert, l'application affichera des points d'interrogation pour compléter. Modifiez le réglage pour éviter ces problèmes.</para
+></note>
+</sect1>
+</chapter>
+ 
+<chapter id="credits"
+><title
+>Remerciements et Licence</title
+> <!-- do not change this! -->
+<!--This chapter is for credits and licenses.-->
+ 
+<para
+>&kappname; </para>
+
+<!--List all the copyright holders here-->
+<para
+>Copyright &kappname; 2005-2007 Francesco Rossi <email
+>redsh@email.it</email
+> </para>
+<para
+>Copyright 2006-2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Johannes Bergmeier <email
+>johannes.bergmeier@gmx.net</email
+> </para>
+<para
+>Copyright de la documentation 2005 Francesco Rossi <email
+>redsh@email.it</email
+> </para>
+<para
+>Copyright de la documentation 2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+> </para>
+
+<para
+>Traduction française par &StanislasZeller;.</para
+> 
+&underFDL; &underGPL; </chapter>
+  
+<appendix id="installation">
+<title
+>Installation</title>
+ 
+&install.intro.documentation;
+ 
+ 
+<sect1 id="Compilation">
+<title
+>Compilation et Installation</title>
+&install.compile.documentation; </sect1>
+</appendix>
+ 
+&documentation.index; 
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

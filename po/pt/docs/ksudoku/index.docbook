@@ -1,0 +1,1007 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY ksudoku "KSudoku">
+<!ENTITY kappname "&ksudoku;">
+  <!ENTITY kappversion "1.0"
+><!--Application version. Use this variable everywhere it's needed.-->
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Portuguese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="ksudoku" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manual do &kappname;</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immediate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Ian</firstname
+> <surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+	</author>
+<othercredit role="translator"
+><firstname
+>José</firstname
+><surname
+>Pires</surname
+><affiliation
+><address
+><email
+>zepires@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<copyright>
+	<year
+>2011</year>
+	<holder
+>Ian Wadham</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2011-11-24</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>&kappversion; no &kde; 4.8</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Esta documentação descreve o jogo &kappname; na versão &kappversion;</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>jogo</keyword
+> <!-- do not change this! -->
+	<keyword
+>ksudoku</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>lógica</keyword>
+	<keyword
+>tabuleiro</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>um jogador</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>puzzle</keyword>
+</keywordset>
+</bookinfo>
+
+<!--Content begins here: -->
+
+<chapter id="introduction"
+><title
+>Introdução</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Tipo de jogo:</title
+><para
+>Lógica, Tabuleiro</para
+></note>
+
+	<note
+><title
+>Número de jogadores possíveis:</title
+><para
+>Um</para
+></note>
+
+<para
+>O &kappname; é um 'puzzle' de colocação de símbolos baseados em lógica.</para>
+
+<para
+>O jogador tem de preencher uma grelha com símbolos de modo que cada coluna, linha e bloco do tabuleiro contenha apenas uma instância de cada símbolo. No &kappname;, os símbolos são normalmente os números 1 a 9, mas também poderão ser as letras A a P ou A a Y nos 'puzzles' maiores. Os 'puzzles' começam com o tabuleiro parcialmente preenchido e a sua tarefa é preencher o resto.</para>
+
+<para
+>Quando iniciar um jogo, poderá escolher entre vários tipos e tamanhos do Sudoku. Poderá fazer então o &kappname; gerar um 'puzzle' para você resolver ou poderá começar com um tabuleiro vazio e introduzir um 'puzzle' de outra fonte, como um jornal, e depois fazer com que o &kappname; o valide ou talvez resolva.</para>
+
+<para
+>Existem centenas de variantes do Sudoku existentes e o &kappname; oferece uma boa selecção delas. A variante mais comum do jogo tem uma grelha de quadrados 9x9 e usa números Árabes para os símbolos. Como restrição extra, a grelha está dividida em 9 sectores de quadrados 3x3. O problema é - cada símbolo só pode ser usado uma vez por cada linha, coluna e bloco.</para>
+
+	<note
+><para
+>Leva bastante tempo e concentração a completar cada jogo. Contudo, a resolução de puzzles de Sudoku ajuda a aumentar a actividade global do cérebro, sendo desta forma altamente recomendado.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Como Jogar</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Objectivo:</title
+><para
+>Preencher a grelha de modo que cada coluna, linha ou mesmo cada bloco quadrado no campo de jogo contenha apenas uma instância de cada símbolo.</para
+></note>
+
+<para
+>Quando o jogo começa, é-lhe pedido para escolher o tipo de jogo e tamanho do tabuleiro que lhe interessa. Poderá introduzir um 'puzzle' de outra fonte ou pedir ao &kappname; para gerar um. O gerador tem várias opções de dificuldade e algumas de simetria, que afectam o padrão sobre o qual é gerado o 'puzzle'. A sua experiência do jogo irá depender dos valores que escolher para estas opções.</para>
+
+<para
+>Quando aparecer o tabuleiro, dê uma vista de olhos do lado esquerdo. Existe uma lista de selecção que contém todos os símbolos disponíveis para o jogo actual. O conjunto de símbolos depende do tamanho do jogo que escolher. Os jogos poderão ter 4, 9, 16 ou 25 símbolos. Os primeiros dois conjuntos usam os números de 1 a 4 e de 1 a 9: os outros usam as letras A a P ou A a Y.</para>
+
+<para
+>Primeiro, repare nos limites do campo de jogo. As linhas pretas grossas definem os blocos. Cada um destes blocos terá de ser completo com os símbolos disponíveis, de tal forma que cada símbolo seja usado dentro da área do sector uma e só uma vez. O mesmo se aplica para as linhas e colunas no tabuleiro.</para>
+
+<para
+>Agora poderá começar a introduzir os símbolos nos espaços em branco do campo de jogo. Podê-lo-á fazer se seleccionar o símbolo que deseja introduzir na lista de selecção à esquerda, usando então o seu rato para carregar no quadrado livre do campo de jogo. Em alternativa, poderá passar o cursor do rato sobre um quadrado vazio e depois usar o teclado para introduzir um símbolo.</para>
+
+<para
+>Os 'puzzles' Roxdoku (a três dimensões) usam sempre o rato para definir um pequeno cubo para um valor e usam um <emphasis
+>duplo</emphasis
+>-click. Quando rodar o cubo grande, carregando e arrastando com o rato, é mais fácil de ver quais os valores que estão nos pequenos cubos em segundo plano, caso carregue <emphasis
+>entre</emphasis
+> os pequenos cubos, não sobre eles.</para>
+
+<para
+>Algumas vezes é útil introduzir marcadores ou notas, que são pequenos símbolos dentro de um quadrado. Estes não têm qualquer influência sobre a solução, mas podê-lo-ão ajudar a manter um registo das ideias que teve, especialmente quando existir uma escolha entre várias alternativas e se não tiver ainda informação suficiente para decidir entre elas. Para introduzir um marcador ou nota, carregue com o botão direito do rato ou mantenha pressionada a tecla &Shift; ao usar o teclado.</para>
+
+<para
+>Para limpar os símbolos de um quadrado, passe com o cursor do rato sobre o mesmo e carregue na tecla <keycap
+>Delete</keycap
+> ou <keycap
+>Backspace</keycap
+> no teclado ou carregue com o &RMB; no quadrado.</para>
+
+<para
+>Repare que os quadrados mudam de cor enquanto passa o seu rato por cima deles. Isso é feito para o ajudar a manter-se dentro das regras do &kappname;. Use as linhas verticais e horizontais para verificar se o símbolo que está prestes a introduzir no lugar livre já existe em qualquer ponto da linha vertical ou horizontal da qual esse quadrado faz parte. A coloração também realça o sector que, se o utilizador se lembrar, também só pode conter uma única instância de cada símbolo. Se não precisar do realce, poderá usar a opção <menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Configurar o &kappname;...</guimenuitem
+></menuchoice
+> para o desligar.</para>
+
+<para
+>Continue a introduzir os símbolos de acordo com as regras, até que todo o campo de jogo tenha sido preenchido. Neste ponto, o &kappname; irá verificar se todos os elementos introduzidos são válidos e corrigi-lo-á ou continuará à espera da solução.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Regras do Jogo, Estratégias e Sugestões</title
+> <!-- do not change this! -->
+
+<sect1 id="rules"
+><title
+>Regras Gerais do Jogo</title>
+
+<para
+>As regras do &kappname; são bastante simples.</para>
+	<itemizedlist>
+	<listitem
+><para
+>Dependendo do tamanho do tabuleiro do jogo e do nível de dificuldade escolhido, cada puzzle individual do &kappname; poderá levar até algumas horas a resolver.</para
+></listitem>
+	<listitem
+><para
+>Cada quadrado pode conter um e apenas um símbolo.</para
+></listitem>
+	<listitem
+><para
+>Cada linha horizontal (como está definida no tabuleiro de jogo) poderá conter um dos símbolos apenas uma vez.</para
+></listitem>
+	<listitem
+><para
+>Cada coluna vertical (como está definida no tabuleiro de jogo) poderá conter um dos símbolos apenas uma vez.</para
+></listitem>
+	<listitem
+><para
+>Cada bloco (como está definido no tabuleiro de jogo) poderá conter um dos símbolos apenas uma vez.</para
+></listitem>
+	</itemizedlist>
+
+	<note
+><title
+>Nota:</title
+><para
+>O conjunto de símbolos varia dependendo do tipo de jogo que escolher.</para
+></note>
+
+	<itemizedlist>
+	<listitem
+><para
+>Não é necessário qualquer conhecimento matemático ou linguístico para resolver os 'puzzles' do &kappname;.</para
+></listitem>
+	<listitem
+><para
+>Os símbolos que já estão no tabuleiro, quando o 'puzzle' começa, não podem ser alterados.</para
+></listitem>
+	<listitem
+><para
+>Só poderá modificar os símbolos que tiver introduzido previamente.</para
+></listitem>
+	<listitem
+><para
+>Os 'puzzles' gerados pelo &kappname; só têm uma solução.</para
+></listitem>
+	<listitem
+><para
+>Os 'puzzles' que introduzir poderão não ter solução ou ter mais que uma solução; contudo, se forem de uma fonte publicada, isto poderá significar que fez um erro de introdução de dados.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="variants"
+><title
+>Variantes do &kappname;</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>O Sudoku Normal 9x9 tem 9 linhas, 9 colunas e 9 blocos quadrados de tamanho 3x3.</para
+></listitem>
+	<listitem
+><para
+>Os outros tamanhos do Sudoku Normal são o 4x4 (muito fácil), o 16x16 e o 25x25 (não tão fáceis).</para
+></listitem>
+	<listitem
+><para
+>A variação em 'Puzzle' é a mesma do Sudoku normal, exceptuando que alguns blocos não são quadrados.</para
+></listitem>
+	<listitem
+><para
+>A variante do XSudoku é exactamente igual à do Sudoku normal, apenas com mais um requisito: as duas diagonais principais também deverão ter apenas uma e só uma vez cada um dos símbolos 1 a 9. O &kappname; realça as diagonais para que isso seja mais fácil de ver.</para
+></listitem>
+	<listitem
+><para
+>As variantes do Roxdoku são baseadas em cubos tridimensionais, mas são mais simples do que parecem. Não existem linhas nem colunas. Um 'puzzle' do Roxdoku 3x3x3 tem 27 pequenos cubos organizados num cubo 3x3x3 maior. Este contém nove fatias, cada uma contendo pequenos cubos 3x3, sendo estes os blocos quadrados que deverão ser preenchidos com os números de 1 a 9. Um Roxdoku 4x4x4 tem doze fatias 4x4 e um Roxdoku 5x5x5 tem quinze fatias 5x5.</para
+></listitem>
+	<listitem
+><para
+>O Sudoku Samurai consiste em cinco 'puzzles' normais do Sudoku, de 9x9 quadrados, sobrepondo-se nos cantos com quatro blocos de 3x3. Cada um dos 'puzzles' tem 9 linhas e colunas para resolver, mas só existem 41 blocos para resolver, em vez de 45, devido à sobreposição.</para
+></listitem>
+	<listitem
+><para
+>O Sudoku Samurai Minúsculo consiste em cinco 'puzzles' 4x4, sobrepondo-se nos cantos em quatro quadrados. Cada um dos cinco 'puzzles' tem 4 linhas, 4 colunas e 4 blocos para resolver.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="tips"
+><title
+>Estratégias e Dicas</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Leve o tempo que quiser e não se apresse. O &kappname; não é um jogo rápido.</para
+></listitem>
+	<listitem
+><para
+>Preste atenção às colorações da linha, coluna e bloco. Estas existem para o ajudar no jogo.</para
+></listitem>
+	<listitem
+><para
+>Certifique-se que não existe já um símbolo duplicado na linha/coluna/bloco onde vai introduzir.</para
+></listitem>
+	<listitem
+><para
+>Se tiver dúvidas, tente antever se um quadrado onde está a introduzir um símbolo possa ser necessário para outro símbolo que não possa ir para outro lado, derivado da violação da regra da linha/coluna/bloco.</para
+></listitem>
+	<listitem
+><para
+>Use a Internet para procurar por dicas e estratégias gerais para resolver 'puzzles' do Sudoku.</para
+></listitem>
+	<listitem
+><para
+>Use os marcadores quando encontrar um quadrado ou quadrados que tenham apenas poucas alternativas, mas que não consiga ainda decidir quais são. Os marcadores poupar-lhe-ão tempo e esforço de memória para mais tarde, quando já tiver preenchido mais quadrados. Veja mais detalhes <link linkend="howto"
+>Como Jogar</link
+> para saber como usar os marcadores.</para
+></listitem>
+	<listitem
+><para
+>Se tiver a ter problemas, tente fazer um seguimento dos seus passos e ver exactamente onde é que cometeu um erro. Poderá usar as opções <menuchoice
+><guimenu
+>Mover</guimenu
+> <guimenuitem
+>Desfazer</guimenuitem
+></menuchoice
+> e <menuchoice
+><guimenu
+>Mover</guimenu
+> <guimenuitem
+>Refazer</guimenuitem
+></menuchoice
+> as vezes que forem necessárias; existe também uma opção em <menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Configurar o &kappname;...</guimenuitem
+></menuchoice
+> que realça os erros.</para
+></listitem>
+	<listitem
+><para
+>Ainda que o &kappname; ofereça uma opção de 'Dica' para si, tente não usá-la com muita frequência. Lembre-se que a resolução do 'puzzle' por si só aumenta a sua actividade cerebral, enquanto a funcionalidade de 'Dica' usada com frequência é batota.</para
+></listitem>
+	<listitem
+><para
+>Se tiver muitos problemas a resolver um dado 'puzzle', e se precisar mesmo de usar a funcionalidade de 'Dica', então provavelmente deveria diminuir o nível de dificuldade ou tentar um 'puzzle' mais simples e básico.</para
+></listitem>
+	<listitem
+><para
+>Algumas disposições de 'puzzles' oferecem formas muito específicas do tabuleiro de jogo. É uma boa ideia activar a opção de realce, mesmo que se considere um jogador experiente.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Apresentação à Interface</title
+> <!-- do not change this! -->
+
+<sect1 id="welcome-screen"
+><title
+>O Ecrã de Boas-Vindas</title>
+
+<para
+>O Ecrã de Boas-Vindas é a primeira coisa que vê quando iniciar o &kappname; ou use a barra de ferramentas ou menu para pedir um novo jogo. Ele tem uma lista com todos os tipos e tamanhos de 'puzzles', podendo carregar num deles para o seleccionar.</para>
+
+<para
+>Se carregar no botão 'Introduzir um Puzzle', irá aparecer um tabuleiro vazio do tipo e tamanho seleccionados. Aqui poderá usar o rato u teclado para introduzir um 'puzzle' de outra fonte, como um jornal. Quando tiver terminado, use o botão 'Verificar' da barra de ferramentas ou do menu para verificar o 'puzzle'. Deverá ter apenas uma solução. Se for o caso, poderá começar a resolver o 'puzzle' ou pedir ao &kappname; para o resolver por si. Se não existir nenhuma solução ou existir mais que uma, provavelmente significa que cometeu um erro de introdução de dados algures.</para>
+
+<para
+>Se carregar no botão 'Gerar um Puzzle', o &kappname; irá mostrar um 'puzzle' já com alguns quadrados preenchidos. Depende de si preencher o resto.</para>
+
+<para
+>Antes de gerar um 'puzzle', verifique se a configuração dos botões de Dificuldade e Simetria estão a seu gosto. Podê-los-á alterar durante um jogo, mas não farão efeito até que seja gerado o 'puzzle' seguinte.</para>
+
+	<note
+><para
+>Se não conseguir ver os botões de Dificuldade e Simetria, use o item do menu <menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Mostrar a Barra de Estado</guimenuitem
+></menuchoice
+> para se certificar que a barra de estado está visível.</para
+></note>
+
+<para
+>O botão de Dificuldade oferece seis níveis de dificuldade, do Muito Fácil ao Difícil, Diabólico e Ilimitado. Os níveis mais fáceis poderão levar alguns minutos a resolver um tabuleiro 9x9. Os níveis Difícil e Diabólico poderão levar cerca de uma hora e pretendem ser equivalentes aos níveis de dificuldade encontrados nos jornais. Os 'puzzles' Samurai e 16x16 ou 25x25 irão levar mais tempo a resolver, simplesmente porque existem mais linhas, colunas e blocos para preencher.</para>
+
+<para
+>O nível Diabólico normalmente necessita de uma ou mais adivinhas, com a hipótese de voltar atrás se se enganar. Os níveis mais baixos poderão ser resolvidos normalmente com lógica somente. O nível Ilimitado não tem limites sobre o número de adivinhas necessário, quando é necessária a primeira adivinha ou quão complexa poderá ser a lógica. É fornecido apenas para o interesse dos jogadores experientes, mas tende a gerar 'puzzles' quase impossíveis e desinteressantes, não sendo recomendado para o uso geral.</para>
+
+ <para
+>O botão de Simetria oferecem sete tipos de simetria, incluindo a 'Sem Simetria' Isto controla a disposição e aparência dos quadrados que são preenchidos no início de um 'puzzle' e têm apenas um efeito estético, excepto no caso dos 'puzzles' sem simetria, que tendem a ser mais complicados que os que possuem alta simetria, sendo menos provável que o &kappname; gere um 'puzzle' com dificuldade elevada e uma alta simetria conjugadas.</para>
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu"
+><title
+>O Menu <guimenu
+>Jogo</guimenu
+></title>
+
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Inicia um novo jogo.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Abrir...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Abrir um jogo gravado.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Gravar</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Grava</action
+> o jogo actual como um ficheiro de gravação predefinido.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Gravar Como...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Grava</action
+> o jogo actual como um ficheiro à sua escolha.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Imprimir...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Imprime</action
+> o estado actual do jogo numa impressora à sua escolha. Os contornos dos blocos e os valores originais dos 'puzzles' são impressos a preto. As outras células, os valores preenchidos e os valores da solução são impressos a cinzento. Existe uma opção para imprimir apenas um 'puzzle' ou para imprimir mais que um por cada página. Veja a <link linkend="configuration"
+>Configuração do Jogo</link
+>.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Sair</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Sai</action
+> do &kappname;.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+>O Menu <guimenu
+>Mover</guimenu
+></title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Movimento</guimenu
+> <guimenuitem
+>Desfazer</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Anula</action
+> a sua última jogada; poderá ser repetida as vezes que desejar.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Movimento</guimenu
+> <guimenuitem
+>Refazer</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Repete</action
+> uma jogada que foi anulada, repetindo as vezes que forem necessárias.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Dica</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Dá uma sugestão ao utilizador</action
+>, preenchendo um espaço vazio.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>Mover</guimenu
+> <guimenuitem
+>Resolver</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Resolve instantaneamente</action
+> o 'puzzle'.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>Mover</guimenu
+> <guimenuitem
+>Verificar</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Verifica</action
+> um 'puzzle' introduzido para o validar. Se só tiver uma solução, esta fica disponível para jogar. Se não tiver solução ou tiver mais que uma, provavelmente ocorreu um erro na introdução dos dados.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>O Menu <guimenu
+>Configuração</guimenu
+></title>
+		<variablelist>
+			<varlistentry>
+				<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+> <guisubmenu
+>Barras de Ferramentas</guisubmenu
+> <guimenuitem
+>Barra Principal</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Mostra ou esconde a Barra Principal.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-hide-matching">
+				<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+> <guisubmenu
+>Barras de Ferramentas</guisubmenu
+> <guimenuitem
+>Barra de Acções</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Mostra ou esconde a Barra de Acções.</para
+></listitem>
+			</varlistentry>
+
+			<varlistentry id="settings-menu-statusbar">
+				<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Mostrar a Barra de Estado</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Mostra ou esconde a barra de estado.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-shortcuts">
+				<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Configurar os Atalhos...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Mostra uma janela normal de configuração de atalhos de teclado do &kde;</action
+> para alterar os atalhos do teclado no &kappname;.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-toolbar">
+				<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Configurar as Barras de Ferramentas...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+>Mostra uma janela normal do &kde; onde poderá configurar os ícones da barra de ferramentas.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Configurar o &kappname;...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Abre uma janela para configurar o &kappname;.</action
+> Veja a secção de <link linkend="configuration"
+>Configuração do Jogo</link
+> para mais detalhes.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="help"
+><!--This is a standard Help menubar entry. Only change if needed.-->
+<title
+>O Menu <guimenu
+>Ajuda</guimenu
+></title>
+<para
+>O &kappname; tem um menu de <guimenu
+>Ajuda</guimenu
+> predefinido do &kde;, como se encontra descrito em baixo:</para>
+&help.menu.documentation; </sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Perguntas mais frequentes</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Quero alterar a forma como este jogo aparece. Posso fazê-lo? </para
+></question>
+ <answer
+><para
+>Os jogos do Sudoku tradicionais são jogados numa grelha quadrada. Os temas não fariam muito sentido aqui. Contudo, poderá seleccionar o conjunto de símbolos usados no jogo. Para o fazer, use a opção do menu <menuchoice
+><guimenu
+>Configuração</guimenu
+><guimenuitem
+>Configurar o &kappname;...</guimenuitem
+></menuchoice
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Posso usar o teclado para jogar neste jogo? </para
+></question>
+ <answer
+><para
+>Sim. No &kappname;, o jogo com o teclado está sempre activo. Use por favor as teclas de cursores para mover a selecção, os caracteres numéricos para introduzir os símbolos e o &Shift; para aplicar as marcações.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Onde aparecem os recordes?</para
+></question>
+ <answer
+><para
+>O &kappname; não tem esta funcionalidade.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Configuração do Jogo</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+>Opções do <guilabel
+>Jogo</guilabel
+></title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Impressão</guilabel
+></term>
+			<listitem
+><para
+>Activa ou desactiva a opção para imprimir mais que um 'puzzle' por página, desde que tal seja possível.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostrar os Realces nos 'Puzzles' a 2-D</guilabel
+></term>
+			<listitem
+><para
+>Activa ou desactiva a opção de realce do &kappname; para os 'puzzles' a duas dimensões.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostrar os Erros</guilabel
+></term>
+			<listitem
+><para
+>Activa ou desactiva a opção para realçar os erros.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostrar os realces nos 'puzzles' a 3-D</guilabel
+></term>
+			<listitem
+><para
+>Activa ou desactiva a opção de realce do &kappname; para os 'puzzles' a três dimensões.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Configuração Só para 'Puzzles' 3D</guilabel
+></term>
+			<listitem
+><para
+>Estas cinco opções ajustam o realce a a visibilidade das células nos 'puzzles' a três dimensões. A ideia é simplificar a visualização das relações entre as células, especialmente se estiver atrás de outras células.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+		<note
+><title
+>Nota:</title
+><para
+>Ter as opções de realce activas é recomendado mesmo para os jogadores experientes, dado que ajuda a ver as restrições actuais do tabuleiro de jogo.</para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Créditos e Licença</title
+> <!-- do not change this! -->
+
+<para
+>&kappname; </para>
+
+<!--List all the copyright holders here-->
+<para
+>'Copyright' 2005-2007 de Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Copyright 2006-2007 de Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Johannes Bergmeier <email
+>johannes.bergmeier@gmx.net</email
+></para>
+
+<para
+>'Copyright' 2011 de Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Novos algoritmos de resolução e geração 2011 David Bau, <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
+> ver a página Web.</ulink
+></para>
+
+<para
+>Documentação com 'copyright' 2005 de Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Documentação com 'copyright' 2007 de Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+></para>
+
+<para
+>Documentação com 'copyright' 2011 de Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Tradução de José Nuno Pires <email
+>zepires@gmail.com</email
+></para
+> 
+&underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Instalação</title>
+
+&install.intro.documentation;
+
+
+<sect1 id="Compilation">
+<title
+>Compilação e Instalação</title>
+&install.compile.documentation; </sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

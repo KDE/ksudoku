@@ -1,0 +1,1369 @@
+# translation of ksudoku.po to Français
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Olivier Serve <tifauv@gmail.com>, 2007, 2008, 2009, 2012, 2013.
+# Sébastien Renard <Sebastien.Renard@digitalfox.org>, 2007.
+# Mickael Sibelle <kimael@gmail.com>, 2008.
+# xavier <xavier.besnard@neuf.fr>, 2013, 2020, 2021.
+# Simon Depiets <sdepiets@gmail.com>, 2017, 2018.
+# Vincent Pinon <vpinon@kde.org>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: ksudoku\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"PO-Revision-Date: 2021-01-13 13:21+0100\n"
+"Last-Translator: Xavier Besnard <xavier.besnard@neuf.fr>\n"
+"Language-Team: French <kde-francophone@kde.org>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Lokalize 20.12.0\n"
+"X-Environment: kde\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Olivier Serve, Simon Depiets"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "tifauv@gmail.com, sdepiets@gmail.com"
+
+#: src/generator/sudokuboard.cpp:104
+#, kde-format
+msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
+msgstr ""
+"Impossible de générer une grille après environ 200 tentatives. Essayer à "
+"nouveau ?"
+
+#: src/generator/sudokuboard.cpp:106
+#, kde-format
+msgid "Mathdoku or Killer Sudoku Puzzle"
+msgstr "Grille Mathdoku ou Killer Sudoku"
+
+#: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: src/generator/sudokuboard.cpp:197
+#, kde-format
+msgid ""
+"After %1 tries, the best difficulty level achieved by the generator is %2, "
+"with internal difficulty rating %3, but you requested difficulty level %4.\n"
+"\n"
+"Do you wish to let the generator try again or accept the puzzle as is?\n"
+"\n"
+"Hint: you can try to increase the difficulty rating by doing the following: "
+"Continue with the 'Accept' button, choose Game -> New, then change the "
+"Symmetry setting to 'No Symmetry' or some low symmetry type and then use "
+"'Generate A Puzzle' again."
+msgstr ""
+"Après %1 essais, le meilleur niveau de difficulté obtenu par le générateur "
+"est %2, avec un niveau interne de difficulté %3. Mais, vous aviez demandé le "
+"niveau %4.\n"
+"\n"
+"Voulez-vous laisser le générateur ré-essayer ou jouer la grille telle "
+"quelle ?\n"
+"\n"
+"Astuce : vous pouvez essayer d'augmenter le niveau de difficulté en "
+"effectuant les étapes suivantes : continuez avec le bouton « Accepter », "
+"allez dans le menu « Jeu » / « Nouveau » puis changez le paramètre de "
+"symétrie en choisissant « Aucune symétrie » ou un type peu élevé de symétrie "
+"puis cliquez à nouveau sur « Générer une grille »."
+
+#: src/generator/sudokuboard.cpp:208 src/generator/sudokuboard.cpp:228
+#: src/generator/sudokuboard.cpp:244
+#, kde-format
+msgid "Difficulty Level"
+msgstr "Niveau de difficulté"
+
+#: src/generator/sudokuboard.cpp:209
+#, kde-format
+msgid "&Try Again"
+msgstr "&Ré-essayer"
+
+#: src/generator/sudokuboard.cpp:209
+#, kde-format
+msgid "&Accept"
+msgstr "&Accepter"
+
+#: src/generator/sudokuboard.cpp:221
+#, kde-format
+msgid ""
+"It will be possible to solve the generated puzzle by logic alone. No "
+"guessing will be required.\n"
+"\n"
+"The internal difficulty rating is %1. There are %2 clues at the start and %3 "
+"moves to go."
+msgstr ""
+"Il devrait être possible de résoudre la grille générée seulement par la "
+"logique. Il n'est pas nécessaire de faire d'hypothèses.\n"
+"\n"
+"Le niveau interne de difficulté est de %1. Il y a %2 indices au début et %3 "
+"coups à réaliser."
+
+#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:245
+#, kde-format
+msgid "&Retry"
+msgstr "&Ré-essayer"
+
+#: src/generator/sudokuboard.cpp:235
+#, kde-format
+msgid ""
+"Solving the generated puzzle will require an average of %1 guesses or branch "
+"points and if you guess wrong, backtracking will be necessary. The first "
+"guess should come after %2 moves.\n"
+"\n"
+"The internal difficulty rating is %3, there are %4 clues at the start and %5 "
+"moves to go."
+msgstr ""
+"La résolution de la grille générée nécessitera en moyenne %1 hypothèses ou "
+"choix. Un retour arrière sera nécessaire si vos hypothèses sont incorrectes. "
+"La première hypothèse devrait être nécessaire après %2 coups.\n"
+"\n"
+"Le niveau interne de difficulté est %3. Il y a %4 indices au débuts et %5 "
+"coups à réaliser."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
+#: src/gui/configgame.ui:20
+#, kde-format
+msgid "When printing, try to fit more than one puzzle on a page"
+msgstr "Essayer de placer plus d'une grille par page lors de l'impression"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:43
+#, kde-format
+msgid "Highlight the row, column and block that contain the selected cell"
+msgstr ""
+"Mettre en valeur la ligne, la colonne et le bloc contenant la case "
+"sélectionnée"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:46
+#, kde-format
+msgid ""
+"Highlight the row, column and block that contain the selected cell. Blocks "
+"may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
+msgstr ""
+"Mettre en valeur la ligne, la colonne et le bloc contenant la case "
+"sélectionnée. Les blocs peuvent être carrés ou irréguliers (comme dans une "
+"grille de type puzzle ou XSudoku)."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:49
+#, kde-format
+msgid "Show highlights in 2-D puzzles"
+msgstr "Afficher les mises en évidence dans les grilles 2D"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:56 src/gui/configgame.ui:59
+#, kde-format
+msgid "Highlight in red any cells whose values break the Sudoku rules."
+msgstr "Surligner en rouge les cases violant les règles du Sudoku."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:62
+#, kde-format
+msgid "Show errors"
+msgstr "Afficher les erreurs"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:69 src/gui/configgame.ui:72
+#, kde-format
+msgid "Highlight the planes (blocks) that contain the selected cell."
+msgstr "Mettre en valeur les plans (blocs) contenant la case sélectionnée."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:75
+#, kde-format
+msgid "Show highlights in 3-D puzzles"
+msgstr "Afficher le surlignage dans les grilles 3D"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: src/gui/configgame.ui:137
+#, kde-format
+msgid "Mathdoku puzzle size (3-9)"
+msgstr "Taille de la grille Mathdoku (3-9)"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/gui/configgame.ui:167
+#, kde-format
+msgid "Settings for 3-D Puzzles Only"
+msgstr "Options uniquement pour les grilles 3D"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_6)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_6)
+#: src/gui/configgame.ui:182 src/gui/configgame.ui:185
+#: src/gui/configgame.ui:228 src/gui/configgame.ui:231
+#, kde-format
+msgid "Set the relative size of 3-D cells and the spaces between them."
+msgstr "Définir la taille relative des cases 3D et des espaces entre elles."
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: src/gui/configgame.ui:234
+#, kde-format
+msgid "Overall size of 3-D cells"
+msgstr "Taille globale des cases 3D"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label)
+#: src/gui/configgame.ui:254 src/gui/configgame.ui:257
+#: src/gui/configgame.ui:300 src/gui/configgame.ui:303
+#, no-c-format, kde-format
+msgid "Shrink or expand a cell by up to 30% when it is selected."
+msgstr ""
+"Réduire ou agrandir une case jusqu'à 30 % lorsqu'elle est sélectionnée."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/gui/configgame.ui:306
+#, kde-format
+msgid "Size of selected 3-D cell"
+msgstr "Taille d'une case 3D sélectionnée"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_3)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_3)
+#: src/gui/configgame.ui:326 src/gui/configgame.ui:329
+#: src/gui/configgame.ui:363 src/gui/configgame.ui:366
+#, no-c-format, kde-format
+msgid "Shrink or expand cells by up to 30% when they are highlighted."
+msgstr ""
+"Réduire ou agrandir les cases jusqu'à 30 % lorsqu'elles sont surlignées."
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: src/gui/configgame.ui:369
+#, kde-format
+msgid "Size of highlighted 3-D cells"
+msgstr "Taille des cases 3D surlignées"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_5)
+#: src/gui/configgame.ui:389 src/gui/configgame.ui:426
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell."
+msgstr ""
+"Réduire les cases jusqu'à 60 % si elles ne sont pas dans un cube N × N × N "
+"contenant la case sélectionnée."
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:392 src/gui/configgame.ui:429
+#: src/gui/configgame.ui:452
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell. This is useful if a 3-D puzzle has more than one cube."
+msgstr ""
+"Réduire les cases jusqu'à 60 % si elles ne sont pas dans un cube N × N × N "
+"contenant la case sélectionnée. Ceci est utile quand une grille 3D a plus "
+"d'un cube."
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: src/gui/configgame.ui:432
+#, kde-format
+msgid "Size of 3-D cells outside the selected volume"
+msgstr "Taille des cases 3D en-dehors du volume sélectionné"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:449
+#, kde-format
+msgid ""
+"Darken cells if they are not in an NxNxN cube that contains the selected "
+"cell."
+msgstr ""
+"Assombrir les cases si elles ne sont pas dans un cube N × N × N contenant la "
+"case sélectionnée."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:455
+#, kde-format
+msgid "Darken 3-D cells outside the selected volume"
+msgstr "Assombrir les cases 3D hors du volume sélectionné"
+
+#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#, kde-format
+msgid "Configuration not yet implemented"
+msgstr "La configuration n'est pas encore implémentée."
+
+#: src/gui/ksudoku.cpp:76
+#, kde-format
+msgid ""
+"Sorry, your solution contains mistakes.\n"
+"\n"
+"Enable \"Show errors\" in the settings to highlight them."
+msgstr ""
+"Désolé, votre solution contient des erreurs.\n"
+"\n"
+"Activez « Afficher les erreurs » dans les paramètres pour les mettre en "
+"valeur."
+
+#: src/gui/ksudoku.cpp:87
+#, kde-format
+msgid "Congratulations! You made it in 1 second. With some tricks."
+msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+msgstr[0] ""
+"Bravo ! Vous l'avez réussi en 1 seconde. Avec de l'aide quand même..."
+msgstr[1] ""
+"Bravo ! Vous l'avez réussi en %1 secondes. Avec de l'aide quand même..."
+
+#: src/gui/ksudoku.cpp:89
+#, kde-format
+msgid "Congratulations! You made it in 1 minute. With some tricks."
+msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+msgstr[0] ""
+"Bravo ! Vous l'avez réussi en 1 minute. Avec de l'aide quand même..."
+msgstr[1] ""
+"Bravo ! Vous l'avez réussi en %1 minutes. Avec de l'aide quand même..."
+
+#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#, kde-format
+msgid "1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "1 minute"
+msgstr[1] "%1 minutes"
+
+#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#, kde-format
+msgid "1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "1 seconde"
+msgstr[1] "%1 secondes"
+
+#: src/gui/ksudoku.cpp:91
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2. With some tricks."
+msgstr "Bravo ! Vous l'avez réussi en %1 et %2. Avec de l'aide quand même..."
+
+#: src/gui/ksudoku.cpp:94
+#, kde-format
+msgid "Congratulations! You made it in 1 second."
+msgid_plural "Congratulations! You made it in %1 seconds."
+msgstr[0] "Bravo ! Vous l'avez réussi en 1 seconde."
+msgstr[1] "Bravo ! Vous l'avez réussi en %1 secondes."
+
+#: src/gui/ksudoku.cpp:96
+#, kde-format
+msgid "Congratulations! You made it in 1 minute."
+msgid_plural "Congratulations! You made it in %1 minutes."
+msgstr[0] "Bravo ! Vous l'avez réussi en 1 minute."
+msgstr[1] "Bravo ! Vous l'avez réussi en %1 minutes."
+
+#: src/gui/ksudoku.cpp:98
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2."
+msgstr "Bravo ! Vous l'avez réussi en %1 et %2."
+
+#: src/gui/ksudoku.cpp:178
+#, kde-format
+msgid "Sudoku Standard (9x9)"
+msgstr "Sudoku classique (9 x 9)"
+
+#: src/gui/ksudoku.cpp:179
+#, kde-format
+msgid "The classic and fashionable game"
+msgstr "Le jeu classique et à la mode"
+
+#: src/gui/ksudoku.cpp:182
+#, kde-format
+msgid "Roxdoku 9 (3x3x3)"
+msgstr "Roxdoku 9 (3 x 3 x 3)"
+
+#: src/gui/ksudoku.cpp:183
+#, kde-format
+msgid "The Rox 3D Sudoku"
+msgstr "Le sudoku Rox 3D"
+
+#: src/gui/ksudoku.cpp:205
+#, kde-format
+msgid "Missing Variant Name"
+msgstr "Nom de variante manquant"
+
+#: src/gui/ksudoku.cpp:219
+#, kde-format
+msgid "Sudoku 16x16"
+msgstr "Sudoku 16 x 16"
+
+#: src/gui/ksudoku.cpp:220
+#, kde-format
+msgid "Sudoku with 16 symbols"
+msgstr "Sudoku à 16 chiffres"
+
+#: src/gui/ksudoku.cpp:222
+#, kde-format
+msgid "Sudoku 25x25"
+msgstr "Sudoku 25 x 25"
+
+#: src/gui/ksudoku.cpp:223
+#, kde-format
+msgid "Sudoku with 25 symbols"
+msgstr "Sudoku à 25 chiffres"
+
+#: src/gui/ksudoku.cpp:226
+#, kde-format
+msgid "Roxdoku 16 (4x4x4)"
+msgstr "Roxdoku 16 (4 x 4 x 4)"
+
+#: src/gui/ksudoku.cpp:227
+#, kde-format
+msgid "The Rox 3D sudoku with 16 symbols"
+msgstr "Le sudoku Rox 3D à 16 chiffres"
+
+#: src/gui/ksudoku.cpp:229
+#, kde-format
+msgid "Roxdoku 25 (5x5x5)"
+msgstr "Roxdoku 25 (5 x 5 x 5)"
+
+#: src/gui/ksudoku.cpp:230
+#, kde-format
+msgid "The Rox 3D sudoku with 25 symbols"
+msgstr "Le sudoku Rox 3D à 25 chiffres"
+
+#: src/gui/ksudoku.cpp:276
+#, kde-format
+msgid ""
+"Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
+"grid in which every row and every column contains the available digits (1-3 "
+"up to 1-9) exactly once. The grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues, but there are not many of "
+"them. Cages of larger size have a target value and an arithmetic operator (+-"
+"x/). The digits in the cage must combine together, using the operator, to "
+"reach the target value, e.g. '12x' means that the digits must multiply "
+"together to make 12. A digit can occur more than once in a cage, provided it "
+"occurs in different rows and columns.\n"
+"\n"
+"In general, larger Mathdokus are more difficult and so are larger cages. You "
+"can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"Les grilles Mathdoku peuvent prendre n'importe quelle taille entre 3x3 et "
+"9x9. La solution est une grille dans laquelle chaque ligne et chaque colonne "
+"contient tous les chiffres disponibles (1-3 jusqu'à 1-9) exactement une "
+"fois. La grille est recouverte de cages aux formes variées.\n"
+"\n"
+"Les cages de taille 1 sont des indices ou des valeurs de départ, mais il n'y "
+"en a pas beaucoup. Les cages plus grandes ont une valeur cible ainsi qu'un "
+"opérateur arithmétique (+-x/). Les chiffres de la cage doivent s'associer en "
+"utilisant l'opérateur pour atteindre la valeur cible, par exemple « 12x » "
+"signifie que les chiffres doivent se multiplier entre eux de manière à ce "
+"que leur produit soit égal à 12. Un chiffre peut être présent plusieurs fois "
+"dans une cage à condition que ce soit sur des lignes et des colonnes "
+"différentes.\n"
+"\n"
+"De manière générale, plus les grilles et les cages sont grandes, plus le "
+"Mathdoku est difficile. Vous pouvez sélectionner la taille de la grille dans "
+"les paramètres de KSudoku et la taille maximale des cages en utilisant le "
+"bouton de sélection de difficulté de KSudoku."
+
+#: src/gui/ksudoku.cpp:295
+#, kde-format
+msgid "Playing Mathdoku"
+msgstr "Jouer à Mathdoku"
+
+#: src/gui/ksudoku.cpp:299
+#, kde-format
+msgid ""
+"Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
+"or nine 3x3 blocks. The solution must follow Classic Sudoku rules. The "
+"difference is that there are few starting-values or clues (if any). Instead "
+"the grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues. Cages of larger size have a "
+"target value and the digits in them must add up to that value. In Killer "
+"Sudoku, a cage cannot contain any digit more than once.\n"
+"\n"
+"In general, larger cages are more difficult. You can select the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"Les grilles Killer Sudoku ont une taille de 4x4 ou de 9x9, comprenant soit "
+"quatre blocs de 2x2, soit neuf blocs de 3x3. La solution suit les règles du "
+"Sudoku classique. La différence vient du fait qu'il y ait peu de valeurs de "
+"départs présentes sur la grille (voire aucune). En revanche, la grille est "
+"recouverte de cages aux formes variées.\n"
+"\n"
+"Les cages de taille 1 sont des indices ou des valeurs de départ. Les cages "
+"plus grandes ont une valeur cible et les chiffres de la cage doivent "
+"s'additionner pour atteindre cette valeur. Sur une grille Killer Sudoku, une "
+"cage ne peut pas contenir plusieurs fois le même chiffre.\n"
+"\n"
+"De manière générale, plus les cages sont grandes, plus elles sont "
+"difficiles. Vous pouvez sélectionner la taille maximale des cages en "
+"utilisant le bouton de sélection de difficulté de KSudoku."
+
+#: src/gui/ksudoku.cpp:313
+#, kde-format
+msgid "Playing Killer Sudoku"
+msgstr "Jouer à Killer Sudoku"
+
+#: src/gui/ksudoku.cpp:317
+#, kde-format
+msgid ""
+"Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
+"cage at a time. To start a cage, left click on any unused cell or enter a "
+"number in the cell that is under the cursor or enter + - / or x there. A "
+"small cage-label will appear in that cell. To extend the cage in any "
+"direction, left-click on a neigbouring cell or move the cursor there and "
+"type a Space.\n"
+"\n"
+"The number you type is the cage's value and it can have one or more digits, "
+"including zero. A cell of size 1 has to have a 1-digit number, as in a "
+"normal Sudoku puzzle. It becomes a starting-value or clue for the player.\n"
+"\n"
+"The + - / or x is the operator (Add, Subtract, Divide or Multiply). You must "
+"have one in cages of size 2 or more. In Killer Sudoku, the operator is "
+"provided automatically because it is always + or none.\n"
+"\n"
+"You can enter digits, operators and cells in any order. To complete the cage "
+"and start another cage, always press Return. If you make a mistake, the only "
+"thing to do is delete a whole cage and re-enter it. Use right click in the "
+"current cage or any earlier cage, if you wish to delete it. Alternatively, "
+"use the cursor and the Delete or Backspace key.\n"
+"\n"
+"When the grid is filled with cages, hit the Check button, to solve the "
+"puzzle and make sure there is only one solution. If the check fails, you "
+"have probably made an error somewhere in one of the cages."
+msgstr ""
+"Les grilles Mathdoku et Killer Sudoku doivent être saisies en travaillant "
+"sur une cage à la fois. Pour commencer une cage, faites un clic gauche sur "
+"une cellule vide, saisissez un nombre dans la cellule présente sous le "
+"curseur ou saisissez le symbole + - / ou x. Une petite étiquette "
+"correspondant à la cage apparaîtra dans cette cellule. Pour étendre la cage "
+"dans une direction donnée, faites un clic gauche sur la cellule voisine ou "
+"déplacez le curseur sur celle-ci et appuyez sur la touche Espace.\n"
+"\n"
+"Le nombre que vous saisissez est la valeur de la cage, il peut contenir un "
+"ou plusieurs chiffres, y compris zéro. Une cellule de taille 1 doit contenir "
+"un nombre à 1 chiffre, comme dans un puzzle Sudoku normal. Elle devient "
+"alors une valeur de départ ou un indice pour le joueur.\n"
+"\n"
+"Les symboles + - / ou x sont les opérateurs (addition, soustraction, "
+"division ou multiplication). Ils sont obligatoires dans les cages d'une "
+"taille supérieure ou égale à 2. Dans les grilles Killer Sudoku, l'opérateur "
+"est rempli automatiquement étant donné qu'il est toujours + ou aucun.\n"
+"\n"
+"Vous pouvez saisir les chiffres, les opérateurs et les cellules dans "
+"n'importe quel ordre. Pour terminer la cage et commencer une nouvelle cage, "
+"appuyez sur la touche Entrée. Si vous avez effectué une erreur, vous devrez "
+"supprimer l'intégralité de la cage et la saisir à nouveau. Faites un clic "
+"droit sur la cage en cours ou une cage précédemment saisie afin de la "
+"supprimer. Vous pouvez également utiliser le curseur et la touche Effacement "
+"ou Retour arrière.\n"
+"\n"
+"Lorsque vous avez fini de saisir les cages, appuyez sur le bouton Vérifier "
+"afin de résoudre le puzzle et de vous assurer qu'il ne contienne qu'une "
+"seule solution. Si la vérification échoue, cela signifie que vous avez "
+"probablement fait une erreur de saisie sur l'une des cages."
+
+#: src/gui/ksudoku.cpp:347
+#, kde-format
+msgid "Data-entry for Puzzles with Cages"
+msgstr "Saisie de données pour les grilles comportant des cages"
+
+#: src/gui/ksudoku.cpp:403
+#, kde-format
+msgid "The puzzle you entered contains some errors."
+msgstr "La grille que vous avez saisie contient des erreurs."
+
+#: src/gui/ksudoku.cpp:416
+#, kde-format
+msgid ""
+"Sorry, no solutions have been found. Please check that you have entered in "
+"the puzzle completely and correctly."
+msgstr ""
+"Désolé, aucune solution n'a pu être trouvée. Veuillez vérifier que vous avez "
+"bien saisi la grille correctement dans son intégralité."
+
+#: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
+#, kde-format
+msgid "Check Puzzle"
+msgstr "Vérifier la grille"
+
+#: src/gui/ksudoku.cpp:423
+#, kde-format
+msgid "The Puzzle you entered has a unique solution and is ready to be played."
+msgstr ""
+"La grille que vous avez saisie comporte une solution unique et est prête à "
+"être jouée."
+
+#: src/gui/ksudoku.cpp:427
+#, kde-format
+msgid ""
+"The Puzzle you entered has multiple solutions. Please check that you have "
+"entered in the puzzle completely and correctly."
+msgstr ""
+"La grille que vous avez saisie comporte plusieurs solutions. Veuillez "
+"vérifier que vous avez bien saisi la grille correctement dans son "
+"intégralité."
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Do you wish to play the puzzle now?"
+msgstr "Voulez-vous jouer la grille maintenant ?"
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Play Puzzle"
+msgstr "Jouer la grille"
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Play"
+msgstr "Jouer"
+
+#: src/gui/ksudoku.cpp:470
+#, kde-format
+msgid "Enable all messages"
+msgstr "Activer tous les messages"
+
+#: src/gui/ksudoku.cpp:487
+#, kde-format
+msgid "Check"
+msgstr "Vérifier"
+
+#: src/gui/ksudoku.cpp:503
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Diabolical"
+msgstr "Diabolique"
+
+#: src/gui/ksudoku.cpp:505
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Unlimited"
+msgstr "Sans limite"
+
+#: src/gui/ksudoku.cpp:516
+#, kde-format
+msgctxt "@option drop down box"
+msgid "Difficulty:"
+msgstr "Difficulté :"
+
+#: src/gui/ksudoku.cpp:520
+#, kde-format
+msgctxt "@option drop down box"
+msgid "Symmetry:"
+msgstr "Symétrie :"
+
+#: src/gui/ksudoku.cpp:524
+#, kde-format
+msgctxt "Symmetry of layout of clues when puzzle starts"
+msgid "Symmetry"
+msgstr "Symétrie"
+
+#: src/gui/ksudoku.cpp:526
+#, kde-format
+msgid "The symmetry of layout of the clues when the puzzle starts"
+msgstr "La symétrie du placement des indices au commencement de la grille"
+
+#: src/gui/ksudoku.cpp:528
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Diagonal"
+msgstr "Diagonale"
+
+#: src/gui/ksudoku.cpp:529
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Central"
+msgstr "Centrale"
+
+#: src/gui/ksudoku.cpp:530
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Left-Right"
+msgstr "Gauche-Droite"
+
+#: src/gui/ksudoku.cpp:531
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Spiral"
+msgstr "Spirale"
+
+#: src/gui/ksudoku.cpp:532
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Four-Way"
+msgstr "En croix"
+
+#: src/gui/ksudoku.cpp:533
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Random Choice"
+msgstr "Choix aléatoire"
+
+#: src/gui/ksudoku.cpp:534
+#, kde-format
+msgid "No Symmetry"
+msgstr "Aucune symétrie"
+
+#: src/gui/ksudoku.cpp:638 src/gui/ksudoku.cpp:697
+#, kde-format
+msgid "Could not load game."
+msgstr "Le jeu n'a pas pu être chargé."
+
+#: src/gui/ksudoku.cpp:654
+#, kde-format
+msgid "Do you really want to end this game in order to start a new one?"
+msgstr ""
+"Voulez-vous vraiment terminer cette partie pour en commencer une nouvelle ?"
+
+#: src/gui/ksudoku.cpp:655
+#, kde-format
+msgctxt "window title"
+msgid "New Game"
+msgstr "Nouvelle partie"
+
+#: src/gui/ksudoku.cpp:656
+#, kde-format
+msgctxt "button label"
+msgid "New Game"
+msgstr "Nouvelle partie"
+
+#: src/gui/ksudoku.cpp:673
+#, kde-format
+msgid "Do you really want to restart this game?"
+msgstr "Voulez-vous vraiment redémarrer cette partie ?"
+
+#: src/gui/ksudoku.cpp:674
+#, kde-format
+msgctxt "window title"
+msgid "Restart Game"
+msgstr "Recommencer la partie"
+
+#: src/gui/ksudoku.cpp:675
+#, kde-format
+msgctxt "button label"
+msgid "Restart Game"
+msgstr "Recommencer la partie"
+
+#: src/gui/ksudoku.cpp:690
+#, kde-format
+msgid "Open Location"
+msgstr "Ouvrir un emplacement"
+
+#: src/gui/ksudoku.cpp:724
+#, kde-format
+msgid "Error Writing File"
+msgstr "Erreur lors de l'écriture du fichier"
+
+#: src/gui/ksudoku.cpp:746
+#, kde-format
+msgid "There seems to be no puzzle to print."
+msgstr "Il ne semble y avoir aucune grille à imprimer."
+
+#: src/gui/ksudoku.cpp:783
+#, kde-format
+msgctxt "Game Section in Config"
+msgid "Game"
+msgstr "Partie"
+
+#: src/gui/ksudoku.cpp:784
+#, kde-format
+msgid "Theme"
+msgstr "Thème"
+
+#: src/gui/ksudoku.cpp:816
+#, kde-format
+msgid ""
+"Warning: The Unlimited difficulty level has no limit on how many guesses or "
+"branch points are required to solve the puzzle and there is no lower limit "
+"on how soon guessing becomes necessary.\n"
+"\n"
+"Please also note that the generation of this type of puzzle might take much "
+"longer than other ones. During this time KSudoku will not respond."
+msgstr ""
+"Attention : le niveau de difficulté « Sans limite » ne donne aucune "
+"contrainte sur le nombre d'hypothèses ou de choix nécessaires pour résoudre "
+"la grille. Il n'y a aucune hypothèse minimale sur le temps nécessaire.\n"
+"\n"
+"Veuillez également remarquer que la génération de ce type de grille peut "
+"prendre bien plus de temps que pour les autres grilles. Pendant ce temps, "
+"KSudoku ne répondra plus."
+
+#: src/gui/ksudoku.cpp:823
+#, kde-format
+msgid "Warning"
+msgstr "Attention"
+
+#: src/gui/ksudoku.cpp:862
+#, kde-format
+msgid ""
+"This will enable all the dialogs that you had disabled by marking the 'Do "
+"not show this message again' option.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+"Cela activera tous les messages que vous aviez précédemment désactivés en "
+"choisissant l'option « Ne plus afficher ce message ».\n"
+"\n"
+"Voulez-vous continuer ?"
+
+#. i18n: ectx: label, entry (Theme), group (Themes)
+#: src/gui/ksudoku.kcfg:41
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Le thème graphique à utiliser."
+
+#. i18n: ectx: label, entry (Symbols), group (Themes)
+#: src/gui/ksudoku.kcfg:44
+#, kde-format
+msgid "Select the themes you want to use"
+msgstr "Choisissez les thèmes à utiliser"
+
+#: src/gui/ksudokugame.cpp:375
+#, kde-format
+msgid ""
+"In Killer Sudoku, the operator is always + or none and KSudoku automatically "
+"sets the correct choice."
+msgstr ""
+"En Killer Sudoku, l'opérateur est toujours + ou aucun, KSudoku effectuera "
+"automatiquement la bonne sélection."
+
+#: src/gui/ksudokugame.cpp:377
+#, kde-format
+msgid "Killer Sudoku Cage"
+msgstr "Cage Killer Sudoku"
+
+#: src/gui/ksudokugame.cpp:422
+#, kde-format
+msgid "The cell you have selected has already been used in a cage."
+msgstr ""
+"La cellule que vous avez sélectionnée est déjà utilisée par une autre cage."
+
+#: src/gui/ksudokugame.cpp:424 src/gui/ksudokugame.cpp:454
+#: src/gui/ksudokugame.cpp:479 src/gui/ksudokugame.cpp:486
+#: src/gui/ksudokugame.cpp:494 src/gui/ksudokugame.cpp:503
+#, kde-format
+msgid "Error in Cage"
+msgstr "Erreur dans la cage"
+
+#: src/gui/ksudokugame.cpp:452
+#, kde-format
+msgid ""
+"The cell you have selected is not next to any cell in the cage you are "
+"creating."
+msgstr ""
+"La cellule que vous avez sélectionnée n'est à proximité d'aucune cellule "
+"dans la cage que vous créez."
+
+#: src/gui/ksudokugame.cpp:477
+#, kde-format
+msgid ""
+"The cage you wish to complete has no cells in it yet. Please click on a cell "
+"or key in + - / x or a number."
+msgstr ""
+"La cage que vous souhaitez compléter n'a pas encore de cellules. Veuillez "
+"cliquer sur une cellule, saisir + - / x ou un nombre."
+
+#: src/gui/ksudokugame.cpp:484
+#, kde-format
+msgid ""
+"The cage you wish to complete has no value yet. Please key in a number with "
+"one or more digits."
+msgstr ""
+"La cage que vous souhaitez compléter n'a pas encore de valeur. Veuillez "
+"saisir un nombre comportant un ou plusieurs chiffres."
+
+#: src/gui/ksudokugame.cpp:492
+#, kde-format
+msgid ""
+"The cage you wish to complete has more than one cell, but it has no operator "
+"yet. Please key in + - / or x."
+msgstr ""
+"La cage que vous souhaitez compléter a plus d'une cellule, mais pas encore "
+"d'opérateur. Veuillez saisir + - / ou x."
+
+#: src/gui/ksudokugame.cpp:500
+#, kde-format
+msgid ""
+"The cage you wish to complete has one cell, but its value is too large. A "
+"single-cell cage must have a value from 1 to %1 in a puzzle of this size."
+msgstr ""
+"La cage que vous souhaitez compléter a une seule cellule, mais sa valeur est "
+"trop grande. Une cage à une seule cellule doit avoir une valeur comprise "
+"entre 1 et %1 pour une grille de cette taille."
+
+#: src/gui/ksudokugame.cpp:536
+#, kde-format
+msgid "Do you wish to delete this cage?"
+msgstr "Voulez-vous vraiment supprimer cette cage ?"
+
+#: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
+#: src/gui/ksudokugame.cpp:570
+#, kde-format
+msgid "Delete Cage"
+msgstr "Supprimer la cage"
+
+#: src/gui/ksudokugame.cpp:562
+#, kde-format
+msgid ""
+"The cell you have selected is not in any cage, so the Delete action will not "
+"delete anything."
+msgstr ""
+"La cellule que vous avez sélectionnée n'appartient à aucun cage, l'action de "
+"suppression n'effectuera aucun changement."
+
+#: src/gui/ksudokugame.cpp:569
+#, kde-format
+msgid "The Delete action finds that there are no cages to delete."
+msgstr ""
+"L'action de suppression n'est pas parvenue à trouver de cage à supprimer."
+
+#. i18n: ectx: Menu (game)
+#: src/gui/ksudokuui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "&Partie"
+
+#. i18n: ectx: Menu (move)
+#: src/gui/ksudokuui.rc:23
+#, kde-format
+msgid "&Move"
+msgstr "C&oup"
+
+#. i18n: ectx: Menu (help)
+#: src/gui/ksudokuui.rc:38
+#, kde-format
+msgid "&Help"
+msgstr "&Aide"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/gui/ksudokuui.rc:46
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Barre principale d'outils"
+
+#. i18n: ectx: ToolBar (actionsToolbar)
+#: src/gui/ksudokuui.rc:53
+#, kde-format
+msgid "Actions Toolbar"
+msgstr "Barre d'actions"
+
+#: src/gui/puzzleprinter.cpp:62
+#, kde-format
+msgid "Sorry, cannot print three-dimensional puzzles."
+msgstr "Désolé. Il est impossible d'imprimer des grilles tridimensionnelles."
+
+#: src/gui/puzzleprinter.cpp:92
+#, kde-format
+msgid ""
+"The KSudoku setting for printing several puzzles per page is currently "
+"selected.\n"
+"\n"
+"Your puzzle will be printed when no more will fit on the page or when "
+"KSudoku terminates."
+msgstr ""
+"Les paramètres de KSudoku pour l'impression de plusieurs grilles par page "
+"est activée. \n"
+"\n"
+"Votre grille sera imprimée quand la page sera remplie ou à l'arrêt de "
+"KSudoku."
+
+#: src/gui/puzzleprinter.cpp:108
+#, kde-format
+msgid "KSudoku has sent output to your printer."
+msgstr "La sortie de KSudoku a été envoyée à votre imprimante."
+
+#: src/gui/puzzleprinter.cpp:121
+#, kde-format
+msgid "Print Sudoku Puzzle"
+msgstr "Imprimer la grille de Sudoku"
+
+#: src/gui/serializer.cpp:401
+#, kde-format
+msgid "Unable to download file: URL is empty."
+msgstr "Impossible de télécharger le fichier : l'URL est vide."
+
+#: src/gui/serializer.cpp:408
+#, kde-format
+msgid "Unable to open file."
+msgstr "Impossible d'ouvrir le fichier"
+
+#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#, kde-format
+msgid "Cannot read XML file on line %1"
+msgstr "Impossible de lire la ligne %1 du fichier XML"
+
+#: src/gui/serializer.cpp:444
+#, kde-format
+msgid "Unable to download file."
+msgstr "Impossible de télécharger le fichier."
+
+#: src/gui/serializer.cpp:685
+#, kde-format
+msgid "Unable to create temporary file."
+msgstr "Il est impossible de créer un fichier temporaire."
+
+#: src/gui/serializer.cpp:698
+#, kde-format
+msgid "Unable to upload file."
+msgstr "Impossible d'envoyer le fichier."
+
+#: src/gui/views/gameactions.cpp:54
+#, kde-format
+msgid "Select %1 (%2)"
+msgstr "Sélectionner %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:60
+#, kde-format
+msgid "Enter %1 (%2)"
+msgstr "Saisir %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:83
+#, kde-format
+msgid "Mark %1 (%2)"
+msgstr "Marquer %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:95
+#, kde-format
+msgid "Move Up"
+msgstr "Déplacer vers le haut"
+
+#: src/gui/views/gameactions.cpp:102
+#, kde-format
+msgid "Move Down"
+msgstr "Déplacer vers le bas"
+
+#: src/gui/views/gameactions.cpp:109
+#, kde-format
+msgid "Move Left"
+msgstr "Déplacer vers la gauche"
+
+#: src/gui/views/gameactions.cpp:116
+#, kde-format
+msgid "Move Right"
+msgstr "Déplacer vers la droite"
+
+#: src/gui/views/gameactions.cpp:123
+#, kde-format
+msgid "Clear Cell"
+msgstr "Effacer une case"
+
+#: src/gui/welcomescreen.cpp:133
+#, kde-format
+msgid "GetNewVariant not implemented"
+msgstr "L'élément « GetNewVariant » n'est pas implémenté"
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:163
+#: src/gui/welcomescreen.cpp:179
+#, kde-format
+msgid "Please select a puzzle variant."
+msgstr "Veuillez sélectionner une variante du puzzle."
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
+#: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
+#: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to start puzzle"
+msgstr "Impossible de démarrer le puzzle"
+
+#: src/gui/welcomescreen.cpp:152
+#, kde-format
+msgid ""
+"Unable to create an empty puzzle of the chosen variant; please try another."
+msgstr ""
+"Impossible de créer un puzzle vide de la variante choisie ; veuillez essayer "
+"une autre."
+
+#: src/gui/welcomescreen.cpp:169
+#, kde-format
+msgid "Unable to start a puzzle of the chosen variant; please try another."
+msgstr ""
+"Impossible de démarrer un puzzle de la variante choisie ; veuillez essayer "
+"une autre."
+
+#: src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to generate a puzzle of the chosen variant; please try another."
+msgstr ""
+"Impossible de générer un puzzle de la variante choisie ; veuillez essayer "
+"une autre."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: src/gui/welcomescreen.ui:17
+#, kde-format
+msgid "Choose your Game"
+msgstr "Choisissez votre partie"
+
+#. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
+#: src/gui/welcomescreen.ui:28
+#, kde-format
+msgid "Get New"
+msgstr "Obtenir d'autres parties"
+
+#. i18n: ectx: property (text), widget (QPushButton, startEmptyButton)
+#: src/gui/welcomescreen.ui:48
+#, kde-format
+msgid "Enter In A Puzzle"
+msgstr "Jouer une grille"
+
+#. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
+#: src/gui/welcomescreen.ui:55
+#, kde-format
+msgid "Generate A Puzzle"
+msgstr "Générer une grille"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "KSudoku"
+msgstr "KSudoku"
+
+#: src/main.cpp:53
+#, kde-format
+msgid "KSudoku - Sudokus and more"
+msgstr "KSudoku - Sudoku et bien davantage"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "(c) 2005-2007 The KSudoku Authors"
+msgstr "(c) 2005-2007 Les auteurs de KSudoku"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Francesco Rossi"
+msgstr "Francesco Rossi"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KSudoku Author"
+msgstr "Auteur de KSudoku"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Johannes Bergmeier"
+msgstr "Johannes Bergmeier"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Maintainer"
+msgstr "Mainteneur"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "New puzzle generator and solver"
+msgstr "Nouveau générateur et résolveur de grilles"
+
+#: src/main.cpp:60
+#, kde-format
+msgid "Mick Kappenburg"
+msgstr "Mick Kappenburg"
+
+#: src/main.cpp:60
+#, kde-format
+msgid "Printing and export of 0.4"
+msgstr "Impression et exportation dans la version 0.4"
+
+#: src/main.cpp:61
+#, kde-format
+msgid "Thanks to NeHe for OpenGL tutorials"
+msgstr "Merci à NeHe pour les tutoriels OpenGL"
+
+#: src/main.cpp:62
+#, kde-format
+msgid "David Bau"
+msgstr "David Bau"
+
+#: src/main.cpp:62
+#, kde-format
+msgid ""
+"Algorithms for new puzzle generator and solver at davidbau.com/"
+"archives/2006/09/04/sudoku_generator.html"
+msgstr ""
+"Algorithmes pour le nouveau générateur et résolveur de grilles à l'adresse "
+"«  davidbau.com/archives/2006/09/04/sudoku_generator.html »"
+
+#: src/main.cpp:70
+#, kde-format
+msgid "Document to open"
+msgstr "Document à ouvrir"
+
+#~ msgid "&OK"
+#~ msgstr "&Ok"
+
+#~ msgid "Home Page"
+#~ msgstr "Page d'accueil"
+
+#~ msgid "KSudoku - Sudoku games and more"
+#~ msgstr "KSudoku - des jeux de Sudoku et bien davantage"
+
+#~ msgid "Sorry, no solutions have been found."
+#~ msgstr "Désolé, aucune solution n'a été trouvée."
+
+#~ msgid "The Puzzle you entered has only one solution."
+#~ msgstr "La grille que vous avez saisie n'a qu'une solution."
+
+#~ msgid "A0"
+#~ msgstr "A0"
+
+#~ msgid "A1"
+#~ msgstr "A1"
+
+#~ msgid "A2"
+#~ msgstr "A2"
+
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "A5"
+#~ msgstr "A5"
+
+#~ msgid "A6"
+#~ msgstr "A6"
+
+#~ msgid "A7"
+#~ msgstr "A7"
+
+#~ msgid "A8"
+#~ msgstr "A8"
+
+#~ msgid "A9"
+#~ msgstr "A9"
+
+#~ msgid "B0"
+#~ msgstr "B0"
+
+#~ msgid "B1"
+#~ msgstr "B1"
+
+#~ msgid "B10"
+#~ msgstr "B10"
+
+#~ msgid "B2"
+#~ msgstr "B2"
+
+#~ msgid "B3"
+#~ msgstr "B3"
+
+#~ msgid "B4"
+#~ msgstr "B4"
+
+#~ msgid "B5"
+#~ msgstr "B5"
+
+#~ msgid "B6"
+#~ msgstr "B6"
+
+#~ msgid "B7"
+#~ msgstr "B7"
+
+#~ msgid "B8"
+#~ msgstr "B8"
+
+#~ msgid "B9"
+#~ msgstr "B9"
+
+#~ msgid "C5E"
+#~ msgstr "C5E"
+
+#~ msgid "Comm10E"
+#~ msgstr "Comm10E"
+
+#~ msgid "DLE"
+#~ msgstr "DLE"
+
+#~ msgid "Folio"
+#~ msgstr "Folio (203×330 mm)"
+
+#~ msgid "Ledger"
+#~ msgstr "Ledger (432×279 mm)"
+
+#~ msgid "Legal"
+#~ msgstr "Legal (216×356 mm)"
+
+#~ msgid "Letter"
+#~ msgstr "Letter (216×279 mm)"
+
+#~ msgid "Tabloid"
+#~ msgstr "Tabloid (432×279 mm)"
+
+#~ msgid "Custom"
+#~ msgstr "Personnalisé"
+
+#~ msgid "Sorry. I am not able to export this puzzle type (yet)"
+#~ msgstr ""
+#~ "Désolé, je ne suis pas encore capable d'exporter les grilles de ce type."
+
+#~ msgid "Export Ksudoku"
+#~ msgstr "Export KSudoku"
+
+#~ msgid ""
+#~ "A document with this name already exists.\n"
+#~ "Do you want to overwrite it?"
+#~ msgstr ""
+#~ "Un document de même nom existe déjà.\n"
+#~ "Voulez-vous l'écraser ?"
+
+#~ msgid "1 puzzle available"
+#~ msgid_plural "%1 puzzles available"
+#~ msgstr[0] "1 grille disponible"
+#~ msgstr[1] "%1 grilles disponibles"
+
+#~ msgid "generating puzzle %1 of %2"
+#~ msgstr "génération de la grille %1 sur %2"
+
+#~ msgid "KSudoku options"
+#~ msgstr "Options de KSudoku"
+
+#~ msgid "Ksudoku Export"
+#~ msgstr "Export KSudoku"
+
+#~ msgid "Game Count"
+#~ msgstr "Nombre de parties"
+
+#~ msgid "Spacing"
+#~ msgstr "Espacement"
+
+#~ msgid "Output Size (Save only)"
+#~ msgstr "Taille de sortie (uniquement pour l'enregistrement)"
+
+#~ msgid "Custom Size (mm)"
+#~ msgstr "Taille personnalisée (mm)"
+
+#~ msgid "Lock"
+#~ msgstr "Verrouiller"
+
+#~ msgid "View (and generate) game data"
+#~ msgstr "Voir (et générer) les données de la partie"
+
+#~ msgid "Use current game"
+#~ msgstr "Utiliser la partie en cours"
+
+#~ msgid "Start Empty"
+#~ msgstr "Démarrer une grille vide"
+
+#~ msgid "Configure..."
+#~ msgstr "Configurer..."
+
+#~ msgid "Easy"
+#~ msgstr "Facile"
+
+#~ msgid "Hard"
+#~ msgstr "Difficile"

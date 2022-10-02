@@ -1,0 +1,1035 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksudoku "KSudoku">
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Swedish "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="ksudoku" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Handbok &ksudoku;</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immediate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Ian</firstname
+> <surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+	</author>
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<copyright>
+	<year
+>2011</year>
+	<holder
+>Ian Wadham</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2020-12-10</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>1.4.20120</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Denna dokumentation beskriver spelet &ksudoku;, ett logikbaserad placeringsspel.</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>spel</keyword
+> <!-- do not change this! -->
+	<keyword
+>ksudoku</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>logik</keyword>
+	<keyword
+>bräde</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>en spelare</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>problemlösning</keyword>
+</keywordset>
+</bookinfo>
+
+<!--Content begins here: -->
+
+<chapter id="introduction"
+><title
+>Inledning</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Speltyp:</title
+><para
+>Logik, brädspel</para
+></note>
+
+	<note
+><title
+>Antal möjliga spelare:</title
+><para
+>En</para
+></note>
+
+<para
+>&ksudoku; är ett logikbaserad placeringsspel.</para>
+
+<para
+>Spelaren ska fylla i ett rutnät med symboler så att varje kolumn, rad och block på spelplanen innehåller bara en förekomst av varje symbol. I &ksudoku; är symbolerna oftast siffrorna 1 till 9, men det kan vara bokstäverna A till P eller A till Y i större spel. Spelet börjar med en delvis ifylld spelplan, och det är upp till dig att fylla i resten. Vissa typer av spel har färre än nio symboler.</para>
+
+<para
+>När du startar ett spel kan du välja mellan flera olika typer av Sudoku och flera storlekar. Därefter kan du låta &ksudoku; skapa ett spel åt dig att lösa, eller starta med en tom spelplan och skriva in ett spel från en annan källa, som en dagstidning, och därefter få &ksudoku; att kontrollera det och kanske lösa det.</para>
+
+<para
+>Det existerar hundratals olika versioner av Sudoku, och &ksudoku; ger ett bra urval av dem. Den vanligaste typen, vanligt Sudoku, har ett 9x9 rutnät och använder arabiska siffror som symboler. Som en extra begränsning är rutnätet uppdelat i nio sektorer med 3x3 rutor. Problemet är: varje symbol kan bara användas en gång per rad, kolumn och block.</para>
+
+	<note
+><para
+>Det tar tid och koncentration att göra färdigt ett spel. Att lösa Sudoku-gåtor hjälper dock till att öka total hjärnaktivitet, och rekommenderas därför starkt.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Hur man spelar</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Syfte:</title
+><para
+>Fyll i rutnätet så att varje kolumn, rad och block bara innehåller en förekomst av varje symbol.</para
+></note>
+
+<para
+>När spelet börjar blir du tillfrågad om att välja vilken speltyp och spelstorlek du är intresserad av. Du kan antingen skriva in ett spel från en annan källa, eller låta &ksudoku; skapa ett spel. Genereringen har flera inställningar av svårighetsgrad och några inställningar av symmetri, som påverkar mönstret som spelet skapas med. Spelupplevelsen beror på vilka av alla dessa alternativ som du väljer.</para>
+
+<para
+>När spelplanen dyker upp, ta då en titt på vänster sida. Där finns en urvalslista som innehåller alla symboler tillgängliga i det aktuella spelet. Uppsättningen symboler beror på spelstorleken du har valt. Spel kan ha 4, 9, 16 eller 25 symboler. De två första uppsättningarna använder siffrorna 1 till 4 eller 1 till 9, medan de övriga använder bokstäverna A till P eller A till Y.</para>
+
+<para
+>Observera först spelplanens gränser. Den feta svarta linjen omger blocken. Vart och ett av blocken måste fyllas i med de tillgängliga symbolerna, på så sätt att varje symbol bara används en och endast en gång inuti blockets område. Samma sak gäller raderna och kolumnerna på planen.</para>
+
+<para
+>Nu kan du börja fylla i symbolerna i de lediga rutorna på spelplanen. Du gör det genom att välja symbolen du vill använda i urvalslistan till vänster, och därefter använda musen för att klicka i den lediga rutan på spelplanen. Som alternativ kan du hålla musen över en ledig ruta eller använda piltangenterna för att flytta omkring, och därefter använda tangentbordet för att skriva in en symbol.</para>
+
+<para
+>I Roxdoku (tredimensionella) spel, använd alltid musen för att ställa in en liten kub till ett värde och använd ett <emphasis
+>dubbelklick</emphasis
+>. När den stora kuben roteras, genom att klicka och dra med musen, är det enklare att se vilka värden som finns i de små kuberna i bakgrunden om du klickar <emphasis
+>mellan</emphasis
+> de små kuberna, inte på dem.</para>
+
+<para
+>Ibland är det användbart att lägga till markeringar eller anmärkningar, som är små symboler med en fyrkant. De har ingen betydelse för lösningen, men de kan hjälpa till att följa idéer du har, särskilt när det finns ett val mellan två alternativ och du inte ännu har tillräckligt med information för att välja mellan dem. Klicka med musens högerknapp eller håll nere &Shift;-tangenten vid användning av tangentbordet för att lägga till en markering eller anmärkning.</para>
+
+<para
+>För att ta bort symbolen från en ruta, håll musen över rutan och tryck på <keycap
+>Delete</keycap
+> eller <keycap
+>baksteg</keycap
+> på tangentbordet, eller klicka med höger musknapp på rutan.</para>
+
+<para
+>Observera att rutorna ändrar färg medan du håller musen över dem. Det görs för att hjälpa dig hålla reda på reglerna i &ksudoku;. Använd de vertikala och horisontella linjerna för att kontrollera om symbolen som du ska skriva in på den lediga platsen redan används någonstans i den vertikala eller horisontella raden som rutan ingår i. Färgläggningen markerar också blocket, som du nog minns också bara får innehålla en förekomst av varje symbol. Om du inte behöver färgläggningen, kan du använda menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &ksudoku;...</guimenuitem
+></menuchoice
+> för att stänga av den.</para>
+
+<para
+>Fortsätt fylla i symboler enligt reglerna till hela spelplanen är ifylld. Vid detta tillfälle kontrollerar &ksudoku; om alla värden är giltiga, och rättar antingen dig eller accepterar lösningen.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Spelets regler, strategi och tips</title
+> <!-- do not change this! -->
+
+<sect1 id="rules"
+><title
+>Allmänna spelregler</title>
+
+<para
+>Reglerna i &ksudoku; är rätt enkla.</para>
+	<itemizedlist>
+	<listitem
+><para
+>Beroende på spelplanens storlek och vald svårighetsgrad kan ett enskilt problem i &ksudoku; ta från några minuter till några timmar att lösa.</para
+></listitem>
+	<listitem
+><para
+>Varje ruta kan bara innehålla en och endast en symbol.</para
+></listitem>
+	<listitem
+><para
+>Varje horisontell rad (som definieras av spelplanen) kan bara innehålla varje symbol exakt en gång.</para
+></listitem>
+	<listitem
+><para
+>Varje vertikal kolumn (som definieras av spelplanen) kan bara innehålla varje symbol exakt en gång.</para
+></listitem>
+	<listitem
+><para
+>Varje block (som definieras av spelplanen) kan bara innehålla varje symbol exakt en gång.</para
+></listitem>
+	</itemizedlist>
+
+	<note
+><title
+>Observera:</title
+><para
+>Symboluppsättningen varierar beroende på vilken spelstorlek du väljer.</para
+></note>
+
+	<itemizedlist>
+	<listitem
+><para
+>Kunskap i matematik eller språk krävs inte för att lösa problem i &ksudoku;, men en viss kännedom om aritmetik behövs i Mördarsudoku och Mattedokuspel.</para
+></listitem>
+	<listitem
+><para
+>Symbolerna som redan finns på spelplanen när spelet börjar kan inte ändras.</para
+></listitem>
+	<listitem
+><para
+>Du kan bara ändra symboler som du tidigare har angivit.</para
+></listitem>
+	<listitem
+><para
+>Spelen som &ksudoku; skapar har bara en lösning.</para
+></listitem>
+	<listitem
+><para
+>Spel du matar in kan sakna lösning eller ha mer än en lösning, men om de kommer från en publicerad källa betyder det oftast att du har gjort ett fel vid datainmatningen.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="variants"
+><title
+>Varianter i &ksudoku;</title>
+
+<sect2 id="standard_sudoku"
+><title
+>Sudoku-spel</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Den vanliga 9 x 9 Sudoku-spelplanen har 9 rader, 9 kolumner och 9 fyrkantiga block med storleken 3 x 3.</para
+></listitem>
+	<listitem
+><para
+>Andra storlekar av det vanliga Sudoku-spelet är 4 x 4 (mycket lätt), 16 x 16 och 25 x 25 (inte så lätt).</para
+></listitem>
+	<listitem
+><para
+>Pussel- och Aztec-varianten är likadan som vanlig 9 x 9 Sudoku, utom att vissa block inte är fyrkantiga.</para
+></listitem>
+	<listitem
+><para
+>Xsudoku-varianten är exakt likadan som vanligt Sudoku, med ytterligare ett krav: de två huvuddiagonalerna måste också var och en innehålla symbolerna 1 till 9 endast en gång. &ksudoku; markerar diagonalerna för att göra det lättare att se.</para
+></listitem>
+	<listitem
+><para
+>Varianterna Nonomino 9 x 9, Pentomino 5 x 5 och Tetromino 4 x 4 är likadana som vanligt Sudoku utom att vissa block inte är fyrkantiga.</para
+></listitem>
+	<listitem
+><para
+>Varianterna med storlek 6 x 6 är likadana som vanligt Sudoku, utom att vissa block är sex 3 x 2 rektanglar.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="samurai"
+><title
+>Samuraj-spel</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Samuraj Sudoku består av fem vanliga Sudoku-spel med 9 x 9 rutor vardera, som överlappar i hörnen med fyra 3 x 3 block. Vart och ett av de fem spelen har 9 rader och 9 kolumner att lösa, och symbolerna i de överlappande rutorna måste passa in i lösningarna av de två vanliga 9x9 Sudoku-spelen.</para
+></listitem>
+	<listitem
+><para
+>Lilla Samuraj Sudoku innehåller fem 4 x 4 Sudoku-spel, som överlappar i hörnen med fyra rutor. Vart och ett av de fem spelen har 4 rader, 4 kolumner och 4 block att lösa.</para
+></listitem>
+	<listitem
+><para
+>Väderkvarnsvarianten består av fem vanliga 9 x 9 Sudokuspel, som överlappar i hörnen med två 3 x 3 block. Den är som Samuraj Sudoku men det centrala 9 x 9 Sudokuspelet är svårare att se. Åtta av de 3 x 3 blocken delas med väderkvarnens vingar och bara det centrala 3 x 3 blocket är undantaget. </para
+></listitem>
+	<listitem
+><para
+>Sohei-varianten är en annan Samurajtyp och har fyra 9 x 9 Sudokuspel, som överlappar i två hörn av ett 3 x 3 block. Spelets centrala 3 x 3 block är tomt. </para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="roxdoku"
+><title
+>Roxdoku tredimensionella spel</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Roxdoku-varianterna är baserad på kuber i tre dimensioner, men är lättare än de låter. Det finns inga rader eller kolumner. Ett 3 x 3 x 3 Roxdoku-spel har 27 små kuber arrangerade i en större 3 x 3 x 3 kub. Den innehåller nio skivor, som var och en innehåller 3 x 3 små kuber, och dessa är de fyrkantiga block som måste fyllas i med siffrorna 1 till 9. Ett 4 x 4 x 4 Roxdoku har tolv 4 x 4 skivor, och ett 5 x 5 x 5 Roxdoku har femton 5 x 5 skivor.</para
+></listitem>
+	<listitem
+><para
+>Roxdoku tvillingvarianten har två 3 x 3 x 3 Roxdoku-spel som delar ett hörn. Hörndelen måste ingå i lösningen av båda 3 x 3 x 3 kuberna.</para
+></listitem>
+	<listitem
+><para
+>Dubbel Roxdoku-varianten innehåller två 3 x 3 x 3 Roxdoku-spel som har tre delar gemensamma längs en kant. Kantdelarna måste ingå i lösningen för båda 3 x 3 x 3 kuberna. </para
+></listitem>
+	<listitem
+><para
+>Samuraj Roxdoku</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="killer"
+><title
+>Varianterna Mördarsudoku och Mattedoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Mördarspel finns i två varianter: Lilla mördaren (4 x 4) och Mördarsudoku (9 x 9). Båda har rader, kolumner och fyrkantiga block, på exakt samma sätt som i vanliga Sudokuspel och följer exakt samma regler. De har också oregelbundet formade områden som kallas burar, där siffrorna i varje bur måste summeras till talet med litet teckensnitt i burens hörn, och ingen siffra kan upprepas inne i buren. Oftast börjar spelet med bara några få rutor som innehåller symboler. Du måste använda aritmetik och de vanliga Sudoku-reglerna tillsammans för att komma fram till lösningen. Skärmgrafiken gör det svårt att visualisera de fyrkantiga blocken som finns, men de är enklare att se om du skriver ut spelet genom att använda menyalternativet <menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Skriv ut...</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+	<listitem
+><para
+>Mattedokuvarianter, som också kallas <trademark
+>Kenken</trademark
+>, har inga block utan bara rad- och kolumnbegränsningar, och har burar där siffrorna måste adderas, subtraheras, divideras eller multipliceras enligt värdena och de aritmetiska symbolerna med litet teckensnitt i hörnen. En siffra i en Mattedokubur kan upprepas, men inte i samma kolumn eller rad. Exempelvis kan en L-form med tre rutor med kravet 5+ ha lösningarna 1 3 1 eller 2 1 2, under förutsättning att ettorna och tvåorna inte är i samma rad eller kolumn som varandra. Observera att subtraktions- och divisionsrutorna alltid har två rutor och att lösningssiffrorna kan finnas i endera ordningen. Exempelvis kan 2-burar ha lösningarna 1 3 eller 3 1, 2 4 eller 4 2, etc.</para
+></listitem>
+	<listitem
+><para
+>Eftersom det inte finns några block i ett Mattedokuspel, kan det ha godtycklig storlek från 3 x 3 upp till 9 x 9, där normalvärdet är 6 x 6. Se avsnittet <link linkend="configuration"
+>Spelinställning</link
+> för detaljerad information. För att komma igång finns det en variant som heter Mattedoku 101 med storlek 4 x 4.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+</sect1>
+
+<sect1 id="tips"
+><title
+>Strategi och tips</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Ta tid på dig och stressa inte. &ksudoku; är inte ett snabbt spel.</para
+></listitem>
+	<listitem
+><para
+>Var uppmärksam på färgerna hos rader, kolumner och block. De finns där för att hjälpa dig.</para
+></listitem>
+	<listitem
+><para
+>Försäkra dig om att ingen duplicerad symbol redan finns i raden, kolumnen och blocket där du lägger till en symbol.</para
+></listitem>
+	<listitem
+><para
+>Om du är tveksam, försök förutse om en ruta du lägger till en symbol i kan behövas av någon annan symbol, vilken annars inte kan placeras någon annanstans beroende på reglerna för rader, kolumner och block.</para
+></listitem>
+	<listitem
+><para
+>Använd Internet för att söka efter allmänna tips och strategier för att lösa Sudoku-problem.</para
+></listitem>
+	<listitem
+><para
+>Använd markeringar för drag där du märker en ruta eller rutor som bara har några få alternativ, men du inte kan välja mellan dem omedelbart. Markeringar sparar tid och ansträngningar att minnas senare, när fler rutor har fyllts i. Se <link linkend="howto"
+>Hur man spelar</link
+> för detaljerad information om hur markeringar används.</para
+></listitem>
+	<listitem
+><para
+>Om du får problem, försök att gå tillbaka och se exakt var du gjorde fel. Du kan använda menyalternativen <menuchoice
+><guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Ångra</guimenuitem
+></menuchoice
+> och <menuchoice
+><guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Gör om</guimenuitem
+></menuchoice
+>, upprepade gånger om det behövs, och det finns en inställning i <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &ksudoku;...</guimenuitem
+></menuchoice
+> som markerar fel.</para
+></listitem>
+	<listitem
+><para
+>Även om &ksudoku; tillhandahåller ett tipsalternativ, försök att inte använda det för ofta. Kom ihåg att lösa problemet själv förhöjer din hjärnaktivitet, medan att använda tipsfunktionen för ofta är fusk.</para
+></listitem>
+	<listitem
+><para
+>Om du har för mycket besvär med att lösa ett visst problem, och helt enkelt måste använda tipsfunktionen, kanske du ska försöka minska svårighetsgraden, eller försöka med ett enklare, mer grundläggande problem.</para
+></listitem>
+	<listitem
+><para
+>Vissa problemlayouter omfattar mycket speciella former på spelplanen. Det är en god idé att ha färgläggningsalternativet aktiverat även om du anser att du är en erfaren spelare.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Översikt av gränssnittet</title
+> <!-- do not change this! -->
+
+<sect1 id="welcome-screen"
+><title
+>Välkomstskärmen</title>
+
+<para
+>Välkomstskärmen är det första du ser när &ksudoku; startas eller du använder verktygsraden eller menyn för att begära ett nytt spel. Den har en lista med alla speltyper och storlekar, och du kan klicka på ett av dem för att välja det.</para>
+
+<para
+>Om du klickar på knappen benämnd <guibutton
+>Gå in i ett spel</guibutton
+>, dyker en tom spelplan av den valda typen och storleken upp. Här kan musen eller tangentbordet användas för att mata in ett spel från en annan källa, som en dagstidning. När du är klar, använd alternativet <guilabel
+>Kontrollera</guilabel
+>, från verktygsraden eller menyn, för att kontrollera spelet. Det ska bara ha en lösning. Om det är fallet, kan du börja lösa spelet, eller kanske låta &ksudoku; att lösa det. Om en lösning saknas, eller det finns mer än en lösning, har du troligtvis gjort fel någonstans vid datainmatningen.</para>
+
+<para
+>Om du klickar på knappen benämnd <guibutton
+>Skapa ett spel</guibutton
+>, visar &ksudoku; en spelplan med vissa rutor redan ifyllda. Det är din uppgift att fylla i resten.</para>
+
+<para
+>Kontrollera att du är nöjd med inställningarna <guilabel
+>Svårighetsgrad:</guilabel
+> och <guilabel
+>Symmetri:</guilabel
+> innan du skapar ett spel. De kan ändras under ett spel, men då får de ingen effekt förrän nästa spel skapas.</para>
+
+	<note
+><para
+>Om du inte kan se knapparna <guilabel
+>Svårighetsgrad:</guilabel
+> och <guilabel
+>Symmetri:</guilabel
+>, använd menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Visa statusrad</guimenuitem
+> </menuchoice
+> för att försäkra dig om att statusraden är synlig.</para
+></note>
+
+<para
+>Knappen <guilabel
+>Svårighetsgrad:</guilabel
+> erbjuder sex svårighetsgrader, från <guimenuitem
+>Mycket lätt</guimenuitem
+> till <guimenuitem
+>Svår</guimenuitem
+>, <guimenuitem
+>Djävulsk</guimenuitem
+> och <guimenuitem
+>Obegränsad</guimenuitem
+>. De enklare nivåerna kan ta några minuter att lösa för ett 9 x 9 spel. Nivåerna <guimenuitem
+>Svår</guimenuitem
+> och <guimenuitem
+>Djävulsk</guimenuitem
+> kan ta omkring en timme och är avsedda att motsvara svårighetsgraderna som finns i dagstidningar. Samuraj-spel och storlekarna 16 x 16 eller 25 x 25 tar längre tid att lösa, helt enkelt på grund av att det finns fler rader, kolumner och block, och fler rutor att fylla i.</para>
+
+<para
+>Svårighetsgraden <guimenuitem
+>Djävulsk</guimenuitem
+> kräver ofta en eller flera gissningar, med tillbakagång om du gissar fel. Lägre nivåer kan oftast lösas enbart med logik. Svårighetsgraden <guimenuitem
+>Obegränsad</guimenuitem
+> har ingen begränsning när det gäller antal gissningar som krävs, hur snart den första gissningen behövs, eller hur komplex logiken kan vara. Den tillhandahålls för intresserade experter, men brukar skapa ointressanta <quote
+>inhumana</quote
+> spel och rekommenderas inte för allmän användning.</para>
+
+ <para
+>Knappen <guilabel
+>Symmetri:</guilabel
+> tillhandahåller sju symmetrityper, inklusive <guimenuitem
+>Ingen symmetri</guimenuitem
+>. Den styr layouten och utseendet hos rutorna som fylls i vid starten av ett spel och har i huvudsak estetisk effekt, utom att spel utan symmetri brukar vara något svårare än de med hög symmetri, och det är mindre troligt att &ksudoku; kan skapa ett spel med hög svårighetsgrad och hög symmetri i kombination.</para>
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu"
+><title
+>Menyn Spel</title>
+
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Startar ett nytt spel.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ladda...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Laddar ett sparat spel.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spara</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Sparar</action
+> det nuvarande spelet som en standardfil.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>Spel</guimenu
+> <guimenuitem
+>Spara som...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Sparar</action
+> det aktuella spelet som en fil du väljer.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Skriv ut...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Skriver ut</action
+> ett tvådimensionellt spels nuvarande tillstånd på en skrivare du väljer. Blockens konturer och de ursprungliga värdena i spelet skrivs ut med svart. Övriga celler, ifyllda värden och lösningsvärden skrivs ut med grått. Det finns ett alternativ för att bara skriva ut ett spel per sida, eller mer än ett spel per sida. Se <link linkend="configuration"
+>Spelanpassning</link
+>.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Avslutar</action
+> &ksudoku;.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+>Menyn Flytta</title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Ångra</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Ångra</action
+> ditt senaste drag, upprepade gånger om det behövs.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Gör om</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Gör om</action
+> ett drag som ångrades, upprepade gånger om det behövs.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+><keysym
+>H</keysym
+></shortcut
+> <guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Tips</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Ge ett tips</action
+> genom att fylla i en ledig ruta.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Lös</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Lös problemet omedelbart</action
+>.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>Flytta</guimenu
+> <guimenuitem
+>Kontrollera</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Kontrollera</action
+> att ett inmatat spel är giltigt. Om det bara har en lösning blir det tillgängligt att spela. Om det saknar lösning eller har mer än en lösning, har det troligtvis uppstått ett fel vid datainmatning.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>Menyn Inställningar</title>
+		<variablelist>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &ksudoku;...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Visa en dialogruta för att anpassa &ksudoku;.</action
+> Se avsnittet <link linkend="configuration"
+>Spelanpassning</link
+> för detaljinformation.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+		<para
+>Dessutom har &ksudoku; de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten  <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Vanliga frågor</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Jag vill ändra hur spelet ser ut. Kan man göra det? </para
+></question>
+ <answer
+><para
+>Sudoku spelas traditionellt på ett fyrkantigt rutnät. Teman är inte särskilt vettiga här, men du kan dock välja några färgscheman och bakgrunder. Använd <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa &ksudoku;...</guimenuitem
+></menuchoice
+> i menyraden för att göra det.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kan man använda tangentbordet för att spela? </para
+></question>
+ <answer
+><para
+>Ja. Spel med tangentbordet är alltid aktiverat i &ksudoku;. Använd piltangenterna för att flytta markeringen, numeriska eller alfabetiska tecken för att mata in symbolerna och &Shift;-tangenten för att placera markörer.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Var finns bästa resultat?</para
+></question>
+ <answer
+><para
+>&ksudoku; har inte denna funktion.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Spelanpassning</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+>Spelalternativ</title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Försök att få plats med mer än ett spel på en sida vid utskrift</guilabel
+></term>
+			<listitem>
+			<para
+>Växla alternativet för att skriva ut mer än ett spel per sida så fort de får plats.</para>
+			<para
+>Om alternativet är markerat skrivs spel ut när inga fler får plats på en sida eller när &ksudoku; avslutas. Annars skrivs ett spel ut omedelbart.</para>
+			<para
+>Tredimensionella spel kan inte skrivas ut.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Visa markeringar i tvådimensionella spel</guilabel
+></term>
+			<listitem
+><para
+>Växla markeringsalternativet i &ksudoku; för tvådimensionella spel.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Visa fel</guilabel
+></term>
+			<listitem
+><para
+>Växla alternativet för att markera fel.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Visa markeringar i tredimensionella spel</guilabel
+></term>
+			<listitem
+><para
+>Växla markeringsalternativet i &ksudoku; för tredimensionella spel.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mattedoku spelstorlek (3-9)</guilabel
+></term>
+			<listitem
+><para
+>Välj en storlek på Mattdokuspel, från 3 (mycket enkel) till 9 (mycket svår) där storlek 6 är normalvärdet.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Inställningar enbart för tredimensionella spel</guilabel
+></term>
+			<listitem
+><para
+>Följande fem inställningar justerar markering och synlighet för celler i tredimensionella spel. Idén är att göra det enklare att se samband mellan celler, särskilt om de är bakom andra celler.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+		<note
+><title
+>Observera:</title
+><para
+>Att ha markeringsalternativen aktiverade rekommenderas också för de mest erfarna spelarna, eftersom det hjälper till att se spelplanens verkliga begränsningar.</para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Tack till och licens</title
+> <!-- do not change this! -->
+
+<para
+>&ksudoku; </para>
+
+<!--List all the copyright holders here-->
+<para
+>Copyright 2005-2007 Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Copyright 2006-2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Johannes Bergmeier <email
+>johannes.bergmeier@gmx.net</email
+></para>
+
+<para
+>Copyright 2011 Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Nya lösnings- och genereringsalgoritmer 2011 David Bau, <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
+>se denna webbplats.</ulink
+></para>
+
+<para
+>Dokumentation copyright 2005 Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Dokumentation copyright 2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Euigene Trounev <email
+>eugene.trounev@gmail.com</email
+></para>
+
+<para
+>Dokumentation copyright 2011-2020 Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

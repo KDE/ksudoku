@@ -1,0 +1,1103 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: kdeorg\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"PO-Revision-Date: 2022-09-20 01:56\n"
+"Last-Translator: \n"
+"Language-Team: Chinese Simplified\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Crowdin-Project: kdeorg\n"
+"X-Crowdin-Project-ID: 269464\n"
+"X-Crowdin-Language: zh-CN\n"
+"X-Crowdin-File: /kf5-trunk/messages/ksudoku/ksudoku.pot\n"
+"X-Crowdin-File-ID: 5710\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Ni Hui"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "shuizhuyuanluo@126.com"
+
+#: src/generator/sudokuboard.cpp:104
+#, kde-format
+msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
+msgstr "差不多200次生成谜题的尝试都失败了。再试试？"
+
+#: src/generator/sudokuboard.cpp:106
+#, kde-format
+msgid "Mathdoku or Killer Sudoku Puzzle"
+msgstr "Mathdoku 或者 Killer 数独谜题"
+
+#: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
+#, kde-format
+msgid "%1"
+msgstr "%1|/|$[~stripAccel %1]"
+
+#: src/generator/sudokuboard.cpp:197
+#, kde-format
+msgid ""
+"After %1 tries, the best difficulty level achieved by the generator is %2, "
+"with internal difficulty rating %3, but you requested difficulty level %4.\n"
+"\n"
+"Do you wish to let the generator try again or accept the puzzle as is?\n"
+"\n"
+"Hint: you can try to increase the difficulty rating by doing the following: "
+"Continue with the 'Accept' button, choose Game -> New, then change the "
+"Symmetry setting to 'No Symmetry' or some low symmetry type and then use "
+"'Generate A Puzzle' again."
+msgstr ""
+"在%1次尝试之后，生成的最佳难度级别为%2，内部难度等级为%3，但您请求的难度等级"
+"为%4。\n"
+"\n"
+"重新生成一次还是接受当前谜题？\n"
+"\n"
+"提示：您可以尝试通过执行以下操作来增加难度等级：点击“接受”按钮继续，选择游戏 "
+"- >新建，然后将对称设置更改为“无对称性”或某种对称性较低的类型，然后再次使"
+"用“生成谜题”。"
+
+#: src/generator/sudokuboard.cpp:208 src/generator/sudokuboard.cpp:228
+#: src/generator/sudokuboard.cpp:244
+#, kde-format
+msgid "Difficulty Level"
+msgstr "难度级别"
+
+#: src/generator/sudokuboard.cpp:209
+#, kde-format
+msgid "&Try Again"
+msgstr "重试(&T)"
+
+#: src/generator/sudokuboard.cpp:209
+#, kde-format
+msgid "&Accept"
+msgstr "接受(&A)"
+
+#: src/generator/sudokuboard.cpp:221
+#, kde-format
+msgid ""
+"It will be possible to solve the generated puzzle by logic alone. No "
+"guessing will be required.\n"
+"\n"
+"The internal difficulty rating is %1. There are %2 clues at the start and %3 "
+"moves to go."
+msgstr ""
+"只靠思维逻辑就可以解决生成的谜题，不需要猜测。\n"
+"\n"
+"内部难度分为 %1，初始给出 %2 个提示数，理论上 %3 步就可解决。"
+
+#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:245
+#, kde-format
+msgid "&Retry"
+msgstr "重试(&R)"
+
+#: src/generator/sudokuboard.cpp:235
+#, kde-format
+msgid ""
+"Solving the generated puzzle will require an average of %1 guesses or branch "
+"points and if you guess wrong, backtracking will be necessary. The first "
+"guess should come after %2 moves.\n"
+"\n"
+"The internal difficulty rating is %3, there are %4 clues at the start and %5 "
+"moves to go."
+msgstr ""
+"解决生成的谜题需要大概 %1 次猜测或分支，如果你猜错了的话，那就需要退回。第一"
+"次猜测应该在 %2 步后出现。\n"
+"\n"
+"内部难度分为 %3，初始给出 %4 个提示数，理论上 %5 步可以解决。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
+#: src/gui/configgame.ui:20
+#, kde-format
+msgid "When printing, try to fit more than one puzzle on a page"
+msgstr "打印谜题时，尽可能填满一整页"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:43
+#, kde-format
+msgid "Highlight the row, column and block that contain the selected cell"
+msgstr "高亮突出显示包含所选格子的行、列以及方框"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:46
+#, kde-format
+msgid ""
+"Highlight the row, column and block that contain the selected cell. Blocks "
+"may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
+msgstr ""
+"突出显示包含选定单元格的行、列和块。块可能是方形的或不规则的 (和jigsaw拼图类"
+"型或 XSudoku拼图中一样)。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:49
+#, kde-format
+msgid "Show highlights in 2-D puzzles"
+msgstr "突出显示二维谜题"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:56 src/gui/configgame.ui:59
+#, kde-format
+msgid "Highlight in red any cells whose values break the Sudoku rules."
+msgstr "将不符合规则的格子内的数字以红色高亮突出。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:62
+#, kde-format
+msgid "Show errors"
+msgstr "显示错误"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:69 src/gui/configgame.ui:72
+#, kde-format
+msgid "Highlight the planes (blocks) that contain the selected cell."
+msgstr "高亮包含选中单元的平面 (格子)。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:75
+#, kde-format
+msgid "Show highlights in 3-D puzzles"
+msgstr "三维谜题中显示高亮"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: src/gui/configgame.ui:137
+#, kde-format
+msgid "Mathdoku puzzle size (3-9)"
+msgstr "Mathdoku 谜题大小 (3-9)"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/gui/configgame.ui:167
+#, kde-format
+msgid "Settings for 3-D Puzzles Only"
+msgstr "仅针对三维谜题的设置"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_6)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_6)
+#: src/gui/configgame.ui:182 src/gui/configgame.ui:185
+#: src/gui/configgame.ui:228 src/gui/configgame.ui:231
+#, kde-format
+msgid "Set the relative size of 3-D cells and the spaces between them."
+msgstr "设定三维格子和空白区域之间的相对尺寸。"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: src/gui/configgame.ui:234
+#, kde-format
+msgid "Overall size of 3-D cells"
+msgstr "三维格子总尺寸"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label)
+#: src/gui/configgame.ui:254 src/gui/configgame.ui:257
+#: src/gui/configgame.ui:300 src/gui/configgame.ui:303
+#, no-c-format, kde-format
+msgid "Shrink or expand a cell by up to 30% when it is selected."
+msgstr "选中格子时将其缩放为提高 30% 的大小。"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/gui/configgame.ui:306
+#, kde-format
+msgid "Size of selected 3-D cell"
+msgstr "选中三维格子的尺寸"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_3)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_3)
+#: src/gui/configgame.ui:326 src/gui/configgame.ui:329
+#: src/gui/configgame.ui:363 src/gui/configgame.ui:366
+#, no-c-format, kde-format
+msgid "Shrink or expand cells by up to 30% when they are highlighted."
+msgstr "突出显示格子时将其缩放为提高 30% 的大小。"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: src/gui/configgame.ui:369
+#, kde-format
+msgid "Size of highlighted 3-D cells"
+msgstr "突出显示三维格子的尺寸"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_5)
+#: src/gui/configgame.ui:389 src/gui/configgame.ui:426
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell."
+msgstr "如果单元格不在包含所选单元格的 NxNxN 立方体中, 则最多可缩进60%。"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:392 src/gui/configgame.ui:429
+#: src/gui/configgame.ui:452
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell. This is useful if a 3-D puzzle has more than one cube."
+msgstr ""
+"如果单元格不在包含所选单元格的 NxNxN 立方体中, 则最多可缩进60%。这在有多个立"
+"方体的3D谜题中很有用。"
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: src/gui/configgame.ui:432
+#, kde-format
+msgid "Size of 3-D cells outside the selected volume"
+msgstr "所选列以外的格子区域的大小"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:449
+#, kde-format
+msgid ""
+"Darken cells if they are not in an NxNxN cube that contains the selected "
+"cell."
+msgstr "如果单元格不在包含所选单元格的 NxNxN 立方体中, 则会变暗。"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:455
+#, kde-format
+msgid "Darken 3-D cells outside the selected volume"
+msgstr "所选列以外的格子区域暗淡化"
+
+#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#, kde-format
+msgid "Configuration not yet implemented"
+msgstr "配置还没有生效"
+
+#: src/gui/ksudoku.cpp:76
+#, kde-format
+msgid ""
+"Sorry, your solution contains mistakes.\n"
+"\n"
+"Enable \"Show errors\" in the settings to highlight them."
+msgstr ""
+"抱歉，您的解答有错。\n"
+"\n"
+"在设置中启用“显示错误”选项可以突出显示这些错误。"
+
+#: src/gui/ksudoku.cpp:87
+#, kde-format
+msgid "Congratulations! You made it in 1 second. With some tricks."
+msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+msgstr[0] "恭喜！您在 %1 秒内完成了。有一些诀窍。"
+
+#: src/gui/ksudoku.cpp:89
+#, kde-format
+msgid "Congratulations! You made it in 1 minute. With some tricks."
+msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+msgstr[0] "恭喜！您在 %1 分钟内完成了。有一些诀窍。"
+
+#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#, kde-format
+msgid "1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "%1 分钟"
+
+#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#, kde-format
+msgid "1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 秒"
+
+#: src/gui/ksudoku.cpp:91
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2. With some tricks."
+msgstr "恭喜！您在 %1 %2内完成了。有一些诀窍。"
+
+#: src/gui/ksudoku.cpp:94
+#, kde-format
+msgid "Congratulations! You made it in 1 second."
+msgid_plural "Congratulations! You made it in %1 seconds."
+msgstr[0] "恭喜！您在 %1 秒内完成了游戏。"
+
+#: src/gui/ksudoku.cpp:96
+#, kde-format
+msgid "Congratulations! You made it in 1 minute."
+msgid_plural "Congratulations! You made it in %1 minutes."
+msgstr[0] "恭喜！您在 %1 分钟内完成了游戏。"
+
+#: src/gui/ksudoku.cpp:98
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2."
+msgstr "恭喜！您在 %1 %2内完成了游戏。"
+
+#: src/gui/ksudoku.cpp:178
+#, kde-format
+msgid "Sudoku Standard (9x9)"
+msgstr "标准数独 (9x9)"
+
+#: src/gui/ksudoku.cpp:179
+#, kde-format
+msgid "The classic and fashionable game"
+msgstr "经典的流行游戏"
+
+#: src/gui/ksudoku.cpp:182
+#, kde-format
+msgid "Roxdoku 9 (3x3x3)"
+msgstr "Roxdoku 9 (3x3x3)"
+
+#: src/gui/ksudoku.cpp:183
+#, kde-format
+msgid "The Rox 3D Sudoku"
+msgstr "Rox 3D 数独"
+
+#: src/gui/ksudoku.cpp:205
+#, kde-format
+msgid "Missing Variant Name"
+msgstr "缺失变形名称"
+
+#: src/gui/ksudoku.cpp:219
+#, kde-format
+msgid "Sudoku 16x16"
+msgstr "数独 16x16"
+
+#: src/gui/ksudoku.cpp:220
+#, kde-format
+msgid "Sudoku with 16 symbols"
+msgstr "带 16 个符号的数独"
+
+#: src/gui/ksudoku.cpp:222
+#, kde-format
+msgid "Sudoku 25x25"
+msgstr "数独 25x25"
+
+#: src/gui/ksudoku.cpp:223
+#, kde-format
+msgid "Sudoku with 25 symbols"
+msgstr "带 25 个符号的数独"
+
+#: src/gui/ksudoku.cpp:226
+#, kde-format
+msgid "Roxdoku 16 (4x4x4)"
+msgstr "Roxdoku 16 (4x4x4)"
+
+#: src/gui/ksudoku.cpp:227
+#, kde-format
+msgid "The Rox 3D sudoku with 16 symbols"
+msgstr "带 16 个符号的 Rox 3D 数独"
+
+#: src/gui/ksudoku.cpp:229
+#, kde-format
+msgid "Roxdoku 25 (5x5x5)"
+msgstr "Roxdoku 25 (5x5x5)"
+
+#: src/gui/ksudoku.cpp:230
+#, kde-format
+msgid "The Rox 3D sudoku with 25 symbols"
+msgstr "带 25 个符号的 Rox 3D 数独"
+
+#: src/gui/ksudoku.cpp:276
+#, kde-format
+msgid ""
+"Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
+"grid in which every row and every column contains the available digits (1-3 "
+"up to 1-9) exactly once. The grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues, but there are not many of "
+"them. Cages of larger size have a target value and an arithmetic operator (+-"
+"x/). The digits in the cage must combine together, using the operator, to "
+"reach the target value, e.g. '12x' means that the digits must multiply "
+"together to make 12. A digit can occur more than once in a cage, provided it "
+"occurs in different rows and columns.\n"
+"\n"
+"In general, larger Mathdokus are more difficult and so are larger cages. You "
+"can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"Mathdoku 谜题大小可以从 3x3 到 9x9。解谜的答案是一个网格，其中每一行和每一列"
+"都包含可用数字 (1-3 到 1-9) 且只使用一次。网格上覆盖有不规则形状的区。\n"
+"\n"
+"大小为1的区是起始值或线索, 但它们不多。较大尺寸的区具有目标值和算术运算符 (+-"
+"x/)。区中的数字必须结合在一起，使用运算符，以达到目标值，例如“12x”意味着数字"
+"必须乘起来等于12。如果一个数字出现在不同的行和列中, 则可以在区中多次出现。\n"
+"\n"
+"一般而言，较大的 Mathdokus 更难, 更大的区也更困难。通过使用 KSudoku 的“难"
+"度”按钮, 您可以选择 KSudoku 的设置对话框中的谜题大小和最大区大小。"
+
+#: src/gui/ksudoku.cpp:295
+#, kde-format
+msgid "Playing Mathdoku"
+msgstr "玩Mathdoku"
+
+#: src/gui/ksudoku.cpp:299
+#, kde-format
+msgid ""
+"Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
+"or nine 3x3 blocks. The solution must follow Classic Sudoku rules. The "
+"difference is that there are few starting-values or clues (if any). Instead "
+"the grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues. Cages of larger size have a "
+"target value and the digits in them must add up to that value. In Killer "
+"Sudoku, a cage cannot contain any digit more than once.\n"
+"\n"
+"In general, larger cages are more difficult. You can select the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"杀手数独谜题可以有 4x4 或 9x9，包含4个2x2 块或9个3x3 块。解决方案必须遵循经典"
+"的数独规则。不同的是, 很少有起始值或线索 (如果有的话)。相反, 网格被不规则形状"
+"的区覆盖。\n"
+"\n"
+"大小为1的区是起始值或线索。较大的区具有目标值, 它们中的数字必须相加达到该值。"
+"在杀手数独中，区内不能多次包含同一个数字。\n"
+"\n"
+"一般来说，更大的区也更困难。您可以使用 KSudoku 的“难度”按钮来选择区大小的最大"
+"值。"
+
+#: src/gui/ksudoku.cpp:313
+#, kde-format
+msgid "Playing Killer Sudoku"
+msgstr "玩杀手数独"
+
+#: src/gui/ksudoku.cpp:317
+#, kde-format
+msgid ""
+"Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
+"cage at a time. To start a cage, left click on any unused cell or enter a "
+"number in the cell that is under the cursor or enter + - / or x there. A "
+"small cage-label will appear in that cell. To extend the cage in any "
+"direction, left-click on a neigbouring cell or move the cursor there and "
+"type a Space.\n"
+"\n"
+"The number you type is the cage's value and it can have one or more digits, "
+"including zero. A cell of size 1 has to have a 1-digit number, as in a "
+"normal Sudoku puzzle. It becomes a starting-value or clue for the player.\n"
+"\n"
+"The + - / or x is the operator (Add, Subtract, Divide or Multiply). You must "
+"have one in cages of size 2 or more. In Killer Sudoku, the operator is "
+"provided automatically because it is always + or none.\n"
+"\n"
+"You can enter digits, operators and cells in any order. To complete the cage "
+"and start another cage, always press Return. If you make a mistake, the only "
+"thing to do is delete a whole cage and re-enter it. Use right click in the "
+"current cage or any earlier cage, if you wish to delete it. Alternatively, "
+"use the cursor and the Delete or Backspace key.\n"
+"\n"
+"When the grid is filled with cages, hit the Check button, to solve the "
+"puzzle and make sure there is only one solution. If the check fails, you "
+"have probably made an error somewhere in one of the cages."
+msgstr ""
+"Mathdoku 和杀手数独谜题必须每次在一个区内输入数字。要开始一个区，请左键单击任"
+"何未使用的单元格，或者在光标下方的单元格中输入一个数字或者运算符（+-/或x）。"
+"在该单元格中会出现一个小的区标签。要在任何方向上扩展区，请在邻近单元格上左键"
+"单击或移动光标，然后键入空格。\n"
+"\n"
+"键入的数字是区的值, 它可以有一个或多个数字，包括零。一个大小为1的单元格必须有"
+"一个1位数字, 就像一个普通的数独拼图。它成为玩家的起始值或线索。\n"
+"\n"
+"+-/或 x 是运算符 (加、减、除或乘)。你必须有一个大小为2或更大的区。在杀手数独"
+"中，运算符是自动提供的，因为它总是 + 或者为空。\n"
+"\n"
+"可以按任意顺序输入数字、运算符和单元格。要完成区并开始另一个区，按回车即可。"
+"如果你发现你出现了错误，可以删除一个完整的区并重新输入。如果要删除，请在当前"
+"区或任何较早的区中单击右键。或者, 使用光标和Delete或Backspace键。\n"
+"\n"
+"当网格用区填充时, 点击“检查”按钮来确保有且只有一个解决方案。如果检查失败，您"
+"可能在某个区中的某个地方出错了。"
+
+#: src/gui/ksudoku.cpp:347
+#, kde-format
+msgid "Data-entry for Puzzles with Cages"
+msgstr "包含区的谜题数据输入"
+
+#: src/gui/ksudoku.cpp:403
+#, kde-format
+msgid "The puzzle you entered contains some errors."
+msgstr "您输入的拼图包含一些错误。"
+
+#: src/gui/ksudoku.cpp:416
+#, kde-format
+msgid ""
+"Sorry, no solutions have been found. Please check that you have entered in "
+"the puzzle completely and correctly."
+msgstr "抱歉，你输入的谜题无解。请检查你输入的谜题是否正确。"
+
+#: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
+#, kde-format
+msgid "Check Puzzle"
+msgstr "检查谜题"
+
+#: src/gui/ksudoku.cpp:423
+#, kde-format
+msgid "The Puzzle you entered has a unique solution and is ready to be played."
+msgstr "你输入的谜题有且仅有一个解法，现在可以开始玩了。"
+
+#: src/gui/ksudoku.cpp:427
+#, kde-format
+msgid ""
+"The Puzzle you entered has multiple solutions. Please check that you have "
+"entered in the puzzle completely and correctly."
+msgstr "你输入的谜题有多个解。请检查你输入的谜题是否正确。"
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Do you wish to play the puzzle now?"
+msgstr "您现在想要玩这个谜题吗？"
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Play Puzzle"
+msgstr "玩拼图"
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Play"
+msgstr "玩游戏"
+
+#: src/gui/ksudoku.cpp:470
+#, kde-format
+msgid "Enable all messages"
+msgstr "打开所有信息显示"
+
+#: src/gui/ksudoku.cpp:487
+#, kde-format
+msgid "Check"
+msgstr "检查"
+
+#: src/gui/ksudoku.cpp:503
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Diabolical"
+msgstr "恐怖"
+
+#: src/gui/ksudoku.cpp:505
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Unlimited"
+msgstr "无限制"
+
+#: src/gui/ksudoku.cpp:516
+#, kde-format
+msgctxt "@option drop down box"
+msgid "Difficulty:"
+msgstr "难度："
+
+#: src/gui/ksudoku.cpp:520
+#, kde-format
+msgctxt "@option drop down box"
+msgid "Symmetry:"
+msgstr "对称："
+
+#: src/gui/ksudoku.cpp:524
+#, kde-format
+msgctxt "Symmetry of layout of clues when puzzle starts"
+msgid "Symmetry"
+msgstr "提示数对称分布"
+
+#: src/gui/ksudoku.cpp:526
+#, kde-format
+msgid "The symmetry of layout of the clues when the puzzle starts"
+msgstr "游戏初始提示数的对称分布方案"
+
+#: src/gui/ksudoku.cpp:528
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Diagonal"
+msgstr "对角对称"
+
+#: src/gui/ksudoku.cpp:529
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Central"
+msgstr "中央对称"
+
+#: src/gui/ksudoku.cpp:530
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Left-Right"
+msgstr "左右对称"
+
+#: src/gui/ksudoku.cpp:531
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Spiral"
+msgstr "空间对称"
+
+#: src/gui/ksudoku.cpp:532
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Four-Way"
+msgstr "四路对称"
+
+#: src/gui/ksudoku.cpp:533
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Random Choice"
+msgstr "随机选择"
+
+#: src/gui/ksudoku.cpp:534
+#, kde-format
+msgid "No Symmetry"
+msgstr "无对称"
+
+#: src/gui/ksudoku.cpp:638 src/gui/ksudoku.cpp:697
+#, kde-format
+msgid "Could not load game."
+msgstr "无法加载游戏。"
+
+#: src/gui/ksudoku.cpp:654
+#, kde-format
+msgid "Do you really want to end this game in order to start a new one?"
+msgstr "您真的想要结束这次游戏而开始新的一轮吗？"
+
+#: src/gui/ksudoku.cpp:655
+#, kde-format
+msgctxt "window title"
+msgid "New Game"
+msgstr "新游戏"
+
+#: src/gui/ksudoku.cpp:656
+#, kde-format
+msgctxt "button label"
+msgid "New Game"
+msgstr "新游戏"
+
+#: src/gui/ksudoku.cpp:673
+#, kde-format
+msgid "Do you really want to restart this game?"
+msgstr "您真的想要重新开始这局游戏吗？"
+
+#: src/gui/ksudoku.cpp:674
+#, kde-format
+msgctxt "window title"
+msgid "Restart Game"
+msgstr "重新开始游戏"
+
+#: src/gui/ksudoku.cpp:675
+#, kde-format
+msgctxt "button label"
+msgid "Restart Game"
+msgstr "重新开始游戏"
+
+#: src/gui/ksudoku.cpp:690
+#, kde-format
+msgid "Open Location"
+msgstr "打开位置"
+
+#: src/gui/ksudoku.cpp:724
+#, kde-format
+msgid "Error Writing File"
+msgstr "写入文件错误"
+
+#: src/gui/ksudoku.cpp:746
+#, kde-format
+msgid "There seems to be no puzzle to print."
+msgstr "似乎没有可以打印的谜题。"
+
+#: src/gui/ksudoku.cpp:783
+#, kde-format
+msgctxt "Game Section in Config"
+msgid "Game"
+msgstr "游戏"
+
+#: src/gui/ksudoku.cpp:784
+#, kde-format
+msgid "Theme"
+msgstr "主题"
+
+#: src/gui/ksudoku.cpp:816
+#, kde-format
+msgid ""
+"Warning: The Unlimited difficulty level has no limit on how many guesses or "
+"branch points are required to solve the puzzle and there is no lower limit "
+"on how soon guessing becomes necessary.\n"
+"\n"
+"Please also note that the generation of this type of puzzle might take much "
+"longer than other ones. During this time KSudoku will not respond."
+msgstr ""
+"警告: 无限制的难度级别对解决这个谜题需要多少猜测或分支点没有限制，并且对多久"
+"之后会需要猜测没有最低限制。\n"
+"\n"
+"还请注意，这种类型的谜题的生成可能要比其他时间长得多。在这段时间里 KSudoku 会"
+"停止响应。"
+
+#: src/gui/ksudoku.cpp:823
+#, kde-format
+msgid "Warning"
+msgstr "警告"
+
+#: src/gui/ksudoku.cpp:862
+#, kde-format
+msgid ""
+"This will enable all the dialogs that you had disabled by marking the 'Do "
+"not show this message again' option.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+"这将启用之前通过“不再显示此消息”选项禁用的所有对话框。\n"
+"\n"
+"是否要继续？"
+
+#. i18n: ectx: label, entry (Theme), group (Themes)
+#: src/gui/ksudoku.kcfg:41
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "要使用的图像主题。"
+
+#. i18n: ectx: label, entry (Symbols), group (Themes)
+#: src/gui/ksudoku.kcfg:44
+#, kde-format
+msgid "Select the themes you want to use"
+msgstr "选择您要使用的主题"
+
+#: src/gui/ksudokugame.cpp:375
+#, kde-format
+msgid ""
+"In Killer Sudoku, the operator is always + or none and KSudoku automatically "
+"sets the correct choice."
+msgstr "在杀手数独中，运算符总是 + 或为空。KSudoku 自动设置正确的选择。"
+
+#: src/gui/ksudokugame.cpp:377
+#, kde-format
+msgid "Killer Sudoku Cage"
+msgstr "杀手数独区"
+
+#: src/gui/ksudokugame.cpp:422
+#, kde-format
+msgid "The cell you have selected has already been used in a cage."
+msgstr "您选择的单元格已在区中使用。"
+
+#: src/gui/ksudokugame.cpp:424 src/gui/ksudokugame.cpp:454
+#: src/gui/ksudokugame.cpp:479 src/gui/ksudokugame.cpp:486
+#: src/gui/ksudokugame.cpp:494 src/gui/ksudokugame.cpp:503
+#, kde-format
+msgid "Error in Cage"
+msgstr "区错误"
+
+#: src/gui/ksudokugame.cpp:452
+#, kde-format
+msgid ""
+"The cell you have selected is not next to any cell in the cage you are "
+"creating."
+msgstr "您选择的单元格不在所创建的区中的任何单元格旁边。"
+
+#: src/gui/ksudokugame.cpp:477
+#, kde-format
+msgid ""
+"The cage you wish to complete has no cells in it yet. Please click on a cell "
+"or key in + - / x or a number."
+msgstr ""
+"您希望完成的区没有单元格。请点击一个单元格，或者输入+、-、/、x或一个数字。"
+
+#: src/gui/ksudokugame.cpp:484
+#, kde-format
+msgid ""
+"The cage you wish to complete has no value yet. Please key in a number with "
+"one or more digits."
+msgstr "您希望完成的区没有值。请输入一个数字。"
+
+#: src/gui/ksudokugame.cpp:492
+#, kde-format
+msgid ""
+"The cage you wish to complete has more than one cell, but it has no operator "
+"yet. Please key in + - / or x."
+msgstr "您希望完成的区有多个单元格, 但它还没有运算符。请输入+、-、/或x。"
+
+#: src/gui/ksudokugame.cpp:500
+#, kde-format
+msgid ""
+"The cage you wish to complete has one cell, but its value is too large. A "
+"single-cell cage must have a value from 1 to %1 in a puzzle of this size."
+msgstr ""
+"要完成的区有一个单元格, 但它的值太大。此种谜题中，单个单元格的区的值必须介于1"
+"到 %1之间。"
+
+#: src/gui/ksudokugame.cpp:536
+#, kde-format
+msgid "Do you wish to delete this cage?"
+msgstr "你想要删除此区吗？"
+
+#: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
+#: src/gui/ksudokugame.cpp:570
+#, kde-format
+msgid "Delete Cage"
+msgstr "删除区"
+
+#: src/gui/ksudokugame.cpp:562
+#, kde-format
+msgid ""
+"The cell you have selected is not in any cage, so the Delete action will not "
+"delete anything."
+msgstr "您选择的单元格不在任何一个区中, 因此删除操作不会删除任何内容。"
+
+#: src/gui/ksudokugame.cpp:569
+#, kde-format
+msgid "The Delete action finds that there are no cages to delete."
+msgstr "无法进行删除操作，发现没有可删除的区。"
+
+#. i18n: ectx: Menu (game)
+#: src/gui/ksudokuui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "游戏(&G)"
+
+#. i18n: ectx: Menu (move)
+#: src/gui/ksudokuui.rc:23
+#, kde-format
+msgid "&Move"
+msgstr "移动(&M)"
+
+#. i18n: ectx: Menu (help)
+#: src/gui/ksudokuui.rc:38
+#, kde-format
+msgid "&Help"
+msgstr "帮助(&H)"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/gui/ksudokuui.rc:46
+#, kde-format
+msgid "Main Toolbar"
+msgstr "主工具栏"
+
+#. i18n: ectx: ToolBar (actionsToolbar)
+#: src/gui/ksudokuui.rc:53
+#, kde-format
+msgid "Actions Toolbar"
+msgstr "操作工具栏"
+
+#: src/gui/puzzleprinter.cpp:62
+#, kde-format
+msgid "Sorry, cannot print three-dimensional puzzles."
+msgstr "抱歉，无法绘制三维谜题。"
+
+#: src/gui/puzzleprinter.cpp:92
+#, kde-format
+msgid ""
+"The KSudoku setting for printing several puzzles per page is currently "
+"selected.\n"
+"\n"
+"Your puzzle will be printed when no more will fit on the page or when "
+"KSudoku terminates."
+msgstr ""
+"目前选择了每页打印多个谜题的KSudoku设置。\n"
+"\n"
+"当页面上没有更多合适内容可用或KSudoku终止时，将打印出您的谜题。"
+
+#: src/gui/puzzleprinter.cpp:108
+#, kde-format
+msgid "KSudoku has sent output to your printer."
+msgstr "KSudoku 已将谜题输出到您的打印机。"
+
+#: src/gui/puzzleprinter.cpp:121
+#, kde-format
+msgid "Print Sudoku Puzzle"
+msgstr "打印数独谜题"
+
+#: src/gui/serializer.cpp:401
+#, kde-format
+msgid "Unable to download file: URL is empty."
+msgstr "无法下载文件：URL 为空。"
+
+#: src/gui/serializer.cpp:408
+#, kde-format
+msgid "Unable to open file."
+msgstr "无法打开文件。"
+
+#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#, kde-format
+msgid "Cannot read XML file on line %1"
+msgstr "无法读取 XML 文件的 %1 行"
+
+#: src/gui/serializer.cpp:444
+#, kde-format
+msgid "Unable to download file."
+msgstr "无法下载文件。"
+
+#: src/gui/serializer.cpp:685
+#, kde-format
+msgid "Unable to create temporary file."
+msgstr "无法创建临时文件."
+
+#: src/gui/serializer.cpp:698
+#, kde-format
+msgid "Unable to upload file."
+msgstr "无法上传文件。"
+
+#: src/gui/views/gameactions.cpp:54
+#, kde-format
+msgid "Select %1 (%2)"
+msgstr "选择 %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:60
+#, kde-format
+msgid "Enter %1 (%2)"
+msgstr "输入 %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:83
+#, kde-format
+msgid "Mark %1 (%2)"
+msgstr "标记 %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:95
+#, kde-format
+msgid "Move Up"
+msgstr "上移"
+
+#: src/gui/views/gameactions.cpp:102
+#, kde-format
+msgid "Move Down"
+msgstr "下移"
+
+#: src/gui/views/gameactions.cpp:109
+#, kde-format
+msgid "Move Left"
+msgstr "左移"
+
+#: src/gui/views/gameactions.cpp:116
+#, kde-format
+msgid "Move Right"
+msgstr "右移"
+
+#: src/gui/views/gameactions.cpp:123
+#, kde-format
+msgid "Clear Cell"
+msgstr "清除单元"
+
+#: src/gui/welcomescreen.cpp:133
+#, kde-format
+msgid "GetNewVariant not implemented"
+msgstr "获取新的变化没有生效"
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:163
+#: src/gui/welcomescreen.cpp:179
+#, kde-format
+msgid "Please select a puzzle variant."
+msgstr "请选择谜题的种类。"
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
+#: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
+#: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to start puzzle"
+msgstr "无法启动谜题"
+
+#: src/gui/welcomescreen.cpp:152
+#, kde-format
+msgid ""
+"Unable to create an empty puzzle of the chosen variant; please try another."
+msgstr "无法创建所选变量的空白谜题；请尝试另一个。"
+
+#: src/gui/welcomescreen.cpp:169
+#, kde-format
+msgid "Unable to start a puzzle of the chosen variant; please try another."
+msgstr "无法开始所选变量的谜题；请尝试另一个。"
+
+#: src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to generate a puzzle of the chosen variant; please try another."
+msgstr "无法生成所选变量的谜题；请尝试另一个。"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: src/gui/welcomescreen.ui:17
+#, kde-format
+msgid "Choose your Game"
+msgstr "选择您的游戏"
+
+#. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
+#: src/gui/welcomescreen.ui:28
+#, kde-format
+msgid "Get New"
+msgstr "获得新的"
+
+#. i18n: ectx: property (text), widget (QPushButton, startEmptyButton)
+#: src/gui/welcomescreen.ui:48
+#, kde-format
+msgid "Enter In A Puzzle"
+msgstr "输入一个谜题"
+
+#. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
+#: src/gui/welcomescreen.ui:55
+#, kde-format
+msgid "Generate A Puzzle"
+msgstr "生成谜题"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "KSudoku"
+msgstr "KSudoku"
+
+#: src/main.cpp:53
+#, kde-format
+msgid "KSudoku - Sudokus and more"
+msgstr "KSudoku - 数独游戏"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "(c) 2005-2007 The KSudoku Authors"
+msgstr "(c) 2005-2007 The KSudoku Authors"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Francesco Rossi"
+msgstr "Francesco Rossi"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KSudoku Author"
+msgstr "KSudoku 作者"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Johannes Bergmeier"
+msgstr "Johannes Bergmeier"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Maintainer"
+msgstr "维护者"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "New puzzle generator and solver"
+msgstr "全新的谜题生成器和解决器"
+
+#: src/main.cpp:60
+#, kde-format
+msgid "Mick Kappenburg"
+msgstr "Mick Kappenburg"
+
+#: src/main.cpp:60
+#, kde-format
+msgid "Printing and export of 0.4"
+msgstr "打印支持和 0.4 版的导出"
+
+#: src/main.cpp:61
+#, kde-format
+msgid "Thanks to NeHe for OpenGL tutorials"
+msgstr "感谢 NeHe 对 OpenGL 开发的指导"
+
+#: src/main.cpp:62
+#, kde-format
+msgid "David Bau"
+msgstr "David Bau"
+
+#: src/main.cpp:62
+#, kde-format
+msgid ""
+"Algorithms for new puzzle generator and solver at davidbau.com/"
+"archives/2006/09/04/sudoku_generator.html"
+msgstr ""
+"新谜题生成器和解决器的算法，位于 davidbau.com/archives/2006/09/04/"
+"sudoku_generator.html"
+
+#: src/main.cpp:70
+#, kde-format
+msgid "Document to open"
+msgstr "打开文档"

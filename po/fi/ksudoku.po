@@ -1,0 +1,1356 @@
+# Translation of ksudoku.po to Finnish
+# Copyright © 2007, 2008, 2010, 2011, 2012 This_file_is_part_of_KDE
+# This file is distributed under the same license as the ksudoku package.
+# Juuso Helmijoki <juuso.helmijoki@nettihemi.net>, 2007, 2008.
+# Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2008.
+# Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2013, 2015.
+# Tommi Nieminen <translator@legisign.org>, 2011, 2012, 2016, 2018, 2020, 2021.
+#
+# KDE Finnish translation sprint participants:
+msgid ""
+msgstr ""
+"Project-Id-Version: ksudoku\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"PO-Revision-Date: 2021-09-03 21:54+0300\n"
+"Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
+"Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-POT-Import-Date: 2012-12-01 22:24:06+0000\n"
+"X-Generator: Lokalize 20.04.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Juuso Helmijoki,Tommi Nieminen,Lasse Liehu"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+"juuso.helmijoki@nettihelmi.net,translator@legisign.org,lasse.liehu@gmail.com"
+
+#: src/generator/sudokuboard.cpp:104
+#, kde-format
+msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
+msgstr ""
+"Tehtävän laadinta epäonnistui noin 200 yrityksen jälkeen. Yritetäänkö "
+"uudelleen?"
+
+#: src/generator/sudokuboard.cpp:106
+#, kde-format
+msgid "Mathdoku or Killer Sudoku Puzzle"
+msgstr "Mathdoku- tai tappajasudokutehtävä"
+
+#: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: src/generator/sudokuboard.cpp:197
+#, kde-format
+msgid ""
+"After %1 tries, the best difficulty level achieved by the generator is %2, "
+"with internal difficulty rating %3, but you requested difficulty level %4.\n"
+"\n"
+"Do you wish to let the generator try again or accept the puzzle as is?\n"
+"\n"
+"Hint: you can try to increase the difficulty rating by doing the following: "
+"Continue with the 'Accept' button, choose Game -> New, then change the "
+"Symmetry setting to 'No Symmetry' or some low symmetry type and then use "
+"'Generate A Puzzle' again."
+msgstr ""
+"%1 yrityksen jälkeen suurin saavutettu vaikeus oli %2 sisäisenä "
+"vaikeusasteenaan %3, mutta pyysit vaikeutta %4.\n"
+"Haluatko yrittää uudelleen vai hyväksyä tehtävän sellaisenaan?\n"
+"\n"
+"Vihje: Voit yrittää lisätä vaikeutta niin, että napsautat ”Hyväksy”, "
+"valitset Peli → Uusi ja vaihdat symmetria-asetukseksi ”Ei symmetriaa” tai "
+"jonkin vähäisen symmetrian, minkä jälkeen valitset ”Luo tehtävä” uudestaan."
+
+#: src/generator/sudokuboard.cpp:208 src/generator/sudokuboard.cpp:228
+#: src/generator/sudokuboard.cpp:244
+#, kde-format
+msgid "Difficulty Level"
+msgstr "Vaikeus"
+
+#: src/generator/sudokuboard.cpp:209
+#, kde-format
+msgid "&Try Again"
+msgstr "&Yritä uudelleen"
+
+#: src/generator/sudokuboard.cpp:209
+#, kde-format
+msgid "&Accept"
+msgstr "&Hyväksy"
+
+#: src/generator/sudokuboard.cpp:221
+#, kde-format
+msgid ""
+"It will be possible to solve the generated puzzle by logic alone. No "
+"guessing will be required.\n"
+"\n"
+"The internal difficulty rating is %1. There are %2 clues at the start and %3 "
+"moves to go."
+msgstr ""
+"Generoitu tehtävä on mahdollista ratkaista pelkällä loogisellä päättelyllä. "
+"Arvaamista ei tarvita.\n"
+"\n"
+"Sisäinen vaikeusluku on %1. Alussa on %2 vihjettä, ja ratkaisemiseen "
+"tarvitaan %3 siirtoa."
+
+#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:245
+#, kde-format
+msgid "&Retry"
+msgstr "&Yritä uudelleen"
+
+#: src/generator/sudokuboard.cpp:235
+#, kde-format
+msgid ""
+"Solving the generated puzzle will require an average of %1 guesses or branch "
+"points and if you guess wrong, backtracking will be necessary. The first "
+"guess should come after %2 moves.\n"
+"\n"
+"The internal difficulty rating is %3, there are %4 clues at the start and %5 "
+"moves to go."
+msgstr ""
+"Generoidun tehtävän ratkaiseminen vaatii keskimäärin %1 arvausta tai "
+"haarautumaa. Jos arvaat väärin, takaisin palaaminen on välttämätöntä. "
+"Ensimmäinen arvaus tulisi tehdä %2 siirron jälkeen.\n"
+"\n"
+"Sisäinen vaikeusluku on %3. Alussa on %4 vihjettä, ja ratkaisemiseen "
+"tarvitaan %5 siirtoa."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
+#: src/gui/configgame.ui:20
+#, kde-format
+msgid "When printing, try to fit more than one puzzle on a page"
+msgstr "Mahduta tulostettaessa useampi kuin yksi tehtävä sivua kohti"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:43
+#, kde-format
+msgid "Highlight the row, column and block that contain the selected cell"
+msgstr "Korosta nykyinen rivi, sarake ja valitun ruudun sisältävä osaruudukko"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:46
+#, kde-format
+msgid ""
+"Highlight the row, column and block that contain the selected cell. Blocks "
+"may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
+msgstr ""
+"Korosta nykyinen rivi, sarake ja valitun ruudun sisältävä osaruudukko. "
+"Osaruudukot voivat olla neliöitä tai epäsäännöllisen muotoisia (kuten "
+"esimerkiksi palapelisudokussa tai XSudokussa)."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:49
+#, kde-format
+msgid "Show highlights in 2-D puzzles"
+msgstr "Näytä korostukset kaksiulotteisissa peleissä"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:56 src/gui/configgame.ui:59
+#, kde-format
+msgid "Highlight in red any cells whose values break the Sudoku rules."
+msgstr "Korosta sudoku-sääntöjen vastaiset ruudut punaisella"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:62
+#, kde-format
+msgid "Show errors"
+msgstr "Näytä virheet"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:69 src/gui/configgame.ui:72
+#, kde-format
+msgid "Highlight the planes (blocks) that contain the selected cell."
+msgstr "Korosta tasot (osaruudukot), jotka sisältävät valitun ruudun"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:75
+#, kde-format
+msgid "Show highlights in 3-D puzzles"
+msgstr "Näytä korostukset kolmiulotteisissa peleissä"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: src/gui/configgame.ui:137
+#, kde-format
+msgid "Mathdoku puzzle size (3-9)"
+msgstr "Mathdoku-tehtävän koko (3–9)"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/gui/configgame.ui:167
+#, kde-format
+msgid "Settings for 3-D Puzzles Only"
+msgstr "Kolmiulotteisten pelien asetukset"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_6)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_6)
+#: src/gui/configgame.ui:182 src/gui/configgame.ui:185
+#: src/gui/configgame.ui:228 src/gui/configgame.ui:231
+#, kde-format
+msgid "Set the relative size of 3-D cells and the spaces between them."
+msgstr "Aseta ruutujen suhteellinen koko ja niiden välinen etäisyys"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: src/gui/configgame.ui:234
+#, kde-format
+msgid "Overall size of 3-D cells"
+msgstr "Ruutujen yleiskoko"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label)
+#: src/gui/configgame.ui:254 src/gui/configgame.ui:257
+#: src/gui/configgame.ui:300 src/gui/configgame.ui:303
+#, no-c-format, kde-format
+msgid "Shrink or expand a cell by up to 30% when it is selected."
+msgstr "Pienennä tai suurenna ruutua enintään 30 %, kun se on valittuna"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/gui/configgame.ui:306
+#, kde-format
+msgid "Size of selected 3-D cell"
+msgstr "Valitun ruudun koko"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_3)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_3)
+#: src/gui/configgame.ui:326 src/gui/configgame.ui:329
+#: src/gui/configgame.ui:363 src/gui/configgame.ui:366
+#, no-c-format, kde-format
+msgid "Shrink or expand cells by up to 30% when they are highlighted."
+msgstr "Pienennä tai suurenna ruutuja enintään 30 %, kun ne ovat korostettuina"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: src/gui/configgame.ui:369
+#, kde-format
+msgid "Size of highlighted 3-D cells"
+msgstr "Korostettujen ruutujen koko"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_5)
+#: src/gui/configgame.ui:389 src/gui/configgame.ui:426
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell."
+msgstr ""
+"Pienennä enintään 60 % soluja, jotka eivät kuulu N × N × N -kuutioon, joka "
+"sisältää valitun ruudun"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:392 src/gui/configgame.ui:429
+#: src/gui/configgame.ui:452
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell. This is useful if a 3-D puzzle has more than one cube."
+msgstr ""
+"Pienennä enintään 60 % soluja, jotka eivät kuulu N × N × N -kuutioon, joka "
+"sisältää valitun ruudun. Tämä on hyödyksi, jos pelissä on enemmän kuin yksi "
+"kuutio."
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: src/gui/configgame.ui:432
+#, kde-format
+msgid "Size of 3-D cells outside the selected volume"
+msgstr "Valitun tilavuuden ulkopuolisten ruutujen koko"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:449
+#, kde-format
+msgid ""
+"Darken cells if they are not in an NxNxN cube that contains the selected "
+"cell."
+msgstr ""
+"Tummenna ruudut, jotka eivät kuulu N × N × N -kuutioon, joka sisältää "
+"valitun ruudun"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:455
+#, kde-format
+msgid "Darken 3-D cells outside the selected volume"
+msgstr "Tummenna valitun tilavuuden ulkopuoliset ruudut"
+
+#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#, kde-format
+msgid "Configuration not yet implemented"
+msgstr "Asetusten muuttamista ei ole toteutettu"
+
+#: src/gui/ksudoku.cpp:76
+#, kde-format
+msgid ""
+"Sorry, your solution contains mistakes.\n"
+"\n"
+"Enable \"Show errors\" in the settings to highlight them."
+msgstr ""
+"Ratkaisussa on virheitä.\n"
+"\n"
+"Korosta ne valitsemalla ”Näytä virheet” asetuksista."
+
+#: src/gui/ksudoku.cpp:87
+#, kde-format
+msgid "Congratulations! You made it in 1 second. With some tricks."
+msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+msgstr[0] "Onneksi olkoon! Ratkaisit tehtävän sekunnissa – huijaten."
+msgstr[1] "Onneksi olkoon! Ratkaisit tehtävän %1 sekunnissa – huijaten."
+
+#: src/gui/ksudoku.cpp:89
+#, kde-format
+msgid "Congratulations! You made it in 1 minute. With some tricks."
+msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+msgstr[0] "Onneksi olkoon! Ratkaisit tehtävän minuutissa – huijaten."
+msgstr[1] "Onneksi olkoon! Ratkaisit tehtävän %1 minuutissa – huijaten."
+
+#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#, kde-format
+msgid "1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "1 minuutissa"
+msgstr[1] "%1 minuutissa"
+
+#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#, kde-format
+msgid "1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "1 sekunnissa"
+msgstr[1] "%1 sekunnissa"
+
+#: src/gui/ksudoku.cpp:91
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2. With some tricks."
+msgstr "Onneksi olkoon! Ratkaisit tehtävän %1 ja %2 – huijaten."
+
+#: src/gui/ksudoku.cpp:94
+#, kde-format
+msgid "Congratulations! You made it in 1 second."
+msgid_plural "Congratulations! You made it in %1 seconds."
+msgstr[0] "Onnittelut! Ratkaisit tehtävän sekunnissa."
+msgstr[1] "Onnittelut! Ratkaisit tehtävän %1 sekunnissa."
+
+#: src/gui/ksudoku.cpp:96
+#, kde-format
+msgid "Congratulations! You made it in 1 minute."
+msgid_plural "Congratulations! You made it in %1 minutes."
+msgstr[0] "Onnittelut! Ratkaisit tehtävän minuutissa."
+msgstr[1] "Onnittelut! Ratkaisit tehtävän %1 minuutissa."
+
+#: src/gui/ksudoku.cpp:98
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2."
+msgstr "Onnittelut! Ratkaisit tehtävän %1 ja %2."
+
+#: src/gui/ksudoku.cpp:178
+#, kde-format
+msgid "Sudoku Standard (9x9)"
+msgstr "Sudoku – Tavallinen (9 × 9)"
+
+#: src/gui/ksudoku.cpp:179
+#, kde-format
+msgid "The classic and fashionable game"
+msgstr "Perinteinen ja muodikas peli"
+
+#: src/gui/ksudoku.cpp:182
+#, kde-format
+msgid "Roxdoku 9 (3x3x3)"
+msgstr "Roxdoku 9 (3 × 3 × 3)"
+
+#: src/gui/ksudoku.cpp:183
+#, kde-format
+msgid "The Rox 3D Sudoku"
+msgstr "Rox, kolmiulotteinen sudoku"
+
+#: src/gui/ksudoku.cpp:205
+#, kde-format
+msgid "Missing Variant Name"
+msgstr "Muunnelman nimi puuttuu"
+
+#: src/gui/ksudoku.cpp:219
+#, kde-format
+msgid "Sudoku 16x16"
+msgstr "Sudoku 16 × 16"
+
+#: src/gui/ksudoku.cpp:220
+#, kde-format
+msgid "Sudoku with 16 symbols"
+msgstr "Sudoku 16 merkillä"
+
+#: src/gui/ksudoku.cpp:222
+#, kde-format
+msgid "Sudoku 25x25"
+msgstr "Sudoku 25 × 25"
+
+#: src/gui/ksudoku.cpp:223
+#, kde-format
+msgid "Sudoku with 25 symbols"
+msgstr "Sudoku 25 merkillä"
+
+#: src/gui/ksudoku.cpp:226
+#, kde-format
+msgid "Roxdoku 16 (4x4x4)"
+msgstr "Roxdoku 16 (4 × 4 × 4)"
+
+#: src/gui/ksudoku.cpp:227
+#, kde-format
+msgid "The Rox 3D sudoku with 16 symbols"
+msgstr "Rox, kolmiulotteinen sudoku 16 merkillä"
+
+#: src/gui/ksudoku.cpp:229
+#, kde-format
+msgid "Roxdoku 25 (5x5x5)"
+msgstr "Roxdoku 25 (5 × 5 × 5)"
+
+#: src/gui/ksudoku.cpp:230
+#, kde-format
+msgid "The Rox 3D sudoku with 25 symbols"
+msgstr "Rox, kolmiulotteinen sudoku 25 merkillä"
+
+#: src/gui/ksudoku.cpp:276
+#, kde-format
+msgid ""
+"Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
+"grid in which every row and every column contains the available digits (1-3 "
+"up to 1-9) exactly once. The grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues, but there are not many of "
+"them. Cages of larger size have a target value and an arithmetic operator (+-"
+"x/). The digits in the cage must combine together, using the operator, to "
+"reach the target value, e.g. '12x' means that the digits must multiply "
+"together to make 12. A digit can occur more than once in a cage, provided it "
+"occurs in different rows and columns.\n"
+"\n"
+"In general, larger Mathdokus are more difficult and so are larger cages. You "
+"can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"Mathdoku-tehtävien koko voi vaihdella väliltä 3 × 3…9 × 9. Ratkaisu on "
+"ruudukko, jossa kukin rivi ja kukin sarake sisältää käytettävät numerot (1–3…"
+"1–9) vain kerran. Ruudukko täyttyy epäsäännöllisen muotoisista häkeistä.\n"
+"\n"
+"Häkit, joiden koko on 1, ovat aloitusarvoja tai vihjeitä, mutta niitä ei ole "
+"paljon. Suuremmilla häkeillä on kohdearvo ja aritmeettinen operaattori (+-"
+"*/). Häkin numeroiden tulee yhdistyä annetulla operaattorilla kohdearvoksi; "
+"esim. ”12*” tarkoittaa, että lukujen tulon on oltava 12. Numero voi esiintyä "
+"häkissä useammin kuin kerran, kunhan se esiintyy eri rivillä ja "
+"sarakkeessa.\n"
+"\n"
+"Yleisesti ottaen suuremmat Mathdokut ovat vaikeampia, samoin kuin suuremmat "
+"häkit. Voit valita tehtävän koon KSudokun asetuksista ja häkin enimmäiskoon "
+"KSudokun vaikeuspainikkeella."
+
+#: src/gui/ksudoku.cpp:295
+#, kde-format
+msgid "Playing Mathdoku"
+msgstr "Mathdokun pelaaminen"
+
+#: src/gui/ksudoku.cpp:299
+#, kde-format
+msgid ""
+"Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
+"or nine 3x3 blocks. The solution must follow Classic Sudoku rules. The "
+"difference is that there are few starting-values or clues (if any). Instead "
+"the grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues. Cages of larger size have a "
+"target value and the digits in them must add up to that value. In Killer "
+"Sudoku, a cage cannot contain any digit more than once.\n"
+"\n"
+"In general, larger cages are more difficult. You can select the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"Killer Sudoku -tehtävien koko on 4 × 4 tai 9 × 9 (joko neljä 2 × 2 -lohkoa "
+"tai yhdeksän 3 × 3 -lohkoa). Ratkaisun on noudatettava Sudokun perinteisiä "
+"sääntöjä sillä erolla, että aloitusarvoja on niukasti (tai ei lainkaan). "
+"Niiden sijaan ruudukko on täytetty epäsäännöllisen muotoisilla häkeillä.\n"
+"\n"
+"Häkit, joiden koko on 1, ovat aloitusarvoja tai vihjeitä. Suuremmilla "
+"häkeillä on kohdearvo, johon lukujen tulee summautua. Killer Sudokun häkissä "
+"ei voi olla samaa numeroa useammin kuin kerran.\n"
+"\n"
+"Yleisesti ottaen suuremmat häkit ovat vaikeampia. Voit vain häkin "
+"enimmäiskoon KSudokun vaikeuspainikkeella."
+
+#: src/gui/ksudoku.cpp:313
+#, kde-format
+msgid "Playing Killer Sudoku"
+msgstr "Tappajasudokun pelaaminen"
+
+#: src/gui/ksudoku.cpp:317
+#, kde-format
+msgid ""
+"Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
+"cage at a time. To start a cage, left click on any unused cell or enter a "
+"number in the cell that is under the cursor or enter + - / or x there. A "
+"small cage-label will appear in that cell. To extend the cage in any "
+"direction, left-click on a neigbouring cell or move the cursor there and "
+"type a Space.\n"
+"\n"
+"The number you type is the cage's value and it can have one or more digits, "
+"including zero. A cell of size 1 has to have a 1-digit number, as in a "
+"normal Sudoku puzzle. It becomes a starting-value or clue for the player.\n"
+"\n"
+"The + - / or x is the operator (Add, Subtract, Divide or Multiply). You must "
+"have one in cages of size 2 or more. In Killer Sudoku, the operator is "
+"provided automatically because it is always + or none.\n"
+"\n"
+"You can enter digits, operators and cells in any order. To complete the cage "
+"and start another cage, always press Return. If you make a mistake, the only "
+"thing to do is delete a whole cage and re-enter it. Use right click in the "
+"current cage or any earlier cage, if you wish to delete it. Alternatively, "
+"use the cursor and the Delete or Backspace key.\n"
+"\n"
+"When the grid is filled with cages, hit the Check button, to solve the "
+"puzzle and make sure there is only one solution. If the check fails, you "
+"have probably made an error somewhere in one of the cages."
+msgstr ""
+"Mathdoku- ja Killer Sudoku -tehtävät syötetään työskennellen yhdessä häkissä "
+"kerrallaan. Aloita häkki napsauttamalla mitä hyvänsä tyhjää solua tai "
+"antamalla kohdistimeen alla olevaan soluun luku tai painamalla +, -, / tai "
+"*. Soluun ilmestyy pieni häkin nimiö. Laajenna häkkiä mihin hyvänsä suuntaan "
+"napsauttamalla viereistä solua tai siirrä kohdistin sinne ja paina "
+"välilyöntiä.\n"
+"\n"
+"Antamasi luku on häkin arvo, ja se voi olla useampinumeroinen tai nolla. "
+"Solulla, jonka koko on 1, on oltava 1-numeroinen luku, kuten tavallisessa "
+"Sudoku-tehtävässä. Siitä tulee aloitusarvo tai vihje pelaajalle.\n"
+"\n"
+"+, -, / tai * on operaattori (summa, erotus, jako tai tulo). Sellainen on "
+"oltava solussa, jonka koko on 2 tai enemmän. Killer Sudokussa operaattori "
+"tarjotaan automaattisesti, koska se on aina + tai ei mitään.\n"
+"\n"
+"Lukuja, operaattoria ja soluja voi syöttää vapaassa järjestyksessä. Voit "
+"aina painaa Enter täyttääksesi häkin ja aloittaaksesi uuden. Jos teet "
+"virheen, voit vain poistaa koko häkin ja syöttää sen uudelleen. Jos haluat "
+"poistaa sen, napsauta nykyistä tai mitä tahansa aiempaa häkkiä hiiren "
+"oikealla painikkeella. Vaihtoehtoisesti voit käyttää kohdistinta ja Del- tai "
+"askelpalautinnäppäintä.\n"
+"\n"
+"Kun rudukko on täynnä häkkejä, napsauta Tarkista ratkaistaksesi tehtävän ja "
+"varmistaaksesi, että ratkaisuja on vain yksi. Jos tarkistus epäonnistuu, "
+"jossakin häkeistä on todennäköisesti virhe."
+
+#: src/gui/ksudoku.cpp:347
+#, kde-format
+msgid "Data-entry for Puzzles with Cages"
+msgstr "Häkillisten tehtävien tiedonsyöttö"
+
+#: src/gui/ksudoku.cpp:403
+#, kde-format
+msgid "The puzzle you entered contains some errors."
+msgstr "Syötetyssä tehtävässä on virheitä."
+
+#: src/gui/ksudoku.cpp:416
+#, kde-format
+msgid ""
+"Sorry, no solutions have been found. Please check that you have entered in "
+"the puzzle completely and correctly."
+msgstr ""
+"Ratkaisuja ei valitettavasti löytynyt. Tarkista, että olet antanut tehtävän "
+"kokonaisuudessaan ja oikein."
+
+#: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
+#, kde-format
+msgid "Check Puzzle"
+msgstr "Tarkista tehtävä"
+
+#: src/gui/ksudoku.cpp:423
+#, kde-format
+msgid "The Puzzle you entered has a unique solution and is ready to be played."
+msgstr ""
+"Syöttämälläsi tehtävällä on yksi ratkaisu ja se on valmiina pelattavaksi."
+
+#: src/gui/ksudoku.cpp:427
+#, kde-format
+msgid ""
+"The Puzzle you entered has multiple solutions. Please check that you have "
+"entered in the puzzle completely and correctly."
+msgstr ""
+"Antamaasi tehtävään on useita ratkaisuja. Tarkista, että olet antanut "
+"tehtävän kokonaan ja oikein."
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Do you wish to play the puzzle now?"
+msgstr "Haluatko pelata nyt?"
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Play Puzzle"
+msgstr "Pelaa"
+
+#: src/gui/ksudoku.cpp:432
+#, kde-format
+msgid "Play"
+msgstr "Pelaa"
+
+#: src/gui/ksudoku.cpp:470
+#, kde-format
+msgid "Enable all messages"
+msgstr "Ota kaikki viestit käyttöön"
+
+#: src/gui/ksudoku.cpp:487
+#, kde-format
+msgid "Check"
+msgstr "Tarkista"
+
+#: src/gui/ksudoku.cpp:503
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Diabolical"
+msgstr "Helvetillinen"
+
+#: src/gui/ksudoku.cpp:505
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Unlimited"
+msgstr "Rajoittamaton"
+
+#: src/gui/ksudoku.cpp:516
+#, kde-format
+msgctxt "@option drop down box"
+msgid "Difficulty:"
+msgstr "Vaikeus:"
+
+#: src/gui/ksudoku.cpp:520
+#, kde-format
+msgctxt "@option drop down box"
+msgid "Symmetry:"
+msgstr "Symmetria:"
+
+#: src/gui/ksudoku.cpp:524
+#, kde-format
+msgctxt "Symmetry of layout of clues when puzzle starts"
+msgid "Symmetry"
+msgstr "Symmetria"
+
+#: src/gui/ksudoku.cpp:526
+#, kde-format
+msgid "The symmetry of layout of the clues when the puzzle starts"
+msgstr "Vihjeasettelun symmetria tehtävän alkaessa"
+
+#: src/gui/ksudoku.cpp:528
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Diagonal"
+msgstr "Viisto"
+
+#: src/gui/ksudoku.cpp:529
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Central"
+msgstr "Keskusta"
+
+#: src/gui/ksudoku.cpp:530
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Left-Right"
+msgstr "Vasen–oikea"
+
+#: src/gui/ksudoku.cpp:531
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Spiral"
+msgstr "Spiraali"
+
+#: src/gui/ksudoku.cpp:532
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Four-Way"
+msgstr "Nelisuuntainen"
+
+#: src/gui/ksudoku.cpp:533
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Random Choice"
+msgstr "Satunnainen"
+
+#: src/gui/ksudoku.cpp:534
+#, kde-format
+msgid "No Symmetry"
+msgstr "Ei symmetriaa"
+
+#: src/gui/ksudoku.cpp:638 src/gui/ksudoku.cpp:697
+#, kde-format
+msgid "Could not load game."
+msgstr "Peliä ei voitu ladata."
+
+#: src/gui/ksudoku.cpp:654
+#, kde-format
+msgid "Do you really want to end this game in order to start a new one?"
+msgstr "Haluatko varmasti lopettaa pelin ja aloittaa uuden?"
+
+#: src/gui/ksudoku.cpp:655
+#, kde-format
+msgctxt "window title"
+msgid "New Game"
+msgstr "Uusi peli"
+
+#: src/gui/ksudoku.cpp:656
+#, kde-format
+msgctxt "button label"
+msgid "New Game"
+msgstr "Uusi peli"
+
+#: src/gui/ksudoku.cpp:673
+#, kde-format
+msgid "Do you really want to restart this game?"
+msgstr "Haluatko varmasti aloittaa pelin uudelleen?"
+
+#: src/gui/ksudoku.cpp:674
+#, kde-format
+msgctxt "window title"
+msgid "Restart Game"
+msgstr "Aloita peli uudelleen"
+
+#: src/gui/ksudoku.cpp:675
+#, kde-format
+msgctxt "button label"
+msgid "Restart Game"
+msgstr "Aloita peli uudelleen"
+
+#: src/gui/ksudoku.cpp:690
+#, kde-format
+msgid "Open Location"
+msgstr "Avaa sijainti"
+
+#: src/gui/ksudoku.cpp:724
+#, kde-format
+msgid "Error Writing File"
+msgstr "Virhe tiedostoa kirjoitettaessa"
+
+#: src/gui/ksudoku.cpp:746
+#, kde-format
+msgid "There seems to be no puzzle to print."
+msgstr "Ei tulostettavaa tehtävää."
+
+#: src/gui/ksudoku.cpp:783
+#, kde-format
+msgctxt "Game Section in Config"
+msgid "Game"
+msgstr "Peli"
+
+#: src/gui/ksudoku.cpp:784
+#, kde-format
+msgid "Theme"
+msgstr "Teema"
+
+#: src/gui/ksudoku.cpp:816
+#, kde-format
+msgid ""
+"Warning: The Unlimited difficulty level has no limit on how many guesses or "
+"branch points are required to solve the puzzle and there is no lower limit "
+"on how soon guessing becomes necessary.\n"
+"\n"
+"Please also note that the generation of this type of puzzle might take much "
+"longer than other ones. During this time KSudoku will not respond."
+msgstr ""
+"Varoitus: Rajaton vaikeus ei aseta rajaa sille, montako arvausta tai "
+"haarautumaa tehtävän ratkaisemiseksi vaaditaan, eikä alarajaa sille, kuinka "
+"nopeasti arvaaminen käy välttämättömäksi.\n"
+"\n"
+"Huomaa myös, että tämän tapaisten tehtävien luominen kestää paljon kauemmin, "
+"eikä KSudoku sinä aikana vastaa."
+
+#: src/gui/ksudoku.cpp:823
+#, kde-format
+msgid "Warning"
+msgstr "Varoitus"
+
+#: src/gui/ksudoku.cpp:862
+#, kde-format
+msgid ""
+"This will enable all the dialogs that you had disabled by marking the 'Do "
+"not show this message again' option.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+"Tämä palauttaa valinnalla ”Älä näytä tätä viestiä enää” käytöstä poistamasi "
+"valintaikkunat takaisin käyttöön.\n"
+"\n"
+"\n"
+"Haluatko jatkaa?"
+
+#. i18n: ectx: label, entry (Theme), group (Themes)
+#: src/gui/ksudoku.kcfg:41
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Käytettävä graafinen teema."
+
+#. i18n: ectx: label, entry (Symbols), group (Themes)
+#: src/gui/ksudoku.kcfg:44
+#, kde-format
+msgid "Select the themes you want to use"
+msgstr "Valitse teemat, joita haluat käyttää"
+
+#: src/gui/ksudokugame.cpp:375
+#, kde-format
+msgid ""
+"In Killer Sudoku, the operator is always + or none and KSudoku automatically "
+"sets the correct choice."
+msgstr ""
+"Killer Sudokussa operaattori on aina + tai ei mitään, ja KSudoku valitsee "
+"oikean automaattisesti."
+
+#: src/gui/ksudokugame.cpp:377
+#, kde-format
+msgid "Killer Sudoku Cage"
+msgstr "Tappajasudokun häkki"
+
+#: src/gui/ksudokugame.cpp:422
+#, kde-format
+msgid "The cell you have selected has already been used in a cage."
+msgstr "Valitsemasi solu on jo käytössä häkissä."
+
+#: src/gui/ksudokugame.cpp:424 src/gui/ksudokugame.cpp:454
+#: src/gui/ksudokugame.cpp:479 src/gui/ksudokugame.cpp:486
+#: src/gui/ksudokugame.cpp:494 src/gui/ksudokugame.cpp:503
+#, kde-format
+msgid "Error in Cage"
+msgstr "Virhe häkissä"
+
+#: src/gui/ksudokugame.cpp:452
+#, kde-format
+msgid ""
+"The cell you have selected is not next to any cell in the cage you are "
+"creating."
+msgstr "Valitsemasi solu ei ole luomasi häkin yhdenkään solun vieressä."
+
+#: src/gui/ksudokugame.cpp:477
+#, kde-format
+msgid ""
+"The cage you wish to complete has no cells in it yet. Please click on a cell "
+"or key in + - / x or a number."
+msgstr ""
+"Häkissä, jota yrität saattaa loppuun, on yhä soluja. Napsauta solua, jotakin "
+"näppäimistä + - / × tai numeroa."
+
+#: src/gui/ksudokugame.cpp:484
+#, kde-format
+msgid ""
+"The cage you wish to complete has no value yet. Please key in a number with "
+"one or more digits."
+msgstr ""
+"Häkissä, jota yrität saattaa loppuun, ei ole vielä arvoja. Syötä yksi- tai "
+"useampinumeroinen luku."
+
+#: src/gui/ksudokugame.cpp:492
+#, kde-format
+msgid ""
+"The cage you wish to complete has more than one cell, but it has no operator "
+"yet. Please key in + - / or x."
+msgstr ""
+"Häkissä, jota yrität saattaa loppuun, on enemmän kuin yksi solu muttei vielä "
+"operaattoria. Syötä + - / tai ×."
+
+#: src/gui/ksudokugame.cpp:500
+#, kde-format
+msgid ""
+"The cage you wish to complete has one cell, but its value is too large. A "
+"single-cell cage must have a value from 1 to %1 in a puzzle of this size."
+msgstr ""
+"Häkissä, jota yrität saattaa loppuun, on yksi solu, mutta sen arvo on liian "
+"suuri. Yksisoluisen häki arvon on oltava välillä 1–%1 tämän kokoísessa "
+"tehtävässä."
+
+#: src/gui/ksudokugame.cpp:536
+#, kde-format
+msgid "Do you wish to delete this cage?"
+msgstr "Haluatko poistaa tämän häkin?"
+
+#: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
+#: src/gui/ksudokugame.cpp:570
+#, kde-format
+msgid "Delete Cage"
+msgstr "Poista häkki"
+
+#: src/gui/ksudokugame.cpp:562
+#, kde-format
+msgid ""
+"The cell you have selected is not in any cage, so the Delete action will not "
+"delete anything."
+msgstr ""
+"Valitsemasi solu ei ole häkissä, joten Poista-toiminto ei poista mitään."
+
+#: src/gui/ksudokugame.cpp:569
+#, kde-format
+msgid "The Delete action finds that there are no cages to delete."
+msgstr "Poista-toiminto on havainnut, ettei poistettavia häkkejä ole."
+
+#. i18n: ectx: Menu (game)
+#: src/gui/ksudokuui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "&Peli"
+
+#. i18n: ectx: Menu (move)
+#: src/gui/ksudokuui.rc:23
+#, kde-format
+msgid "&Move"
+msgstr "&Siirto"
+
+#. i18n: ectx: Menu (help)
+#: src/gui/ksudokuui.rc:38
+#, kde-format
+msgid "&Help"
+msgstr "&Ohje"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/gui/ksudokuui.rc:46
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Työkalurivi"
+
+#. i18n: ectx: ToolBar (actionsToolbar)
+#: src/gui/ksudokuui.rc:53
+#, kde-format
+msgid "Actions Toolbar"
+msgstr "Toimintotyökalurivi"
+
+#: src/gui/puzzleprinter.cpp:62
+#, kde-format
+msgid "Sorry, cannot print three-dimensional puzzles."
+msgstr "Kolmiulotteisia tehtäviä ei voi tulostaa."
+
+#: src/gui/puzzleprinter.cpp:92
+#, kde-format
+msgid ""
+"The KSudoku setting for printing several puzzles per page is currently "
+"selected.\n"
+"\n"
+"Your puzzle will be printed when no more will fit on the page or when "
+"KSudoku terminates."
+msgstr ""
+"KSudoku on asetettu tulostamaan useampi tehtävä sivua kohti.\n"
+"\n"
+"Tehtävä tulostetaan, kun sivu tulee täyteen tai KSudoku suljetaan."
+
+#: src/gui/puzzleprinter.cpp:108
+#, kde-format
+msgid "KSudoku has sent output to your printer."
+msgstr "KSudoku on lähettänyt tehtävät tulostimelle."
+
+#: src/gui/puzzleprinter.cpp:121
+#, kde-format
+msgid "Print Sudoku Puzzle"
+msgstr "Tulosta sudoku"
+
+#: src/gui/serializer.cpp:401
+#, kde-format
+msgid "Unable to download file: URL is empty."
+msgstr "Tiedostoa ei voida ladata: verkko-osoite on tyhjä."
+
+#: src/gui/serializer.cpp:408
+#, kde-format
+msgid "Unable to open file."
+msgstr "Tiedoston avaaminen epäonnistui."
+
+#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#, kde-format
+msgid "Cannot read XML file on line %1"
+msgstr "Virhe XML-tiedoston lukemisessa rivillä %1"
+
+#: src/gui/serializer.cpp:444
+#, kde-format
+msgid "Unable to download file."
+msgstr "Tiedoston lataus epäonnistui."
+
+#: src/gui/serializer.cpp:685
+#, kde-format
+msgid "Unable to create temporary file."
+msgstr "Väliaikaistiedoston luonti epäonnistui."
+
+#: src/gui/serializer.cpp:698
+#, kde-format
+msgid "Unable to upload file."
+msgstr "Tiedoston lähetys epäonnistui."
+
+#: src/gui/views/gameactions.cpp:54
+#, kde-format
+msgid "Select %1 (%2)"
+msgstr "Valitse %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:60
+#, kde-format
+msgid "Enter %1 (%2)"
+msgstr "Syötä %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:83
+#, kde-format
+msgid "Mark %1 (%2)"
+msgstr "Merkitse %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:95
+#, kde-format
+msgid "Move Up"
+msgstr "Ylös"
+
+#: src/gui/views/gameactions.cpp:102
+#, kde-format
+msgid "Move Down"
+msgstr "Alas"
+
+#: src/gui/views/gameactions.cpp:109
+#, kde-format
+msgid "Move Left"
+msgstr "Vasemmalle"
+
+#: src/gui/views/gameactions.cpp:116
+#, kde-format
+msgid "Move Right"
+msgstr "Oikealle"
+
+#: src/gui/views/gameactions.cpp:123
+#, kde-format
+msgid "Clear Cell"
+msgstr "Tyhjennä ruutu"
+
+#: src/gui/welcomescreen.cpp:133
+#, kde-format
+msgid "GetNewVariant not implemented"
+msgstr "GetNewVariantia ei ole toteutettu"
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:163
+#: src/gui/welcomescreen.cpp:179
+#, kde-format
+msgid "Please select a puzzle variant."
+msgstr "Valitse tehtävämuunnelma."
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
+#: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
+#: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to start puzzle"
+msgstr "Tehtävää ei voida käynnistää"
+
+#: src/gui/welcomescreen.cpp:152
+#, kde-format
+msgid ""
+"Unable to create an empty puzzle of the chosen variant; please try another."
+msgstr "Valitun muunnelman tyhjää tehtävää ei voida luoda: valitse toinen."
+
+#: src/gui/welcomescreen.cpp:169
+#, kde-format
+msgid "Unable to start a puzzle of the chosen variant; please try another."
+msgstr "Valitun muunnelman tehtävää ei voida käynnistää: valitse toinen."
+
+#: src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to generate a puzzle of the chosen variant; please try another."
+msgstr "Valitun muunnelman tehtävää ei voida luoda: valitse toinen."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: src/gui/welcomescreen.ui:17
+#, kde-format
+msgid "Choose your Game"
+msgstr "Valitse pelisi"
+
+#. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
+#: src/gui/welcomescreen.ui:28
+#, kde-format
+msgid "Get New"
+msgstr "Hae uusia tehtäviä"
+
+#. i18n: ectx: property (text), widget (QPushButton, startEmptyButton)
+#: src/gui/welcomescreen.ui:48
+#, kde-format
+msgid "Enter In A Puzzle"
+msgstr "Syötä tehtävä"
+
+#. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
+#: src/gui/welcomescreen.ui:55
+#, kde-format
+msgid "Generate A Puzzle"
+msgstr "Generoi tehtävä"
+
+# pmap: =/gen=KSudokun/
+# pmap: =/elat=KSudokusta/
+#: src/main.cpp:51
+#, kde-format
+msgid "KSudoku"
+msgstr "KSudoku"
+
+#: src/main.cpp:53
+#, kde-format
+msgid "KSudoku - Sudokus and more"
+msgstr "KSudoku – sudokut ja muut vastaavanlaiset"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "(c) 2005-2007 The KSudoku Authors"
+msgstr "© 2005–2007 KSudokun tekijät"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Francesco Rossi"
+msgstr "Francesco Rossi"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "KSudoku Author"
+msgstr "KSudokun tekijä"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Johannes Bergmeier"
+msgstr "Johannes Bergmeier"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Maintainer"
+msgstr "Ylläpitäjä"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ian Wadham"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "New puzzle generator and solver"
+msgstr "Uusi tehtävägeneraattori ja -ratkaisin"
+
+#: src/main.cpp:60
+#, kde-format
+msgid "Mick Kappenburg"
+msgstr "Mick Kappenburg"
+
+#: src/main.cpp:60
+#, kde-format
+msgid "Printing and export of 0.4"
+msgstr "Tulostus ja vienti 0.4:stä"
+
+#: src/main.cpp:61
+#, kde-format
+msgid "Thanks to NeHe for OpenGL tutorials"
+msgstr "Kiitos NeHe’lle OpenGL-opastuksista"
+
+#: src/main.cpp:62
+#, kde-format
+msgid "David Bau"
+msgstr "David Bau"
+
+#: src/main.cpp:62
+#, kde-format
+msgid ""
+"Algorithms for new puzzle generator and solver at davidbau.com/"
+"archives/2006/09/04/sudoku_generator.html"
+msgstr ""
+"Algoritmit uuteen tehtävägeneraattoriin ja -ratkaisimeen osoitteessa "
+"davidbau.com/archives/2006/09/04/sudoku_generator.html"
+
+#: src/main.cpp:70
+#, kde-format
+msgid "Document to open"
+msgstr "Avattava tiedosto"
+
+#~ msgid "&OK"
+#~ msgstr "&OK"
+
+#~ msgid "Delete"
+#~ msgstr "Poista"
+
+#~ msgid "Home Page"
+#~ msgstr "Kotisivu"
+
+#~ msgid "KSudoku - Sudoku games and more"
+#~ msgstr "KSudoku – sudoku-pelejä ja muita vastaavanlaisia pelejä"
+
+#~ msgid "Sorry, no solutions have been found."
+#~ msgstr "Ratkaisua ei löytynyt."
+
+#~ msgid "The Puzzle you entered has only one solution."
+#~ msgstr "Syöttämälläsi tehtävällä on vain yksi ratkaisu."
+
+#~ msgid "A0"
+#~ msgstr "A0"
+
+#~ msgid "A1"
+#~ msgstr "A1"
+
+#~ msgid "A2"
+#~ msgstr "A2"
+
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "A5"
+#~ msgstr "A5"
+
+#~ msgid "A6"
+#~ msgstr "A6"
+
+#~ msgid "A7"
+#~ msgstr "A7"
+
+#~ msgid "A8"
+#~ msgstr "A8"
+
+#~ msgid "A9"
+#~ msgstr "A9"
+
+#~ msgid "B0"
+#~ msgstr "B0"
+
+#~ msgid "B1"
+#~ msgstr "B1"
+
+#~ msgid "B10"
+#~ msgstr "B10"
+
+#~ msgid "B2"
+#~ msgstr "B2"
+
+#~ msgid "B3"
+#~ msgstr "B3"
+
+#~ msgid "B4"
+#~ msgstr "B4"
+
+#~ msgid "B5"
+#~ msgstr "B5"
+
+#~ msgid "B6"
+#~ msgstr "B6"
+
+#~ msgid "B7"
+#~ msgstr "B7"
+
+#~ msgid "B8"
+#~ msgstr "B8"
+
+#~ msgid "B9"
+#~ msgstr "B9"
+
+#~ msgid "C5E"
+#~ msgstr "C5E"
+
+#~ msgid "Comm10E"
+#~ msgstr "Comm10E"
+
+#~ msgid "DLE"
+#~ msgstr "Konteksti"
+
+#~ msgid "Folio"
+#~ msgstr "Aukeama"
+
+#~ msgid "Ledger"
+#~ msgstr "Apuviiva"
+
+#~ msgid "Legal"
+#~ msgstr "Sallittu"
+
+#~ msgid "Letter"
+#~ msgstr "Kirjain"
+
+#~ msgid "Tabloid"
+#~ msgstr "Tabloidi"
+
+#~ msgid "Custom"
+#~ msgstr "Mukautettu"
+
+#~ msgid "Sorry. I am not able to export this puzzle type (yet)"
+#~ msgstr "Tehtìvìn vienti ei ole mahdollinen."
+
+#~ msgid "Export Ksudoku"
+#~ msgstr "Vie Ksodokuun"
+
+#~ msgid ""
+#~ "A document with this name already exists.\n"
+#~ "Do you want to overwrite it?"
+#~ msgstr ""
+#~ "Tiedosto on jo olemassa.\n"
+#~ "Haluatko ylikirjoittaa sen?"
+
+#~ msgid "1 puzzle available"
+#~ msgid_plural "%1 puzzles available"
+#~ msgstr[0] "1 peli saatavilla"
+#~ msgstr[1] "%1 pelejì saatavilla"
+
+#~ msgid "generating puzzle %1 of %2"
+#~ msgstr "Muunnetaan peliì %1 %2:ksi"
+
+#~ msgid "KSudoku options"
+#~ msgstr "KSudoku asetukset"
+
+#~ msgid "Ksudoku Export"
+#~ msgstr "Ksudoku-vienti"
+
+#~ msgid "Game Count"
+#~ msgstr "Pelien määrä"
+
+#~ msgid "Spacing"
+#~ msgstr "Välistys"
+
+#~ msgid "Output Size (Save only)"
+#~ msgstr "Tuloskoko (vain tallennettaessa)"
+
+#~ msgid "Custom Size (mm)"
+#~ msgstr "Mukautettu koko (mm)"
+
+#~ msgid "Lock"
+#~ msgstr "Lukitse"
+
+#~ msgid "View (and generate) game data"
+#~ msgstr "Näytä (ja luo) pelidata"
+
+#~ msgid "Use current game"
+#~ msgstr "Käytä nykyistä peliä"
+
+#~ msgid "Start Empty"
+#~ msgstr "Aloita tyhjä"
+
+#~ msgid "Configure..."
+#~ msgstr "Asetukset..."
+
+#~ msgid "Easy"
+#~ msgstr "Helppo"
+
+#~ msgid "Hard"
+#~ msgstr "Vaikea"
+
+#~ msgctxt "list arg2 consists of arg1 symbols: arg3"
+#~ msgid "<html><h4>%2</h4>consists of 1 symbol:<br/>%3</html>"
+#~ msgid_plural "<html><h4>%2</h4>consists of %1 symbols:<br/>%3</html>"
+#~ msgstr[0] "<html><h4>%2</h4>sisìltö 1 symbolista:<br/>%3</html>"
+#~ msgstr[1] "<html><h4>%2</h4>sisìltö %1 symboleista:<br/>%3</html>"
+
+#~ msgid "Symbol Themes"
+#~ msgstr "Symbolien teemat"
+
+#~ msgid "Simple Forms"
+#~ msgstr "Yksinkertaiset ruudut"
+
+#~ msgid "Dices"
+#~ msgstr "Nopat"
+
+#~ msgid "Digits"
+#~ msgstr "Digitaaliset numerot"
+
+#~ msgid "Small Letters"
+#~ msgstr "Pienet kirjaimet"
+
+#~ msgid "Capital Letters"
+#~ msgstr "Isot kirjaimet"
+
+#~ msgid "The Puzzle you entered has only one solution. (Forks required: %1)"
+#~ msgstr "Luodulla pelillì on vain yksi ruutu. (Lisìì ruutuja: %1)"

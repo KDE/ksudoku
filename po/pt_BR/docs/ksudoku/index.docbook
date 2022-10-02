@@ -1,0 +1,970 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+<!ENTITY ksudoku "KSudoku">
+<!ENTITY kappname "&ksudoku;">
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Brazilian-Portuguese "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="ksudoku" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>Manual do &kappname;</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immediate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Ian</firstname
+> <surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+	</author>
+<othercredit role="translator"
+><firstname
+>Marcus</firstname
+><surname
+>Gama</surname
+><affiliation
+><address
+><email
+>marcus.gama@gmail.com</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>André Marcelo</firstname
+><surname
+>Alvarenga</surname
+><affiliation
+><address
+><email
+>alvarenga@kde.org</email
+></address
+></affiliation
+><contrib
+>Tradução</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<copyright>
+	<year
+>2011</year>
+	<holder
+>Ian Wadham</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>18/12/2013</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>1.2.1 (&kde; 4.12)</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Esta documentação descreve o jogo &kappname;, um puzzle de colocação de símbolos, baseado na lógica.</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>jogo</keyword
+> <!-- do not change this! -->
+	<keyword
+>ksudoku</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>lógica</keyword>
+	<keyword
+>tabuleiro</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>um jogador</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>quebra-cabeça</keyword>
+</keywordset>
+</bookinfo>
+
+<!--Content begins here: -->
+
+<chapter id="introduction"
+><title
+>Introdução</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Tipo de jogo:</title
+><para
+>Lógica, Tabuleiro</para
+></note>
+
+	<note
+><title
+>Número de possíveis jogadores:</title
+><para
+>Um</para
+></note>
+
+<para
+>O &kappname; é um quebra-cabeça de colocação de símbolos baseados em lógica.</para>
+
+<para
+>O jogador precisa preencher uma grade com símbolos de modo que cada coluna, linha e bloco do tabuleiro contenha apenas uma instância de cada símbolo. No &kappname;, os símbolos são normalmente os números 1 a 9, mas também podem ser as letras A a P ou A a Y nos quebra-cabeças maiores. Os quebra-cabeças começam com o tabuleiro parcialmente preenchido e a sua tarefa é preencher o resto.</para>
+
+<para
+>Quando iniciar um jogo, você poderá escolher entre vários tipos e tamanhos do Sudoku. Você pode fazer então o &kappname; gerar um quebra-cabeça para resolver ou poderá começar com um tabuleiro vazio e introduzir um quebra-cabeça de outra origem, como um jornal, e depois fazer com que o &kappname; o valide ou talvez resolva.</para>
+
+<para
+>Existem diversas variantes do Sudoku existentes e o &kappname; oferece uma boa seleção delas. A variante mais comum do jogo tem uma grade de quadrados 9x9 e usa algarismos arábicos de 1 a 9 como símbolos. A grade tem 9 linhas e 9 colunas, que são divididas em 9 blocos de quadrados 3x3. O problema é - cada símbolo só pode ser usado uma vez por linha, coluna e bloco.</para>
+
+	<note
+><para
+>Leva bastante tempo e concentração para completar um jogo. Contudo, a resolução de quebra-cabeças de Sudoku ajuda a aumentar a atividade global do cérebro, sendo desta forma altamente recomendado.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Como jogar</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Objetivo:</title
+><para
+>Preencher a grade de modo que cada coluna, linha e bloco contenham apenas uma instância de cada símbolo.</para
+></note>
+
+<para
+>Quando o jogo começa, você será questionado a escolher o tipo de jogo e o tamanho do tabuleiro que lhe interessa. Você poderá introduzir um quebra-cabeça de outra origem ou pedir ao &kappname; para gerar um. O gerador tem várias opções de dificuldade e algumas de simetria, que afetam o padrão sobre o qual é gerado o quebra-cabeça. A sua experiência do jogo irá depender dos valores que escolher para estas opções.</para>
+
+<para
+>Quando o tabuleiro aparecer verifique o lado esquerdo. Existe uma lista de seleção que contém todos os símbolos disponíveis para o jogo atual. O conjunto de símbolos depende do tamanho do jogo que você escolher. Os jogos poderão ter 4, 9, 16 ou 25 símbolos. Os primeiros dois conjuntos usam os números de 1 a 4 ou de 1 a 9: os outros usam as letras A a P ou A a Y.</para>
+
+<para
+>Primeiro, repare nos limites do tabuleiro de jogo. As linhas pretas grossas definem os blocos. Cada um destes blocos terá de ser completo com os símbolos disponíveis, de tal forma que cada símbolo seja usado dentro da área do setor uma e só uma vez. O mesmo se aplica para as linhas e colunas no tabuleiro.</para>
+
+<para
+>Agora você poderá começar a introduzir os símbolos nos espaços em branco do tabuleiro do jogo. Para fazer isto, selecione o símbolo que deseja introduzir na lista de seleção à esquerda, usando então o seu mouse para clicar no quadrado livre do tabuleiro. Alternativamente, você poderá passar o ponteiro do mouse sobre um quadrado vazio ou usar as teclas do cursor para mover-se para os lados e depois usar o teclado para introduzir um símbolo.</para>
+
+<para
+>Os quebra-cabeças Roxdoku (em três dimensões) usam sempre o mouse para definir um pequeno cubo para um valor e usam um <emphasis
+>duplo</emphasis
+> clique. Quando rodar o cubo grande, clicando e arrastando com o mouse, é mais fácil de ver quais os valores que estão nos pequenos cubos em segundo plano, caso clique <emphasis
+>entre</emphasis
+> os pequenos cubos, não sobre eles.</para>
+
+<para
+>Algumas vezes é útil introduzir marcadores ou notas, que são pequenos símbolos dentro de um quadrado. Estes não têm qualquer influência sobre a solução, mas pode ajudá-lo a manter um registro das ideias que teve, especialmente quando existir uma escolha entre duas alternativas e se não tiver ainda informação suficiente para decidir entre elas. Para introduzir um marcador ou nota, clique com o botão direito do rato ou mantenha pressionada a tecla &Shift; ao usar o teclado.</para>
+
+<para
+>Para limpar os símbolos de um quadrado, passe com o ponteiro do mouse sobre o mesmo e pressione a tecla <keycap
+>Delete</keycap
+> ou <keycap
+>Backspace</keycap
+> no teclado ou clique com o &RMB; no quadrado.</para>
+
+<para
+>Repare que os quadrados mudam de cor enquanto você passa o mouse sobre eles. Isto é feito para ajudá-lo a se manter dentro das regras do &kappname;. Use as linhas verticais e horizontais para verificar se o símbolo que está prestes a inserir em um lugar livre já existe em qualquer ponto da linha vertical ou horizontal da qual esse quadrado faz parte. A coloração também realça o bloco que, como já foi mencionado, também só pode conter uma única instância de cada símbolo. Se não precisar do realce, você pode usar a opção <menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Configurar o &kappname;...</guimenuitem
+></menuchoice
+> para o desativá-lo.</para>
+
+<para
+>Continue a inserir símbolos de acordo com as regras, até que todo o campo de jogo tenha sido preenchido. Neste ponto, o &kappname; irá verificar se todos os elementos introduzidos são válidos e irá corrigi-lo ou continuará à espera da solução.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Regras do jogo, estratégias e dicas</title
+> <!-- do not change this! -->
+
+<sect1 id="rules"
+><title
+>Regras Gerais do Jogo</title>
+
+<para
+>As regras do &kappname; são bastante simples.</para>
+	<itemizedlist>
+	<listitem
+><para
+>Dependendo do tamanho do tabuleiro do jogo, do tipo de quebra-cabeça e do nível de dificuldade escolhido, um quebra-cabeça individual do &kappname; poderá levar até algumas horas para ser selecionado.</para
+></listitem>
+	<listitem
+><para
+>Cada quadrado pode conter um e apenas um símbolo.</para
+></listitem>
+	<listitem
+><para
+>Cada linha horizontal (como definida no tabuleiro de jogo) poderá conter cada símbolo apenas uma vez.</para
+></listitem>
+	<listitem
+><para
+>Cada coluna vertical (como definida no tabuleiro de jogo) poderá conter cada símbolo apenas uma vez.</para
+></listitem>
+	<listitem
+><para
+>Cada bloco (como definido no tabuleiro de jogo) poderá conter cada símbolo apenas uma vez.</para
+></listitem>
+	</itemizedlist>
+
+	<note
+><title
+>Nota:</title
+><para
+>O conjunto de símbolos depende do tamanho do jogo que você escolher.</para
+></note>
+
+	<itemizedlist>
+	<listitem
+><para
+>Não é necessário qualquer conhecimento matemático ou linguístico para resolver os quebra-cabeças do &kappname;.</para
+></listitem>
+	<listitem
+><para
+>Os símbolos que já estão no tabuleiro do jogo quando o quebra-cabeça inicia não podem ser alterados.</para
+></listitem>
+	<listitem
+><para
+>Você só poderá modificar os símbolos que tiver inserido previamente.</para
+></listitem>
+	<listitem
+><para
+>Os quebra-cabeças gerados pelo &kappname; só têm uma solução.</para
+></listitem>
+	<listitem
+><para
+>Os quebra-cabeças que você introduzir podem não ter solução ou ter mais que uma. Porém, se forem de uma fonte publicada, isto pode significar que você digitou os dados incorretamente.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="variants"
+><title
+>Variações do &kappname;</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>O quebra-cabeça Sudoku normal 9x9 tem 9 linhas, 9 colunas e 9 blocos quadrados de tamanho 3x3.</para
+></listitem>
+	<listitem
+><para
+>Os outros tamanhos do Sudoku normal são o 4x4 (muito fácil), o 16x16 e o 25x25 (não tão fáceis).</para
+></listitem>
+	<listitem
+><para
+>A variante Jigsaw é a mesma do Sudoku normal, com exceção de que alguns blocos não são quadrados.</para
+></listitem>
+	<listitem
+><para
+>A variante XSudoku é exatamente igual à do Sudoku normal, apenas com mais um requisito: as duas diagonais principais também deverão conter apenas uma vez os símbolos 1 a 9. O &kappname; realça as diagonais para torná-lo mais fácil de ver.</para
+></listitem>
+	<listitem
+><para
+>As variantes Roxdoku são baseadas em cubos tridimensionais, mas são mais simples do que parecem. Não existem linhas nem colunas. Um quebra-cabeça Roxdoku 3x3x3 tem 27 pequenos cubos organizados em um cubo 3x3x3 maior. Este contém nove pedaços, cada um contendo pequenos cubos 3x3, sendo estes os blocos quadrados que deverão ser preenchidos com os números de 1 a 9. Um Roxdoku 4x4x4 tem doze pedaços 4x4 e um Roxdoku 5x5x5 tem quinze pedaços 5x5.</para
+></listitem>
+	<listitem
+><para
+>O Sudoku Samurai consiste em cinco quebra-cabeças normais do Sudoku de quadrados 9x9, sobrepondo-se nos cantos com quatro blocos de 3x3. Cada um dos cinco quebra-cabeças tem 9 linhas e 9 colunas para resolver, mas em vez de 45, só existem 41 blocos para resolver devido à sobreposição.</para
+></listitem>
+	<listitem
+><para
+>O Sudoku Samurai pequeno consiste em cinco quebra-cabeças 4x4, sobrepondo-se nos cantos em quatro quadrados. Cada um dos cinco quebra-cabeças tem 4 linhas, 4 colunas e 4 blocos para resolver.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="tips"
+><title
+>Estratégias e dicas</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Leve o tempo que quiser e não se apresse. O &kappname; não é um jogo rápido.</para
+></listitem>
+	<listitem
+><para
+>Preste atenção às colorações da linha, coluna e bloco. Elas existem para ajudá-lo.</para
+></listitem>
+	<listitem
+><para
+>Certifique-se de que não há um símbolo duplicado existente na linha, coluna ou bloco onde vai inserir.</para
+></listitem>
+	<listitem
+><para
+>Se tiver dúvidas, tente antever se um quadrado onde você está inserindo um símbolo possa ser necessário para outro símbolo que não possa ir para outra posição, devido as regras da linha, coluna e bloco.</para
+></listitem>
+	<listitem
+><para
+>Use a Internet para procurar por dicas e estratégias gerais para resolver quebra-cabeças Sudoku.</para
+></listitem>
+	<listitem
+><para
+>Use os marcadores quando encontrar um quadrado ou quadrados que tenham apenas poucas alternativas, mas que não consiga ainda decidir quais são. Os marcadores poupam-lhe tempo e esforço de memória para mais tarde, quando já tiver preenchido mais quadrados. Veja mais detalhes em <link linkend="howto"
+>Como jogar</link
+> para mais detalhes sobre o uso de marcadores.</para
+></listitem>
+	<listitem
+><para
+>Se você tiver problemas, tente fazer um seguimento dos seus passos e ver exatamente onde é que cometeu um erro. Você pode usar as opções <menuchoice
+><guimenu
+>Mover</guimenu
+> <guimenuitem
+>Desfazer</guimenuitem
+></menuchoice
+> e <menuchoice
+><guimenu
+>Mover</guimenu
+> <guimenuitem
+>Refazer</guimenuitem
+></menuchoice
+>, tantas vezes quanto forem necessárias. Existe também uma opção em <menuchoice
+><guimenu
+>Configuração</guimenu
+> <guimenuitem
+>Configurar o &kappname;...</guimenuitem
+></menuchoice
+> que realça os erros.</para
+></listitem>
+	<listitem
+><para
+>Ainda que o &kappname; ofereça uma opção de 'Dica', tente não usá-la com muita frequência. Lembre-se de que a resolução do quebra-cabeça por si só aumenta a sua atividade cerebral, enquanto a funcionalidade de 'Dica' usada com frequência é trapaça.</para
+></listitem>
+	<listitem
+><para
+>Se você tiver muitos problemas ao resolver um determinado quebra-cabeça, e se precisar mesmo usar a funcionalidade de 'Dica', então provavelmente deveria diminuir o nível de dificuldade ou tentar um quebra-cabeça mais simples e básico.</para
+></listitem>
+	<listitem
+><para
+>Algumas disposições de quebra-cabeças oferecem formas muito específicas do tabuleiro de jogo. É uma boa ideia ativar a opção de realce, mesmo que se considere um jogador experiente.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Resumo da interface</title
+> <!-- do not change this! -->
+
+<sect1 id="welcome-screen"
+><title
+>A tela de boas-vindas</title>
+
+<para
+>A tela de boas-vindas é a primeira coisa que você vê quando iniciar o &kappname; ou use a barra de ferramentas ou menu para pedir um novo jogo. Ele tem uma lista com todos os tipos e tamanhos de quebra-cabeça, podendo clicar em um deles para selecioná-lo.</para>
+
+<para
+>Se você clicar no botão <guilabel
+>Inserir um quebra-cabeça</guilabel
+>, irá aparecer um tabuleiro vazio do tipo e tamanho selecionados. Aqui você poderá usar o mouse ou o teclado para inserir um quebra-cabeça de outra origem, como um jornal. Quando tiver concluído, use o botão <guilabel
+>Verificar</guilabel
+> da barra de ferramentas ou do menu para verificar o quebra-cabeça. Ele deverá ter apenas uma solução. Se for o caso, você poderá começar a resolver o quebra-cabeça ou pedir ao &kappname; para o resolvê-lo. Se não existir uma solução ou existir mais que uma, provavelmente significa que você cometeu um erro ao inserir os dados.</para>
+
+<para
+>Se você clicar no botão <guilabel
+>Gerar um quebra-cabeça</guilabel
+>, o &kappname; irá mostrar um tabuleiro com alguns quadrados já preenchidos. Dependerá de você preenchimento do resto.</para>
+
+<para
+>Antes de gerar um quebra-cabeça, verifique se as configurações dos botões de <guilabel
+>Dificuldade</guilabel
+> e <guilabel
+>Simetria</guilabel
+>estão a seu gosto. Você pode alterá-los durante um jogo, mas não farão efeito até que o próximo quebra-cabeça seja gerado.</para>
+
+	<note
+><para
+>Se você não conseguir ver os botões de <guilabel
+>Dificuldade</guilabel
+> e <guilabel
+>Simetria</guilabel
+>, use o item do menu <menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Mostrar a barra de status</guimenuitem
+></menuchoice
+> para se certificar de que a barra de status está visível.</para
+></note>
+
+<para
+>O botão <guilabel
+>Dificuldade</guilabel
+> oferece seis níveis de dificuldade, do <guimenuitem
+>Muito fácil</guimenuitem
+> ao <guimenuitem
+>Difícil</guimenuitem
+>, <guimenuitem
+>Diabólico</guimenuitem
+> e <guimenuitem
+>Ilimitado</guimenuitem
+>. Os níveis mais fáceis podem levar alguns minutos para serem resolvidos em um tabuleiro 9x9. Os níveis <guimenuitem
+>Difícil</guimenuitem
+> e <guimenuitem
+>Diabólico</guimenuitem
+> podem levar cerca de uma hora e pretendem ser equivalentes aos níveis de dificuldade encontrados nos jornais. Os quebra-cabeças Samurai e os tamanhos 16x16 ou 25x25 levam mais tempo para resolver, simplesmente porque existem mais linhas, colunas e blocos para preencher.</para>
+
+<para
+>O nível Diabólico normalmente necessita de uma ou mais adivinhações, com a hipótese de voltar atrás se você se enganar. Os níveis mais baixos podem ser resolvidos normalmente apenas com lógica. O nível Ilimitado não tem limites sobre o número de adivinhações necessárias, quando é necessária a primeira adivinhação ou quão complexa poderá ser a lógica. É fornecido apenas para interesse dos jogadores experientes, mas tende a gerar quebra-cabeças quase impossíveis e desinteressantes, não sendo recomendado para o uso geral.</para>
+
+ <para
+>O botão <guilabel
+>Simetria</guilabel
+> oferecem sete tipos de simetria, incluindo a <guimenuitem
+>Sem Simetria</guimenuitem
+>. Isto controla a disposição e aparência dos quadrados que são preenchidos no início de um quebra-cabeça e tem apenas um efeito estético, exceto no caso dos quebra-cabeças sem simetria, que tendem a ser mais complicados que aqueles que possuem alta simetria, sendo menos provável que o &kappname; gere um quebra-cabeça com dificuldade elevada e uma alta simetria conjugadas.</para>
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu"
+><title
+>Menu Jogo</title>
+
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Novo</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Inicia um novo jogo.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Carregar...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Carrega um jogo salvo.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Salvar</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Salva</action
+> o jogo atual como um arquivo de gravação padrão.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Salvar Como...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Salva</action
+> o jogo atual como um arquivo à sua escolha.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Imprimir...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Imprime</action
+> o estado atual do jogo em duas dimensões na impressora de sua escolha. Os contornos dos blocos e os valores originais dos quebra-cabeças são impressos em preto. Nas outras células, os valores preenchidos e os valores da solução são impressos em cinza. Existe uma opção para imprimir um ou mais quebra-cabeças por cada página. Veja em <link linkend="configuration"
+>Configuração do jogo</link
+>.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Sair</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Sai</action
+> do &kappname;.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+>Menu Mover</title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Desfazer</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Desfaz</action
+> a sua última jogada, e pode ser repetida se necessário.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Refazer</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Refaz</action
+> uma jogada que foi anulada, e pode ser repetida se necessário.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Mover</guimenu
+> <guimenuitem
+>Dica</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Dá uma dica</action
+> preenchendo um quadrado vazio.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>Mover</guimenu
+> <guimenuitem
+>Solucionar</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Resolve instantaneamente</action
+> o 'quebra-cabeça'.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>Mover</guimenu
+> <guimenuitem
+>Verificar</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Verifica</action
+> um quebra-cabeça introduzido para validá-lo. Se tiver apenas uma solução, esta fica disponível para jogar. Se não tiver solução ou tiver mais que uma, provavelmente ocorreu um erro na introdução dos dados.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>Menu Configurações</title>
+		<variablelist>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>Configurações</guimenu
+> <guimenuitem
+>Configurar o &kappname;...</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Abre uma janela para configurar o &kappname;.</action
+> Veja a seção de <link linkend="configuration"
+>Configuração do Jogo</link
+> para mais detalhes.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+		<para
+>O &ksudoku; possui os itens de menu normais do &kde; para a <guimenu
+>Configurações</guimenu
+> e <guimenu
+>Ajuda</guimenu
+>; para mais informações, leia as seções sobre o <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Configurações</ulink
+> e o <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Ajuda</ulink
+> dos Fundamentos do &kde;. </para>
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Perguntas frequentes</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Eu quero alterar o visual do jogo. É possível? </para
+></question>
+ <answer
+><para
+>Os jogos do Sudoku tradicionais são jogados numa grade quadrada. Os temas não fariam muito sentido aqui, mas você poderá selecionar alguns esquemas de cor e planos de fundo. Para fazer isso, use a opção do menu <menuchoice
+><guimenu
+>Configurações</guimenu
+><guimenuitem
+>Configurar o &kappname;...</guimenuitem
+></menuchoice
+>.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Eu posso usar o teclado para jogar este jogo? </para
+></question>
+ <answer
+><para
+>Sim. No &kappname;, o jogo com o teclado está sempre ativo. Por favor, use as teclas de cursores para mover a seleção, os caracteres numéricos e alfabéticos para inserir os símbolos e a tecla &Shift; para aplicar as marcações.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Onde aparecem os recordes?</para
+></question>
+ <answer
+><para
+>O &kappname; não tem esta funcionalidade.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Configuração do jogo</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+>Opções do jogo</title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Ao imprimir, tentar colocar mais de um quebra-cabeça por página</guilabel
+></term>
+			<listitem>
+			<para
+>Ativa ou desativa a opção para imprimir mais de um quebra-cabeça por página, desde que seja possível.</para>
+			<para
+>Se esta opção estiver assinalada, os puzzles serão impressos quando não couber mais nenhum na página ou quando o &kappname; terminar. Caso contrário, será impresso um puzzle imediatamente.</para>
+			<para
+>Os puzzles em três dimensões não podem ser impressos.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostrar os realces nos quebra-cabeças 2D</guilabel
+></term>
+			<listitem
+><para
+>Ativa ou desativa a opção de realce do &kappname; para os quebra-cabeças bidimensionais.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostrar erros</guilabel
+></term>
+			<listitem
+><para
+>Ativa ou desativa a opção para realçar os erros.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Mostrar os realces nos quebra-cabeças 3D</guilabel
+></term>
+			<listitem
+><para
+>Ativa ou desativa a opção de realce do &kappname; para os quebra-cabeças tridimensionais.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Configurações apenas para quebra-cabeças 3D</guilabel
+></term>
+			<listitem
+><para
+>Estas cinco opções ajustam o realce e a visibilidade das células em quebra-cabeças tridimensionais. A ideia é simplificar a visualização das relações entre as células, especialmente se estiver atrás de outras células.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+		<note
+><title
+>Nota:</title
+><para
+>Ter as opções de realce ativas é recomendado mesmo para os jogadores experientes, uma vez que ajuda a ver as restrições atuais do tabuleiro de jogo.</para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Créditos e licença</title
+> <!-- do not change this! -->
+
+<para
+>&kappname; </para>
+
+<!--List all the copyright holders here-->
+<para
+>Direitos autorais 2005-2007 Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Direitos autorais 2006-2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Johannes Bergmeier <email
+>johannes.bergmeier@gmx.net</email
+></para>
+
+<para
+>Direitos autorais 2011 Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Novos algoritmos de resolução e geração 2011 David Bau, <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
+> veja a página Web.</ulink
+></para>
+
+<para
+>Direitos autorais da documentação 2005 Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Direitos autorais da documentação 2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+></para>
+
+<para
+>Direitos autorais da documentação 2011 Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Tradução de Marcus Gama <email
+>marcus.gama@gmail.com</email
+> e André Marcelo Alvarenga <email
+>alvarenga@kde.org</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+<appendix id="installation">
+<title
+>Instalação</title>
+
+&install.intro.documentation;
+
+
+<sect1 id="Compilation">
+<title
+>Compilação e instalação</title
+>&install.compile.documentation; </sect1>
+</appendix>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->

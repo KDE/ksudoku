@@ -1,0 +1,1209 @@
+# Translation of ksudoku.po into Serbian.
+# Slobodan Simic <slsimic@gmail.com>, 2007, 2009.
+# Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2010, 2011, 2012, 2013, 2015, 2017.
+# Dalibor Djuric <daliborddjuric@gmail.com>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: ksudoku\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2020-05-31 18:00+0200\n"
+"PO-Revision-Date: 2017-09-28 17:59+0200\n"
+"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
+"Language: sr@latin\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
+"%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Accelerator-Marker: &\n"
+"X-Text-Markup: kde4\n"
+"X-Environment: kde\n"
+"X-Associated-UI-Catalogs: libkdegames5\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Slobodan Simić"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "slsimic@gmail.com"
+
+#: src/generator/sudokuboard.cpp:104
+#, kde-format
+msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
+msgstr "Generisanje slagalice propalo posle 200 pokušaja. Pokušati ponovo?"
+
+# well-spelled: Матудоку
+#: src/generator/sudokuboard.cpp:106
+#, kde-format
+msgid "Mathdoku or Killer Sudoku Puzzle"
+msgstr "Matudoku ili slagalica sudoku ubice"
+
+#: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: src/generator/sudokuboard.cpp:197
+#, fuzzy, kde-format
+#| msgid ""
+#| "After %1 tries, the best difficulty level achieved is %2, with internal "
+#| "difficulty rating %3, but you requested difficulty level %4. Do you wish "
+#| "to try again or accept the puzzle as is?\n"
+#| "\n"
+#| "If you accept the puzzle, it may help to change to No Symmetry or some "
+#| "low symmetry type, then use Game->New and try generating another puzzle."
+msgid ""
+"After %1 tries, the best difficulty level achieved by the generator is %2, "
+"with internal difficulty rating %3, but you requested difficulty level %4.\n"
+"\n"
+"Do you wish to let the generator try again or accept the puzzle as is?\n"
+"\n"
+"Hint: you can try to increase the difficulty rating by doing the following: "
+"Continue with the 'Accept' button, choose Game -> New, then change the "
+"Symmetry setting to 'No Symmetry' or some low symmetry type and then use "
+"'Generate A Puzzle' again."
+msgstr ""
+"Posle %1 pokušaja, najbolji dostignuti nivo težine je %2, sa unutrašnjom "
+"ocenom %3, dok ste vi zatražili nivo težine %4. Želite li da pokušate "
+"ponovo, ili prihvatate slagalicu takvu kakva je?\n"
+"\n"
+"Ako ne prihvatite slagalicu, probajte da zadate nesimetričnost ili neki "
+"niski tip simetričnosti, a zatim idite na „Igra→Nova“ i pokušajte da "
+"generišete novu slagalicu."
+
+# >> @title:window
+#: src/generator/sudokuboard.cpp:208 src/generator/sudokuboard.cpp:228
+#: src/generator/sudokuboard.cpp:244
+#, kde-format
+msgid "Difficulty Level"
+msgstr "Nivo težine"
+
+#: src/generator/sudokuboard.cpp:209
+#, kde-format
+msgid "&Try Again"
+msgstr "Po&kušaj ponovo"
+
+#: src/generator/sudokuboard.cpp:209
+#, kde-format
+msgid "&Accept"
+msgstr "&Prihvati"
+
+#: src/generator/sudokuboard.cpp:221
+#, kde-format
+msgid ""
+"It will be possible to solve the generated puzzle by logic alone. No "
+"guessing will be required.\n"
+"\n"
+"The internal difficulty rating is %1. There are %2 clues at the start and %3 "
+"moves to go."
+msgstr ""
+"Ova slagalica će moći da se reši čistom logikom. Neće biti potrebno "
+"pogađati.\n"
+"\n"
+"Unutrašnja ocena težine je %1. Ima %2 ključeva na početku i %3 poteza do "
+"kraja.|/|Ova slagalica će moći da se reši čistom logikom. Neće biti potrebno "
+"pogađati.\n"
+"\n"
+"Unutrašnja ocena težine je %1. Ima %2 $[množ ^2 ključ ključa ključeva] na "
+"početku i %3 $[množ ^3 potez poteza poteza] do kraja."
+
+#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:245
+#, kde-format
+msgid "&Retry"
+msgstr "&Pokušaj ponovo"
+
+#: src/generator/sudokuboard.cpp:235
+#, kde-format
+msgid ""
+"Solving the generated puzzle will require an average of %1 guesses or branch "
+"points and if you guess wrong, backtracking will be necessary. The first "
+"guess should come after %2 moves.\n"
+"\n"
+"The internal difficulty rating is %3, there are %4 clues at the start and %5 "
+"moves to go."
+msgstr ""
+"Rešavanje generisane slagalice zahtevaće u proseku %1 pogađanja ili tačaka "
+"grananja; kad pogrešno pogodite moraćete da se vratite nazad. Prvo pogađanje "
+"treba da usledi posle %2 poteza.\n"
+"\n"
+"Unutrašnja ocena težine je %3. Ima %4 ključeva na početku i %5 poteza do "
+"kraja.|/|Rešavanje generisane slagalice zahtevaće u proseku %1 pogađanja ili "
+"tačaka grananja; kad pogrešno pogodite moraćete da se vratite nazad. Prvo "
+"pogađanje treba da usledi posle %2 poteza.\n"
+"\n"
+"Unutrašnja ocena težine je %3. Ima %4 $[množ ^4 ključ ključa ključeva] na "
+"početku i %5 $[množ ^5 potez poteza poteza] do kraja."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
+#: src/gui/configgame.ui:20
+#, kde-format
+msgid "When printing, try to fit more than one puzzle on a page"
+msgstr "Više slagalica po stranici pri štampanju, ako je moguće"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:43
+#, kde-format
+msgid "Highlight the row, column and block that contain the selected cell"
+msgstr "Isticanje vrste, kolone i bloka koji sadrži izabranu ćeliju."
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:46
+#, kde-format
+msgid ""
+"Highlight the row, column and block that contain the selected cell. Blocks "
+"may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
+msgstr ""
+"Isticanje vrste, kolone i bloka koji sadrži izabranu ćeliju. Blokovi mogu "
+"biti kvadratni ili nepravilni (poput testerastih slagalica ili onih iz "
+"X‑sudokua)."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:49
+#, kde-format
+msgid "Show highlights in 2-D puzzles"
+msgstr "Isticanje u 2D slagalicama"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:56 src/gui/configgame.ui:59
+#, kde-format
+msgid "Highlight in red any cells whose values break the Sudoku rules."
+msgstr "Ističe crvenim ćelija čije vrednosti krše pravila sudokua."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:62
+#, kde-format
+msgid "Show errors"
+msgstr "Isticanje grešaka"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:69 src/gui/configgame.ui:72
+#, kde-format
+msgid "Highlight the planes (blocks) that contain the selected cell."
+msgstr "Isticanje ravni (blokova) koje sadrže izabranu ćeliju."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:75
+#, kde-format
+msgid "Show highlights in 3-D puzzles"
+msgstr "Isticanje u 3D slagalicama"
+
+# well-spelled: матудоку
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: src/gui/configgame.ui:137
+#, kde-format
+msgid "Mathdoku puzzle size (3-9)"
+msgstr "Veličina matudoku slagalice (3–9)"
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/gui/configgame.ui:167
+#, kde-format
+msgid "Settings for 3-D Puzzles Only"
+msgstr "Postavke samo za 3D slagalice"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_6)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_6)
+#: src/gui/configgame.ui:182 src/gui/configgame.ui:185
+#: src/gui/configgame.ui:228 src/gui/configgame.ui:231
+#, kde-format
+msgid "Set the relative size of 3-D cells and the spaces between them."
+msgstr "Relativna veličina 3D ćelija i razmaka među njima."
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: src/gui/configgame.ui:234
+#, kde-format
+msgid "Overall size of 3-D cells"
+msgstr "Opšta veličina 3D ćelija"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label)
+#: src/gui/configgame.ui:254 src/gui/configgame.ui:257
+#: src/gui/configgame.ui:300 src/gui/configgame.ui:303
+#, no-c-format, kde-format
+msgid "Shrink or expand a cell by up to 30% when it is selected."
+msgstr "Sažimanje ili širenje ćelije do 30% kada se izabere."
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/gui/configgame.ui:306
+#, kde-format
+msgid "Size of selected 3-D cell"
+msgstr "Veličina izabrane 3D ćelije"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_3)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_3)
+#: src/gui/configgame.ui:326 src/gui/configgame.ui:329
+#: src/gui/configgame.ui:363 src/gui/configgame.ui:366
+#, no-c-format, kde-format
+msgid "Shrink or expand cells by up to 30% when they are highlighted."
+msgstr "Sažimanje ili širenje ćelije do 30% kada se istakne."
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: src/gui/configgame.ui:369
+#, kde-format
+msgid "Size of highlighted 3-D cells"
+msgstr "Veličina istaknutih 3D ćelija"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_5)
+#: src/gui/configgame.ui:389 src/gui/configgame.ui:426
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell."
+msgstr ""
+"Sažimanje ćelije do 60% ako je izvan N×N×N kocke koja sadrži izabranu ćeliju."
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:392 src/gui/configgame.ui:429
+#: src/gui/configgame.ui:452
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell. This is useful if a 3-D puzzle has more than one cube."
+msgstr ""
+"Sažimanje ćelije do 60% ako je izvan N×N×N kocke koja sadrži izabranu "
+"ćeliju. Ovo je korisno ako 3D slagalica sadrži više od jedne kocke."
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: src/gui/configgame.ui:432
+#, kde-format
+msgid "Size of 3-D cells outside the selected volume"
+msgstr "Veličina 3D ćelija izvan izabrane zapremine"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:449
+#, kde-format
+msgid ""
+"Darken cells if they are not in an NxNxN cube that contains the selected "
+"cell."
+msgstr ""
+"Zatamnjivanje ćelije ako je izvan N×N×N kocke koja sadrži izabranu ćeliju."
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:455
+#, kde-format
+msgid "Darken 3-D cells outside the selected volume"
+msgstr "Zatamni 3D ćelije izvan izabrane zapremine"
+
+#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#, kde-format
+msgid "Configuration not yet implemented"
+msgstr "Podešavanje još nije izvedeno."
+
+#: src/gui/ksudoku.cpp:77
+#, kde-format
+msgid ""
+"Sorry, your solution contains mistakes.\n"
+"\n"
+"Enable \"Show errors\" in the settings to highlight them."
+msgstr ""
+"<html><p>Nažalost, vaše rešenje sadrži greške.</p><p>Uključite <i>Isticanje "
+"grešaka</i> u postavkama da biste ih sagledali.</p></html>"
+
+#: src/gui/ksudoku.cpp:88
+#, kde-format
+msgid "Congratulations! You made it in 1 second. With some tricks."
+msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+msgstr[0] "Čestitamo! Uspeli ste za %1 sekundu. Uz neke trikove."
+msgstr[1] "Čestitamo! Uspeli ste za %1 sekunde. Uz neke trikove."
+msgstr[2] "Čestitamo! Uspeli ste za %1 sekundi. Uz neke trikove."
+msgstr[3] "Čestitamo! Uspeli ste za 1 sekundu. Uz neke trikove."
+
+#: src/gui/ksudoku.cpp:90
+#, kde-format
+msgid "Congratulations! You made it in 1 minute. With some tricks."
+msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+msgstr[0] "Čestitamo! Uspeli ste za %1 minut. Uz neke trikove."
+msgstr[1] "Čestitamo! Uspeli ste za %1 minuta. Uz neke trikove."
+msgstr[2] "Čestitamo! Uspeli ste za %1 minuta. Uz neke trikove."
+msgstr[3] "Čestitamo! Uspeli ste za 1 minut. Uz neke trikove."
+
+# >> Part of 'You made it in %1 and %2' below.
+#: src/gui/ksudoku.cpp:92 src/gui/ksudoku.cpp:99
+#, kde-format
+msgid "1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] "%1 minut"
+msgstr[1] "%1 minuta"
+msgstr[2] "%1 minuta"
+msgstr[3] "1 minut"
+
+# >> Part of 'You made it in %1 and %2' below.
+#: src/gui/ksudoku.cpp:92 src/gui/ksudoku.cpp:99
+#, kde-format
+msgid "1 second"
+msgid_plural "%1 seconds"
+msgstr[0] "%1 sekundu"
+msgstr[1] "%1 sekunde"
+msgstr[2] "%1 sekundi"
+msgstr[3] "1 sekundu"
+
+#: src/gui/ksudoku.cpp:92
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2. With some tricks."
+msgstr "Čestitamo! Uspeli ste za %1 i %2. Uz neke trikove."
+
+#: src/gui/ksudoku.cpp:95
+#, kde-format
+msgid "Congratulations! You made it in 1 second."
+msgid_plural "Congratulations! You made it in %1 seconds."
+msgstr[0] "Čestitamo! Uspeli ste za %1 sekundu."
+msgstr[1] "Čestitamo! Uspeli ste za %1 sekunde."
+msgstr[2] "Čestitamo! Uspeli ste za %1 sekundi."
+msgstr[3] "Čestitamo! Uspeli ste za 1 sekundu."
+
+#: src/gui/ksudoku.cpp:97
+#, kde-format
+msgid "Congratulations! You made it in 1 minute."
+msgid_plural "Congratulations! You made it in %1 minutes."
+msgstr[0] "Čestitamo! Uspeli ste za %1 minut."
+msgstr[1] "Čestitamo! Uspeli ste za %1 minuta."
+msgstr[2] "Čestitamo! Uspeli ste za %1 minuta."
+msgstr[3] "Čestitamo! Uspeli ste za minut."
+
+#: src/gui/ksudoku.cpp:99
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2."
+msgstr "Čestitamo! Uspeli ste za %1 i %2."
+
+#: src/gui/ksudoku.cpp:177
+#, kde-format
+msgid "Sudoku Standard (9x9)"
+msgstr "Standardni sudoku (9×9)"
+
+#: src/gui/ksudoku.cpp:178
+#, kde-format
+msgid "The classic and fashionable game"
+msgstr "Klasična i popularna igra"
+
+#: src/gui/ksudoku.cpp:181
+#, kde-format
+msgid "Roxdoku 9 (3x3x3)"
+msgstr "Roksdoku 9 (3×3×3)"
+
+#: src/gui/ksudoku.cpp:182
+#, kde-format
+msgid "The Rox 3D Sudoku"
+msgstr "Sudoku na kocki"
+
+#: src/gui/ksudoku.cpp:204
+#, kde-format
+msgid "Missing Variant Name"
+msgstr "Nedostaje ime varijacije"
+
+#: src/gui/ksudoku.cpp:218
+#, kde-format
+msgid "Sudoku 16x16"
+msgstr "Sudoku 16×16"
+
+#: src/gui/ksudoku.cpp:219
+#, kde-format
+msgid "Sudoku with 16 symbols"
+msgstr "Sudoku sa 16 simbola"
+
+#: src/gui/ksudoku.cpp:221
+#, kde-format
+msgid "Sudoku 25x25"
+msgstr "Sudoku 25×25"
+
+#: src/gui/ksudoku.cpp:222
+#, kde-format
+msgid "Sudoku with 25 symbols"
+msgstr "Sudoku sa 25 simbola"
+
+#: src/gui/ksudoku.cpp:225
+#, kde-format
+msgid "Roxdoku 16 (4x4x4)"
+msgstr "Roksdoku 16 (4×4×4)"
+
+#: src/gui/ksudoku.cpp:226
+#, kde-format
+msgid "The Rox 3D sudoku with 16 symbols"
+msgstr "Sudoku na kocki sa 16 simbola"
+
+#: src/gui/ksudoku.cpp:228
+#, kde-format
+msgid "Roxdoku 25 (5x5x5)"
+msgstr "Roksdoku 25 (5×5×5)"
+
+#: src/gui/ksudoku.cpp:229
+#, kde-format
+msgid "The Rox 3D sudoku with 25 symbols"
+msgstr "Sudoku na kocki sa 25 simbola"
+
+# rewrite-msgid: /Settings dialog/configuration dialog/
+# well-spelled: Матудоку, матудокуа, матудокуи
+#: src/gui/ksudoku.cpp:275
+#, kde-format
+msgid ""
+"Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
+"grid in which every row and every column contains the available digits (1-3 "
+"up to 1-9) exactly once. The grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues, but there are not many of "
+"them. Cages of larger size have a target value and an arithmetic operator (+-"
+"x/). The digits in the cage must combine together, using the operator, to "
+"reach the target value, e.g. '12x' means that the digits must multiply "
+"together to make 12. A digit can occur more than once in a cage, provided it "
+"occurs in different rows and columns.\n"
+"\n"
+"In general, larger Mathdokus are more difficult and so are larger cages. You "
+"can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"Slagalice matudokua mogu da budu veličine do 3×3 do 9×9. Rešenje je mreža u "
+"kojoj svaka vrsta i svaka kolona sadrži raspoložive cifre (od 1–3 do 1–9) "
+"tačno jednom. Mreža je pokrivena kavezima nepravilnog oblika.\n"
+"\n"
+"Kavezi veličine 1 su početne vrednosti ili ključevi, ali ih nema mnogo. Veći "
+"kavezi imaju ciljnu vrednost i aritmetički operator (+, -, ×, /). Primena "
+"operatora na cifre u kavezu mora da rezultuje ciljnom vrednošću, npr. „12×“ "
+"znači da se množenjem cifara mora dobiti 12. Ista cifra sme da se javi više "
+"puta u kavezu, pod uslovom da je u uvek u različitoj vrsti i koloni.\n"
+"\n"
+"Uopšteno, veći matudokui su teži, kao što su i veći kavezi. Veličinu "
+"slagalice možete da izaberete u dijalogu za podešavanje K‑sudokua, a najveću "
+"veličinu kaveza preko dugmeta težine."
+
+# well-spelled: матудокуа
+#: src/gui/ksudoku.cpp:294
+#, kde-format
+msgid "Playing Mathdoku"
+msgstr "Igranje matudokua"
+
+#: src/gui/ksudoku.cpp:298
+#, kde-format
+msgid ""
+"Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
+"or nine 3x3 blocks. The solution must follow Classic Sudoku rules. The "
+"difference is that there are few starting-values or clues (if any). Instead "
+"the grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues. Cages of larger size have a "
+"target value and the digits in them must add up to that value. In Killer "
+"Sudoku, a cage cannot contain any digit more than once.\n"
+"\n"
+"In general, larger cages are more difficult. You can select the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"Slagalice sudoku ubice mogu da budu veličine 4×4 ili 9×9, sa ili četiri 2×2 "
+"bloka ili devet 3×3 blokova. Rešenje mora da prati pravila klasičnog "
+"sudokua. Razlika je u tome što ima manje početnih vrednosti ili ključeva "
+"(ako ijednog). Umesto toga, mreža je pokrivena kavezima nepravilnog oblika.\n"
+"\n"
+"Kavezi veličine 1 su početne vrednosti ili ključevi. Veći kavezi imaju "
+"ciljnu vrednost koja mora da bude jednaka zbiru svih cifara u kavezu. Kavez "
+"ne sme da sadrži istu cifru više puta.\n"
+"\n"
+"Uopšteno, veći kavezi su teži. Najveću veličinu kaveza možete izabrati preko "
+"dugmeta težine."
+
+#: src/gui/ksudoku.cpp:312
+#, kde-format
+msgid "Playing Killer Sudoku"
+msgstr "Igranje sudoku ubice"
+
+# switch-rule: t-pointer > t-cursor
+# well-spelled: Матудоку
+#: src/gui/ksudoku.cpp:316
+#, kde-format
+msgid ""
+"Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
+"cage at a time. To start a cage, left click on any unused cell or enter a "
+"number in the cell that is under the cursor or enter + - / or x there. A "
+"small cage-label will appear in that cell. To extend the cage in any "
+"direction, left-click on a neigbouring cell or move the cursor there and "
+"type a Space.\n"
+"\n"
+"The number you type is the cage's value and it can have one or more digits, "
+"including zero. A cell of size 1 has to have a 1-digit number, as in a "
+"normal Sudoku puzzle. It becomes a starting-value or clue for the player.\n"
+"\n"
+"The + - / or x is the operator (Add, Subtract, Divide or Multiply). You must "
+"have one in cages of size 2 or more. In Killer Sudoku, the operator is "
+"provided automatically because it is always + or none.\n"
+"\n"
+"You can enter digits, operators and cells in any order. To complete the cage "
+"and start another cage, always press Return. If you make a mistake, the only "
+"thing to do is delete a whole cage and re-enter it. Use right click in the "
+"current cage or any earlier cage, if you wish to delete it. Alternatively, "
+"use the cursor and the Delete or Backspace key.\n"
+"\n"
+"When the grid is filled with cages, hit the Check button, to solve the "
+"puzzle and make sure there is only one solution. If the check fails, you "
+"have probably made an error somewhere in one of the cages."
+msgstr ""
+"Matudoku i slagalice sudoku ubice treba unositi jedan po jedan kavez. Da "
+"otpočnete kavez, kliknite levim na neku slobodnu ćeliju, ili unesite broj u "
+"ćeliji pod kursorom, ili unesite tu +, -, /, ili x. Pojaviće se mala etiketa "
+"kaveza u toj ćeliji. Da proširite kavez u nekom smeru, kliknite levim na "
+"susednu ćeliju ili pomerite kursor na nju i pritisnite Space.\n"
+"\n"
+"Broj koji unesete zadaje vrednost kaveza, i može da sadrži jednu ili više "
+"cifara, uključujući nulu. Ćelija veličine 1 mora da ima jednocifreni broj, "
+"kao u normalnoj sudoku slagalici. Ona postaje početna vrednost ili ključ za "
+"igrača.\n"
+"\n"
+"+, -, / ili x zadaje operator (dodavanje, oduzimanje, deljenje ili "
+"množenje). Jedan mora da se nađe u svakom kavezu veličine 2 i veće. U sudoku "
+"ubici operator se zadaje automatski, pošto je uvek ili + ili ga nema.\n"
+"\n"
+"Možete unositi cifre, operatore i ćelije bilo kojim redosledom. Da završite "
+"jedan kavez i otpočnete drugi, pritisnite Enter. Ako pogrešite, jedino "
+"možete da obrišete ceo kavez pa ga ponovo unesete. Kliknite desnim na "
+"trenutni kavez ili bilo koji prethodni kada želite da ga obrišete. "
+"Alternativno, upotrebite kursor i taster Backspace ili Delete.\n"
+"\n"
+"Kada je mreža pokrivena kavezima, pritisnite dugme „Proveri slagalicu“ da "
+"proverite da li slagalica ima tačno jedno rešenje. Ako provera propadne, "
+"verovatno ste napravili grešku u nekom od kaveza."
+
+#: src/gui/ksudoku.cpp:346
+#, kde-format
+msgid "Data-entry for Puzzles with Cages"
+msgstr "Unos podataka za slagalice sa kavezima"
+
+#: src/gui/ksudoku.cpp:402
+#, kde-format
+msgid "The puzzle you entered contains some errors."
+msgstr "Slagalica koju ste uneli ima nekih grešaka."
+
+#: src/gui/ksudoku.cpp:415
+#, kde-format
+msgid ""
+"Sorry, no solutions have been found. Please check that you have entered in "
+"the puzzle completely and correctly."
+msgstr ""
+"Nije nađeno nijedno rešenje. Proverite da li ste uneli slagalicu u "
+"potpunosti i ispravno."
+
+#: src/gui/ksudoku.cpp:417 src/gui/ksudoku.cpp:423 src/gui/ksudoku.cpp:428
+#, kde-format
+msgid "Check Puzzle"
+msgstr "Proveri slagalicu"
+
+#: src/gui/ksudoku.cpp:422
+#, kde-format
+msgid "The Puzzle you entered has a unique solution and is ready to be played."
+msgstr ""
+"Slagalica koju ste uneli ima jedinstveno rešenje i spremna je za igranje."
+
+#: src/gui/ksudoku.cpp:426
+#, kde-format
+msgid ""
+"The Puzzle you entered has multiple solutions. Please check that you have "
+"entered in the puzzle completely and correctly."
+msgstr ""
+"Slagalica koju ste uneli ima više rešenja. Proverite da li ste uneli "
+"slagalicu u potpunosti i ispravno."
+
+#: src/gui/ksudoku.cpp:431
+#, kde-format
+msgid "Do you wish to play the puzzle now?"
+msgstr "Želite li sada da zaigrate slagalicu?"
+
+# >> @title:window
+#: src/gui/ksudoku.cpp:431
+#, kde-format
+msgid "Play Puzzle"
+msgstr "Zaigrati slagalicu?"
+
+#: src/gui/ksudoku.cpp:431
+#, kde-format
+msgid "Play"
+msgstr "Igraj"
+
+#: src/gui/ksudoku.cpp:469
+#, kde-format
+msgid "Enable all messages"
+msgstr "Aktiviraj sve poruke"
+
+#: src/gui/ksudoku.cpp:486
+#, kde-format
+msgid "Check"
+msgstr "Proveri"
+
+# >> @info:status
+#: src/gui/ksudoku.cpp:500
+#, kde-format
+msgid "Difficulty"
+msgstr "težina"
+
+#: src/gui/ksudoku.cpp:509
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Diabolical"
+msgstr "dijabolična"
+
+#: src/gui/ksudoku.cpp:511
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Unlimited"
+msgstr "neograničena"
+
+# >> @info:status
+#: src/gui/ksudoku.cpp:524
+#, kde-format
+msgid "Symmetry"
+msgstr "simetričnost"
+
+# >> @info:tooltip
+#: src/gui/ksudoku.cpp:528
+#, kde-format
+msgctxt "Symmetry of layout of clues when puzzle starts"
+msgid "Symmetry"
+msgstr "Simetričnost"
+
+#: src/gui/ksudoku.cpp:530
+#, kde-format
+msgid "The symmetry of layout of the clues when the puzzle starts"
+msgstr "Simetričnost rasporeda ključeva na početku slagalice."
+
+#: src/gui/ksudoku.cpp:532
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Diagonal"
+msgstr "dijagonalna"
+
+#: src/gui/ksudoku.cpp:533
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Central"
+msgstr "središnja"
+
+#: src/gui/ksudoku.cpp:534
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Left-Right"
+msgstr "leva‑desna"
+
+#: src/gui/ksudoku.cpp:535
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Spiral"
+msgstr "spiralna"
+
+#: src/gui/ksudoku.cpp:536
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Four-Way"
+msgstr "četvorostrana"
+
+#: src/gui/ksudoku.cpp:537
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Random Choice"
+msgstr "nasumična"
+
+#: src/gui/ksudoku.cpp:538
+#, kde-format
+msgid "No Symmetry"
+msgstr "nesimetrično"
+
+#: src/gui/ksudoku.cpp:642 src/gui/ksudoku.cpp:701
+#, kde-format
+msgid "Could not load game."
+msgstr "Ne mogu da učitam poziciju."
+
+#: src/gui/ksudoku.cpp:658
+#, kde-format
+msgid "Do you really want to end this game in order to start a new one?"
+msgstr "Želite li zaista da okončate ovu partiju da biste započeli novu?"
+
+# >> @title:tab
+#: src/gui/ksudoku.cpp:659
+#, fuzzy, kde-format
+#| msgctxt "Game Section in Config"
+#| msgid "Game"
+msgctxt "window title"
+msgid "New Game"
+msgstr "Igra"
+
+# >> @title:tab
+#: src/gui/ksudoku.cpp:660
+#, fuzzy, kde-format
+#| msgctxt "Game Section in Config"
+#| msgid "Game"
+msgctxt "button label"
+msgid "New Game"
+msgstr "Igra"
+
+#: src/gui/ksudoku.cpp:677
+#, fuzzy, kde-format
+#| msgid "Do you really want to end this game in order to start a new one?"
+msgid "Do you really want to restart this game?"
+msgstr "Želite li zaista da okončate ovu partiju da biste započeli novu?"
+
+# rewrite-msgid: /Game//
+#: src/gui/ksudoku.cpp:678
+#, kde-format
+msgctxt "window title"
+msgid "Restart Game"
+msgstr "Početak iznova"
+
+# rewrite-msgid: /Game//
+#: src/gui/ksudoku.cpp:679
+#, kde-format
+msgctxt "button label"
+msgid "Restart Game"
+msgstr "Počni ponovo"
+
+# >> @title:window
+#: src/gui/ksudoku.cpp:694
+#, kde-format
+msgid "Open Location"
+msgstr "Otvaranje lokacije"
+
+#: src/gui/ksudoku.cpp:728
+#, kde-format
+msgid "Error Writing File"
+msgstr "Greška pri upisivanju fajla"
+
+#: src/gui/ksudoku.cpp:750
+#, kde-format
+msgid "There seems to be no puzzle to print."
+msgstr "Izgleda da nema slagalice za štampanje."
+
+# >> @title:tab
+#: src/gui/ksudoku.cpp:787
+#, kde-format
+msgctxt "Game Section in Config"
+msgid "Game"
+msgstr "Igra"
+
+# >> @title:tab
+#: src/gui/ksudoku.cpp:788
+#, kde-format
+msgid "Theme"
+msgstr "Tema"
+
+# rewrite-msgid: /Warning://
+#: src/gui/ksudoku.cpp:840
+#, fuzzy, kde-format
+#| msgid ""
+#| "Warning: The Unlimited difficulty level has no limit on how many guesses "
+#| "or branch points are required to solve the puzzle and there is no lower "
+#| "limit on how soon guessing becomes necessary."
+msgid ""
+"Warning: The Unlimited difficulty level has no limit on how many guesses or "
+"branch points are required to solve the puzzle and there is no lower limit "
+"on how soon guessing becomes necessary.\n"
+"\n"
+"Please also note that the generation of this type of puzzle might take much "
+"longer than other ones. During this time KSudoku will not respond."
+msgstr ""
+"Neograničeni nivo težine nema ograničenja na broj pogađanja ili tačaka "
+"grananja potrebnih za rešavanje slagalice, a ni donjeg ograničenja na to "
+"koliko rano pogađanje postaje neophodno."
+
+#: src/gui/ksudoku.cpp:847
+#, kde-format
+msgid "Warning"
+msgstr "Upozorenje"
+
+#: src/gui/ksudoku.cpp:886
+#, kde-format
+msgid ""
+"This will enable all the dialogs that you had disabled by marking the 'Do "
+"not show this message again' option.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+
+#. i18n: ectx: label, entry (Theme), group (Themes)
+#: src/gui/ksudoku.kcfg:41
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Željena grafička tema."
+
+#. i18n: ectx: label, entry (Symbols), group (Themes)
+#: src/gui/ksudoku.kcfg:44
+#, kde-format
+msgid "Select the themes you want to use"
+msgstr "Izaberite željene teme."
+
+#: src/gui/ksudokugame.cpp:377
+#, kde-format
+msgid ""
+"In Killer Sudoku, the operator is always + or none and KSudoku automatically "
+"sets the correct choice."
+msgstr ""
+"U sudoku ubici operator je uvek + ili ga nema, i K‑sudoku to automatski "
+"postavlja kako treba."
+
+#: src/gui/ksudokugame.cpp:379
+#, kde-format
+msgid "Killer Sudoku Cage"
+msgstr "Kavez sudoku ubice"
+
+#: src/gui/ksudokugame.cpp:424
+#, kde-format
+msgid "The cell you have selected has already been used in a cage."
+msgstr "Ćelija koju ste izabrali već je upotrebljena u nekom kavezu."
+
+#: src/gui/ksudokugame.cpp:426 src/gui/ksudokugame.cpp:456
+#: src/gui/ksudokugame.cpp:481 src/gui/ksudokugame.cpp:488
+#: src/gui/ksudokugame.cpp:496 src/gui/ksudokugame.cpp:505
+#, kde-format
+msgid "Error in Cage"
+msgstr "Greška u kavezu"
+
+#: src/gui/ksudokugame.cpp:454
+#, kde-format
+msgid ""
+"The cell you have selected is not next to any cell in the cage you are "
+"creating."
+msgstr ""
+"Ćelija koju ste izabrali nije nadomak nijedne ćelije kaveza koji pravite."
+
+#: src/gui/ksudokugame.cpp:479
+#, kde-format
+msgid ""
+"The cage you wish to complete has no cells in it yet. Please click on a cell "
+"or key in + - / x or a number."
+msgstr ""
+"Kavez koji želite da dovršite još nema nijednu ćeliju. Kliknite na ćeliju "
+"ili unesite +, -, /, x ili broj."
+
+#: src/gui/ksudokugame.cpp:486
+#, kde-format
+msgid ""
+"The cage you wish to complete has no value yet. Please key in a number with "
+"one or more digits."
+msgstr ""
+"Kavez koji želite da dovršite još vrednost. Unesite broj sa jednom ili više "
+"cifara."
+
+#: src/gui/ksudokugame.cpp:494
+#, kde-format
+msgid ""
+"The cage you wish to complete has more than one cell, but it has no operator "
+"yet. Please key in + - / or x."
+msgstr ""
+"Kavez koji želite da dovršite ima više od jedne ćelije, ali još nema "
+"operator. Unesite +, -, / ili x."
+
+#: src/gui/ksudokugame.cpp:502
+#, kde-format
+msgid ""
+"The cage you wish to complete has one cell, but its value is too large. A "
+"single-cell cage must have a value from 1 to %1 in a puzzle of this size."
+msgstr ""
+"Kavez koji želite da dovršite ima jednu ćeliju, ali mu je vrednost "
+"prevelika. Jednoćelijski kavez mora da ima vrednost od 1 do %1 u slagalici "
+"ove veličine."
+
+#: src/gui/ksudokugame.cpp:538
+#, kde-format
+msgid "Do you wish to delete this cage?"
+msgstr "Želite li da obrišete ovaj kavez?"
+
+# >> @title:window
+#: src/gui/ksudokugame.cpp:539 src/gui/ksudokugame.cpp:566
+#: src/gui/ksudokugame.cpp:572
+#, kde-format
+msgid "Delete Cage"
+msgstr "Brisanje kaveza"
+
+#: src/gui/ksudokugame.cpp:564
+#, kde-format
+msgid ""
+"The cell you have selected is not in any cage, so the Delete action will not "
+"delete anything."
+msgstr ""
+"Ćelija koju ste izabrali nije ni u jednom kavezu, tako da radnja brisanja "
+"neće ništa obrisati."
+
+#: src/gui/ksudokugame.cpp:571
+#, kde-format
+msgid "The Delete action finds that there are no cages to delete."
+msgstr "Radnja brisanja nalazi da nema kaveza za brisanje."
+
+#. i18n: ectx: Menu (game)
+#: src/gui/ksudokuui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "&Igra"
+
+#. i18n: ectx: Menu (move)
+#: src/gui/ksudokuui.rc:23
+#, kde-format
+msgid "&Move"
+msgstr "&Potez"
+
+#. i18n: ectx: Menu (help)
+#: src/gui/ksudokuui.rc:38
+#, kde-format
+msgid "&Help"
+msgstr "P&omoć"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/gui/ksudokuui.rc:46
+#, kde-format
+msgid "Main Toolbar"
+msgstr "Glavna traka"
+
+#. i18n: ectx: ToolBar (actionsToolbar)
+#: src/gui/ksudokuui.rc:53
+#, kde-format
+msgid "Actions Toolbar"
+msgstr "Traka radnji"
+
+#: src/gui/puzzleprinter.cpp:62
+#, kde-format
+msgid "Sorry, cannot print three-dimensional puzzles."
+msgstr "Ne mogu da štampam trodimenzionalne slagalice."
+
+#: src/gui/puzzleprinter.cpp:92
+#, kde-format
+msgid ""
+"The KSudoku setting for printing several puzzles per page is currently "
+"selected.\n"
+"\n"
+"Your puzzle will be printed when no more will fit on the page or when "
+"KSudoku terminates."
+msgstr ""
+"Aktivna je postavka K‑sudokua za štampanje više slagalica po stranici.\n"
+"\n"
+"Ova slagalica će biti odštampana kada više ne može da ih stane na stranicu, "
+"ili kada se K‑sudoku okonča."
+
+#: src/gui/puzzleprinter.cpp:108
+#, kde-format
+msgid "KSudoku has sent output to your printer."
+msgstr "K‑sudoku posla izlaz na štampač."
+
+# >> @title:window
+#: src/gui/puzzleprinter.cpp:121
+#, kde-format
+msgid "Print Sudoku Puzzle"
+msgstr "Štampanje sudoku slagalice"
+
+#: src/gui/serializer.cpp:411
+#, kde-format
+msgid "Unable to download file: URL is empty."
+msgstr "Ne mogu da preuzmem fajl: URL je prazan."
+
+#: src/gui/serializer.cpp:418
+#, fuzzy, kde-format
+#| msgid "Unable to download file."
+msgid "Unable to open file."
+msgstr "Ne mogu da preuzmem fajl."
+
+#: src/gui/serializer.cpp:427 src/gui/serializer.cpp:460
+#, kde-format
+msgid "Cannot read XML file on line %1"
+msgstr "Ne mogu da čitam iz XML fajla u redu %1."
+
+#: src/gui/serializer.cpp:454
+#, kde-format
+msgid "Unable to download file."
+msgstr "Ne mogu da preuzmem fajl."
+
+#: src/gui/serializer.cpp:695
+#, kde-format
+msgid "Unable to create temporary file."
+msgstr "Ne mogu da napravim privremeni fajl."
+
+#: src/gui/serializer.cpp:708
+#, kde-format
+msgid "Unable to upload file."
+msgstr "Ne mogu da otpremim fajl."
+
+#: src/gui/views/gameactions.cpp:54
+#, kde-format
+msgid "Select %1 (%2)"
+msgstr "Izaberi %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:60
+#, kde-format
+msgid "Enter %1 (%2)"
+msgstr "Unesi %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:83
+#, kde-format
+msgid "Mark %1 (%2)"
+msgstr "Označi %1 (%2)"
+
+#: src/gui/views/gameactions.cpp:95
+#, kde-format
+msgid "Move Up"
+msgstr "Pomeri nagore"
+
+#: src/gui/views/gameactions.cpp:102
+#, kde-format
+msgid "Move Down"
+msgstr "Pomeri nadole"
+
+#: src/gui/views/gameactions.cpp:109
+#, kde-format
+msgid "Move Left"
+msgstr "Pomeri ulevo"
+
+#: src/gui/views/gameactions.cpp:116
+#, kde-format
+msgid "Move Right"
+msgstr "Pomeri udesno"
+
+#: src/gui/views/gameactions.cpp:123
+#, kde-format
+msgid "Clear Cell"
+msgstr "Očisti ćeliju"
+
+#: src/gui/welcomescreen.cpp:133
+#, kde-format
+msgid "GetNewVariant not implemented"
+msgstr "Dobavljanje novih varijanti nije izvedeno."
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:163
+#: src/gui/welcomescreen.cpp:179
+#, kde-format
+msgid "Please select a puzzle variant."
+msgstr "Izaberite varijantu slagalice."
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
+#: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
+#: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to start puzzle"
+msgstr "Ne mogu da pokrenem slagalicu."
+
+#: src/gui/welcomescreen.cpp:152
+#, kde-format
+msgid ""
+"Unable to create an empty puzzle of the chosen variant; please try another."
+msgstr ""
+"Ne mogu da napravim praznu slagalicu izabrane varijante. Pokušajte sa nekom "
+"drugom."
+
+#: src/gui/welcomescreen.cpp:169
+#, kde-format
+msgid "Unable to start a puzzle of the chosen variant; please try another."
+msgstr ""
+"Ne mogu da pokrenem slagalicu izabrane varijante. Pokušajte sa nekom drugom."
+
+#: src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to generate a puzzle of the chosen variant; please try another."
+msgstr ""
+"Ne mogu da generišem slagalicu izabrane varijante. Pokušajte sa nekom drugom."
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: src/gui/welcomescreen.ui:17
+#, kde-format
+msgid "Choose your Game"
+msgstr "Izbor igre"
+
+#. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
+#: src/gui/welcomescreen.ui:28
+#, kde-format
+msgid "Get New"
+msgstr "Dobavi novu"
+
+#. i18n: ectx: property (text), widget (QPushButton, startEmptyButton)
+#: src/gui/welcomescreen.ui:48
+#, kde-format
+msgid "Enter In A Puzzle"
+msgstr "Unesi slagalicu"
+
+#. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
+#: src/gui/welcomescreen.ui:55
+#, kde-format
+msgid "Generate A Puzzle"
+msgstr "Generiši slagalicu"
+
+# >! Game name given separately, no need to repeat.
+#: src/main.cpp:41
+#, kde-format
+msgid "KSudoku - Sudokus and more"
+msgstr "Sudoku i još ponešto"
+
+#: src/main.cpp:52
+#, kde-format
+msgid "KSudoku"
+msgstr "K‑sudoku"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "(c) 2005-2007 The KSudoku Authors"
+msgstr "© 2005—2007, autori K‑sudokua"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "Francesco Rossi"
+msgstr "Frančesko Rosi"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "KSudoku Author"
+msgstr "Autor K‑sudokua"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Johannes Bergmeier"
+msgstr "Johanes Bergmajer"
+
+#: src/main.cpp:59
+#, kde-format
+msgid "Maintainer"
+msgstr "Održavalac"
+
+#: src/main.cpp:60
+#, kde-format
+msgid "Ian Wadham"
+msgstr "Ijan Vadam"
+
+#: src/main.cpp:60
+#, kde-format
+msgid "New puzzle generator and solver"
+msgstr "Novi generator i rešavač slagalica"
+
+#: src/main.cpp:61
+#, kde-format
+msgid "Mick Kappenburg"
+msgstr "Mik Kapenburg"
+
+#: src/main.cpp:61
+#, kde-format
+msgid "Printing and export of 0.4"
+msgstr "Štampanje i izvoz od verzije 0.4"
+
+#: src/main.cpp:62
+#, kde-format
+msgid "Thanks to NeHe for OpenGL tutorials"
+msgstr "Hvala NeHeu za tutorijale za OpenGL"
+
+#: src/main.cpp:63
+#, kde-format
+msgid "David Bau"
+msgstr "Dejvid Bau"
+
+# literal-segment: archives
+#: src/main.cpp:63
+#, kde-format
+msgid ""
+"Algorithms for new puzzle generator and solver at davidbau.com/"
+"archives/2006/09/04/sudoku_generator.html"
+msgstr ""
+"Algoritmi za novi generator i rešavač slagalica na davidbau.com/"
+"archives/2006/09/04/sudoku_generator.html"
+
+#: src/main.cpp:71
+#, kde-format
+msgid "Document to open"
+msgstr "Dokument za otvaranje"
