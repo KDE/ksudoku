@@ -429,7 +429,7 @@ void KSudoku::dubPuzzle()
 			 "completely and correctly."), i18n("Check Puzzle"));
 	}
 
-	if(KMessageBox::questionYesNo(this, i18n("Do you wish to play the puzzle now?"), i18n("Play Puzzle"), KGuiItem(i18n("Play")), KStandardGuiItem::cancel() ) == KMessageBox::Yes)
+	if(KMessageBox::questionTwoActions(this, i18n("Do you wish to play the puzzle now?"), i18n("Play Puzzle"), KGuiItem(i18n("Play")), KStandardGuiItem::cancel() ) == KMessageBox::PrimaryAction)
 	{
 		startGame(ksudoku::Game(puzzle));
 	}
@@ -650,11 +650,11 @@ void KSudoku::gameNew()
 
 	// only show question when the current game hasn't been finished until now
 	if(!m_gameUI->game().wasFinished()) {
-		if(KMessageBox::questionYesNo(this,
+		if(KMessageBox::questionTwoActions(this,
 	                              i18n("Do you really want to end this game in order to start a new one?"),
 	                              i18nc("window title", "New Game"),
 	                              KGuiItem(i18nc("button label", "New Game")),
-	                              KStandardGuiItem::cancel() ) != KMessageBox::Yes)
+	                              KStandardGuiItem::cancel() ) != KMessageBox::PrimaryAction)
 			return;
 	}
 
@@ -669,11 +669,11 @@ void KSudoku::gameRestart()
 
 	// only show question when the current game hasn't been finished until now
 	if (!game.wasFinished()) {
-		if (KMessageBox::questionYesNo(this,
+		if (KMessageBox::questionTwoActions(this,
                                 i18n("Do you really want to restart this game?"),
                                 i18nc("window title", "Restart Game"),
                                 KGuiItem(i18nc("button label", "Restart Game")),
-                                KStandardGuiItem::cancel() ) != KMessageBox::Yes) {
+                                KStandardGuiItem::cancel() ) != KMessageBox::PrimaryAction) {
 			return;
 		}
 	}
@@ -858,11 +858,14 @@ ksudoku::KsView* KSudoku::currentView() const{
 void KSudoku::enableMessages()
 {
 	// Enable all messages that the user has marked "Do not show again".
-	int result = KMessageBox::questionYesNo(this,
+	int result = KMessageBox::questionTwoActions(this,
 					i18n("This will enable all the dialogs that you had disabled by marking "
 						 "the 'Do not show this message again' option.\n\n"
-						 "Do you want to continue?"));
-	if (result == KMessageBox::Yes) {
+						 "Do you want to continue?"),
+					QString(),
+					KGuiItem(i18nc("@action:button", "Enable")),
+					KStandardGuiItem::cancel());
+	if (result == KMessageBox::PrimaryAction) {
 		KMessageBox::enableAllMessages();
 		KSharedConfig::openConfig()->sync();	// Save the changes to disk.
 	}

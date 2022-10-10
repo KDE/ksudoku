@@ -100,11 +100,12 @@ bool SudokuBoard::generatePuzzle             (BoardContents & puzzle,
 	    }
 	    else if (numTries >= maxTries) {
 		QWidget owner;
-		if (KMessageBox::questionYesNo (&owner,
+		if (KMessageBox::questionTwoActions (&owner,
 			    i18n("Attempts to generate a puzzle failed after "
 				 "about 200 tries. Try again?"),
-			    i18n("Mathdoku or Killer Sudoku Puzzle"))
-			    == KMessageBox::No) {
+			    i18n("Mathdoku or Killer Sudoku Puzzle"),
+			    KGuiItem(i18n("&Try Again")), KStandardGuiItem::cancel())
+			    == KMessageBox::SecondaryAction) {
 		    return false;	// Go back to the Welcome screen.
 		}
 		numTries = 0;		// Try again.
@@ -193,7 +194,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 	if ((d < difficultyRequired) && (count >= maxTries)) {
             // Exit after max attempts?
             QWidget owner;
-            int ans = KMessageBox::questionYesNo (&owner,
+            int ans = KMessageBox::questionTwoActions (&owner,
                       i18n("After %1 tries, the best difficulty level achieved by the generator "
 			   "is %2, with internal difficulty rating %3, but you "
 			   "requested difficulty level %4.\n"
@@ -207,7 +208,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 			   ratingStr, difficultyRequired),
                       i18n("Difficulty Level"),
                       KGuiItem(i18n("&Try Again")), KGuiItem(i18n("&Accept")));
-            if (ans == KMessageBox::Yes) {
+            if (ans == KMessageBox::PrimaryAction) {
                 count = 0;	// Continue on if the puzzle is not hard enough.
                 continue;
             }
@@ -217,7 +218,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
             QWidget owner;
 	    int ans = 0;
 	    if (m_accum.nGuesses == 0) {
-                ans = KMessageBox::questionYesNo (&owner,
+                ans = KMessageBox::questionTwoActions (&owner,
 		       i18n("It will be possible to solve the generated puzzle "
 			    "by logic alone. No guessing will be required.\n"
 			    "\n"
@@ -231,7 +232,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 	    else {
                 QString avGuessStr = ki18n("%1").subs(((float) bestNGuesses) /
 			5.0, 0, 'f', 1).toString(); // Format as for ratingStr.
-                ans = KMessageBox::questionYesNo (&owner,
+                ans = KMessageBox::questionTwoActions (&owner,
 		       i18n("Solving the generated puzzle will require an "
 			    "average of %1 guesses or branch points and if you "
 			    "guess wrong, backtracking will be necessary. The "
@@ -245,7 +246,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
                        KStandardGuiItem::ok(), KGuiItem(i18n("&Retry")));
 	    }
 	    // Exit when the required difficulty or number of tries is reached.
-            if (ans == KMessageBox::No) {
+            if (ans == KMessageBox::SecondaryAction) {
                 count = 0;
                 bestRating = 0.0;
                 bestDifficulty = 0;

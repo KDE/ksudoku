@@ -532,11 +532,11 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 	    }
 	    // If the right-click was on a cage, delete it.
 	    if (cageNumP1 > 0) {
-		if(KMessageBox::questionYesNo (messageParent(),
+		if(KMessageBox::questionTwoActions (messageParent(),
 		       i18n("Do you wish to delete this cage?"),
 		       i18n("Delete Cage"), KStandardGuiItem::del(),
 		       KStandardGuiItem::cancel(), QStringLiteral("CageDelConfirm"))
-		       == KMessageBox::No) {
+		       == KMessageBox::SecondaryAction) {
 		    return;
 		}
 		if (g->cage(cageNumP1-1).size() == 1) {	// Erase digit.
