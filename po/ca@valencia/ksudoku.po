@@ -748,7 +748,7 @@ msgstr "S'ha produït un error en escriure en el fitxer"
 #: src/gui/ksudoku.cpp:746
 #, kde-format
 msgid "There seems to be no puzzle to print."
-msgstr "Pareix que no hi ha cap puzle a imprimir."
+msgstr "Pareix que no hi ha cap puzle que s'haja d'imprimir."
 
 #: src/gui/ksudoku.cpp:783
 #, kde-format
@@ -904,7 +904,9 @@ msgstr ""
 #: src/gui/ksudokugame.cpp:569
 #, kde-format
 msgid "The Delete action finds that there are no cages to delete."
-msgstr "L'acció de supressió ha detectat que no hi ha cap caixa a suprimir."
+msgstr ""
+"L'acció de supressió ha detectat que no hi ha cap caixa que s'haja de "
+"suprimir."
 
 #. i18n: ectx: Menu (game)
 #: src/gui/ksudokuui.rc:10
@@ -1177,4 +1179,4 @@ msgstr ""
 #: src/main.cpp:70
 #, kde-format
 msgid "Document to open"
-msgstr "Document que s'obrirà"
+msgstr "Document que s'ha d'obrir"
