@@ -302,7 +302,7 @@ msgid ""
 msgstr ""
 "La vostra solució conté errors.\n"
 "\n"
-"Habiliteu «Mostra els errors» a la configuració per a veure'ls."
+"Habiliteu «Mostra els errors» en la configuració per a veure'ls."
 
 #: src/gui/ksudoku.cpp:87
 #, kde-format
