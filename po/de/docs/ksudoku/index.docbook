@@ -1,1023 +1,667 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
   <!ENTITY ksudoku "KSudoku">
-  <!ENTITY package "kdegames"
->  <!-- do not change this! -->
-  <!ENTITY % German "INCLUDE"
-> <!-- change language only here -->
-  <!ENTITY % addindex "IGNORE"
-> <!-- do not change this! -->
+  <!ENTITY package "kdegames">  <!-- do not change this! -->
+  <!ENTITY % English "INCLUDE" > <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"> <!-- do not change this! -->
 ]>
 
-<book id="ksudoku" lang="&language;"
-> <!-- do not change this! -->
+<book id="ksudoku" lang="&language;"> <!-- do not change this! -->
 <bookinfo>
-	<title
->Das Handbuch zu &ksudoku;</title
-> <!-- This is the title of this docbook. -->
+	<title>The &ksudoku; Handbook</title> <!-- This is the title of this docbook. -->
 <!-- List of immediate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
 <authorgroup>
-	<author
-><firstname
->Mick</firstname
-> <surname
->Kappenburg</surname
-> <affiliation
-><address
-><email
->ksudoku@kappenburg.net</email
-></address
-></affiliation>
+	<author>
+		<firstname>Mick</firstname>
+		<surname>Kappenburg</surname>
+		<affiliation><address><email>ksudoku@kappenburg.net</email></address></affiliation>
 	</author>
-	<author
-><firstname
->Eugene</firstname
-> <surname
->Trounev</surname
-> <affiliation
-><address
-><email
->eugene.trounev@gmail.com</email
-></address
-></affiliation>
+	<author>
+		<firstname>Eugene</firstname>
+		<surname>Trounev</surname>
+		<affiliation><address><email>eugene.trounev@gmail.com</email></address></affiliation>
 	</author>
-	<author
-><firstname
->Ian</firstname
-> <surname
->Wadham</surname
-> <affiliation
-><address
-><email
->iandw.au@gmail.com</email
-></address
-></affiliation>
+	<author>
+		<firstname>Ian</firstname>
+		<surname>Wadham</surname>
+		<affiliation><address><email>iandw.au@gmail.com</email></address></affiliation>
 	</author>
-<othercredit role="translator"
-><firstname
->Burkhard</firstname
-><surname
->Lück</surname
-><affiliation
-><address
-><email
->lueck@hube-lueck.de</email
-></address
-></affiliation
-><contrib
->Übersetzung</contrib
-></othercredit
-><othercredit role="translator"
-><firstname
->Johannes</firstname
-><surname
->Obermayr</surname
-><affiliation
-><address
-><email
->johannesobermayr@gmx.de</email
-></address
-></affiliation
-><contrib
->Überarbeitung der Übersetzung</contrib
-></othercredit
-> 
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
 </authorgroup>
 
 <copyright>
-	<year
->2007</year>
-	<holder
->Mick Kappenburg</holder>
+	<year>2007</year>
+	<holder>Mick Kappenburg</holder>
 </copyright>
 <copyright>
-	<year
->2011</year>
-	<holder
->Ian Wadham</holder>
+	<year>2011</year>
+	<holder>Ian Wadham</holder>
 </copyright>
-<legalnotice
->&FDLNotice;</legalnotice>
+<legalnotice>&FDLNotice;</legalnotice>
 
-<date
->2020-12-10</date
-><!-- Date of (re)writing, or update.-->
-<releaseinfo
->1.4.20120</releaseinfo
-><!-- Application version number. Use the variable definitions within header to change this value.-->
+<date>2020-12-10</date><!-- Date of (re)writing, or update.-->
+<releaseinfo>1.4.20120</releaseinfo><!-- Application version number. Use the variable definitions within header to change this value.-->
 
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
-	<para
->Dieses Handbuch beschreibt &ksudoku; ein Logikspiel, bei dem Symbole (Zahlen) in einer bestimmten Reihenfolge angeordnet werden müssen.</para>
+	<para>This documentation describes the game of &ksudoku;, a logic-based symbol placement puzzle.</para>
 </abstract>
 
 <!--List of relevant keywords-->
 <keywordset>
-	<keyword
->KDE</keyword
-> <!-- do not change this! -->
-	<keyword
->KDE-Spiele</keyword
-> <!-- do not change this! -->
-	<keyword
->Spiel</keyword
-> <!-- do not change this! -->
-	<keyword
->ksudoku</keyword
-><!--Application name goes here-->
+	<keyword>KDE</keyword> <!-- do not change this! -->
+	<keyword>kdegames</keyword> <!-- do not change this! -->
+	<keyword>game</keyword> <!-- do not change this! -->
+	<keyword>ksudoku</keyword><!--Application name goes here-->
 <!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
-	<keyword
->Logik</keyword>
-	<keyword
->Brettspiel</keyword>
+	<keyword>logic</keyword>
+	<keyword>board</keyword>
 <!--Number of possible players. It can be: One, Two,..., Multiplayer-->
-	<keyword
->Ein Spieler</keyword>
+	<keyword>one player</keyword>
 <!--All other relevant keywords-->
-	<keyword
->Rätsel</keyword>
+	<keyword>puzzle</keyword>
 </keywordset>
 </bookinfo>
 
 <!--Content begins here: -->
 
-<chapter id="introduction"
-><title
->Einführung</title
-> <!-- do not change this! -->
+<chapter id="introduction"><title>Introduction</title> <!-- do not change this! -->
 
-	<note
-><title
->Spieltyp:</title
-><para
->Logikspiel, Brettspiel</para
-></note>
+	<note><title>Gametype:</title><para>
+		Logic, Board</para></note>
 
-	<note
-><title
->Anzahl der Spieler:</title
-><para
->Einer</para
-></note>
+	<note><title>Number of possible players:</title><para>
+		One</para></note>
 
-<para
->&ksudoku; ist ein Logikspiel, bei dem Symbole (Zahlen) in einer bestimmten Reihenfolge angeordnet werden müssen.</para>
+<para>&ksudoku; is a logic-based symbol placement puzzle.</para>
 
-<para
->Der Spieler muss ein Gitter mit Symbolen füllen, so dass jedes Symbol in jeder Reihe, jeder Spalte und jedem Block nur einmal vorkommt. In &ksudoku; werden normalerweise die Zahlen 1 bis 9 als Symbole benutzt, in größeren Sudokus aber auch A bis P oder A bis Y. Ein Spiel beginnt mit einem teilweise ausgefüllten Spielfeld, Ihre Aufgabe ist es die noch freien Felder auszufüllen. Einige Sudoku-Rätsel haben weniger als 9 Symbole.</para>
+<para>The player has to fill a grid with symbols so that each column, row
+	and block on the game board contains only one instance of each
+	symbol. In &ksudoku; the symbols are usually the numbers 1 to 9,
+	but may be the letters A to P or A to Y in larger puzzles. Puzzles
+	start with the board partially filled and it is your job to fill
+	in the rest. Some types of puzzle have less than nine symbols.</para>
 
-<para
->Wenn Sie ein Spiel starten, können Sie aus mehreren Arten und Größen von Sudokus auswählen. Sie können sich von &ksudoku; ein Spiel generieren lassen oder mit einem leeren Spielfeld starten und ein Sudoku aus einer anderen Quelle wie zum Beispiel einer Zeitung eingeben. Lassen Sie Ihre Eingabe dann von &ksudoku; überprüfen und lösen Sie das Sudoku.</para>
+<para>When you start a game, you can choose from several Sudoku types
+	and sizes. You can then have &ksudoku; generate a puzzle for
+	you to solve or you can start with an empty board and enter in
+	a puzzle from another source, such as a newspaper, then get
+	&ksudoku; to check it and maybe solve it.</para>
 
-<para
->Es gibt viele verschiedene Spielweisen von Sudoku und &ksudoku; bietet eine große Auswahl davon. Die meist gespielte Variante, das Standard-Sudoku, hat ein quadratisches Gitter mit 9 x 9 Zellen und arabischen Zahlen als Symbole. Das Gitter hat 9 Zeilen und 9 Spalten und ist zusätzlich Blöcke mit Quadraten von 3 x 3 Zellen unterteilt. Das Problem hierbei ist, dass jedes Symbol in jeder Zeile, Spalte und jedem Block nur einmal vorkommen darf.</para>
+<para>There are many variations of Sudoku in existence and &ksudoku;
+	provides a good selection of them. The most common type, Standard Sudoku, has
+	a 9x9 square grid and uses Arabic numerals 1 to 9 as symbols. The
+	grid has 9 rows and 9 columns and is divided into 9 blocks of
+	3x3 squares. The problem is – each symbol can only be used once
+	per row, column or block.</para>
 
-	<note
-><para
->Die Lösung eines Spiels nimmt Zeit und Konzentration in Anspruch. Jedoch hilft das Lösen der Sudoku-Rätsel die allgemeine Gehirnaktivität zu steigern und ist daher sehr empfehlenswert.</para
-></note>
+	<note><para>
+		It takes time and concentration to complete a game. However,
+		solving Sudoku puzzles helps to increase overall brain activity
+		and therefore is highly recommended.</para></note>
 </chapter>
 
-<chapter id="howto"
-><title
->Spielanleitung</title
-> <!-- do not change this! -->
+<chapter id="howto"><title>How to Play</title> <!-- do not change this! -->
 
-	<note
-><title
->Spielziel:</title
-><para
->Die Gitter sind so zu füllen, dass in jeder Spalte, Zeile und jedem Block des Spielfelds ein Symbol nur einmal vorkommt.</para
-></note>
+	<note><title>Objective:</title><para>
+		Fill the grid so that each column, row and block contains only
+		one instance of each symbol.</para></note>
 
-<para
->Wenn das Spiel beginnt, können Sie die Art und Größe des Sudokus auswählen. Sie können ein Sudoku aus einer anderen Quelle eingeben oder sich durch &ksudoku; ein Spiel generieren lassen. Der Generator hat Einstellungen für mehrere Schwierigkeitsgrade und einige Symmetrien, die das generierte Sudoku festlegen. Ihr Spielspaß wird durch alle diese Einstellungen beeinflusst.</para>
+<para>When the game starts you are prompted to choose which game type and board
+	size you are interested in. You can enter in a puzzle from another
+	source or have &ksudoku; generate a puzzle. The generator has several
+	difficulty settings and some symmetry settings, which affect
+	the pattern in which the puzzle is generated. Your game experience will
+	depend on which of all these options you choose.</para>
 
-<para
->Beim Spielbeginn sehen Sie auf der linken Seite eine Auswahlliste aller für das aktuell verfügbare Spiel. Diese Liste der Symbole hängt ab von der Größe des ausgewählten Spiels. Spiele können 4, 9, 16 oder 25 Symbole enthalten. Die zwei zuerst genannten Spiele benutzen die Symbole von 1 bis 4 oder 1 bis 9 und die anderen die Buchstaben A bis P oder A bis Y.</para>
+<para>When the puzzle board appears, take a look at the left hand side. There
+	is a selection list which contains all the symbols available in the
+	current game. The set of symbols depends on the size of game you
+	choose. Games may have 4, 9, 16 or 25 symbols. The first two sets
+	use the numbers 1 to 4 or 1 to 9: the others use the letters A to P
+	or A to Y.</para>
 
-<para
->Zuerst sind die Grenzen des Spielfeldes zu beachten. Die dicken schwarzen Linien kennzeichnen die Blöcke. Jeder dieser Blöcke muss mit allen verfügbaren Symbolen so gefüllt werden, dass jedes Symbol nur einmal darin vorkommt. Das gleiche gilt für alle Zeilen und Spalten des Spielfelds.</para>
+<para>First, note the boundaries in the game board. The thick lines outline
+	the blocks. Each of these blocks has to be completed using the symbols
+	available and each symbol must be used once and only once within the
+	block. The same is true of the rows and columns in the board.</para>
 
-<para
->Nun können die freien Zellen des Spielfeldes mit den Symbolen gefüllt werden. Dazu wählen Sie das gewünschte Symbol in der Auswahlliste auf der linken Seite und klicken dann auf die gewünschte freie Zelle im Spielfeld mit der linken Maustaste. Zusätzlich können Sie auch den Mauszeiger auf eine freie Zelle führen oder die Cursor-Tasten zur Bewegung benutzen und das Symbol dann auf der Tastatur eingeben.</para>
+<para>Now you can start entering symbols into the vacant squares on the board.
+	To do that, select the symbol you wish to enter from the selection
+	list on the left, then use the mouse to click on a vacant square
+	in the board. Alternatively, you can hover with the mouse over a
+	vacant square or use the cursor keys to move around,
+    then use the keyboard to enter a symbol.</para>
 
-<para
->Benutzen Sie im dreidimensionalen Roxdoku immer einen <emphasis
->Doppel</emphasis
->klick mit der &LMBn;, um einem kleinen Würfeln einen Wert zuzuweisen. Wenn Sie den großen Würfel durch Klicken und Ziehen mit der &LMBn; drehen, ist es einfacher zu erkennen, welche Werte die kleinen Würfel im Hintergrund haben, wenn Sie <emphasis
->zwischen</emphasis
-> die kleinen Würfel und nicht darauf klicken.</para>
+<para>In Roxdoku (three-dimensional) puzzles, always use the mouse to set a
+	small cube to a value and use a <emphasis>double</emphasis>
+	click. When you rotate the large cube, by clicking and dragging
+	with the mouse, it is easier to see what values are on the small
+	cubes in the background if you click <emphasis>between</emphasis>
+	the small cubes, not on them.</para>
 
-<para
->Manchmal ist es sinnvoll Markierungen oder Notizen, die kleine Symbole in der Zelle sind, zu benutzen. Sie haben keinen Einfluss auf die Lösung, aber sie helfen Ihnen Ihre Ideen festzuhalten, besonders wenn Sie die Wahl zwischen zwei Lösungswegen haben, aber nicht genug Informationen um zwischen ihnen zu entscheiden. Um einen Markierungen oder Notiz einzugeben, klicken Sie mit der &RMBn; oder halten Sie die &Shift;-Taste gedrückt, wenn Sie die Tastatursteuerung nutzen.</para>
+<para>It is useful sometimes to enter markers or notes, which are tiny
+	symbols within a square. These have no influence on the solution,
+	but they can help you keep track of ideas you have had, especially
+	when there is a choice between two alternatives and you do not
+	yet have enough information to decide between them. To enter a
+	marker or note, click with the &RMB; or hold down the &Shift; key
+    when using the keyboard.</para>
 
-<para
->Um ein Symbol aus einer Zelle zu löschen, bewegen Sie den Mauszeiger darauf und drücken dann die Tasten &Del; oder &Backspace; oder drücken Sie die &RMB; auf einem Symbol.</para>
+<para>To clear symbols from a square, hover over the square with the
+	mouse and hit &Del; or &Backspace; on the keyboard or click with
+    the &RMB; on the square.</para>
 
-<para
->Es ist zu beachten, dass - zur Hilfestellung mit den Regeln von &ksudoku; - die Zellen die Farbe ändern, sobald sich der Mauszeiger über ihnen befindet. In den aufleuchtenden horizontalen und vertikalen Linien sollte geprüft werden, ob das gewählte Symbol bereits darin vorkommen. Der Block leuchtet ebenfalls auf, damit auch dieser überprüft werden kann (auch hier darf das Symbol nur einmal vorkommen). Möchten Sie die Hervorhebung nicht benutzen, schalten Sie sie im Einrichtungsdialog ab, den Sie mit dem Menüeintrag <menuchoice
-><guimenu
->Einstellungen</guimenu
-> <guimenuitem
->&ksudoku; einrichten ...</guimenuitem
-></menuchoice
-> öffnen.</para>
+<para>Notice that the squares change color while you hover the mouse over
+	them. This is to help you keep up with the rules of &ksudoku;. Use
+	the vertical and horizontal lines to check if the symbol you are
+	about to enter into a vacant spot is already in use anywhere in
+	the vertical or horizontal line that square is a part of. The coloring
+	also highlights the block which, if you remember, must also contain
+	only one instance of each symbol. If you do not need the highlighting,
+	you can use the <menuchoice><guimenu>Settings</guimenu>
+	<guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice>
+	menu item to turn it off.</para>
 
-<para
->Die Regeln müssen bis zur Eingabe des letzten Symbols eingehalten werden. Erst wenn alle Felder gefüllt sind, wird die Richtigkeit von &ksudoku; überprüft. Ist die Lösung falsch, erscheint ein Hinweis.</para>
+<para>Keep entering symbols in accordance with the rules until the whole
+	game field is filled up. At this point &ksudoku; will check if all
+	the entries are valid and will either correct you or accept your
+	solution.</para>
 </chapter>
 
-<chapter id="rules_and_tips"
-><title
->Spielregeln, Spielstrategien und Tipps</title
-> <!-- do not change this! -->
+<chapter id="rules_and_tips"><title>Game Rules, Strategies and Tips</title> <!-- do not change this! -->
 
-<sect1 id="rules"
-><title
->Spielregeln</title>
+<sect1 id="rules"><title>General Game Rules</title>
 
-<para
->Die Spielregeln für &ksudoku; sind sehr einfach.</para>
+<para>The rules of &ksudoku; are quite simple.</para>
 	<itemizedlist>
-	<listitem
-><para
->Abhängig von der Größe des Spielfelds, der Art des Spiels und dem Schwierigkeitsgrad kann die Lösung des individuellen &ksudoku;-Rätsels von wenigen Minuten bis zu mehreren Stunden dauern.</para
-></listitem>
-	<listitem
-><para
->Jede Zelle darf nur ein Symbol enthalten.</para
-></listitem>
-	<listitem
-><para
->In jeder waagerechten Zeile des Spielfeldes darf ein Symbol nur einmal vorkommen.</para
-></listitem>
-	<listitem
-><para
->In jeder senkrechten Spalte des Spielfeldes darf ein Symbol nur einmal vorkommen.</para
-></listitem>
-	<listitem
-><para
->In jedem Block des Spielfeldes darf ein Symbol nur einmal vorkommen.</para
-></listitem>
+	<listitem><para>Depending on the size of the game board, the type
+		of puzzle and the difficulty level chosen an individual
+		&ksudoku; puzzle may take from a few minutes to a few
+		hours to solve.</para></listitem>
+	<listitem><para>Each square may hold one and only one
+		symbol.</para></listitem>
+	<listitem><para>Each horizontal row (as defined by the game board)
+		can contain each symbol exactly once.</para></listitem>
+	<listitem><para>Each vertical column (as defined by the game board)
+		can contain each symbol exactly once.</para></listitem>
+	<listitem><para>Each block (as defined by the game board) can
+		contain each symbol exactly once</para></listitem>
 	</itemizedlist>
 
-	<note
-><title
->Hinweis:</title
-><para
->Die Symbolsätze sind von der gewählten Größe des Spiels abhängig.</para
-></note>
+	<note><title>Note:</title><para>
+		The set of symbols depends on the size of game you
+		choose.</para></note>
 
 	<itemizedlist>
-	<listitem
-><para
->Mathematische oder sprachliche Kenntnisse sind für die Lösung der &ksudoku;-Rätsel nicht erforderlich, aber einige Kenntnisse in Arithmetik sind für Killer- und MathDoku-Sudokus erforderlich</para
-></listitem>
-	<listitem
-><para
->Symbole, die sich beim Start eines Spiels bereits auf dem Spielfeld befinden, können nicht geändert werden.</para
-></listitem>
-	<listitem
-><para
->Es können nur die eigenen Symbole geändert werden.</para
-></listitem>
-	<listitem
-><para
->Alle Spiele in &ksudoku; haben immer nur eine Lösung.</para
-></listitem>
-	<listitem
-><para
->Sudokus, die Sie selbst eingegeben haben, können keine oder mehrere Lösungen haben. Haben Sie das Sudoku aus einer öffentlichen Quelle abgeschrieben, dann haben Sie vermutlich bei der Eingabe der Daten Fehler gemacht.</para
-></listitem>
+	<listitem><para>Knowledge of mathematics or language is not required
+		to solve &ksudoku; puzzles, but a little ability with 
+		arithmetic is needed in Killer Sudoku and Mathdoku 
+		puzzles.</para></listitem>
+	<listitem><para>The symbols already on the game board when the
+		puzzle starts cannot be changed.</para></listitem>
+	<listitem><para>You can only modify the symbols you have previously
+		entered.</para></listitem>
+	<listitem><para>Puzzles generated by &ksudoku; have one solution
+		only.</para></listitem>
+	<listitem><para>Puzzles you enter in might have no solution or
+		more than one solution, but if they are from a published
+		source this probably means you have made a data-entry
+		error.</para></listitem>
 	</itemizedlist>
 </sect1>
 
-<sect1 id="variants"
-><title
->Varianten von &ksudoku;</title>
+<sect1 id="variants"><title>&ksudoku; Variations</title>
 
-<sect2 id="standard_sudoku"
-><title
->Sudoku-Rätsel</title>
+<sect2 id="standard_sudoku"><title>Sudoku Puzzles</title>
 
 	<itemizedlist>
-	<listitem
-><para
->Das Standard-Sudoku 9x9 hat 9 Zeilen, 9 Spalten und 9 quadratische Blöcke aus 3x3 Zellen.</para
-></listitem>
-	<listitem
-><para
->Andere Standard-Sudokus haben die Größe 4x4 (sehr leicht), 16x16 und 25x25 (ziemlich schwer).</para
-></listitem>
-	<listitem
-><para
->Die Stichsägen- uns Azteken-Varianten gleichen dem Standard-Sudoku, einige Blöcke sind aber nicht quadratisch.</para
-></listitem>
-	<listitem
-><para
->Die Variante XSudoku entspricht genau dem Standard-Sudoku mit einer zusätzlichen Bedingung: Die zwei Hauptdiagonalen dürfen die Symbole 1 bis 9 nur genau einmal enthalten. In &ksudoku; werden diese Diagonalen hervorgehoben, damit sie besser zu sehen sind.</para
-></listitem>
-	<listitem
-><para
->Die Variante Nonomino 9x9, Pentomino 5x5 und Tetromino 4x gleichem dem Standard-Sudoku, einige Blöcke sind aber nicht quadratisch.</para
-></listitem>
-	<listitem
-><para
->Die 6x6-Variante gleicht dem Standard-Sudoku, die Blöcke sind aber sechs Rechtecke mit 3x2 Zellen.</para
-></listitem>
+	<listitem><para>The Standard 9x9 Sudoku puzzle has 9 rows, 9 columns
+		and 9 square blocks of size 3x3.</para></listitem>
+	<listitem><para>Other sizes of Standard Sudoku are 4x4 (very easy),
+		16x16 and 25x25 (not so easy).</para></listitem>
+	<listitem><para>The Jigsaw and Aztec variations are the same as 
+		Standard 9x9 Sudoku except that some blocks are not square.</para></listitem>
+	<listitem><para>The XSudoku variation is exactly the same as Standard
+		Sudoku with an additional requirement: the two main
+		diagonals must also each contain the symbols 1 to 9 once
+		and once only. &ksudoku; highlights the diagonals to make
+		this easier to see.</para></listitem>
+	<listitem><para>The Nonomino 9x9, Pentomino 5x5 and Tetromino 4x4 
+		variations are the same as a Standard Sudoku 
+		except that some blocks are not square.</para></listitem>
+	<listitem><para>The 6x6 variation is the same as a Standard Sudoku 
+		except that the blocks are 
+		six 3x2 rectangles.</para></listitem>
 	</itemizedlist>
 </sect2>
 
-<sect2 id="samurai"
-><title
->Samurai-Rätsel</title>
+<sect2 id="samurai"><title>Samurai Puzzles</title>
 
 	<itemizedlist>
-	<listitem
-><para
->Das Samurai-Sudoku besteht aus fünf Standard-Sudokus mit jeweils 9x9 Zellen. Sie überlappen an einer Ecke mit 3x3 Blöcken. Jedes der fünf Sudokus besteht aus 9 Zeilen, 9 Spalten und 9 Blöcken, die gelöst werden müssen. Die Symbole in den überlappenden Quadraten müssen als Lösungen von zwei 9x9 Standard-Sudokus bestimmt werden.</para
-></listitem>
-	<listitem
-><para
->Das kleine Samurai-Sudoku enthält fünf 4x4 Sudokus, die sich an den Ecken überlappen. Jedes der fünf Sudokus hat 4 Zeilen, Spalten und Blöcke, die gelöst werden müssen. </para
-></listitem>
-	<listitem
-><para
->Die Windmühlen-Varianten bestehen aus fünf 9x9 Standard-Sudokus, die an den Ecken um 3x3 Felder überlappen. Sie ähneln den Samurai-Sudokus, aber das mittlere 9x9 Sudoku ist schwerer zu erkennen. Acht der 3x3 Felder werden mit den Segeln der Windmühle geteilt, nur der zentrale 3x3 Block nicht. </para
-></listitem>
-	<listitem
-><para
->Die Sohei-Variante ist ein weiterer Samurai-Typ und besteht aus vier 9x9 Sudokus, die sich an zwei Ecken mit 3x3 Feldern überlappen. Der mittige 3x3 Block des Sudokus bleibt leer. </para
-></listitem>
+	<listitem><para>The Samurai Sudoku consists of five Standard Sudoku
+		puzzles of 9x9 squares each, overlapping at the corners
+		by four 3x3 blocks. Each of the five puzzles has 9 rows,
+		9 columns and 9 blocks to solve and the symbols in the 
+		overlapping squares must fit into the solutions of two 
+		Standard 9x9 Sudokus.</para></listitem>
+	<listitem><para>The Tiny Samurai Sudoku contains five 4x4 Sudoku
+		puzzles, overlapping at the corners by four squares. Each
+		of the five puzzles has 4 rows, 4 columns and 4 blocks to
+		solve.</para></listitem>
+	<listitem><para>The Windmill variation consists of five Standard 9x9 
+		Sudoku puzzles, overlapping at the corners by two 3x3 blocks. 
+		It is like a Samurai Sudoku, but the central 9x9 Sudoku is
+		harder to see. Eight of its 3x3 blocks are shared with the 
+		sails of the windmill and only the central 3x3 block is not.
+		</para></listitem>
+	<listitem><para>The Sohei variation is another Samurai type and has
+		four 9x9 Sudoku puzzles, overlapping at two corners by a 
+		3x3 block. The central 3x3 block of the puzzle is empty.
+		</para></listitem>
 	</itemizedlist>
 </sect2>
 
-<sect2 id="roxdoku"
-><title
->Dreidimensionale Roxdoku-Sudokus</title>
+<sect2 id="roxdoku"><title>Roxdoku 3D Puzzles</title>
 
 	<itemizedlist>
-	<listitem
-><para
->Die Roxdoku-Varianten basieren auf dreidimensionalen Würfeln. aber ihre Lösung ist einfacher als erwartet. Es gibt keine Zeilen und Spalten. Ein 3x3x3-Roxdoku besteht aus  27 kleinen Würfeln, die in eine größeren 3x3x3 Würfel angeordnet sind. Diese besteht aus 9 Scheiben, jede mit 3x3 Würfeln. Das sind die quadratischen Würfel, die mit den Symbolen 1 bis 9 gefüllt werden müssen. Ein 4x4x4-Roxdoku besteht aus 4x4 Scheiben und ein 5x5x5-Roxdoku aus 5x5  Scheiben.</para
-></listitem>
-	<listitem
-><para
->Die Variante Roxdoku-Zwilling besteht aus zwei 3x3x3 Roxdokus mit einer gemeinsamen Ecke. Das Eckfeld ist Lösung beider 3x3x3 Würfel.</para
-></listitem>
-	<listitem
-><para
->Die Variante Doppel-Roxdoku besteht aus zwei 3x3x3 Roxdokus mit 3 gemeinsamen Feldern an einer Ecke. Das Eckfeld ist Lösung beider 3x3x3 Würfel. </para
-></listitem>
-	<listitem
-><para
->Das Samura-Roxdoku besteht aus neun 3x3 Roxdokus. Ein Roxdoku befindet sich in der Mitte mit Überlappung durch die anderen acht 3x3x3 Würfel, jedes der Roxdokus an jeder Ecke des mittigen Roxdokus. Die Eckfelder sind Lösung zweier 3x3x3 Würfel.</para
-></listitem>
+	<listitem><para>The Roxdoku variants are based on cubes in three
+		dimensions, but are easier than they sound. There are no
+		rows or columns. A 3x3x3 Roxdoku puzzle has 27 small cubes
+		arranged into a larger 3x3x3 cube. This contains nine
+		slices, each containing 3x3 small cubes, and these are
+		the square blocks that must be filled with the numbers
+		1 to 9. A 4x4x4 Roxdoku has twelve 4x4 slices and a
+		5x5x5 Roxdoku has fifteen 5x5 slices.</para></listitem>
+	<listitem><para>The Roxdoku Twin variant has two 3x3x3 Roxdoku 
+		puzzles sharing a corner. The corner piece must be part of 
+		the solution of both 3x3x3 cubes.</para></listitem>
+	<listitem><para>The Double Roxdoku variant contains two 3x3x3
+		Roxdoku puzzles sharing three pieces along an edge. The
+		edge pieces must be part of the solution of both 3x3x3 cubes.
+		</para></listitem>
+	<listitem><para>The Samurai Roxdoku variant has nine 3x3x3 Roxdoku
+		puzzles. One is at the center and the other eight 3x3x3
+		cubes overlap it, one at each of the central cube's corners. 
+		Those corner pieces must each be part of the solution of
+		two 3x3x3 cubes.</para></listitem>
 	</itemizedlist>
 </sect2>
 
-<sect2 id="killer"
-><title
->Killer- und Mathdoku-Varianten</title>
+<sect2 id="killer"><title>Killer and Mathdoku Variations</title>
 
 	<itemizedlist>
-	<listitem
-><para
->Killer-Sudokus gibt es in zwei Varianten. Kleines Killer-Sudoku (4x4) und Killer-Sudoku (9x9). Beide bestehen aus Zeilen, Spalten und quadratischen Blöcken, genauso wie die Standard-Sudokus, und werden nach denselben Regeln gespielt. Das Gitter ist mit unregelmäßig geformten Blöcken bedeckt, dabei müssen die Zahlen in jedem Block die kleingeschriebenen Zahl in der Ecke des Blocks ergeben und jede Zahl darf im Block nur einmal vorkommen. Normalerweise sind beim Start nur wenige Felder mit Symbolen vorhanden. Mit Arithmetik und den üblichen Sudoku-Regeln müssen Sie die Lösung finden. In der Bildschirmgrafik ist es schwierig, die vorhandenen quadratischen Blöcken zu erkennen, daher sollten Sie das Sudoku mit <menuchoice
-><guimenu
->Spiel</guimenu
-> <guimenuitem
->Drucken ...</guimenuitem
-></menuchoice
-> ausdrucken.</para
-></listitem>
-	<listitem
-><para
->MathDoku-Varianten, auch unter dem Namen <trademark
->Ken Ken</trademark
-> bekannt, enthalten kein rechteckigen Blöcke, nur Beschränkungen für Zeilen und Spalten. In den unregelmäßigen Blöcken müssen die Zahlen entsprechend dem kleingeschriebenen arithmetischen Symbol in den Ecken addiert, subtrahiert, dividiert oder multipliziert werden. Eine Zahl darf im MathDoku mehrfach auftreten, aber nicht in der selben Zeile oder Spalte. Ein L-förmiger Block zum Beispiel mit dem arithmetischen Symbol 5+ kann die Lösung 1 3 1 oder 2 1 2 haben, wenn die Einsen oder Zweien nicht in derselben Zeile oder Spalte vorkommen. Böcke mit Subtraktion oder Division bestehen immer aus zwei Quadraten und die zwei Zahlen der Lösung dürfen in beliebiger Reihenfolge vorkommen. Ein zweier Block zum Beispiel kann als Lösung 1 3 or 3 1 oder 2 4 oder 4 2, &etc; enthalten.</para
-></listitem>
-	<listitem
-><para
->Weil es kein Blöcke in MathDokus gibt, ist jede Größe von 3x3 bis 9x9 möglich, dabei ist 6x6 die Voreinstellung. Weitere Informationen finden Sie in den <link linkend="configuration"
->Spieleinstellungen</link
->. Zum Start sollen Sie die Variante MathDoku 101 mit der Größe 4x4 versuchen.</para
-></listitem>
+	<listitem><para>Killer puzzles have two variants: Tiny Killer 
+		(4x4) and Killer Sudoku (9x9). They both have rows, columns 
+		and square blocks, exactly as in Standard Sudoku puzzles 
+		and following exactly the same rules. They also have 
+		irregularly shaped areas called cages, where each cage's 
+		digits must add up to the number in small type in the 
+		corner of the cage and no digit can be repeated within 
+		the cage. Typically the puzzle starts with only a few 
+		squares containing symbols. You need to use arithmetic 
+		and the usual Sudoku rules together to work out the 
+		solution. The screen graphics make it difficult to 
+		visualize the square blocks that are present, but they 
+		are easier to see if you print the puzzle, using the 
+		<menuchoice><guimenu>Game</guimenu>
+		<guimenuitem>Print...</guimenuitem></menuchoice> 
+		menu item.</para></listitem>
+	<listitem><para>Mathdoku variants, also known as 
+                <trademark>Kenken</trademark>, have no blocks, only row and 
+		column restrictions, and have cages where the digits 
+		must add, subtract, divide or multiply according to the 
+		values and arithmetical symbols in small type in their 
+		corners. A digit in a Mathdoku cage can be repeated, 
+		but not in the same column or row. For example, an 
+		L-shape of three squares with a requirement 5+ can have 
+		solutions 1 3 1 or 2 1 2, provided the ones or twos are 
+		not in the same row or column as each other. Note that 
+		subtraction and division cages always have two squares 
+		and the two digits of the solution can appear in either 
+		order. For example, a 2-cage could have solutions 1 3 
+		or 3 1 or 2 4 or 4 2, &etc;</para></listitem>
+	<listitem><para>Because there are no blocks in a Mathdoku puzzle, 
+		it can have any size from 3x3 up to 9x9, with the default 
+		being 6x6. See the
+		<link linkend="configuration">Game Configuration</link> 
+		section for details. To get you started, there is 
+		a variant called Mathdoku 101 of size 4x4.</para></listitem>
 	</itemizedlist>
 </sect2>
 </sect1>
 
-<sect1 id="tips"
-><title
->Spielstrategien und Tipps</title>
+<sect1 id="tips"><title>Strategies and Tips</title>
 
 	<itemizedlist>
-	<listitem
-><para
->Für die Lösung der Rätsel sollte sich <emphasis
->Zeit genommen</emphasis
-> und nicht <emphasis
->in Hektik verfallen</emphasis
-> werden. &ksudoku; ist kein <emphasis
->schnelles</emphasis
-> Spiel.</para
-></listitem>
-	<listitem
-><para
->Auf die Einfärbungen der Zeile, Spalte und der Blöcke sollte geachtet werden. Sie bieten eine Hilfestellung bei der Lösung des Rätsels.</para
-></listitem>
-	<listitem
-><para
->Es ist sicherzustellen, dass sich keine doppelten Symbole in der Zeile, Spalte und dem Block befinden, in dem das Symbol eingetragen werden soll.</para
-></listitem>
-	<listitem
-><para
->Falls Zweifel bestehen, sollte danach gesehen werden, ob nicht ein anderes Symbol in die entsprechende Zelle eingetragen werden muss, damit keine Regelverletzungen in der Zeile, Spalte und dem Block vorliegen.</para
-></listitem>
-	<listitem
-><para
->Benutzen Sie das Internet zur Suche nach allgemeinen Tipps und Strategien zur Lösung vom Sudoku-Rätseln</para
-></listitem>
-	<listitem
-><para
->Benutzen Sie Markierungen, wenn es bei einer oder mehreren Zellen nur wenige Möglichkeiten gibt, Sie sich aber noch nicht sofort für einen mögliches Symbol entscheiden können. Markierungen ersparen Ihnen Zeit und Sie müssen sich die möglichen Symbole für diese Zellen nicht merken, wenn später mehr Zellen ausgefüllt sind. Im Abschnitt  <link linkend="howto"
->Spielanleitung</link
-> finden Sie Informationen zur Verwendung von Markierungen.</para
-></listitem>
-	<listitem
-><para
->Kommen Sie nicht weiter, dann versuchen Sie Ihre Spielzüge zurückzunehmen, um genau festzustellen, wo Sie einen Fehler gemacht haben. Dazu können Sie die Menüeinträge <menuchoice
-><guimenu
->Zug</guimenu
-> <guimenuitem
->Zurücknehmen</guimenuitem
-></menuchoice
-> und <menuchoice
-><guimenu
->Zug</guimenu
-> <guimenuitem
->Wiederherstellen</guimenuitem
-></menuchoice
->. Diese Aktionen können Sie auch mehrmals durchführen. Außerdem gibt es ein Einstellung im Einrichtungsdialog, um Fehler hervorzuheben.</para
-></listitem>
-	<listitem
-><para
->Auch wenn &ksudoku; eine <emphasis
->Tipp-Funktion</emphasis
-> bietet, sollte diese nicht zu oft verwendet werden. Die eigenständige Lösung des Rätsels fördert die Gehirnaktivität, während die regelmäßige Verwendung der <emphasis
->Tipp-Funktion</emphasis
-> eine Art des <emphasis
->Mogelns</emphasis
-> darstellt.</para
-></listitem>
-	<listitem
-><para
->Bei zu großen Problemen bei der Lösung des Rätsels und öfteren Verwendung der <emphasis
->Tipp-Funktion</emphasis
-> sollte die Herabsetzung des Schwierigkeitsgrades bzw. ein einfacheres Rätsel versucht werden.</para
-></listitem>
-	<listitem
-><para
->Manche Rätsel haben einen sehr spezifischen Spielbrettaufbau. Es bietet sich daher an, die <emphasis
->Hervorhebungs</emphasis
->-Funktion aktiviert zu haben (auch wenn man sich selbst für einen erfahrenen Spieler hält).</para
-></listitem>
+	<listitem><para>Take your time and do not rush. &ksudoku; is not
+		a quick game.</para></listitem>
+	<listitem><para>Pay attention to the row, column, and block
+		colorings. They are there to help you.</para></listitem>
+	<listitem><para>Make sure that no duplicate symbol exists already
+		in the row, column or block where you are entering a
+		symbol.</para></listitem>
+	<listitem><para>If in doubt, try to foresee if a square you are
+		entering a symbol into may be needed by some other symbol,
+		which otherwise cannot go anywhere else due to the
+		row, column and block rules.</para></listitem>
+	<listitem><para>Use the Internet to search for general hints
+		and strategies for solving Sudoku puzzles.</para></listitem>
+	<listitem><para>Use marker moves when you spot a square or
+		squares that have just a few alternatives but you
+		cannot decide between them immediately. Markers will
+		save you time and memory effort later, when more
+		squares have been filled in. See <link linkend="howto">
+		How to Play</link> for details of how to use
+		markers.</para></listitem>
+	<listitem><para>If you are having trouble, try to retrace your
+		steps and see exactly where you have made an error. You
+		can use the <menuchoice><guimenu>Move</guimenu>
+		<guimenuitem>Undo</guimenuitem></menuchoice> and
+		<menuchoice><guimenu>Move</guimenu>
+		<guimenuitem>Redo</guimenuitem></menuchoice> menu
+		items, repeatedly if necessary, and there is a setting
+		in <menuchoice><guimenu>Settings</guimenu>
+		<guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice>
+		that highlights errors.</para></listitem>
+	<listitem><para>Even though &ksudoku; provides a 'Hint' option
+		for you, try not to use it often. Remember, solving the
+		puzzle all by yourself enhances your brain activity,
+		while using the 'Hint' feature too often is
+		cheating.</para></listitem>
+	<listitem><para>If you have too much trouble solving a certain
+		puzzle and simply must use the 'Hint' feature, then
+		maybe you should try decreasing the difficulty level,
+		or try a simpler, more basic puzzle.</para></listitem>
+	<listitem><para>Some puzzle layouts feature very specific game
+		board shapes. It is a good idea to have the highlighting
+		option enabled even if you consider yourself an
+		experienced player.</para></listitem>
 	</itemizedlist>
 </sect1>
 </chapter>
 
-<chapter id="interface"
-><title
->Die Benutzeroberfläche</title
-> <!-- do not change this! -->
+<chapter id="interface"><title>Interface Overview</title> <!-- do not change this! -->
 
-<sect1 id="welcome-screen"
-><title
->Der Startbildschirm</title>
+<sect1 id="welcome-screen"><title>The Welcome Screen</title>
 
-<para
->Als erstes sehen Sie den Startbildschirm, wenn Sie &ksudoku; starten oder über das Menü oder die Werkzeugleiste ein neues Spiel beginnen. Auf dem Startbildschirm sehen Sie eine Liste aller angebotenen Sudoku-Varianten. Klicken Sie auf einen Eintrag, um ihn auszuwählen.</para>
+<para>The Welcome Screen is the first thing you see when you start
+	&ksudoku; or use the toolbar or menu to request a new game.
+	It has a list of all the puzzle types and sizes and you can
+	click on one of them to make a selection.</para>
 
-<para
->Wenn Sie auf den Kopf <guibutton
->Rätsel eingeben</guibutton
-> drücken, wird ein leeres Spielfeld der ausgewählten Art und Größe angezeigt. Nun können Sie mit der Maus oder der Tastatur ein Rätsel aus einer anderen Quelle wie zum Beispiel einer Zeitung eingeben. Haben Sie alles eingetragen, benutzen Sie die Aktion  <guilabel
->Prüfen</guilabel
-> im Menü oder der Werkzeugleiste, damit &ksudoku; die Eingaben auf mögliche Lösungen überprüft. Das Rätsel sollte nur eine mögliche Lösung haben, damit Sie mit dem Spiel beginnen können oder es durch &ksudoku; lösen lassen. Gibt es keine oder mehrere Lösungen, dann haben Sie möglicherweise Fehler bei der Eingabe der Daten gemacht.</para>
+<para>If you click the button marked <guibutton>Enter In A Puzzle</guibutton>, an empty board
+	of the selected type and size appears. Here you can use the mouse
+	or keyboard to enter in a puzzle from another source, such as
+	a newspaper. When you have finished, use the <guilabel>Check</guilabel> action, on
+	toolbar or menu, to check the puzzle. It should have just one
+	solution. If so, you can start solving the puzzle or perhaps
+	get &ksudoku; to solve it. If there is no solution or more
+	than one solution, it probably means you have made a data-entry
+	error somewhere.</para>
 
-<para
->Klicken Sie den Knopf <guibutton
->l
->Rätsel ausfüllen</guibutton
->, dann zeigt &ksudoku; ein Spielfeld mit einigen bereits besetzten Zellen. Es ist Ihre Aufgabe, die restlichen Zellen auszufüllen.</para>
+<para>If you click the button marked <guibutton>Generate A Puzzle</guibutton>, &ksudoku;
+	will display a board with some squares already filled in. It
+	is up to you to fill in the rest.</para>
 
-<para
->Ehe Sie ein Rätsel generieren, sollten Sie überprüfen, dass die Einstellungen für den <guilabel
->Schwierigkeitsgrad</guilabel
-> und die <guilabel
->Symmetrie</guilabel
-> richtig sind. Sie können diese Einstellungen während eines Spiels ändern, sie werden aber erst beim Generieren des nächsten Rätsels angewendet.</para>
+<para>Before you generate a puzzle, check that the settings of the
+	<guilabel>Difficulty:</guilabel> and <guilabel>Symmetry:</guilabel>
+	drop down boxes are to your liking. You can change them during a game, but
+	then they will have no effect until the next puzzle is
+	generated.</para>
 
-	<note
-><para
->Werden die Auswahlfelder für <guilabel
->Schwierigkeitsgrad</guilabel
-> und <guilabel
->Symmetrie</guilabel
-> nicht angezeigt, benutzen Sie den Menüeintrag <menuchoice
-><guimenu
->Einstellungen</guimenu
-> <guimenuitem
->Statusleiste anzeigen</guimenuitem
-></menuchoice
->, um sie einzublenden.</para
-></note>
+	<note><para>If you cannot see the <guilabel>Difficulty:</guilabel> and <guilabel>Symmetry:</guilabel>
+		drop down boxes, use the <menuchoice><guimenu>Settings</guimenu>
+		<guimenuitem>Show Statusbar</guimenuitem></menuchoice>
+		menu item to make sure that the statusbar is
+		visible.</para></note>
 
-<para
->Als <guilabel
->Schwierigkeitsgrad</guilabel
-> sind sechs Spielstufen vorhanden, von <guimenuitem
->Sehr einfach</guimenuitem
-> bis zu <guimenuitem
->Schwierig</guimenuitem
->, <guimenuitem
->Teuflisch</guimenuitem
-> und <guimenuitem
->Unbegrenzt</guimenuitem
->. Bei den einfachen Schwierigkeitsgraden brauchen Sie wahrscheinlich nur wenige Minuten, um ein 9x9 Sudoku zu lösen. Mit den Schwierigkeitsgraden <guimenuitem
->Schwierig</guimenuitem
-> und <guimenuitem
->Teuflisch</guimenuitem
-> kann es bis zu einer Stunde dauern, bis Sie das Sudoku gelöst haben. Diese Schwierigkeitsgrade entsprechen den Stufen, die in Zeitungen als schwierig veröffentlicht werden. Samurai-Sudokus und die Größen 16x16 oder 25x25 benötigen mehr Zeit zur Lösung, weil sie mehr Zeilen, Spalten, Blöcke und mehr Felder zum Ausfüllen haben.</para>
+<para>The <guilabel>Difficulty:</guilabel> drop down box provides six levels of difficulty, from
+	<guimenuitem>Very Easy</guimenuitem> up to <guimenuitem>Hard</guimenuitem>,
+	<guimenuitem>Diabolical</guimenuitem> and <guimenuitem>Unlimited</guimenuitem>. The easier
+	levels may take a few minutes to solve on a 9x9 board. The
+	<guimenuitem>Hard</guimenuitem> and <guimenuitem>Diabolical</guimenuitem> levels may take an hour or so and are
+	intended to be equivalent to difficult grades appearing in
+	newspapers. Samurai puzzles and 16x16 or 25x25 sizes of
+	puzzles will take longer to solve, simply because there are
+	more rows, columns and blocks and more squares to fill in.</para>
 
-<para
->Der teuflische Schwierigkeitsgrad erfordert ein oder auch mehrere Lösungsversuche und Sie müssen Spielzüge zurücknehmen, falls sie falsch geraten haben. Leichtere Schwierigkeitsgrade können normalerweise nur durch Logik gelöst werden. Beim unbegrenzten Schwierigkeitsgrad gibt es keine Begrenzung der nötigen Lösungsversuche und wie früh das erste mal geraten werden muss oder wie komplex die zur Lösung nötige Logik sein kann. Dieser Schwierigkeitsgrad ist für erfahrene Spieler gedacht, kann aber zu nicht interessanten „unmenschlichen“ Spielen führen und sollte normalerweise vermieden werden.</para>
+<para>The <guimenuitem>Diabolical</guimenuitem> level typically requires one or more guesses,
+	with backtracking if you guess wrong. Lower levels can usually
+	be solved by logic alone. The <guimenuitem>Unlimited</guimenuitem> level has no limits
+	on the number of guesses required, how soon the first guess
+	is needed or how complex the logic might be. It is provided
+	for the interest of expert players, but tends to generate
+    uninteresting <quote>inhuman</quote> puzzles and is not recommended
+    for general use.</para>
 
- <para
->Die Einstellung <guilabel
->Symmetrie</guilabel
-> erlaubt die Auswahl mehrerer Symmetrien einschließlich <guimenuitem
->Keine Symmetrie</guimenuitem
->. Diese Einstellung beeinflusst die Anordnung und das Erscheinungsbild der beim Start des Spiels ausgefüllten Zellen. Diese Einstellung gibt es hauptsächlich aus ästhetischen Gründe, mit der Ausnahme dass Rätsel, ohne Symmetrie anscheinend schwerer zu lösen sind als Rätsel mit großer Symmetrie. Es ist weniger wahrscheinlich, dass &ksudoku; ein Rätsel mit der Kombination von hohem Schwierigkeitsgrad und großer Symmetrie erstellen kann.</para>
+ <para>The <guilabel>Symmetry:</guilabel> drop down box provides seven types of symmetry, including
+	<guimenuitem>No Symmetry</guimenuitem>. This controls the layout and appearance of the
+	squares that are filled in at the start of a puzzle and has
+	mainly aesthetic effect, except that puzzles with no symmetry
+	tend to be slightly harder than those with high symmetry and
+	it is less likely that &ksudoku; can generate a puzzle with
+	high difficulty and high symmetry combined.</para>
 </sect1>
 
-<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
-> and <varlistentry
->. Split the chapter into sections using <sect1(2,3)
-> for better viewing.-->
-<sect1 id="game-menu"
-><title
->Das Menü Spiel</title>
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist> and <varlistentry>. Split the chapter into sections using <sect1(2,3)> for better viewing.-->
+<sect1 id="game-menu"><title>The Game Menu</title>
 
 		<variablelist>
 			<varlistentry id="game-menu-new">
-				<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
-></shortcut
-><guimenu
->Spiel</guimenu
-><guimenuitem
->Neu</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
-><action
->Hiermit wird ein neues Spiel gestartet.</action
-></para
-></listitem>
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>New</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Starts a new game.</action></para></listitem>
 			</varlistentry>
 			<varlistentry  id="game-menu-load">
-				<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->O</keycap
-></keycombo
-></shortcut
-><guimenu
->Spiel</guimenu
-><guimenuitem
->Laden ...</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
-><action
->Hiermit kann ein gespeichertes Spiel geladen werden.</action
-></para
-></listitem>
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Load...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Loads a saved game.</action></para></listitem>
 			</varlistentry>
 			<varlistentry id="game-menu-save">
-				<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->S</keycap
-></keycombo
-></shortcut
-><guimenu
->Spiel</guimenu
-><guimenuitem
->Speichern</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
->Hiermit wird das aktuelle Spiel als eine standardmäßige Datei gespeichert.</para
-></listitem>
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>S</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Save</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Saves</action> the current game as a default save file.</para></listitem>
 			</varlistentry>
 			<varlistentry id="game-menu-save-as">
-				<term
-><menuchoice
-><guimenu
->Spiel</guimenu
-><guimenuitem
->Speichern unter ...</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
->Hiermit wird das aktuelle Spiel unter einem anderen Namen gespeichert.</para
-></listitem>
+				<term><menuchoice>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Save As...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Saves</action> the current game as a file of your choice.</para></listitem>
 			</varlistentry>
 			<varlistentry>
-				<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->P</keycap
-></keycombo
-></shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Drucken ...</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
-><action
->Druckt</action
-> den aktuellen Status eines zweidimensionalen Spiels auf einem Drucker aus. Die Umrisse der Felder und die vorgegebenen Werte werden schwarz gedruckt, ausgefüllte Werte und Lösungswerte dagegen grau. Sie können in den <link linkend="configuration"
->Spieleinstellungen</link
-> vorgeben, ob nur ein Rätsel oder mehrere auf eine Seite gedruckt werden sollen.</para
-></listitem>
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>P</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Print...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Prints</action> the
+				current state of a two-dimensional game on a printer of your
+				choice. The block outlines and original puzzle
+				values are printed in black. Other cells,
+				filled-in values and solution values are printed
+				in gray. There is an option to print just one
+				puzzle or more than one puzzle per page. See
+				<link linkend="configuration">Game Configuration</link>.</para></listitem>
 			</varlistentry>
 			<varlistentry>
-				<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->Q</keycap
-></keycombo
-></shortcut
-><guimenu
->Spiel</guimenu
-><guimenuitem
->Beenden</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
->Hiermit wird &ksudoku; beendet.</para
-></listitem>
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></shortcut>
+					<guimenu>Game</guimenu>
+					<guimenuitem>Quit</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Quits</action> &ksudoku;.</para></listitem>
 			</varlistentry>
 		</variablelist>
 </sect1>
 <sect1 id="move-menu">
-	<title
->Das Menü Zug</title>
+	<title>The Move Menu</title>
 		<variablelist>
 			<varlistentry id="move-menu-undo">
-				<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->Z</keycap
-></keycombo
-></shortcut
-><guimenu
->Zug</guimenu
-><guimenuitem
->Zurücknehmen</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
->Hiermit wird der letzte Zug zurückgenommen (mehrmals möglich).</para
-></listitem>
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;<keycap>Z</keycap></keycombo></shortcut>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Undo</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Undo</action> your last move, repeatedly if required.</para></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-redo">
-				<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;&Shift;<keycap
->Z</keycap
-></keycombo
-></shortcut
-><guimenu
->Zug</guimenu
-><guimenuitem
->Wiederherstellen</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
->Hiermit wird der zuletzt zurückgenommene Zug wiederhergestellt (mehrmals möglich).</para
-></listitem>
+				<term><menuchoice>
+					<shortcut><keycombo action="simul">&Ctrl;&Shift;<keycap>Z</keycap></keycombo></shortcut>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Redo</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Redo</action> a move that was undone, repeatedly if required.</para></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-hint">
-				<term
-><menuchoice
-><shortcut
-><keycap
->H</keycap
-> </shortcut
-><guimenu
->Zug</guimenu
-><guimenuitem
->Tipp</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
-><action
->Gibt einen Tipp</action
->, in dem ein Symbol in einer freien Zelle des Gitters eingetragen wird.</para
-></listitem>
+				<term><menuchoice>
+					<shortcut><keycap>H</keycap></shortcut>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Hint</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Give a Hint</action> by filling in a vacant square.</para></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-demo">
-				<term
-><menuchoice
-><guimenu
->Zug</guimenu
-><guimenuitem
->Lösen</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
->Hiermit wird das Rätsel sofort gelöst.</para
-></listitem>
+				<term><menuchoice>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Solve</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Instantly solve</action> the puzzle.</para></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-shuffle">
-				<term
-><menuchoice
-><guimenu
->Zug</guimenu
-><guimenuitem
->Prüfen</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
-><action
->Überprüft</action
-> ein eingegebenes Sudoku auf Gültigkeit. Gibt es nur eine Lösung, dann kann es gespielt werden. Bei keiner oder mehreren Lösungen sind wahrscheinlich die Daten falsch eingeben worden.</para
-></listitem>
+				<term><menuchoice>
+					<guimenu>Move</guimenu>
+					<guimenuitem>Check</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Check</action> an entered puzzle for validity. If it has only one solution, it becomes available for play. If it has no solution or more than one solution, there has probably been an error in the data-entry.</para></listitem>
 			</varlistentry>
 		</variablelist>
 </sect1>
 <sect1 id="settings-menu">
-	<title
->Das Menü Einstellungen</title>
+	<title>The Settings Menu</title>
 		<variablelist>
 			<varlistentry id="settings-menu-settings">
-				<term
-><menuchoice
-><guimenu
->Einstellungen</guimenu
-><guimenuitem
->&ksudoku; einrichten ...</guimenuitem
-> </menuchoice
-></term>
-				<listitem
-><para
->Hiermit wird der Dialog zum Einrichten von &ksudoku; geöffnet. Weitere Informationen hierzu könnend dem Abschnitt <link linkend="configuration"
->Spieleinstellungen</link
-> entnommen werden.</para
-></listitem>
+				<term><menuchoice>
+					<guimenu>Settings</guimenu>
+					<guimenuitem>Configure &ksudoku;...</guimenuitem>
+				</menuchoice></term>
+				<listitem><para><action>Open a dialog to configure &ksudoku;.</action> See <link linkend="configuration">Game Configuration</link> section for details.</para></listitem>
 			</varlistentry>
 		</variablelist>
-		<para
->Zusätzlich hat &ksudoku; die bekannten &kde;-Einträge im Menü <guimenu
->Einstellungen</guimenu
-> und <guimenu
->Hilfe</guimenu
->, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
->Einstellungen</ulink
-> und <ulink url="help:/fundamentals/menus.html#menus-help"
->Hilfe</ulink
-> der &kde;-Grundlagen. </para>
+		<para>
+		  Additionally &ksudoku; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+		  menu items, for more information read the sections about the <ulink url="help:/fundamentals/menus.html#menus-settings">Settings Menu</ulink> and
+		  <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink>
+		  of the &kde; Fundamentals.
+		</para>
 </sect1>
 </chapter>
 
-<chapter id="faq"
-><title
->Häufig gestellte Fragen</title
-> <!-- do not change this! -->
-<!--This chapter is for frequently asked questions. Please use <qandaset
-> <qandaentry
-> only!-->
+<chapter id="faq"><title>Frequently asked questions</title> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset> <qandaentry> only!-->
 <qandaset>
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
- <question
-><para
->Kann das Erscheinungsbild des Spiels geändert werden? </para
-></question>
- <answer
-><para
->Die Sudoko-Spiele werden traditionell in quadratischen Gittern gespielt und Designs würden keinen Unterschied darstellen. Jedoch können unterschiedliche Farbschemata und Hintergründe über das Menü <menuchoice
-><guimenu
->Einstellungen</guimenu
-><guimenuitem
->&ksudoku; einrichten ...</guimenuitem
-></menuchoice
-> gewählt werden.</para
-></answer>
+ <question><para>I want to change the way this game looks. Can I? </para></question>
+ <answer><para>Sudoku games are traditionally played using a square grid. Themes do not make much sense here, but you can select some color schemes and backgrounds. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
- <question
-><para
->Kann ich mit der Tastatur spielen? </para
-></question>
- <answer
-><para
->Ja. Die Tastatursteuerung ist in &ksudoku; immer aktiv. Die einzelnen Zellen können mit den Pfeiltasten gewählt, die Symbole mit den Nummern- oder Buchstabentasten eingetragen und Markierungen mit der &Shift;taste gesetzt werden.</para
-></answer>
+ <question><para>Can I use the keyboard to play this game? </para></question>
+ <answer><para>Yes. In &ksudoku; keyboard play is always enabled. Please use the cursor keys to move the selection, numeric or alphabetic characters to enter the symbols and the &Shift; key to apply markers.</para></answer>
 </qandaentry>
 <qandaentry>
- <question
-><para
->Wo befindet sich die Bestenliste?</para
-></question>
- <answer
-><para
->In &ksudoku; gibt es keine Bestenliste.</para
-></answer>
+ <question><para>Where are the high scores?</para></question>
+ <answer><para>&ksudoku; does not have this feature.</para></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
 
 </qandaset>
 </chapter>
 
-<chapter id="configuration"
-><title
->Spieleinstellungen</title
-> <!-- do not change this! -->
+<chapter id="configuration"><title>Game Configuration</title> <!-- do not change this! -->
 <!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
 
-<sect1 id="general-options"
-><title
->Spieleinstellungen</title>
+<sect1 id="general-options"><title>Game Options</title>
 	<variablelist>
 		<varlistentry>
-			<term
-><guilabel
->Mehr als ein Rätsel je Seite drucken, wenn möglich</guilabel
-></term>
+			<term><guilabel>When printing, try to fit more than one puzzle on a page</guilabel></term>
 			<listitem>
-			<para
->Ist diese Einstellung aktiv, werden mehrere Rätsel auf einer Seite gedruckt, wenn diese auf eine Seite passen.</para>
-			<para
->Das Rätsel wird gedruckt, wenn eine Seite voll ist oder wenn &ksudoku; beendet wird. Ist diese Einstellung abgeschaltet, wird das Rätsel sofort gedruckt.</para>
-			<para
->Leider können dreidimensionale Rätsel nicht gedruckt werden.</para>
+			<para>Toggle the option to print more than one puzzle per page whenever they will fit.</para>
+			<para>If this option is checked, puzzles will be printed when no more will fit on a page 
+			      or when &ksudoku; terminates. Otherwise a puzzle is printed immediately.</para>
+			<para>Three-dimensional puzzles cannot be printed.</para>
 			</listitem>
 		</varlistentry>
 		<varlistentry>
-			<term
-><guilabel
->Hervorhebungen bei 2D-Rätseln anzeigen</guilabel
-></term>
-			<listitem
-><para
->Hiermit wird die Hervorhebung der Reihen, Spalten und des Rechtecks bei zweidimensionalen Rätseln aktiviert.</para
-></listitem>
+			<term><guilabel>Show Highlights in 2-D puzzles</guilabel></term>
+			<listitem><para>Toggle the &ksudoku; highlight option for two-dimensional puzzles.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term
-><guilabel
->Fehler anzeigen</guilabel
-></term>
-			<listitem
-><para
->Hiermit wird die Hervorhebung von Fehlern aktiviert.</para
-></listitem>
+			<term><guilabel>Show Errors</guilabel></term>
+			<listitem><para>Toggle the option to highlight errors.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term
-><guilabel
->Hervorhebungen bei 3D-Rätseln anzeigen</guilabel
-></term>
-			<listitem
-><para
->Hiermit wird die Hervorhebung der Reihen, Spalten und des Rechtecks bei dreidimensionalen Rätseln aktiviert. </para
-></listitem>
+			<term><guilabel>Show Highlights in 3-D puzzles</guilabel></term>
+			<listitem><para>Toggle the &ksudoku; highlight option for three-dimensional puzzles.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term
-><guilabel
->MathDoku-Rätselgröße (3-9)</guilabel
-></term>
-			<listitem
-><para
->Wählen Sie ein Größe für das MathDoku-Rätsel von 3 (sehr einfach) bis 9 (sehr schwer) mit der Größe 6 als Standard.</para
-></listitem>
+			<term><guilabel>Mathdoku puzzle size (3-9)</guilabel></term>
+			<listitem><para>Choose a size for Mathdoku puzzles, from 3 (very easy) to 9 (very hard) with size 6 being the default.</para></listitem>
 		</varlistentry>
 		<varlistentry>
-			<term
-><guilabel
->Einstellungen für 3D-Rätsel</guilabel
-></term>
-			<listitem
-><para
->Mit diesen fünf Einstellungen wird die Hervorhebung und Anzeige von Zellen in dreidimensionalen Rätseln angepasst. Damit können Beziehungen zwischen den Zellen besser sichtbar gemacht werden, besonders bei Zellen, die von anderen Zellen verdeckt werden.</para
-></listitem>
+			<term><guilabel>Settings for 3-D Puzzles Only</guilabel></term>
+			<listitem><para>These five settings adjust the highlighting and visibility of cells in three-dimensional puzzles. The idea is to make it easier to see relationships between cells, especially if they are behind other cells.</para></listitem>
 		</varlistentry>
 	</variablelist>
-		<note
-><title
->Hinweis:</title
-><para
->Sogar für erfahrene Spieler ist es unbedingt empfehlenswert, die Einstellung zur Hervorhebeung zu nutzen, da sie das Erkennen bereits gesetzter Symbole erleichtert.</para
-></note>
+		<note><title>Note:</title><para>Having the highlighting options enabled is recommended even for the most experienced players, as it helps you see the actual game board constraints.</para></note>
 </sect1>
 </chapter>
 
-<chapter id="credits"
-><title
->Danksagungen und Lizenz</title
-> <!-- do not change this! -->
+<chapter id="credits"><title>Credits and License</title> <!-- do not change this! -->
 
-<para
->&ksudoku; </para>
+<para>
+&ksudoku;  <!-- do not change this! -->
+</para>
 
 <!--List all the copyright holders here-->
-<para
->Copyright 2005-2007 Francesco Rossi <email
->redsh@email.it</email
-></para>
+<para>Copyright 2005-2007 Francesco Rossi <email>redsh@email.it</email></para>
 
-<para
->© 2006-2007 Mick Kappenburg <email
->ksudoku@kappenburg.net</email
->, Johannes Bergmeier <email
->johannes.bergmeier@gmx.net</email
-></para>
+<para>Copyright 2006-2007 Mick Kappenburg <email>ksudoku@kappenburg.net</email>,
+	Johannes Bergmeier <email>johannes.bergmeier@gmx.net</email></para>
 
-<para
->Copyright 2011 Ian Wadham <email
->iandw.au@gmail.com</email
-></para>
+<para>Copyright 2011 Ian Wadham <email>iandw.au@gmail.com</email></para>
 
-<para
->Neue Algorithmen zur Lösung und Generierung 2011 David Bau, siehe die Webseite <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
->Sudoku Generator</ulink
->.</para>
+<para>New solver and generator algorithms 2011 David Bau, <ulink
+	url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html">
+	see website.</ulink></para>
 
-<para
->Dokumentation © 2005 Francesco Rossi <email
->redsh@email.it</email
-></para>
+<para>Documentation copyright 2005 Francesco Rossi
+	<email>redsh@email.it</email></para>
 
-<para
->Dokumentation © 2007 Mick Kappenburg <email
->ksudoku@kappenburg.net</email
->, Eugene Trounev <email
->eugene.trounev@gmail.com</email
-></para>
+<para>Documentation copyright 2007 Mick Kappenburg
+	<email>ksudoku@kappenburg.net</email>,
+	Eugene Trounev <email>eugene.trounev@gmail.com</email></para>
 
-<para
->Dokumentation © 2011-2020 Ian Wadham <email
->iandw.au@gmail.com</email
-></para>
+<para>Documentation copyright 2011-2020 Ian Wadham
+	<email>iandw.au@gmail.com</email></para>
 
-<para
->Übersetzung: Burkhard Lück<email
->lueck@hube-lueck.de</email
-></para
-><para
->Überarbeitung der Übersetzung: Johannes Obermayr<email
->johannesobermayr@gmx.de</email
-></para
-> &underFDL; &underGPL; </chapter>
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+&underFDL;
+&underGPL;
+
+<!-- !!!do not change ANYTHING after this line!!!! -->
+</chapter>
 
 &documentation.index;
 </book>
