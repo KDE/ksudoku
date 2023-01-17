@@ -807,7 +807,7 @@ msgstr "El tema gràfic que s'utilitzarà."
 #: src/gui/ksudoku.kcfg:44
 #, kde-format
 msgid "Select the themes you want to use"
-msgstr "Selecció dels temes que voleu utilitzar"
+msgstr "Seleccioneu els temes que voleu utilitzar"
 
 #: src/gui/ksudokugame.cpp:375
 #, kde-format
