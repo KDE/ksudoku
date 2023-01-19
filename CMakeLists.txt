@@ -9,7 +9,7 @@ set (RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}${RELEASE_
 project(ksudoku VERSION "1.4.${RELEASE_SERVICE_COMPACT_VERSION}")
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.90.0")
+set (KF5_MIN_VERSION "5.92.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
@@ -23,6 +23,7 @@ include(ECMAddAppIcon)
 include(ECMQtDeclareLoggingCategory)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
+include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS
     Widgets
@@ -52,9 +53,8 @@ find_package(OpenGL)
 set_package_properties(OpenGL PROPERTIES DESCRIPTION "API for developing portable, interactive 2D and 3Dgraphics applications" TYPE OPTIONAL PURPOSE "KSudoku will not have Roxdoku support without OpenGL.")
 
 
-add_definitions(
-    -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
-    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
+ecm_set_disabled_deprecation_versions(QT 5.13.2
+    KF 5.98
 )
 if (Qt${QT_MAJOR_VERSION}OpenGL_FOUND AND OPENGL_FOUND AND OPENGL_GLU_FOUND)
     set(OPENGL_SUPPORT true)
