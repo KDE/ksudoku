@@ -5,13 +5,13 @@
 # Muhammet Kara <muhammetk@gmail.com>, 2008.
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013.
-# Emir SARI <emir_sari@icloud.com>, 2022.
+# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-23 00:41+0000\n"
-"PO-Revision-Date: 2022-04-26 10:54+0300\n"
+"PO-Revision-Date: 2023-01-18 22:32+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 21.12.3\n"
+"X-Generator: Lokalize 22.12.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -96,7 +96,7 @@ msgid ""
 "The internal difficulty rating is %1. There are %2 clues at the start and %3 "
 "moves to go."
 msgstr ""
-"Üretilen bir bulmacayı sadece mantıkla çözmek olanaklıdır. Tahmin "
+"Üretilen bir bulmacayı yalnızca mantıkla çözmek olanaklıdır. Tahmin "
 "gerekmeyecektir.\n"
 "\n"
 "Dahili zorluk derecesi %1. Başlangıçta %2 ipucu ve sürdürmek için %3 hareket "
@@ -189,7 +189,7 @@ msgstr "Mathdoku bulmaca boyutu (3-9)"
 #: src/gui/configgame.ui:167
 #, kde-format
 msgid "Settings for 3-D Puzzles Only"
-msgstr "Sadece 3B Bulmacalar için Ayarlar"
+msgstr "Yalnızca 3B Bulmacalar için Ayarlar"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
@@ -759,7 +759,7 @@ msgid ""
 "Please also note that the generation of this type of puzzle might take much "
 "longer than other ones. During this time KSudoku will not respond."
 msgstr ""
-"Uyarı: Sınırsız zorluk seviyesi bulmacayı çözmek için tahmin sayısında veya "
+"Uyarı: Sınırsız zorluk düzeyi bulmacayı çözmek için tahmin sayısında veya "
 "dal noktalarında sınır yoktur ve tahminler için gerekli olan daha az bir "
 "zaman sınırı yoktur.\n"
 "\n"
