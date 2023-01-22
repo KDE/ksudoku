@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-23 00:41+0000\n"
-"PO-Revision-Date: 2022-10-10 04:40+0200\n"
+"PO-Revision-Date: 2023-01-21 11:12+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -61,7 +61,7 @@ msgstr ""
 #: src/generator/sudokuboard.cpp:244
 #, kde-format
 msgid "Difficulty Level"
-msgstr "სირთულის დონე."
+msgstr "სირთულის დონე"
 
 #: src/generator/sudokuboard.cpp:209
 #, kde-format
@@ -149,7 +149,7 @@ msgstr ""
 #: src/gui/configgame.ui:75
 #, kde-format
 msgid "Show highlights in 3-D puzzles"
-msgstr ""
+msgstr "Show highlights in 3-D puzzles"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/configgame.ui:137
@@ -302,15 +302,15 @@ msgstr ""
 #, kde-format
 msgid "Congratulations! You made it in 1 second."
 msgid_plural "Congratulations! You made it in %1 seconds."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "გილოცავთ! თქვენ ეს 1 წამში შეძელით."
+msgstr[1] "გილოცავთ! თქვენ ეს %1 წამში შეძელით."
 
 #: src/gui/ksudoku.cpp:96
 #, kde-format
 msgid "Congratulations! You made it in 1 minute."
 msgid_plural "Congratulations! You made it in %1 minutes."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "გილოცავთ! თქვენ ეს 1 წუთში შეძელით."
+msgstr[1] "გილოცავთ! თქვენ ეს %1 წუთში შეძელით."
 
 #: src/gui/ksudoku.cpp:98
 #, kde-format
@@ -321,7 +321,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:178
 #, kde-format
 msgid "Sudoku Standard (9x9)"
-msgstr ""
+msgstr "სტანდარტულ სუდოკუ (9x9)"
 
 #: src/gui/ksudoku.cpp:179
 #, kde-format
@@ -331,7 +331,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:182
 #, kde-format
 msgid "Roxdoku 9 (3x3x3)"
-msgstr ""
+msgstr "როქსდოკუ 9 (3x3x3)"
 
 #: src/gui/ksudoku.cpp:183
 #, kde-format
@@ -346,7 +346,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:219
 #, kde-format
 msgid "Sudoku 16x16"
-msgstr ""
+msgstr "სუდოკუ 16x16"
 
 #: src/gui/ksudoku.cpp:220
 #, kde-format
@@ -356,7 +356,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:222
 #, kde-format
 msgid "Sudoku 25x25"
-msgstr ""
+msgstr "სუდოკუ 25x25"
 
 #: src/gui/ksudoku.cpp:223
 #, kde-format
@@ -366,7 +366,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:226
 #, kde-format
 msgid "Roxdoku 16 (4x4x4)"
-msgstr ""
+msgstr "როქსდოკუ 16 (4x4x4)"
 
 #: src/gui/ksudoku.cpp:227
 #, kde-format
@@ -376,7 +376,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:229
 #, kde-format
 msgid "Roxdoku 25 (5x5x5)"
-msgstr ""
+msgstr "როქსდოკუ 25 (5x5x5)"
 
 #: src/gui/ksudoku.cpp:230
 #, kde-format
@@ -405,7 +405,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:295
 #, kde-format
 msgid "Playing Mathdoku"
-msgstr ""
+msgstr "მატდოკუს თამაში"
 
 #: src/gui/ksudoku.cpp:299
 #, kde-format
@@ -426,7 +426,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:313
 #, kde-format
 msgid "Playing Killer Sudoku"
-msgstr ""
+msgstr "მკვლელი სუდოკუს თამაში"
 
 #: src/gui/ksudoku.cpp:317
 #, kde-format
@@ -477,7 +477,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
 #, kde-format
 msgid "Check Puzzle"
-msgstr ""
+msgstr "პაზლის შემოწმება"
 
 #: src/gui/ksudoku.cpp:423
 #, kde-format
@@ -499,7 +499,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:432
 #, kde-format
 msgid "Play Puzzle"
-msgstr ""
+msgstr "პაზლის თამაში"
 
 #: src/gui/ksudoku.cpp:432
 #, kde-format
@@ -509,7 +509,7 @@ msgstr "დაკვრა"
 #: src/gui/ksudoku.cpp:470
 #, kde-format
 msgid "Enable all messages"
-msgstr ""
+msgstr "ყველა შეტყობინების ჩართვა"
 
 #: src/gui/ksudoku.cpp:487
 #, kde-format
@@ -520,7 +520,7 @@ msgstr "შემოწმება"
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
-msgstr ""
+msgstr "ეშმაკისეული"
 
 #: src/gui/ksudoku.cpp:505
 #, kde-format
@@ -617,7 +617,7 @@ msgstr "დაიწყეთ ახალი თამაში"
 #: src/gui/ksudoku.cpp:673
 #, kde-format
 msgid "Do you really want to restart this game?"
-msgstr ""
+msgstr "მართლა გნებავთ ამ თამაშის გადატვირთვა?"
 
 #: src/gui/ksudoku.cpp:674
 #, kde-format
@@ -644,7 +644,7 @@ msgstr "შეცდომა ფაილის ჩაწერისას"
 #: src/gui/ksudoku.cpp:746
 #, kde-format
 msgid "There seems to be no puzzle to print."
-msgstr ""
+msgstr "დასაბეჭდიპაზლის გარეშე."
 
 #: src/gui/ksudoku.cpp:783
 #, kde-format
@@ -692,7 +692,7 @@ msgstr "გრაფიკული თემა."
 #: src/gui/ksudoku.kcfg:44
 #, kde-format
 msgid "Select the themes you want to use"
-msgstr ""
+msgstr "აირჩიეთ, რომელი თემა გნებავთ, გამოიყენოთ"
 
 #: src/gui/ksudokugame.cpp:375
 #, kde-format
@@ -704,7 +704,7 @@ msgstr ""
 #: src/gui/ksudokugame.cpp:377
 #, kde-format
 msgid "Killer Sudoku Cage"
-msgstr ""
+msgstr "გალია მკვლელი სუდოკუ"
 
 #: src/gui/ksudokugame.cpp:422
 #, kde-format
@@ -716,7 +716,7 @@ msgstr ""
 #: src/gui/ksudokugame.cpp:494 src/gui/ksudokugame.cpp:503
 #, kde-format
 msgid "Error in Cage"
-msgstr ""
+msgstr "შეცდომა გალიაში"
 
 #: src/gui/ksudokugame.cpp:452
 #, kde-format
@@ -756,13 +756,13 @@ msgstr ""
 #: src/gui/ksudokugame.cpp:536
 #, kde-format
 msgid "Do you wish to delete this cage?"
-msgstr ""
+msgstr "მართლა გნებავთ ამ გალიის წაშლა?"
 
 #: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
 #: src/gui/ksudokugame.cpp:570
 #, kde-format
 msgid "Delete Cage"
-msgstr ""
+msgstr "გალიის წაშლა"
 
 #: src/gui/ksudokugame.cpp:562
 #, kde-format
@@ -804,7 +804,7 @@ msgstr "ხელსაწყოთა მთავარი ზოლი"
 #: src/gui/ksudokuui.rc:53
 #, kde-format
 msgid "Actions Toolbar"
-msgstr ""
+msgstr "ქმედებების პანელი"
 
 #: src/gui/puzzleprinter.cpp:62
 #, kde-format
@@ -849,32 +849,32 @@ msgstr ""
 #: src/gui/serializer.cpp:444
 #, kde-format
 msgid "Unable to download file."
-msgstr ""
+msgstr "ფაილის გადმოწერის შეცდომა."
 
 #: src/gui/serializer.cpp:685
 #, kde-format
 msgid "Unable to create temporary file."
-msgstr ""
+msgstr "დროებითი ფაილის შექმნის შეცდომა."
 
 #: src/gui/serializer.cpp:698
 #, kde-format
 msgid "Unable to upload file."
-msgstr ""
+msgstr "ფაილის ატვირთვის შეცდომა."
 
 #: src/gui/views/gameactions.cpp:54
 #, kde-format
 msgid "Select %1 (%2)"
-msgstr ""
+msgstr "აირჩიეთ %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
 #, kde-format
 msgid "Enter %1 (%2)"
-msgstr ""
+msgstr "შეყვანა %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
 #, kde-format
 msgid "Mark %1 (%2)"
-msgstr ""
+msgstr "დანიშვნა %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
 #, kde-format
@@ -899,25 +899,25 @@ msgstr "მარჯვნივ გაწევა"
 #: src/gui/views/gameactions.cpp:123
 #, kde-format
 msgid "Clear Cell"
-msgstr ""
+msgstr "უჯრედის გასუფავება"
 
 #: src/gui/welcomescreen.cpp:133
 #, kde-format
 msgid "GetNewVariant not implemented"
-msgstr ""
+msgstr "GetNewVariant განხორციელებული არაა"
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:163
 #: src/gui/welcomescreen.cpp:179
 #, kde-format
 msgid "Please select a puzzle variant."
-msgstr ""
+msgstr "აირჩიეთ პაზლის ვარიანტი."
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to start puzzle"
-msgstr ""
+msgstr "პაზლის გაშვების შეცდომა"
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
@@ -939,25 +939,25 @@ msgstr ""
 #: src/gui/welcomescreen.ui:17
 #, kde-format
 msgid "Choose your Game"
-msgstr ""
+msgstr "აირჩიეთ თქვენი თამაში"
 
 #. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
 #: src/gui/welcomescreen.ui:28
 #, kde-format
 msgid "Get New"
-msgstr ""
+msgstr "ახლის მიღება"
 
 #. i18n: ectx: property (text), widget (QPushButton, startEmptyButton)
 #: src/gui/welcomescreen.ui:48
 #, kde-format
 msgid "Enter In A Puzzle"
-msgstr ""
+msgstr "პაზლის შეყვანა"
 
 #. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
 #: src/gui/welcomescreen.ui:55
 #, kde-format
 msgid "Generate A Puzzle"
-msgstr ""
+msgstr "პაზლის გენერაცია"
 
 #: src/main.cpp:51
 #, kde-format
@@ -982,7 +982,7 @@ msgstr "Francesco Rossi"
 #: src/main.cpp:57
 #, kde-format
 msgid "KSudoku Author"
-msgstr ""
+msgstr "KSudoku-ის ავტორი"
 
 #: src/main.cpp:58
 #, kde-format
