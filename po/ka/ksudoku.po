@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-23 00:41+0000\n"
-"PO-Revision-Date: 2023-01-21 19:37+0100\n"
+"PO-Revision-Date: 2023-01-23 08:50+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -177,7 +177,7 @@ msgstr ""
 #: src/gui/configgame.ui:234
 #, kde-format
 msgid "Overall size of 3-D cells"
-msgstr ""
+msgstr "3-D უჯრედების საერთო ზომა"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
@@ -193,7 +193,7 @@ msgstr ""
 #: src/gui/configgame.ui:306
 #, kde-format
 msgid "Size of selected 3-D cell"
-msgstr ""
+msgstr "მონიშნული 3-D უჯრედის ზომა"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
@@ -209,7 +209,7 @@ msgstr ""
 #: src/gui/configgame.ui:369
 #, kde-format
 msgid "Size of highlighted 3-D cells"
-msgstr ""
+msgstr "გამოკვეთილი 3-D უჯრედების ზომა"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_5)
@@ -254,7 +254,7 @@ msgstr ""
 #: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
 #, kde-format
 msgid "Configuration not yet implemented"
-msgstr ""
+msgstr "მორგება განხორციელებული არა"
 
 #: src/gui/ksudoku.cpp:76
 #, kde-format
@@ -326,7 +326,7 @@ msgstr "სტანდარტულ სუდოკუ (9x9)"
 #: src/gui/ksudoku.cpp:179
 #, kde-format
 msgid "The classic and fashionable game"
-msgstr ""
+msgstr "კლასიკური და მოდური თამაში"
 
 #: src/gui/ksudoku.cpp:182
 #, kde-format
@@ -336,12 +336,12 @@ msgstr "როქსდოკუ 9 (3x3x3)"
 #: src/gui/ksudoku.cpp:183
 #, kde-format
 msgid "The Rox 3D Sudoku"
-msgstr ""
+msgstr "როქსი 3D სუდოკუ"
 
 #: src/gui/ksudoku.cpp:205
 #, kde-format
 msgid "Missing Variant Name"
-msgstr ""
+msgstr "ვარიანტის სახელის გრეშე"
 
 #: src/gui/ksudoku.cpp:219
 #, kde-format
@@ -351,7 +351,7 @@ msgstr "სუდოკუ 16x16"
 #: src/gui/ksudoku.cpp:220
 #, kde-format
 msgid "Sudoku with 16 symbols"
-msgstr ""
+msgstr "სუდოკუ 16 სმბოლოთი"
 
 #: src/gui/ksudoku.cpp:222
 #, kde-format
@@ -361,7 +361,7 @@ msgstr "სუდოკუ 25x25"
 #: src/gui/ksudoku.cpp:223
 #, kde-format
 msgid "Sudoku with 25 symbols"
-msgstr ""
+msgstr "სუდოკუ 25 სიმბოლოთი"
 
 #: src/gui/ksudoku.cpp:226
 #, kde-format
@@ -371,7 +371,7 @@ msgstr "როქსდოკუ 16 (4x4x4)"
 #: src/gui/ksudoku.cpp:227
 #, kde-format
 msgid "The Rox 3D sudoku with 16 symbols"
-msgstr ""
+msgstr "როქსი 3D სუდოკუ 16 სიმბოლოთი"
 
 #: src/gui/ksudoku.cpp:229
 #, kde-format
@@ -381,7 +381,7 @@ msgstr "როქსდოკუ 25 (5x5x5)"
 #: src/gui/ksudoku.cpp:230
 #, kde-format
 msgid "The Rox 3D sudoku with 25 symbols"
-msgstr ""
+msgstr "როქსი 3D სუდოკუ 25 სიმბოლოთი"
 
 #: src/gui/ksudoku.cpp:276
 #, kde-format
@@ -824,17 +824,17 @@ msgstr ""
 #: src/gui/puzzleprinter.cpp:108
 #, kde-format
 msgid "KSudoku has sent output to your printer."
-msgstr ""
+msgstr "KSudoku -მა პრინტერზე მონაცემები გააგზავნა."
 
 #: src/gui/puzzleprinter.cpp:121
 #, kde-format
 msgid "Print Sudoku Puzzle"
-msgstr ""
+msgstr "სუდოკუს პაზლის დაბეჭდვა"
 
 #: src/gui/serializer.cpp:401
 #, kde-format
 msgid "Unable to download file: URL is empty."
-msgstr ""
+msgstr "ფაილის გადმოწერის შეცდომა:URL ცარიელია."
 
 #: src/gui/serializer.cpp:408
 #, kde-format
@@ -844,7 +844,7 @@ msgstr "ფაილის გახსნა შეუძლებელია.
 #: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
 #, kde-format
 msgid "Cannot read XML file on line %1"
-msgstr ""
+msgstr "XML ფაილის წაკითხვის შეცდომა ხაზზე %1"
 
 #: src/gui/serializer.cpp:444
 #, kde-format
@@ -1002,7 +1002,7 @@ msgstr "Ian Wadham"
 #: src/main.cpp:59
 #, kde-format
 msgid "New puzzle generator and solver"
-msgstr ""
+msgstr "ახალი პაზლის გენერატორი და ამომხსნელი"
 
 #: src/main.cpp:60
 #, kde-format
@@ -1012,7 +1012,7 @@ msgstr "Mick Kappenburg"
 #: src/main.cpp:60
 #, kde-format
 msgid "Printing and export of 0.4"
-msgstr ""
+msgstr "0.4-ის დაბეჭდვა და გატანა"
 
 #: src/main.cpp:61
 #, kde-format
