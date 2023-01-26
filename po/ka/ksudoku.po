@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-23 00:41+0000\n"
-"PO-Revision-Date: 2023-01-23 08:50+0100\n"
+"PO-Revision-Date: 2023-01-25 07:27+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -1017,7 +1017,7 @@ msgstr "0.4-ის დაბეჭდვა და გატანა"
 #: src/main.cpp:61
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
-msgstr ""
+msgstr "მადლობა NeHe-ს OpenGL-ის გაკვეთილებისთვის"
 
 #: src/main.cpp:62
 #, kde-format
