@@ -1,25 +1,26 @@
 # translation of ksudoku.po to galician
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # mvillarino <mvillarino@users.sourceforge.net>, 2007, 2008, 2009.
 # Adrián Chaves Fernández <adriyetichaves@gmail.com>, 2009, 2012, 2015, 2017.
 # Xosé <xosecalvo@gmail.com>, 2012.
 # Marce Villarino <mvillarino@kde-espana.org>, 2013, 2014.
-# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019.
+# Adrián Chaves (Gallaecio) <adrian@chaves.io>, 2017, 2018, 2019, 2023.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-23 00:41+0000\n"
-"PO-Revision-Date: 2019-04-14 09:05+0200\n"
+"PO-Revision-Date: 2023-04-24 07:25+0200\n"
 "Last-Translator: Adrián Chaves (Gallaecio) <adrian@chaves.io>\n"
-"Language-Team: Galician <kde-i18n-doc@kde.org>\n"
+"Language-Team: Galician <proxecto@trasno.gal>\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -41,7 +42,7 @@ msgstr ""
 #: src/generator/sudokuboard.cpp:106
 #, kde-format
 msgid "Mathdoku or Killer Sudoku Puzzle"
-msgstr "Quebracabezas matesdoku ou sudoku imposíbel"
+msgstr "Quebracabezas sudoku matemático ou sudoku imposíbel"
 
 #: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
 #, kde-format
@@ -187,7 +188,7 @@ msgstr "Mostrar realces nos quebracabezas de tres dimensións"
 #: src/gui/configgame.ui:137
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
-msgstr "Tamaño do quebracabezas matesdoku (3-9)"
+msgstr "Tamaño do quebracabezas sudoku matemático (3-9)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/configgame.ui:167
@@ -443,10 +444,10 @@ msgid ""
 "can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
-"Os quebracabezas matesdoku poden ter calquera tamaño entre 3x3 e 9x9. O "
-"resultado é unha grade no que cada fila e cada columna conteñen os díxitos "
-"dispoñíbeis (entre 1-3 e 1-9) exactamente unha vez. A grade está cuberta de "
-"gaiolas con formas irregulares.\n"
+"Os quebracabezas sudoku matemático poden ter calquera tamaño entre 3x3 e "
+"9x9. O resultado é unha grade no que cada fila e cada columna conteñen os "
+"díxitos dispoñíbeis (entre 1-3 e 1-9) exactamente unha vez. A grade está "
+"cuberta de gaiolas con formas irregulares.\n"
 "\n"
 "As gaiolas de tamaño 1 son valores inicial ou pistas, pero non abundan. As "
 "gaiolas de tamaño superior teñen un valor e un operador aritmético (+-x/). "
@@ -455,15 +456,15 @@ msgstr ""
 "multiplicarse, dan lugar a 12. Un díxito pode aparecer máis dunha vez nunha "
 "mesma gaiola se aparece en filas e columnas distintas.\n"
 "\n"
-"En xeral, os matesdoku máis grandes son máis difíciles de resolver. O mesmo "
-"no caso das gaiolas. Podes seleccionar o tamaño do quebracabezas no diálogo "
-"de configuración de KSudoku, e podes seleccionar o tamaño máximo das gaiolas "
-"usando o botón de «Dificultade» de KSudoku."
+"En xeral, os sudoku matemático máis grandes son máis difíciles de resolver. "
+"O mesmo no caso das gaiolas. Podes seleccionar o tamaño do quebracabezas no "
+"diálogo de configuración de KSudoku, e podes seleccionar o tamaño máximo das "
+"gaiolas usando o botón de «Dificultade» de KSudoku."
 
 #: src/gui/ksudoku.cpp:295
 #, kde-format
 msgid "Playing Mathdoku"
-msgstr "Xogando a matesdoku"
+msgstr "Xogando a sudoku matemático"
 
 #: src/gui/ksudoku.cpp:299
 #, kde-format
@@ -527,13 +528,13 @@ msgid ""
 "puzzle and make sure there is only one solution. If the check fails, you "
 "have probably made an error somewhere in one of the cages."
 msgstr ""
-"Para resolver quebracabezas matesdoku e sudoku imposíbel hai que ir de "
-"gaiola en gaiola. Para comezar a resolver unha gaiola, preme co botón "
+"Para resolver quebracabezas sudoku matemático e sudoku imposíbel hai que ir "
+"de gaiola en gaiola. Para comezar a resolver unha gaiola, preme co botón "
 "esquerdo unha cela calquera sen usar ou escribe un número na cela que está "
 "baixo o rato ou escribe un símbolo de operación («+», «-», «/» ou «x») nela. "
 "Na cela aparecerá unha pequena etiqueta de gaiola. Para estender a gaiola en "
 "calquera dirección, preme co botón esquerdo unha cela contigua ou move o "
-"cursor sobre unha cela contigua e preme a barra espazadora.\n"
+"cursor sobre unha cela contigua e preme o espazador.\n"
 "\n"
 "O número que escriba é o valor da gaiola e pode ter un ou máis díxitos, "
 "incluído 0. As celas de tamaño 1 teñen que ter números dun único díxito, "
@@ -632,18 +633,16 @@ msgid "Unlimited"
 msgstr "Sen límite"
 
 #: src/gui/ksudoku.cpp:516
-#, fuzzy, kde-format
-#| msgid "Difficulty"
+#, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
-msgstr "Dificultade"
+msgstr "Dificultade:"
 
 #: src/gui/ksudoku.cpp:520
-#, fuzzy, kde-format
-#| msgid "Symmetry"
+#, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
-msgstr "Simetría"
+msgstr "Simetría:"
 
 #: src/gui/ksudoku.cpp:524
 #, kde-format
@@ -1141,7 +1140,7 @@ msgstr "Ian Wadham"
 #: src/main.cpp:59
 #, kde-format
 msgid "New puzzle generator and solver"
-msgstr "Novo xerador e resolvedor de quebracabezas"
+msgstr "Novo xerador e resolvente de quebracabezas"
 
 #: src/main.cpp:60
 #, kde-format
@@ -1169,7 +1168,7 @@ msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 msgstr ""
-"Algoritmos para o novo xerador e resolvedor de quebracabezas en davidbau.com/"
+"Algoritmos para o novo xerador e resolvente de quebracabezas en davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 
 #: src/main.cpp:70
