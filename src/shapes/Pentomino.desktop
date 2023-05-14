@@ -1,6 +1,6 @@
 [KSudokuVariant]
 Name=Pentomino 5x5
-Name[ar]=٥-مربعات ٥×٥
+Name[ar]=5-مربعات 5×5
 Name[bs]=Pentomino 5x5
 Name[ca]=Pentominó 5x5
 Name[ca@valencia]=Pentominó 5x5
@@ -46,7 +46,7 @@ Name[x-test]=xxPentomino 5x5xx
 Name[zh_CN]=五连块 5x5
 Name[zh_TW]=Pentomino 5x5
 Description=Jigsaw variant with irregularly shaped Pentomino blocks
-Description[ar]=تنويعة مقطعة بأشكال غير منتظمة بكتل ٥-مربع
+Description[ar]=تنويعة مقطعة بأشكال غير منتظمة بكتل 5-مربع
 Description[bs]=Varijanta slagalice sa neravnomjerno oblikovanim Pentomino blokovima
 Description[ca]=Variant Jigsaw amb forma de blocs pentominó irregulars
 Description[ca@valencia]=Variant Jigsaw amb forma de blocs pentominó irregulars
