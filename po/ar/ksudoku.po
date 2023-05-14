@@ -177,7 +177,7 @@ msgstr "أظهر الإبرازات في ألغاز ثلاثية الأبعاد"
 #: src/gui/configgame.ui:137
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
-msgstr "حجم لغز رياضيات-دوكو (٣-٩)"
+msgstr "حجم لغز رياضيات-دوكو (3-9)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/configgame.ui:167
@@ -209,7 +209,7 @@ msgstr "الحجم الإجمالي لخلايا ثلاثية الأبعاد"
 #: src/gui/configgame.ui:300 src/gui/configgame.ui:303
 #, no-c-format, kde-format
 msgid "Shrink or expand a cell by up to 30% when it is selected."
-msgstr "تقليص الخلية أو توسيعها بنسبة تصل إلى ٣٠٪ عند تحديدها."
+msgstr "تقليص الخلية أو توسيعها بنسبة تصل إلى 30٪ عند تحديدها."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/configgame.ui:306
@@ -225,7 +225,7 @@ msgstr "حجم خلية ثلاثية الأبعاد المحددة"
 #: src/gui/configgame.ui:363 src/gui/configgame.ui:366
 #, no-c-format, kde-format
 msgid "Shrink or expand cells by up to 30% when they are highlighted."
-msgstr "تقليص الخلية أو توسيعها بنسبة تصل إلى ٣٠٪ عند إبرازها."
+msgstr "تقليص الخلية أو توسيعها بنسبة تصل إلى 30٪ عند إبرازها."
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/configgame.ui:369
@@ -241,7 +241,7 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell."
 msgstr ""
-"قلّص الخلايا إلى ٦٠٪ إذا لم تكن في مكعب N×N×N الذي يحتوي على الخلية المحددة."
+"قلّص الخلايا إلى 60٪ إذا لم تكن في مكعب N×N×N الذي يحتوي على الخلية المحددة."
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
@@ -253,7 +253,7 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell. This is useful if a 3-D puzzle has more than one cube."
 msgstr ""
-"غمّق الخلايا إلى ٦٠٪ إذا لم تكن في مكعب N×N×N الذي يحتوي على الخلية المحددة. "
+"غمّق الخلايا إلى 60٪ إذا لم تكن في مكعب N×N×N الذي يحتوي على الخلية المحددة. "
 "يكون هذا مفيدًا إذا كان اللغز ثلاثي الأبعاد يحتوي على أكثر من مكعب واحد."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
