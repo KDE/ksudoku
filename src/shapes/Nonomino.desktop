@@ -1,6 +1,6 @@
 [KSudokuVariant]
 Name=Nonomino 9x9
-Name[ar]=9-مربعات ٩×٩
+Name[ar]=9-مربعات 9×9
 Name[bs]=Nonomino 9x9
 Name[ca]=Nonominó 9x9
 Name[ca@valencia]=Nonominó 9x9
@@ -45,7 +45,7 @@ Name[x-test]=xxNonomino 9x9xx
 Name[zh_CN]=九连块 9x9
 Name[zh_TW]=Nonomino 9x9
 Description=Jigsaw variant with irregularly shaped Nonomino blocks
-Description[ar]=تنويعة مقطعة بأشكال غير منتظمة بكتل ١٢-مربع
+Description[ar]=تنويعة مقطعة بأشكال غير منتظمة بكتل 12-مربع
 Description[bs]=Varijanta slagalice sa neravnomjerno oblikovanim Nonomino blokovima
 Description[ca]=Variant Jigsaw amb forma de blocs nonominó irregulars
 Description[ca@valencia]=Variant Jigsaw amb forma de blocs nonominó irregulars
