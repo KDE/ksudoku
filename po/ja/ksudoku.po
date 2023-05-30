@@ -14,7 +14,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
@@ -277,8 +277,6 @@ msgstr ""
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
 msgstr[0] ""
-"おめでとうございます! 1 秒でパズルを解きました (ヒントを使いましたが)。"
-msgstr[1] ""
 "おめでとうございます! %1 秒でパズルを解きました (ヒントを使いましたが)。"
 
 #: src/gui/ksudoku.cpp:89
@@ -286,23 +284,19 @@ msgstr[1] ""
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
 msgstr[0] ""
-"おめでとうございます! 1 分でパズルを解きました (ヒントを使いましたが)。"
-msgstr[1] ""
 "おめでとうございます! %1 分でパズルを解きました (ヒントを使いましたが)。"
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
 msgid "1 minute"
 msgid_plural "%1 minutes"
-msgstr[0] "1 分"
-msgstr[1] "%1 分"
+msgstr[0] "%1 分"
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
 msgid "1 second"
 msgid_plural "%1 seconds"
-msgstr[0] "1 秒"
-msgstr[1] "%1 秒"
+msgstr[0] "%1 秒"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -315,15 +309,13 @@ msgstr ""
 #, kde-format
 msgid "Congratulations! You made it in 1 second."
 msgid_plural "Congratulations! You made it in %1 seconds."
-msgstr[0] "おめでとうございます! 1 秒でパズルを解きました。"
-msgstr[1] "おめでとうございます! %1 秒でパズルを解きました。"
+msgstr[0] "おめでとうございます! %1 秒でパズルを解きました。"
 
 #: src/gui/ksudoku.cpp:96
 #, kde-format
 msgid "Congratulations! You made it in 1 minute."
 msgid_plural "Congratulations! You made it in %1 minutes."
-msgstr[0] "おめでとうございます! 1 分でパズルを解きました。"
-msgstr[1] "おめでとうございます! %1 分でパズルを解きました。"
+msgstr[0] "おめでとうございます! %1 分でパズルを解きました。"
 
 #: src/gui/ksudoku.cpp:98
 #, kde-format
