@@ -1016,22 +1016,22 @@ msgstr "Marca %1 (%2)"
 #: src/gui/views/gameactions.cpp:95
 #, kde-format
 msgid "Move Up"
-msgstr "Mou amunt"
+msgstr "Mou cap amunt"
 
 #: src/gui/views/gameactions.cpp:102
 #, kde-format
 msgid "Move Down"
-msgstr "Mou avall"
+msgstr "Mou cap avall"
 
 #: src/gui/views/gameactions.cpp:109
 #, kde-format
 msgid "Move Left"
-msgstr "Mou a l'esquerra"
+msgstr "Mou cap a l'esquerra"
 
 #: src/gui/views/gameactions.cpp:116
 #, kde-format
 msgid "Move Right"
-msgstr "Mou a la dreta"
+msgstr "Mou cap a la dreta"
 
 #: src/gui/views/gameactions.cpp:123
 #, kde-format
