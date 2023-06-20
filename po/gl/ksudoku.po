@@ -155,7 +155,7 @@ msgstr ""
 #: src/gui/configgame.ui:49
 #, kde-format
 msgid "Show highlights in 2-D puzzles"
-msgstr "Mostrar realces nos quebracabezas de dúas dimensións"
+msgstr "Amosar realces nos quebracabezas de dúas dimensións"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -169,7 +169,7 @@ msgstr ""
 #: src/gui/configgame.ui:62
 #, kde-format
 msgid "Show errors"
-msgstr "Mostrar os erros"
+msgstr "Amosar os erros"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
@@ -182,7 +182,7 @@ msgstr "Realzar os planos (bloques) que conteñen a cela escollida."
 #: src/gui/configgame.ui:75
 #, kde-format
 msgid "Show highlights in 3-D puzzles"
-msgstr "Mostrar realces nos quebracabezas de tres dimensións"
+msgstr "Amosar realces nos quebracabezas de tres dimensións"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/configgame.ui:137
@@ -305,7 +305,7 @@ msgid ""
 msgstr ""
 "Síntoo, a túa solución contén erros.\n"
 "\n"
-"Activa a opción «Mostrar os erros» na configuración para realzalos."
+"Activa a opción «Amosar os erros» na configuración para realzalos."
 
 #: src/gui/ksudoku.cpp:87
 #, kde-format
@@ -792,7 +792,7 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 "Isto activará todos os diálogos que desactivases marcando a opción de «Non "
-"volver mostrar esta mensaxe».\n"
+"volver amosar esta mensaxe».\n"
 "\n"
 "Queres continuar?"
 
