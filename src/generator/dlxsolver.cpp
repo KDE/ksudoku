@@ -772,3 +772,4 @@ void DLXSolver::deleteAll()
     mRows.clear();
 }
 
+#include "moc_dlxsolver.cpp"

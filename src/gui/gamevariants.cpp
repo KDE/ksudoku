@@ -438,3 +438,5 @@ bool CustomGame::createSKGraphObject()
 }
 
 }
+
+#include "moc_gamevariants.cpp"

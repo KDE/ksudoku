@@ -802,3 +802,5 @@ void View2D::settingsChanged() {
 }
 
 }
+
+#include "moc_view2d.cpp"

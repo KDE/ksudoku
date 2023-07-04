@@ -898,6 +898,4 @@ bool KSudokuNewStuff::createUploadFile( const QString &/*fileName*/ )
 }
 #endif
 
-
-
-
+#include "moc_ksudoku.cpp"

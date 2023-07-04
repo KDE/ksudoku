@@ -123,3 +123,5 @@ void KsView::settingsChanged() {
 }
 
 }
+
+#include "moc_ksview.cpp"

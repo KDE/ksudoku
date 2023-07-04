@@ -766,3 +766,4 @@ void CageGenerator::init (SKGraph * graph, bool hideOperators)
 #endif
 }
 
+#include "moc_cagegenerator.cpp"

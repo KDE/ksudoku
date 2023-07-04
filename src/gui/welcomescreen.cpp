@@ -205,4 +205,4 @@ void WelcomeScreen::generatePuzzle() {
 
 }
 
-
+#include "moc_welcomescreen.cpp"

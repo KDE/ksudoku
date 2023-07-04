@@ -187,3 +187,5 @@ void ValueListWidget::wheelEvent (QWheelEvent* e) {
 }
 
 }
+
+#include "moc_valuelistwidget.cpp"

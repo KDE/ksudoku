@@ -33,3 +33,5 @@ GameConfig::GameConfig(QWidget* parent)
 }
 
 }
+
+#include "moc_config.cpp"

@@ -796,4 +796,4 @@ QWidget * Game::messageParent()
 
 }
 
-
+#include "moc_ksudokugame.cpp"

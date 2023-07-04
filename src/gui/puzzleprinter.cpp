@@ -424,3 +424,4 @@ void PuzzlePrinter::drawCageLabel (const SKGraph* graph, int n,
     m_p->drawText (cellX + m, cellY + a, cLabel);
 }
 
+#include "moc_puzzleprinter.cpp"

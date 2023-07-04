@@ -544,4 +544,4 @@ void RoxdokuView::paintGL()
 
 }
 
-
+#include "moc_roxdokuview.cpp"
