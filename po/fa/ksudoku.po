@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Generator: KBabel 1.11.4\n"
 
 #, kde-format
@@ -278,6 +278,7 @@ msgstr ""
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
 msgstr[0] "آفرین! آن را در %1 دقیقه و %2 ثانیه ایجاد کردید. با چند شگرد."
+msgstr[1] ""
 
 #: src/gui/ksudoku.cpp:89
 #, fuzzy, kde-format
@@ -287,18 +288,21 @@ msgstr[0] "آفرین! آن را در %1 دقیقه و %2 ثانیه ایجاد 
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
 msgstr[0] "آفرین! آن را در %1 دقیقه و %2 ثانیه ایجاد کردید. با چند شگرد."
+msgstr[1] ""
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
 msgid "1 minute"
 msgid_plural "%1 minutes"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
 msgid "1 second"
 msgid_plural "%1 seconds"
 msgstr[0] ""
+msgstr[1] ""
 
 #: src/gui/ksudoku.cpp:91
 #, fuzzy, kde-format
@@ -314,12 +318,14 @@ msgstr "آفرین! آن را در %1 دقیقه و %2 ثانیه ایجاد ک�
 msgid "Congratulations! You made it in 1 second."
 msgid_plural "Congratulations! You made it in %1 seconds."
 msgstr[0] "آفرین!!!! آن را در %1 دقیقه و %2 ثانیه ایجاد کردید."
+msgstr[1] ""
 
 #: src/gui/ksudoku.cpp:96
 #, fuzzy, kde-format
 msgid "Congratulations! You made it in 1 minute."
 msgid_plural "Congratulations! You made it in %1 minutes."
 msgstr[0] "آفرین!!!! آن را در %1 دقیقه و %2 ثانیه ایجاد کردید."
+msgstr[1] ""
 
 #: src/gui/ksudoku.cpp:98
 #, fuzzy, kde-format
