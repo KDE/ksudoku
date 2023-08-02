@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-06-23 00:41+0000\n"
-"PO-Revision-Date: 2023-06-04 01:40+0300\n"
+"PO-Revision-Date: 2023-08-02 01:14+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.07.70\n"
+"X-Generator: Lokalize 23.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -449,8 +449,8 @@ msgstr ""
 "kaydıyla birden fazla kez bulunabilir.\n"
 "\n"
 "Genelde, daha büyük Mathdoku'lar ve daha büyük kafesler daha zordur. Bulmaca "
-"boyutunu KSudoku'nun Ayarlar pencresinden, azami kafes boyutunu KSudoku'nun "
-"Zorluk düğmesinden seçebilirsiniz."
+"boyutunu K Sudoku'nun Ayarlar pencresinden, azami kafes boyutunu K "
+"Sudoku'nun Zorluk düğmesinden seçebilirsiniz."
 
 #: src/gui/ksudoku.cpp:295
 #, kde-format
@@ -482,7 +482,7 @@ msgstr ""
 "etmelidir. Öldürücü Sudoku'da, bir kafeste aynı sayıdan birden fazla "
 "bulunamaz.\n"
 "\n"
-"Genelde büyük kafesler daha zordur. KSudoku'nun Zorluk düğmesiyle azami "
+"Genelde büyük kafesler daha zordur. K Sudoku'nun Zorluk düğmesiyle azami "
 "kafes boyutunu seçebilirsiniz."
 
 #: src/gui/ksudoku.cpp:313
@@ -763,7 +763,7 @@ msgstr ""
 "dal noktalarında sınır yoktur ve tahminler için gerekli olan daha az bir "
 "zaman sınırı yoktur.\n"
 "\n"
-"Ayrıca bu tür bulmacayı oluşturmak diğerlerinden daha uzun sürer. KSudoku, "
+"Ayrıca bu tür bulmacayı oluşturmak diğerlerinden daha uzun sürer. K Sudoku, "
 "bu süre boyunca yanıt vermeyecektir."
 
 #: src/gui/ksudoku.cpp:823
@@ -802,8 +802,8 @@ msgid ""
 "In Killer Sudoku, the operator is always + or none and KSudoku automatically "
 "sets the correct choice."
 msgstr ""
-"Öldürücü Sudoku'da, operatör her zaman + veya yoktur ve KSudoku doğru seçimi "
-"otomatik ayarlar."
+"Öldürücü Sudoku'da, operatör her zaman + veya yoktur ve K Sudoku doğru "
+"seçimi otomatik ayarlar."
 
 #: src/gui/ksudokugame.cpp:377
 #, kde-format
@@ -936,15 +936,15 @@ msgid ""
 "Your puzzle will be printed when no more will fit on the page or when "
 "KSudoku terminates."
 msgstr ""
-"KSudoku ayarları şu anda sayfa başına birkaç bulmaca yazdırmak için "
+"K Sudoku ayarları şu anda sayfa başına birkaç bulmaca yazdırmak için "
 "seçilmiş.\n"
 "\n"
-"Bulmacanız artık sayfaya sığmazken veya KSudoku sonlanırken basılacaktır."
+"Bulmacanız artık sayfaya sığmazken veya K Sudoku sonlanırken basılacaktır."
 
 #: src/gui/puzzleprinter.cpp:108
 #, kde-format
 msgid "KSudoku has sent output to your printer."
-msgstr "KSudoku çıktıyı yazıcınıza gönderdi."
+msgstr "K Sudoku çıktıyı yazıcınıza gönderdi."
 
 #: src/gui/puzzleprinter.cpp:121
 #, kde-format
@@ -1084,17 +1084,17 @@ msgstr "Bulmaca Üret"
 #: src/main.cpp:51
 #, kde-format
 msgid "KSudoku"
-msgstr "KSudoku"
+msgstr "K Sudoku"
 
 #: src/main.cpp:53
 #, kde-format
 msgid "KSudoku - Sudokus and more"
-msgstr "KSudoku - Sudokular ve daha fazlası"
+msgstr "K Sudoku - Sudokular ve daha fazlası"
 
 #: src/main.cpp:55
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
-msgstr "(c) 2005-2007 KSudoku Yazarları"
+msgstr "(c) 2005-2007 K Sudoku Yazarları"
 
 #: src/main.cpp:57
 #, kde-format
@@ -1104,7 +1104,7 @@ msgstr "Francesco Rossi"
 #: src/main.cpp:57
 #, kde-format
 msgid "KSudoku Author"
-msgstr "KSudoku Yazarı"
+msgstr "K Sudoku Yazarı"
 
 #: src/main.cpp:58
 #, kde-format
