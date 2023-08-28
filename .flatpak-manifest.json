@@ -1,0 +1,50 @@
+{
+    "id": "org.kde.ksudoku",
+    "branch": "master",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "5.15-22.08",
+    "sdk": "org.kde.Sdk",
+    "command": "ksudoku",
+    "tags": ["nightly"],
+    "desktop-file-name-suffix": " (Nightly)",
+    "finish-args": ["--share=ipc", "--socket=x11", "--socket=wayland" ],
+
+    "modules": [
+        {
+            "config-opts": [ "-DENABLE_TESTING=OFF" ],
+            "name": "libkdegames",
+            "buildsystem": "cmake-ninja",
+            "sources": [ { "type": "git", "url": "https://invent.kde.org/kde/libkdegames.git" } ],
+            "modules": [
+                {
+                    "config-opts": [ "-DENABLE_TESTING=OFF" ],
+                    "name": "openal",
+                    "buildsystem": "cmake-ninja",
+                    "sources": [
+                        {
+                            "type": "git",
+                            "url": "https://github.com/kcat/openal-soft.git",
+                            "tag": "1.23.1",
+                            "x-checker-data": {
+                                "type": "git",
+                                "tag-pattern": "^([\\d.]+)$"
+                            },
+                            "commit": "d3875f333fb6abe2f39d82caca329414871ae53b"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "glu",
+            "sources": [ { "type": "git", "url": "https://anongit.freedesktop.org/git/mesa/glu.git", "branch": "glu-9.0.2" } ]
+        },
+        {
+            "name": "ksudoku",
+            "buildsystem": "cmake-ninja",
+            "sources": [
+                { "type": "dir", "path": "." }
+            ]
+        }
+    ]
+}
