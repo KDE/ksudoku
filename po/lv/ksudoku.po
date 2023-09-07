@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"POT-Creation-Date: 2023-09-07 00:43+0000\n"
 "PO-Revision-Date: 2012-06-30 16:43+0300\n"
 "Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -40,13 +40,18 @@ msgstr ""
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr ""
 
-#: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
+#: src/generator/sudokuboard.cpp:107 src/generator/sudokuboard.cpp:210
+#, kde-format
+msgid "&Try Again"
+msgstr "&Mēģināt vēlreiz"
+
+#: src/generator/sudokuboard.cpp:192 src/generator/sudokuboard.cpp:233
 #, fuzzy, kde-format
 #| msgid "%"
 msgid "%1"
 msgstr "%"
 
-#: src/generator/sudokuboard.cpp:197
+#: src/generator/sudokuboard.cpp:198
 #, fuzzy, kde-format
 #| msgid ""
 #| "After %1 tries, the best difficulty level achieved is %2, with internal "
@@ -73,23 +78,18 @@ msgstr ""
 "Ja mīklu pieņemsi, palīdzēt varētu 'Bez simetrijas' vai kāda zema simetrijas "
 "līmeņa iestatīšana. Tad izmanto Spēle->Jauna un mēģini ģenerēt jaunu mīklu."
 
-#: src/generator/sudokuboard.cpp:208 src/generator/sudokuboard.cpp:228
-#: src/generator/sudokuboard.cpp:244
+#: src/generator/sudokuboard.cpp:209 src/generator/sudokuboard.cpp:229
+#: src/generator/sudokuboard.cpp:245
 #, kde-format
 msgid "Difficulty Level"
 msgstr "Grūtības pakāpe"
 
-#: src/generator/sudokuboard.cpp:209
-#, kde-format
-msgid "&Try Again"
-msgstr "&Mēģināt vēlreiz"
-
-#: src/generator/sudokuboard.cpp:209
+#: src/generator/sudokuboard.cpp:210
 #, kde-format
 msgid "&Accept"
 msgstr "&Pieņemt"
 
-#: src/generator/sudokuboard.cpp:221
+#: src/generator/sudokuboard.cpp:222
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -103,12 +103,12 @@ msgstr ""
 "Iekšējais grūtības līmenis ir %1. Sākumā doti %2 pavedieni, vēl atlikuši %3 "
 "gājieni."
 
-#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:245
+#: src/generator/sudokuboard.cpp:230 src/generator/sudokuboard.cpp:246
 #, kde-format
 msgid "&Retry"
 msgstr ""
 
-#: src/generator/sudokuboard.cpp:235
+#: src/generator/sudokuboard.cpp:236
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -739,6 +739,12 @@ msgid ""
 "not show this message again' option.\n"
 "\n"
 "Do you want to continue?"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:866
+#, kde-format
+msgctxt "@action:button"
+msgid "Enable"
 msgstr ""
 
 #. i18n: ectx: label, entry (Theme), group (Themes)

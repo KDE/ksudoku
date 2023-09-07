@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"POT-Creation-Date: 2023-09-07 00:43+0000\n"
 "PO-Revision-Date: 2023-09-02 02:57\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -37,12 +37,17 @@ msgstr "差不多200次生成谜题的尝试都失败了。再试试？"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "Mathdoku 或者 Killer 数独谜题"
 
-#: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
+#: src/generator/sudokuboard.cpp:107 src/generator/sudokuboard.cpp:210
+#, kde-format
+msgid "&Try Again"
+msgstr "重试(&T)"
+
+#: src/generator/sudokuboard.cpp:192 src/generator/sudokuboard.cpp:233
 #, kde-format
 msgid "%1"
 msgstr "%1|/|$[~stripAccel %1]"
 
-#: src/generator/sudokuboard.cpp:197
+#: src/generator/sudokuboard.cpp:198
 #, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
@@ -64,23 +69,18 @@ msgstr ""
 "- >新建，然后将对称设置更改为“无对称性”或某种对称性较低的类型，然后再次使"
 "用“生成谜题”。"
 
-#: src/generator/sudokuboard.cpp:208 src/generator/sudokuboard.cpp:228
-#: src/generator/sudokuboard.cpp:244
+#: src/generator/sudokuboard.cpp:209 src/generator/sudokuboard.cpp:229
+#: src/generator/sudokuboard.cpp:245
 #, kde-format
 msgid "Difficulty Level"
 msgstr "难度级别"
 
-#: src/generator/sudokuboard.cpp:209
-#, kde-format
-msgid "&Try Again"
-msgstr "重试(&T)"
-
-#: src/generator/sudokuboard.cpp:209
+#: src/generator/sudokuboard.cpp:210
 #, kde-format
 msgid "&Accept"
 msgstr "接受(&A)"
 
-#: src/generator/sudokuboard.cpp:221
+#: src/generator/sudokuboard.cpp:222
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -93,12 +93,12 @@ msgstr ""
 "\n"
 "内部难度分为 %1，初始给出 %2 个提示数，理论上 %3 步就可解决。"
 
-#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:245
+#: src/generator/sudokuboard.cpp:230 src/generator/sudokuboard.cpp:246
 #, kde-format
 msgid "&Retry"
 msgstr "重试(&R)"
 
-#: src/generator/sudokuboard.cpp:235
+#: src/generator/sudokuboard.cpp:236
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -739,6 +739,12 @@ msgstr ""
 "这将启用之前通过“不再显示此消息”选项禁用的所有对话框。\n"
 "\n"
 "是否要继续？"
+
+#: src/gui/ksudoku.cpp:866
+#, kde-format
+msgctxt "@action:button"
+msgid "Enable"
+msgstr ""
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:41

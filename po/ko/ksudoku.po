@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"POT-Creation-Date: 2023-09-07 00:43+0000\n"
 "PO-Revision-Date: 2022-04-16 23:04+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -39,12 +39,17 @@ msgstr "약 200회 정도의 퍼즐 생성 시도가 실패했습니다. 다시 
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "수학 스도쿠 또는 킬러 스도쿠 퍼즐"
 
-#: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
+#: src/generator/sudokuboard.cpp:107 src/generator/sudokuboard.cpp:210
+#, kde-format
+msgid "&Try Again"
+msgstr "다시 시도(&T)"
+
+#: src/generator/sudokuboard.cpp:192 src/generator/sudokuboard.cpp:233
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: src/generator/sudokuboard.cpp:197
+#: src/generator/sudokuboard.cpp:198
 #, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
@@ -66,23 +71,18 @@ msgstr ""
 "후 게임 -> 새 게임을 선택하고, 대칭 설정을 '대칭 없음'이나 낮은 대칭으로 변경"
 "한 다음 '퍼즐 생성' 단추를 다시 누르십시오."
 
-#: src/generator/sudokuboard.cpp:208 src/generator/sudokuboard.cpp:228
-#: src/generator/sudokuboard.cpp:244
+#: src/generator/sudokuboard.cpp:209 src/generator/sudokuboard.cpp:229
+#: src/generator/sudokuboard.cpp:245
 #, kde-format
 msgid "Difficulty Level"
 msgstr "난이도"
 
-#: src/generator/sudokuboard.cpp:209
-#, kde-format
-msgid "&Try Again"
-msgstr "다시 시도(&T)"
-
-#: src/generator/sudokuboard.cpp:209
+#: src/generator/sudokuboard.cpp:210
 #, kde-format
 msgid "&Accept"
 msgstr "수락(&A)"
 
-#: src/generator/sudokuboard.cpp:221
+#: src/generator/sudokuboard.cpp:222
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -96,12 +96,12 @@ msgstr ""
 "내부 난이도 등급은 %1입니다. 시작할 때 힌트가 %2개 표시되고 %3개 더 채워 넣으"
 "면 됩니다."
 
-#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:245
+#: src/generator/sudokuboard.cpp:230 src/generator/sudokuboard.cpp:246
 #, kde-format
 msgid "&Retry"
 msgstr "다시 시도(&R)"
 
-#: src/generator/sudokuboard.cpp:235
+#: src/generator/sudokuboard.cpp:236
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -752,6 +752,12 @@ msgstr ""
 "'이 메시지 다시 표시하지 않기'를 선택한 모든 대화 상자를 다시 활성화합니다.\n"
 "\n"
 "계속 진행하시겠습니까?"
+
+#: src/gui/ksudoku.cpp:866
+#, kde-format
+msgctxt "@action:button"
+msgid "Enable"
+msgstr ""
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:41

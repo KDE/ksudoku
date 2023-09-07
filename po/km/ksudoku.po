@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"POT-Creation-Date: 2023-09-07 00:43+0000\n"
 "PO-Revision-Date: 2013-01-02 14:55+0700\n"
 "Last-Translator: sutha <sutha@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros>\n"
@@ -41,13 +41,18 @@ msgstr ""
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "បោះពុម្ព​ផ្គុំ​រូប Sudoku"
 
-#: src/generator/sudokuboard.cpp:191 src/generator/sudokuboard.cpp:232
+#: src/generator/sudokuboard.cpp:107 src/generator/sudokuboard.cpp:210
+#, kde-format
+msgid "&Try Again"
+msgstr "ព្យាយាម​ម្ដងទៀត"
+
+#: src/generator/sudokuboard.cpp:192 src/generator/sudokuboard.cpp:233
 #, fuzzy, kde-format
 #| msgid "%"
 msgid "%1"
 msgstr "%"
 
-#: src/generator/sudokuboard.cpp:197
+#: src/generator/sudokuboard.cpp:198
 #, fuzzy, kde-format
 #| msgid ""
 #| "After %1 tries, the best difficulty level achieved is %2, with internal "
@@ -73,23 +78,18 @@ msgstr ""
 "ប្រសិនបើ​អ្នក​ព្រម​ទទួល​ល្បែង​ផ្គុំ​រូប វា​អាច​ជួយ​អ្នក​ក្នុង​ការ​ផ្លាស់ប្ដូរ​ទៅជា​មិន​ស៊ីមេទ្រី ឬ​ប្រភេទ​ស៊ីមេទ្រី​កម្រិត​ទាប​"
 "មួយ​ចំនួន បន្ទាប់មក​ចុច ល្បែង->ថ្មី រួច​ព្យាយាម​បង្កើត​ល្បែង​ផ្គុំ​រូប​ផ្សេងទៀត ។"
 
-#: src/generator/sudokuboard.cpp:208 src/generator/sudokuboard.cpp:228
-#: src/generator/sudokuboard.cpp:244
+#: src/generator/sudokuboard.cpp:209 src/generator/sudokuboard.cpp:229
+#: src/generator/sudokuboard.cpp:245
 #, kde-format
 msgid "Difficulty Level"
 msgstr "កម្រិត​ពិបាក"
 
-#: src/generator/sudokuboard.cpp:209
-#, kde-format
-msgid "&Try Again"
-msgstr "ព្យាយាម​ម្ដងទៀត"
-
-#: src/generator/sudokuboard.cpp:209
+#: src/generator/sudokuboard.cpp:210
 #, kde-format
 msgid "&Accept"
 msgstr "ព្រម​ទទួល"
 
-#: src/generator/sudokuboard.cpp:221
+#: src/generator/sudokuboard.cpp:222
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -102,12 +102,12 @@ msgstr ""
 "\n"
 "ការ​វាយតម្លៃ​កម្រិត​ពិបាក​ខាងក្នុង គឺ %1 ។ មាន​គន្លឹះ %2 នៅ​ពេល​ចាប់ផ្ដើម និង %3 ផ្លាស់ទី​ទៅ ។"
 
-#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:245
+#: src/generator/sudokuboard.cpp:230 src/generator/sudokuboard.cpp:246
 #, kde-format
 msgid "&Retry"
 msgstr ""
 
-#: src/generator/sudokuboard.cpp:235
+#: src/generator/sudokuboard.cpp:236
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -720,6 +720,12 @@ msgid ""
 "not show this message again' option.\n"
 "\n"
 "Do you want to continue?"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:866
+#, kde-format
+msgctxt "@action:button"
+msgid "Enable"
 msgstr ""
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
