@@ -44,10 +44,14 @@ add_executable(ksudoku ${ksudoku_SRCS})
 target_link_libraries(ksudoku
     ksudoku_gui
     ksudoku_logic
-    KF5KDEGames
-    KF5::KIOCore
-    KF5::Crash
+    KF${KF_MAJOR_VERSION}::KIOCore
+    KF${KF_MAJOR_VERSION}::Crash
 )
+if (QT_MAJOR_VERSION STREQUAL "6")
+    target_link_libraries(ksudoku KDEGames6 Qt6::Core5Compat)
+else()
+    target_link_libraries(ksudoku KF5KDEGames)
+endif()
 
 if(OPENGL_SUPPORT)
 target_link_libraries(ksudoku
