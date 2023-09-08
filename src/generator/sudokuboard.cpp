@@ -30,6 +30,7 @@
 #include <KStandardGuiItem>
 
 #include <QElapsedTimer>
+#include <QRandomGenerator>
 
 #include <cstdio>
 #include <ctime>
@@ -57,17 +58,35 @@ SudokuBoard::SudokuBoard (SKGraph * graph)
                         << ", BoardArea " << m_boardArea;
 }
 
+#define SEEDED_RANDROMGENERATOR 0
+
+static QRandomGenerator* randomGenerator()
+{
+#if SEEDED_RANDROMGENERATOR
+    static QRandomGenerator ourRandomGenerator;
+    return &ourRandomGenerator;
+#else
+    return QRandomGenerator::global();
+#endif
+}
+
 void SudokuBoard::setSeed()
 {
     static bool started = false;
     if (started) {
+#if SEEDED_RANDROMGENERATOR
+        qCDebug(KSudokuLog) << "setSeed(): RESET IS TURNED ON";
+        randomGenerator()->seed(m_stats.seed); // IDW test.
+#else
         qCDebug(KSudokuLog) << "setSeed(): RESET IS TURNED OFF";
-        // qsrand (m_stats.seed); // IDW test.
+#endif
     }
     else {
         started = true;
         m_stats.seed = std::time(nullptr);
-        qsrand (m_stats.seed);
+#if SEEDED_RANDROMGENERATOR
+        randomGenerator()->seed(m_stats.seed);
+#endif
         qCDebug(KSudokuLog) << "setSeed(): SEED = " << m_stats.seed;
     }
 }
@@ -140,12 +159,12 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 	symmetry = NONE;		// Symmetry not implemented in 3-D.
     }
     if (symmetry == RANDOM_SYM) {	// Choose a symmetry at random.
-        symmetry = (Symmetry) (qrand() % (int) LAST_CHOICE);
+        symmetry = (Symmetry) (randomGenerator()->bounded((int) LAST_CHOICE));
     }
     qCDebug(KSudokuLog) << "SYMMETRY IS" << symmetry;
     if (symmetry == DIAGONAL_1) {
 	// If diagonal symmetry, choose between NW->SE and NE->SW diagonals.
-        symmetry = (qrand() % 2 == 0) ? DIAGONAL_1 : DIAGONAL_2;
+        symmetry = (randomGenerator()->bounded(2) == 0) ? DIAGONAL_1 : DIAGONAL_2;
         qCDebug(KSudokuLog) << "Diagonal symmetry, choosing " <<
             ((symmetry == DIAGONAL_1) ? "DIAGONAL_1" : "DIAGONAL_2");
     }
@@ -783,7 +802,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
                         ;
                     }
                     else if (gMode == Random) {
-                        if ((qrand() % count) == 0) {
+                        if (randomGenerator()->bounded(count) == 0) {
                             guesses = newGuesses;
                         }
                         count++;
@@ -840,7 +859,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
                             ;
                         }
                         else if (gMode == Random){
-                            if ((qrand() % count) == 0) {
+                            if (randomGenerator()->bounded(count) == 0) {
                                 guesses = newGuesses;
                             }
                             count++;
@@ -933,7 +952,7 @@ void SudokuBoard::randomSequence (QVector<int> & sequence)
     int z    = 0;
     int temp = 0;
     for (int i = 0; i < size; i++) {
-        z = qrand() % last;
+        z = randomGenerator()->bounded(last);
         last--;
         temp            = sequence.at (z);
         sequence [z]    = sequence.at (last);

@@ -20,6 +20,7 @@
 #include "skgraph.h"
 #include "dlxsolver.h"
 
+#include <QRandomGenerator>
 
 // #define MATHDOKU_LOG
 
@@ -69,6 +70,8 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
     usedCells.fill ('-', mBoardArea);
     qCDebug(KSudokuLog) << "USED CELLS     " << usedCells;
 #endif
+
+    QRandomGenerator *randomGenerator = QRandomGenerator::global();
 
     // TODO - Will probably need to limit the number of size-1 cages and maybe
     //        guarantee a minimum number as well.
@@ -131,7 +134,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	    case 13:
 	    case 14:
 		index = n;		// Enclosed on three sides: start here.
-		chosenSize = qrand() % (maxSize - 1) + 2;
+		chosenSize = randomGenerator->bounded(maxSize - 1) + 2;
 #ifdef MATHDOKU_LOG
 		qCDebug(KSudokuLog) << "CHOSE CUL-DE-SAC" << mNeighbourFlags.at (n)
 		       << "at" << index;
@@ -153,7 +156,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 	    }
 	}
 	if (index < 0) {		// Pick a starting cell at random.
-	    index = mUnusedCells.at (qrand() % mUnusedCells.count());
+	    index = mUnusedCells.at (randomGenerator->bounded(mUnusedCells.count()));
 	    if (mSingles < mMinSingles) {
 		chosenSize = 1;				// Start with size 1.
 		mSingles++;
@@ -162,7 +165,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
 #endif
 	    }
 	    else {
-		chosenSize = qrand()%(maxSize - 1) + 2;	// Then avoid size 1.
+		chosenSize = randomGenerator->bounded(maxSize - 1) + 2;	// Then avoid size 1.
 	    }
 	}
 #ifdef MATHDOKU_LOG
@@ -331,6 +334,8 @@ QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
     const int    opposite[4]  = {S, W, N, E};
     int          index = seedCell;
 
+    QRandomGenerator *randomGenerator = QRandomGenerator::global();
+
     cage.clear();
     unusedNeighbours.clear();
     unusedNeighbours.append (index);
@@ -379,7 +384,7 @@ QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
 	}
 	if (index < 0) {
 	    // Otherwise, choose a neighbouring cell at random.
-	    unb = qrand() % unusedNeighbours.count();
+	    unb = randomGenerator->bounded(unusedNeighbours.count());
 	    index = unusedNeighbours.at (unb);
 	}
     }
@@ -435,7 +440,7 @@ void CageGenerator::setCageTarget (const QVector<int> &cage,
 	    weights[0] = ((hi % lo) == 0) ? 50 : 0;
 	}
 
-	int roll = qrand() % (weights[0]+weights[1]+weights[2]+weights[3]);
+	int roll = QRandomGenerator::global()->bounded(weights[0]+weights[1]+weights[2]+weights[3]);
 #ifdef MATHDOKU_LOG
 	int wTotal = (weights[0]+weights[1]+weights[2]+weights[3]);
 	qCDebug(KSudokuLog) << "ROLL" << roll << "VERSUS" << wTotal << "WEIGHTS"

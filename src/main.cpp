@@ -34,12 +34,10 @@
 #include <QUrl>
 
 #include <cstdlib>
-#include <ctime>
 
 
 int main(int argc, char **argv)
 {
-	qsrand(std::time(nullptr));
 	// Fixes blurry icons with fractional scaling
 #if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
