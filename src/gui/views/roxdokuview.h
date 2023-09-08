@@ -23,7 +23,7 @@
 #ifndef ROXDOKUVIEW_h
 #define ROXDOKUVIEW_h
 
-#include <QGLWidget>
+#include <QOpenGLWidget>
 #include <QMouseEvent>
 #include <QTimer>
 #include <QWheelEvent>
@@ -43,7 +43,7 @@ class GameActions;
 /**
  * GUI for a Roxdoku puzzle.
  */
-class RoxdokuView : public QGLWidget, public ViewInterface
+class RoxdokuView : public QOpenGLWidget, public ViewInterface
 {
 Q_OBJECT
 public:
@@ -84,7 +84,7 @@ protected:
 	void mouseDoubleClickEvent(QMouseEvent* e) override;
 	void wheelEvent (QWheelEvent* e)override {
         	m_wheelmove += e->angleDelta().y() * .02;
-		updateGL();
+		update();
 	}
 
 private Q_SLOTS:

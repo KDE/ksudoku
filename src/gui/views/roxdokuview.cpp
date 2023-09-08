@@ -63,7 +63,7 @@ Matrix3fT ThisRot     = {{  {1.0f},  {0.0f},  {0.0f},          // NEW: This Rota
 
 RoxdokuView::RoxdokuView(const ksudoku::Game &game, GameActions * gameActions,
 				QWidget * parent)
-	: QGLWidget(parent)
+	: QOpenGLWidget(parent)
 {
 	m_game   = game;
 	m_graph  = m_game.puzzle()->graph();
@@ -75,8 +75,8 @@ RoxdokuView::RoxdokuView(const ksudoku::Game &game, GameActions * gameActions,
 	m_height = m_graph->sizeY();
 	m_depth  = m_graph->sizeZ();
 
-	connect(m_game.interface(), &GameIFace::cellChange, this, &QGLWidget::updateGL);
-	connect(m_game.interface(), &GameIFace::fullChange, this, &QGLWidget::updateGL);
+	connect(m_game.interface(), &GameIFace::cellChange, this, qOverload<>(&QWidget::update));
+	connect(m_game.interface(), &GameIFace::fullChange, this, qOverload<>(&QWidget::update));
 	connect(gameActions, &GameActions::enterValue, this, &RoxdokuView::enterValue);
 
 	// IDW test. m_wheelmove = 0.0f;
@@ -108,7 +108,7 @@ void RoxdokuView::enterValue(int value)
 {
 	if (m_selection >= 0) {
 	    m_game.setValue(m_selection, value);
-	    updateGL();
+	    update();
 	}
 }
 
@@ -155,7 +155,7 @@ void RoxdokuView::initializeGL()
 			if(i != 0) {
 				pic = Renderer::instance()->renderSymbolOn(pic, i, 0, 9+o*16, SymbolPreset);
 			}
-			QImage pix = convertToGLFormat(pic.toImage());
+			QImage pix = pic.toImage().mirrored();
 	
 			glGenTextures(1, &m_texture[o][i]);
 			glBindTexture(GL_TEXTURE_2D, m_texture[o][i]);
@@ -187,7 +187,7 @@ void  RoxdokuView::resizeGL(int w, int h ) {
 		if(m_selected_number == -1) return;
 		if(m_game.given(m_selection)) return;
 		m_game.setValue(m_selection, m_selected_number);
-//		updateGL();
+//		update();
 		if(m_isDragging) releaseMouse();
 	}
 
@@ -284,7 +284,7 @@ void RoxdokuView::mouseMoveEvent ( QMouseEvent * e )
 		m_arcBall->click(&f);      // Update Start Vector And Prepare For Dragging
 		grabMouse(/*QCursor(Qt::SizeAllCursor)*/);
 		}
-		updateGL();
+		update();
 	}
 	else{
 		if (m_isClicked){          // Still Clicked, So Still Dragging
@@ -299,7 +299,7 @@ void RoxdokuView::mouseMoveEvent ( QMouseEvent * e )
 			m_isDragging = false;
 			releaseMouse ();
 		}
-		updateGL();
+		update();
 	}
 }
 
@@ -321,7 +321,7 @@ void RoxdokuView::loadSettings() {
 
 void RoxdokuView::settingsChanged() {
 	loadSettings();
-	updateGL();
+	update();
 }
 
 void RoxdokuView::myDrawCube(bool highlight, int name,
@@ -539,7 +539,6 @@ void RoxdokuView::paintGL()
 			}
 		}
 	}
-	swapBuffers();
 }
 
 }

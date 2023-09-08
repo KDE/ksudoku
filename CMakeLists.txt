@@ -48,7 +48,6 @@ find_package(KF5 ${KF_MIN_VERSION} REQUIRED COMPONENTS
 
 find_package(KF5KDEGames 7.3.0 REQUIRED)
 
-find_package(Qt${QT_MAJOR_VERSION}OpenGL ${QT_MIN_VERSION})
 find_package(OpenGL)
 set_package_properties(OpenGL PROPERTIES DESCRIPTION "API for developing portable, interactive 2D and 3Dgraphics applications" TYPE OPTIONAL PURPOSE "KSudoku will not have Roxdoku support without OpenGL.")
 
@@ -56,7 +55,7 @@ set_package_properties(OpenGL PROPERTIES DESCRIPTION "API for developing portabl
 ecm_set_disabled_deprecation_versions(QT 5.13.2
     KF 5.98
 )
-if (Qt${QT_MAJOR_VERSION}OpenGL_FOUND AND OPENGL_FOUND AND OPENGL_GLU_FOUND)
+if (OPENGL_FOUND AND OPENGL_GLU_FOUND)
     set(OPENGL_SUPPORT true)
 endif()
 

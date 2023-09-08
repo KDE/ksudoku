@@ -52,5 +52,5 @@ target_link_libraries(ksudoku_gui
 if(OPENGL_SUPPORT)
 	target_link_libraries(ksudoku_gui 
 		${OPENGL_LIBRARIES}
-                Qt${QT_MAJOR_VERSION}::OpenGL)
+        )
 endif(OPENGL_SUPPORT)
