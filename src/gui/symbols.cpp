@@ -30,7 +30,7 @@ namespace ksudoku {
 QChar Symbols::ioValue2Symbol(int value) {
     if (value == VACANT) return QLatin1Char('_');
     if (value == UNUSABLE) return QLatin1Char('.');
-	return 'a' + value;
+	return QLatin1Char('a' + value);
 }
 
 /// returns the number of the index
