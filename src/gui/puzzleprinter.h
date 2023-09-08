@@ -26,6 +26,7 @@
 
 #include <QPen>
 #include <QPrinter>
+#include <QObject>
 
 namespace ksudoku {
 class Game;
