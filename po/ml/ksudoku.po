@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-07 00:43+0000\n"
+"POT-Creation-Date: 2023-09-12 00:43+0000\n"
 "PO-Revision-Date: 2019-12-12 21:45+0000\n"
 "Last-Translator: Vivek KJ Pazhedath <vivekkj2004@gmail.com>\n"
 "Language-Team: SMC <smc.org.in>\n"
@@ -27,29 +27,29 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "shijualexonline@gmail.com,snalledam@dataone.in,vivekkj2004@gmail.com"
 
-#: src/generator/sudokuboard.cpp:104
+#: src/generator/sudokuboard.cpp:123
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr ""
 "ഏകദേശം 200 ശ്രമങ്ങൾക്ക് ശേഷം ഒരു പസിൽ സൃഷ്ടിക്കാനുള്ള ശ്രമങ്ങൾ പരാജയപ്പെട്ടു. വീണ്ടും "
 "ശ്രമിക്കണോ?"
 
-#: src/generator/sudokuboard.cpp:106
+#: src/generator/sudokuboard.cpp:125
 #, kde-format
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "മാത്ത്ഡോകു അല്ലെങ്കിൽ കില്ലർ സുഡോകു പസിൽ"
 
-#: src/generator/sudokuboard.cpp:107 src/generator/sudokuboard.cpp:210
+#: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:229
 #, kde-format
 msgid "&Try Again"
 msgstr "വീണ്ടും ശ്രമിക്ക്(&T)"
 
-#: src/generator/sudokuboard.cpp:192 src/generator/sudokuboard.cpp:233
+#: src/generator/sudokuboard.cpp:211 src/generator/sudokuboard.cpp:252
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: src/generator/sudokuboard.cpp:198
+#: src/generator/sudokuboard.cpp:217
 #, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
@@ -63,18 +63,18 @@ msgid ""
 "'Generate A Puzzle' again."
 msgstr ""
 
-#: src/generator/sudokuboard.cpp:209 src/generator/sudokuboard.cpp:229
-#: src/generator/sudokuboard.cpp:245
+#: src/generator/sudokuboard.cpp:228 src/generator/sudokuboard.cpp:248
+#: src/generator/sudokuboard.cpp:264
 #, kde-format
 msgid "Difficulty Level"
 msgstr "വൈഷമ്യ നില"
 
-#: src/generator/sudokuboard.cpp:210
+#: src/generator/sudokuboard.cpp:229
 #, kde-format
 msgid "&Accept"
 msgstr "അംഗീകരിക്കുക(&A)"
 
-#: src/generator/sudokuboard.cpp:222
+#: src/generator/sudokuboard.cpp:241
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -84,12 +84,12 @@ msgid ""
 "moves to go."
 msgstr ""
 
-#: src/generator/sudokuboard.cpp:230 src/generator/sudokuboard.cpp:246
+#: src/generator/sudokuboard.cpp:249 src/generator/sudokuboard.cpp:265
 #, kde-format
 msgid "&Retry"
 msgstr "വീണ്ടും ശ്രമിക്കുക(&R)"
 
-#: src/generator/sudokuboard.cpp:236
+#: src/generator/sudokuboard.cpp:255
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -983,72 +983,72 @@ msgstr "ഒരു പസിൽ നൽകുക"
 msgid "Generate A Puzzle"
 msgstr "ഒരു പസിൽ സൃഷ്ടിക്കുക"
 
-#: src/main.cpp:51
+#: src/main.cpp:49
 #, kde-format
 msgid "KSudoku"
 msgstr "കെസുഡോകു"
 
-#: src/main.cpp:53
+#: src/main.cpp:51
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "കെസുഡോകു - സുഡോക്കുവും അതിലേറെയും"
 
-#: src/main.cpp:55
+#: src/main.cpp:53
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "(c) 2005-2007 കെസുഡോകു രചയിതാക്കൾ"
 
-#: src/main.cpp:57
+#: src/main.cpp:55
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "ഫ്രാൻസെസ്കോ റോസി"
 
-#: src/main.cpp:57
+#: src/main.cpp:55
 #, kde-format
 msgid "KSudoku Author"
 msgstr "കെസുഡോകു രചയിതാവ്"
 
-#: src/main.cpp:58
+#: src/main.cpp:56
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "ജോഹന്നാസ് ബെർഗ്മിയർ"
 
-#: src/main.cpp:58
+#: src/main.cpp:56
 #, kde-format
 msgid "Maintainer"
 msgstr "പരിപാലകൻ"
 
-#: src/main.cpp:59
+#: src/main.cpp:57
 #, kde-format
 msgid "Ian Wadham"
 msgstr "ഇയാൻ വാധാം"
 
-#: src/main.cpp:59
+#: src/main.cpp:57
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr "പുതിയ പസിൽ ജനറേറ്ററും പരിഹാരിയും"
 
-#: src/main.cpp:60
+#: src/main.cpp:58
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "മിക്ക് കപ്പൻബർഗ്"
 
-#: src/main.cpp:60
+#: src/main.cpp:58
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "0.4 ന്റെ അച്ചടിയും കയറ്റുമതിയും"
 
-#: src/main.cpp:61
+#: src/main.cpp:59
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "ഓപ്പൺജിഎൽ ട്യൂട്ടോറിയലുകൾക്ക് NeHe- ന് നന്ദി"
 
-#: src/main.cpp:62
+#: src/main.cpp:60
 #, kde-format
 msgid "David Bau"
 msgstr "ഡേവിഡ് ബോ"
 
-#: src/main.cpp:62
+#: src/main.cpp:60
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
@@ -1057,7 +1057,7 @@ msgstr ""
 "davidbau.com/archives/2006/09/04/sudoku_generator.html- ലെ പുതിയ പസിൽ "
 "ജനറേറ്ററിനും സോൾവറിനുമുള്ള അൽഗോരിതംസ്"
 
-#: src/main.cpp:70
+#: src/main.cpp:68
 #, kde-format
 msgid "Document to open"
 msgstr "തുറക്കുന്നതിനുള്ള പ്രമാണം"

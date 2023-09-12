@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-07 00:43+0000\n"
+"POT-Creation-Date: 2023-09-12 00:43+0000\n"
 "PO-Revision-Date: 2023-09-07 16:58+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -28,28 +28,28 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "stefan.asserhall@bredband.net"
 
-#: src/generator/sudokuboard.cpp:104
+#: src/generator/sudokuboard.cpp:123
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr ""
 "Försök att skapa ett spel misslyckades efter ungefär 200 försök. Försök igen?"
 
-#: src/generator/sudokuboard.cpp:106
+#: src/generator/sudokuboard.cpp:125
 #, kde-format
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "Mattedoku- eller mördarsudokuspel"
 
-#: src/generator/sudokuboard.cpp:107 src/generator/sudokuboard.cpp:210
+#: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:229
 #, kde-format
 msgid "&Try Again"
 msgstr "&Försök igen"
 
-#: src/generator/sudokuboard.cpp:192 src/generator/sudokuboard.cpp:233
+#: src/generator/sudokuboard.cpp:211 src/generator/sudokuboard.cpp:252
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: src/generator/sudokuboard.cpp:198
+#: src/generator/sudokuboard.cpp:217
 #, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
@@ -72,18 +72,18 @@ msgstr ""
 "symmetri till 'Ingen symmetri' eller någon typ av låg symmetri och använd "
 "därefter 'Skapa ett spel' igen."
 
-#: src/generator/sudokuboard.cpp:209 src/generator/sudokuboard.cpp:229
-#: src/generator/sudokuboard.cpp:245
+#: src/generator/sudokuboard.cpp:228 src/generator/sudokuboard.cpp:248
+#: src/generator/sudokuboard.cpp:264
 #, kde-format
 msgid "Difficulty Level"
 msgstr "Svårighetsnivå"
 
-#: src/generator/sudokuboard.cpp:210
+#: src/generator/sudokuboard.cpp:229
 #, kde-format
 msgid "&Accept"
 msgstr "&Acceptera"
 
-#: src/generator/sudokuboard.cpp:222
+#: src/generator/sudokuboard.cpp:241
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -98,12 +98,12 @@ msgstr ""
 "Den interna svårighetsgraden är %1. Det finns %2 ledtrådar från början och "
 "%3 drag att göra."
 
-#: src/generator/sudokuboard.cpp:230 src/generator/sudokuboard.cpp:246
+#: src/generator/sudokuboard.cpp:249 src/generator/sudokuboard.cpp:265
 #, kde-format
 msgid "&Retry"
 msgstr "&Försök igen"
 
-#: src/generator/sudokuboard.cpp:236
+#: src/generator/sudokuboard.cpp:255
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -1094,72 +1094,72 @@ msgstr "Gå in i ett spel"
 msgid "Generate A Puzzle"
 msgstr "Skapa ett spel"
 
-#: src/main.cpp:51
+#: src/main.cpp:49
 #, kde-format
 msgid "KSudoku"
 msgstr "Ksudoku"
 
-#: src/main.cpp:53
+#: src/main.cpp:51
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "Ksudoku - Sudoku med mera"
 
-#: src/main.cpp:55
+#: src/main.cpp:53
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "© 2005-2007 Upphovsmännen till Ksudoku"
 
-#: src/main.cpp:57
+#: src/main.cpp:55
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "Francesco Rossi"
 
-#: src/main.cpp:57
+#: src/main.cpp:55
 #, kde-format
 msgid "KSudoku Author"
 msgstr "Upphovsman till Ksudoku"
 
-#: src/main.cpp:58
+#: src/main.cpp:56
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "Johannes Bergmeier"
 
-#: src/main.cpp:58
+#: src/main.cpp:56
 #, kde-format
 msgid "Maintainer"
 msgstr "Utvecklare"
 
-#: src/main.cpp:59
+#: src/main.cpp:57
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: src/main.cpp:59
+#: src/main.cpp:57
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr "Ny spelgenerator och nytt lösningsprogram"
 
-#: src/main.cpp:60
+#: src/main.cpp:58
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "Mick Kappenburg"
 
-#: src/main.cpp:60
+#: src/main.cpp:58
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "Utskrift och export av 0.4"
 
-#: src/main.cpp:61
+#: src/main.cpp:59
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "Tack till NeHe för OpenGL-handledningar"
 
-#: src/main.cpp:62
+#: src/main.cpp:60
 #, kde-format
 msgid "David Bau"
 msgstr "David Bau"
 
-#: src/main.cpp:62
+#: src/main.cpp:60
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
@@ -1168,7 +1168,7 @@ msgstr ""
 "Algoritmer för ny spelgenerator och nytt lösningsprogram på davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 
-#: src/main.cpp:70
+#: src/main.cpp:68
 #, kde-format
 msgid "Document to open"
 msgstr "Dokument att öppna"
