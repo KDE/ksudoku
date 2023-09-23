@@ -34,33 +34,24 @@ kconfig_add_kcfg_files(ksudoku_SRCS settings.kcfgc )
 add_library(ksudoku_gui STATIC ${ksudoku_SRCS} ${ksudoku_views_SRCS})
 
 target_link_libraries(ksudoku_gui 
-	ksudoku_logic
-	KF${KF_MAJOR_VERSION}::Archive
-	KF${KF_MAJOR_VERSION}::Crash
-	KF${KF_MAJOR_VERSION}::GuiAddons
-	KF${KF_MAJOR_VERSION}::KIOCore
-	KF${KF_MAJOR_VERSION}::JobWidgets
-	KF${KF_MAJOR_VERSION}::WidgetsAddons
-	KF${KF_MAJOR_VERSION}::XmlGui
-        Qt${QT_MAJOR_VERSION}::Core
-        Qt${QT_MAJOR_VERSION}::Gui
-        Qt${QT_MAJOR_VERSION}::PrintSupport
-        Qt${QT_MAJOR_VERSION}::Svg
-	)
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(ksudoku_gui KDEGames6 Qt6::OpenGLWidgets)
-else()
-    target_link_libraries(ksudoku_gui KF5KDEGames)
-endif()
+    ksudoku_logic
+    KDEGames6
+    KF6::Archive
+    KF6::Crash
+    KF6::GuiAddons
+    KF6::KIOCore
+    KF6::JobWidgets
+    KF6::WidgetsAddons
+    KF6::XmlGui
+    Qt6::Core
+    Qt6::Gui
+    Qt6::PrintSupport
+    Qt6::Svg
+)
 
 if(OPENGL_SUPPORT)
-    if (QT_MAJOR_VERSION STREQUAL "6")
-	target_link_libraries(ksudoku_gui
-	    Qt6::OpenGLWidgets
-	)
-    else()
-	target_link_libraries(ksudoku_gui 
-	    ${OPENGL_LIBRARIES}
-        )
-    endif()
+    target_link_libraries(ksudoku_gui
+        Qt6::OpenGLWidgets
+        ${OPENGL_LIBRARIES}
+    )
 endif(OPENGL_SUPPORT)

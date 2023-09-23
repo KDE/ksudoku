@@ -25,7 +25,6 @@
 #include <QPixmap>
 #include <QSvgRenderer>
 
-#include <kdegames_version.h>
 #include <KgTheme>
 #include <KgThemeProvider>
 
@@ -45,9 +44,6 @@ Renderer::Renderer() {
 	m_mathdokuStyle = false;
 	
 	m_themeProvider->discoverThemes(
-#if KDEGAMES_VERSION < QT_VERSION_CHECK(7, 4, 0)
-	    "appdata",
-#endif
 	    QStringLiteral("themes"), // theme file location
 	    QStringLiteral("default") // default theme file name
 	);
