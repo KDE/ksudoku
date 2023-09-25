@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-12 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2012-06-30 16:43+0300\n"
 "Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -1027,72 +1027,72 @@ msgstr "Ievadīt mīklā"
 msgid "Generate A Puzzle"
 msgstr "Ģenerēt mīklu"
 
-#: src/main.cpp:49
+#: src/main.cpp:45
 #, kde-format
 msgid "KSudoku"
 msgstr "KSudoku"
 
-#: src/main.cpp:51
+#: src/main.cpp:47
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "KSudoku — Sudoku un vairāk"
 
-#: src/main.cpp:53
+#: src/main.cpp:49
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "(c) 2005-2007 The KSudoku autori"
 
-#: src/main.cpp:55
+#: src/main.cpp:51
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "Francesco Rossi"
 
-#: src/main.cpp:55
+#: src/main.cpp:51
 #, kde-format
 msgid "KSudoku Author"
 msgstr "KSudoku autors"
 
-#: src/main.cpp:56
+#: src/main.cpp:52
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "Johannes Bergmeier"
 
-#: src/main.cpp:56
+#: src/main.cpp:52
 #, kde-format
 msgid "Maintainer"
 msgstr "Uzturētājs"
 
-#: src/main.cpp:57
+#: src/main.cpp:53
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: src/main.cpp:57
+#: src/main.cpp:53
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr "Jaunu mīklu ģenerators un risinātājs"
 
-#: src/main.cpp:58
+#: src/main.cpp:54
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "Mick Kappenburg"
 
-#: src/main.cpp:58
+#: src/main.cpp:54
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "Drukāšana un eksportēšana no 0.4"
 
-#: src/main.cpp:59
+#: src/main.cpp:55
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "Paldies NeHe par OpenGL konsultācijām"
 
-#: src/main.cpp:60
+#: src/main.cpp:56
 #, kde-format
 msgid "David Bau"
 msgstr "David Bau"
 
-#: src/main.cpp:60
+#: src/main.cpp:56
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
@@ -1101,7 +1101,7 @@ msgstr ""
 "Algoritmi jaunu mīklu  ģeneratoram un risinātājam vietnē: davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 
-#: src/main.cpp:68
+#: src/main.cpp:64
 #, kde-format
 msgid "Document to open"
 msgstr "Atveramais dokuments"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-12 00:43+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2009-03-20 11:36+0530\n"
 "Last-Translator: Ravishankar Shrivastava <raviratlami@aol.in>\n"
 "Language-Team: Hindi <kde-i18n-doc@lists.kde.org>\n"
@@ -988,79 +988,79 @@ msgstr "पहेली खेलव"
 msgid "Generate A Puzzle"
 msgstr "पहेली खेलव"
 
-#: src/main.cpp:49
+#: src/main.cpp:45
 #, kde-format
 msgid "KSudoku"
 msgstr "के-सुडोकु"
 
-#: src/main.cpp:51
+#: src/main.cpp:47
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "केसुडोकु - सुडोकु अउ अन्य"
 
-#: src/main.cpp:53
+#: src/main.cpp:49
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "(c) 2005-2007 केसुडोकु लेखक"
 
-#: src/main.cpp:55
+#: src/main.cpp:51
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "फ्रांकेस्को रोसी"
 
-#: src/main.cpp:55
+#: src/main.cpp:51
 #, kde-format
 msgid "KSudoku Author"
 msgstr "केसुडोकु के लेखक"
 
-#: src/main.cpp:56
+#: src/main.cpp:52
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "जोहान्स बग्रमेयर"
 
-#: src/main.cpp:56
+#: src/main.cpp:52
 #, kde-format
 msgid "Maintainer"
 msgstr "मेंटेनर"
 
-#: src/main.cpp:57
+#: src/main.cpp:53
 #, kde-format
 msgid "Ian Wadham"
 msgstr ""
 
-#: src/main.cpp:57
+#: src/main.cpp:53
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr ""
 
-#: src/main.cpp:58
+#: src/main.cpp:54
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "माइक कापेनबर्ग"
 
-#: src/main.cpp:58
+#: src/main.cpp:54
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "छपाई अउ 0.4 के निर्यात"
 
-#: src/main.cpp:59
+#: src/main.cpp:55
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "ओपनजीएल सिक्छन पाठ बर नेहे ल धन्यवाद"
 
-#: src/main.cpp:60
+#: src/main.cpp:56
 #, kde-format
 msgid "David Bau"
 msgstr ""
 
-#: src/main.cpp:60
+#: src/main.cpp:56
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 msgstr ""
 
-#: src/main.cpp:68
+#: src/main.cpp:64
 #, kde-format
 msgid "Document to open"
 msgstr "कागद जऊन ल खोलना हे"
