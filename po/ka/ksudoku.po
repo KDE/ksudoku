@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2023-01-22 06:48+0100\n"
+"PO-Revision-Date: 2023-09-25 11:54+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -31,12 +31,12 @@ msgstr "Temuri.doghonadze@gmail.com"
 #: src/generator/sudokuboard.cpp:123
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
-msgstr ""
+msgstr "მოზაიკის გენერაცია ჩავარდა 200 ცდის შემდეგ. ვცადო კიდევ?"
 
 #: src/generator/sudokuboard.cpp:125
 #, kde-format
 msgid "Mathdoku or Killer Sudoku Puzzle"
-msgstr ""
+msgstr "მათდოკუ ან მკვლელი სუდოკუს მოზაიკა"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:229
 #, kde-format
@@ -130,7 +130,7 @@ msgstr ""
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:59
 #, kde-format
 msgid "Highlight in red any cells whose values break the Sudoku rules."
-msgstr ""
+msgstr "წითელი გამოკვეთები ნებისმიერ უჯრედში სუდოკუს წესებს არღვევს."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
 #: src/gui/configgame.ui:62
@@ -155,13 +155,13 @@ msgstr "Show highlights in 3-D puzzles"
 #: src/gui/configgame.ui:137
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
-msgstr ""
+msgstr "მათდოკუს მოზაიკის ზომა (3-9)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/configgame.ui:167
 #, kde-format
 msgid "Settings for 3-D Puzzles Only"
-msgstr ""
+msgstr "პარამეტრები მხოლოდ 3D მოზაიკებისთვის"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
@@ -268,15 +268,15 @@ msgstr ""
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "გილოცავთ! თქვენ ეს 1 წამში შესძელით. დახმარებით."
+msgstr[1] "გილოცავთ! თქვენ ეს %1 წამში შესძელით. დახმარებით."
 
 #: src/gui/ksudoku.cpp:89
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "გილოცავთ! თქვენ ეს 1 წუთში შესძელით. დახმარებით."
+msgstr[1] "გილოცავთ! თქვენ ეს %1 წუთში შესძელით. დახმარებით."
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
@@ -296,7 +296,7 @@ msgstr[1] "%1 წამი"
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With some tricks."
-msgstr ""
+msgstr "გლოცავთ! ეს %1 %2 ში შესძელით. დახმარებით."
 
 #: src/gui/ksudoku.cpp:94
 #, kde-format
@@ -316,7 +316,7 @@ msgstr[1] "გილოცავთ! თქვენ ეს %1 წუთში �
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2."
-msgstr ""
+msgstr "გლოცავთ! ეს %1 %2 ში შესძელით."
 
 #: src/gui/ksudoku.cpp:178
 #, kde-format
@@ -465,7 +465,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:403
 #, kde-format
 msgid "The puzzle you entered contains some errors."
-msgstr ""
+msgstr "თქვენი შეყვანილი მოზაიკა შეცდომებს შეიცავს."
 
 #: src/gui/ksudoku.cpp:416
 #, kde-format
@@ -494,7 +494,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:432
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
-msgstr ""
+msgstr "გნებავთ, მოზაიკა ახლავე ითამაშოთ?"
 
 #: src/gui/ksudoku.cpp:432
 #, kde-format
@@ -600,7 +600,7 @@ msgstr "თამაშის ჩატვირთვის შეცდომ�
 #: src/gui/ksudoku.cpp:654
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
-msgstr ""
+msgstr "მართლა გნებავთ ახალის დასაწყებად ამ თამაშის დასრულება?"
 
 #: src/gui/ksudoku.cpp:655
 #, kde-format
@@ -686,7 +686,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr ""
+msgstr "ჩართვა"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:41
@@ -715,7 +715,7 @@ msgstr "გალია მკვლელი სუდოკუ"
 #: src/gui/ksudokugame.cpp:422
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
-msgstr ""
+msgstr "უჯრედი, რომელიც აირჩიეთ, უკვე გამოიყენება გალიაში."
 
 #: src/gui/ksudokugame.cpp:424 src/gui/ksudokugame.cpp:454
 #: src/gui/ksudokugame.cpp:479 src/gui/ksudokugame.cpp:486
@@ -780,7 +780,7 @@ msgstr ""
 #: src/gui/ksudokugame.cpp:569
 #, kde-format
 msgid "The Delete action finds that there are no cages to delete."
-msgstr ""
+msgstr "წაშლის ქმედებამ აღმოაჩინა, რომ წასაშლელი გალიები არ არსებობს."
 
 #. i18n: ectx: Menu (game)
 #: src/gui/ksudokuui.rc:10
@@ -815,7 +815,7 @@ msgstr "ქმედებების პანელი"
 #: src/gui/puzzleprinter.cpp:62
 #, kde-format
 msgid "Sorry, cannot print three-dimensional puzzles."
-msgstr ""
+msgstr "სამგანზომილებიან მოზაიკებს ვერ დავბეჭდავთ."
 
 #: src/gui/puzzleprinter.cpp:92
 #, kde-format
@@ -939,7 +939,7 @@ msgstr ""
 #: src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to generate a puzzle of the chosen variant; please try another."
-msgstr ""
+msgstr "არჩეული ვარიანტის მოზაიკის შექმნა შეუძლებელია. სხვა სცადეთ."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
 #: src/gui/welcomescreen.ui:17
@@ -1023,7 +1023,7 @@ msgstr "0.4-ის დაბეჭდვა და გატანა"
 #: src/main.cpp:55
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
-msgstr ""
+msgstr "მადლობა NeHe-ს OpenGL-ის გაკვეთილებისთვის"
 
 #: src/main.cpp:56
 #, kde-format
