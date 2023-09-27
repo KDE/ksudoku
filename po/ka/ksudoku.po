@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2023-09-25 11:54+0200\n"
+"PO-Revision-Date: 2023-09-26 15:46+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -103,13 +103,13 @@ msgstr ""
 #: src/gui/configgame.ui:20
 #, kde-format
 msgid "When printing, try to fit more than one puzzle on a page"
-msgstr ""
+msgstr "დაბეჭდვისას ცდა, ერთ გვერდზე ერთ მოზაიკაზე მეტი დაეტიოს"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:43
 #, kde-format
 msgid "Highlight the row, column and block that contain the selected cell"
-msgstr ""
+msgstr "გამოიკვეთება მწკრივი, სვეტი და ბლოკი, რომელიც მონიშნულ უჯრედს შეიცავს"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:46
@@ -118,12 +118,15 @@ msgid ""
 "Highlight the row, column and block that contain the selected cell. Blocks "
 "may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
 msgstr ""
+"გამოიკვეთება მწკრივი, სვეტი და ბლოკი, რომელიც მონიშნულ უჯრედს შეიცავს. "
+"ბლოკები შეიძლება ოთხკუთხედი ან უფორმო იყოს (როგორც XSudoku ან Jigsaw-ის "
+"ტიპის მოზაიკებშია)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:49
 #, kde-format
 msgid "Show highlights in 2-D puzzles"
-msgstr ""
+msgstr "გამოკვეთა 2D მოზაიკებში"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -143,7 +146,7 @@ msgstr "შეცდომების ჩვენება"
 #: src/gui/configgame.ui:69 src/gui/configgame.ui:72
 #, kde-format
 msgid "Highlight the planes (blocks) that contain the selected cell."
-msgstr ""
+msgstr "ზედაპირების (ბლოკების)  გამოკვეთა, რომლებიც მონიშნულ უჯრედს შეიცავენ."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
 #: src/gui/configgame.ui:75
@@ -490,6 +493,8 @@ msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
+"თქვენს შეყვანილ მოზაიკას ერთზე მეტი ამოხსნა გააჩნია. დარწმუნდით, რომ მოზაიკა "
+"სრულად და სწორად შეიყვანეთ."
 
 #: src/gui/ksudoku.cpp:432
 #, kde-format
@@ -549,7 +554,7 @@ msgstr "სიმეტრია"
 #: src/gui/ksudoku.cpp:526
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
-msgstr ""
+msgstr "მინიშნებების განლაგების სიმეტრია მოზაიკის გაშვებისას"
 
 #: src/gui/ksudoku.cpp:528
 #, kde-format
@@ -681,6 +686,9 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"ეს ჩართავს ყველა ფანჯარას, რომელიც \"აღარ მაჩვენოთი\" გამორთეთ.\n"
+"\n"
+"გნებავთ, გააგრძელოთ?"
 
 #: src/gui/ksudoku.cpp:866
 #, kde-format
@@ -706,6 +714,8 @@ msgid ""
 "In Killer Sudoku, the operator is always + or none and KSudoku automatically "
 "sets the correct choice."
 msgstr ""
+"მკვლელ სუდოკუში ოპერატორი + ან არაფერია და KSudoku სწორ არჩევანს ავტომატურად "
+"დააყენებს."
 
 #: src/gui/ksudokugame.cpp:377
 #, kde-format
@@ -730,6 +740,8 @@ msgid ""
 "The cell you have selected is not next to any cell in the cage you are "
 "creating."
 msgstr ""
+"უჯრედი, რომელიც აირჩიეთ, გალიაში, რომლის შექმნასაც აპირებთ, არც ერთი უჯრედის "
+"ტექსტს არ წარმოადგენს."
 
 #: src/gui/ksudokugame.cpp:477
 #, kde-format
@@ -744,6 +756,8 @@ msgid ""
 "The cage you wish to complete has no value yet. Please key in a number with "
 "one or more digits."
 msgstr ""
+"გალიას, რომლის დასრულებასაც აპირებთ, ჯერ მნიშვნელობები არ გააჩნია. შეიყვანეთ "
+"ერთი ან მეტი ციფრი."
 
 #: src/gui/ksudokugame.cpp:492
 #, kde-format
@@ -776,6 +790,8 @@ msgid ""
 "The cell you have selected is not in any cage, so the Delete action will not "
 "delete anything."
 msgstr ""
+"უჯრედები, რომლებიც აირჩიეთ, არც ერთ გალიაში არაა, ასე რომ წაშლის ქმედება "
+"არაფერს წაშლის."
 
 #: src/gui/ksudokugame.cpp:569
 #, kde-format
@@ -929,12 +945,12 @@ msgstr "პაზლის გაშვების შეცდომა"
 #, kde-format
 msgid ""
 "Unable to create an empty puzzle of the chosen variant; please try another."
-msgstr ""
+msgstr "არჩეული ვარიანტის ცარიელი მოზაიკის შექმნა შეუძლებელია. სხვა სცადეთ."
 
 #: src/gui/welcomescreen.cpp:169
 #, kde-format
 msgid "Unable to start a puzzle of the chosen variant; please try another."
-msgstr ""
+msgstr "არჩეული ვარიანტის მოზაიკის გაშვება შეუძლებელია. სხვა სცადეთ."
 
 #: src/gui/welcomescreen.cpp:185
 #, kde-format
@@ -1036,6 +1052,8 @@ msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 msgstr ""
+"ალგორითმები ახალი მოზაიკის გენერატორისა და ამომხსნელისთვის შეგიძლიათ იპოვოთ "
+"ბმულზე davidbau.com/archives/2006/09/04/sudoku_generator.html"
 
 #: src/main.cpp:64
 #, kde-format
