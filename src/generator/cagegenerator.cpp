@@ -54,7 +54,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
     QList<int> saveUnusedCells;
     QList<int> saveNeighbourFlags;
 #ifdef MATHDOKU_LOG
-    QVector<char> usedCells;
+    QList<char> usedCells;
 #endif
 
     mMaxCombos = maxCombos;
@@ -122,7 +122,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
     int maxFailures = 20;
 
     while (mUnusedCells.count() > 0) {
-	QVector<int> cage;
+	QList<int>   cage;
 	CageOperator cageOperator;
 	int          cageValue;
 	int          chosenSize;
@@ -325,9 +325,9 @@ int CageGenerator::checkPuzzle (SKGraph * graph, BoardContents & solution,
     return result;
 }
 
-QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
+QList<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
 {
-    QVector<int> cage;
+    QList<int>   cage;
     QList<int>   unusedNeighbours;
     const int    direction[4] = {N, E, S, W};
     const int    increment[4] = {-1, +mOrder, +1, -mOrder};
@@ -391,14 +391,14 @@ QVector<int> CageGenerator::makeOneCage (int seedCell, int requiredSize)
     return cage;
 }
 
-void CageGenerator::setCageTarget (const QVector<int> &cage,
+void CageGenerator::setCageTarget (const QList<int> &cage,
                                    CageOperator & cageOperator,
                                    int & cageValue)
 {
     CageOperator op;
     int value = 0;
     int size  = cage.size();
-    QVector<int> digits;
+    QList<int> digits;
     digits.fill (0, size);
 #ifdef MATHDOKU_LOG
     qCDebug(KSudokuLog) << "CAGE SIZE" << size << "CONTENTS" << cage;
@@ -486,7 +486,7 @@ void CageGenerator::setCageTarget (const QVector<int> &cage,
     cageValue = value;
 }
 
-bool CageGenerator::cageIsOK (const QVector<int> &cage,
+bool CageGenerator::cageIsOK (const QList<int> &cage,
                               CageOperator cageOperator, int cageValue)
 {
     // TODO - Is it worth checking for duplicate digits in Mathdoku, before
@@ -499,7 +499,7 @@ bool CageGenerator::cageIsOK (const QVector<int> &cage,
 
     // In Killer Sudoku, the cage's solution must not contain duplicate digits.
     if (mKillerSudoku) {
-	QVector<bool> usedDigits;
+	QList<bool> usedDigits;
 	usedDigits.fill (false, mOrder + 1);	// Digits' range is 1->order.
 	for (int n = 0; n < nDigits; n++) {
 	    int digit = mSolution.at (cage.at(n));
@@ -540,7 +540,7 @@ bool CageGenerator::cageIsOK (const QVector<int> &cage,
     return isOK;
 }
 
-void CageGenerator::setAllPossibilities (const QVector<int> &cage, int nDigits,
+void CageGenerator::setAllPossibilities (const QList<int> &cage, int nDigits,
                                          CageOperator cageOperator,
                                          int cageValue)
 {
@@ -559,7 +559,7 @@ void CageGenerator::setAllPossibilities (const QVector<int> &cage, int nDigits,
     }
 }
 
-void CageGenerator::setPossibilities (const QVector<int> &cage,
+void CageGenerator::setPossibilities (const QList<int> &cage,
                                       CageOperator cageOperator, int cageValue)
 {
     // Generate sets of possible solution-values from the range 1 to mOrder.
@@ -593,7 +593,7 @@ void CageGenerator::setPossibilities (const QVector<int> &cage,
 }
 
 void CageGenerator::setPossibleAddsOrMultiplies
-        (const QVector<int> &cage, CageOperator cageOperator, int requiredValue)
+        (const QList<int> &cage, CageOperator cageOperator, int requiredValue)
 {
     int digits[MaxMathOrder];	// Maximum order of maths-based puzzles == 9.
     int maxDigit = mOrder;
@@ -694,10 +694,10 @@ bool CageGenerator::hasDuplicates (int nDigits, int digits[])
     return false;
 }
 
-bool CageGenerator::isSelfConsistent (const QVector<int> &cage,
+bool CageGenerator::isSelfConsistent (const QList<int> &cage,
                                       int nDigits, int digits[])
 {
-    QVector<int> usedGroups;
+    QList<int> usedGroups;
     int mask = 0;
     int cell;
     usedGroups.fill (0, mGraph->cliqueCount());

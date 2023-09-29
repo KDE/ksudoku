@@ -129,7 +129,7 @@ void GameActions::init() {
 }
 
 void GameActions::associateWidget(QWidget* widget) {
-	QVector<QAction *>::iterator it;
+	QList<QAction *>::iterator it;
 	for(it = m_actions.begin(); it != m_actions.end(); ++it) {
 		widget->addAction(*it);
 	}

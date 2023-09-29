@@ -23,8 +23,8 @@
 
 #include <KImageCache>
 
+#include <QList>
 #include <QString>
-#include <QVector>
 
 class KgTheme;
 class KgThemeProvider;
@@ -121,11 +121,11 @@ private:
 	bool m_hasSpecial : 1;
 	bool m_hasSpecialHighlight : 1;
 */
-	QVector<QString> m_borderNames;
-	QVector<QString> m_borderTypes;
-	QVector<QString> m_specialNames;
-	QVector<QString> m_special3dNames;
-	QVector<QString> m_markerNames;
+	QList<QString> m_borderNames;
+	QList<QString> m_borderTypes;
+	QList<QString> m_specialNames;
+	QList<QString> m_special3dNames;
+	QList<QString> m_markerNames;
 	KgThemeProvider *m_themeProvider;
 	QSvgRenderer* m_renderer;
 	KImageCache* m_cache;

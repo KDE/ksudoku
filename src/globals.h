@@ -19,7 +19,7 @@
 #ifndef GLOBALS_H
 #define GLOBALS_H
 
-#include <QVector>
+#include <QList>
 
 // Values used in vacant and unusable cells (e.g. for Samurai puzzles).
 #define VACANT 0
@@ -36,7 +36,7 @@ enum Symmetry   {DIAGONAL_1, CENTRAL, LEFT_RIGHT, SPIRAL, FOURWAY,
 
 enum CageOperator {NoOperator, Divide, Subtract, Multiply, Add};
 
-using BoardContents = QVector<int>;
+using BoardContents = QList<int>;
 
 // The maximum digit that can be used in a Mathdoku or Killer Sudoku puzzle.
 const int MaxMathOrder = 9;

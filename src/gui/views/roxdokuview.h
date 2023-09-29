@@ -111,7 +111,7 @@ private:
 	bool         m_isDragging;	
 	int          m_selection;
 	int          m_lastSelection;
-	QVector<int> m_highlights;
+	QList<int>   m_highlights;
 
 	float        m_dist;
 	float        m_wheelmove;

@@ -83,7 +83,7 @@ public:
 	QList<HistoryEvent> history;
 	int historyPos;
 
-	QVector<int>  m_cage;
+	QList<int>    m_cage;
 	int           m_cageValue;
 	CageOperator  m_cageOperator;
 	int           m_currentCageSaved;
@@ -96,7 +96,7 @@ void Game::Private::undo() {
 	HistoryEvent event(history[--historyPos]);
 	event.undoOn(state);
 	
-	const QVector<int>& indices = event.cellIndices();
+	const QList<int>& indices = event.cellIndices();
 	if(indices.count() > 10) {
 		Q_EMIT fullChange();
 	} else {
@@ -112,7 +112,7 @@ void Game::Private::redo() {
 	HistoryEvent event(history[historyPos++]);
 	event.redoOn(state);
 
-	const QVector<int>& indices = event.cellIndices();
+	const QList<int>& indices = event.cellIndices();
 	if(indices.count() > 10) {
 		Q_EMIT fullChange();
 	} else {

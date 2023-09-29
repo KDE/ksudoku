@@ -91,7 +91,7 @@ bool Renderer::loadTheme(const KgTheme* theme) {
 }
 
 void Renderer::fillNameHashes() {
-    m_borderNames = QVector<QString>();
+    m_borderNames = QList<QString>();
     m_borderNames << QStringLiteral("");
     m_borderNames << QStringLiteral("1");
     m_borderNames << QStringLiteral("2");

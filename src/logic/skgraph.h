@@ -26,7 +26,6 @@
 
 #include <QList>
 #include <QString>
-#include <QVector>
 
 #include "ksudoku_types.h"
 #include "globals.h"
@@ -142,7 +141,7 @@ public:
 	inline int cliqueCount()   const { return m_cliques.count(); }
 
 	// Get a list of the cells in a group (clique).
-	QVector<int> clique(int i) const { return m_cliques[i]; }
+	QList<int> clique(int i) const { return m_cliques[i]; }
 
 	// Get a list of the groups (cliques) to which a cell belongs.
 	const QList<int> cliqueList(int cell) const;
@@ -168,10 +167,10 @@ public:
 				{ return m_structures.at(n*3 + 2); }
 
 	// Add a special or irregularly-shaped group to the list of structures.
-	void addCliqueStructure(const QVector<int> &data);
+	void addCliqueStructure(const QList<int> &data);
 
 	// Add a cage (applicable to Mathdoku or Killer Sudoku puzzles only).
-	void addCage(const QVector<int> &cage, CageOperator cageOperator,
+	void addCage(const QList<int> &cage, CageOperator cageOperator,
                      int cageValue);
 
 	// Remove a cage (when keying in a Mathdoku or Killer Sudoku puzzle).
@@ -181,7 +180,7 @@ public:
 	inline int cageCount() const { return m_cages.count(); }
 
 	// Get a list of the cells in a cage.
-	QVector<int> cage(int i) const { return m_cages.at(i)->cage; }
+	QList<int> cage(int i) const { return m_cages.at(i)->cage; }
 
 	// Get the mathematical operator of a cage (+ - * or /).
 	CageOperator cageOperator(int i) const
@@ -219,22 +218,22 @@ protected:
 
 	// High-level structures, 3 values/structure: structure type (see enum),
 	// structure position and whether the structure includes square blocks.
-	QVector<int>        m_structures;
+	QList<int>          m_structures;
 
 	// Low-level structures (rows, columns and blocks) also known as groups.
-	QVector<QVector<int> > m_cliques;
+	QList<QList<int> >  m_cliques;
 
-	QVector<int>        m_cellIndex;	// Index of cells to cliques.
-	QVector<int>        m_cellCliques;	// Second level of the index.
+	QList<int>          m_cellIndex;	// Index of cells to cliques.
+	QList<int>          m_cellCliques;	// Second level of the index.
 
 	// Cages are for Mathdoku and Killer Sudoku puzzles only, else empty.
 	struct Cage {
-	    QVector<int>    cage;		// The cells in the cage.
+	    QList<int>      cage;		// The cells in the cage.
 	    CageOperator    cageOperator;	// The mathematical operator.
 	    int             cageValue;		// The value to be calculated.
 	    int             cageTopLeft;	// The top-left (display) cell.
 	};
-	QVector<Cage *>     m_cages;
+	QList<Cage *>       m_cages;
 
 	QString             m_name;
 	ksudoku::GameType   m_type;
@@ -243,7 +242,7 @@ protected:
 	BoardContents       m_emptyBoard;
 
 private:
-	void addClique(const QVector<int> &data);
+	void addClique(const QList<int> &data);
 
 	// For efficiency, make an index from cells to the groups (cliques)
 	// where they belong.

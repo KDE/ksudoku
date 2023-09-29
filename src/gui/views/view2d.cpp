@@ -50,7 +50,7 @@ public:
 	void setType(SpecialType type);
 	void setCageLabel (const QString &cageLabel);
 	
-	void setValues(const QVector<ColoredValue> &values);
+	void setValues(const QList<ColoredValue> &values);
 protected:
 	void hoverEnterEvent(QGraphicsSceneHoverEvent* event) override;
 	void mousePressEvent(QGraphicsSceneMouseEvent* event) override;
@@ -60,7 +60,7 @@ private:
 	View2DScene* m_scene;
 	QPoint m_pos;
 	SpecialType m_type;
-	QVector<ColoredValue> m_values;
+	QList<ColoredValue> m_values;
 	QString m_cageLabel;
 	int m_id;
 	int m_size;
@@ -115,7 +115,7 @@ void CellGraphicsItem::setType(SpecialType type) {
 	updatePixmap();
 }
 
-void CellGraphicsItem::setValues(const QVector<ColoredValue> &values) {
+void CellGraphicsItem::setValues(const QList<ColoredValue> &values) {
 	m_values = values;
 	
 	updatePixmap();
@@ -168,7 +168,7 @@ struct GroupGraphicItemSegment {
 
 class GroupGraphicsItem : public QGraphicsItemGroup {
 public:
-	GroupGraphicsItem(const QVector<QPoint> &cells, bool isCage = false);
+	GroupGraphicsItem(const QList<QPoint> &cells, bool isCage = false);
 	~GroupGraphicsItem() override;
 	void hideBlockBorder (bool visible);
 public:
@@ -182,14 +182,14 @@ private:
 	void createSegment(const QPoint& pos, int shape);
 private:
 	GroupTypes m_type;
-	QVector<QPoint> m_cells;
-	QVector<GroupGraphicItemSegment> m_segments;
+	QList<QPoint> m_cells;
+	QList<GroupGraphicItemSegment> m_segments;
 	bool m_isCage;	// Is the group a cage, as in Killer Sudoku or Mathdoku?
 	bool m_borderVisible;
 };
 
 
-GroupGraphicsItem::GroupGraphicsItem(const QVector<QPoint> &cells, bool isCage) {
+GroupGraphicsItem::GroupGraphicsItem(const QList<QPoint> &cells, bool isCage) {
 	m_cells = cells;
 	m_isCage = isCage;
 	m_borderVisible = true;
@@ -209,7 +209,7 @@ GroupGraphicsItem::GroupGraphicsItem(const QVector<QPoint> &cells, bool isCage) 
 }
 
 GroupGraphicsItem::~GroupGraphicsItem() {
-	QVector<GroupGraphicItemSegment>::iterator segment;
+	QList<GroupGraphicItemSegment>::iterator segment;
 	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
 		if(segment->highlighted) delete segment->highlighted;
 		if(segment->standard) delete segment->standard;
@@ -328,7 +328,7 @@ int GroupGraphicsItem::border(int tl, int tr, int bl, int br, int given) {
 void GroupGraphicsItem::setHighlight(bool highlight) {
     if(((m_type & GroupHighlight) == GroupHighlight) == highlight) return;
 
-    QVector<GroupGraphicItemSegment>::iterator segment;
+    QList<GroupGraphicItemSegment>::iterator segment;
     for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
 	if (segment->highlighted) {
 	    segment->highlighted->setVisible(highlight);
@@ -362,7 +362,7 @@ void GroupGraphicsItem::resize(int gridSize, bool highlight) {
 	GroupTypes standard = m_type & GroupUnhighlightedMask;
 	GroupTypes highlighted = m_type | GroupHighlight;
 	
-	QVector<GroupGraphicItemSegment>::iterator segment;
+	QList<GroupGraphicItemSegment>::iterator segment;
 	for(segment = m_segments.begin(); segment != m_segments.end(); ++segment) {
 		QPointF pos = segment->pos*gridSize;
 		// Has standard pixmap item?
@@ -394,13 +394,13 @@ View2DScene::~View2DScene() {
 	delete m_cursor; // needs to be deleted before cells
 
 	// groups need to be deleted before m_groupLayer
-	QVector<GroupGraphicsItem*>::iterator group;	
+	QList<GroupGraphicsItem*>::iterator group;
 	for(group = m_groups.begin(); group != m_groups.end(); ++group) {
 		delete *group;
 	}
 	
 	// cells need to be deleted before m_cellLayer
-	QVector<CellGraphicsItem*>::iterator cell;
+	QList<CellGraphicsItem*>::iterator cell;
 	for(cell = m_cells.begin(); cell != m_cells.end(); ++cell) {
 		delete *cell;
 	}
@@ -447,9 +447,9 @@ void View2DScene::init(const Game& game) {
 		else
 			m_cells[i]->setType(SpecialCell);
 		if(game.value(i))
-			m_cells[i]->setValues(QVector<ColoredValue>() << ColoredValue(game.value(i),0));
+			m_cells[i]->setValues(QList<ColoredValue>() << ColoredValue(game.value(i),0));
 		else
-			m_cells[i]->setValues(QVector<ColoredValue>());
+			m_cells[i]->setValues(QList<ColoredValue>());
 		if(m_cursorPos < 0) m_cursorPos = i;
 	}
 
@@ -459,8 +459,8 @@ void View2DScene::init(const Game& game) {
 	bool hasBothBlocksAndCages = (g->specificType() == KillerSudoku);
 	for(int i = 0; i < g->cliqueCount(); ++i) {
 		// Set the shape of each group.
-		QVector<int> idx = g->clique(i);
-		QVector<QPoint> pts = QVector<QPoint>(idx.size());
+		QList<int> idx = g->clique(i);
+		QList<QPoint> pts = QList<QPoint>(idx.size());
 		for(int j = 0; j < idx.size(); ++j) {
 		    pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
 		}
@@ -496,8 +496,8 @@ void View2DScene::initCageGroup (int cageNum, bool drawLabel) {
 	// Set the graphical shape and look of a Mathdoku or KillerSudoku cage.
 	SKGraph* g = m_game.puzzle()->graph();
 	int offset = g->cliqueCount();
-	QVector<int> idx = g->cage(cageNum);
-	QVector<QPoint> pts = QVector<QPoint>(idx.size());
+	QList<int> idx = g->cage(cageNum);
+	QList<QPoint> pts = QList<QPoint>(idx.size());
 	for(int j = 0; j < idx.size(); ++j) {
 	    pts[j] = QPoint(g->cellPosX(idx[j]), g->cellPosY(idx[j]));
 	}
@@ -596,7 +596,7 @@ void View2DScene::update(int cell) {
 		if(m_cells[cell] == nullptr) return;
 		CellInfo cellInfo = m_game.cellInfo(cell);
 
-		QVector<ColoredValue> values;
+		QList<ColoredValue> values;
 		switch(cellInfo.state()) {
 			case GivenValue:
 				// TODO - Implement allCellsLookSame preference.

@@ -64,10 +64,10 @@ private:
 	void drawCages  (const ksudoku::Puzzle * puzzle,
 			 const SKGraph * graph, bool killerStyle);
 	void drawKillerSudokuCages (const SKGraph* graph,
-                                    const QVector<int> & edges);
-	void markEdges  (const QVector<int> & cells,
+                                    const QList<int> & edges);
+	void markEdges  (const QList<int> & cells,
 			 const ksudoku::Puzzle * puzzle, const SKGraph * graph,
-			 QVector<int> & edges);
+			 QList<int> & edges);
 	void drawCell   (int posX, int posY, int edge);
 	void drawValues (const ksudoku::Game & game, const SKGraph * graph);
 	void drawCageLabel (const SKGraph* graph, int n, bool killerStyle);

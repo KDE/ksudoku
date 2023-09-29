@@ -67,7 +67,7 @@ void DLXSolver::printDLX (bool forced)
     int nRows   = 0;
     int nNodes  = 0;
     int lastCol = -1;
-    QVector<DLXNode *> rowsRemaining;
+    QList<DLXNode *> rowsRemaining;
     rowsRemaining.fill (0, mRows.count());
     if (verbose) fprintf (stderr, "\n");
     while (colDLX != mCorner) {
@@ -145,7 +145,7 @@ void DLXSolver::recordSolution (const int solutionNum, QList<DLXNode *> & soluti
                          << "cageSize" << cageSize << "combo" << comboNum
 			 << "values at" << comboValues;
 #endif
-		const QVector<int> cage = mGraph->cage (nCage);
+		const QList<int> cage = mGraph->cage (nCage);
 		for (const int cell : cage) {
 #ifdef DLX_LOG
 		    fprintf (stderr, "%d:%d ", cell,
@@ -301,7 +301,7 @@ int DLXSolver::solveSudoku (SKGraph * graph, const BoardContents & boardValues,
                 qCDebug(KSudokuLog) << "EXCLUDE CONSTRAINT" << (boardArea+group*order+val);
 #endif
                 mColumns[boardArea + group*order + val] = nullptr;
-                const QVector<int> clique = graph->clique (group);
+                const QList<int> clique = graph->clique (group);
                 for (const int cell : clique) {
                     mRows[cell*order + val] = nullptr;	// Drop row.
                 }
@@ -424,7 +424,7 @@ int DLXSolver::solveMathdoku (SKGraph * graph, QList<int> * solutionMoves,
 	    qCDebug(KSudokuLog) << "Add cage-node: row" << rowNumDLX << "cage" << n
                      << graph->cage (n);
 #endif
-		const QVector<int> cage = graph->cage (n);
+		const QList<int> cage = graph->cage (n);
 		for (const int cell : cage ) {
 		int possVal = possibilities->at (index);
 		// qCDebug(KSudokuLog) << "    Cell" << cell << "possVal" << possVal;

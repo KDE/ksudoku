@@ -47,7 +47,7 @@ public:
 	/**
 	 * Set up the graphics for drawing a Mathdoku or Killer Sudoku cage.
 	 * The list of cages goes at the end of the list of rows, columns and
-	 * blocks, in the vector QVector<GroupGraphicsItem*> m_groups. Each
+	 * blocks, in the vector QList<GroupGraphicsItem*> m_groups. Each
 	 * GroupGraphicsItem is a graphical structure having cells, an outline
 	 * or boundary and highlighting. In addition, cages have a cage-label
 	 * containing the cage's value and operator.
@@ -91,8 +91,8 @@ private:
 	QGraphicsPixmapItem* m_background;
 	QGraphicsItem* m_groupLayer;
 	QGraphicsItem* m_cellLayer;
-	QVector<GroupGraphicsItem*> m_groups;
-	QVector<CellGraphicsItem*> m_cells;
+	QList<GroupGraphicsItem*> m_groups;
+	QList<CellGraphicsItem*> m_cells;
 	QGraphicsPixmapItem* m_cursor;
 	Game m_game;
 

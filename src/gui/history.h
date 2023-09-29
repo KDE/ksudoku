@@ -21,7 +21,7 @@
 #define _KSUDOKUHISTORY_H_
 
 #include <QBitArray>
-#include <QVector>
+#include <QList>
 
 #include "globals.h"
 #include "ksudoku_types.h"
@@ -171,7 +171,7 @@ public:
 	}
 	
 private:
-	QVector<QBitArray> m_markers;
+	QList<QBitArray> m_markers;
 	BoardContents m_values;
 	QBitArray m_given;
 };
@@ -187,17 +187,17 @@ class HistoryEvent {
 		bool undoOn(PuzzleState& puzzle) const;
 		bool redoOn(PuzzleState& puzzle) const;
 		
-		const QVector<int>& cellIndices() const { return m_cellsIndex; }
-		const QVector<CellInfo>& cellChanges() const { return m_cellsAfter; }
+		const QList<int>& cellIndices() const { return m_cellsIndex; }
+		const QList<CellInfo>& cellChanges() const { return m_cellsAfter; }
 		
 	private:
 		void setPuzzleCell(PuzzleState& puzzle, int index, const CellInfo& cell) const;
 		CellInfo getPuzzleCell(const PuzzleState& puzzle, int index) const;
 		
 	private:
-		QVector<int> m_cellsIndex;
-		QVector<CellInfo> m_cellsBefore;
-		QVector<CellInfo> m_cellsAfter;
+		QList<int> m_cellsIndex;
+		QList<CellInfo> m_cellsBefore;
+		QList<CellInfo> m_cellsAfter;
 };
 
 }

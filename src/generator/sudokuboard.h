@@ -249,10 +249,10 @@ protected:
 						///< etc. in the puzzle.
     int                     m_groupSize;	///< The number of cells in each
 						///< group (= m_order).
-    QVector<int>            m_cellIndex;	///< A first-level index from a
+    QList<int>              m_cellIndex;	///< A first-level index from a
 						///< cell to the list of groups
 						///< to which it belongs.
-    QVector<int>            m_cellGroups;	///< A second-level index from
+    QList<int>              m_cellGroups;	///< A second-level index from
 						///< cells to individual groups
 						///< to which they belong.
 
@@ -269,7 +269,7 @@ protected:
      *
      * @param sequence      The vector to be filled.
      */
-    void                    randomSequence (QVector<int> & sequence);
+    void                    randomSequence (QList<int> & sequence);
 
 private:
     bool                    generateSudokuRoxdokuTypes (BoardContents & puzzle,
@@ -290,8 +290,8 @@ private:
 
     QStack<State *>         m_states;
 
-    QVector<qint32>         m_validCellValues;
-    QVector<qint32>         m_requiredGroupValues;
+    QList<qint32>           m_validCellValues;
+    QList<qint32>           m_requiredGroupValues;
 
     // These are the principal methods of the solver.  The key method is
     // deduceValues().  It finds and fills cells that have only one possible

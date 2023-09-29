@@ -20,8 +20,8 @@
 #ifndef _KSUDOKU_GAMEACTIONS_H_
 #define _KSUDOKU_GAMEACTIONS_H_
 
+#include <QList>
 #include <QObject>
-#include <QVector>
 
 class QAction;
 class KActionCollection;
@@ -47,7 +47,7 @@ private Q_SLOTS:
 	void moveRight();
 private:
 	KActionCollection* m_collection;
-	QVector<QAction *> m_actions;
+	QList<QAction *> m_actions;
 };
 
 }

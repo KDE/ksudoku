@@ -472,7 +472,7 @@ void RoxdokuView::paintGL()
 	    // Mark the cells to be highlighted when highlighting is on.
 	    QList<int> groupsToHighlight = m_graph->cliqueList(m_selection);
 	    for(int g = 0; g < groupsToHighlight.count(); g++) {
-		QVector<int> cellList =
+		QList<int> cellList =
 				m_graph->clique(groupsToHighlight.at(g));
 		for (int n = 0; n < m_order; n++) {
 		    m_highlights[cellList.at(n)] = Highlight;

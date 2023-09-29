@@ -65,7 +65,7 @@ void SKGraph::initSudokuGroups(int pos, bool withBlocks)
 
 	m_structures << SudokuGroups << pos << (withBlocks ? 1 : 0);
 
-	QVector<int> rowc, colc, blockc;
+	QList<int> rowc, colc, blockc;
 	for(int i = 0; i < m_order; ++i) {
 		rowc.clear();
 		colc.clear();
@@ -106,7 +106,7 @@ void SKGraph::initRoxdokuGroups(int pos)
 
 	m_structures << RoxdokuGroups << pos << 1;
 
-	QVector<int> xFace, yFace, zFace;
+	QList<int> xFace, yFace, zFace;
 	int x = cellPosX(pos);
 	int y = cellPosY(pos);
 	int z = cellPosZ(pos);
@@ -129,14 +129,14 @@ void SKGraph::initRoxdokuGroups(int pos)
 	}
 }
 
-void SKGraph::addCliqueStructure(const QVector<int> &data) {
+void SKGraph::addCliqueStructure(const QList<int> &data) {
 
 	m_structures << Clique << m_cliques.count() << 0;
 
 	addClique(data);
 }
 
-void SKGraph::addClique(const QVector<int> &data) {
+void SKGraph::addClique(const QList<int> &data) {
 	// Add to the cliques (groups) list.
 	m_cliques << data;
 	for (int n = 0; n < data.size(); n++) {
@@ -145,7 +145,7 @@ void SKGraph::addClique(const QVector<int> &data) {
 	}
 }
 
-void SKGraph::addCage(const QVector<int> &cage, CageOperator cageOperator,
+void SKGraph::addCage(const QList<int> &cage, CageOperator cageOperator,
                       int cageValue)
 {
 	// Add to the cages list.
@@ -214,7 +214,7 @@ void SKGraph::indexCellsToCliques()
 	int nCliques = cliqueCount();
 	int nCells   = size();
 	for (int g = 0; g < nCliques; g++) {
-	    QVector<int> cellList = clique(g);
+	    QList<int> cellList = clique(g);
 	    for (int n = 0; n < m_order; n++) {
 		cellsToCliques.insert (cellList.at (n), g);
 	    }

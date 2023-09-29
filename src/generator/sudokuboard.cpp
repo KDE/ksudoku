@@ -460,7 +460,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
 {
     BoardContents puzzle;
     BoardContents filled;
-    QVector<int> sequence (m_boardArea);
+    QList<int> sequence (m_boardArea);
     int cell  = 0;
     int value = 0;
 
@@ -525,7 +525,7 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
 
     // Remove values in random order, but put them back if the solution fails.
     BoardContents vacant;
-    QVector<int> sequence (m_boardArea);
+    QList<int> sequence (m_boardArea);
     int          cell       = 0;
     int          value      = 0;
     QList<int>   tailOfRemoved;
@@ -812,7 +812,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
         } // Next cell
 
         for (int group = 0; group < m_nGroups; group++) {
-	    QVector<int> cellList = m_graph->clique (group);
+	    QList<int> cellList = m_graph->clique (group);
             qint32 numbers = m_requiredGroupValues.at (group);
             dbo3 "Group %d, valid numbers %03o\n", group, numbers);
             if (numbers == 0) {
@@ -876,7 +876,7 @@ GuessesList SudokuBoard::deduceValues (BoardContents & boardValues,
             GuessesList original = guesses;
             if (gMode == Random) {
                 // Shuffle the guesses.
-                QVector<int> sequence (guesses.count());
+                QList<int> sequence (guesses.count());
                 randomSequence (sequence);
 
                 guesses.clear();
@@ -923,8 +923,8 @@ BoardContents & SudokuBoard::fillBoard()
 
     // Fill a central block with values 1 to m_order in random sequence.  This
     // reduces the solveBoard() time considerably, esp. if blockSize is 4 or 5.
-    QVector<int> sequence (m_order);
-    QVector<int> cellList = m_graph->clique (m_nGroups / 2);
+    QList<int> sequence (m_order);
+    QList<int> cellList = m_graph->clique (m_nGroups / 2);
     randomSequence (sequence);
     for (int n = 0; n < m_order; n++) {
         m_currentValues [cellList.at (n)] = sequence.at (n) + 1;
@@ -935,7 +935,7 @@ BoardContents & SudokuBoard::fillBoard()
     return m_currentValues;
 }
 
-void SudokuBoard::randomSequence (QVector<int> & sequence)
+void SudokuBoard::randomSequence (QList<int> & sequence)
 {
     if (sequence.isEmpty()) return;
 
@@ -980,7 +980,7 @@ void SudokuBoard::setUpValueRequirements (BoardContents & boardValues)
     qint32 bitPattern = 0;
     for (int group = 0; group < m_nGroups; group++) {
 	dbo3 "Group %3d ", group);
-	QVector<int> cellList = m_graph->clique (group);
+	QList<int> cellList = m_graph->clique (group);
         bitPattern = 0;
         for (int n = 0; n < m_groupSize; n++) {
             int value = boardValues.at (cellList.at (n)) - 1;
@@ -1015,7 +1015,7 @@ void SudokuBoard::setUpValueRequirements (BoardContents & boardValues)
     // can only have 7 or 8, with bit value 192.
     index = 0;
     for (int group = 0; group < m_nGroups; group++) {
-	QVector<int> cellList = m_graph->clique (group);
+	QList<int> cellList = m_graph->clique (group);
         for (int n = 0; n < m_order; n++) {
 	    int cell = cellList.at (n);
             m_validCellValues [cell] &= m_requiredGroupValues.at (group);
@@ -1051,7 +1051,7 @@ void SudokuBoard::updateValueRequirements (BoardContents & boardValues, int cell
     for (int group : groupList) {
         m_requiredGroupValues [group] &= bitPattern;
 
-	QVector<int> cellList = m_graph->clique (group);
+	QList<int> cellList = m_graph->clique (group);
         for (int n = 0; n < m_order; n++) {
 	    int cell = cellList.at (n);
             m_validCellValues [cell] &= bitPattern;

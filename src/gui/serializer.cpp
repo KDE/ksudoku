@@ -296,7 +296,7 @@ bool Serializer::deserializeClique(SKGraph * graph, const QString & size,
     }
 
     const QStringList  splitData = text.split(QStringLiteral(" "), Qt::SkipEmptyParts);
-    QVector<int> data;
+    QList<int> data;
     data.clear();
     for (const QString &s : splitData) {
 	--cellCount;
@@ -315,7 +315,7 @@ bool Serializer::deserializeCage(SKGraph * graph, const QDomElement & e) {
     CageOperator op = (CageOperator) (e.attribute(QStringLiteral("operator")).toInt());
     int target      = e.attribute(QStringLiteral("value")).toInt();
     int size        = 0;
-    QVector<int> cage;
+    QList<int> cage;
     if(! sizeStr.isNull()) {
 	size = sizeStr.toInt();
     }
@@ -572,7 +572,7 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 	    // Add cages if this is a Mathdoku or Killer Sudoku puzzle.
 	    for (int n = 0; n < graph->cageCount(); n++) {
 		QDomElement e = parent.ownerDocument().createElement(QStringLiteral("cage"));
-		const QVector<int> cage = graph->cage(n);
+		const QList<int> cage = graph->cage(n);
 		e.setAttribute(QStringLiteral("operator"), graph->cageOperator(n));
 		e.setAttribute(QStringLiteral("value"), graph->cageValue(n));
 		e.setAttribute(QStringLiteral("size"), cage.size());
@@ -607,8 +607,8 @@ bool Serializer::serializeHistory(QDomElement& parent, const Game& game) {
 bool Serializer::serializeHistoryEvent(QDomElement& parent, const HistoryEvent& event) {
 	QDomElement element;
 
-	const QVector<int>& indices = event.cellIndices();
-	const QVector<CellInfo>& changes = event.cellChanges();
+	const QList<int>& indices = event.cellIndices();
+	const QList<CellInfo>& changes = event.cellChanges();
 
 	if(indices.count() == 0) {
 		return true;

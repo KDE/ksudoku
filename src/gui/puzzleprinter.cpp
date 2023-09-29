@@ -179,12 +179,12 @@ bool PuzzlePrinter::setupOutputDevices (int leastCellsToFit, int puzzleWidth)
 void PuzzlePrinter::drawBlocks (const ksudoku::Puzzle * puzzle,
 				const SKGraph * graph)
 {
-    QVector<int> edges (graph->size(), 0);	// One bitmap per cell.
+    QList<int> edges (graph->size(), 0);	// One bitmap per cell.
     int order = graph->order();
 
     for (int n = 0; n < graph->cliqueCount(); n++) {
         // Find out which groups are blocks of cells, not rows or columns.
-        QVector<int> clique = graph->clique (n);
+        QList<int> clique = graph->clique (n);
         int x = graph->cellPosX (clique.at (0));
         int y = graph->cellPosY (clique.at (0));
         bool isRow = true;
@@ -211,7 +211,7 @@ void PuzzlePrinter::drawBlocks (const ksudoku::Puzzle * puzzle,
 void PuzzlePrinter::drawCages (const ksudoku::Puzzle * puzzle,
 			       const SKGraph * graph, bool killerStyle)
 {
-    QVector<int> edges (graph->size(), 0);	// One bitmap per cell.
+    QList<int> edges (graph->size(), 0);	// One bitmap per cell.
     for (int n = 0; n < graph->cageCount(); n++) {
         // Mark the outside edges of each cage.
 	markEdges (graph->cage (n), puzzle, graph, edges);
@@ -233,9 +233,9 @@ void PuzzlePrinter::drawCages (const ksudoku::Puzzle * puzzle,
     }
 }
 
-void PuzzlePrinter::markEdges (const QVector<int> & cells,
+void PuzzlePrinter::markEdges (const QList<int> & cells,
 			       const ksudoku::Puzzle * puzzle,
-			       const SKGraph * graph, QVector<int> & edges)
+			       const SKGraph * graph, QList<int> & edges)
 {
     const int All = (1 << Left) + (1 << Right) + (1 << Above) + (1 << Below);
 
@@ -314,7 +314,7 @@ void PuzzlePrinter::drawValues (const ksudoku::Game& game, const SKGraph* graph)
 }
 
 void PuzzlePrinter::drawKillerSudokuCages (const SKGraph* graph,
-                                           const QVector<int> & edges)
+                                           const QList<int> & edges)
 {
     // Killer Sudokus have cages AND groups: so the cages are drawn differently.
     // We keep the outer wall of the cage on our left and draw a dashed line

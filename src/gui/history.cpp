@@ -76,7 +76,7 @@ bool HistoryEvent::applyTo(PuzzleState& puzzle) {
 	if(m_cellsBefore.size() != 0 || m_cellsIndex.size() == 0)
 		return false;
 	
-	m_cellsBefore = QVector<CellInfo>(m_cellsIndex.count());
+	m_cellsBefore = QList<CellInfo>(m_cellsIndex.count());
 	for(int i = 0; i < m_cellsIndex.count(); ++i) {
 		m_cellsBefore[i] = getPuzzleCell(puzzle, m_cellsIndex[i]);
 		setPuzzleCell(puzzle, m_cellsIndex[i], m_cellsAfter[i]);
