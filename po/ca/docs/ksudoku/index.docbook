@@ -310,7 +310,7 @@
 	<itemizedlist>
 	<listitem
 ><para
->El Sudoku Samurai consta de cinc trencaclosques de Sudoku estàndard de 9x9 quadrats cadascun, superposats a les cantonades per quatre blocs de 3x3. Cadascun dels cinc trencaclosques té 9 files, 9 columnes i 9 blocs per a resoldre, i els símbols en els quadrats superposats hauran d'encaixar en les solucions dels dos Sudoku 9x9 estàndard.</para
+>El Sudoku Samurai consta de cinc trencaclosques de Sudoku estàndard de 9x9 quadrats cadascun, superposats a les cantonades per quatre blocs de 3x3. Cadascun dels cinc trencaclosques té 9 files, 9 columnes i 9 blocs per a resoldre, i els símbols en els quadrats superposats hauran d'encaixar en les solucions dels dos Sudokus 9x9 estàndard.</para
 ></listitem>
 	<listitem
 ><para
@@ -465,7 +465,7 @@
 
 <para
 >Si feu clic al botó marcat com <guibutton
->Entra a un puzle</guibutton
+>Entra en un puzle</guibutton
 >, apareixerà un tauler buit del tipus i mida seleccionats. Aquí podreu utilitzar el ratolí o el teclat per a introduir un trencaclosques des d'una altra font, com un diari. En acabar, utilitzeu l'acció <guilabel
 >Comprova</guilabel
 >, a la barra d'eines o de menús, per a verificar el trencaclosques. Hauria de tenir una única solució. Si és així, podreu començar a resoldre el trencaclosques o potser fer que el &ksudoku; el resolgui. Si no hi ha solució o més d'una solució, probablement vol dir que heu comès un error en algun lloc en introduir les dades.</para>
