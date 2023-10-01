@@ -455,32 +455,32 @@ void KSudoku::setupActions()
 
 	setAcceptDrops(true);
 
-	KStandardGameAction::gameNew(this, SLOT(gameNew()), actionCollection());
-	KStandardGameAction::restart(this, SLOT(gameRestart()), actionCollection());
-	KStandardGameAction::load(this, SLOT(gameOpen()), actionCollection());
-	m_gameSave = KStandardGameAction::save(this, SLOT(gameSave()), actionCollection());
-	m_gameSaveAs = KStandardGameAction::saveAs(this, SLOT(gameSaveAs()), actionCollection());
- 	KStandardGameAction::print(this, SLOT(gamePrint()), actionCollection());
-	KStandardGameAction::quit(this, SLOT(close()), actionCollection());
+	KStandardGameAction::gameNew(this, &KSudoku::gameNew, actionCollection());
+	KStandardGameAction::restart(this, &KSudoku::gameRestart, actionCollection());
+	KStandardGameAction::load(this, &KSudoku::gameOpen, actionCollection());
+	m_gameSave = KStandardGameAction::save(this, &KSudoku::gameSave, actionCollection());
+	m_gameSaveAs = KStandardGameAction::saveAs(this, &KSudoku::gameSaveAs, actionCollection());
+	KStandardGameAction::print(this, &KSudoku::gamePrint, actionCollection());
+	KStandardGameAction::quit(this, &KSudoku::close, actionCollection());
 	// TODO Export is disabled due to missing port to KDE4.
 // 	createAction("game_export", SLOT(gameExport()), i18n("Export"));
 
-	KStandardAction::preferences(this, SLOT(optionsPreferences()), actionCollection());
+	KStandardAction::preferences(this, &KSudoku::optionsPreferences, actionCollection());
 	// Settings: enable messages that the user marked "Do not show again".
 	auto* enableMessagesAct = new QAction(i18n("Enable all messages"),this);
 	actionCollection()->addAction(QStringLiteral("enable_messages"), enableMessagesAct);
 	connect(enableMessagesAct, &QAction::triggered, this, &KSudoku::enableMessages);
 
 	//History
-	KStandardGameAction::undo(this, SLOT(undo()), actionCollection());
-	KStandardGameAction::redo(this, SLOT(redo()), actionCollection());
+	KStandardGameAction::undo(this, &KSudoku::undo, actionCollection());
+	KStandardGameAction::redo(this, &KSudoku::redo, actionCollection());
 
-	QAction * a = KStandardGameAction::hint(this, SLOT(giveHint()), actionCollection());
+	QAction * a = KStandardGameAction::hint(this, &KSudoku::giveHint, actionCollection());
 	// The default value (H) conflicts with the keys assigned
 	// to add letter/numbers to the board.
 	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::Key_F2));
 
-	KStandardGameAction::solve(this, SLOT(autoSolve()), actionCollection());
+	KStandardGameAction::solve(this, &KSudoku::autoSolve, actionCollection());
 
 	a = new QAction(this);
 	actionCollection()->addAction( QStringLiteral( "move_dub_puzzle" ), a);
