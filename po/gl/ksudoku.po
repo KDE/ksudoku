@@ -311,15 +311,15 @@ msgstr ""
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
-msgstr[0] "Parabéns! Rematáchelo nun segundo. Iso si, utilizando pistas."
-msgstr[1] "Parabéns! Rematáchelo en %1 segundos. Iso si, utilizando pistas."
+msgstr[0] "Parabéns! Rematáchelo nun segundo. Iso si, usando pistas."
+msgstr[1] "Parabéns! Rematáchelo en %1 segundos. Iso si, usando pistas."
 
 #: src/gui/ksudoku.cpp:89
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
-msgstr[0] "Parabéns! Rematáchelo nun minuto. Iso si, utilizando pistas."
-msgstr[1] "Parabéns! Rematáchelo en %1 minutos. Iso si, utilizando pistas."
+msgstr[0] "Parabéns! Rematáchelo nun minuto. Iso si, usando pistas."
+msgstr[1] "Parabéns! Rematáchelo en %1 minutos. Iso si, usando pistas."
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
@@ -339,7 +339,7 @@ msgstr[1] "%1 segundos"
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With some tricks."
-msgstr "Parabéns! Rematáchelo %1 e %2. Iso si, utilizando pistas."
+msgstr "Parabéns! Rematáchelo %1 e %2. Iso si, usando pistas."
 
 #: src/gui/ksudoku.cpp:94
 #, kde-format
@@ -699,7 +699,7 @@ msgstr "Sen simetría"
 #: src/gui/ksudoku.cpp:638 src/gui/ksudoku.cpp:697
 #, kde-format
 msgid "Could not load game."
-msgstr "Non se puido cargar a partida."
+msgstr "Non foi posíbel cargar a partida."
 
 #: src/gui/ksudoku.cpp:654
 #, kde-format
@@ -974,32 +974,32 @@ msgstr "Imprimir o quebracabezas sudoku"
 #: src/gui/serializer.cpp:401
 #, kde-format
 msgid "Unable to download file: URL is empty."
-msgstr "Non se pode descargar o ficheiro: o URL está baleiro."
+msgstr "Non é posíbel descargar o ficheiro: o URL está baleiro."
 
 #: src/gui/serializer.cpp:408
 #, kde-format
 msgid "Unable to open file."
-msgstr "Non se pode abrir o ficheiro."
+msgstr "Non é posíbel abrir o ficheiro."
 
 #: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
 #, kde-format
 msgid "Cannot read XML file on line %1"
-msgstr "Non se pode ler o ficheiro XML na liña %1"
+msgstr "Non é posíbel ler o ficheiro XML na liña %1"
 
 #: src/gui/serializer.cpp:444
 #, kde-format
 msgid "Unable to download file."
-msgstr "Non se pode descargar o ficheiro."
+msgstr "Non é posíbel descargar o ficheiro."
 
 #: src/gui/serializer.cpp:685
 #, kde-format
 msgid "Unable to create temporary file."
-msgstr "Non se pode crear un ficheiro temporal."
+msgstr "Non é posíbel crear un ficheiro temporal."
 
 #: src/gui/serializer.cpp:698
 #, kde-format
 msgid "Unable to upload file."
-msgstr "Non se pode enviar o ficheiro."
+msgstr "Non é posíbel enviar o ficheiro."
 
 #: src/gui/views/gameactions.cpp:54
 #, kde-format
@@ -1057,27 +1057,28 @@ msgstr "Seleccione unha variante de quebracabezas."
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to start puzzle"
-msgstr "Non se pode iniciar o quebracabezas."
+msgstr "Non é posíbel iniciar o quebracabezas."
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
 msgid ""
 "Unable to create an empty puzzle of the chosen variant; please try another."
 msgstr ""
-"Non se pode crear un quebracabezas baleiro da variante escollida. Probe con "
-"outra."
+"Non é posíbel crear un quebracabezas baleiro da variante escollida. Probe "
+"con outra."
 
 #: src/gui/welcomescreen.cpp:169
 #, kde-format
 msgid "Unable to start a puzzle of the chosen variant; please try another."
 msgstr ""
-"Non se pode iniciar un quebracabezas da variante escollida. Probe con outra."
+"Non é posíbel iniciar un quebracabezas da variante escollida. Probe con "
+"outra."
 
 #: src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to generate a puzzle of the chosen variant; please try another."
 msgstr ""
-"Non se pode xerar un quebracabezas da variante escollida. Probe con outra."
+"Non é posíbel xerar un quebracabezas da variante escollida. Probe con outra."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
 #: src/gui/welcomescreen.ui:17
