@@ -64,7 +64,7 @@ if (OPENGL_FOUND AND OPENGL_GLU_FOUND)
 endif()
 
 ecm_set_disabled_deprecation_versions(
-    QT 5.15.2 # to be ported and bumped to 6.5 after dropping Qt5 support
+    QT 6.5
     KF 5.239
     KDEGAMES 7.5
 )
