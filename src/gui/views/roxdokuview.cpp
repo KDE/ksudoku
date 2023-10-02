@@ -265,11 +265,14 @@ void RoxdokuView::delayOver()
 
 void RoxdokuView::mouseMoveEvent ( QMouseEvent * e )
 {
+	const int x = qRound(e->position().x());
+	const int y = qRound(e->position().y());
+
 	Point2fT f;
-	f.T[0] = e->x();
-	f.T[1] = e->y();
+	f.T[0] = x;
+	f.T[1] = y;
 	
-	Selection(e->x(), e->y());
+	Selection(x, y);
 
 	if (m_isRClicked){                      // If Right Mouse Clicked, Reset All Rotations
 		Matrix3fSetIdentity(&LastRot);      // Reset Rotation
