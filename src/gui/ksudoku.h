@@ -31,7 +31,7 @@
 #include <knewstuff/knewstuff.h>
 #endif
 
-class KgDifficultyLevel;
+class KGameDifficultyLevel;
 
 namespace ksudoku {
 class KsView;
@@ -106,7 +106,7 @@ public Q_SLOTS:
 	bool queryClose() override;
 
 private Q_SLOTS:
-	void handleCurrentDifficultyLevelChanged(const KgDifficultyLevel *level);
+	void handleCurrentDifficultyLevelChanged(const KGameDifficultyLevel *level);
 	void symmetryChanged   (int symmetry);
 
 	void gameNew();

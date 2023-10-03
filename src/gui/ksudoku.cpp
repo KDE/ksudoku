@@ -50,7 +50,7 @@
 
 #include <KStandardGameAction>
 #include <KgThemeSelector>
-#include <KgDifficulty>
+#include <KGameDifficulty>
 
 #include "ksview.h"
 #include "gameactions.h"
@@ -493,28 +493,28 @@ void KSudoku::setupActions()
 void KSudoku::setupStatusBar (int difficulty, int symmetry)
 {
 	// Use the standard combo box for difficulty, from KDE Games library.
-	Kg::difficulty()->addStandardLevelRange(KgDifficultyLevel::VeryEasy, KgDifficultyLevel::Hard);
+	KGameDifficulty::global()->addStandardLevelRange(KGameDifficultyLevel::VeryEasy, KGameDifficultyLevel::Hard);
 	// and add our custom ones
 	enum CustomHardness {
-	    DiabolicalHardness = KgDifficultyLevel::Hard + 1,
+	    DiabolicalHardness = KGameDifficultyLevel::Hard + 1,
 	    UnlimitedHardness
 	};
-	Kg::difficulty()->addLevel(new KgDifficultyLevel(DiabolicalHardness, "Diabolical",
+	KGameDifficulty::global()->addLevel(new KGameDifficultyLevel(DiabolicalHardness, "Diabolical",
 		i18nc("A level of difficulty in Sudoku puzzles", "Diabolical")));
-	Kg::difficulty()->addLevel(new KgDifficultyLevel(UnlimitedHardness, "Unlimited",
+	KGameDifficulty::global()->addLevel(new KGameDifficultyLevel(UnlimitedHardness, "Unlimited",
 		i18nc("A level of difficulty in Sudoku puzzles", "Unlimited")));
 
 	// Set default value of difficulty
-	const KgDifficultyLevel * level = Kg::difficulty()->levels().value(difficulty);
+	const KGameDifficultyLevel * level = KGameDifficulty::global()->levels().value(difficulty);
 	if (level) {
-	    Kg::difficulty()->select(level);
+	    KGameDifficulty::global()->select(level);
 	}
 
-	connect(Kg::difficulty(), &KgDifficulty::currentLevelChanged,
+	connect(KGameDifficulty::global(), &KGameDifficulty::currentLevelChanged,
 		this, &KSudoku::handleCurrentDifficultyLevelChanged);
 
 	statusBar()->addPermanentWidget (new QLabel (i18nc("@option drop down box", "Difficulty:")));
-	KgDifficultyGUI::init(this);
+	KGameDifficultyGUI::init(this);
 
 	// Set up a combo box for symmetry of puzzle layout.
 	statusBar()->addPermanentWidget (new QLabel (i18nc("@option drop down box", "Symmetry:")));
@@ -800,9 +800,9 @@ void KSudoku::updateSettings() {
 	Q_EMIT settingsChanged();
 }
 
-void KSudoku::handleCurrentDifficultyLevelChanged(const KgDifficultyLevel *level)
+void KSudoku::handleCurrentDifficultyLevelChanged(const KGameDifficultyLevel *level)
 {
-    const int difficulty = Kg::difficulty()->levels().indexOf(level);
+    const int difficulty = KGameDifficulty::global()->levels().indexOf(level);
 
     if (difficulty == -1) {
 	return;
