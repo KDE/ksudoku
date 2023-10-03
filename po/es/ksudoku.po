@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2023-09-07 11:55+0100\n"
+"PO-Revision-Date: 2023-10-02 21:52+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.0\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -73,7 +73,7 @@ msgid ""
 "'Generate A Puzzle' again."
 msgstr ""
 "Después de %1 intentos, el mejor nivel de dificultad alcanzado por el "
-"generador es %2, con una tasa de dificultad interna de %3, aunque usted "
+"generador es %2, con una tasa de dificultad interna de %3, aunque usted ha "
 "pedido un nivel de dificultad %4.\n"
 "\n"
 "¿Desea que el generador lo vuelva a intentar o acepta el rompecabezas tal "
@@ -579,8 +579,8 @@ msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr ""
-"Lo sentimos, no se ha encontrado ninguna solución. Por favor, compruebe que "
-"ha creado el rompecabezas completa y correctamente."
+"Lo sentimos, no se ha encontrado ninguna solución. Compruebe que ha creado "
+"el rompecabezas completa y correctamente."
 
 #: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
 #, kde-format
@@ -600,8 +600,8 @@ msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
-"El rompecabezas que ha creado tiene varias soluciones. Por favor, compruebe "
-"que ha creado el rompecabezas completa y correctamente."
+"El rompecabezas que ha creado tiene varias soluciones. Compruebe que ha "
+"creado el rompecabezas completa y correctamente."
 
 #: src/gui/ksudoku.cpp:432
 #, kde-format
@@ -864,8 +864,8 @@ msgid ""
 "The cage you wish to complete has no cells in it yet. Please click on a cell "
 "or key in + - / x or a number."
 msgstr ""
-"La jaula que desea completar aún no tiene celdas. Por favor, haga clic en "
-"una celda o pulse + - / x o un número."
+"La jaula que desea completar aún no tiene celdas. Haga clic en una celda o "
+"pulse + - / x o un número."
 
 #: src/gui/ksudokugame.cpp:484
 #, kde-format
@@ -873,8 +873,8 @@ msgid ""
 "The cage you wish to complete has no value yet. Please key in a number with "
 "one or more digits."
 msgstr ""
-"La jaula que desea completar aún no tiene un valor. Por favor, escriba un "
-"número de uno o más dígitos."
+"La jaula que desea completar aún no tiene un valor. Escriba un número de uno "
+"o más dígitos."
 
 #: src/gui/ksudokugame.cpp:492
 #, kde-format
@@ -883,7 +883,7 @@ msgid ""
 "yet. Please key in + - / or x."
 msgstr ""
 "La jaula que desea completar contiene más de una celda, pero aún no tiene un "
-"operador. Por favor, pulse + - / o x."
+"operador. Pulse + - / o x."
 
 #: src/gui/ksudokugame.cpp:500
 #, kde-format
@@ -1059,7 +1059,7 @@ msgstr "GetNewVariant no está implementado"
 #: src/gui/welcomescreen.cpp:179
 #, kde-format
 msgid "Please select a puzzle variant."
-msgstr "Por favor, seleccione una variante del rompecabezas."
+msgstr "Seleccione una variante del rompecabezas."
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
@@ -1127,7 +1127,7 @@ msgstr "KSudoku - Sudokus y más"
 #: src/main.cpp:49
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
-msgstr "(c) 2005-2007 Los autores de KSudoku"
+msgstr "© 2005-2007 Los autores de KSudoku"
 
 #: src/main.cpp:51
 #, kde-format
