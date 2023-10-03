@@ -26,8 +26,8 @@
 #include <QList>
 #include <QString>
 
-class KgTheme;
-class KgThemeProvider;
+class KGameTheme;
+class KGameThemeProvider;
 
 class QPixmap;
 class QSize;
@@ -82,7 +82,7 @@ enum SupportFlag {
 public:
 	static Renderer* instance();
 
-	bool loadTheme(const KgTheme* theme);
+	bool loadTheme(const KGameTheme* theme);
 
 	// In Mathdoku style, symbols and markers are drawn smaller than usual
 	// and re-positioned, to allow space at the top left of a cell for a
@@ -104,7 +104,7 @@ public:
 
 	QPixmap renderSpecial3D(SpecialType type, int size) const;
 
-	KgThemeProvider *themeProvider() const;
+	KGameThemeProvider *themeProvider() const;
 
 private:
 	Renderer();
@@ -126,7 +126,7 @@ private:
 	QList<QString> m_specialNames;
 	QList<QString> m_special3dNames;
 	QList<QString> m_markerNames;
-	KgThemeProvider *m_themeProvider;
+	KGameThemeProvider *m_themeProvider;
 	QSvgRenderer* m_renderer;
 	KImageCache* m_cache;
 	bool m_mathdokuStyle;

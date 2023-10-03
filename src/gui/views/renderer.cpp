@@ -25,8 +25,8 @@
 #include <QPixmap>
 #include <QSvgRenderer>
 
-#include <KgTheme>
-#include <KgThemeProvider>
+#include <KGameTheme>
+#include <KGameThemeProvider>
 
 #include "settings.h"
 
@@ -38,7 +38,7 @@ Renderer* Renderer::instance() {
 }
 	
 Renderer::Renderer() {
-	m_themeProvider = new KgThemeProvider(QByteArray()); // empty config key to disable internal config storage
+	m_themeProvider = new KGameThemeProvider(QByteArray()); // empty config key to disable internal config storage
 	m_renderer = new QSvgRenderer();
 	m_cache = new KImageCache(QStringLiteral("ksudoku-cache"), 3*1024);
 	m_mathdokuStyle = false;
@@ -48,8 +48,8 @@ Renderer::Renderer() {
 	    QStringLiteral("default") // default theme file name
 	);
 	const QByteArray themeIdentifier = Settings::theme().toUtf8();
-	KgThemeProvider *provider = themeProvider();
-	const QList<const KgTheme *> themes = provider->themes();
+	KGameThemeProvider *provider = themeProvider();
+	const QList<const KGameTheme *> themes = provider->themes();
 	for (auto* theme : themes) {
 		if (theme->identifier() == themeIdentifier) {
 		    provider->setCurrentTheme(theme);
@@ -57,7 +57,7 @@ Renderer::Renderer() {
 		}
 	}
 	loadTheme(provider->currentTheme());
-	QObject::connect(m_themeProvider, &KgThemeProvider::currentThemeChanged, [this](const KgTheme* theme) {
+	QObject::connect(m_themeProvider, &KGameThemeProvider::currentThemeChanged, [this](const KGameTheme* theme) {
 		loadTheme(theme);
 	});
 
@@ -69,12 +69,12 @@ Renderer::~Renderer() {
 	delete m_renderer;
 }
 
-KgThemeProvider * Renderer::themeProvider() const
+KGameThemeProvider * Renderer::themeProvider() const
 {
 	return m_themeProvider;
 }
 
-bool Renderer::loadTheme(const KgTheme* theme) {
+bool Renderer::loadTheme(const KGameTheme* theme) {
 	bool res = m_renderer->load(theme->graphicsPath());
 	qCDebug(KSudokuLog) << "loading" << theme->graphicsPath();
 	if(!res)

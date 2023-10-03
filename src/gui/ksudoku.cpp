@@ -49,7 +49,7 @@
 #include <KTar>
 
 #include <KStandardGameAction>
-#include <KgThemeSelector>
+#include <KGameThemeSelector>
 #include <KGameDifficulty>
 
 #include "ksview.h"
@@ -156,7 +156,7 @@ KSudoku::KSudoku()
 
 	updateShapesList();
 
-	connect(Renderer::instance()->themeProvider(), &KgThemeProvider::currentThemeChanged, this, &KSudoku::updateSettings);
+	connect(Renderer::instance()->themeProvider(), &KGameThemeProvider::currentThemeChanged, this, &KSudoku::updateSettings);
 
 // 	QTimer *timer = new QTimer( this );
 // 	connect( timer, SIGNAL(timeout()), this, SLOT(updateStatusBar()) );
@@ -781,7 +781,7 @@ void KSudoku::optionsPreferences()
 
 	auto* gameConfig = new GameConfig();
 	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), QStringLiteral("games-config-options"));
-	dialog->addPage(new KgThemeSelector(Renderer::instance()->themeProvider()), i18n("Theme"), QStringLiteral("games-config-theme"));
+	dialog->addPage(new KGameThemeSelector(Renderer::instance()->themeProvider()), i18n("Theme"), QStringLiteral("games-config-theme"));
 
     //QT5 dialog->setHelp(QString(),"ksudoku");
 	connect(dialog, &KConfigDialog::settingsChanged, this, &KSudoku::updateSettings);
