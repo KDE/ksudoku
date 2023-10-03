@@ -47,7 +47,6 @@ target_link_libraries(ksudoku
     KDEGames6
     KF6::KIOCore
     KF6::Crash
-    Qt6::Core5Compat
 )
 
 if(OPENGL_SUPPORT)

@@ -29,7 +29,6 @@ find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
     Widgets
     PrintSupport
     Svg
-    Core5Compat
 )
 
 find_package(KF6 ${KF_MIN_VERSION} REQUIRED COMPONENTS
