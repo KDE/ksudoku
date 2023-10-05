@@ -39,6 +39,7 @@ target_link_libraries(ksudoku_gui
     KF6::Archive
     KF6::Crash
     KF6::GuiAddons
+    KF6::I18n
     KF6::KIOCore
     KF6::JobWidgets
     KF6::WidgetsAddons
