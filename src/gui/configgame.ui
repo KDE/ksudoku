@@ -440,9 +440,6 @@
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
-     <property name="topMargin">
-      <number>5</number>
-     </property>
      <item>
       <widget class="QCheckBox" name="kcfg_DarkenOuterCells3D">
        <property name="toolTip">
