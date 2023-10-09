@@ -190,8 +190,7 @@ void SKGraph::clearCages() {
 }
 
 void SKGraph::initCustom(const QString & name, SudokuType specificType,
-				int order, int sizeX, int sizeY, int sizeZ,
-				int ncliques) {
+				int order, int sizeX, int sizeY, int sizeZ) {
 	// The Serializer's deserializer methods will add groups (or cliques).
 	m_name = name;
 	m_specificType = specificType;

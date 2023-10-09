@@ -1,6 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="21" sizeY="21" sizeZ="1" ncliques="131" order="9" specific-type="Sohei" type="custom" name="Sohei" >
+ <graph sizeX="21" sizeY="21" sizeZ="1" order="9" specific-type="Sohei" type="custom" name="Sohei" >
 
   <sudokugroups at="126" withblocks="1" /> <!-- Top square -->
 

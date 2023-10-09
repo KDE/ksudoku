@@ -1,7 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="6" sizeY="6" sizeZ="1" ncliques="18" order="6" 
-type="custom" specific-type="6x6" name="6x6">
+ <graph sizeX="6" sizeY="6" sizeZ="1" order="6" type="custom" specific-type="6x6" name="6x6">
 
   <sudokugroups at="0" withblocks="0" />
   <clique size="6" > 0  1  6  7 12 13 </clique>

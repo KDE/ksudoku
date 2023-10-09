@@ -206,7 +206,7 @@ public:
 	void initRoxdokuGroups(int pos = 0);
 
 	void initCustom(const QString & name, SudokuType specificType,
-		  int order, int sizeX, int sizeY, int sizeZ, int ncliques);
+		  int order, int sizeX, int sizeY, int sizeZ);
 	void endCustom();
 
 	inline const BoardContents & emptyBoard() const { return m_emptyBoard; }

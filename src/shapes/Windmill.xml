@@ -1,6 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="21" sizeY="21" sizeZ="1" ncliques="131" order="9" specific-type="Windmill" type="custom" name="Windmill" >
+ <graph sizeX="21" sizeY="21" sizeZ="1" order="9" specific-type="Windmill" type="custom" name="Windmill" >
 
   <sudokugroups at="63"  withblocks="1" />
 

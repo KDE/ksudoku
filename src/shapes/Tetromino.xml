@@ -1,7 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="4" sizeY="4" sizeZ="1" ncliques="12" order="4" 
-name="Tetromino" type="custom" specific-type="Tetromino" >
+ <graph sizeX="4" sizeY="4" sizeZ="1" order="4" name="Tetromino" type="custom" specific-type="Tetromino" >
 
   <sudokugroups at="0" withblocks="0" />
   <!-- <clique size="4" > 0  1  4  8 </clique> Works, last group not perfect -->

@@ -1,7 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="5" sizeY="5" sizeZ="1" ncliques="15" order="5" 
-name="Pentomino" type="custom" specific-type="Pentomino" >
+ <graph sizeX="5" sizeY="5" sizeZ="1" order="5" name="Pentomino" type="custom" specific-type="Pentomino" >
 
   <sudokugroups at="0" withblocks="0" />
   <clique size="5" > 0  5  1  6  2 </clique>

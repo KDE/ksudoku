@@ -209,18 +209,15 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 		return graph;
 	} else if(type == QLatin1String("custom")) {
 		int err=0;
-		int ncliques;
 		int sizeX;
 		int sizeY;
 		int sizeZ;
 		if (orderStr != QStringLiteral("Mathdoku")) {
-		    ncliques = readInt(element,QStringLiteral("ncliques"), &err);
 		    sizeX = readInt(element,QStringLiteral("sizeX"),&err);
 		    sizeY = readInt(element,QStringLiteral("sizeY"),&err);
 		}
 		else {
 		    // In Mathdoku, there are row and column groups only.
-		    ncliques = 2 * order;
 		    sizeX = order;
 		    sizeY = order;
 		}
@@ -243,7 +240,7 @@ SKGraph* Serializer::deserializeGraph(const QDomElement &element) {
 
 		auto* graph = new SKGraph(order, TypeCustom);
 		graph->initCustom(name, puzzleType, order,
-			    sizeX, sizeY, sizeZ, ncliques);
+			    sizeX, sizeY, sizeZ);
 
 		QDomNode child = element.firstChild();
 		while (!child.isNull()) {
@@ -530,7 +527,6 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 
 	if(type == TypeCustom) {
 	    element.setAttribute(QStringLiteral("name"), graph->name());
-	    element.setAttribute(QStringLiteral("ncliques"), (int) graph->cliqueCount());
 	    element.setAttribute(QStringLiteral("sizeX"), graph->sizeX());
 	    element.setAttribute(QStringLiteral("sizeY"), graph->sizeY());
 	    element.setAttribute(QStringLiteral("sizeZ"), graph->sizeZ());

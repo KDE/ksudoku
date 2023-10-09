@@ -1,7 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="9" sizeY="9" sizeZ="1" ncliques="27" order="9" 
-name="Aztec" type="custom" specific-type="Aztec" >
+ <graph sizeX="9" sizeY="9" sizeZ="1" order="9" name="Aztec" type="custom" specific-type="Aztec" >
   <sudokugroups at="0" withblocks="0" />
   <clique size="9" >0 1 9 10 11 19 20 21 29 </clique>
   <clique size="9" >18 27 28 36 37 38 45 46 54 </clique>

@@ -1,6 +1,6 @@
 <!DOCTYPE ksudoku-graph>
 <ksudoku-graph>
- <graph sizeX="5" sizeY="5" sizeZ="3" ncliques="18" order="9" specific-type="Samurai" type="custom" name="DoubleRoxdoku" >
+ <graph sizeX="5" sizeY="5" sizeZ="3" order="9" specific-type="Samurai" type="custom" name="DoubleRoxdoku" >
 
   <roxdokugroups at="0"   />
 
