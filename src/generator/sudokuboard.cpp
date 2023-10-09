@@ -476,7 +476,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
     for (int n = 0; n < m_boardArea; n++) {
         cell  = sequence.at (n);
         value = filled.at (cell);
-        if (filled.at (cell) == 0) {
+        if (value == 0) {
             index = n;
             changeClues (puzzle, cell, symmetry, solution);
             changeClues (filled, cell, symmetry, solution);
