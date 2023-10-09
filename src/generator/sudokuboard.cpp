@@ -415,7 +415,7 @@ BoardContents & SudokuBoard::tryGuesses (GuessingMode gMode = Random)
         GuessesList guesses = m_states.top()->guesses();
         int n = m_states.top()->guessNumber();
         if ((n >= guesses.count()) || (guesses.at (0) == -1)) {
-            dbo2 "POP: Out of guesses at level %d\n", m_states.count());
+            dbo2 "POP: Out of guesses at level %" PRIdQSIZETYPE "\n", m_states.count());
             delete m_states.pop();
             if (!m_states.isEmpty()) {
                 m_moves.clear();
@@ -430,7 +430,7 @@ BoardContents & SudokuBoard::tryGuesses (GuessingMode gMode = Random)
         m_moves.append (guesses.at(n));
         m_moveTypes.append (Guess);
         m_currentValues [pairPos (guesses.at(n))] = pairVal (guesses.at(n));
-        dbo2 "\nNEXT GUESS: level %d, guess number %d\n",
+        dbo2 "\nNEXT GUESS: level %" PRIdQSIZETYPE ", guess number %d\n",
                 m_states.count(), n);
         dbo2 "  Pick %d %d row %d col %d\n",
                 pairVal (guesses.at(n)), pairPos (guesses.at(n)),
@@ -469,7 +469,7 @@ BoardContents SudokuBoard::insertValues (const BoardContents & solution,
     clear (filled);
 
     // Add cells in random order, but skip cells that can be deduced from them.
-    dbo1 "Start INSERTING: %d solution values\n", solution.count());
+    dbo1 "Start INSERTING: %" PRIdQSIZETYPE " solution values\n", solution.count());
     randomSequence (sequence);
 
     int index = 0;
@@ -576,7 +576,7 @@ BoardContents SudokuBoard::removeValues (const BoardContents & solution,
             if (m_stats.difficulty == required) {
                 // Save removed positions while the difficulty is as required.
                 tailOfRemoved.append (cell);
-                dbo1 "OVERSHOOT %d at sequence %d\n",
+                dbo1 "OVERSHOOT %" PRIdQSIZETYPE " at sequence %d\n",
                         tailOfRemoved.count(), n);
             }
 
@@ -711,7 +711,7 @@ void SudokuBoard::print (const BoardContents & boardValues)
     int index, value;
 
     if (boardValues.size() != m_boardArea) {
-        printf ("Error: %d board values to be printed, %d values required.\n\n",
+        printf ("Error: %" PRIdQSIZETYPE " board values to be printed, %d values required.\n\n",
             boardValues.size(), m_boardArea);
         return;
     }
