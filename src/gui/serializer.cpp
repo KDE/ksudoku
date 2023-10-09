@@ -409,12 +409,10 @@ SKGraph *Serializer::loadCustomShape(const QUrl& url, QWidget* window, QString& 
 		return nullptr;
 	}
 
-	int errorLine;
-	int errorColumn;
-	QString errorMessage;
-	if(!doc.setContent(&file, &errorMessage, &errorLine, &errorColumn)) {
-		qDebug() << "Error " << errorMessage << " from line " << errorLine << ":" << errorColumn << " from file " << url.toString();
-		errorMsg = i18n("Cannot read XML file on line %1", errorLine);
+	const QDomDocument::ParseResult parseResult = doc.setContent(&file);
+	if (!parseResult) {
+		qDebug() << "Error " << parseResult.errorMessage << " from line " << parseResult.errorLine << ":" << parseResult.errorColumn << " from file " << url.toString();
+		errorMsg = i18n("Cannot read XML file on line %1", parseResult.errorLine);
 
 		return nullptr;
 	}
@@ -445,9 +443,9 @@ Game Serializer::load(const QUrl& url, QWidget* window, QString& errorMsg) {
 		return Game();
 	}
 
-	int errorLine;
-    if(!doc.setContent(downloadJob->data(), nullptr, &errorLine)) {
-		errorMsg = i18n("Cannot read XML file on line %1", errorLine);
+	const QDomDocument::ParseResult parseResult = doc.setContent(downloadJob->data());
+	if (!parseResult) {
+		errorMsg = i18n("Cannot read XML file on line %1", parseResult.errorLine);
 		return Game();
 	}
 
