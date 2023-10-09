@@ -48,6 +48,7 @@ int CageGenerator::makeCages (SKGraph * graph, QList<int> * solutionMoves,
                               int maxSize, int maxValue,
                               bool hideOperators, int maxCombos)
 {
+    Q_UNUSED(maxValue);
     // TODO - Use maxValue when OK'ing cages(?).
     // TODO - Experiment with mMinSingles and mMaxSingles. Make them parameters?
 

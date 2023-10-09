@@ -397,6 +397,7 @@ HistoryEvent Serializer::deserializeComplexHistoryEvent(const QDomElement /*elem
 }
 
 SKGraph *Serializer::loadCustomShape(const QUrl& url, QWidget* window, QString& errorMsg) {
+	Q_UNUSED(window);
 	if ( url.isEmpty() ) {
 		errorMsg = i18n("Unable to download file: URL is empty.");
 		return nullptr;
