@@ -42,6 +42,9 @@
 #ifdef _DEBUG
 # include "assert.h"
 #else
+#  ifdef assert
+#    undef assert
+#  endif
 # define assert(x) { }
 #endif
 
