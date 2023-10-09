@@ -41,7 +41,7 @@ using BoardContents = QList<int>;
 // The maximum digit that can be used in a Mathdoku or Killer Sudoku puzzle.
 const int MaxMathOrder = 9;
 
-using Statistics = struct {
+struct Statistics {
     char *     typeName;
     SudokuType type;
     int        blockSize;
