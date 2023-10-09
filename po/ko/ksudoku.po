@@ -2,14 +2,14 @@
 # Copyright (C) 2008 This_file_is_part_of_KDE
 # This file is distributed under the same license as the kdegames package.
 # Myong-sung Kim <xfuncrushx@gmail.com>, 2008.
-# Shinjo Park <kde@peremen.name>, 2011, 2015, 2019, 2020, 2021, 2022.
+# Shinjo Park <kde@peremen.name>, 2011, 2015, 2019, 2020, 2021, 2022, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
-"PO-Revision-Date: 2022-04-16 23:04+0200\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"PO-Revision-Date: 2023-10-08 23:33+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
 "Language: ko\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 21.08.1\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -245,7 +245,7 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:392 src/gui/configgame.ui:429
-#: src/gui/configgame.ui:452
+#: src/gui/configgame.ui:449
 #, no-c-format, kde-format
 msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
@@ -261,7 +261,7 @@ msgid "Size of 3-D cells outside the selected volume"
 msgstr "선택한 공간 밖에 있는 3차원 셀 크기"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
-#: src/gui/configgame.ui:449
+#: src/gui/configgame.ui:446
 #, kde-format
 msgid ""
 "Darken cells if they are not in an NxNxN cube that contains the selected "
@@ -269,7 +269,7 @@ msgid ""
 msgstr "선택한 셀이 NxNxN 큐브에 없을 때 어둡게 합니다."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
-#: src/gui/configgame.ui:455
+#: src/gui/configgame.ui:452
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "선택한 공간 밖에 있는 3차원 셀 어둡게 하기"
@@ -757,7 +757,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr ""
+msgstr "활성화"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:41

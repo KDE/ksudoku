@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
 "PO-Revision-Date: 2022-02-26 11:47+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
@@ -227,7 +227,7 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:392 src/gui/configgame.ui:429
-#: src/gui/configgame.ui:452
+#: src/gui/configgame.ui:449
 #, no-c-format, kde-format
 msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
@@ -241,7 +241,7 @@ msgid "Size of 3-D cells outside the selected volume"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
-#: src/gui/configgame.ui:449
+#: src/gui/configgame.ui:446
 #, kde-format
 msgid ""
 "Darken cells if they are not in an NxNxN cube that contains the selected "
@@ -249,7 +249,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
-#: src/gui/configgame.ui:455
+#: src/gui/configgame.ui:452
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
 msgstr ""
