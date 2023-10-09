@@ -1092,6 +1092,7 @@ int SudokuBoard::getSymmetricIndices
             row = tb;
             col = lr;
             // No break; fall through to case DIAGONAL_2.
+            [[fallthrough]];
         case DIAGONAL_2:
 	    // Reflect (col, row) in the main NW-SE diagonal by swapping coords.
             out[1] = m_graph->cellIndex(row, col);
