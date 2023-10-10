@@ -981,7 +981,7 @@ msgstr "No s'ha pogut obrir el fitxer."
 #: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
 #, kde-format
 msgid "Cannot read XML file on line %1"
-msgstr "No s'ha pogut llegir el fitxer XML en la línia %1"
+msgstr "No s'ha pogut llegir el fitxer en XML en la línia %1"
 
 #: src/gui/serializer.cpp:444
 #, kde-format
@@ -1155,7 +1155,7 @@ msgstr "Mick Kappenburg"
 #: src/main.cpp:60
 #, kde-format
 msgid "Printing and export of 0.4"
-msgstr "Impressió i exportació al 0.4"
+msgstr "Imprimiu i exporteu cap al 0.4"
 
 #: src/main.cpp:61
 #, kde-format
