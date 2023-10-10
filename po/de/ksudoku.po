@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
 "PO-Revision-Date: 2021-03-01 12:36+0100\n"
 "Last-Translator: Burkhard Lück <lueck@hube-lueck.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
@@ -972,32 +972,32 @@ msgstr "Die Ausgabe wurde an den Drucker gesendet."
 msgid "Print Sudoku Puzzle"
 msgstr "Sudoku-Rätsel drucken"
 
-#: src/gui/serializer.cpp:401
+#: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
 msgstr "Die Datei kann nicht heruntergeladen werden: URL ist leer."
 
-#: src/gui/serializer.cpp:408
+#: src/gui/serializer.cpp:406
 #, kde-format
 msgid "Unable to open file."
 msgstr "Die Datei lässt sich nicht öffnen."
 
-#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
 #, kde-format
 msgid "Cannot read XML file on line %1"
 msgstr "XML-Datei kann in Zeile %1 nicht gelesen werden"
 
-#: src/gui/serializer.cpp:444
+#: src/gui/serializer.cpp:440
 #, kde-format
 msgid "Unable to download file."
 msgstr "Die Datei kann nicht heruntergeladen werden."
 
-#: src/gui/serializer.cpp:685
+#: src/gui/serializer.cpp:680
 #, kde-format
 msgid "Unable to create temporary file."
 msgstr "Die temporäre Datei kann nicht erstellt werden."
 
-#: src/gui/serializer.cpp:698
+#: src/gui/serializer.cpp:693
 #, kde-format
 msgid "Unable to upload file."
 msgstr "Die Datei kann nicht hochgeladen werden."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
 "PO-Revision-Date: 2019-11-11 15:13+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -949,32 +949,32 @@ msgstr "KSudoku saatis väljundi printerisse."
 msgid "Print Sudoku Puzzle"
 msgstr "Sudoku trükkimine"
 
-#: src/gui/serializer.cpp:401
+#: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
 msgstr "Faili allalaadimine nurjus: URL puudub."
 
-#: src/gui/serializer.cpp:408
+#: src/gui/serializer.cpp:406
 #, kde-format
 msgid "Unable to open file."
 msgstr "Faili avamine nurjus."
 
-#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
 #, kde-format
 msgid "Cannot read XML file on line %1"
 msgstr "XML-faili lugemine reas %1 nurjus"
 
-#: src/gui/serializer.cpp:444
+#: src/gui/serializer.cpp:440
 #, kde-format
 msgid "Unable to download file."
 msgstr "Faili allalaadimine nurjus."
 
-#: src/gui/serializer.cpp:685
+#: src/gui/serializer.cpp:680
 #, kde-format
 msgid "Unable to create temporary file."
 msgstr "Ajutise faili loomine nurjus."
 
-#: src/gui/serializer.cpp:698
+#: src/gui/serializer.cpp:693
 #, kde-format
 msgid "Unable to upload file."
 msgstr "Faili üleslaadimine nurjus."

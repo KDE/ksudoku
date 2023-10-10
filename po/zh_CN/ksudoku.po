@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdeorg\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
 "PO-Revision-Date: 2023-09-16 10:09\n"
 "Last-Translator: \n"
 "Language-Team: Chinese Simplified\n"
@@ -901,32 +901,32 @@ msgstr "KSudoku 已将谜题输出到您的打印机。"
 msgid "Print Sudoku Puzzle"
 msgstr "打印数独谜题"
 
-#: src/gui/serializer.cpp:401
+#: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
 msgstr "无法下载文件：URL 为空。"
 
-#: src/gui/serializer.cpp:408
+#: src/gui/serializer.cpp:406
 #, kde-format
 msgid "Unable to open file."
 msgstr "无法打开文件。"
 
-#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
 #, kde-format
 msgid "Cannot read XML file on line %1"
 msgstr "无法读取 XML 文件的 %1 行"
 
-#: src/gui/serializer.cpp:444
+#: src/gui/serializer.cpp:440
 #, kde-format
 msgid "Unable to download file."
 msgstr "无法下载文件。"
 
-#: src/gui/serializer.cpp:685
+#: src/gui/serializer.cpp:680
 #, kde-format
 msgid "Unable to create temporary file."
 msgstr "无法创建临时文件."
 
-#: src/gui/serializer.cpp:698
+#: src/gui/serializer.cpp:693
 #, kde-format
 msgid "Unable to upload file."
 msgstr "无法上传文件。"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
 "PO-Revision-Date: 2022-02-26 11:47+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
@@ -843,32 +843,32 @@ msgstr ""
 msgid "Print Sudoku Puzzle"
 msgstr "सुडोकु पहेली छापें"
 
-#: src/gui/serializer.cpp:401
+#: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
 msgstr ""
 
-#: src/gui/serializer.cpp:408
+#: src/gui/serializer.cpp:406
 #, kde-format
 msgid "Unable to open file."
 msgstr "फाइल खोलने में असमर्थ."
 
-#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
 #, kde-format
 msgid "Cannot read XML file on line %1"
 msgstr "एक्सएमएल फ़ाइल पंक्ति %1 पर पढ़ नहीं सका"
 
-#: src/gui/serializer.cpp:444
+#: src/gui/serializer.cpp:440
 #, kde-format
 msgid "Unable to download file."
 msgstr "फ़ाइल डाउनलोड नहीं कर सका."
 
-#: src/gui/serializer.cpp:685
+#: src/gui/serializer.cpp:680
 #, kde-format
 msgid "Unable to create temporary file."
 msgstr ""
 
-#: src/gui/serializer.cpp:698
+#: src/gui/serializer.cpp:693
 #, kde-format
 msgid "Unable to upload file."
 msgstr "फ़ाइल अपलोड नहीं कर सका."

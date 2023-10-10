@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
 "PO-Revision-Date: 2012-06-30 16:43+0300\n"
 "Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -896,34 +896,34 @@ msgstr ""
 msgid "Print Sudoku Puzzle"
 msgstr ""
 
-#: src/gui/serializer.cpp:401
+#: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
 msgstr ""
 
-#: src/gui/serializer.cpp:408
+#: src/gui/serializer.cpp:406
 #, fuzzy, kde-format
 #| msgid "Cannot load file."
 msgid "Unable to open file."
 msgstr "Nevar ielādēt failu."
 
-#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
 #, kde-format
 msgid "Cannot read XML file on line %1"
 msgstr "Nevar nolasīt XML failu %1 rindā"
 
-#: src/gui/serializer.cpp:444
+#: src/gui/serializer.cpp:440
 #, fuzzy, kde-format
 #| msgid "Cannot load file."
 msgid "Unable to download file."
 msgstr "Nevar ielādēt failu."
 
-#: src/gui/serializer.cpp:685
+#: src/gui/serializer.cpp:680
 #, kde-format
 msgid "Unable to create temporary file."
 msgstr ""
 
-#: src/gui/serializer.cpp:698
+#: src/gui/serializer.cpp:693
 #, fuzzy, kde-format
 #| msgid "Cannot load file."
 msgid "Unable to upload file."

@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2023-10-10 01:46+0000\n"
 "PO-Revision-Date: 2021-09-15 12:12+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
@@ -990,32 +990,32 @@ msgstr "Программа KSudoku отправила изображение н�
 msgid "Print Sudoku Puzzle"
 msgstr "Печать судоку"
 
-#: src/gui/serializer.cpp:401
+#: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
 msgstr "Не удалось загрузить файл: URL-адрес не заполнен."
 
-#: src/gui/serializer.cpp:408
+#: src/gui/serializer.cpp:406
 #, kde-format
 msgid "Unable to open file."
 msgstr "Не удалось открыть файл."
 
-#: src/gui/serializer.cpp:417 src/gui/serializer.cpp:450
+#: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
 #, kde-format
 msgid "Cannot read XML file on line %1"
 msgstr "Не удалось прочитать файл XML в строке %1"
 
-#: src/gui/serializer.cpp:444
+#: src/gui/serializer.cpp:440
 #, kde-format
 msgid "Unable to download file."
 msgstr "Не удалось загрузить файл."
 
-#: src/gui/serializer.cpp:685
+#: src/gui/serializer.cpp:680
 #, kde-format
 msgid "Unable to create temporary file."
 msgstr "Не удалось создать временный файл."
 
-#: src/gui/serializer.cpp:698
+#: src/gui/serializer.cpp:693
 #, kde-format
 msgid "Unable to upload file."
 msgstr "Не удалось отправить файл."
