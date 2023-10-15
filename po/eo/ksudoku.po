@@ -1,46 +1,48 @@
 # Translation of ksudoku into esperanto.
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
+# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
+"Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-10 01:46+0000\n"
-"PO-Revision-Date: 2023-03-22 19:14+0100\n"
+"PO-Revision-Date: 2023-10-14 20:11+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"X-Generator: translate-po (https://github.com/zcribe/translate-po)\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 1.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Emmanuelle Richard"
+msgstr "Emmanuelle Richard,Oliver Kellogg"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "emmanuelle@esperanto-jeunes.org"
+msgstr "emmanuelle@esperanto-jeunes.org,okellogg@users.sourceforge.net"
 
 #: src/generator/sudokuboard.cpp:123
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr ""
+"Provoj generi enigmon malsukcesis post ĉirkaŭ 200 provoj. Ĉu provi denove?"
 
 #: src/generator/sudokuboard.cpp:125
 #, kde-format
 msgid "Mathdoku or Killer Sudoku Puzzle"
-msgstr ""
+msgstr "Mathdoku aŭ Killer Sudoku-Puzlo"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:229
 #, kde-format
 msgid "&Try Again"
-msgstr ""
+msgstr "&Provi denove"
 
 #: src/generator/sudokuboard.cpp:211 src/generator/sudokuboard.cpp:252
 #, kde-format
@@ -60,12 +62,23 @@ msgid ""
 "Symmetry setting to 'No Symmetry' or some low symmetry type and then use "
 "'Generate A Puzzle' again."
 msgstr ""
+"Post %1 provoj, la plej bona malfacilecnivelo atingita de la generatoro "
+"estas %2, kun interna malfacilecnivelo %3, sed vi petis malfacilecnivelon "
+"%4.\n"
+"\n"
+"Ĉu vi volas lasi la generatoron provi denove aŭ akcepti la enigmon kiel "
+"estas. ?\n"
+"\n"
+"Konsilo: vi povas provi pliigi la malfacilec-takson farante la jenon: "
+"Daŭrigu per la butono 'Akcepti', elektu Ludo -> Nova, tiam ŝanĝu la "
+"Simetrian agordon al 'Neniu Simetrio' aŭ iun malaltan simetrian tipon kaj "
+"poste uzu 'Generate A Puzzle' denove."
 
 #: src/generator/sudokuboard.cpp:228 src/generator/sudokuboard.cpp:248
 #: src/generator/sudokuboard.cpp:264
 #, kde-format
 msgid "Difficulty Level"
-msgstr ""
+msgstr "Nivelo de malfacilaĵo"
 
 #: src/generator/sudokuboard.cpp:229
 #, kde-format
@@ -81,11 +94,16 @@ msgid ""
 "The internal difficulty rating is %1. There are %2 clues at the start and %3 "
 "moves to go."
 msgstr ""
+"Eblos solvi la generitan enigmon nur per logiko. Neniu diveno estos "
+"bezonata.\n"
+"\n"
+"La interna malfacileca takso estas %1. Estas %2 indicoj ĉe la komenco kaj %3 "
+"movoj por daŭri."
 
 #: src/generator/sudokuboard.cpp:249 src/generator/sudokuboard.cpp:265
 #, kde-format
 msgid "&Retry"
-msgstr ""
+msgstr "&Reprovi"
 
 #: src/generator/sudokuboard.cpp:255
 #, kde-format
@@ -97,18 +115,24 @@ msgid ""
 "The internal difficulty rating is %3, there are %4 clues at the start and %5 "
 "moves to go."
 msgstr ""
+"Solvi la generitan enigmon postulos averaĝe %1 divenoj aŭ branĉpunktoj kaj "
+"se vi divenas malĝuste, retrovojiĝo estos necesa. La unua supozo devus veni "
+"post %2 movoj.\n"
+"\n"
+"La interna malfacilec-taksado estas %3, estas %4 indikoj ĉe la komenco kaj "
+"%5 movoj daŭras."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
 #: src/gui/configgame.ui:20
 #, kde-format
 msgid "When printing, try to fit more than one puzzle on a page"
-msgstr ""
+msgstr "Presante, provu alĝustigi pli ol unu enigmon sur paĝo"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:43
 #, kde-format
 msgid "Highlight the row, column and block that contain the selected cell"
-msgstr ""
+msgstr "Marku la vicon, kolumnon kaj blokon, kiuj enhavas la elektitan ĉelon"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:46
@@ -117,12 +141,14 @@ msgid ""
 "Highlight the row, column and block that contain the selected cell. Blocks "
 "may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
 msgstr ""
+"Marku la vicon, kolumnon kaj blokon, kiuj enhavas la elektitan ĉelon. Blokoj "
+"povas esti kvadrataj aŭ neregulaj (kiel en puzlo-specaj aŭ XSudoku-enigmoj)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:49
 #, kde-format
 msgid "Show highlights in 2-D puzzles"
-msgstr ""
+msgstr "Montru kulminaĵojn en 2-D enigmoj"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -130,6 +156,7 @@ msgstr ""
 #, kde-format
 msgid "Highlight in red any cells whose values break the Sudoku rules."
 msgstr ""
+"Marku ruĝe iujn ajn ĉelojn, kies valoroj malobeas la regulojn de Sudoku."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
 #: src/gui/configgame.ui:62
@@ -142,25 +169,25 @@ msgstr "Montri erarojn"
 #: src/gui/configgame.ui:69 src/gui/configgame.ui:72
 #, kde-format
 msgid "Highlight the planes (blocks) that contain the selected cell."
-msgstr ""
+msgstr "Marki la ebenojn (blokojn) kiuj enhavas la elektitan ĉelon."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
 #: src/gui/configgame.ui:75
 #, kde-format
 msgid "Show highlights in 3-D puzzles"
-msgstr ""
+msgstr "Montri elstaraĵojn en 3-D enigmoj"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/configgame.ui:137
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
-msgstr ""
+msgstr "Mathdoku-enigmograndeco (3-9)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/configgame.ui:167
 #, kde-format
 msgid "Settings for 3-D Puzzles Only"
-msgstr ""
+msgstr "Agordoj por 3-D Puzloj Nur"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
@@ -170,13 +197,13 @@ msgstr ""
 #: src/gui/configgame.ui:228 src/gui/configgame.ui:231
 #, kde-format
 msgid "Set the relative size of 3-D cells and the spaces between them."
-msgstr ""
+msgstr "Fiksi la relativan grandecon de 3-D ĉeloj kaj la spacojn inter ili."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/configgame.ui:234
 #, kde-format
 msgid "Overall size of 3-D cells"
-msgstr ""
+msgstr "Totala grandeco de 3-D ĉeloj"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
@@ -186,13 +213,13 @@ msgstr ""
 #: src/gui/configgame.ui:300 src/gui/configgame.ui:303
 #, no-c-format, kde-format
 msgid "Shrink or expand a cell by up to 30% when it is selected."
-msgstr ""
+msgstr "Ŝrumpi aŭ pligrandigi ĉelon ĝis 30% kiam ĝi estas elektita."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/configgame.ui:306
 #, kde-format
 msgid "Size of selected 3-D cell"
-msgstr ""
+msgstr "Grandeco de elektita 3-D ĉelo"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
@@ -202,13 +229,13 @@ msgstr ""
 #: src/gui/configgame.ui:363 src/gui/configgame.ui:366
 #, no-c-format, kde-format
 msgid "Shrink or expand cells by up to 30% when they are highlighted."
-msgstr ""
+msgstr "Ŝrumpi aŭ pligrandigi ĉelojn ĝis 30% kiam ili estas reliefigitaj."
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/configgame.ui:369
 #, kde-format
 msgid "Size of highlighted 3-D cells"
-msgstr ""
+msgstr "Grandeco de reliefigitaj 3-D ĉeloj"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_5)
@@ -218,6 +245,8 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell."
 msgstr ""
+"Ŝrumpi ĉelojn ĝis 60% se ili ne estas en NxNxN-kubo, kiu enhavas la "
+"elektitan ĉelon."
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
@@ -229,12 +258,14 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell. This is useful if a 3-D puzzle has more than one cube."
 msgstr ""
+"Ŝrumpi ĉelojn ĝis 60% se ili ne estas en NxNxN-kubo, kiu enhavas la "
+"elektitan ĉelon. Ĉi tio estas utila se 3-D enigmo havas pli ol unu kubon."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/configgame.ui:432
 #, kde-format
 msgid "Size of 3-D cells outside the selected volume"
-msgstr ""
+msgstr "Grandeco de 3-D ĉeloj ekster la elektita volumeno"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:446
@@ -243,12 +274,14 @@ msgid ""
 "Darken cells if they are not in an NxNxN cube that contains the selected "
 "cell."
 msgstr ""
+"Malheligi ĉelojn se ili ne estas en kubo NxNxN kiu enhavas la elektitan "
+"ĉelon."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:452
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
-msgstr ""
+msgstr "Mallumigi 3-D-ĉelojn ekster la elektita volumeno"
 
 #: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
 #, kde-format
@@ -270,29 +303,29 @@ msgstr ""
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gratulojn! Vi faris ĝin en 1 sekundo. Kun kelkaj trukoj."
+msgstr[1] "Gratulojn! Vi faris ĝin en %1 sekundoj. Kun kelkaj trukoj."
 
 #: src/gui/ksudoku.cpp:89
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Gratulojn! Vi faris ĝin en 1 minuto. Kun kelkaj trukoj."
+msgstr[1] "Gratulojn! Vi faris ĝin en %1 minutoj. Kun kelkaj trukoj."
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
 msgid "1 minute"
 msgid_plural "%1 minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 minuto"
+msgstr[1] "%1 minutoj"
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
 msgid "1 second"
 msgid_plural "%1 seconds"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "1 sekundo"
+msgstr[1] "%1 sekundoj"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -338,12 +371,12 @@ msgstr "Roxdoko 9 (3x3x3)"
 #: src/gui/ksudoku.cpp:183
 #, kde-format
 msgid "The Rox 3D Sudoku"
-msgstr ""
+msgstr "La Rox 3D Sudoko"
 
 #: src/gui/ksudoku.cpp:205
 #, kde-format
 msgid "Missing Variant Name"
-msgstr ""
+msgstr "Mankas Varianta Nomo"
 
 #: src/gui/ksudoku.cpp:219
 #, kde-format
@@ -403,11 +436,25 @@ msgid ""
 "can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
+"Mathdoku-enigmoj povas havi ajnan grandecon de 3x3 ĝis 9x9. La solvo estas "
+"krado en kiu ĉiu vico kaj ĉiu kolumno enhavas la disponeblajn ciferojn (1-3 "
+"ĝis 1-9) ekzakte unufoje. La krado estas kovrita per neregulaj kaĝoj.\n"
+"\n"
+"Kaĝoj de grandeco 1 estas komencaj valoroj aŭ indicoj, sed ne estas multaj "
+"el ili. Kaĝoj de pli granda grandeco havas celvaloron kaj aritmetikan "
+"operatoron (+-x/). La ciferoj en la kaĝo devas kombini kune, uzante la "
+"funkciigiston, por atingi la celvaloron, ekz. '12x' signifas, ke la ciferoj "
+"devas multobliĝi kune por fari 12. Cifero povas okazi pli ol unufoje en "
+"kaĝo, kondiĉe ke ĝi okazas en malsamaj vicoj kaj kolumnoj.\n"
+"\n"
+"Ĝenerale, pli grandaj Mathdokus estas pli malfacilaj kaj ankaŭ pli grandaj "
+"kaĝoj. . Vi povas elekti la enigmon en la dialogo Agordoj de KSudoku kaj la "
+"maksimuman kaĝgrandecon per la butono de Malfacilaĵo de KSudoku."
 
 #: src/gui/ksudoku.cpp:295
 #, kde-format
 msgid "Playing Mathdoku"
-msgstr ""
+msgstr "Ludante Mathdoku"
 
 #: src/gui/ksudoku.cpp:299
 #, kde-format
@@ -424,11 +471,22 @@ msgid ""
 "In general, larger cages are more difficult. You can select the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
+"Killer Sudoku-enigmoj povas havi grandecojn 4x4 aŭ 9x9, kun aŭ kvar 2x2 "
+"blokoj aŭ naŭ 3x3 blokoj. La solvo devas sekvi Klasikan Sudoku-regulojn. La "
+"diferenco estas, ke ekzistas malmultaj komencaj valoroj aŭ indicoj (se "
+"ekzistas). Anstataŭe la krado estas kovrita per nereguleformaj kaĝoj.\n"
+"\n"
+"Kaĝoj de grandeco 1 estas komencaj valoroj aŭ indicoj. Kaĝoj de pli granda "
+"grandeco havas celvaloron kaj la ciferoj en ili devas sumiĝi al tiu valoro. "
+"En Killer Sudoku, kaĝo ne povas enhavi ajnan ciferon pli ol unufoje.\n"
+"\n"
+"Ĝenerale, pli grandaj kaĝoj estas pli malfacilaj. Vi povas elekti la "
+"maksimuman kaĝgrandecon per la butono de Malfacileco de KSudoku."
 
 #: src/gui/ksudoku.cpp:313
 #, kde-format
 msgid "Playing Killer Sudoku"
-msgstr ""
+msgstr "Ludante Killer Sudoku"
 
 #: src/gui/ksudoku.cpp:317
 #, kde-format
@@ -458,11 +516,36 @@ msgid ""
 "puzzle and make sure there is only one solution. If the check fails, you "
 "have probably made an error somewhere in one of the cages."
 msgstr ""
+"Mathdoku kaj Killer Sudoku-enigmoj devas esti klavigitaj per laborado pri "
+"unu kaĝo samtempe. Por komenci kaĝon, maldekstre alklaku iun ajn neuzatan "
+"ĉelon aŭ enigu numeron en la ĉelo kiu estas sub la kursoro aŭ enigu + - / aŭ "
+"x tie. Malgranda kaĝo-etikedo aperos en tiu ĉelo. Por etendi la kaĝon en "
+"ajna direkto, maldekstre alklaku najbaran ĉelon aŭ movu la kursoron tien kaj "
+"tajpu Spacon.\n"
+"\n"
+"La nombro, kiun vi tajpas, estas la valoro de la kaĝo kaj ĝi povas havi unu "
+"aŭ plurajn ciferojn, inkluzive de nulo. Ĉelo de grandeco 1 devas havi 1-"
+"ciferan nombron, kiel en normala Sudoku-enigmo. Ĝi fariĝas komenca valoro aŭ "
+"indico por la ludanto.\n"
+"\n"
+"La + - / aŭ x estas la operatoro (Aldoni, Subtrahi, Dividi aŭ Multipliki). "
+"Vi devas havi unu en kaĝoj de grandeco 2 aŭ pli. En Killer Sudoku, la "
+"funkciigisto estas provizita aŭtomate ĉar ĝi estas ĉiam + aŭ neniu.\n"
+"\n"
+"Vi povas enigi ciferojn, funkciigistojn kaj ĉelojn en ajna ordo. Por "
+"kompletigi la kaĝon kaj komenci alian kaĝon, ĉiam premu Reen. Se vi eraras, "
+"la nura afero estas forigi tutan kaĝon kaj reeniri ĝin. Uzu dekstran klakon "
+"en la nuna kaĝo aŭ ajna pli frua kaĝo, se vi volas forigi ĝin. Alternative, "
+"uzu la kursoron kaj la klavon Forigi aŭ Backspace.\n"
+"\n"
+"Kiam la krado estas plenigita de kaĝoj, premu la butonon Kontrolo, por solvi "
+"la enigmon kaj certigi, ke ekzistas nur unu solvo. Se la kontrolo "
+"malsukcesas, vi verŝajne faris eraron ie en unu el la kaĝoj."
 
 #: src/gui/ksudoku.cpp:347
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
-msgstr ""
+msgstr "Enigo de datumoj por Enigmoj kun Kaĝoj"
 
 #: src/gui/ksudoku.cpp:403
 #, kde-format
@@ -475,16 +558,20 @@ msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr ""
+"Pardonu, neniuj solvoj estis trovitaj. Bonvolu kontroli, ke vi eniris la "
+"enigmon tute kaj ĝuste."
 
 #: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
 #, kde-format
 msgid "Check Puzzle"
-msgstr ""
+msgstr "Kontrolu Puzlon"
 
 #: src/gui/ksudoku.cpp:423
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr ""
+"La Enigmo, kiun vi enigis, havas unikan solvon kaj estas preta por esti "
+"ludita."
 
 #: src/gui/ksudoku.cpp:427
 #, kde-format
@@ -492,11 +579,13 @@ msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
+"La Enigmo, kiun vi enigis, havas plurajn solvojn. Bonvolu kontroli, ke vi "
+"eniris la enigmon tute kaj ĝuste."
 
 #: src/gui/ksudoku.cpp:432
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
-msgstr ""
+msgstr "Ĉu vi volas ludi la enigmon nun?"
 
 #: src/gui/ksudoku.cpp:432
 #, kde-format
@@ -511,7 +600,7 @@ msgstr "Ludi"
 #: src/gui/ksudoku.cpp:470
 #, kde-format
 msgid "Enable all messages"
-msgstr ""
+msgstr "Ebligi ĉiujn mesaĝojn"
 
 #: src/gui/ksudoku.cpp:487
 #, kde-format
@@ -522,7 +611,7 @@ msgstr "Kontroli"
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
-msgstr ""
+msgstr "Diabla"
 
 #: src/gui/ksudoku.cpp:505
 #, kde-format
@@ -540,59 +629,59 @@ msgstr "Malfacileco:"
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
-msgstr ""
+msgstr "Simetrio:"
 
 #: src/gui/ksudoku.cpp:524
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
-msgstr ""
+msgstr "Simetrio"
 
 #: src/gui/ksudoku.cpp:526
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
-msgstr ""
+msgstr "La simetrio de aranĝo de la indicoj kiam la enigmo komenciĝas"
 
 #: src/gui/ksudoku.cpp:528
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
-msgstr ""
+msgstr "Diagonala"
 
 #: src/gui/ksudoku.cpp:529
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
-msgstr ""
+msgstr "Centra"
 
 #: src/gui/ksudoku.cpp:530
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
-msgstr ""
+msgstr "Maldekstra-Dekstra"
 
 #: src/gui/ksudoku.cpp:531
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
-msgstr ""
+msgstr "Spiralo"
 
 #: src/gui/ksudoku.cpp:532
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
-msgstr ""
+msgstr "Kvar-Voja"
 
 #: src/gui/ksudoku.cpp:533
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
-msgstr ""
+msgstr "Hazarda Elekto"
 
 #: src/gui/ksudoku.cpp:534
 #, kde-format
 msgid "No Symmetry"
-msgstr ""
+msgstr "Neniu Simetrio"
 
 #: src/gui/ksudoku.cpp:638 src/gui/ksudoku.cpp:697
 #, kde-format
@@ -608,18 +697,18 @@ msgstr "̈̈Ĉu vi vere volas fini tiun ludon kaj komenci novan?"
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
-msgstr ""
+msgstr "Nova Ludo"
 
 #: src/gui/ksudoku.cpp:656
 #, kde-format
 msgctxt "button label"
 msgid "New Game"
-msgstr ""
+msgstr "Nova Ludo"
 
 #: src/gui/ksudoku.cpp:673
 #, kde-format
 msgid "Do you really want to restart this game?"
-msgstr ""
+msgstr "Ĉu vi vere volas rekomenci ĉi tiun ludon?"
 
 #: src/gui/ksudoku.cpp:674
 #, kde-format
@@ -641,12 +730,12 @@ msgstr "Malfermi lokon"
 #: src/gui/ksudoku.cpp:724
 #, kde-format
 msgid "Error Writing File"
-msgstr ""
+msgstr "Eraro dum Skriba Dosiero"
 
 #: src/gui/ksudoku.cpp:746
 #, kde-format
 msgid "There seems to be no puzzle to print."
-msgstr ""
+msgstr "Ŝajnas esti neniu enigmo por presi."
 
 #: src/gui/ksudoku.cpp:783
 #, kde-format
@@ -669,6 +758,12 @@ msgid ""
 "Please also note that the generation of this type of puzzle might take much "
 "longer than other ones. During this time KSudoku will not respond."
 msgstr ""
+"Averto: La Senlima malfacilecnivelo havas neniun limon pri kiom da divenoj "
+"aŭ branĉpunktoj necesas por solvi la enigmon kaj ne estas pli malalta limo "
+"pri kiom baldaŭ divenado iĝas necesa.\n"
+"\n"
+"Bonvolu noti ankaŭ, ke la generacio de ĉi tiu speco de enigmo eble povus. "
+"daŭras multe pli longe ol aliaj. Dum ĉi tiu tempo KSudoku ne respondos."
 
 #: src/gui/ksudoku.cpp:823
 #, kde-format
@@ -683,12 +778,16 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"Ĉi tio ebligos ĉiujn dialogojn, kiujn vi malŝaltis, markante la opcion 'Ne "
+"montru ĉi tiun mesaĝon denove'.\n"
+"\n"
+"Ĉu vi volas daŭrigi?"
 
 #: src/gui/ksudoku.cpp:866
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr ""
+msgstr "Ebligi"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:41
@@ -708,23 +807,25 @@ msgid ""
 "In Killer Sudoku, the operator is always + or none and KSudoku automatically "
 "sets the correct choice."
 msgstr ""
+"En Killer Sudoku, la funkciigisto ĉiam estas + aŭ neniu kaj KSudoku aŭtomate "
+"fiksas la ĝustan elekton."
 
 #: src/gui/ksudokugame.cpp:377
 #, kde-format
 msgid "Killer Sudoku Cage"
-msgstr ""
+msgstr "Killer Sudoku Kaĝo"
 
 #: src/gui/ksudokugame.cpp:422
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
-msgstr ""
+msgstr "La ĉelo, kiun vi elektis, jam estis uzata en kaĝo."
 
 #: src/gui/ksudokugame.cpp:424 src/gui/ksudokugame.cpp:454
 #: src/gui/ksudokugame.cpp:479 src/gui/ksudokugame.cpp:486
 #: src/gui/ksudokugame.cpp:494 src/gui/ksudokugame.cpp:503
 #, kde-format
 msgid "Error in Cage"
-msgstr ""
+msgstr "Eraro en Kaĝo"
 
 #: src/gui/ksudokugame.cpp:452
 #, kde-format
@@ -732,6 +833,8 @@ msgid ""
 "The cell you have selected is not next to any cell in the cage you are "
 "creating."
 msgstr ""
+"La ĉelo, kiun vi elektis, ne estas apud iu ajn ĉelo en la kaĝo, kiun vi "
+"kreas."
 
 #: src/gui/ksudokugame.cpp:477
 #, kde-format
@@ -739,6 +842,8 @@ msgid ""
 "The cage you wish to complete has no cells in it yet. Please click on a cell "
 "or key in + - / x or a number."
 msgstr ""
+"La kaĝo, kiun vi volas kompletigi, ankoraŭ ne havas ĉelojn en ĝi. Bonvolu "
+"alklaki ĉelon aŭ klavon en + - / x aŭ numeron."
 
 #: src/gui/ksudokugame.cpp:484
 #, kde-format
@@ -746,6 +851,8 @@ msgid ""
 "The cage you wish to complete has no value yet. Please key in a number with "
 "one or more digits."
 msgstr ""
+"La kaĝo, kiun vi volas kompletigi, ankoraŭ ne havas valoron. Bonvolu entajpi "
+"numeron kun unu aŭ pluraj ciferoj."
 
 #: src/gui/ksudokugame.cpp:492
 #, kde-format
@@ -753,6 +860,8 @@ msgid ""
 "The cage you wish to complete has more than one cell, but it has no operator "
 "yet. Please key in + - / or x."
 msgstr ""
+"La kaĝo, kiun vi volas kompletigi, havas pli ol unu ĉelon, sed ĝi ankoraŭ ne "
+"havas funkciigiston. Bonvolu entajpi + - / aŭ x."
 
 #: src/gui/ksudokugame.cpp:500
 #, kde-format
@@ -760,17 +869,20 @@ msgid ""
 "The cage you wish to complete has one cell, but its value is too large. A "
 "single-cell cage must have a value from 1 to %1 in a puzzle of this size."
 msgstr ""
+"La kaĝo, kiun vi volas kompletigi, havas unu ĉelon, sed ĝia valoro estas tro "
+"granda. Unuĉela kaĝo devas havi valoron de 1 ĝis %1 en enigmo de ĉi tiu "
+"grandeco."
 
 #: src/gui/ksudokugame.cpp:536
 #, kde-format
 msgid "Do you wish to delete this cage?"
-msgstr ""
+msgstr "Ĉu vi volas forigi ĉi tiun kaĝon?"
 
 #: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
 #: src/gui/ksudokugame.cpp:570
 #, kde-format
 msgid "Delete Cage"
-msgstr ""
+msgstr "Forigi Kaĝon"
 
 #: src/gui/ksudokugame.cpp:562
 #, kde-format
@@ -778,11 +890,13 @@ msgid ""
 "The cell you have selected is not in any cage, so the Delete action will not "
 "delete anything."
 msgstr ""
+"La ĉelo, kiun vi elektis, estas en neniu kaĝo, do la ago Forigi nenion "
+"forigos."
 
 #: src/gui/ksudokugame.cpp:569
 #, kde-format
 msgid "The Delete action finds that there are no cages to delete."
-msgstr ""
+msgstr "La ago Forigi trovas ke ne estas kaĝoj por forigi."
 
 #. i18n: ectx: Menu (game)
 #: src/gui/ksudokuui.rc:10
@@ -817,7 +931,7 @@ msgstr "Agoj ilobreta"
 #: src/gui/puzzleprinter.cpp:62
 #, kde-format
 msgid "Sorry, cannot print three-dimensional puzzles."
-msgstr ""
+msgstr "Pardonu, mi ne povas presi tridimensiajn enigmojn."
 
 #: src/gui/puzzleprinter.cpp:92
 #, kde-format
@@ -828,26 +942,31 @@ msgid ""
 "Your puzzle will be printed when no more will fit on the page or when "
 "KSudoku terminates."
 msgstr ""
+"La agordo de KSudoku por presi plurajn enigmojn po paĝo estas nuntempe "
+"elektita.\n"
+"\n"
+"Via enigmo estos presita kiam ne plu taŭgas sur la paĝo aŭ kiam KSudoku "
+"finiĝos."
 
 #: src/gui/puzzleprinter.cpp:108
 #, kde-format
 msgid "KSudoku has sent output to your printer."
-msgstr ""
+msgstr "KSudoku sendis eliron al via presilo."
 
 #: src/gui/puzzleprinter.cpp:121
 #, kde-format
 msgid "Print Sudoku Puzzle"
-msgstr ""
+msgstr "Presi Sudoku-Puzlon"
 
 #: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
-msgstr ""
+msgstr "Ne eblas elŝuti dosieron: URL estas malplena."
 
 #: src/gui/serializer.cpp:406
 #, kde-format
 msgid "Unable to open file."
-msgstr ""
+msgstr "Ne eblas malfermi dosieron."
 
 #: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
 #, kde-format
@@ -857,17 +976,17 @@ msgstr "Ne eblas legi XML dosieron en linio %1"
 #: src/gui/serializer.cpp:440
 #, kde-format
 msgid "Unable to download file."
-msgstr ""
+msgstr "Ne eblas elŝuti dosieron."
 
 #: src/gui/serializer.cpp:680
 #, kde-format
 msgid "Unable to create temporary file."
-msgstr ""
+msgstr "Ne eblas krei provizoran dosieron."
 
 #: src/gui/serializer.cpp:693
 #, kde-format
 msgid "Unable to upload file."
-msgstr ""
+msgstr "Ne eblas alŝuti dosieron."
 
 #: src/gui/views/gameactions.cpp:54
 #, kde-format
@@ -918,30 +1037,31 @@ msgstr "GetNewVariant ankoraŭ ne realigita"
 #: src/gui/welcomescreen.cpp:179
 #, kde-format
 msgid "Please select a puzzle variant."
-msgstr ""
+msgstr "Bonvolu elekti enigmo-variaĵon."
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to start puzzle"
-msgstr ""
+msgstr "Ne eblas komenci enigmon"
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
 msgid ""
 "Unable to create an empty puzzle of the chosen variant; please try another."
 msgstr ""
+"Ne eblas krei malplenan enigmon de la elektita varianto; bonvolu provi alian."
 
 #: src/gui/welcomescreen.cpp:169
 #, kde-format
 msgid "Unable to start a puzzle of the chosen variant; please try another."
-msgstr ""
+msgstr "Ne eblas komenci enigmon de la elektita varianto; bonvolu provi alian."
 
 #: src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to generate a puzzle of the chosen variant; please try another."
-msgstr ""
+msgstr "Ne eblas generi enigmon de la elektita varianto; bonvolu provi alian."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
 #: src/gui/welcomescreen.ui:17
@@ -959,13 +1079,13 @@ msgstr "Akiri novan"
 #: src/gui/welcomescreen.ui:48
 #, kde-format
 msgid "Enter In A Puzzle"
-msgstr ""
+msgstr "Eniri En Puzlo"
 
 #. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
 #: src/gui/welcomescreen.ui:55
 #, kde-format
 msgid "Generate A Puzzle"
-msgstr ""
+msgstr "Generi Puzlon"
 
 #: src/main.cpp:45
 #, kde-format
@@ -1005,12 +1125,12 @@ msgstr "Fleganto"
 #: src/main.cpp:53
 #, kde-format
 msgid "Ian Wadham"
-msgstr ""
+msgstr "Ian Wadham"
 
 #: src/main.cpp:53
 #, kde-format
 msgid "New puzzle generator and solver"
-msgstr ""
+msgstr "Nova enigmo-generatoro kaj solvanto"
 
 #: src/main.cpp:54
 #, kde-format
@@ -1030,7 +1150,7 @@ msgstr "Dankon al NeHe por OpenGL Lerniloj"
 #: src/main.cpp:56
 #, kde-format
 msgid "David Bau"
-msgstr ""
+msgstr "David Bau"
 
 #: src/main.cpp:56
 #, kde-format
@@ -1038,6 +1158,8 @@ msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 msgstr ""
+"Algoritmoj por nova enigmogeneratoro kaj solvanto ĉe davidbau.com/"
+"archives/2006/09/04/sudoku_generator.html"
 
 #: src/main.cpp:64
 #, kde-format
