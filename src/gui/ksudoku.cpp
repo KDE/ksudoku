@@ -478,7 +478,7 @@ void KSudoku::setupActions()
 	QAction * a = KStandardGameAction::hint(this, &KSudoku::giveHint, actionCollection());
 	// The default value (H) conflicts with the keys assigned
 	// to add letter/numbers to the board.
-	actionCollection()->setDefaultShortcut(a, QKeySequence(Qt::Key_F2));
+	KActionCollection::setDefaultShortcut(a, QKeySequence(Qt::Key_F2));
 
 	KStandardGameAction::solve(this, &KSudoku::autoSolve, actionCollection());
 

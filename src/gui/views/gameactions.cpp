@@ -70,7 +70,7 @@ void GameActions::init() {
 			// Keys 1 to 9, for puzzles of order 9 or less.
 			shortcuts << QKeySequence(Qt::Key_1 + i);
 		}
-		m_collection->setDefaultShortcuts(a, shortcuts);
+		KActionCollection::setDefaultShortcuts(a, shortcuts);
         connect(a, &QAction::triggered, this, [this, i] { Q_EMIT enterValue(i + 1); });
 		m_actions << a;
 		if (i >= 25) {
@@ -85,7 +85,7 @@ void GameActions::init() {
 		if(i < 9) {
 			shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_1 + i));
 		}
-		m_collection->setDefaultShortcuts(a, shortcuts);
+		KActionCollection::setDefaultShortcuts(a, shortcuts);
         connect(a, &QAction::triggered, this, [this, i] { Q_EMIT markValue(i + 1); });
 		m_actions << a;
 	}
@@ -93,37 +93,35 @@ void GameActions::init() {
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_up"), a);
 	a->setText(i18n("Move Up"));
-	m_collection->setDefaultShortcut(a, Qt::Key_Up);
+	KActionCollection::setDefaultShortcut(a, Qt::Key_Up);
 	connect(a, &QAction::triggered, this, &GameActions::moveUp);
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_down"), a);
 	a->setText(i18n("Move Down"));
-	m_collection->setDefaultShortcut(a, Qt::Key_Down);
+	KActionCollection::setDefaultShortcut(a, Qt::Key_Down);
 	connect(a, &QAction::triggered, this, &GameActions::moveDown);
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_left"), a);
 	a->setText(i18n("Move Left"));
-	m_collection->setDefaultShortcut(a, Qt::Key_Left);
+	KActionCollection::setDefaultShortcut(a, Qt::Key_Left);
 	connect(a, &QAction::triggered, this, &GameActions::moveLeft);
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_right"), a);
 	a->setText(i18n("Move Right"));
-	m_collection->setDefaultShortcut(a, Qt::Key_Right);
+	KActionCollection::setDefaultShortcut(a, Qt::Key_Right);
 	connect(a, &QAction::triggered, this, &GameActions::moveRight);
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_clear_cell"), a);
 	a->setText(i18n("Clear Cell"));
-	m_collection->setDefaultShortcuts(a, QList<QKeySequence>()
-		<< QKeySequence(Qt::Key_Backspace)
-		<< QKeySequence(Qt::Key_Delete));
+	KActionCollection::setDefaultShortcuts(a, {QKeySequence(Qt::Key_Backspace), QKeySequence(Qt::Key_Delete)});
 	connect(a, &QAction::triggered, this, &GameActions::clearValue);
 	m_actions << a;
 }
