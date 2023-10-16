@@ -20,7 +20,7 @@
 #ifndef _ArcBall_h
 #define _ArcBall_h
 
-#include <QtGlobal>
+#include <QtSystemDetection>
 
 #ifdef Q_OS_MAC
 #include <OpenGL/gl.h>
