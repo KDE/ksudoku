@@ -48,7 +48,7 @@
 #include <KStandardAction>
 #include <KTar>
 
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 #include <KGameThemeSelector>
 #include <KGameDifficulty>
 
@@ -455,13 +455,13 @@ void KSudoku::setupActions()
 
 	setAcceptDrops(true);
 
-	KStandardGameAction::gameNew(this, &KSudoku::gameNew, actionCollection());
-	KStandardGameAction::restart(this, &KSudoku::gameRestart, actionCollection());
-	KStandardGameAction::load(this, &KSudoku::gameOpen, actionCollection());
-	m_gameSave = KStandardGameAction::save(this, &KSudoku::gameSave, actionCollection());
-	m_gameSaveAs = KStandardGameAction::saveAs(this, &KSudoku::gameSaveAs, actionCollection());
-	KStandardGameAction::print(this, &KSudoku::gamePrint, actionCollection());
-	KStandardGameAction::quit(this, &KSudoku::close, actionCollection());
+	KGameStandardAction::gameNew(this, &KSudoku::gameNew, actionCollection());
+	KGameStandardAction::restart(this, &KSudoku::gameRestart, actionCollection());
+	KGameStandardAction::load(this, &KSudoku::gameOpen, actionCollection());
+	m_gameSave = KGameStandardAction::save(this, &KSudoku::gameSave, actionCollection());
+	m_gameSaveAs = KGameStandardAction::saveAs(this, &KSudoku::gameSaveAs, actionCollection());
+	KGameStandardAction::print(this, &KSudoku::gamePrint, actionCollection());
+	KGameStandardAction::quit(this, &KSudoku::close, actionCollection());
 	// TODO Export is disabled due to missing port to KDE4.
 // 	createAction("game_export", SLOT(gameExport()), i18n("Export"));
 
@@ -472,15 +472,15 @@ void KSudoku::setupActions()
 	connect(enableMessagesAct, &QAction::triggered, this, &KSudoku::enableMessages);
 
 	//History
-	KStandardGameAction::undo(this, &KSudoku::undo, actionCollection());
-	KStandardGameAction::redo(this, &KSudoku::redo, actionCollection());
+	KGameStandardAction::undo(this, &KSudoku::undo, actionCollection());
+	KGameStandardAction::redo(this, &KSudoku::redo, actionCollection());
 
-	QAction * a = KStandardGameAction::hint(this, &KSudoku::giveHint, actionCollection());
+	QAction * a = KGameStandardAction::hint(this, &KSudoku::giveHint, actionCollection());
 	// The default value (H) conflicts with the keys assigned
 	// to add letter/numbers to the board.
 	KActionCollection::setDefaultShortcut(a, QKeySequence(Qt::Key_F2));
 
-	KStandardGameAction::solve(this, &KSudoku::autoSolve, actionCollection());
+	KGameStandardAction::solve(this, &KSudoku::autoSolve, actionCollection());
 
 	a = new QAction(this);
 	actionCollection()->addAction( QStringLiteral( "move_dub_puzzle" ), a);
