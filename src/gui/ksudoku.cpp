@@ -540,38 +540,38 @@ void KSudoku::adaptActions2View() {
 
 	m_gameSave->setEnabled(game.isValid());
 	m_gameSaveAs->setEnabled(game.isValid());
-	action("game_new")->setEnabled(game.isValid());
-	action("game_restart")->setEnabled(game.isValid());
-	action("game_print")->setEnabled(game.isValid());
+	action(QStringLiteral("game_new"))->setEnabled(game.isValid());
+	action(QStringLiteral("game_restart"))->setEnabled(game.isValid());
+	action(QStringLiteral("game_print"))->setEnabled(game.isValid());
 	if(game.isValid()) {
 		bool isEnterPuzzleMode = !game.puzzle()->hasSolution();
-		action("move_hint")->setVisible(!isEnterPuzzleMode);
-		action("move_solve")->setVisible(!isEnterPuzzleMode);
-		action("move_dub_puzzle")->setVisible(isEnterPuzzleMode);
+		action(QStringLiteral("move_hint"))->setVisible(!isEnterPuzzleMode);
+		action(QStringLiteral("move_solve"))->setVisible(!isEnterPuzzleMode);
+		action(QStringLiteral("move_dub_puzzle"))->setVisible(isEnterPuzzleMode);
 
-		action("move_undo")->setEnabled(game.canUndo());
-		action("move_redo")->setEnabled(game.canRedo());
+		action(QStringLiteral("move_undo"))->setEnabled(game.canUndo());
+		action(QStringLiteral("move_redo"))->setEnabled(game.canRedo());
 
-		action("move_hint")      ->setEnabled(   game.puzzle()->hasSolution());
-		action("move_solve")     ->setEnabled(   game.puzzle()->hasSolution());
-		action("move_dub_puzzle")->setEnabled( ! game.puzzle()->hasSolution());
+		action(QStringLiteral("move_hint"))      ->setEnabled(   game.puzzle()->hasSolution());
+		action(QStringLiteral("move_solve"))     ->setEnabled(   game.puzzle()->hasSolution());
+		action(QStringLiteral("move_dub_puzzle"))->setEnabled( ! game.puzzle()->hasSolution());
 	} else {
-		action("move_undo")->setEnabled(false);
-		action("move_redo")->setEnabled(false);
+		action(QStringLiteral("move_undo"))->setEnabled(false);
+		action(QStringLiteral("move_redo"))->setEnabled(false);
 
-		action("move_hint")->setVisible(false);
-		action("move_solve")->setVisible(false);
-		action("move_dub_puzzle")->setVisible(false);
+		action(QStringLiteral("move_hint"))->setVisible(false);
+		action(QStringLiteral("move_solve"))->setVisible(false);
+		action(QStringLiteral("move_dub_puzzle"))->setVisible(false);
 	}
 }
 
 void KSudoku::onModified(bool /*isModified*/) {
 	Game game = currentGame();
 	if(game.isValid()) {
-		action("move_undo")->setEnabled(game.canUndo());
-		action("move_redo")->setEnabled(game.canRedo());
-		action("move_hint")->setEnabled(!game.allValuesSetAndUsable());
-		action("move_solve")->setEnabled(!game.wasFinished());
+		action(QStringLiteral("move_undo"))->setEnabled(game.canUndo());
+		action(QStringLiteral("move_redo"))->setEnabled(game.canRedo());
+		action(QStringLiteral("move_hint"))->setEnabled(!game.allValuesSetAndUsable());
+		action(QStringLiteral("move_solve"))->setEnabled(!game.wasFinished());
 	}
 }
 
@@ -582,7 +582,7 @@ void KSudoku::undo() {
 	game.interface()->undo();
 
 	if(!game.canUndo()) {
-		action("move_undo")->setEnabled(false);
+		action(QStringLiteral("move_undo"))->setEnabled(false);
 	}
 }
 
@@ -593,7 +593,7 @@ void KSudoku::redo() {
 	game.interface()->redo();
 
 	if(!game.canRedo()) {
-		action("move_redo")->setEnabled(false);
+		action(QStringLiteral("move_redo"))->setEnabled(false);
 	}
 }
 
