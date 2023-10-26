@@ -10,6 +10,7 @@ SentUpstream: 2014-09-24
   <project_license>GPL-2.0-only</project_license>
   <name>KSudoku</name>
   <name xml:lang="ar">ك​سودوكو</name>
+  <name xml:lang="ast">KSudoku</name>
   <name xml:lang="ca">KSudoku</name>
   <name xml:lang="ca-valencia">KSudoku</name>
   <name xml:lang="cs">KSudoku</name>
