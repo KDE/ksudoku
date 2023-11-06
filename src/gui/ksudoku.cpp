@@ -200,7 +200,7 @@ void KSudoku::updateShapesList()
     for (const QFileInfo &configFileInfo : std::as_const(filepaths)) {
 		const QDir variantDir = configFileInfo.dir();
 		KConfig variantConfig(configFileInfo.filePath(), KConfig::SimpleConfig);
-		KConfigGroup group = variantConfig.group ("KSudokuVariant");
+		KConfigGroup group = variantConfig.group (QStringLiteral("KSudokuVariant"));
 
 		variantName = group.readEntry("Name", i18n("Missing Variant Name")); // Translated.
 		variantDescr = group.readEntry("Description", ""); // Translated.
