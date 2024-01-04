@@ -5,13 +5,13 @@
 # Muhammet Kara <muhammetk@gmail.com>, 2008.
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-10 01:46+0000\n"
-"PO-Revision-Date: 2023-09-07 14:31+0300\n"
+"PO-Revision-Date: 2024-01-03 23:03+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 23.11.70\n"
+"X-Generator: Lokalize 24.01.85\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -640,7 +640,7 @@ msgstr "Simetri"
 #: src/gui/ksudoku.cpp:526
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
-msgstr "Bulmaca başlarken ipuçlarının düzen simetrisi"
+msgstr "Bulmaca başlarken ipuçlarının yerleşim simetrisi"
 
 #: src/gui/ksudoku.cpp:528
 #, kde-format
