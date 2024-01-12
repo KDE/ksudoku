@@ -9,10 +9,10 @@ set (RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}${RELEASE_
 project(ksudoku VERSION "1.4.${RELEASE_SERVICE_COMPACT_VERSION}")
 
 set(QT_MIN_VERSION "6.5.0")
-set(KF_MIN_VERSION "5.240.0")
+set(KF_MIN_VERSION "5.245.0")
 
 find_package(ECM ${KF_MIN_VERSION} REQUIRED CONFIG)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} )
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
@@ -24,6 +24,8 @@ include(ECMQtDeclareLoggingCategory)
 include(ECMInstallIcons)
 include(ECMSetupVersion)
 include(ECMDeprecationSettings)
+
+include(InternalMacros)
 
 find_package(Qt6 ${QT_MIN_VERSION} REQUIRED COMPONENTS
     Widgets
@@ -64,7 +66,7 @@ endif()
 
 ecm_set_disabled_deprecation_versions(
     QT 6.5
-    KF 5.239
+    KF 5.245
     KDEGAMES 6.0
 )
 
