@@ -158,4 +158,3 @@ Comment[x-test]=xxKSudoku, Sudoku game & more by KDExx
 Comment[zh_CN]=KSudoku，KDE 的增强型数独游戏
 Comment[zh_TW]=KSudoku，數獨遊戲與更多由 KDE 製作
 Categories=Qt;KDE;Game;LogicGame;
-X-DBUS-ServiceName=org.kde.ksudoku
