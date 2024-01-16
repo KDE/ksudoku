@@ -39,7 +39,8 @@
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
-	KLocalizedString::setApplicationDomain("ksudoku");
+
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("ksudoku"));
 
 	KAboutData about(QStringLiteral("ksudoku"),
                      i18n("KSudoku"),
