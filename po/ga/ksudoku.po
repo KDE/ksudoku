@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdereview/ksudoku.po\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-10 01:46+0000\n"
+"POT-Creation-Date: 2024-01-17 00:36+0000\n"
 "PO-Revision-Date: 2007-05-08 10:55-0500\n"
 "Last-Translator: Kevin Scannell <kscanne@gmail.com>\n"
 "Language-Team: Irish <gaeilge-gnulinux@lists.sourceforge.net>\n"
@@ -1008,72 +1008,72 @@ msgstr "Cuir Puzal Isteach"
 msgid "Generate A Puzzle"
 msgstr "Gin Puzal"
 
-#: src/main.cpp:45
+#: src/main.cpp:46
 #, kde-format
 msgid "KSudoku"
 msgstr "KSudoku"
 
-#: src/main.cpp:47
+#: src/main.cpp:48
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "KSudoku - Cluichí Sudoku agus tuilleadh"
 
-#: src/main.cpp:49
+#: src/main.cpp:50
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "© 2005-2007 Údair KSudoku"
 
-#: src/main.cpp:51
+#: src/main.cpp:52
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "Francesco Rossi"
 
-#: src/main.cpp:51
+#: src/main.cpp:52
 #, kde-format
 msgid "KSudoku Author"
 msgstr "Údar KSudoku"
 
-#: src/main.cpp:52
+#: src/main.cpp:53
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "Johannes Bergmeier"
 
-#: src/main.cpp:52
+#: src/main.cpp:53
 #, kde-format
 msgid "Maintainer"
 msgstr "Cothaitheoir"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr "Gineadóir puzal nua agus réiteoir"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "Mick Kappenburg"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "Priontáil agus easpórtáil i leagan 0.4"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "Buíochas le NeHe as ceachtanna OpenGL"
 
-#: src/main.cpp:56
+#: src/main.cpp:57
 #, kde-format
 msgid "David Bau"
 msgstr "David Bau"
 
-#: src/main.cpp:56
+#: src/main.cpp:57
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
@@ -1082,7 +1082,7 @@ msgstr ""
 "Gheobhaidh tú na halgartaim atá taobh thiar an gineadóir puzal agus an "
 "réiteoir ag davidbau.com/archives/2006/09/04/sudoku_generator.html"
 
-#: src/main.cpp:64
+#: src/main.cpp:65
 #, kde-format
 msgid "Document to open"
 msgstr "Cáipéis le hoscailt"
