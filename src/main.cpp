@@ -24,6 +24,7 @@
 #include "ksudoku_version.h"
 
 #include <KAboutData>
+#include <KDBusService>
 #include <KCrash>
 #include <KLocalizedString>
 #include <KConfigDialogManager>
@@ -68,6 +69,8 @@ int main(int argc, char **argv)
 	about.processCommandLine(&parser);
 
 	KCrash::initialize();
+
+	KDBusService service;
 
 	// see if we are starting with session management
 	/*if (app.isRestored())
