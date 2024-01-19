@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-17 00:36+0000\n"
+"POT-Creation-Date: 2024-01-19 00:36+0000\n"
 "PO-Revision-Date: 2013-07-11 03:48+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -1014,72 +1014,72 @@ msgstr "Деректерін келтіру"
 msgid "Generate A Puzzle"
 msgstr "Судокуны құру"
 
-#: src/main.cpp:46
+#: src/main.cpp:47
 #, kde-format
 msgid "KSudoku"
 msgstr "KSudoku"
 
-#: src/main.cpp:48
+#: src/main.cpp:49
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "KSudoku, құр ғана судоку ойыны емес"
 
-#: src/main.cpp:50
+#: src/main.cpp:51
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "(c) 2005-2007 KSudoku авторлары"
 
-#: src/main.cpp:52
+#: src/main.cpp:53
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "Francesco Rossi"
 
-#: src/main.cpp:52
+#: src/main.cpp:53
 #, kde-format
 msgid "KSudoku Author"
 msgstr "KSudoku авторы"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "Johannes Bergmeier"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "Maintainer"
 msgstr "Жетілдірушісі"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr "Жаңа құрғыш пен шешім құралы"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "Mick Kappenburg"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "Басып шығару, 0.4-нұсқасындағы экспорттау"
 
-#: src/main.cpp:56
+#: src/main.cpp:57
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "NeHe-ге OpenGL оқулығы үшін рахмет"
 
-#: src/main.cpp:57
+#: src/main.cpp:58
 #, kde-format
 msgid "David Bau"
 msgstr "David Bau"
 
-#: src/main.cpp:57
+#: src/main.cpp:58
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
@@ -1088,7 +1088,7 @@ msgstr ""
 "Жаңа құрғыш пен шешім құралының алгоритмдері davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 
-#: src/main.cpp:65
+#: src/main.cpp:66
 #, kde-format
 msgid "Document to open"
 msgstr "Ашатын құжат"

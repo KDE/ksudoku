@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-17 00:36+0000\n"
+"POT-Creation-Date: 2024-01-19 00:36+0000\n"
 "PO-Revision-Date: 2017-09-28 17:59+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -1137,74 +1137,74 @@ msgstr "Унеси слагалицу"
 msgid "Generate A Puzzle"
 msgstr "Генериши слагалицу"
 
-#: src/main.cpp:46
+#: src/main.cpp:47
 #, kde-format
 msgid "KSudoku"
 msgstr "К‑судоку"
 
 # >! Game name given separately, no need to repeat.
-#: src/main.cpp:48
+#: src/main.cpp:49
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "Судоку и још понешто"
 
-#: src/main.cpp:50
+#: src/main.cpp:51
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "© 2005—2007, аутори К‑судокуа"
 
-#: src/main.cpp:52
+#: src/main.cpp:53
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "Франческо Роси"
 
-#: src/main.cpp:52
+#: src/main.cpp:53
 #, kde-format
 msgid "KSudoku Author"
 msgstr "Аутор К‑судокуа"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "Јоханес Бергмајер"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "Maintainer"
 msgstr "Одржавалац"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ијан Вадам"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr "Нови генератор и решавач слагалица"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "Мик Капенбург"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "Штампање и извоз од верзије 0.4"
 
-#: src/main.cpp:56
+#: src/main.cpp:57
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "Хвала NeHe‑у за туторијале за опенГЛ"
 
-#: src/main.cpp:57
+#: src/main.cpp:58
 #, kde-format
 msgid "David Bau"
 msgstr "Дејвид Бау"
 
 # literal-segment: archives
-#: src/main.cpp:57
+#: src/main.cpp:58
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
@@ -1213,7 +1213,7 @@ msgstr ""
 "Алгоритми за нови генератор и решавач слагалица на davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 
-#: src/main.cpp:65
+#: src/main.cpp:66
 #, kde-format
 msgid "Document to open"
 msgstr "Документ за отварање"
