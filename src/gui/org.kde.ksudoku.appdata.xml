@@ -87,6 +87,7 @@ SentUpstream: 2014-09-24
   <summary xml:lang="uk">Розв’яжіть числову головоломку із числами від одного до дев’яти</summary>
   <summary xml:lang="x-test">xxComplete a numeric puzzle with the numbers from one to ninexx</summary>
   <summary xml:lang="zh-CN">用数字一到九完成数字拼图</summary>
+  <summary xml:lang="zh-TW">用 1 到 9 的數字完成數獨難關</summary>
   <description>
     <p>
       KSudoku is a free version of the popular logic game Sudoku developed by the KDE community.
@@ -127,6 +128,7 @@ SentUpstream: 2014-09-24
     <p xml:lang="uk">KSudoku — вільна версія популярної логічної гри, судоку, яку розроблено спільнотою KDE. Гра полягає у заповненні таблиці дев’ять на дев’ять клітинок числами від одного до дев’яти так, щоб у кожному блоці таблиці розміром три на три клітинки ці числа не повторювалися.</p>
     <p xml:lang="x-test">xxKSudoku is a free version of the popular logic game Sudoku developed by the KDE community. The game is to fill a nine by nine grid with the numbers from one to nine filling the rows, columns and three by three squares without repeating a value on them.xx</p>
     <p xml:lang="zh-CN">KSudoku 是由 KDE 社区开发的自由版本的数独——一种流行的逻辑游戏。游戏需要用一到九的数字不重复地填满九乘九的格子。</p>
+    <p xml:lang="zh-TW">KSudoku 是由 KDE 社群開發的開源版數獨。數獨是個知名的邏輯遊戲，目標是用 1 到 9 的數字填滿 9x9 的格線，同時確保每一列、每一欄和每個 3x3 方塊都沒有重複的數字。</p>
   </description>
   <url type="homepage">https://apps.kde.org/ksudoku</url>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=ksudoku</url>
