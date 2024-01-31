@@ -4,7 +4,7 @@
 # Juuso Helmijoki <juuso.helmijoki@nettihemi.net>, 2007, 2008.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2008.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2013, 2015.
-# Tommi Nieminen <translator@legisign.org>, 2011, 2012, 2016, 2018, 2020, 2021.
+# Tommi Nieminen <translator@legisign.org>, 2011, 2012, 2016, 2018, 2020, 2021, 2023.
 #
 # KDE Finnish translation sprint participants:
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-10 01:46+0000\n"
-"PO-Revision-Date: 2021-09-03 21:54+0300\n"
+"PO-Revision-Date: 2023-11-30 15:26+0200\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-POT-Import-Date: 2012-12-01 22:24:06+0000\n"
-"X-Generator: Lokalize 20.04.2\n"
+"X-Generator: Lokalize 22.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -791,7 +791,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr ""
+msgstr "Ota käyttöön"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:41
