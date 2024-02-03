@@ -90,14 +90,14 @@ public:
 	void setMathdokuStyle(bool onOff) { m_mathdokuStyle = onOff; }
 
 	QPixmap renderBackground(const QSize& size) const;
-	QPixmap renderSpecial(SpecialType type, int size) const;
+	QPixmap renderSpecial(SpecialType type, qreal size) const;
 
-	QPixmap renderBorder(int border, GroupTypes type, int size) const;
+	QPixmap renderBorder(int border, GroupTypes type, qreal size) const;
 
-	QPixmap renderSymbol(int symbol, int size, int max, SymbolType type) const;
+	QPixmap renderSymbol(int symbol, qreal size, int max, SymbolType type) const;
     QPixmap renderSymbolOn(QPixmap pixmap, int symbol, int color, int max, SymbolType type) const;
 
-	QPixmap renderMarker(int symbol, int range, int size) const;
+	QPixmap renderMarker(int symbol, int range, qreal size) const;
     QPixmap renderMarkerOn(QPixmap pixmap, int symbol, int range, int color) const;
 
     QPixmap renderCageLabelOn(QPixmap pixmap, const QString & cageLabel);

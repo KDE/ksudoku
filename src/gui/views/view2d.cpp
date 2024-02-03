@@ -22,6 +22,7 @@
 
 #include "ksudoku_logging.h"
 
+#include <QApplication>
 #include <QGraphicsPixmapItem>
 #include <QGraphicsSceneEvent>
 
@@ -44,7 +45,7 @@ class CellGraphicsItem : public QGraphicsPixmapItem {
 public:
 	CellGraphicsItem(QPoint pos, int id, View2DScene* scene);
 public:
-	void resize(int gridSize);
+	void resize(qreal gridSize);
 	QPoint pos() const { return m_pos; }
 	void showCursor(QGraphicsItem* cursor);
 	void setType(SpecialType type);
@@ -63,7 +64,7 @@ private:
 	QVector<ColoredValue> m_values;
 	QString m_cageLabel;
 	int m_id;
-	int m_size;
+	qreal m_size;
 	int m_range;
 };
 
@@ -78,7 +79,7 @@ CellGraphicsItem::CellGraphicsItem(QPoint pos, int id, View2DScene* scene) {
 	m_range = scene->maxValue();
 }
 
-void CellGraphicsItem::resize(int gridSize) {
+void CellGraphicsItem::resize(qreal gridSize) {
 	m_size = gridSize * 2;
 	
 	setPos(m_pos.x()*m_size, m_pos.y()*m_size);
@@ -160,7 +161,7 @@ void CellGraphicsItem::updatePixmap() {
 
 
 struct GroupGraphicItemSegment {
-	QPoint pos;
+	QPointF pos;
 	int shape;
 	QGraphicsPixmapItem* standard;
 	QGraphicsPixmapItem* highlighted;
@@ -172,7 +173,7 @@ public:
 	~GroupGraphicsItem() override;
 	void hideBlockBorder (bool visible);
 public:
-	void resize(int gridSize, bool highlight);
+	void resize(qreal gridSize, bool highlight);
 	void setHighlight(bool highlight);
 	void setHighlight(const QPoint& pos, bool highlight);
 private:
@@ -353,8 +354,8 @@ void GroupGraphicsItem::setHighlight(const QPoint& pos, bool highlight) {
 	setHighlight(m_cells.contains(pos) && highlight);
 }
 
-void GroupGraphicsItem::resize(int gridSize, bool highlight) {
-	int size = gridSize*2;
+void GroupGraphicsItem::resize(qreal gridSize, bool highlight) {
+	qreal size = gridSize*2;
 	Renderer* r = Renderer::instance();
 
 	highlight = (m_type == GroupCage); // IDW test.
@@ -527,11 +528,12 @@ void View2DScene::setSceneSize(const QSize& size) {
 	SKGraph* g = m_game.puzzle()->graph();
 	setSceneRect(QRectF(0, 0, size.width(), size.height()));
 	
-	int width = size.width() / (g->sizeX()+1);
-	int height = size.height() / (g->sizeY()+1);
-	int grid = qMin(width, height) / 2;
-	int offsetX = size.width()/2 - g->sizeX()*grid;
-	int offsetY = size.height()/2 - g->sizeY()*grid;
+	const qreal dpr = qApp->devicePixelRatio();
+	qreal width = size.width() * dpr / (g->sizeX()+1);
+	qreal height = size.height() * dpr / (g->sizeY()+1);
+	qreal grid = qRound(qMin(width, height)) / 2 / dpr;
+	qreal offsetX = size.width()/2 - g->sizeX()*grid;
+	qreal offsetY = size.height()/2 - g->sizeY()*grid;
 
 	m_groupLayer->setPos(offsetX, offsetY);
 	m_cellLayer->setPos(offsetX, offsetY);

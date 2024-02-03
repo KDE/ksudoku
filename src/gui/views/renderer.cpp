@@ -21,6 +21,7 @@
 #include "renderer.h"
 #include "ksudoku_logging.h"
 
+#include <QApplication>
 #include <QPainter>
 #include <QPixmap>
 #include <QSvgRenderer>
@@ -149,17 +150,21 @@ void Renderer::fillNameHashes() {
 QPixmap Renderer::renderBackground(const QSize& size) const {
 	if(!m_renderer->isValid() || size.isEmpty()) return QPixmap();
 
+	const qreal dpr = qApp->devicePixelRatio();
+	const QSize scaledSize = QSize(qRound(size.width() * dpr), qRound(size.height() * dpr));
+
 	QPixmap pix;
-    QString cacheName = QStringLiteral("background_%1x%2").arg(size.width()).arg(size.height());
+    QString cacheName = QStringLiteral("background_%1x%2").arg(scaledSize.width()).arg(scaledSize.height());
 	if(!m_cache->findPixmap(cacheName, &pix))
 	{
-		pix = QPixmap(size);
+		pix = QPixmap(scaledSize);
 		pix.fill(Qt::transparent);
         QPainter p(&pix);
         m_renderer->render(&p, QStringLiteral("background"));
 		p.end();
 		m_cache->insertPixmap(cacheName, pix);
 	}
+	pix.setDevicePixelRatio(dpr);
 	return pix;
 }
 
@@ -179,23 +184,26 @@ QPointF fromRectToRect(const QPointF& p, const QRectF& from, const QRectF& to) {
 	               (p.y()-from.top())*to.height()/from.height()+to.top());
 }
 
-QPixmap Renderer::renderSpecial(SpecialType type, int size) const {
+QPixmap Renderer::renderSpecial(SpecialType type, qreal size) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
 	
 	//only show the errors if the option has been set
 	if(!Settings::showErrors() && type == SpecialCellMistake ) type = SpecialCell;
 	
-    QString cacheName = QStringLiteral("special_%1_%2").arg(m_specialNames[type]).arg(size);
+	const qreal dpr = qApp->devicePixelRatio();
+	const qreal scaledSize = qRound(size * dpr);
+
+    QString cacheName = QStringLiteral("special_%1_%2").arg(m_specialNames[type]).arg(scaledSize);
 	QPixmap pix;
 	if(!m_cache->findPixmap(cacheName, &pix)) {
-		pix = QPixmap(size, size);
+		pix = QPixmap(scaledSize, scaledSize);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
 		
 		// NOTE fix for Qt's QSvgRenderer size reporting bug
 		QRectF r(m_renderer->boundsOnElement(m_specialNames[type]));
 		QRectF from(r.adjusted(+0.5,+0.5,-0.5,-0.5));
-		QRectF to(QRectF(0,0,size,size));
+		QRectF to(QRectF(0,0,scaledSize,scaledSize));
 		r.setTopLeft(fromRectToRect(r.topLeft(), from, to));
 		r.setBottomRight(fromRectToRect(r.bottomRight(), from, to));
 		
@@ -204,10 +212,11 @@ QPixmap Renderer::renderSpecial(SpecialType type, int size) const {
 		m_cache->insertPixmap(cacheName, pix);
 	}
 
+	pix.setDevicePixelRatio(dpr);
 	return pix;
 }
 
-QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) const {
+QPixmap Renderer::renderSymbol(int symbol, qreal size, int max, SymbolType type) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
 
 	QString set;
@@ -217,10 +226,13 @@ QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) c
         set = QStringLiteral("symbol25");
 	}
 
-    QString cacheName = QStringLiteral("%1_%2_%3_%4").arg(set).arg(symbol).arg(size).arg(type);
+	const qreal dpr = qApp->devicePixelRatio();
+	const int scaledSize = qRound(size * dpr);
+
+    QString cacheName = QStringLiteral("%1_%2_%3_%4").arg(set).arg(symbol).arg(scaledSize).arg(type);
 	QPixmap pix;
 	if(!m_cache->findPixmap(cacheName, &pix)) {
-		pix = QPixmap(size, size);
+		pix = QPixmap(scaledSize, scaledSize);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
 		
@@ -253,14 +265,16 @@ QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) c
 		m_cache->insertPixmap(cacheName, pix);
 	}
 
+	pix.setDevicePixelRatio(dpr);
 	return pix;
 }
 
 QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, int max, SymbolType type) const {
 	// We use a smaller size of symbol in Mathdoku and Killer
 	// Sudoku, to allow space for the cage labels.
-	int size = m_mathdokuStyle ? (pixmap.width()+1)*3/4 : pixmap.width();
-	int offset = m_mathdokuStyle ? (pixmap.width()+7)/8 : 0;
+	const qreal dpr = pixmap.devicePixelRatio();
+	qreal size = m_mathdokuStyle ? (pixmap.width()+1)*0.75 : pixmap.width();
+	int offset = m_mathdokuStyle ? qRound((pixmap.width()+7)/8.0/dpr) : 0;
 	QPixmap symbolPixmap = renderSymbol(symbol, size, max, type);
 	if(color) {
 		// TODO this does not work, need some other way, maybe hardcode color into NumberType
@@ -280,7 +294,7 @@ QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, int max,
 	}
 }
 
-QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
+QPixmap Renderer::renderMarker(int symbol, int range, qreal size) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
 	
 	QString set;
@@ -300,11 +314,14 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 		range = 25;
 	}
 
+	const qreal dpr = qApp->devicePixelRatio();
+	const int scaledSize = qRound(size * dpr);
+
     QString groupName = QStringLiteral("markers%1").arg(range);
-    QString cacheName = QStringLiteral("%1_%2_%3").arg(groupName).arg(symbol).arg(size);
+    QString cacheName = QStringLiteral("%1_%2_%3").arg(groupName).arg(symbol).arg(scaledSize);
 	QPixmap pix;
 	if(!m_cache->findPixmap(cacheName, &pix)) {
-		pix = QPixmap(size, size);
+		pix = QPixmap(scaledSize, scaledSize);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
 		
@@ -322,6 +339,7 @@ QPixmap Renderer::renderMarker(int symbol, int range, int size) const {
 		m_cache->insertPixmap(cacheName, pix);
 	}
 
+	pix.setDevicePixelRatio(dpr);
 	return pix;
 }
 
@@ -331,7 +349,7 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 
 	// We use a smaller size of marker in Mathdoku and Killer
 	// Sudoku, to allow space for the cage labels.
-	int size = m_mathdokuStyle ? (pixmap.width()+1)*3/4 : pixmap.width();
+	qreal size = m_mathdokuStyle ? (pixmap.width()+1)*0.75 : pixmap.width();
 	QPixmap symbolPixmap = renderMarker(symbol, range, size);
 	if(color) {
 		QPainter p(&symbolPixmap);
@@ -345,7 +363,8 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 	} else {
 		QPainter p(&pixmap);
 		// Offset the marker from 0,0 in Mathdoku and Killer Sudoku.
-		int offset = m_mathdokuStyle ? (size + 7)/8 : 0;
+		const qreal dpr = pixmap.devicePixelRatio();
+		int offset = m_mathdokuStyle ? qRound((size + 7.0)/8.0/dpr) : 0;
 		p.drawPixmap(offset, 2*offset, symbolPixmap);
 		p.end();
 		return pixmap;
@@ -355,7 +374,9 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 QPixmap Renderer::renderCageLabelOn(QPixmap pixmap, const QString & cageLabel)
 {
 	// TODO - Do font setup once during resize? Put 0+-x/ in themes?
-	int size = pixmap.width();
+	const qreal dpr = pixmap.devicePixelRatio();
+	const int size = qRound(pixmap.width()/dpr);
+
 	QPainter p(&pixmap);
     p.setPen(QStringLiteral("white"));	// Text is white on a dark rectangle.
 	p.setBrush(Qt::SolidPattern);
@@ -381,20 +402,23 @@ QPixmap Renderer::renderCageLabelOn(QPixmap pixmap, const QString & cageLabel)
 	return pixmap;
 }
 
-QPixmap Renderer::renderBorder(int border, GroupTypes type, int size) const {
+QPixmap Renderer::renderBorder(int border, GroupTypes type, qreal size) const {
 	if(!m_renderer->isValid() || size == 0) return QPixmap();
 	
-    QString cacheName = QStringLiteral("contour_%1_%2_%3").arg(m_borderTypes[type]).arg(m_borderNames[border]).arg(size);
+	const qreal dpr = qApp->devicePixelRatio();
+	const int scaledSize = qRound(size * dpr);
+
+    QString cacheName = QStringLiteral("contour_%1_%2_%3").arg(m_borderTypes[type]).arg(m_borderNames[border]).arg(scaledSize);
 	QPixmap pix;
 	if(!m_cache->findPixmap(cacheName, &pix)) {
-		pix = QPixmap(size, size);
+		pix = QPixmap(scaledSize, scaledSize);
 		pix.fill(Qt::transparent);
 		QPainter p(&pix);
 		
 		// NOTE fix for Qt's QSvgRenderer size reporting bug
         QRectF r(m_renderer->boundsOnElement(QStringLiteral("%1_%2").arg(m_borderTypes[type]).arg(m_borderNames[border])));
 		QRectF from(r.adjusted(+0.5,+0.5,-0.5,-0.5));
-		QRectF to(QRectF(0,0,size,size));
+		QRectF to(QRectF(0,0,scaledSize,scaledSize));
 		r.setTopLeft(fromRectToRect(r.topLeft(), from, to));
 		r.setBottomRight(fromRectToRect(r.bottomRight(), from, to));
 		
@@ -403,6 +427,7 @@ QPixmap Renderer::renderBorder(int border, GroupTypes type, int size) const {
 		m_cache->insertPixmap(cacheName, pix);
 	}
 
+	pix.setDevicePixelRatio(dpr);
 	return pix;
 }
 
@@ -428,6 +453,8 @@ QPixmap Renderer::renderSpecial3D(SpecialType type, int size) const {
 		m_cache->insertPixmap(cacheName, pix);
 	}
 
+	const qreal dpr = qApp->devicePixelRatio();
+	pix.setDevicePixelRatio(dpr);
 	return pix;
 }
 
