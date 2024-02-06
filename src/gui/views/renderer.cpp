@@ -255,15 +255,17 @@ QPixmap Renderer::renderSymbol(int symbol, int size, int max, SymbolType type) c
 QPixmap Renderer::renderSymbolOn(QPixmap pixmap, int symbol, int color, int max, SymbolType type) const {
 	// We use a smaller size of symbol in Mathdoku and Killer
 	// Sudoku, to allow space for the cage labels.
-	int size = m_mathdokuStyle ? (pixmap.width()+1)*3/4 : pixmap.width();
-	int offset = m_mathdokuStyle ? (pixmap.width()+7)/8 : 0;
-	QPixmap symbolPixmap = renderSymbol(symbol, size, max, type);
+	const qreal dpr = pixmap.devicePixelRatio();
+	int scaledSize = m_mathdokuStyle ? (pixmap.width()+1.0*dpr)*0.75 : pixmap.width();
+	int offset = m_mathdokuStyle ? (pixmap.width()/dpr+7.0)/8.0 : 0;
+	QPixmap symbolPixmap = renderSymbol(symbol, scaledSize, max, type);
+	symbolPixmap.setDevicePixelRatio(dpr);
 	if(color) {
 		// TODO this does not work, need some other way, maybe hardcode color into NumberType
 		QPainter p(&symbolPixmap);
 		p.setCompositionMode(QPainter::CompositionMode_Multiply);
 		p.setBrush(QBrush(QColor(128,128,128,255)));
-		p.drawRect(0, 0, size, size);
+		p.drawRect(0, 0, scaledSize/dpr, scaledSize/dpr);
 		p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
 		p.drawPixmap(0, 0, pixmap);
 		p.end();
@@ -327,13 +329,15 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 
 	// We use a smaller size of marker in Mathdoku and Killer
 	// Sudoku, to allow space for the cage labels.
-	int size = m_mathdokuStyle ? (pixmap.width()+1)*3/4 : pixmap.width();
-	QPixmap symbolPixmap = renderMarker(symbol, range, size);
+	const qreal dpr = pixmap.devicePixelRatio();
+	int scaledSize = m_mathdokuStyle ? (pixmap.width()+1.0*dpr)*0.75 : pixmap.width();
+	QPixmap symbolPixmap = renderMarker(symbol, range, scaledSize);
+	symbolPixmap.setDevicePixelRatio(dpr);
 	if(color) {
 		QPainter p(&symbolPixmap);
 		p.setCompositionMode(QPainter::CompositionMode_Multiply);
 		p.setBrush(QBrush(QColor(128,128,128,255)));
-		p.drawRect(0, 0, size, size);
+		p.drawRect(0, 0, scaledSize/dpr, scaledSize/dpr);
 		p.setCompositionMode(QPainter::CompositionMode_DestinationOver);
 		p.drawPixmap(0, 0, pixmap);
 		p.end();
@@ -341,7 +345,7 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 	} else {
 		QPainter p(&pixmap);
 		// Offset the marker from 0,0 in Mathdoku and Killer Sudoku.
-		int offset = m_mathdokuStyle ? (size + 7)/8 : 0;
+		int offset = m_mathdokuStyle ? (scaledSize/dpr + 7.0)/8.0 : 0;
 		p.drawPixmap(offset, 2*offset, symbolPixmap);
 		p.end();
 		return pixmap;
@@ -351,7 +355,9 @@ QPixmap Renderer::renderMarkerOn(QPixmap pixmap, int symbol, int range, int colo
 QPixmap Renderer::renderCageLabelOn(QPixmap pixmap, const QString & cageLabel)
 {
 	// TODO - Do font setup once during resize? Put 0+-x/ in themes?
-	int size = pixmap.width();
+	const qreal dpr = pixmap.devicePixelRatio();
+	const int size = pixmap.width()/dpr;
+
 	QPainter p(&pixmap);
     p.setPen(QStringLiteral("white"));	// Text is white on a dark rectangle.
 	p.setBrush(Qt::SolidPattern);

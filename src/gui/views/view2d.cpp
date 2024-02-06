@@ -44,7 +44,7 @@ class CellGraphicsItem : public QGraphicsPixmapItem {
 public:
 	CellGraphicsItem(QPoint pos, int id, View2DScene* scene);
 public:
-	void resize(int gridSize);
+	void resize(qreal gridSize);
 	QPoint pos() const { return m_pos; }
 	void showCursor(QGraphicsItem* cursor);
 	void setType(SpecialType type);
@@ -63,7 +63,7 @@ private:
 	QList<ColoredValue> m_values;
 	QString m_cageLabel;
 	int m_id;
-	int m_size;
+	qreal m_size;
 	int m_range;
 };
 
@@ -78,7 +78,7 @@ CellGraphicsItem::CellGraphicsItem(QPoint pos, int id, View2DScene* scene) {
 	m_range = scene->maxValue();
 }
 
-void CellGraphicsItem::resize(int gridSize) {
+void CellGraphicsItem::resize(qreal gridSize) {
 	m_size = gridSize * 2;
 	
 	setPos(m_pos.x()*m_size, m_pos.y()*m_size);
@@ -129,8 +129,10 @@ void CellGraphicsItem::updatePixmap() {
 	if(m_size == 0) return;
 
 	hide();
-	
-	QPixmap pic = Renderer::instance()->renderSpecial(m_type, m_size);
+
+	const qreal dpr = scene()->views().constFirst()->devicePixelRatio();
+	QPixmap pic = Renderer::instance()->renderSpecial(m_type, qRound(m_size * dpr));
+	pic.setDevicePixelRatio(dpr);
 	switch(m_type) {
 		case SpecialCell:
 		case SpecialCellMistake:
@@ -160,7 +162,7 @@ void CellGraphicsItem::updatePixmap() {
 
 
 struct GroupGraphicItemSegment {
-	QPoint pos;
+	QPointF pos;
 	int shape;
 	QGraphicsPixmapItem* standard;
 	QGraphicsPixmapItem* highlighted;
@@ -172,7 +174,7 @@ public:
 	~GroupGraphicsItem() override;
 	void hideBlockBorder (bool visible);
 public:
-	void resize(int gridSize, bool highlight);
+	void resize(qreal gridSize, bool highlight);
 	void setHighlight(bool highlight);
 	void setHighlight(const QPoint& pos, bool highlight);
 private:
@@ -353,8 +355,9 @@ void GroupGraphicsItem::setHighlight(const QPoint& pos, bool highlight) {
 	setHighlight(m_cells.contains(pos) && highlight);
 }
 
-void GroupGraphicsItem::resize(int gridSize, bool highlight) {
-	int size = gridSize*2;
+void GroupGraphicsItem::resize(qreal gridSize, bool highlight) {
+	qreal size = gridSize*2;
+	const qreal dpr = scene()->views().constFirst()->devicePixelRatio();
 	Renderer* r = Renderer::instance();
 
 	highlight = (m_type == GroupCage); // IDW test.
@@ -367,13 +370,15 @@ void GroupGraphicsItem::resize(int gridSize, bool highlight) {
 		QPointF pos = segment->pos*gridSize;
 		// Has standard pixmap item?
 		if(m_borderVisible && segment->standard) {
-			QPixmap pic = r->renderBorder(segment->shape, standard, size);
+			QPixmap pic = r->renderBorder(segment->shape, standard, qRound(size * dpr));
+			pic.setDevicePixelRatio(dpr);
 			segment->standard->setPixmap(pic);
 			segment->standard->setOffset(pos);
 		}
 		// Highlights on and has highlighted pixmap item?
 		if(m_borderVisible && highlight && segment->highlighted) {
-			QPixmap pic = r->renderBorder(segment->shape, highlighted, size);
+			QPixmap pic = r->renderBorder(segment->shape, highlighted, qRound(size * dpr));
+			pic.setDevicePixelRatio(dpr);
 			segment->highlighted->setPixmap(pic);
 			segment->highlighted->setOffset(pos);
 		}
@@ -522,16 +527,20 @@ void View2DScene::setSceneSize(const QSize& size) {
 	// Called from View2D::resizeEvent() and View2D::settingsChanged().
 	m_highlightsOn = Settings::showHighlights();
 
-	m_background->setPixmap(Renderer::instance()->renderBackground(size));
+	const qreal dpr = views().constFirst()->devicePixelRatio();
+
+	QPixmap backgroundPixmap = Renderer::instance()->renderBackground(size * dpr);
+	backgroundPixmap.setDevicePixelRatio(dpr);
+	m_background->setPixmap(backgroundPixmap);
 	
 	SKGraph* g = m_game.puzzle()->graph();
 	setSceneRect(QRectF(0, 0, size.width(), size.height()));
 	
-	int width = size.width() / (g->sizeX()+1);
-	int height = size.height() / (g->sizeY()+1);
-	int grid = qMin(width, height) / 2;
-	int offsetX = size.width()/2 - g->sizeX()*grid;
-	int offsetY = size.height()/2 - g->sizeY()*grid;
+	qreal width = size.width() / (g->sizeX()+1);
+	qreal height = size.height() / (g->sizeY()+1);
+	qreal grid = qRound(qMin(width, height) * dpr) / dpr / 2;
+	qreal offsetX = size.width()/2 - g->sizeX()*grid;
+	qreal offsetY = size.height()/2 - g->sizeY()*grid;
 
 	m_groupLayer->setPos(offsetX, offsetY);
 	m_cellLayer->setPos(offsetX, offsetY);
@@ -545,7 +554,9 @@ void View2DScene::setSceneSize(const QSize& size) {
 		group->resize(grid, m_highlightsOn);
 	}
 	
-	m_cursor->setPixmap(Renderer::instance()->renderSpecial(SpecialCursor, grid*2));
+	QPixmap cursorPixmap = Renderer::instance()->renderSpecial(SpecialCursor, qRound(grid*2*dpr));
+	cursorPixmap.setDevicePixelRatio(dpr);
+	m_cursor->setPixmap(cursorPixmap);
 }
 
 void View2DScene::hover(int cell) {
