@@ -185,8 +185,9 @@ void GameVariantDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	// Show icon
 
 	QPixmap iconPixmap = QIcon::fromTheme(icon(index)).pixmap(m_iconWidth, m_iconHeight);
-	painter->drawPixmap(contentRect.left(), (contentRect.height() - iconPixmap.height()) / 2 + contentRect.top(), iconPixmap);
-	contentRect.adjust(iconPixmap.width() + m_separatorPixels*2, 0, 0, 0);
+	const qreal iconDpr = iconPixmap.devicePixelRatio();
+	painter->drawPixmap(contentRect.left(), (contentRect.height() - iconPixmap.height()/iconDpr) / 2 + contentRect.top(), iconPixmap);
+	contentRect.adjust(iconPixmap.width()/iconDpr + m_separatorPixels*2, 0, 0, 0);
 
 // 	// Show configuration icon
 // 	if(configurable(index)) {
