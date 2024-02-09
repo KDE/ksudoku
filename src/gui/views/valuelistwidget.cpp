@@ -59,7 +59,10 @@ int SymbolItem::value() const {
 }
 
 void SymbolItem::setSize(double size) {
-	QPixmap pic = Renderer::instance()->renderSpecial(SpecialListItem, size);
+	const qreal dpr = scene()->views().constFirst()->devicePixelRatio();
+	QPixmap pic = Renderer::instance()->renderSpecial(SpecialListItem, qRound(size * dpr));
+	pic.setDevicePixelRatio(dpr);
+
 	pic = Renderer::instance()->renderSymbolOn(pic, m_value, 0, m_maxValue, SymbolPreset);
 
 	hide();
@@ -93,7 +96,10 @@ SelectionItem::SelectionItem() {
 }
 
 void SelectionItem::setSize(double size) {
-	QPixmap pic = Renderer::instance()->renderSpecial(SpecialListCursor, size);
+	const qreal dpr = scene()->views().constFirst()->devicePixelRatio();
+	QPixmap pic = Renderer::instance()->renderSpecial(SpecialListCursor, qRound(size * dpr));
+	pic.setDevicePixelRatio(dpr);
+
 	m_size = size;
 
 	hide();
@@ -145,10 +151,10 @@ void ValueListWidget::setMaxValue(int maxValue) {
 	
 	for(int i = 0; i < maxValue; ++i) {
 		item = new SymbolItem(i+1, maxValue, this);
-		item->setSize(20);
-		item->setPos(0, (i+0.5)*20);
 		m_scene->addItem(item);
 		m_symbols.append(item);
+		item->setSize(20);
+		item->setPos(0, (i+0.5)*20);
 	}
 	
 	if(m_selectedValue > m_maxValue) m_selectedValue = 1;
