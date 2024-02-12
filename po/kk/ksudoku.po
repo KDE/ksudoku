@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"POT-Creation-Date: 2024-02-12 03:10+0000\n"
 "PO-Revision-Date: 2013-07-11 03:48+0600\n"
 "Last-Translator: Sairan Kikkarin <sairan@computer.org>\n"
 "Language-Team: Kazakh <kde-i18n-doc@kde.org>\n"
@@ -278,7 +278,7 @@ msgstr "Таңдалған тор көзі жататын NxNxN текшеден
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "Таңдалған аумақтан тыс 3D торлары күңгірттелсін"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "Баптауы әлі іске асырылымаған"

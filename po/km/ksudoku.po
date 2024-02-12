@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"POT-Creation-Date: 2024-02-12 03:10+0000\n"
 "PO-Revision-Date: 2013-01-02 14:55+0700\n"
 "Last-Translator: sutha <sutha@khmeros.info>\n"
 "Language-Team: Khmer <support@khmeros>\n"
@@ -278,7 +278,7 @@ msgstr "ធ្វើឲ្យ​ក្រឡា​ខ្មៅ ប្រសិ�
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "ធ្វើឲ្យ​ក្រឡា​ត្រីមាត្រ​ដែល​លើស​ភាគ​ដែល​បាន​ជ្រើស​មាន​ពណ៌​ខ្មៅ"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "ការ​កំណត់​រចនាសម្ព័ន្ធ​មិន​ត្រូវ​បាន​អនុវត្ត​នៅ​ឡើយ​ទេ"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"POT-Creation-Date: 2024-02-12 03:10+0000\n"
 "PO-Revision-Date: 2012-06-30 16:43+0300\n"
 "Last-Translator: Einars Sprugis <einars8@gmail.com>\n"
 "Language-Team: Latvian <locale@laka.lv>\n"
@@ -284,7 +284,7 @@ msgstr "Satumšināt šūnas, kad tās nav NxNxN kubā, kas satur izvēlēto š�
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "Satumšināt 3-D šūnas, kas atrodas ārpus izvēlētās tilpnes"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "Konfigurācija vēl nav realizēta"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-06-23 00:41+0000\n"
+"POT-Creation-Date: 2024-02-12 03:10+0000\n"
 "PO-Revision-Date: 2021-08-16 21:35+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
@@ -285,7 +285,7 @@ msgstr "Ilundu gelaxkak hautatutako gelaxka duen NxNxN kuboan ez badaude."
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "Ilundu 3D gelaxkak hautatutako bolumenetik kanpo"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "Konfiguraketa ez da oraindik inplementatu"
