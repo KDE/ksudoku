@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-19 00:36+0000\n"
+"POT-Creation-Date: 2024-02-21 00:36+0000\n"
 "PO-Revision-Date: 2023-12-27 10:09+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -290,7 +290,7 @@ msgstr "Затемнять ячейки, не входящие в один ку�
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "Затемнять ячейки вне заданного объёма"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "Конфигурация ещё не реализована"

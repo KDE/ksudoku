@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-19 00:36+0000\n"
+"POT-Creation-Date: 2024-02-21 00:36+0000\n"
 "PO-Revision-Date: 2013-07-05 22:27+0300\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -299,7 +299,7 @@ msgstr ""
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "Σκίαση των τρισδιάστατων κελιών εκτός του επιλεγμένου πλήθους"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "Η διαμόρφωση δεν έχει εφαρμοστεί ακόμα"

@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-19 00:36+0000\n"
+"POT-Creation-Date: 2024-02-21 00:36+0000\n"
 "PO-Revision-Date: 2023-10-02 21:52+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
@@ -294,7 +294,7 @@ msgstr ""
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "Oscurecer celdas 3-D fuera del volumen seleccionado"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "La configuración todavía no implementada"

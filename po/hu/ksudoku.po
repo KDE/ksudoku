@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-01-19 00:36+0000\n"
+"POT-Creation-Date: 2024-02-21 00:36+0000\n"
 "PO-Revision-Date: 2024-01-10 13:52+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
@@ -294,7 +294,7 @@ msgstr ""
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "A kijelölt térfogaton kívüli 3D cellák sötétítése"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "Még nincs beállítási lehetőség"
