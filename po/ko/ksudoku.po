@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-10 01:46+0000\n"
+"POT-Creation-Date: 2024-02-21 02:23+0000\n"
 "PO-Revision-Date: 2023-10-08 23:33+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -274,7 +274,7 @@ msgstr "선택한 셀이 NxNxN 큐브에 없을 때 어둡게 합니다."
 msgid "Darken 3-D cells outside the selected volume"
 msgstr "선택한 공간 밖에 있는 3차원 셀 어둡게 하기"
 
-#: src/gui/gamevariants.cpp:279 src/gui/gamevariants.cpp:336
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "해당 설정은 아직 구현되지 않았습니다."
