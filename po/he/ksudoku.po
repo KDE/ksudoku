@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-21 00:36+0000\n"
-"PO-Revision-Date: 2024-03-15 17:46+0200\n"
+"PO-Revision-Date: 2024-03-17 12:43+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -31,7 +31,7 @@ msgstr "kde-l10n-he@kde.org"
 #: src/generator/sudokuboard.cpp:123
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
-msgstr ""
+msgstr "הניסיונות לייצר תצרף נכשלו אחרי בערך 200 ניסיונות. לנסות שוב?"
 
 #: src/generator/sudokuboard.cpp:125
 #, kde-format
@@ -66,7 +66,7 @@ msgstr ""
 #: src/generator/sudokuboard.cpp:264
 #, kde-format
 msgid "Difficulty Level"
-msgstr ""
+msgstr "דרגת קושי"
 
 #: src/generator/sudokuboard.cpp:229
 #, kde-format
@@ -136,7 +136,7 @@ msgstr ""
 #: src/gui/configgame.ui:62
 #, kde-format
 msgid "Show errors"
-msgstr ""
+msgstr "הצגת שגיאות"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
@@ -333,12 +333,12 @@ msgstr ""
 #: src/gui/ksudoku.cpp:178
 #, kde-format
 msgid "Sudoku Standard (9x9)"
-msgstr ""
+msgstr "סודוקו תקני (9×9)"
 
 #: src/gui/ksudoku.cpp:179
 #, kde-format
 msgid "The classic and fashionable game"
-msgstr ""
+msgstr "המשחק הקלסי והאופנתי"
 
 #: src/gui/ksudoku.cpp:182
 #, kde-format
@@ -544,7 +544,7 @@ msgstr ""
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
-msgstr ""
+msgstr "דרגת קושי:"
 
 #: src/gui/ksudoku.cpp:520
 #, kde-format
@@ -585,13 +585,13 @@ msgstr "שמאל-ימין"
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
-msgstr ""
+msgstr "ספירלה"
 
 #: src/gui/ksudoku.cpp:532
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
-msgstr ""
+msgstr "ארבעה כיוונים"
 
 #: src/gui/ksudoku.cpp:533
 #, kde-format
@@ -612,7 +612,7 @@ msgstr "לא ניתן לטעון משחק."
 #: src/gui/ksudoku.cpp:654
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
-msgstr ""
+msgstr "לסיים את המשחק הזה כדי להתחיל חדש?"
 
 #: src/gui/ksudoku.cpp:655
 #, kde-format
@@ -629,7 +629,7 @@ msgstr "משחק חדש"
 #: src/gui/ksudoku.cpp:673
 #, kde-format
 msgid "Do you really want to restart this game?"
-msgstr ""
+msgstr "להתחיל את המשחק הזה מחדש?"
 
 #: src/gui/ksudoku.cpp:674
 #, kde-format
@@ -774,20 +774,20 @@ msgstr ""
 #: src/gui/ksudokugame.cpp:536
 #, kde-format
 msgid "Do you wish to delete this cage?"
-msgstr ""
+msgstr "למחוק את הכלוב הזה?"
 
 #: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
 #: src/gui/ksudokugame.cpp:570
 #, kde-format
 msgid "Delete Cage"
-msgstr ""
+msgstr "מחיקת כלוב"
 
 #: src/gui/ksudokugame.cpp:562
 #, kde-format
 msgid ""
 "The cell you have selected is not in any cage, so the Delete action will not "
 "delete anything."
-msgstr ""
+msgstr "התא שבחרת אינו בכלוב, לכן פעולת המחיקה לא תמחק כלום."
 
 #: src/gui/ksudokugame.cpp:569
 #, kde-format
@@ -798,31 +798,31 @@ msgstr ""
 #: src/gui/ksudokuui.rc:10
 #, kde-format
 msgid "&Game"
-msgstr ""
+msgstr "מ&שחק"
 
 #. i18n: ectx: Menu (move)
 #: src/gui/ksudokuui.rc:23
 #, kde-format
 msgid "&Move"
-msgstr ""
+msgstr "מ&הלך"
 
 #. i18n: ectx: Menu (help)
 #: src/gui/ksudokuui.rc:38
 #, kde-format
 msgid "&Help"
-msgstr ""
+msgstr "ע&זרה"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: src/gui/ksudokuui.rc:46
 #, kde-format
 msgid "Main Toolbar"
-msgstr ""
+msgstr "סרגל כלים ראשי"
 
 #. i18n: ectx: ToolBar (actionsToolbar)
 #: src/gui/ksudokuui.rc:53
 #, kde-format
 msgid "Actions Toolbar"
-msgstr ""
+msgstr "סרגל משימות"
 
 #: src/gui/puzzleprinter.cpp:62
 #, kde-format
@@ -842,42 +842,42 @@ msgstr ""
 #: src/gui/puzzleprinter.cpp:108
 #, kde-format
 msgid "KSudoku has sent output to your printer."
-msgstr ""
+msgstr "KSudoku שלח פלט למדפסת שלך."
 
 #: src/gui/puzzleprinter.cpp:121
 #, kde-format
 msgid "Print Sudoku Puzzle"
-msgstr ""
+msgstr "הדפסת תצרף סודוקו"
 
 #: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
-msgstr ""
+msgstr "לא ניתן להוריד קובץ: הכתובת ריקה."
 
 #: src/gui/serializer.cpp:406
 #, kde-format
 msgid "Unable to open file."
-msgstr ""
+msgstr "לא ניתן לפתוח קובץ."
 
 #: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
 #, kde-format
 msgid "Cannot read XML file on line %1"
-msgstr ""
+msgstr "לא ניתן לקרוא קובץ XML בשורה %1"
 
 #: src/gui/serializer.cpp:440
 #, kde-format
 msgid "Unable to download file."
-msgstr ""
+msgstr "לא ניתן להוריד קובץ."
 
 #: src/gui/serializer.cpp:680
 #, kde-format
 msgid "Unable to create temporary file."
-msgstr ""
+msgstr "לא ניתן ליצור קובץ זמני."
 
 #: src/gui/serializer.cpp:693
 #, kde-format
 msgid "Unable to upload file."
-msgstr ""
+msgstr "לא ניתן להעלות קובץ."
 
 #: src/gui/views/gameactions.cpp:54
 #, kde-format
@@ -957,13 +957,13 @@ msgstr ""
 #: src/gui/welcomescreen.ui:17
 #, kde-format
 msgid "Choose your Game"
-msgstr ""
+msgstr "בחירת המשחק שלך"
 
 #. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
 #: src/gui/welcomescreen.ui:28
 #, kde-format
 msgid "Get New"
-msgstr ""
+msgstr "הורדת חדש"
 
 #. i18n: ectx: property (text), widget (QPushButton, startEmptyButton)
 #: src/gui/welcomescreen.ui:48
@@ -975,7 +975,7 @@ msgstr ""
 #: src/gui/welcomescreen.ui:55
 #, kde-format
 msgid "Generate A Puzzle"
-msgstr ""
+msgstr "יצירת תצרף"
 
 #: src/main.cpp:47
 #, kde-format
@@ -1005,7 +1005,7 @@ msgstr "יוצר KSudoku"
 #: src/main.cpp:54
 #, kde-format
 msgid "Johannes Bergmeier"
-msgstr ""
+msgstr "יוהאנס ברגמאייר"
 
 #: src/main.cpp:54
 #, kde-format
