@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-21 00:36+0000\n"
-"PO-Revision-Date: 2024-03-18 12:47+0200\n"
+"PO-Revision-Date: 2024-03-19 07:39+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -235,7 +235,7 @@ msgstr ""
 #: src/gui/configgame.ui:432
 #, kde-format
 msgid "Size of 3-D cells outside the selected volume"
-msgstr ""
+msgstr "גודל התאים התלת־ממדיים מחוץ לנפח הנבחר"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:446
@@ -243,18 +243,18 @@ msgstr ""
 msgid ""
 "Darken cells if they are not in an NxNxN cube that contains the selected "
 "cell."
-msgstr ""
+msgstr "להחשיך תאים אם הם לא בקוביית N×N×N שמכילה את התא הנבחר."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:452
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
-msgstr ""
+msgstr "החשכת תאי תלת־ממד מחוץ לנפח הנבחר"
 
 #: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
-msgstr ""
+msgstr "ההגדרות עדיין לא מוטמעות"
 
 #: src/gui/ksudoku.cpp:76
 #, kde-format
@@ -263,6 +263,9 @@ msgid ""
 "\n"
 "Enable \"Show errors\" in the settings to highlight them."
 msgstr ""
+"בפתרון שלך יש שגיאות, עמך הסליחה.\n"
+"\n"
+"יש להפעיל את „הצגת שגיאות” בהגדרות כדי להדגיש אותן."
 
 #: src/gui/ksudoku.cpp:87
 #, kde-format
