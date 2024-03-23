@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-21 00:36+0000\n"
-"PO-Revision-Date: 2024-03-19 07:39+0200\n"
+"PO-Revision-Date: 2024-03-22 09:01+0200\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -36,7 +36,7 @@ msgstr "הניסיונות לייצר תצרף נכשלו אחרי בערך 200 
 #: src/generator/sudokuboard.cpp:125
 #, kde-format
 msgid "Mathdoku or Killer Sudoku Puzzle"
-msgstr ""
+msgstr "תצרף מתדוקו או סודוקו רוצח"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:229
 #, kde-format
@@ -71,7 +71,7 @@ msgstr "דרגת קושי"
 #: src/generator/sudokuboard.cpp:229
 #, kde-format
 msgid "&Accept"
-msgstr ""
+msgstr "&קבלה"
 
 #: src/generator/sudokuboard.cpp:241
 #, kde-format
@@ -82,11 +82,14 @@ msgid ""
 "The internal difficulty rating is %1. There are %2 clues at the start and %3 "
 "moves to go."
 msgstr ""
+"אפשר לפתור תצרפים שנוצרו אוטומטית על ידי היגיון בלבד. לא צריך לנחש.\n"
+"\n"
+"דירוג הקושי הפנימי הוא %1. יש %2 רמזים בהתחלה ו־%3 מהלכים למשחק."
 
 #: src/generator/sudokuboard.cpp:249 src/generator/sudokuboard.cpp:265
 #, kde-format
 msgid "&Retry"
-msgstr ""
+msgstr "&ניסיון מחדש"
 
 #: src/generator/sudokuboard.cpp:255
 #, kde-format
@@ -103,13 +106,13 @@ msgstr ""
 #: src/gui/configgame.ui:20
 #, kde-format
 msgid "When printing, try to fit more than one puzzle on a page"
-msgstr ""
+msgstr "בהדפסה, לנסות להכניס יותר מתצרף אחד בעמוד"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:43
 #, kde-format
 msgid "Highlight the row, column and block that contain the selected cell"
-msgstr ""
+msgstr "להדגיש את השורה, העמודה והמקטע שמכילים את התא הנבחר"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:46
@@ -118,19 +121,21 @@ msgid ""
 "Highlight the row, column and block that contain the selected cell. Blocks "
 "may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
 msgstr ""
+"להדגיש את השורה, העמודה והמקטע שמכילים את התא הנבחר. מקטעים יכול להיות "
+"ריבועיים או משונים (כמו אבן משתלבת או תצרפי XSudoku)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:49
 #, kde-format
 msgid "Show highlights in 2-D puzzles"
-msgstr ""
+msgstr "הצגת הדגשות בתצרפי דו־ממד"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:59
 #, kde-format
 msgid "Highlight in red any cells whose values break the Sudoku rules."
-msgstr ""
+msgstr "להדגיש באדום תאים שהערכים שלהם מפרים את כללי הסודוקו."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
 #: src/gui/configgame.ui:62
@@ -143,7 +148,7 @@ msgstr "הצגת שגיאות"
 #: src/gui/configgame.ui:69 src/gui/configgame.ui:72
 #, kde-format
 msgid "Highlight the planes (blocks) that contain the selected cell."
-msgstr ""
+msgstr "להדגיש את המשטחים (מקטעים) שמכילים את התא הנבחר."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
 #: src/gui/configgame.ui:75
@@ -218,7 +223,7 @@ msgstr "גודלי תאי תלת־ממד מודגשים"
 msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell."
-msgstr ""
+msgstr "לצמצם תאים עד 60% אם הם לא קובייה בגודל N×N×N שמכילה את התא הנבחר."
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
@@ -230,6 +235,8 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell. This is useful if a 3-D puzzle has more than one cube."
 msgstr ""
+"לצמצם תאים עד 60% אם הם לא קובייה בגודל N×N×N שמכילה את התא הנבחר. שימושי "
+"בתצרפים תלת־ממדיים עם יותר מקובייה אחת."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/configgame.ui:432
@@ -271,37 +278,37 @@ msgstr ""
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "כל הכבוד! הצלחת תוך שנייה. עם כל מיני תכסיסים."
+msgstr[1] "כל הכבוד! הצלחת תוך שתי שניות. עם כל מיני תכסיסים."
+msgstr[2] "כל הכבוד! הצלחת תוך %1 שניות. עם כל מיני תכסיסים."
+msgstr[3] "כל הכבוד! הצלחת תוך %1 שניות. עם כל מיני תכסיסים."
 
 #: src/gui/ksudoku.cpp:89
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "כל הכבוד! הצלחת תוך דקה. עם כל מיני תכסיסים."
+msgstr[1] "כל הכבוד! הצלחת תוך שתי דקות. עם כל מיני תכסיסים."
+msgstr[2] "כל הכבוד! הצלחת תוך %1 דקות. עם כל מיני תכסיסים."
+msgstr[3] "כל הכבוד! הצלחת תוך %1 דקות. עם כל מיני תכסיסים."
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
 msgid "1 minute"
 msgid_plural "%1 minutes"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "דקה"
+msgstr[1] "שתי דקות"
+msgstr[2] "%1 דקות"
+msgstr[3] "%1 דקות"
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
 msgid "1 second"
 msgid_plural "%1 seconds"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "שנייה"
+msgstr[1] "שתי שניות"
+msgstr[2] "%1 שניות"
+msgstr[3] "%1 שניות"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
