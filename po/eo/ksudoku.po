@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-21 00:36+0000\n"
-"PO-Revision-Date: 2023-10-14 20:11+0100\n"
+"PO-Revision-Date: 2024-03-28 10:37+0100\n"
 "Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
@@ -926,7 +926,7 @@ msgstr "Ĉefa ilobreta"
 #: src/gui/ksudokuui.rc:53
 #, kde-format
 msgid "Actions Toolbar"
-msgstr "Agoj ilobreta"
+msgstr "Agoj-ilbreto"
 
 #: src/gui/puzzleprinter.cpp:62
 #, kde-format
