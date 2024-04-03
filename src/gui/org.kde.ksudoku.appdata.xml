@@ -8,6 +8,9 @@ SentUpstream: 2014-09-24
   <id>org.kde.ksudoku.desktop</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-2.0-only</project_license>
+  <developer id="org.kde">
+    <name translate="no">KDE</name>
+  </developer>
   <name>KSudoku</name>
   <name xml:lang="ar">ك​سودوكو</name>
   <name xml:lang="ast">KSudoku</name>
