@@ -33,7 +33,7 @@ ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX KSUDOKU VERSION_HEADER ksud
 ecm_qt_declare_logging_category(ksudoku_SRCS
     HEADER ksudoku_logging.h
     IDENTIFIER KSudokuLog
-    CATEGORY_NAME org.kde.ksudoku
+    CATEGORY_NAME ksudoku
     DEFAULT_SEVERITY Warning
 )
 
