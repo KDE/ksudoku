@@ -161,7 +161,7 @@
 	also highlights the block which, if you remember, must also contain
 	only one instance of each symbol. If you do not need the highlighting,
 	you can use the <menuchoice><guimenu>Settings</guimenu>
-	<guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice>
+	<guimenuitem>Configure &ksudoku;…</guimenuitem></menuchoice>
 	menu item to turn it off.</para>
 
 <para>Keep entering symbols in accordance with the rules until the whole
@@ -306,7 +306,7 @@
 		visualize the square blocks that are present, but they 
 		are easier to see if you print the puzzle, using the 
 		<menuchoice><guimenu>Game</guimenu>
-		<guimenuitem>Print...</guimenuitem></menuchoice> 
+		<guimenuitem>Print…</guimenuitem></menuchoice> 
 		menu item.</para></listitem>
 	<listitem><para>Mathdoku variants, also known as 
                 <trademark>Kenken</trademark>, have no blocks, only row and 
@@ -363,7 +363,7 @@
 		<guimenuitem>Redo</guimenuitem></menuchoice> menu
 		items, repeatedly if necessary, and there is a setting
 		in <menuchoice><guimenu>Settings</guimenu>
-		<guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice>
+		<guimenuitem>Configure &ksudoku;…</guimenuitem></menuchoice>
 		that highlights errors.</para></listitem>
 	<listitem><para>Even though &ksudoku; provides a 'Hint' option
 		for you, try not to use it often. Remember, solving the
@@ -461,7 +461,7 @@
 				<term><menuchoice>
 					<shortcut><keycombo action="simul">&Ctrl;<keycap>O</keycap></keycombo></shortcut>
 					<guimenu>Game</guimenu>
-					<guimenuitem>Load...</guimenuitem>
+					<guimenuitem>Load…</guimenuitem>
 				</menuchoice></term>
 				<listitem><para><action>Loads a saved game.</action></para></listitem>
 			</varlistentry>
@@ -476,7 +476,7 @@
 			<varlistentry id="game-menu-save-as">
 				<term><menuchoice>
 					<guimenu>Game</guimenu>
-					<guimenuitem>Save As...</guimenuitem>
+					<guimenuitem>Save As…</guimenuitem>
 				</menuchoice></term>
 				<listitem><para><action>Saves</action> the current game as a file of your choice.</para></listitem>
 			</varlistentry>
@@ -484,7 +484,7 @@
 				<term><menuchoice>
 					<shortcut><keycombo action="simul">&Ctrl;<keycap>P</keycap></keycombo></shortcut>
 					<guimenu>Game</guimenu>
-					<guimenuitem>Print...</guimenuitem>
+					<guimenuitem>Print…</guimenuitem>
 				</menuchoice></term>
 				<listitem><para><action>Prints</action> the
 				current state of a two-dimensional game on a printer of your
@@ -554,7 +554,7 @@
 			<varlistentry id="settings-menu-settings">
 				<term><menuchoice>
 					<guimenu>Settings</guimenu>
-					<guimenuitem>Configure &ksudoku;...</guimenuitem>
+					<guimenuitem>Configure &ksudoku;…</guimenuitem>
 				</menuchoice></term>
 				<listitem><para><action>Open a dialog to configure &ksudoku;.</action> See <link linkend="configuration">Game Configuration</link> section for details.</para></listitem>
 			</varlistentry>
@@ -574,7 +574,7 @@
 <!--Following is a standard list of FAQ questions.-->
 <qandaentry>
  <question><para>I want to change the way this game looks. Can I? </para></question>
- <answer><para>Sudoku games are traditionally played using a square grid. Themes do not make much sense here, but you can select some color schemes and backgrounds. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &ksudoku;...</guimenuitem></menuchoice> on the menubar.</para></answer>
+ <answer><para>Sudoku games are traditionally played using a square grid. Themes do not make much sense here, but you can select some color schemes and backgrounds. To do so use <menuchoice><guimenu>Settings</guimenu><guimenuitem>Configure &ksudoku;…</guimenuitem></menuchoice> on the menubar.</para></answer>
 </qandaentry>
 <qandaentry>
  <question><para>Can I use the keyboard to play this game? </para></question>
