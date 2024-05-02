@@ -415,21 +415,27 @@ void KSudoku::dubPuzzle()
 		KMessageBox::information (this,
 		    i18n("Sorry, no solutions have been found. Please check "
 			 "that you have entered in the puzzle completely and "
-			 "correctly."), i18n("Check Puzzle"));
+			 "correctly."),
+		    i18nc("@title:window", "Check Puzzle"));
 		delete puzzle;
 		return;
 	} else if(state == 1) {
 		KMessageBox::information (this,
 		    i18n("The Puzzle you entered has a unique solution and "
-			 "is ready to be played."), i18n("Check Puzzle"));
+			 "is ready to be played."),
+		    i18nc("@title:window", "Check Puzzle"));
 	} else {
 		KMessageBox::information (this,
 		    i18n("The Puzzle you entered has multiple solutions. "
 			 "Please check that you have entered in the puzzle "
-			 "completely and correctly."), i18n("Check Puzzle"));
+			 "completely and correctly."),
+		    i18nc("@title:window", "Check Puzzle"));
 	}
 
-	if(KMessageBox::questionTwoActions(this, i18n("Do you wish to play the puzzle now?"), i18n("Play Puzzle"), KGuiItem(i18n("Play")), KStandardGuiItem::cancel() ) == KMessageBox::PrimaryAction)
+	if(KMessageBox::questionTwoActions(this, i18n("Do you wish to play the puzzle now?"),
+					   i18nc("@title:window", "Play Puzzle"),
+					   KGuiItem(i18nc("@action:button", "Play")),
+					   KStandardGuiItem::cancel() ) == KMessageBox::PrimaryAction)
 	{
 		startGame(ksudoku::Game(puzzle));
 	}
@@ -467,7 +473,7 @@ void KSudoku::setupActions()
 
 	KStandardAction::preferences(this, &KSudoku::optionsPreferences, actionCollection());
 	// Settings: enable messages that the user marked "Do not show again".
-	auto* enableMessagesAct = new QAction(i18n("Enable all messages"),this);
+	auto* enableMessagesAct = new QAction(i18nc("@action", "Enable All Messages"),this);
 	actionCollection()->addAction(QStringLiteral("enable_messages"), enableMessagesAct);
 	connect(enableMessagesAct, &QAction::triggered, this, &KSudoku::enableMessages);
 
@@ -484,7 +490,7 @@ void KSudoku::setupActions()
 
 	a = new QAction(this);
 	actionCollection()->addAction( QStringLiteral( "move_dub_puzzle" ), a);
-	a->setText(i18n("Check"));
+	a->setText(i18nc("@action", "Check"));
 	a->setIcon(QIcon::fromTheme( QStringLiteral( "games-endturn" )));
 	connect(a, &QAction::triggered, this, &KSudoku::dubPuzzle);
 	addAction(a);
@@ -635,7 +641,7 @@ void KSudoku::dropEvent(QDropEvent *event)
             if(game.isValid())
                 startGame(game);
             else
-                KMessageBox::error(this, errorMsg, i18n("Could not load game."));
+                KMessageBox::error(this, errorMsg, i18nc("@title:window", "Error Loading Game"));
         }
     }
 }
@@ -653,7 +659,7 @@ void KSudoku::gameNew()
 		if(KMessageBox::questionTwoActions(this,
 	                              i18n("Do you really want to end this game in order to start a new one?"),
 	                              i18nc("window title", "New Game"),
-	                              KGuiItem(i18nc("button label", "New Game")),
+	                              KGuiItem(i18nc("@action:button", "New Game"), QStringLiteral("document-new")),
 	                              KStandardGuiItem::cancel() ) != KMessageBox::PrimaryAction)
 			return;
 	}
@@ -672,7 +678,7 @@ void KSudoku::gameRestart()
 		if (KMessageBox::questionTwoActions(this,
                                 i18n("Do you really want to restart this game?"),
                                 i18nc("window title", "Restart Game"),
-                                KGuiItem(i18nc("button label", "Restart Game")),
+                                KGuiItem(i18nc("@action:button", "Restart Game"), QStringLiteral("view-refresh")),
                                 KStandardGuiItem::cancel() ) != KMessageBox::PrimaryAction) {
 			return;
 		}
@@ -687,14 +693,14 @@ void KSudoku::gameOpen()
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
 	// button is clicked
 	// standard filedialog
-	const QUrl Url = QFileDialog::getOpenFileUrl(this, i18n("Open Location"), QUrl::fromLocalFile(QDir::homePath()), QString());
+	const QUrl Url = QFileDialog::getOpenFileUrl(this, QString(), QUrl::fromLocalFile(QDir::homePath()), QString());
 
 	if (!Url.isEmpty() && Url.isValid())
 	{
 		QString errorMsg;
 		Game game = ksudoku::Serializer::load(Url, this, errorMsg);
 		if(!game.isValid()) {
-			KMessageBox::error(this, errorMsg, i18n("Could not load game."));
+			KMessageBox::error(this, errorMsg, i18nc("@title:window", "Error Loading Game"));
 			return;
 		}
 
@@ -721,7 +727,7 @@ void KSudoku::gameSave()
 	{
 		QString errorMsg;
 		if (!ksudoku::Serializer::store(game, game.getUrl(), this, errorMsg))
-			KMessageBox::error(this, errorMsg, i18n("Error Writing File"));
+			KMessageBox::error(this, errorMsg, i18nc("@title:window", "Error Writing File"));
 	}
 }
 
@@ -780,8 +786,8 @@ void KSudoku::optionsPreferences()
 	auto *dialog = new KConfigDialog(this, QStringLiteral("settings"), Settings::self());
 
 	auto* gameConfig = new GameConfig();
-	dialog->addPage(gameConfig, i18nc("Game Section in Config", "Game"), QStringLiteral("games-config-options"));
-	dialog->addPage(new KGameThemeSelector(Renderer::instance()->themeProvider()), i18n("Theme"), QStringLiteral("games-config-theme"));
+	dialog->addPage(gameConfig, i18nc("@title:tab Game Section in Config", "Game"), QStringLiteral("games-config-options"));
+	dialog->addPage(new KGameThemeSelector(Renderer::instance()->themeProvider()), i18nc("@title:tab", "Theme"), QStringLiteral("games-config-theme"));
 
     //QT5 dialog->setHelp(QString(),"ksudoku");
 	connect(dialog, &KConfigDialog::settingsChanged, this, &KSudoku::updateSettings);
@@ -820,7 +826,8 @@ void KSudoku::handleCurrentDifficultyLevelChanged(const KGameDifficultyLevel *le
 		     "Please also note that the generation of this type of puzzle "
 		     "might take much longer than other ones. During this time "
 		     "KSudoku will not respond."),
-		i18n("Warning"), QStringLiteral("WarningReUnlimited"));
+		i18nc("@title:window", "Warning"),
+		QStringLiteral("WarningReUnlimited"));
     }
 }
 

@@ -122,8 +122,9 @@ bool SudokuBoard::generatePuzzle             (BoardContents & puzzle,
 		if (KMessageBox::questionTwoActions (&owner,
 			    i18n("Attempts to generate a puzzle failed after "
 				 "about 200 tries. Try again?"),
-			    i18n("Mathdoku or Killer Sudoku Puzzle"),
-			    KGuiItem(i18n("&Try Again")), KStandardGuiItem::cancel())
+			    i18nc("@title:window", "Mathdoku or Killer Sudoku Puzzle"),
+			    KGuiItem(i18nc("@action:button", "&Try Again"), QStringLiteral("view-refresh")),
+                            KStandardGuiItem::cancel())
 			    == KMessageBox::SecondaryAction) {
 		    return false;	// Go back to the Welcome screen.
 		}
@@ -225,8 +226,9 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 			   "to 'No Symmetry' or some low symmetry type and then use 'Generate A Puzzle' again.",
 			   maxTries, bestDifficulty,
 			   ratingStr, difficultyRequired),
-                      i18n("Difficulty Level"),
-                      KGuiItem(i18n("&Try Again")), KGuiItem(i18n("&Accept")));
+                      i18nc("@title:window", "Difficulty Level"),
+                      KGuiItem(i18nc("@action:button", "&Try Again"), QStringLiteral("view-refresh")),
+                      KGuiItem(i18nc("@action:button", "&Accept")));
             if (ans == KMessageBox::PrimaryAction) {
                 count = 0;	// Continue on if the puzzle is not hard enough.
                 continue;
@@ -245,8 +247,8 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 			    "%2 clues at the start and %3 moves to go.",
 			    ratingStr, bestNClues,
 			    (m_stats.nCells - bestNClues)),
-		       i18n("Difficulty Level"),
-                       KStandardGuiItem::ok(), KGuiItem(i18n("&Retry")));
+		       i18nc("@title:window", "Difficulty Level"),
+                       KStandardGuiItem::ok(), KGuiItem(i18nc("@action:button", "&Retry"), QStringLiteral("view-refresh")));
 	    }
 	    else {
                 QString avGuessStr = ki18n("%1").subs(((float) bestNGuesses) /
@@ -261,8 +263,9 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
 			    "%4 clues at the start and %5 moves to go.",
 			    avGuessStr, bestFirstGuessAt, ratingStr,
 			    bestNClues, (m_stats.nCells - bestNClues)),
-                       i18n("Difficulty Level"),
-                       KStandardGuiItem::ok(), KGuiItem(i18n("&Retry")));
+                       i18nc("@title:window", "Difficulty Level"),
+                       KStandardGuiItem::ok(),
+                       KGuiItem(i18nc("@action:button", "&Retry"), QStringLiteral("view-refresh")));
 	    }
 	    // Exit when the required difficulty or number of tries is reached.
             if (ans == KMessageBox::SecondaryAction) {

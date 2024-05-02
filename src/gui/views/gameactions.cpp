@@ -51,13 +51,13 @@ void GameActions::init() {
 		shortcuts.clear();
 		a = new QAction(this);
         m_collection->addAction(QStringLiteral("val-select%1").arg(i+1,2,10,QLatin1Char('0')), a);
-		a->setText(i18n("Select %1 (%2)", QChar('a'+i), i+1));
+		a->setText(i18nc("@action", "Select %1 (%2)", QChar('a'+i), i+1));
         connect(a, &QAction::triggered, this, [this, i] { Q_EMIT selectValue(i + 1); });
 		m_actions << a;
 
 		a = new QAction(this);
         m_collection->addAction(QStringLiteral("val-enter%1").arg(i+1,2,10,QLatin1Char('0')), a);
-		a->setText(i18n("Enter %1 (%2)", QChar('a'+i), i+1));
+		a->setText(i18nc("@action", "Enter %1 (%2)", QLatin1Char('a'+i), i+1));
 		if (i < 25) {
 			// Keys A to Y, for Sudoku puzzles.
 			shortcuts << QKeySequence(Qt::Key_A + i);
@@ -80,7 +80,7 @@ void GameActions::init() {
 		shortcuts.clear();
 		a = new QAction(this);
         m_collection->addAction(QStringLiteral("val-mark%1").arg(i+1,2,10,QLatin1Char('0')), a);
-		a->setText(i18n("Mark %1 (%2)", QChar('a'+i), i+1));
+		a->setText(i18nc("@action", "Mark %1 (%2)", QLatin1Char('a'+i), i+1));
 		shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_A + i));
 		if(i < 9) {
 			shortcuts << QKeySequence(Qt::ShiftModifier | (Qt::Key_1 + i));
@@ -92,35 +92,35 @@ void GameActions::init() {
 	
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_up"), a);
-	a->setText(i18n("Move Up"));
+	a->setText(i18nc("@action", "Move Up"));
 	KActionCollection::setDefaultShortcut(a, Qt::Key_Up);
 	connect(a, &QAction::triggered, this, &GameActions::moveUp);
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_down"), a);
-	a->setText(i18n("Move Down"));
+	a->setText(i18nc("@action", "Move Down"));
 	KActionCollection::setDefaultShortcut(a, Qt::Key_Down);
 	connect(a, &QAction::triggered, this, &GameActions::moveDown);
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_left"), a);
-	a->setText(i18n("Move Left"));
+	a->setText(i18nc("@action", "Move Left"));
 	KActionCollection::setDefaultShortcut(a, Qt::Key_Left);
 	connect(a, &QAction::triggered, this, &GameActions::moveLeft);
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_right"), a);
-	a->setText(i18n("Move Right"));
+	a->setText(i18nc("@action", "Move Right"));
 	KActionCollection::setDefaultShortcut(a, Qt::Key_Right);
 	connect(a, &QAction::triggered, this, &GameActions::moveRight);
 	m_actions << a;
 
 	a = new QAction(this);
 	m_collection->addAction(QStringLiteral("move_clear_cell"), a);
-	a->setText(i18n("Clear Cell"));
+	a->setText(i18nc("@action", "Clear Cell"));
 	KActionCollection::setDefaultShortcuts(a, {QKeySequence(Qt::Key_Backspace), QKeySequence(Qt::Key_Delete)});
 	connect(a, &QAction::triggered, this, &GameActions::clearValue);
 	m_actions << a;

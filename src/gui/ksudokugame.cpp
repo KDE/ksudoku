@@ -374,7 +374,8 @@ bool Game::addToCage (int pos, int val)
 		KMessageBox::information (messageParent(),
 		    i18n("In Killer Sudoku, the operator is always + or none "
 			 "and KSudoku automatically sets the correct choice."),
-		    i18n("Killer Sudoku Cage"), QStringLiteral("KillerCageInfo"));
+		    i18nc("@title:window", "Killer Sudoku Cage"),
+		    QStringLiteral("KillerCageInfo"));
 	    }
 	    // Set the operator to none or Add, depending on the cage-size.
 	    cageOp = (m_private->m_cage.size() > 1) ?  Add : NoOperator;
@@ -421,7 +422,7 @@ bool Game::validCell (int pos, SKGraph * g)
 		KMessageBox::information (messageParent(),
 		    i18n("The cell you have selected has already been "
 			 "used in a cage."),
-		    i18n("Error in Cage"));
+		    i18nc("@title:window", "Error in Cage"));
 		return false;
 	    }
 	}
@@ -451,7 +452,7 @@ bool Game::validCell (int pos, SKGraph * g)
 		KMessageBox::information (messageParent(),
 		    i18n("The cell you have selected is not next to "
 			 "any cell in the cage you are creating."),
-		    i18n("Error in Cage"));
+		    i18nc("@title:window", "Error in Cage"));
 		return false;
 	    }
 	}
@@ -476,14 +477,14 @@ void Game::finishCurrentCage (SKGraph * g)
 	    KMessageBox::information (messageParent(),
 		i18n("The cage you wish to complete has no cells in it yet. "
 		     "Please click on a cell or key in + - / x or a number."),
-		i18n("Error in Cage"));
+		i18nc("@title:window", "Error in Cage"));
 	    return;		// Invalid - cannot finalise the cage.
 	}
 	else if (m_private->m_cageValue == 0) {
 	    KMessageBox::information (messageParent(),
 		i18n("The cage you wish to complete has no value yet. "
 		     "Please key in a number with one or more digits."),
-		i18n("Error in Cage"));
+		i18nc("@title:window", "Error in Cage"));
 	    return;		// Invalid - cannot finalise the cage.
 	}
 	else if ((m_private->m_cage.size() > 1) &&
@@ -491,7 +492,7 @@ void Game::finishCurrentCage (SKGraph * g)
 	    KMessageBox::information (messageParent(),
 		i18n("The cage you wish to complete has more than one cell, "
 		     "but it has no operator yet. Please key in + - / or x."),
-		i18n("Error in Cage"));
+		i18nc("@title:window", "Error in Cage"));
 	    return;		// Invalid - cannot finalise the cage.
 	}
 	else if ((m_private->m_cage.size() == 1) &&
@@ -500,7 +501,7 @@ void Game::finishCurrentCage (SKGraph * g)
 		i18n("The cage you wish to complete has one cell, but its "
 		     "value is too large. A single-cell cage must have a value "
 		     "from 1 to %1 in a puzzle of this size.", g->order()),
-		i18n("Error in Cage"));
+		i18nc("@title:window", "Error in Cage"));
 	    return;		// Invalid - cannot finalise the cage.
 	}
 
@@ -534,7 +535,8 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 	    if (cageNumP1 > 0) {
 		if(KMessageBox::questionTwoActions (messageParent(),
 		       i18n("Do you wish to delete this cage?"),
-		       i18n("Delete Cage"), KStandardGuiItem::del(),
+		       i18nc("@title:window", "Delete Cage"),
+		       KStandardGuiItem::del(),
 		       KStandardGuiItem::cancel(), QStringLiteral("CageDelConfirm"))
 		       == KMessageBox::SecondaryAction) {
 		    return;
@@ -561,13 +563,15 @@ void Game::deleteCageAt (int pos, SKGraph * g)
 		KMessageBox::information (messageParent(),
 		    i18n("The cell you have selected is not in any cage, "
 			 "so the Delete action will not delete anything."),
-		    i18n("Delete Cage"), QStringLiteral("CageDelMissed"));
+		    i18nc("@title:window", "Delete Cage"),
+		    QStringLiteral("CageDelMissed"));
 	    }
 	}
 	else {
 	    KMessageBox::information (messageParent(),
 		i18n("The Delete action finds that there are no cages "
-		     "to delete."), i18n("Delete Cage"));
+		     "to delete."),
+		i18nc("@title:window", "Delete Cage"));
 #ifdef MATHDOKUENTRY_LOG
 	    qCDebug(KSudokuLog) << "NO CAGES TO DELETE.";
 #endif

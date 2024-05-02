@@ -118,7 +118,7 @@ bool PuzzlePrinter::setupOutputDevices (int leastCellsToFit, int puzzleWidth)
     if (m_printer == nullptr) {
         m_printer = new QPrinter (QPrinter::HighResolution);
         auto * dialog = new QPrintDialog(m_printer, m_parent);
-        dialog->setWindowTitle(i18n("Print Sudoku Puzzle"));
+        dialog->setWindowTitle(i18nc("@title:window", "Print Sudoku Puzzle"));
         if (dialog->exec() != QDialog::Accepted) {
             delete m_printer;
             m_printer = nullptr;
