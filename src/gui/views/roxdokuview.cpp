@@ -454,6 +454,10 @@ void RoxdokuView::paintGL()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 
+	// Reset blending to default
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_ONE, GL_ZERO);
+
 	glLightfv(GL_LIGHT1, GL_POSITION,LightPosition);
 	glTranslatef(0.0f, 0.0f, -m_dist*(m_width+3)+m_wheelmove);
 
