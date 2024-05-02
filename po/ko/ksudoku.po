@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-21 00:36+0000\n"
+"POT-Creation-Date: 2024-05-02 00:37+0000\n"
 "PO-Revision-Date: 2023-10-08 23:33+0200\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -35,21 +35,25 @@ msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr "약 200회 정도의 퍼즐 생성 시도가 실패했습니다. 다시 시도하시겠습니까?"
 
 #: src/generator/sudokuboard.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mathdoku or Killer Sudoku Puzzle"
+msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "수학 스도쿠 또는 킬러 스도쿠 퍼즐"
 
-#: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:229
-#, kde-format
+#: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
+#, fuzzy, kde-format
+#| msgid "&Try Again"
+msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "다시 시도(&T)"
 
-#: src/generator/sudokuboard.cpp:211 src/generator/sudokuboard.cpp:252
+#: src/generator/sudokuboard.cpp:212 src/generator/sudokuboard.cpp:254
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: src/generator/sudokuboard.cpp:217
+#: src/generator/sudokuboard.cpp:218
 #, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
@@ -71,18 +75,22 @@ msgstr ""
 "후 게임 -> 새 게임을 선택하고, 대칭 설정을 '대칭 없음'이나 낮은 대칭으로 변경"
 "한 다음 '퍼즐 생성' 단추를 다시 누르십시오."
 
-#: src/generator/sudokuboard.cpp:228 src/generator/sudokuboard.cpp:248
-#: src/generator/sudokuboard.cpp:264
-#, kde-format
+#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
+#: src/generator/sudokuboard.cpp:266
+#, fuzzy, kde-format
+#| msgid "Difficulty Level"
+msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "난이도"
 
-#: src/generator/sudokuboard.cpp:229
-#, kde-format
+#: src/generator/sudokuboard.cpp:231
+#, fuzzy, kde-format
+#| msgid "&Accept"
+msgctxt "@action:button"
 msgid "&Accept"
 msgstr "수락(&A)"
 
-#: src/generator/sudokuboard.cpp:241
+#: src/generator/sudokuboard.cpp:243
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -96,12 +104,14 @@ msgstr ""
 "내부 난이도 등급은 %1입니다. 시작할 때 힌트가 %2개 표시되고 %3개 더 채워 넣으"
 "면 됩니다."
 
-#: src/generator/sudokuboard.cpp:249 src/generator/sudokuboard.cpp:265
-#, kde-format
+#: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
+#, fuzzy, kde-format
+#| msgid "&Retry"
+msgctxt "@action:button"
 msgid "&Retry"
 msgstr "다시 시도(&R)"
 
-#: src/generator/sudokuboard.cpp:255
+#: src/generator/sudokuboard.cpp:257
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -535,17 +545,19 @@ msgstr ""
 "죄송합니다. 풀이를 찾을 수 없습니다. 입력한 퍼즐이 완전하고 올바른지 확인하십"
 "시오."
 
-#: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
-#, kde-format
+#: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
+#, fuzzy, kde-format
+#| msgid "Check Puzzle"
+msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "퍼즐 확인"
 
-#: src/gui/ksudoku.cpp:423
+#: src/gui/ksudoku.cpp:424
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr "입력한 퍼즐에 유일한 풀이법이 있으므로 풀 수 있습니다."
 
-#: src/gui/ksudoku.cpp:427
+#: src/gui/ksudoku.cpp:429
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
@@ -554,173 +566,188 @@ msgstr ""
 "입력한 퍼즐에 여러 풀이법이 있습니다. 입력한 퍼즐이 완전하고 올바른지 확인하"
 "십시오."
 
-#: src/gui/ksudoku.cpp:432
+#: src/gui/ksudoku.cpp:435
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
 msgstr "이 퍼즐을 푸시겠습니까?"
 
-#: src/gui/ksudoku.cpp:432
-#, kde-format
+#: src/gui/ksudoku.cpp:436
+#, fuzzy, kde-format
+#| msgid "Play Puzzle"
+msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "퍼즐 풀기"
 
-#: src/gui/ksudoku.cpp:432
-#, kde-format
+#: src/gui/ksudoku.cpp:437
+#, fuzzy, kde-format
+#| msgid "Play"
+msgctxt "@action:button"
 msgid "Play"
 msgstr "게임 실행"
 
-#: src/gui/ksudoku.cpp:470
-#, kde-format
-msgid "Enable all messages"
+#: src/gui/ksudoku.cpp:476
+#, fuzzy, kde-format
+#| msgid "Enable all messages"
+msgctxt "@action"
+msgid "Enable All Messages"
 msgstr "모든 메시지 활성화"
 
-#: src/gui/ksudoku.cpp:487
-#, kde-format
+#: src/gui/ksudoku.cpp:493
+#, fuzzy, kde-format
+#| msgid "Check"
+msgctxt "@action"
 msgid "Check"
 msgstr "검사"
 
-#: src/gui/ksudoku.cpp:503
+#: src/gui/ksudoku.cpp:509
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "매우 어려움"
 
-#: src/gui/ksudoku.cpp:505
+#: src/gui/ksudoku.cpp:511
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "무제한"
 
-#: src/gui/ksudoku.cpp:516
+#: src/gui/ksudoku.cpp:522
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "난이도:"
 
-#: src/gui/ksudoku.cpp:520
+#: src/gui/ksudoku.cpp:526
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "대칭:"
 
-#: src/gui/ksudoku.cpp:524
+#: src/gui/ksudoku.cpp:530
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "대칭"
 
-#: src/gui/ksudoku.cpp:526
+#: src/gui/ksudoku.cpp:532
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr "퍼즐을 시작할 때 힌트를 배치할 대칭성"
 
-#: src/gui/ksudoku.cpp:528
+#: src/gui/ksudoku.cpp:534
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "대각선"
 
-#: src/gui/ksudoku.cpp:529
+#: src/gui/ksudoku.cpp:535
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "가운데"
 
-#: src/gui/ksudoku.cpp:530
+#: src/gui/ksudoku.cpp:536
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "왼쪽-오른쪽"
 
-#: src/gui/ksudoku.cpp:531
+#: src/gui/ksudoku.cpp:537
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "나선형"
 
-#: src/gui/ksudoku.cpp:532
+#: src/gui/ksudoku.cpp:538
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "사방향"
 
-#: src/gui/ksudoku.cpp:533
+#: src/gui/ksudoku.cpp:539
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "무작위"
 
-#: src/gui/ksudoku.cpp:534
+#: src/gui/ksudoku.cpp:540
 #, kde-format
 msgid "No Symmetry"
 msgstr "대칭성 없음"
 
-#: src/gui/ksudoku.cpp:638 src/gui/ksudoku.cpp:697
-#, kde-format
-msgid "Could not load game."
-msgstr "게임을 불러올 수 없습니다."
+#: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
+#, fuzzy, kde-format
+#| msgid "Error in Cage"
+msgctxt "@title:window"
+msgid "Error Loading Game"
+msgstr "묶음 오류"
 
-#: src/gui/ksudoku.cpp:654
+#: src/gui/ksudoku.cpp:660
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr "현재 게임을 종료하고 새 게임을 시작하시겠습니까?"
 
-#: src/gui/ksudoku.cpp:655
+#: src/gui/ksudoku.cpp:661
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
 msgstr "새 게임"
 
-#: src/gui/ksudoku.cpp:656
-#, kde-format
-msgctxt "button label"
+#: src/gui/ksudoku.cpp:662
+#, fuzzy, kde-format
+#| msgctxt "window title"
+#| msgid "New Game"
+msgctxt "@action:button"
 msgid "New Game"
 msgstr "새 게임"
 
-#: src/gui/ksudoku.cpp:673
+#: src/gui/ksudoku.cpp:679
 #, kde-format
 msgid "Do you really want to restart this game?"
 msgstr "게임을 다시 시작하시겠습니까?"
 
-#: src/gui/ksudoku.cpp:674
+#: src/gui/ksudoku.cpp:680
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "게임 다시 시작"
 
-#: src/gui/ksudoku.cpp:675
-#, kde-format
-msgctxt "button label"
+#: src/gui/ksudoku.cpp:681
+#, fuzzy, kde-format
+#| msgctxt "window title"
+#| msgid "Restart Game"
+msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "게임 다시 시작"
 
-#: src/gui/ksudoku.cpp:690
-#, kde-format
-msgid "Open Location"
-msgstr "위치 열기"
-
-#: src/gui/ksudoku.cpp:724
-#, kde-format
+#: src/gui/ksudoku.cpp:730
+#, fuzzy, kde-format
+#| msgid "Error Writing File"
+msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "파일 쓰기 오류"
 
-#: src/gui/ksudoku.cpp:746
+#: src/gui/ksudoku.cpp:752
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "인쇄할 퍼즐이 없는 것 같습니다."
 
-#: src/gui/ksudoku.cpp:783
-#, kde-format
-msgctxt "Game Section in Config"
+#: src/gui/ksudoku.cpp:789
+#, fuzzy, kde-format
+#| msgctxt "Game Section in Config"
+#| msgid "Game"
+msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "게임"
 
-#: src/gui/ksudoku.cpp:784
-#, kde-format
+#: src/gui/ksudoku.cpp:790
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "테마"
 
-#: src/gui/ksudoku.cpp:816
+#: src/gui/ksudoku.cpp:822
 #, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
@@ -736,12 +763,14 @@ msgstr ""
 "무제한 난이도 퍼즐 생성은 더 오래 걸릴 수 있습니다. KSudoku가 퍼즐 생성 중 응"
 "답하지 않을 수도 있습니다."
 
-#: src/gui/ksudoku.cpp:823
-#, kde-format
+#: src/gui/ksudoku.cpp:829
+#, fuzzy, kde-format
+#| msgid "Warning"
+msgctxt "@title:window"
 msgid "Warning"
 msgstr "경고"
 
-#: src/gui/ksudoku.cpp:862
+#: src/gui/ksudoku.cpp:869
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -753,7 +782,7 @@ msgstr ""
 "\n"
 "계속 진행하시겠습니까?"
 
-#: src/gui/ksudoku.cpp:866
+#: src/gui/ksudoku.cpp:873
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
@@ -781,23 +810,27 @@ msgstr ""
 "서 자동으로 선택합니다."
 
 #: src/gui/ksudokugame.cpp:377
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Killer Sudoku Cage"
+msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "킬러 스도쿠 묶음"
 
-#: src/gui/ksudokugame.cpp:422
+#: src/gui/ksudokugame.cpp:423
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
 msgstr "선택한 셀은 묶음에서 이미 사용 중입니다."
 
-#: src/gui/ksudokugame.cpp:424 src/gui/ksudokugame.cpp:454
-#: src/gui/ksudokugame.cpp:479 src/gui/ksudokugame.cpp:486
-#: src/gui/ksudokugame.cpp:494 src/gui/ksudokugame.cpp:503
-#, kde-format
+#: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
+#: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
+#: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
+#, fuzzy, kde-format
+#| msgid "Error in Cage"
+msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "묶음 오류"
 
-#: src/gui/ksudokugame.cpp:452
+#: src/gui/ksudokugame.cpp:453
 #, kde-format
 msgid ""
 "The cell you have selected is not next to any cell in the cage you are "
@@ -805,7 +838,7 @@ msgid ""
 msgstr ""
 "선택한 셀은 완성하려고 하는 묶음에 있는 어떠한 셀과도 인접해 있지 않습니다."
 
-#: src/gui/ksudokugame.cpp:477
+#: src/gui/ksudokugame.cpp:478
 #, kde-format
 msgid ""
 "The cage you wish to complete has no cells in it yet. Please click on a cell "
@@ -814,7 +847,7 @@ msgstr ""
 "완성하려고 하는 묶음에 셀이 없습니다. 셀을 클릭하거나 + - / x 또는 숫자를 입"
 "력하십시오."
 
-#: src/gui/ksudokugame.cpp:484
+#: src/gui/ksudokugame.cpp:485
 #, kde-format
 msgid ""
 "The cage you wish to complete has no value yet. Please key in a number with "
@@ -822,7 +855,7 @@ msgid ""
 msgstr ""
 "완성하려고 하는 묶음에 값이 없습니다. 한 자릿수 이상의 숫자를 입력하십시오."
 
-#: src/gui/ksudokugame.cpp:492
+#: src/gui/ksudokugame.cpp:493
 #, kde-format
 msgid ""
 "The cage you wish to complete has more than one cell, but it has no operator "
@@ -831,7 +864,7 @@ msgstr ""
 "완성하려고 하는 묶음에 한 개 이상의 셀이 있으나 연산자가 없습니다. + - / x "
 "중 하나를 입력하십시오."
 
-#: src/gui/ksudokugame.cpp:500
+#: src/gui/ksudokugame.cpp:501
 #, kde-format
 msgid ""
 "The cage you wish to complete has one cell, but its value is too large. A "
@@ -840,18 +873,20 @@ msgstr ""
 "완성하려고 하는 묶음은 셀 한 개로 구성되어 있으나 값이 너무 큽니다. 셀 한 개"
 "로 구성된 묶음은 이 퍼즐에서 1부터 %1 사이의 값을 가져야 합니다."
 
-#: src/gui/ksudokugame.cpp:536
+#: src/gui/ksudokugame.cpp:537
 #, kde-format
 msgid "Do you wish to delete this cage?"
 msgstr "이 묶음을 삭제하시겠습니까?"
 
-#: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
-#: src/gui/ksudokugame.cpp:570
-#, kde-format
+#: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
+#: src/gui/ksudokugame.cpp:574
+#, fuzzy, kde-format
+#| msgid "Delete Cage"
+msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "묶음 삭제"
 
-#: src/gui/ksudokugame.cpp:562
+#: src/gui/ksudokugame.cpp:564
 #, kde-format
 msgid ""
 "The cell you have selected is not in any cage, so the Delete action will not "
@@ -860,7 +895,7 @@ msgstr ""
 "선택한 셀이 묶음에 포함되어 있지 않아서 삭제 작업을 실행해도 지우는 것이 없습"
 "니다."
 
-#: src/gui/ksudokugame.cpp:569
+#: src/gui/ksudokugame.cpp:572
 #, kde-format
 msgid "The Delete action finds that there are no cages to delete."
 msgstr "삭제 작업을 실행할 묶음이 없습니다."
@@ -920,7 +955,9 @@ msgid "KSudoku has sent output to your printer."
 msgstr "KSudoku에서 프린터로 퍼즐을 보냈습니다."
 
 #: src/gui/puzzleprinter.cpp:121
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Print Sudoku Puzzle"
+msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "스도쿠 퍼즐 인쇄"
 
@@ -955,42 +992,58 @@ msgid "Unable to upload file."
 msgstr "파일을 업로드할 수 없습니다."
 
 #: src/gui/views/gameactions.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select %1 (%2)"
+msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "%1 선택(%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enter %1 (%2)"
+msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "%1 입력(%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mark %1 (%2)"
+msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "%1 표시(%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Up"
+msgctxt "@action"
 msgid "Move Up"
 msgstr "위로 이동"
 
 #: src/gui/views/gameactions.cpp:102
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Down"
+msgctxt "@action"
 msgid "Move Down"
 msgstr "아래로 이동"
 
 #: src/gui/views/gameactions.cpp:109
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Left"
+msgctxt "@action"
 msgid "Move Left"
 msgstr "왼쪽으로 이동"
 
 #: src/gui/views/gameactions.cpp:116
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Right"
+msgctxt "@action"
 msgid "Move Right"
 msgstr "오른쪽으로 이동"
 
 #: src/gui/views/gameactions.cpp:123
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Clear Cell"
+msgctxt "@action"
 msgid "Clear Cell"
 msgstr "셀 비우기"
 
@@ -1008,8 +1061,10 @@ msgstr "퍼즐 파생형을 선택하십시오."
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, kde-format
-msgid "Unable to start puzzle"
+#, fuzzy, kde-format
+#| msgid "Unable to start puzzle"
+msgctxt "@title:window"
+msgid "Unable to Start Puzzle"
 msgstr "퍼즐을 시작할 수 없음"
 
 #: src/gui/welcomescreen.cpp:152
@@ -1131,6 +1186,20 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "열 문서"
+
+#~ msgid "Could not load game."
+#~ msgstr "게임을 불러올 수 없습니다."
+
+#~ msgctxt "button label"
+#~ msgid "New Game"
+#~ msgstr "새 게임"
+
+#~ msgctxt "button label"
+#~ msgid "Restart Game"
+#~ msgstr "게임 다시 시작"
+
+#~ msgid "Open Location"
+#~ msgstr "위치 열기"
 
 #~ msgid "Home Page"
 #~ msgstr "홈페이지"

@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-02-21 00:36+0000\n"
+"POT-Creation-Date: 2024-05-02 00:37+0000\n"
 "PO-Revision-Date: 2023-12-27 10:09+0300\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
@@ -49,21 +49,25 @@ msgstr ""
 "Попробовать ещё раз?"
 
 #: src/generator/sudokuboard.cpp:125
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mathdoku or Killer Sudoku Puzzle"
+msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "Головоломка матдоку или судоку-киллер"
 
-#: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:229
-#, kde-format
+#: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
+#, fuzzy, kde-format
+#| msgid "&Try Again"
+msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "&Другая"
 
-#: src/generator/sudokuboard.cpp:211 src/generator/sudokuboard.cpp:252
+#: src/generator/sudokuboard.cpp:212 src/generator/sudokuboard.cpp:254
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: src/generator/sudokuboard.cpp:217
+#: src/generator/sudokuboard.cpp:218
 #, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
@@ -87,18 +91,22 @@ msgstr ""
 "значение параметра «Симметрия» на «Нет» (или выберите низкий уровень "
 "симметрии), а затем нажмите кнопку «Построить головоломку»."
 
-#: src/generator/sudokuboard.cpp:228 src/generator/sudokuboard.cpp:248
-#: src/generator/sudokuboard.cpp:264
-#, kde-format
+#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
+#: src/generator/sudokuboard.cpp:266
+#, fuzzy, kde-format
+#| msgid "Difficulty Level"
+msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "Уровень сложности"
 
-#: src/generator/sudokuboard.cpp:229
-#, kde-format
+#: src/generator/sudokuboard.cpp:231
+#, fuzzy, kde-format
+#| msgid "&Accept"
+msgctxt "@action:button"
 msgid "&Accept"
 msgstr "&Принять"
 
-#: src/generator/sudokuboard.cpp:241
+#: src/generator/sudokuboard.cpp:243
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -112,12 +120,14 @@ msgstr ""
 "\n"
 "Внутренний рейтинг сложности %1; подсказок в начале %2, всего ходов %3."
 
-#: src/generator/sudokuboard.cpp:249 src/generator/sudokuboard.cpp:265
-#, kde-format
+#: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
+#, fuzzy, kde-format
+#| msgid "&Retry"
+msgctxt "@action:button"
 msgid "&Retry"
 msgstr "&Другая"
 
-#: src/generator/sudokuboard.cpp:255
+#: src/generator/sudokuboard.cpp:257
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -597,18 +607,20 @@ msgstr ""
 "Решение не было найдено. Убедитесь, что головоломка заполнена полностью и "
 "без ошибок."
 
-#: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
-#, kde-format
+#: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
+#, fuzzy, kde-format
+#| msgid "Check Puzzle"
+msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Проверить головоломку"
 
-#: src/gui/ksudoku.cpp:423
+#: src/gui/ksudoku.cpp:424
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr ""
 "Введённая головоломка имеет уникальное решение и готова к разгадыванию."
 
-#: src/gui/ksudoku.cpp:427
+#: src/gui/ksudoku.cpp:429
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
@@ -617,173 +629,188 @@ msgstr ""
 "Головоломка имеет несколько решений. Убедитесь, что она заполнена полностью "
 "и без ошибок."
 
-#: src/gui/ksudoku.cpp:432
+#: src/gui/ksudoku.cpp:435
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
 msgstr "Решить головоломку сейчас?"
 
-#: src/gui/ksudoku.cpp:432
-#, kde-format
+#: src/gui/ksudoku.cpp:436
+#, fuzzy, kde-format
+#| msgid "Play Puzzle"
+msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Начать головоломку"
 
-#: src/gui/ksudoku.cpp:432
-#, kde-format
+#: src/gui/ksudoku.cpp:437
+#, fuzzy, kde-format
+#| msgid "Play"
+msgctxt "@action:button"
 msgid "Play"
 msgstr "Играть"
 
-#: src/gui/ksudoku.cpp:470
-#, kde-format
-msgid "Enable all messages"
+#: src/gui/ksudoku.cpp:476
+#, fuzzy, kde-format
+#| msgid "Enable all messages"
+msgctxt "@action"
+msgid "Enable All Messages"
 msgstr "Включить все уведомления"
 
-#: src/gui/ksudoku.cpp:487
-#, kde-format
+#: src/gui/ksudoku.cpp:493
+#, fuzzy, kde-format
+#| msgid "Check"
+msgctxt "@action"
 msgid "Check"
 msgstr "Проверить"
 
-#: src/gui/ksudoku.cpp:503
+#: src/gui/ksudoku.cpp:509
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "Дьявольский"
 
-#: src/gui/ksudoku.cpp:505
+#: src/gui/ksudoku.cpp:511
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "Неограниченный"
 
-#: src/gui/ksudoku.cpp:516
+#: src/gui/ksudoku.cpp:522
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "Уровень сложности:"
 
-#: src/gui/ksudoku.cpp:520
+#: src/gui/ksudoku.cpp:526
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "Симметрия:"
 
-#: src/gui/ksudoku.cpp:524
+#: src/gui/ksudoku.cpp:530
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "Симметрия"
 
-#: src/gui/ksudoku.cpp:526
+#: src/gui/ksudoku.cpp:532
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr "Симметрия раскладки подсказок в начале игры"
 
-#: src/gui/ksudoku.cpp:528
+#: src/gui/ksudoku.cpp:534
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "Диагональная"
 
-#: src/gui/ksudoku.cpp:529
+#: src/gui/ksudoku.cpp:535
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "Центральная"
 
-#: src/gui/ksudoku.cpp:530
+#: src/gui/ksudoku.cpp:536
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "Слева направо"
 
-#: src/gui/ksudoku.cpp:531
+#: src/gui/ksudoku.cpp:537
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "Спиральная"
 
-#: src/gui/ksudoku.cpp:532
+#: src/gui/ksudoku.cpp:538
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "Четырёхсторонняя"
 
-#: src/gui/ksudoku.cpp:533
+#: src/gui/ksudoku.cpp:539
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "Случайный выбор"
 
-#: src/gui/ksudoku.cpp:534
+#: src/gui/ksudoku.cpp:540
 #, kde-format
 msgid "No Symmetry"
 msgstr "Нет"
 
-#: src/gui/ksudoku.cpp:638 src/gui/ksudoku.cpp:697
-#, kde-format
-msgid "Could not load game."
-msgstr "Не удалось загрузить игру."
+#: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
+#, fuzzy, kde-format
+#| msgid "Error in Cage"
+msgctxt "@title:window"
+msgid "Error Loading Game"
+msgstr "Ошибка в клетке"
 
-#: src/gui/ksudoku.cpp:654
+#: src/gui/ksudoku.cpp:660
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr "Закончить эту игру, чтобы начать новую?"
 
-#: src/gui/ksudoku.cpp:655
+#: src/gui/ksudoku.cpp:661
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
 msgstr "Новая игра"
 
-#: src/gui/ksudoku.cpp:656
-#, kde-format
-msgctxt "button label"
+#: src/gui/ksudoku.cpp:662
+#, fuzzy, kde-format
+#| msgctxt "window title"
+#| msgid "New Game"
+msgctxt "@action:button"
 msgid "New Game"
 msgstr "Новая игра"
 
-#: src/gui/ksudoku.cpp:673
+#: src/gui/ksudoku.cpp:679
 #, kde-format
 msgid "Do you really want to restart this game?"
 msgstr "Перезапустить эту игру?"
 
-#: src/gui/ksudoku.cpp:674
+#: src/gui/ksudoku.cpp:680
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "Начать заново"
 
-#: src/gui/ksudoku.cpp:675
-#, kde-format
-msgctxt "button label"
+#: src/gui/ksudoku.cpp:681
+#, fuzzy, kde-format
+#| msgctxt "window title"
+#| msgid "Restart Game"
+msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Начать заново"
 
-#: src/gui/ksudoku.cpp:690
-#, kde-format
-msgid "Open Location"
-msgstr "Открыть расположение"
-
-#: src/gui/ksudoku.cpp:724
-#, kde-format
+#: src/gui/ksudoku.cpp:730
+#, fuzzy, kde-format
+#| msgid "Error Writing File"
+msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Ошибка при записи файла"
 
-#: src/gui/ksudoku.cpp:746
+#: src/gui/ksudoku.cpp:752
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "Нет головоломки для печати."
 
-#: src/gui/ksudoku.cpp:783
-#, kde-format
-msgctxt "Game Section in Config"
+#: src/gui/ksudoku.cpp:789
+#, fuzzy, kde-format
+#| msgctxt "Game Section in Config"
+#| msgid "Game"
+msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Игра"
 
-#: src/gui/ksudoku.cpp:784
-#, kde-format
+#: src/gui/ksudoku.cpp:790
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Оформление"
 
-#: src/gui/ksudoku.cpp:816
+#: src/gui/ksudoku.cpp:822
 #, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
@@ -801,12 +828,14 @@ msgstr ""
 "гораздо больше времени. Во время генерации программа KSudoku не будет "
 "отвечать."
 
-#: src/gui/ksudoku.cpp:823
-#, kde-format
+#: src/gui/ksudoku.cpp:829
+#, fuzzy, kde-format
+#| msgid "Warning"
+msgctxt "@title:window"
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: src/gui/ksudoku.cpp:862
+#: src/gui/ksudoku.cpp:869
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -819,7 +848,7 @@ msgstr ""
 "\n"
 "Продолжить?"
 
-#: src/gui/ksudoku.cpp:866
+#: src/gui/ksudoku.cpp:873
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
@@ -847,30 +876,34 @@ msgstr ""
 "сложения («+»). KSudoku автоматически устанавливает знак."
 
 #: src/gui/ksudokugame.cpp:377
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Killer Sudoku Cage"
+msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "Клетка судоку-киллер"
 
-#: src/gui/ksudokugame.cpp:422
+#: src/gui/ksudokugame.cpp:423
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
 msgstr "Выбранная ячейка уже была использована в клетке."
 
-#: src/gui/ksudokugame.cpp:424 src/gui/ksudokugame.cpp:454
-#: src/gui/ksudokugame.cpp:479 src/gui/ksudokugame.cpp:486
-#: src/gui/ksudokugame.cpp:494 src/gui/ksudokugame.cpp:503
-#, kde-format
+#: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
+#: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
+#: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
+#, fuzzy, kde-format
+#| msgid "Error in Cage"
+msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "Ошибка в клетке"
 
-#: src/gui/ksudokugame.cpp:452
+#: src/gui/ksudokugame.cpp:453
 #, kde-format
 msgid ""
 "The cell you have selected is not next to any cell in the cage you are "
 "creating."
 msgstr "Выбранная ячейка не находится рядом с создаваемой клеткой."
 
-#: src/gui/ksudokugame.cpp:477
+#: src/gui/ksudokugame.cpp:478
 #, kde-format
 msgid ""
 "The cage you wish to complete has no cells in it yet. Please click on a cell "
@@ -879,7 +912,7 @@ msgstr ""
 "Клетка, которую следует завершить, не содержит в себе ячеек. Щёлкните по "
 "ячейке или введите знак операции («+», «-», «/», «x») или число."
 
-#: src/gui/ksudokugame.cpp:484
+#: src/gui/ksudokugame.cpp:485
 #, kde-format
 msgid ""
 "The cage you wish to complete has no value yet. Please key in a number with "
@@ -888,7 +921,7 @@ msgstr ""
 "Клетке, которую следует завершить, не назначено значение. Введите число, "
 "состоящее из одной или нескольких цифр."
 
-#: src/gui/ksudokugame.cpp:492
+#: src/gui/ksudokugame.cpp:493
 #, kde-format
 msgid ""
 "The cage you wish to complete has more than one cell, but it has no operator "
@@ -897,7 +930,7 @@ msgstr ""
 "Клетке, которую следует завершить, не назначена операция. Введите «+», «-», "
 "«/» или «x»."
 
-#: src/gui/ksudokugame.cpp:500
+#: src/gui/ksudokugame.cpp:501
 #, kde-format
 msgid ""
 "The cage you wish to complete has one cell, but its value is too large. A "
@@ -907,18 +940,20 @@ msgstr ""
 "слишком велико. Клетка из одной ячейки может иметь значение от 1 до %1 в "
 "головоломке данного размера."
 
-#: src/gui/ksudokugame.cpp:536
+#: src/gui/ksudokugame.cpp:537
 #, kde-format
 msgid "Do you wish to delete this cage?"
 msgstr "Удалить эту клетку?"
 
-#: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
-#: src/gui/ksudokugame.cpp:570
-#, kde-format
+#: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
+#: src/gui/ksudokugame.cpp:574
+#, fuzzy, kde-format
+#| msgid "Delete Cage"
+msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "Удаление клетки"
 
-#: src/gui/ksudokugame.cpp:562
+#: src/gui/ksudokugame.cpp:564
 #, kde-format
 msgid ""
 "The cell you have selected is not in any cage, so the Delete action will not "
@@ -927,7 +962,7 @@ msgstr ""
 "Выбранная ячейка не находится в какой-либо клетке, поэтому действие "
 "«Удалить» не приведёт к какому-либо результату."
 
-#: src/gui/ksudokugame.cpp:569
+#: src/gui/ksudokugame.cpp:572
 #, kde-format
 msgid "The Delete action finds that there are no cages to delete."
 msgstr "Нет клеток, которые можно было бы удалить."
@@ -987,7 +1022,9 @@ msgid "KSudoku has sent output to your printer."
 msgstr "Программа KSudoku отправила изображение на принтер."
 
 #: src/gui/puzzleprinter.cpp:121
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Print Sudoku Puzzle"
+msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "Печать судоку"
 
@@ -1022,42 +1059,58 @@ msgid "Unable to upload file."
 msgstr "Не удалось отправить файл."
 
 #: src/gui/views/gameactions.cpp:54
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Select %1 (%2)"
+msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "Выбрать %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Enter %1 (%2)"
+msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "Ввести %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Mark %1 (%2)"
+msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "Отметить %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Up"
+msgctxt "@action"
 msgid "Move Up"
 msgstr "Вверх"
 
 #: src/gui/views/gameactions.cpp:102
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Down"
+msgctxt "@action"
 msgid "Move Down"
 msgstr "Вниз"
 
 #: src/gui/views/gameactions.cpp:109
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Left"
+msgctxt "@action"
 msgid "Move Left"
 msgstr "Влево"
 
 #: src/gui/views/gameactions.cpp:116
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Move Right"
+msgctxt "@action"
 msgid "Move Right"
 msgstr "Вправо"
 
 #: src/gui/views/gameactions.cpp:123
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Clear Cell"
+msgctxt "@action"
 msgid "Clear Cell"
 msgstr "Очистить ячейку"
 
@@ -1075,8 +1128,10 @@ msgstr "Выберите вариант головоломки."
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, kde-format
-msgid "Unable to start puzzle"
+#, fuzzy, kde-format
+#| msgid "Unable to start puzzle"
+msgctxt "@title:window"
+msgid "Unable to Start Puzzle"
 msgstr "Не удалось начать головоломку"
 
 #: src/gui/welcomescreen.cpp:152
@@ -1203,6 +1258,20 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "Открываемый документ"
+
+#~ msgid "Could not load game."
+#~ msgstr "Не удалось загрузить игру."
+
+#~ msgctxt "button label"
+#~ msgid "New Game"
+#~ msgstr "Новая игра"
+
+#~ msgctxt "button label"
+#~ msgid "Restart Game"
+#~ msgstr "Начать заново"
+
+#~ msgid "Open Location"
+#~ msgstr "Открыть расположение"
 
 #~ msgid "&OK"
 #~ msgstr "&ОК"
