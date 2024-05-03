@@ -194,7 +194,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->&ksudoku; instellen...</guimenuitem
+>&ksudoku; instellen…</guimenuitem
 ></menuchoice
 > </para>
 
@@ -362,7 +362,7 @@
 ><guimenu
 >Spel</guimenu
 > <guimenuitem
->Afdrukken...</guimenuitem
+>Afdrukken…</guimenuitem
 ></menuchoice
 >.</para
 ></listitem>
@@ -431,7 +431,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->&ksudoku; instellen...</guimenuitem
+>&ksudoku; instellen…</guimenuitem
 ></menuchoice
 > het oplichten van fouten inschakelen.</para
 ></listitem>
@@ -574,7 +574,7 @@
 > <guimenu
 >Spel</guimenu
 > <guimenuitem
->Laden...</guimenuitem
+>Laden…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -612,7 +612,7 @@
 ><guimenu
 >Spel</guimenu
 ><guimenuitem
->Opslaan als...</guimenuitem
+>Opslaan als…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -634,7 +634,7 @@
 > <guimenu
 >Spel</guimenu
 > <guimenuitem
->Afdrukken...</guimenuitem
+>Afdrukken…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -782,7 +782,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->&ksudoku; configureren...</guimenuitem
+>&ksudoku; configureren…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -828,7 +828,7 @@
 ><guimenu
 >Instellingen</guimenu
 ><guimenuitem
->&ksudoku; instellen...</guimenuitem
+>&ksudoku; instellen…</guimenuitem
 ></menuchoice
 >.</para
 ></answer>

@@ -7,7 +7,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-02 00:37+0000\n"
-"PO-Revision-Date: 2024-04-06 00:11+0300\n"
+"PO-Revision-Date: 2024-05-02 22:00+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
 "Language: he\n"
@@ -31,18 +31,16 @@ msgstr "kde-l10n-he@kde.org"
 #: src/generator/sudokuboard.cpp:123
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
-msgstr "הניסיונות לייצר תצרף נכשלו אחרי בערך 200 ניסיונות. לנסות שוב?"
+msgstr "הניסיונות לייצר חידה נכשלו אחרי בערך 200 ניסיונות. לנסות שוב?"
 
 #: src/generator/sudokuboard.cpp:125
-#, fuzzy, kde-format
-#| msgid "Mathdoku or Killer Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
-msgstr "תצרף מתדוקו או סודוקו רוצח"
+msgstr "חידת מתדוקו או סודוקו רוצח"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "לנסות &שוב"
@@ -76,15 +74,13 @@ msgstr ""
 
 #: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
 #: src/generator/sudokuboard.cpp:266
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "דרגת קושי"
 
 #: src/generator/sudokuboard.cpp:231
-#, fuzzy, kde-format
-#| msgid "&Accept"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Accept"
 msgstr "&קבלה"
@@ -103,8 +99,7 @@ msgstr ""
 "דירוג הקושי הפנימי הוא %1. יש %2 רמזים בהתחלה ו־%3 מהלכים למשחק."
 
 #: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
-#, fuzzy, kde-format
-#| msgid "&Retry"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
 msgstr "&ניסיון מחדש"
@@ -119,7 +114,7 @@ msgid ""
 "The internal difficulty rating is %3, there are %4 clues at the start and %5 "
 "moves to go."
 msgstr ""
-"פתרון תצרף שנוצר אוטומטית ידרוש ממוצע של %1 ניחושים או נקודות סיעוף ובמקרה "
+"פתרון חידה שנוצר אוטומטית ידרוש ממוצע של %1 ניחושים או נקודות סיעוף ובמקרה "
 "של ניחוש שגוי, יש לחזור על הצעדים לאיתור הטעות. הניחוש הראשון אמור להגיע "
 "אחרי %2 מהלכים.\n"
 "\n"
@@ -129,7 +124,7 @@ msgstr ""
 #: src/gui/configgame.ui:20
 #, kde-format
 msgid "When printing, try to fit more than one puzzle on a page"
-msgstr "בהדפסה, לנסות להכניס יותר מתצרף אחד בעמוד"
+msgstr "בהדפסה, לנסות להכניס יותר מחידה אחת בעמוד"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:43
@@ -183,7 +178,7 @@ msgstr "הצגת הדגשות בתצרפים תלת־ממדיים"
 #: src/gui/configgame.ui:137
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
-msgstr "גודל תצרף מתדוקו (3‏-9)"
+msgstr "גודל חידת מתדוקו (3‏-9)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/configgame.ui:167
@@ -446,7 +441,7 @@ msgid ""
 "can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
-"לתצרפים של מתדוקו יכולים להיות גדלים שבין 3×3 עד 9×9. הפתרון הוא רשת בה כל "
+"לחידות של מתדוקו יכולים להיות גדלים שבין 3×3 עד 9×9. הפתרון הוא רשת בה כל "
 "שורה וכל עמודה מכילות את הספרות הזמינות (1‏-3 עד 1‏-9) פעם אחת בלבד. הרשת "
 "מכוסה בכלובים בגודל משתנה.\n"
 "\n"
@@ -456,8 +451,8 @@ msgstr ""
 "הספרות זו בזו כדי להגיע ל־12. ספרה יכולה לחזור יותר מפעם אחת בכלוב, בהינתן "
 "שהיא מתפרסת על פני שורות ועמודות שונות.\n"
 "\n"
-"באופן כללי, רשתות גדולות יותר רשות יותר לפתרון וכך גם כלובים גדולים יותר. "
-"אפשר לבחור את גודל התצרף בחלונית ההגדרות של KSudoku ואת גודל הכלוב המרבי "
+"באופן כללי, רשתות גדולות יותר קשות יותר לפתרון וכך גם כלובים גדולים יותר. "
+"אפשר לבחור את גודל החידה בחלונית ההגדרות של KSudoku ואת גודל הכלוב המרבי "
 "באמצעות כפתור דרגת הקושי של KSudoku."
 
 #: src/gui/ksudoku.cpp:295
@@ -556,7 +551,7 @@ msgstr "מילוי נתונים לתצרפים עם כלובים"
 #: src/gui/ksudoku.cpp:403
 #, kde-format
 msgid "The puzzle you entered contains some errors."
-msgstr "בתצרף שבחרת יש כמה שגיאות."
+msgstr "בחידה שבחרת יש כמה שגיאות."
 
 #: src/gui/ksudoku.cpp:416
 #, kde-format
@@ -564,19 +559,18 @@ msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr ""
-"לא נמצאו פתרונות, עמך הסליחה. נא לוודא שמילאת את פרטי התצרף באופן מלא ומדויק."
+"לא נמצאו פתרונות, עמך הסליחה. נא לוודא שמילאת את פרטי החידה באופן מלא ומדויק."
 
 #: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
-#, fuzzy, kde-format
-#| msgid "Check Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
-msgstr "בדיקת תצרף"
+msgstr "בדיקת חידה"
 
 #: src/gui/ksudoku.cpp:424
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
-msgstr "לתצרף שבחרת יש פתרון ייחודי והוא מוכן למשחק."
+msgstr "לחידה שבחרת יש פתרון ייחודי והוא מוכן למשחק."
 
 #: src/gui/ksudoku.cpp:429
 #, kde-format
@@ -584,37 +578,33 @@ msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
-"לתצרף שבחרת יש מגוון פתרונות. נא לוודא שמילאת את פרטי התצרף באופן מלא ומדויק."
+"לחידה שבחרת יש מגוון פתרונות. נא לוודא שמילאת את פרטי החידה באופן מלא ומדויק."
 
 #: src/gui/ksudoku.cpp:435
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
-msgstr "לשחק בתצרף כעת?"
+msgstr "לשחק בחידה כעת?"
 
 #: src/gui/ksudoku.cpp:436
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
-msgstr "לשחק בתצרף"
+msgstr "לשחק בחידה"
 
 #: src/gui/ksudoku.cpp:437
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "לשחק"
 
 #: src/gui/ksudoku.cpp:476
-#, fuzzy, kde-format
-#| msgid "Enable all messages"
+#, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "הפעלת כל ההודעות"
 
 #: src/gui/ksudoku.cpp:493
-#, fuzzy, kde-format
-#| msgid "Check"
+#, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "בדיקה"
@@ -652,7 +642,7 @@ msgstr "סימטריה"
 #: src/gui/ksudoku.cpp:532
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
-msgstr "סימטריית פריסת הרמזים עם תחילת התצרף"
+msgstr "סימטריית פריסת הרמזים עם תחילת החידה"
 
 #: src/gui/ksudoku.cpp:534
 #, kde-format
@@ -696,11 +686,10 @@ msgid "No Symmetry"
 msgstr "ללא סימטריה"
 
 #: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr "שגיאה בכלוב"
+msgstr "שגיאה בטעינת המשחק"
 
 #: src/gui/ksudoku.cpp:660
 #, kde-format
@@ -714,9 +703,7 @@ msgid "New Game"
 msgstr "משחק חדש"
 
 #: src/gui/ksudoku.cpp:662
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "משחק חדש"
@@ -733,36 +720,30 @@ msgid "Restart Game"
 msgstr "התחלת המשחק מחדש"
 
 #: src/gui/ksudoku.cpp:681
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "התחלת המשחק מחדש"
 
 #: src/gui/ksudoku.cpp:730
-#, fuzzy, kde-format
-#| msgid "Error Writing File"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
-msgstr "שגיאה בפתיחת קובץ"
+msgstr "שגיאה בכתיבת קובץ"
 
 #: src/gui/ksudoku.cpp:752
 #, kde-format
 msgid "There seems to be no puzzle to print."
-msgstr "נראה שאין תצרף להדפסה."
+msgstr "נראה שאין חידה להדפסה."
 
 #: src/gui/ksudoku.cpp:789
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "משחק"
 
 #: src/gui/ksudoku.cpp:790
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "ערכת עיצוב"
@@ -778,14 +759,13 @@ msgid ""
 "longer than other ones. During this time KSudoku will not respond."
 msgstr ""
 "אזהרה: דרגת הקושי ללא הגבלה אינה מוגבלת בכמות הניחושים או נקודות הענף "
-"שנדרשות לפתרון התצרף ואין גם גבול תחתון על התדירות בה ניחוש הוא הכרחי.\n"
+"שנדרשות לפתרון החידה ואין גם גבול תחתון על התדירות בה ניחוש הוא הכרחי.\n"
 "\n"
-"נא לשים לב שיצירת סוג כזה של תצרף אורכת זמן רב לעומת אפשרויות אחרות. במהלך "
+"נא לשים לב שיצירת סוג כזה של חידה אורכת זמן רב לעומת אפשרויות אחרות. במהלך "
 "הזמן הזה KSudoku לא יגיב."
 
 #: src/gui/ksudoku.cpp:829
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "אזהרה"
@@ -831,8 +811,7 @@ msgstr ""
 "אוטומטית."
 
 #: src/gui/ksudokugame.cpp:377
-#, fuzzy, kde-format
-#| msgid "Killer Sudoku Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "כלוב בסודוקו רוצח"
@@ -845,8 +824,7 @@ msgstr "התא שבחרת הוא כבר חלק מכלוב."
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
 #: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "שגיאה בכלוב"
@@ -889,7 +867,7 @@ msgid ""
 "single-cell cage must have a value from 1 to %1 in a puzzle of this size."
 msgstr ""
 "הכלוב להשלמה מכיל רק תא אחד, אך הערך שלו גדול מדי. כלוב בגודל תא בודד, חייב "
-"להיות בערך בין 1 ל־%1 בתצרף מהסוג הזה."
+"להיות בערך בין 1 ל־%1 בחידה מהסוג הזה."
 
 #: src/gui/ksudokugame.cpp:537
 #, kde-format
@@ -898,8 +876,7 @@ msgstr "למחוק את הכלוב הזה?"
 
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
-#, fuzzy, kde-format
-#| msgid "Delete Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "מחיקת כלוב"
@@ -960,9 +937,9 @@ msgid ""
 "Your puzzle will be printed when no more will fit on the page or when "
 "KSudoku terminates."
 msgstr ""
-"הגדרת KSudoku להדפסת מגוון תצרפים בדף היא זו שנבחרה.\n"
+"הגדרת KSudoku להדפסת מגוון חידות בדף היא זו שנבחרה.\n"
 "\n"
-"התצרף שלך יודפס כשלא יהיה עוד מקום בעמוד או עם סיום KSudoku."
+"החידה שלך תודפס כשלא יהיה עוד מקום בעמוד או עם יציאה מ־KSudoku."
 
 #: src/gui/puzzleprinter.cpp:108
 #, kde-format
@@ -970,11 +947,10 @@ msgid "KSudoku has sent output to your printer."
 msgstr "KSudoku שלח פלט למדפסת שלך."
 
 #: src/gui/puzzleprinter.cpp:121
-#, fuzzy, kde-format
-#| msgid "Print Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
-msgstr "הדפסת תצרף סודוקו"
+msgstr "הדפסת חידת סודוקו"
 
 #: src/gui/serializer.cpp:399
 #, kde-format
@@ -1007,57 +983,49 @@ msgid "Unable to upload file."
 msgstr "לא ניתן להעלות קובץ."
 
 #: src/gui/views/gameactions.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "בחירה %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, fuzzy, kde-format
-#| msgid "Enter %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "כניסה %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, fuzzy, kde-format
-#| msgid "Mark %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "סימון %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
-#| msgid "Move Up"
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
 msgstr "העלאה למעלה"
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
-#| msgid "Move Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
 msgstr "הורדה למטה"
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
 msgstr "העברה שמאלה"
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
 msgstr "העברה ימינה"
 
 #: src/gui/views/gameactions.cpp:123
-#, fuzzy, kde-format
-#| msgid "Clear Cell"
+#, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
 msgstr "פינוי התא"
@@ -1071,32 +1039,31 @@ msgstr "GetNewVariant לא מומש"
 #: src/gui/welcomescreen.cpp:179
 #, kde-format
 msgid "Please select a puzzle variant."
-msgstr "נא לבחור הגוון תצרף."
+msgstr "נא לבחור הגוון חידה."
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
-#| msgid "Unable to start puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
-msgstr "לא ניתן להתחיל תצרף"
+msgstr "לא ניתן להתחיל חידה"
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
 msgid ""
 "Unable to create an empty puzzle of the chosen variant; please try another."
-msgstr "לא ניתן ליצור תצרף ריק בהגוון שנבחר; נא לנסות אחד אחר."
+msgstr "לא ניתן ליצור חידה ריקה בהגוון שנבחר; נא לנסות אחד אחר."
 
 #: src/gui/welcomescreen.cpp:169
 #, kde-format
 msgid "Unable to start a puzzle of the chosen variant; please try another."
-msgstr "לא ניתן להתחיל תצרף בהגוון שנבחר; נא לנסות אחד אחר."
+msgstr "לא ניתן להתחיל חידה בהגוון שנבחר; נא לנסות אחד אחר."
 
 #: src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to generate a puzzle of the chosen variant; please try another."
-msgstr "לא ניתן לייצר תצרף בהגוון הנבחר; נא לנסות אחד אחר."
+msgstr "לא ניתן לייצר חידה בהגוון הנבחר; נא לנסות אחד אחר."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
 #: src/gui/welcomescreen.ui:17
@@ -1114,13 +1081,13 @@ msgstr "הורדת חדש"
 #: src/gui/welcomescreen.ui:48
 #, kde-format
 msgid "Enter In A Puzzle"
-msgstr "בחירת תצרף"
+msgstr "בחירת חידה"
 
 #. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
 #: src/gui/welcomescreen.ui:55
 #, kde-format
 msgid "Generate A Puzzle"
-msgstr "יצירת תצרף"
+msgstr "יצירת חידה"
 
 #: src/main.cpp:47
 #, kde-format

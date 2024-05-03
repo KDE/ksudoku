@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-02 00:37+0000\n"
-"PO-Revision-Date: 2023-09-30 10:51+0200\n"
+"PO-Revision-Date: 2024-05-02 05:58+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -34,15 +34,13 @@ msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr "მოზაიკის გენერაცია ჩავარდა 200 ცდის შემდეგ. ვცადო კიდევ?"
 
 #: src/generator/sudokuboard.cpp:125
-#, fuzzy, kde-format
-#| msgid "Mathdoku or Killer Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "მათდოკუ ან მკვლელი სუდოკუს მოზაიკა"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "&კიდევ სცადეთ"
@@ -78,15 +76,13 @@ msgstr ""
 
 #: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
 #: src/generator/sudokuboard.cpp:266
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "სირთულის დონე"
 
 #: src/generator/sudokuboard.cpp:231
-#, fuzzy, kde-format
-#| msgid "&Accept"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Accept"
 msgstr "&დათანხმება"
@@ -107,8 +103,7 @@ msgstr ""
 "სვლა."
 
 #: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
-#, fuzzy, kde-format
-#| msgid "&Retry"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
 msgstr "&თავიდან ცდა"
@@ -574,8 +569,7 @@ msgstr ""
 "სრულად."
 
 #: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
-#, fuzzy, kde-format
-#| msgid "Check Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "პაზლის შემოწმება"
@@ -602,29 +596,25 @@ msgid "Do you wish to play the puzzle now?"
 msgstr "გნებავთ, მოზაიკა ახლავე ითამაშოთ?"
 
 #: src/gui/ksudoku.cpp:436
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "პაზლის თამაში"
 
 #: src/gui/ksudoku.cpp:437
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
-msgstr "დაკვრა"
+msgstr "თამაში"
 
 #: src/gui/ksudoku.cpp:476
-#, fuzzy, kde-format
-#| msgid "Enable all messages"
+#, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "ყველა შეტყობინების ჩართვა"
 
 #: src/gui/ksudoku.cpp:493
-#, fuzzy, kde-format
-#| msgid "Check"
+#, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "შემოწმება"
@@ -706,11 +696,10 @@ msgid "No Symmetry"
 msgstr "სიმეტრიის გარეშე"
 
 #: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr "შეცდომა გალიაში"
+msgstr "თამაშის ჩატვირთვის შეცდომა"
 
 #: src/gui/ksudoku.cpp:660
 #, kde-format
@@ -724,12 +713,10 @@ msgid "New Game"
 msgstr "დაიწყეთ ახალი თამაში"
 
 #: src/gui/ksudoku.cpp:662
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
-msgstr "დაიწყეთ ახალი თამაში"
+msgstr "ახალი თამაში"
 
 #: src/gui/ksudoku.cpp:679
 #, kde-format
@@ -743,16 +730,13 @@ msgid "Restart Game"
 msgstr "თამაშის გადატვირთვა"
 
 #: src/gui/ksudoku.cpp:681
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "თამაშის გადატვირთვა"
 
 #: src/gui/ksudoku.cpp:730
-#, fuzzy, kde-format
-#| msgid "Error Writing File"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "შეცდომა ფაილის ჩაწერისას"
@@ -763,16 +747,13 @@ msgid "There seems to be no puzzle to print."
 msgstr "დასაბეჭდიპაზლის გარეშე."
 
 #: src/gui/ksudoku.cpp:789
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "თამაში"
 
 #: src/gui/ksudoku.cpp:790
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "თემა"
@@ -796,8 +777,7 @@ msgstr ""
 "მეტი დრო დასჭირდეს, ვიდრე სხვა. ამ დროის განმავლობაში Sudoku არ უპასუხებს."
 
 #: src/gui/ksudoku.cpp:829
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "გაფრთხილება"
@@ -842,8 +822,7 @@ msgstr ""
 "დააყენებს."
 
 #: src/gui/ksudokugame.cpp:377
-#, fuzzy, kde-format
-#| msgid "Killer Sudoku Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "გალია მკვლელი სუდოკუ"
@@ -856,8 +835,7 @@ msgstr "უჯრედი, რომელიც აირჩიეთ, უკ�
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
 #: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "შეცდომა გალიაში"
@@ -915,8 +893,7 @@ msgstr "მართლა გნებავთ ამ გალიის წ�
 
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
-#, fuzzy, kde-format
-#| msgid "Delete Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "გალიის წაშლა"
@@ -991,8 +968,7 @@ msgid "KSudoku has sent output to your printer."
 msgstr "KSudoku -მა პრინტერზე მონაცემები გააგზავნა."
 
 #: src/gui/puzzleprinter.cpp:121
-#, fuzzy, kde-format
-#| msgid "Print Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "სუდოკუს პაზლის დაბეჭდვა"
@@ -1028,57 +1004,49 @@ msgid "Unable to upload file."
 msgstr "ფაილის ატვირთვის შეცდომა."
 
 #: src/gui/views/gameactions.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "აირჩიეთ %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, fuzzy, kde-format
-#| msgid "Enter %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "შეყვანა %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, fuzzy, kde-format
-#| msgid "Mark %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "დანიშვნა %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
-#| msgid "Move Up"
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
 msgstr "აწევა"
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
-#| msgid "Move Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
 msgstr "ჩამოწევა"
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
 msgstr "მარცხნივ გაწევა"
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
 msgstr "მარჯვნივ გაწევა"
 
 #: src/gui/views/gameactions.cpp:123
-#, fuzzy, kde-format
-#| msgid "Clear Cell"
+#, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
 msgstr "უჯრედის გასუფავება"
@@ -1097,8 +1065,7 @@ msgstr "აირჩიეთ პაზლის ვარიანტი."
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
-#| msgid "Unable to start puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
 msgstr "პაზლის გაშვების შეცდომა"

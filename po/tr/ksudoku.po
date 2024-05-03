@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-02 00:37+0000\n"
-"PO-Revision-Date: 2024-03-22 16:14+0300\n"
+"PO-Revision-Date: 2024-05-02 13:39+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.02.1\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -39,15 +39,13 @@ msgstr ""
 "denensin mi?"
 
 #: src/generator/sudokuboard.cpp:125
-#, fuzzy, kde-format
-#| msgid "Mathdoku or Killer Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "Mathdoku veya Öldürücü Sudoku Bulmacası"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "&Yeniden Dene"
@@ -70,27 +68,25 @@ msgid ""
 "Symmetry setting to 'No Symmetry' or some low symmetry type and then use "
 "'Generate A Puzzle' again."
 msgstr ""
-"%1 denemeden sonra, dahili zorluk derecesi %3 ile oluşturucu tarafından "
-"ulaşılan en iyi zorluk düzeyi %2; ancak zorluk düzeyi %4 gerekiyor.\n"
+"%1 denemeden sonra, içsel zorluk düzeyi %3 ile üreteç tarafından ulaşılan en "
+"iyi zorluk düzeyi %2; ancak zorluk düzeyi %4 gerekiyor.\n"
 "\n"
-"Yeniden denemek istiyor musunuz ya da bulmacayı olduğu gibi kabul ediyor "
+"Yeniden denemek istiyor musunuz veya bulmacayı olduğu gibi kabul ediyor "
 "musunuz?\n"
 "\n"
-"İpucu: Şunu yaparak zorluk düzeyini artırabilirsiniz: 'Kabul Et' düğmesi ile "
-"sürdürün, Oyun: Yeni'yi seçin ve sonra simetri ayarını 'Simetri Yok' veya "
-"başka bir düşük simetri ayarına değiştirip yeniden 'Bulmaca Üret'e basın."
+"İpucu: Şunu yaparak zorluk düzeyini artırabilirsiniz: ‘Kabul Et’ düğmesi ile "
+"sürdürün, Oyun: Yeni’yi seçin ve sonra simetri ayarını ‘Simetri Yok’ veya "
+"başka bir düşük simetri ayarına değiştirip yeniden ‘Bulmaca Üret’e basın."
 
 #: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
 #: src/generator/sudokuboard.cpp:266
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
-msgstr "Zorluk Derecesi"
+msgstr "Zorluk Düzeyi"
 
 #: src/generator/sudokuboard.cpp:231
-#, fuzzy, kde-format
-#| msgid "&Accept"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Accept"
 msgstr "&Kabul Et"
@@ -107,12 +103,11 @@ msgstr ""
 "Üretilen bir bulmacayı yalnızca mantıkla çözmek olanaklıdır. Tahmin "
 "gerekmeyecektir.\n"
 "\n"
-"Dahili zorluk derecesi %1. Başlangıçta %2 ipucu ve sürdürmek için %3 hareket "
+"İçsel zorluk düzeyi %1. Başlangıçta %2 ipucu ve sürdürmek için %3 hareket "
 "var."
 
 #: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
-#, fuzzy, kde-format
-#| msgid "&Retry"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
 msgstr "&Yeniden Dene"
@@ -131,8 +126,7 @@ msgstr ""
 "yanlış tahmin yaparsanız geri almak gerekli olacaktır. İlk tahmin %2 "
 "hareketten sonra gelmelidir.\n"
 "\n"
-"Dahili zorluk derecesi %3, başlangıçta %4 ipucu ve %5 yapmak için hareket "
-"var."
+"İçsel zorluk düzeyi %3, başlangıçta %4 ipucu ve %5 yapmak için hareket var."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
 #: src/gui/configgame.ui:20
@@ -160,7 +154,7 @@ msgstr ""
 #: src/gui/configgame.ui:49
 #, kde-format
 msgid "Show highlights in 2-D puzzles"
-msgstr "2-B bulmacada vurguları göster"
+msgstr "2B bulmacada vurguları göster"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -187,13 +181,13 @@ msgstr "Seçilen hücreyi içeren kanatları (blokları) vurgula."
 #: src/gui/configgame.ui:75
 #, kde-format
 msgid "Show highlights in 3-D puzzles"
-msgstr "3-B bulmacada vurguları göster"
+msgstr "3B bulmacada vurguları göster"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/configgame.ui:137
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
-msgstr "Mathdoku bulmaca boyutu (3-9)"
+msgstr "Mathdoku bulmaca boyutu (3–9)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/configgame.ui:167
@@ -215,7 +209,7 @@ msgstr "3B hücrelerin göreceli boyutunu ve aralarındaki boşlukları ayarla."
 #: src/gui/configgame.ui:234
 #, kde-format
 msgid "Overall size of 3-D cells"
-msgstr "3-B hücrelerin tam boyutu"
+msgstr "3B hücrelerin tam boyutu"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
@@ -225,7 +219,7 @@ msgstr "3-B hücrelerin tam boyutu"
 #: src/gui/configgame.ui:300 src/gui/configgame.ui:303
 #, no-c-format, kde-format
 msgid "Shrink or expand a cell by up to 30% when it is selected."
-msgstr "Seçildiğinde bir hücreyi % 30'a kadar küçült veya genişlet."
+msgstr "Seçildiğinde bir hücreyi %​30’a kadar küçültün veya genişletin."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/configgame.ui:306
@@ -241,7 +235,7 @@ msgstr "Seçilen 3B hücrenin boyutu"
 #: src/gui/configgame.ui:363 src/gui/configgame.ui:366
 #, no-c-format, kde-format
 msgid "Shrink or expand cells by up to 30% when they are highlighted."
-msgstr "Hücreleri vurgulandıklarında % 30'a kadar küçült veya genişlet."
+msgstr "Hücreler vurgulandıklarında %​30’a kadar küçültün veya genişletin."
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/configgame.ui:369
@@ -257,8 +251,8 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell."
 msgstr ""
-"Seçilen hücreyi içeren NxNxN küpünde değillerse hücreleri % 60'a kadar "
-"küçült."
+"Seçili hücreyi içeren N × N × N küpünde değillerse hücreleri %​60’a kadar "
+"küçültün."
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
@@ -270,14 +264,14 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell. This is useful if a 3-D puzzle has more than one cube."
 msgstr ""
-"Seçilen hücreyi içeren NxNxN küpünde değillerse hücreleri % 60'a kadar "
-"küçült. Bir 3-B bulmacanın birden fazla küpü varsa bu faydalı olabilir."
+"Seçili hücreyi içeren N × N × N küpünde değillerse hücreleri %​60’a kadar "
+"küçültün. Bir 3B bulmacanın birden fazla küpü varsa bu yararlı olabilir."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/configgame.ui:432
 #, kde-format
 msgid "Size of 3-D cells outside the selected volume"
-msgstr "Seçilen kümelerin dışında 3-D hücrelerin boyutları"
+msgstr "Seçilen kümelerin dışında 3B hücrelerin boyutları"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:446
@@ -285,13 +279,14 @@ msgstr "Seçilen kümelerin dışında 3-D hücrelerin boyutları"
 msgid ""
 "Darken cells if they are not in an NxNxN cube that contains the selected "
 "cell."
-msgstr "Seçilen hücreyi içeren NxNxN küpünde değillerse hücreleri karart."
+msgstr ""
+"Seçilen hücreyi içeren N × N × N küpünde değillerse hücreleri karartın."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:452
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
-msgstr "Seçilen kümelerin dışında 3-B hücreleri karart"
+msgstr "Seçilen kümelerin dışında 3B hücreleri karart"
 
 #: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
@@ -305,10 +300,10 @@ msgid ""
 "\n"
 "Enable \"Show errors\" in the settings to highlight them."
 msgstr ""
-"Üzgünüm çözümünüzde hatalar var.\n"
+"Üzgünüm, çözümünüzde hatalar var.\n"
 "\n"
-"Hatalarınızın vurgulanması için ayarlar menüsünden \"Hataları göster\" "
-"ögesini etkinleştirin."
+"Hatalarınızın vurgulanması için ayarlar menüsünden ‘Hataları göster’ ögesini "
+"etkinleştirin."
 
 #: src/gui/ksudoku.cpp:87
 #, kde-format
@@ -367,7 +362,7 @@ msgstr "Tebrikler! %1 %2 içerisinde bitirdiniz."
 #: src/gui/ksudoku.cpp:178
 #, kde-format
 msgid "Sudoku Standard (9x9)"
-msgstr "Sudoku Standart (9x9)"
+msgstr "Sudoku Standart (9 × 9)"
 
 #: src/gui/ksudoku.cpp:179
 #, kde-format
@@ -377,7 +372,7 @@ msgstr "Klasik ve moda oyun"
 #: src/gui/ksudoku.cpp:182
 #, kde-format
 msgid "Roxdoku 9 (3x3x3)"
-msgstr "Roxdoku 9 (3x3x3)"
+msgstr "Roxdoku 9 (3 × 3 × 3)"
 
 #: src/gui/ksudoku.cpp:183
 #, kde-format
@@ -392,7 +387,7 @@ msgstr "Eksik Varyant Adı"
 #: src/gui/ksudoku.cpp:219
 #, kde-format
 msgid "Sudoku 16x16"
-msgstr "Sudoku 16x16"
+msgstr "Sudoku 16 × 16"
 
 #: src/gui/ksudoku.cpp:220
 #, kde-format
@@ -402,7 +397,7 @@ msgstr "16 sembollü sudoku"
 #: src/gui/ksudoku.cpp:222
 #, kde-format
 msgid "Sudoku 25x25"
-msgstr "Sudoku 25x25"
+msgstr "Sudoku 25 × 25"
 
 #: src/gui/ksudoku.cpp:223
 #, kde-format
@@ -412,7 +407,7 @@ msgstr "25 sembollü sudoku"
 #: src/gui/ksudoku.cpp:226
 #, kde-format
 msgid "Roxdoku 16 (4x4x4)"
-msgstr "Roxdoku 16 (4x4x4)"
+msgstr "Roxdoku 16 (4 × 4 × 4)"
 
 #: src/gui/ksudoku.cpp:227
 #, kde-format
@@ -422,7 +417,7 @@ msgstr "16 sembollü Rox 3B sudoku"
 #: src/gui/ksudoku.cpp:229
 #, kde-format
 msgid "Roxdoku 25 (5x5x5)"
-msgstr "Roxdoku 25 (5x5x5)"
+msgstr "Roxdoku 25 (5 × 5 × 5)"
 
 #: src/gui/ksudoku.cpp:230
 #, kde-format
@@ -447,20 +442,21 @@ msgid ""
 "can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
-"Mathdoku bulmaca 3x3'den 9x9'a kadar değişik boyutlarda olabilir. Çözüm her "
-"satır ya da sütunun sayılardan her birini (1-3'den 1-9'a kadar) yalnızca bir "
-"kere içerdiği bir ızgaradır. Izgara düzensiz şekilli kafeslerle kaplıdır.\n"
+"Mathdoku bulmaca 3 × 3’den 9 × 9’a kadar değişik boyutlarda olabilir. Çözüm "
+"her satır ya da sütunun sayılardan her birini (1–3’den 1–9’a kadar) yalnızca "
+"bir kere içerdiği bir ızgaradır. Izgara düzensiz şekilli kafeslerle "
+"kaplıdır.\n"
 "\n"
-"1 boyutlu kafesler başlangıç değerleri veya ipuçlarıdır, ama bunlardan fazla "
-"bulunmaz. Daha büyük boyutlu kafeslerin hedef değeri ve aritmetik "
-"operatörleri bulunur (+-x/). Kafesteki sayıların hedef değere erişmek için "
-"bir araya gelmeleri gerekir, örn '12x' sayıların çarpımının 12 olması "
+"1 boyutlu kafesler başlangıç değerleri veya ipuçlarıdır; ancak bunlardan "
+"fazla bulunmaz. Daha büyük boyutlu kafeslerin hedef değeri ve aritmetik "
+"işleçleri bulunur (+-x/). Kafesteki sayıların hedef değere erişmek için bir "
+"araya gelmeleri gerekir, örneğin, “12x” sayıların çarpımının 12 olması "
 "gerektiği anlamına gelir. Sayı kafeste farklı satır ve sütunlarda olmak "
 "kaydıyla birden fazla kez bulunabilir.\n"
 "\n"
-"Genelde, daha büyük Mathdoku'lar ve daha büyük kafesler daha zordur. Bulmaca "
-"boyutunu K Sudoku'nun Ayarlar pencresinden, azami kafes boyutunu K "
-"Sudoku'nun Zorluk düğmesinden seçebilirsiniz."
+"Genelde, daha büyük Mathdoku’lar ve daha büyük kafesler daha zordur. Bulmaca "
+"boyutunu K Sudoku’nun Ayarlar pencresinden, en büyük kafes boyutunu K "
+"Sudoku’nun Zorluk düğmesinden seçebilirsiniz."
 
 #: src/gui/ksudoku.cpp:295
 #, kde-format
@@ -482,17 +478,18 @@ msgid ""
 "In general, larger cages are more difficult. You can select the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
-"Öldürücü Sudoku bulmacaları dört tane 2x2 blok veya dokuz tane 3x3 bloklu "
-"4x4 veya 9x9 boyutunda olabilirler. Çözüme Klasik Sudoku kurallarıyla "
-"erişilir. Farkı bazı başlangıç değerlerinin ya da ipuçlarının olmasıdır "
-"(olmayabilir). Bunun yerine ızgara düzensiz şekilli kafeslerle kaplıdır.\n"
+"Öldürücü Sudoku bulmacaları dört tane 2 × 2 blok veya dokuz tane 3 × 3 "
+"bloklu 4 × 4 veya 9 × 9 boyutunda olabilirler. Çözüme Klasik Sudoku "
+"kurallarıyla erişilir. Farkı bazı başlangıç değerlerinin ya da ipuçlarının "
+"olmasıdır (olmayabilir). Bunun yerine ızgara düzensiz şekilli kafeslerle "
+"kaplıdır.\n"
 "\n"
-"1 boyutlu kafesler başlangıç değerleri ya da ipuçlarıdır. Daha büyük "
+"1 boyutlu kafesler başlangıç değerleri veya ipuçlarıdır. Daha büyük "
 "kafeslerin bir hedef değeri vardır ve içlerindeki sayıların toplamı bu değer "
-"etmelidir. Öldürücü Sudoku'da, bir kafeste aynı sayıdan birden fazla "
+"etmelidir. Öldürücü Sudoku’da, bir kafeste aynı sayıdan birden fazla "
 "bulunamaz.\n"
 "\n"
-"Genelde büyük kafesler daha zordur. K Sudoku'nun Zorluk düğmesiyle azami "
+"Genelde büyük kafesler daha zordur. K Sudoku’nun Zorluk düğmesiyle en büyük "
 "kafes boyutunu seçebilirsiniz."
 
 #: src/gui/ksudoku.cpp:313
@@ -533,22 +530,22 @@ msgstr ""
 "sol tıklayın veya imlecin altındaki hücreye bir sayı veya + - / x girin. O "
 "hücrede ufak bir kafes etiketi görünecektir. Kafesi herhangi bir yönde "
 "genişletmek için komşu hücreye sol tıklayın veya imleci oraya getirip boşluk "
-"tuşuna basın.\n"
+"düğmesine basın.\n"
 "\n"
-"Girdiğiniz sayı kafesin değeridir, sıfır dahil bir ya da fazla basamak "
-"alabilir. 1 boyutlu bir hücrenin normal Sudoku bulmacasındaki gibi 1-"
+"Girdiğiniz sayı kafesin değeridir, sıfır içerilecem biçimde bir veya fazla "
+"basamak alabilir. 1 boyutlu bir hücrenin normal Sudoku bulmacasındaki gibi 1 "
 "basamaklı sayısı olmalıdır. Bu, oyuncu için başlangıç değeri ya da ipucu "
 "olur.\n"
 "\n"
-"+ - / veya x operatördür (Ekle, Çıkar, Böl veya Çarp). 2 ya da fazlası "
-"boyuttaki kafeslerde bir tane bulundurmalısınız. Öldürücü Sudoku'da, "
-"operatör her zaman + veya yok olduğundan otomatik sağlanır.\n"
+"+ - / veya x işleçlerdir (Topla, Çıkar, Böl veya Çarp). 2 veya daha büyük "
+"boyuttaki kafeslerde bir tane bulundurmalısınız. Öldürücü Sudoku’da, işleç "
+"her zaman + veya yok olduğundan kendiliğinden sağlanır.\n"
 "\n"
-"Basamakları, operatörleri ve hücreleri istediğiniz sırada girebilirsiniz. "
-"Kafesi tamamlamak ve yeni bir kafese başlamak için, her zaman Giriş'e basın. "
+"Basamakları, işleçleri ve hücreleri istediğiniz sırada girebilirsiniz. "
+"Kafesi tamamlamak ve yeni bir kafese başlamak için, her zaman Giriş’e basın. "
 "Hata yaparsanız tüm kafesi silip yeniden girmeniz gerekir. Silmek isterseniz "
-"mevcut kafes ya da önceki kafese sağ tıklayın. Alternatif olarak imleç ve "
-"Sil ya da Gerial tuşunu kullanabilirsiniz.\n"
+"var olan kafes veya önceki kafese sağ tıklayın. Alternatif olarak imleç ve "
+"Sil ya da Geri Sil düğmesini kullanabilirsiniz.\n"
 "\n"
 "Bulmacayı çözmek ve tek bir çözüm olduğundan emin olmak için Izgara "
 "kafeslerle dolduğunda, Kontrol düğmesine basın. Kontrol başarısız olursa "
@@ -574,8 +571,7 @@ msgstr ""
 "olun."
 
 #: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
-#, fuzzy, kde-format
-#| msgid "Check Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Bulmacayı Denetle"
@@ -600,29 +596,25 @@ msgid "Do you wish to play the puzzle now?"
 msgstr "Bulmacayı şimdi oynamak ister misiniz?"
 
 #: src/gui/ksudoku.cpp:436
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Bulmaca Çöz"
 
 #: src/gui/ksudoku.cpp:437
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Oyna"
 
 #: src/gui/ksudoku.cpp:476
-#, fuzzy, kde-format
-#| msgid "Enable all messages"
+#, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
-msgstr "Tüm iletileri etkinleştir"
+msgstr "Tüm İletileri Etkinleştir"
 
 #: src/gui/ksudoku.cpp:493
-#, fuzzy, kde-format
-#| msgid "Check"
+#, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "Denetle"
@@ -678,7 +670,7 @@ msgstr "Merkez"
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
-msgstr "Sol-Sağ"
+msgstr "Sol–Sağ"
 
 #: src/gui/ksudoku.cpp:537
 #, kde-format
@@ -704,11 +696,10 @@ msgid "No Symmetry"
 msgstr "Simetri Yok"
 
 #: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr "Kafeste Hata"
+msgstr "Oyun Yüklenirken Hata"
 
 #: src/gui/ksudoku.cpp:660
 #, kde-format
@@ -723,9 +714,7 @@ msgid "New Game"
 msgstr "Yeni Oyun"
 
 #: src/gui/ksudoku.cpp:662
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "Yeni Oyun"
@@ -733,7 +722,7 @@ msgstr "Yeni Oyun"
 #: src/gui/ksudoku.cpp:679
 #, kde-format
 msgid "Do you really want to restart this game?"
-msgstr "Bu oyunu gerçekten yeniden başlatmak istiyor musunuz?"
+msgstr "Bu oyunu yeniden başlatmayı gerçekten istiyor musunuz?"
 
 #: src/gui/ksudoku.cpp:680
 #, kde-format
@@ -742,16 +731,13 @@ msgid "Restart Game"
 msgstr "Oyunu Yeniden Başlat"
 
 #: src/gui/ksudoku.cpp:681
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Oyunu Yeniden Başlat"
 
 #: src/gui/ksudoku.cpp:730
-#, fuzzy, kde-format
-#| msgid "Error Writing File"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Dosyaya Yazmada Hata"
@@ -762,16 +748,13 @@ msgid "There seems to be no puzzle to print."
 msgstr "Yazdırılacak bir bulmaca yok gibi görünüyor."
 
 #: src/gui/ksudoku.cpp:789
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Oyun"
 
 #: src/gui/ksudoku.cpp:790
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
@@ -794,8 +777,7 @@ msgstr ""
 "bu süre boyunca yanıt vermeyecektir."
 
 #: src/gui/ksudoku.cpp:829
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Uyarı"
@@ -808,7 +790,7 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
-"Bu, 'Bu iletiyi bir daha gösterme' seçeneği ile devre dışı bıraktığınız tüm "
+"Bu, “Bu iletiyi bir daha gösterme” seçeneği ile devre dışı bıraktığınız tüm "
 "pencereleri yeniden etkinleştirecektir.\n"
 "\n"
 "Sürdürmek istiyor musunuz?"
@@ -837,12 +819,11 @@ msgid ""
 "In Killer Sudoku, the operator is always + or none and KSudoku automatically "
 "sets the correct choice."
 msgstr ""
-"Öldürücü Sudoku'da, operatör her zaman + veya yoktur ve K Sudoku doğru "
-"seçimi otomatik ayarlar."
+"Öldürücü Sudoku’da, işleç her zaman + olur veya yoktur ve K Sudoku doğru "
+"seçimi kendiliğinden ayarlar."
 
 #: src/gui/ksudokugame.cpp:377
-#, fuzzy, kde-format
-#| msgid "Killer Sudoku Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "Öldürücü Sudoku Kafesi"
@@ -855,8 +836,7 @@ msgstr "Seçtiğiniz hücre bir kafeste zaten kullanılmış."
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
 #: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "Kafeste Hata"
@@ -894,7 +874,7 @@ msgid ""
 "The cage you wish to complete has more than one cell, but it has no operator "
 "yet. Please key in + - / or x."
 msgstr ""
-"Tamamlamaya çalıştığınız kafeste birden fazla hücre var, ama henüz operatörü "
+"Tamamlamaya çalıştığınız kafeste birden fazla hücre var; ancak henüz işleci "
 "yok. Lütfen + - / veya x girin."
 
 #: src/gui/ksudokugame.cpp:501
@@ -913,8 +893,7 @@ msgstr "Bu kafesi silmek istediğinizden emin misiniz?"
 
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
-#, fuzzy, kde-format
-#| msgid "Delete Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "Kafesi Sil"
@@ -988,8 +967,7 @@ msgid "KSudoku has sent output to your printer."
 msgstr "K Sudoku çıktıyı yazıcınıza gönderdi."
 
 #: src/gui/puzzleprinter.cpp:121
-#, fuzzy, kde-format
-#| msgid "Print Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "Sudoku Bulmacasını Yazdır"
@@ -1025,57 +1003,49 @@ msgid "Unable to upload file."
 msgstr "Dosya yüklenemiyor."
 
 #: src/gui/views/gameactions.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
-msgstr "Seç %1 (%2)"
+msgstr "Seç: %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, fuzzy, kde-format
-#| msgid "Enter %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
-msgstr "Gir %1 (%2)"
+msgstr "Gir: %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, fuzzy, kde-format
-#| msgid "Mark %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
-msgstr "İşaretle %1 (%2)"
+msgstr "İmle: %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
-#| msgid "Move Up"
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
 msgstr "Yukarı Taşı"
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
-#| msgid "Move Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
 msgstr "Aşağı Taşı"
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
 msgstr "Sola Taşı"
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
 msgstr "Sağa Taşı"
 
 #: src/gui/views/gameactions.cpp:123
-#, fuzzy, kde-format
-#| msgid "Clear Cell"
+#, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
 msgstr "Hücreyi Temizle"
@@ -1094,11 +1064,10 @@ msgstr "Lütfen bir bulmaca türevi seçin."
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
-#| msgid "Unable to start puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
-msgstr "Bulmaca başlatılamıyor"
+msgstr "Bulmaca Başlatılamıyor"
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
@@ -1150,12 +1119,12 @@ msgstr "K Sudoku"
 #: src/main.cpp:49
 #, kde-format
 msgid "KSudoku - Sudokus and more"
-msgstr "K Sudoku - Sudokular ve daha fazlası"
+msgstr "K Sudoku ― Sudokular ve daha fazlası"
 
 #: src/main.cpp:51
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
-msgstr "(c) 2005-2007 K Sudoku Yazarları"
+msgstr "(c) 2005–2007 K Sudoku Yazarları"
 
 #: src/main.cpp:53
 #, kde-format
@@ -1195,12 +1164,12 @@ msgstr "Mick Kappenburg"
 #: src/main.cpp:56
 #, kde-format
 msgid "Printing and export of 0.4"
-msgstr "0.4'ün yazdırılması ve dışa aktarılması"
+msgstr "0,4’ün yazdırılması ve dışa aktarılması"
 
 #: src/main.cpp:57
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
-msgstr "OpenGL dersleri için NeHe'ye Teşekkürler"
+msgstr "OpenGL dersleri için NeHe’ye Teşekkürler"
 
 #: src/main.cpp:58
 #, kde-format

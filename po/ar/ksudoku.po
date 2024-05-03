@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-02 00:37+0000\n"
-"PO-Revision-Date: 2024-01-17 17:18+0400\n"
+"PO-Revision-Date: 2024-05-02 11:15+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -38,15 +38,13 @@ msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr "فشلت محاولات توليد اللغز بعد حوالي 200 محاولة. حاول مجددا؟"
 
 #: src/generator/sudokuboard.cpp:125
-#, fuzzy, kde-format
-#| msgid "Mathdoku or Killer Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "لغز قاتل سودوكو أو رياضيات-دوكو"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "&حاول مجدّدًا"
@@ -80,15 +78,13 @@ msgstr ""
 
 #: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
 #: src/generator/sudokuboard.cpp:266
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "مستوى الصعوبة"
 
 #: src/generator/sudokuboard.cpp:231
-#, fuzzy, kde-format
-#| msgid "&Accept"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Accept"
 msgstr "ا&قبل"
@@ -108,8 +104,7 @@ msgstr ""
 "تصنيف الصعوبة الداخلي هو %1. هناك %2 أدلة في البداية و %3 حركات متبقية."
 
 #: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
-#, fuzzy, kde-format
-#| msgid "&Retry"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
 msgstr "أ&عد المحاولة"
@@ -585,8 +580,7 @@ msgstr ""
 "عذرا، لم يعثر على حلول. يرجى التحقق من أنك أدخلت اللغز بشكل كامل وصحيح."
 
 #: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
-#, fuzzy, kde-format
-#| msgid "Check Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "تحقق من اللغز"
@@ -611,29 +605,25 @@ msgid "Do you wish to play the puzzle now?"
 msgstr "أتريد لعب اللغز الآن؟"
 
 #: src/gui/ksudoku.cpp:436
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "العب اللغز"
 
 #: src/gui/ksudoku.cpp:437
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "العب"
 
 #: src/gui/ksudoku.cpp:476
-#, fuzzy, kde-format
-#| msgid "Enable all messages"
+#, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
-msgstr "فعّل كلّ الرّسائل"
+msgstr "مكّن كلّ الرسائل"
 
 #: src/gui/ksudoku.cpp:493
-#, fuzzy, kde-format
-#| msgid "Check"
+#, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "تحقق"
@@ -715,8 +705,7 @@ msgid "No Symmetry"
 msgstr "دون تماثل"
 
 #: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr "خطأ في القفص"
@@ -733,9 +722,7 @@ msgid "New Game"
 msgstr "لعبة جديدة"
 
 #: src/gui/ksudoku.cpp:662
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "لعبة جديدة"
@@ -752,16 +739,13 @@ msgid "Restart Game"
 msgstr "أعد بدء اللعبة."
 
 #: src/gui/ksudoku.cpp:681
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "أعد بدء اللعبة."
 
 #: src/gui/ksudoku.cpp:730
-#, fuzzy, kde-format
-#| msgid "Error Writing File"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "خطأ عند كتابة الملف"
@@ -772,16 +756,13 @@ msgid "There seems to be no puzzle to print."
 msgstr "يبدو أنه لا يوجد لغز للطباعة."
 
 #: src/gui/ksudoku.cpp:789
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "اللعبة"
 
 #: src/gui/ksudoku.cpp:790
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "السمة"
@@ -803,8 +784,7 @@ msgstr ""
 "الأنواع الأخرى. خلال هذا الوقت لن تستجيب كسودوكو."
 
 #: src/gui/ksudoku.cpp:829
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "تحذير"
@@ -850,8 +830,7 @@ msgstr ""
 "بتعيين الخيار الصحيح."
 
 #: src/gui/ksudokugame.cpp:377
-#, fuzzy, kde-format
-#| msgid "Killer Sudoku Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "قفص قاتل سودوكو"
@@ -864,8 +843,7 @@ msgstr "استخدمت الخلية التي حددتها في قفص."
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
 #: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "خطأ في القفص"
@@ -920,8 +898,7 @@ msgstr "أتريد حذف هذا القفص؟"
 
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
-#, fuzzy, kde-format
-#| msgid "Delete Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "احذف القفص"
@@ -994,8 +971,7 @@ msgid "KSudoku has sent output to your printer."
 msgstr "أرسلت كسودوكو الخرج إلى طابعتك."
 
 #: src/gui/puzzleprinter.cpp:121
-#, fuzzy, kde-format
-#| msgid "Print Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "اطبع لغز سودوكو"
@@ -1031,57 +1007,49 @@ msgid "Unable to upload file."
 msgstr "لا يمكن رفع الملف."
 
 #: src/gui/views/gameactions.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "اختر  %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, fuzzy, kde-format
-#| msgid "Enter %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "أدخل  %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, fuzzy, kde-format
-#| msgid "Mark %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "علّم %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
-#| msgid "Move Up"
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
 msgstr "حرّك لأعلى"
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
-#| msgid "Move Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
 msgstr "حرّك لأسفل"
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
 msgstr "حرّك لليسار"
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
 msgstr "حرّك لليمين"
 
 #: src/gui/views/gameactions.cpp:123
-#, fuzzy, kde-format
-#| msgid "Clear Cell"
+#, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
 msgstr "امسح الخلية"
@@ -1100,8 +1068,7 @@ msgstr "الرجاء تحديد متغير اللغز."
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
-#| msgid "Unable to start puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
 msgstr "تعذر بدء اللغز"

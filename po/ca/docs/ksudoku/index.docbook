@@ -194,7 +194,7 @@
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configura el &ksudoku;...</guimenuitem
+>Configura el &ksudoku;…</guimenuitem
 ></menuchoice
 > per a desactivar-lo.</para>
 
@@ -362,7 +362,7 @@
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Imprimeix...</guimenuitem
+>Imprimeix…</guimenuitem
 ></menuchoice
 >.</para
 ></listitem>
@@ -431,7 +431,7 @@
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configura el &ksudoku;...</guimenuitem
+>Configura el &ksudoku;…</guimenuitem
 ></menuchoice
 > que ressalta els errors.</para
 ></listitem>
@@ -572,7 +572,7 @@
 > <guimenu
 >Joc</guimenu
 > <guimenuitem
->Carrega...</guimenuitem
+>Carrega…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -610,7 +610,7 @@
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Desa com a...</guimenuitem
+>Desa com a…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -632,7 +632,7 @@
 ><guimenu
 >Joc</guimenu
 > <guimenuitem
->Imprimeix...</guimenuitem
+>Imprimeix…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -780,7 +780,7 @@
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configura el &ksudoku;...</guimenuitem
+>Configura el &ksudoku;…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -826,7 +826,7 @@
 ><guimenu
 >Arranjament</guimenu
 ><guimenuitem
->Configura el &ksudoku;...</guimenuitem
+>Configura el &ksudoku;…</guimenuitem
 ></menuchoice
 > a la barra de menús.</para
 ></answer>

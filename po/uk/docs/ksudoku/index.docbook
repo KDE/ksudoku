@@ -212,7 +212,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати &ksudoku;...</guimenuitem
+>Налаштувати &ksudoku;…</guimenuitem
 ></menuchoice
 >.</para>
 
@@ -380,7 +380,7 @@
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Друкувати...</guimenuitem
+>Друкувати…</guimenuitem
 ></menuchoice
 >.</para
 ></listitem>
@@ -449,7 +449,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати &ksudoku;...</guimenuitem
+>Налаштувати &ksudoku;…</guimenuitem
 ></menuchoice
 >.</para
 ></listitem>
@@ -582,7 +582,7 @@
 > <guimenu
 >Гра</guimenu
 > <guimenuitem
->Завантажити...</guimenuitem
+>Завантажити…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -620,7 +620,7 @@
 ><guimenu
 >Гра</guimenu
 > <guimenuitem
->Зберегти як...</guimenuitem
+>Зберегти як…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -642,7 +642,7 @@
 > <guimenu
 >Гра</guimenu
 > <guimenuitem
->Друкувати...</guimenuitem
+>Друкувати…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -790,7 +790,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати &ksudoku;...</guimenuitem
+>Налаштувати &ksudoku;…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -836,7 +836,7 @@
 ><guimenu
 >Параметри</guimenu
 ><guimenuitem
->Налаштувати &ksudoku;...</guimenuitem
+>Налаштувати &ksudoku;…</guimenuitem
 ></menuchoice
 >.</para
 ></answer>
