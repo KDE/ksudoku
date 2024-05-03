@@ -5,7 +5,7 @@
 # Sofia Priego <spriego@darksylvania.net>, %Y.
 # Santiago Fernández Sancho <santi@kde-es.org>, 2007, 2008.
 # Enrique Matias Sanchez (Quique) <cronopios@gmail.com>, 2009.
-# SPDX-FileCopyrightText: 2009, 2012, 2015, 2017, 2018, 2019, 2020, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2009, 2012, 2015, 2017, 2018, 2019, 2020, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010, 2011, 2012.
 # Rocio Gallego <traducciones@rociogallego.com>, 2012, 2013.
@@ -15,7 +15,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-21 00:36+0000\n"
-"PO-Revision-Date: 2023-10-02 21:52+0100\n"
+"PO-Revision-Date: 2024-05-02 18:51+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -23,7 +23,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -41,8 +41,8 @@ msgstr ""
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr ""
-"No se ha podido generar un rompecabezas tras 200 intentos. ¿Desea probar "
-"otra vez?"
+"No se ha podido generar un rompecabezas tras 200 intentos. ¿Probamos otra "
+"vez?"
 
 #: src/generator/sudokuboard.cpp:125
 #, kde-format
@@ -73,16 +73,16 @@ msgid ""
 "'Generate A Puzzle' again."
 msgstr ""
 "Después de %1 intentos, el mejor nivel de dificultad alcanzado por el "
-"generador es %2, con una tasa de dificultad interna de %3, aunque usted ha "
-"pedido un nivel de dificultad %4.\n"
+"generador es %2, con una tasa de dificultad interna de %3, aunque has pedido "
+"un nivel de dificultad %4.\n"
 "\n"
-"¿Desea que el generador lo vuelva a intentar o acepta el rompecabezas tal "
-"cual?\n"
+"¿Quieres que el generador lo vuelva a intentar o aceptas el rompecabezas "
+"como está?\n"
 "\n"
-"Consejo: Puede probar a aumentar el nivel de dificultad haciendo lo "
-"siguiente: continúe con el botón «Aceptar», escoja «Partida -> Nueva» y "
-"cambie la opción de simetría a «Sin simetría» o a algún tipo de simetría "
-"baja y vuelva a usar «Generar rompecabezas»."
+"Consejo: Puedes probar a aumentar el nivel de dificultad haciendo lo "
+"siguiente: continúa con el botón «Aceptar», escoge «Partida -> Nueva» y "
+"cambia la opción de simetría a «Sin simetría» o a algún tipo de simetría "
+"baja y vuelve a usar «Generar rompecabezas»."
 
 #: src/generator/sudokuboard.cpp:228 src/generator/sudokuboard.cpp:248
 #: src/generator/sudokuboard.cpp:264
@@ -126,8 +126,9 @@ msgid ""
 "moves to go."
 msgstr ""
 "Este rompecabezas requiere una media de %1 conjeturas o puntos de rama y, si "
-"su conjetura es errónea, necesitará volver atrás. La primera conjetura viene "
-"tras %2 movimientos.\n"
+"tu conjetura es errónea, tendrás que volver atrás. La primera conjetura "
+"viene tras %2 movimientos.\n"
+"\n"
 "La tasa de dificultad interna es de %3, hay %4 pistas al inicio y %5 "
 "movimientos para resolverlo."
 
@@ -135,7 +136,7 @@ msgstr ""
 #: src/gui/configgame.ui:20
 #, kde-format
 msgid "When printing, try to fit more than one puzzle on a page"
-msgstr "A imprimir, intente encajar más de un rompecabezas en cada página"
+msgstr "Al imprimir, intenta encajar más de un rompecabezas en cada página"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:43
@@ -158,7 +159,7 @@ msgstr ""
 #: src/gui/configgame.ui:49
 #, kde-format
 msgid "Show highlights in 2-D puzzles"
-msgstr "Mostrar resaltados en rompecabezas 2-D"
+msgstr "Mostrar resaltados en rompecabezas 2D"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -185,7 +186,7 @@ msgstr "Resaltar los planos (bloques) que contienen la celda seleccionada."
 #: src/gui/configgame.ui:75
 #, kde-format
 msgid "Show highlights in 3-D puzzles"
-msgstr "Mostrar resaltados en rompecabezas 3-D"
+msgstr "Mostrar resaltados en rompecabezas 3D"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/configgame.ui:137
@@ -197,7 +198,7 @@ msgstr "Tamaño del rompecabezas Mathdoku (3-9)"
 #: src/gui/configgame.ui:167
 #, kde-format
 msgid "Settings for 3-D Puzzles Only"
-msgstr "Preferencias solo para rompecabezas 3-D"
+msgstr "Preferencias solo para rompecabezas 3D"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
@@ -207,13 +208,13 @@ msgstr "Preferencias solo para rompecabezas 3-D"
 #: src/gui/configgame.ui:228 src/gui/configgame.ui:231
 #, kde-format
 msgid "Set the relative size of 3-D cells and the spaces between them."
-msgstr "Fijar el tamaño relativo de las celdas 3-D y los espacios entre ellas."
+msgstr "Fijar el tamaño relativo de las celdas 3D y los espacios entre ellas."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/configgame.ui:234
 #, kde-format
 msgid "Overall size of 3-D cells"
-msgstr "Tamaño global de las celdas 3-D"
+msgstr "Tamaño global de las celdas 3D"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
@@ -223,13 +224,13 @@ msgstr "Tamaño global de las celdas 3-D"
 #: src/gui/configgame.ui:300 src/gui/configgame.ui:303
 #, no-c-format, kde-format
 msgid "Shrink or expand a cell by up to 30% when it is selected."
-msgstr "Encoger o expandir una celda hasta un 30% cuando se seleccione."
+msgstr "Encoger o expandir una celda hasta un 30 % cuando se seleccione."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/configgame.ui:306
 #, kde-format
 msgid "Size of selected 3-D cell"
-msgstr "Tamaño de las celdas 3-D no seleccionadas"
+msgstr "Tamaño de las celdas 3D seleccionadas"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
@@ -239,13 +240,13 @@ msgstr "Tamaño de las celdas 3-D no seleccionadas"
 #: src/gui/configgame.ui:363 src/gui/configgame.ui:366
 #, no-c-format, kde-format
 msgid "Shrink or expand cells by up to 30% when they are highlighted."
-msgstr "Encoger o expandir las celdas hasta un 30% cuando estén resaltadas."
+msgstr "Encoger o expandir las celdas hasta un 30 % cuando estén resaltadas."
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/configgame.ui:369
 #, kde-format
 msgid "Size of highlighted 3-D cells"
-msgstr "Tamaño de las celdas 3-D resaltadas"
+msgstr "Tamaño de las celdas 3D resaltadas"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_5)
@@ -255,8 +256,8 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell."
 msgstr ""
-"Encoger las celdas hasta un 60% si no están en un cubo de NxNxN que contenga "
-"la celda seleccionada."
+"Encoger las celdas hasta un 60 % si no están en un cubo de NxNxN que "
+"contenga la celda seleccionada."
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
@@ -268,15 +269,15 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell. This is useful if a 3-D puzzle has more than one cube."
 msgstr ""
-"Encoger las celdas hasta un 60% si no están en un cubo de NxNxN que contenga "
-"la celda seleccionada. Resulta útil si un rompecabezas 3-D tiene más de un "
-"cubo."
+"Encoger las celdas hasta un 60 % si no están en un cubo de NxNxN que "
+"contenga la celda seleccionada. Resulta útil si un rompecabezas 3D tiene más "
+"de un cubo."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/configgame.ui:432
 #, kde-format
 msgid "Size of 3-D cells outside the selected volume"
-msgstr "Tamaño de las celdas 3-D fuera del volumen seleccionado"
+msgstr "Tamaño de las celdas 3D fuera del volumen seleccionado"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:446
@@ -292,12 +293,12 @@ msgstr ""
 #: src/gui/configgame.ui:452
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
-msgstr "Oscurecer celdas 3-D fuera del volumen seleccionado"
+msgstr "Oscurecer celdas 3D fuera del volumen seleccionado"
 
 #: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
 #, kde-format
 msgid "Configuration not yet implemented"
-msgstr "La configuración todavía no implementada"
+msgstr "La configuración todavía no está implementada"
 
 #: src/gui/ksudoku.cpp:76
 #, kde-format
@@ -306,23 +307,23 @@ msgid ""
 "\n"
 "Enable \"Show errors\" in the settings to highlight them."
 msgstr ""
-"Su solución contiene errores.\n"
+"Tu solución contiene errores.\n"
 "\n"
-"Active «Mostrar errores» en la configuración para resaltarlos."
+"Activa «Mostrar errores» en la configuración para resaltarlos."
 
 #: src/gui/ksudoku.cpp:87
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
-msgstr[0] "¡Enhorabuena! Lo ha resuelto en 1 segundo. Con algunas trampas."
-msgstr[1] "¡Enhorabuena! Lo ha resuelto en %1 segundos. Con algunas trampas."
+msgstr[0] "¡Enhorabuena! Lo has resuelto en 1 segundo (con algunas trampas)."
+msgstr[1] "¡Enhorabuena! Lo has resuelto en %1 segundos (con algunas trampas)."
 
 #: src/gui/ksudoku.cpp:89
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
-msgstr[0] "¡Enhorabuena! Lo ha resuelto en 1 minuto. Con algunas trampas."
-msgstr[1] "¡Enhorabuena! Lo ha resuelto en %1 minutos. Con algunas trampas."
+msgstr[0] "¡Enhorabuena! Lo has resuelto en 1 minuto (con algunas trampas)."
+msgstr[1] "¡Enhorabuena! Lo has resuelto en %1 minutos (con algunas trampas)."
 
 #: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
 #, kde-format
@@ -342,27 +343,27 @@ msgstr[1] "%1 segundos"
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With some tricks."
-msgstr "¡Enhorabuena! Lo ha resuelto en %1 y %2. Con algunas trampas."
+msgstr "¡Enhorabuena! Lo has resuelto en %1 y %2 (con algunas trampas)."
 
 #: src/gui/ksudoku.cpp:94
 #, kde-format
 msgid "Congratulations! You made it in 1 second."
 msgid_plural "Congratulations! You made it in %1 seconds."
-msgstr[0] "¡Enhorabuena! Lo ha resuelto en 1 segundo."
-msgstr[1] "¡Enhorabuena! Lo ha resuelto en %1 segundos."
+msgstr[0] "¡Enhorabuena! Lo has resuelto en 1 segundo."
+msgstr[1] "¡Enhorabuena! Lo has resuelto en %1 segundos."
 
 #: src/gui/ksudoku.cpp:96
 #, kde-format
 msgid "Congratulations! You made it in 1 minute."
 msgid_plural "Congratulations! You made it in %1 minutes."
-msgstr[0] "¡Enhorabuena! Lo ha resuelto en 1 minuto."
-msgstr[1] "¡Enhorabuena! Lo ha resuelto en %1 minutos."
+msgstr[0] "¡Enhorabuena! Lo has resuelto en 1 minuto."
+msgstr[1] "¡Enhorabuena! Lo has resuelto en %1 minutos."
 
 #: src/gui/ksudoku.cpp:98
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2."
-msgstr "¡Enhorabuena! Lo ha resuelto en %1 y %2."
+msgstr "¡Enhorabuena! Lo has resuelto en %1 y %2."
 
 #: src/gui/ksudoku.cpp:178
 #, kde-format
@@ -448,9 +449,9 @@ msgid ""
 "size by using KSudoku's Difficulty button."
 msgstr ""
 "Los rompecabezas Mathdoku pueden tener cualquier tamaño desde 3x3 hasta 9x9. "
-"La solución es una rejilla en la que cada fila y cada columna contienen los "
-"dígitos disponibles (del 1 al 3 hasta del 1 al 9) una única vez. La rejilla "
-"se compone de jaulas de formas irregulares.\n"
+"La solución es una cuadrícula en la que cada fila y cada columna contienen "
+"los dígitos disponibles (del 1 al 3 hasta del 1 al 9) una única vez. La "
+"cuadrícula se compone de jaulas de formas irregulares.\n"
 "\n"
 "Las jaulas de tamaño 1 son valores iniciales o pistas, aunque no existen "
 "muchas de ellas. Las jaulas de mayor tamaño contienen los valores objetivo y "
@@ -461,7 +462,7 @@ msgstr ""
 "diferentes filas y columnas.\n"
 "\n"
 "En general, los Mathdokus más grandes son más difíciles de resolver, al "
-"igual que las jaulas más grandes. Puede seleccionar el tamaño del "
+"igual que las jaulas más grandes. Puedes seleccionar el tamaño del "
 "rompecabezas en el diálogo de preferencias de KSudoku, y el tamaño máximo de "
 "las jaulas usando el botón de dificultad de KSudoku."
 
@@ -488,7 +489,7 @@ msgstr ""
 "Los rompecabezas Killer Sudoku pueden tener tamaños de 4x4 o de 9x9, con "
 "bloques de 2x2 o de 3x3 celdas. La solución respeta las reglas del Sudoku "
 "clásico. La diferencia es que existen pocos valores iniciales o pistas (si "
-"los hay). En cambio, la rejilla está compuesta de jaulas de formas "
+"los hay). En cambio, la cuadrícula está compuesta de jaulas de formas "
 "irregulares.\n"
 "\n"
 "Las jaulas de tamaño 1 son valores iniciales o pistas. Las jaulas de mayor "
@@ -496,7 +497,7 @@ msgstr ""
 "para obtener dicho valor. En el Killer Sudoku, una jaula no puede contener "
 "el mismo dígito más de una vez.\n"
 "\n"
-"En general, las jaulas mayores son más difíciles de resolver. Puede "
+"En general, las jaulas mayores son más difíciles de resolver. Puedes "
 "seleccionar el tamaño máximo de las jaulas usando el botón de dificultad de "
 "KSudoku."
 
@@ -534,33 +535,33 @@ msgid ""
 "have probably made an error somewhere in one of the cages."
 msgstr ""
 "Los rompecabezas Mathdoku y Killer Sudoku se deben introducir trabajando en "
-"una jaula cada vez. Para empezar una jaula, haga clic con el botón izquierdo "
-"en una celda sin usar o introduzca un número en la celda que esté bajo el "
-"cursor, o bien pulse «+», «-», «/» o «x» en ella. En dicha celda aparecerá "
+"una jaula cada vez. Para empezar una jaula, haz clic con el botón izquierdo "
+"en una celda sin usar o introduce un número en la celda que esté bajo el "
+"cursor, o bien pulsa «+», «-», «/» o «x» en ella. En dicha celda aparecerá "
 "una pequeña etiqueta de jaula. Para extender la jaula en cualquier "
-"dirección, haga clic con el botón izquierdo en una celda vecina o mueva el "
-"cursor a ella y pulse la tecla «Espacio».\n"
+"dirección, haz clic con el botón izquierdo en una celda vecina o mueve el "
+"cursor hasta ella y pulsa la tecla «Espacio».\n"
 "\n"
-"El número que introduzca es el valor de la jaula y puede tener uno o más "
+"El número que introduzcas es el valor de la jaula y puede tener uno o más "
 "dígitos, incluido el cero. Una celda de tamaño 1 solo puede tener un número "
 "de 1 dígito, como en un rompecabezas Sudoku normal. Este número se convierte "
 "en un valor inicial o en una pista para el jugador.\n"
 "\n"
 "El símbolo «+», «-», «/» o «x» es el operador (suma, resta, división o "
-"multiplicación). Debe incluir uno en las jaulas de tamaño 2 o superior. En "
+"multiplicación). Debes incluir uno en las jaulas de tamaño 2 o superior. En "
 "el Killer Sudoku, el operador se incluye automáticamente (porque siempre es "
 "«+» o ninguno).\n"
 "\n"
-"Puede introducir dígitos, operadores y celdas en cualquier orden. Para "
-"completar una jaula y empezar con otra nueva, pulse «Intro». Si ha cometido "
-"un error, lo único que puede hacer es borrar toda la jaula y volver a "
-"introducir su contenido. Si quiere borrar una jaula, haga clic con el botón "
-"derecho sobre cualquier jaula existente. También puede usar el cursor y "
+"Puedes introducir dígitos, operadores y celdas en cualquier orden. Para "
+"completar una jaula y empezar con otra nueva, pulsa «Intro». Si has cometido "
+"un error, lo único que puedes hacer es borrar toda la jaula y volver a "
+"introducir su contenido. Si quieres borrar una jaula, haz clic con el botón "
+"derecho sobre cualquier jaula existente. También puedes usar el cursor y "
 "pulsar las teclas «Supr» o «Retroceso» para el mismo fin.\n"
 "\n"
-"Cuando haya terminado de rellenar la rejilla con jaulas, pulse el botón "
-"«Comprobar» para resolver el rompecabezas y asegurarse de que solo existe "
-"una única solución. Si falla la comprobación, es posible que haya cometido "
+"Cuando hayas terminado de rellenar la cuadrícula con jaulas, pulsa el botón "
+"«Comprobar» para resolver el rompecabezas y asegurarte de que solo existe "
+"una única solución. Si falla la comprobación, es posible que hayas cometido "
 "un error en alguna de las jaulas."
 
 #: src/gui/ksudoku.cpp:347
@@ -571,7 +572,7 @@ msgstr "Punto de entrada para rompecabezas con jaulas"
 #: src/gui/ksudoku.cpp:403
 #, kde-format
 msgid "The puzzle you entered contains some errors."
-msgstr "El rompecabezas que ha introducido contiene algunos errores."
+msgstr "El rompecabezas que has introducido contiene algunos errores."
 
 #: src/gui/ksudoku.cpp:416
 #, kde-format
@@ -579,7 +580,7 @@ msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr ""
-"Lo sentimos, no se ha encontrado ninguna solución. Compruebe que ha creado "
+"Lo sentimos: no se ha encontrado ninguna solución. Comprueba que has creado "
 "el rompecabezas completa y correctamente."
 
 #: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
@@ -591,7 +592,7 @@ msgstr "Comprobar el rompecabezas"
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr ""
-"El rompecabezas que ha creado tiene una única solución y está listo para "
+"El rompecabezas que has creado tiene una única solución y está listo para "
 "usar."
 
 #: src/gui/ksudoku.cpp:427
@@ -600,13 +601,13 @@ msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
-"El rompecabezas que ha creado tiene varias soluciones. Compruebe que ha "
+"El rompecabezas que has creado tiene varias soluciones. Comprueba que has "
 "creado el rompecabezas completa y correctamente."
 
 #: src/gui/ksudoku.cpp:432
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
-msgstr "¿Desea resolver ahora el rompecabezas?"
+msgstr "¿Quieres resolver el rompecabezas ahora?"
 
 #: src/gui/ksudoku.cpp:432
 #, kde-format
@@ -632,7 +633,7 @@ msgstr "Marcar"
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
-msgstr "Diábolo"
+msgstr "Diabólico"
 
 #: src/gui/ksudoku.cpp:505
 #, kde-format
@@ -661,7 +662,7 @@ msgstr "Simetría"
 #: src/gui/ksudoku.cpp:526
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
-msgstr "La simetría del patrón de las pistas cuando se inicia el rompecabezas"
+msgstr "La simetría del patrón de las pistas cuando se empieza el rompecabezas"
 
 #: src/gui/ksudoku.cpp:528
 #, kde-format
@@ -712,7 +713,7 @@ msgstr "No se ha podido cargar la partida."
 #: src/gui/ksudoku.cpp:654
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
-msgstr "¿De verdad desea finalizar esta partida para comenzar una nueva?"
+msgstr "¿Seguro que quieres terminar esta partida para empezar una nueva?"
 
 #: src/gui/ksudoku.cpp:655
 #, kde-format
@@ -729,7 +730,7 @@ msgstr "Nueva partida"
 #: src/gui/ksudoku.cpp:673
 #, kde-format
 msgid "Do you really want to restart this game?"
-msgstr "¿Realmente desea reiniciar esta partida?"
+msgstr "¿Realmente quieres reiniciar esta partida?"
 
 #: src/gui/ksudoku.cpp:674
 #, kde-format
@@ -779,13 +780,12 @@ msgid ""
 "Please also note that the generation of this type of puzzle might take much "
 "longer than other ones. During this time KSudoku will not respond."
 msgstr ""
-"Advertencia: El nivel de Dificultad Ilimitada no pone límites al número de "
+"Advertencia: El nivel de dificultad ilimitada no pone límites al número de "
 "intentos o puntos de ramificación necesarios para resolver el rompecabezas, "
 "y no hay límite para el número mínimo de intentos necesarios.\n"
 "\n"
-"Tenga en cuenta que la generación de este tipo de rompecabezas puede "
-"necesitar mucho más tiempo que para otros. KSudoku no responderá durante "
-"este tiempo."
+"Ten en cuenta que la generación de este tipo de rompecabezas puede necesitar "
+"mucho más tiempo que la de otros. KSudoku no responderá durante este tiempo."
 
 #: src/gui/ksudoku.cpp:823
 #, kde-format
@@ -800,10 +800,10 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
-"Esto volverá a activar todos los diálogos que había desactivado marcando la "
+"Esto volverá a activar todos los diálogos que habías desactivado marcando la "
 "opción «No volver a mostrar este mensaje».\n"
 "\n"
-"¿Desea continuar?"
+"¿Quieres continuar?"
 
 #: src/gui/ksudoku.cpp:866
 #, kde-format
@@ -815,13 +815,13 @@ msgstr "Activar"
 #: src/gui/ksudoku.kcfg:41
 #, kde-format
 msgid "The graphical theme to be used."
-msgstr "El tema gráfico a usar."
+msgstr "El tema gráfico que se usará."
 
 #. i18n: ectx: label, entry (Symbols), group (Themes)
 #: src/gui/ksudoku.kcfg:44
 #, kde-format
 msgid "Select the themes you want to use"
-msgstr "Seleccione los temas que quiere usar"
+msgstr "Selecciona los temas que quieres usar"
 
 #: src/gui/ksudokugame.cpp:375
 #, kde-format
@@ -840,7 +840,7 @@ msgstr "Jaula de Killer Sudoku"
 #: src/gui/ksudokugame.cpp:422
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
-msgstr "La celda que ha seleccionado ya se está usando en otra jaula."
+msgstr "La celda que has seleccionado ya se está usando en otra jaula."
 
 #: src/gui/ksudokugame.cpp:424 src/gui/ksudokugame.cpp:454
 #: src/gui/ksudokugame.cpp:479 src/gui/ksudokugame.cpp:486
@@ -855,8 +855,8 @@ msgid ""
 "The cell you have selected is not next to any cell in the cage you are "
 "creating."
 msgstr ""
-"La celda que ha seleccionado no está junto a ninguna celda de la jaula que "
-"está creando."
+"La celda que has seleccionado no está junto a ninguna celda de la jaula que "
+"estás creando."
 
 #: src/gui/ksudokugame.cpp:477
 #, kde-format
@@ -864,8 +864,8 @@ msgid ""
 "The cage you wish to complete has no cells in it yet. Please click on a cell "
 "or key in + - / x or a number."
 msgstr ""
-"La jaula que desea completar aún no tiene celdas. Haga clic en una celda o "
-"pulse + - / x o un número."
+"La jaula que quieres completar aún no tiene celdas. Haz clic en una celda o "
+"pulsa + - / x o un número."
 
 #: src/gui/ksudokugame.cpp:484
 #, kde-format
@@ -873,8 +873,8 @@ msgid ""
 "The cage you wish to complete has no value yet. Please key in a number with "
 "one or more digits."
 msgstr ""
-"La jaula que desea completar aún no tiene un valor. Escriba un número de uno "
-"o más dígitos."
+"La jaula que quieres completar aún no tiene un valor. Escribe un número de "
+"uno o más dígitos."
 
 #: src/gui/ksudokugame.cpp:492
 #, kde-format
@@ -882,8 +882,8 @@ msgid ""
 "The cage you wish to complete has more than one cell, but it has no operator "
 "yet. Please key in + - / or x."
 msgstr ""
-"La jaula que desea completar contiene más de una celda, pero aún no tiene un "
-"operador. Pulse + - / o x."
+"La jaula que quieres completar contiene más de una celda, pero aún no tiene "
+"un operador. Pulsa + - / o x."
 
 #: src/gui/ksudokugame.cpp:500
 #, kde-format
@@ -891,14 +891,14 @@ msgid ""
 "The cage you wish to complete has one cell, but its value is too large. A "
 "single-cell cage must have a value from 1 to %1 in a puzzle of this size."
 msgstr ""
-"La jaula que desea completar contiene una celda, pero su valor es demasiado "
-"grande. Una jaula de una única celda debe tener un valor entre 1 y %1 en un "
-"rompecabezas de este tamaño."
+"La jaula que quieres completar contiene una celda, pero su valor es "
+"demasiado grande. Una jaula de una única celda debe tener un valor entre 1 y "
+"%1 en un rompecabezas de este tamaño."
 
 #: src/gui/ksudokugame.cpp:536
 #, kde-format
 msgid "Do you wish to delete this cage?"
-msgstr "¿Desea borrar esta jaula?"
+msgstr "¿Quieres borrar esta jaula?"
 
 #: src/gui/ksudokugame.cpp:537 src/gui/ksudokugame.cpp:564
 #: src/gui/ksudokugame.cpp:570
@@ -912,7 +912,7 @@ msgid ""
 "The cell you have selected is not in any cage, so the Delete action will not "
 "delete anything."
 msgstr ""
-"La celda que acaba de seleccionar no pertenece a ninguna jaula, por lo que "
+"La celda que acabas de seleccionar no pertenece a ninguna jaula, por lo que "
 "la acción de borrado no borrará nada."
 
 #: src/gui/ksudokugame.cpp:569
@@ -953,7 +953,7 @@ msgstr "Barra de acciones"
 #: src/gui/puzzleprinter.cpp:62
 #, kde-format
 msgid "Sorry, cannot print three-dimensional puzzles."
-msgstr "Lo siento, los rompecabezas tridimensionales no se pueden imprimir."
+msgstr "Lo sentimos: los rompecabezas tridimensionales no se pueden imprimir."
 
 #: src/gui/puzzleprinter.cpp:92
 #, kde-format
@@ -964,16 +964,16 @@ msgid ""
 "Your puzzle will be printed when no more will fit on the page or when "
 "KSudoku terminates."
 msgstr ""
-"Actualmente, está seleccionada la opción de KSudoku para imprimir varios "
+"Actualmente está seleccionada la opción de KSudoku para imprimir varios "
 "rompecabezas por página.\n"
 "\n"
-"Su rompecabezas se imprimirá cuando ya no quepan más en la página o cuando "
-"finalice KSudoku."
+"Tu rompecabezas se imprimirá cuando ya no quepan más en la página o cuando "
+"KSudoku termine."
 
 #: src/gui/puzzleprinter.cpp:108
 #, kde-format
 msgid "KSudoku has sent output to your printer."
-msgstr "KSudoku ha enviado la salida a su impresora."
+msgstr "KSudoku ha enviado la salida a la impresora."
 
 #: src/gui/puzzleprinter.cpp:121
 #, kde-format
@@ -983,7 +983,7 @@ msgstr "Imprimir rompecabezas Sudoku"
 #: src/gui/serializer.cpp:399
 #, kde-format
 msgid "Unable to download file: URL is empty."
-msgstr "No se ha podido descargar el archivo: el URL está vacío."
+msgstr "No se ha podido descargar el archivo: la URL está vacía."
 
 #: src/gui/serializer.cpp:406
 #, kde-format
@@ -1059,7 +1059,7 @@ msgstr "GetNewVariant no está implementado"
 #: src/gui/welcomescreen.cpp:179
 #, kde-format
 msgid "Please select a puzzle variant."
-msgstr "Seleccione una variante del rompecabezas."
+msgstr "Selecciona una variante del rompecabezas."
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
@@ -1073,28 +1073,28 @@ msgstr "No se ha podido iniciar el rompecabezas"
 msgid ""
 "Unable to create an empty puzzle of the chosen variant; please try another."
 msgstr ""
-"No se ha podido crear un rompecabezas vacío de la variante escogida. Pruebe "
+"No se ha podido crear un rompecabezas vacío de la variante escogida. Prueba "
 "con otra."
 
 #: src/gui/welcomescreen.cpp:169
 #, kde-format
 msgid "Unable to start a puzzle of the chosen variant; please try another."
 msgstr ""
-"No se ha podido iniciar un rompecabezas de la variante escogida. Pruebe con "
+"No se ha podido iniciar un rompecabezas de la variante escogida. Prueba con "
 "otra."
 
 #: src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to generate a puzzle of the chosen variant; please try another."
 msgstr ""
-"No se ha podido generar un rompecabezas de la variante escogida. Pruebe con "
+"No se ha podido generar un rompecabezas de la variante escogida. Prueba con "
 "otra."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
 #: src/gui/welcomescreen.ui:17
 #, kde-format
 msgid "Choose your Game"
-msgstr "Elija su juego"
+msgstr "Escoge el juego"
 
 #. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
 #: src/gui/welcomescreen.ui:28
@@ -1112,7 +1112,7 @@ msgstr "Introducir un rompecabezas"
 #: src/gui/welcomescreen.ui:55
 #, kde-format
 msgid "Generate A Puzzle"
-msgstr "Generar rompecabezas"
+msgstr "Generar un rompecabezas"
 
 #: src/main.cpp:47
 #, kde-format
@@ -1157,7 +1157,7 @@ msgstr "Ian Wadham"
 #: src/main.cpp:55
 #, kde-format
 msgid "New puzzle generator and solver"
-msgstr "Nuevo generador y resolutor de rompecabezas."
+msgstr "Nuevo generador y solucionador de rompecabezas."
 
 #: src/main.cpp:56
 #, kde-format
@@ -1185,13 +1185,13 @@ msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 msgstr ""
-"Algoritmos para el nuevo generados y resolutor de rompecabezas en davidbau."
-"com/archives/2006/09/04/sudoku_generator.html"
+"Algoritmos para el nuevo generador y solucionador de rompecabezas en "
+"davidbau.com/archives/2006/09/04/sudoku_generator.html"
 
 #: src/main.cpp:66
 #, kde-format
 msgid "Document to open"
-msgstr "Documento a abrir"
+msgstr "Documento que se abrirá"
 
 #~ msgid "&OK"
 #~ msgstr "&Aceptar"
