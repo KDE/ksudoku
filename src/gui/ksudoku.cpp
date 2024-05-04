@@ -205,8 +205,10 @@ void KSudoku::updateShapesList()
 		variantName = group.readEntry("Name", i18n("Missing Variant Name")); // Translated.
 		variantDescr = group.readEntry("Description", ""); // Translated.
 		variantIcon = group.readEntry("Icon", "ksudoku-ksudoku_9x9");
-		const QString variantDataFile = group.readEntry("FileName", "");
-		if(variantDataFile == QLatin1String("")) continue;
+		const QString variantDataFile = group.readEntry("FileName", QString());
+		if (variantDataFile.isEmpty()) {
+		    continue;
+		}
 
 		variantDataPath = variantDir.filePath(variantDataFile);
 
