@@ -45,7 +45,7 @@ int main(int argc, char **argv)
 
 	KAboutData about(QStringLiteral("ksudoku"),
                      i18n("KSudoku"),
-                     QLatin1String(KSUDOKU_VERSION_STRING),
+                     QStringLiteral(KSUDOKU_VERSION_STRING),
 	                 i18n("KSudoku - Sudokus and more"),
 	                 KAboutLicense::GPL_V2,
 	                 i18n("(c) 2005-2007 The KSudoku Authors"),
