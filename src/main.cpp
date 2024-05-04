@@ -55,7 +55,7 @@ int main(int argc, char **argv)
 	about.addAuthor( i18n("Ian Wadham"), i18n("New puzzle generator and solver"), QStringLiteral("iandw.au@gmail.com") );
 	about.addAuthor( i18n("Mick Kappenburg"), i18n("Printing and export of 0.4"), QStringLiteral("ksudoku@kappendburg.net"));
 	about.addAuthor( i18n("Thanks to NeHe for OpenGL tutorials"), QString(), QStringLiteral("nehe.gamedev.net"));
-	about.addCredit( i18n("David Bau"), i18n("Algorithms for new puzzle generator and solver at davidbau.com/archives/2006/09/04/sudoku_generator.html"), QLatin1String(""));
+	about.addCredit( i18n("David Bau"), i18n("Algorithms for new puzzle generator and solver at davidbau.com/archives/2006/09/04/sudoku_generator.html"));
 
 	KAboutData::setApplicationData(about);
 	app.setOrganizationDomain(QStringLiteral("kde.org"));
