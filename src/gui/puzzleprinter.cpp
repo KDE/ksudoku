@@ -163,12 +163,12 @@ bool PuzzlePrinter::setupOutputDevices (int leastCellsToFit, int puzzleWidth)
     int thin    = m_sCell / 40;	// Allow 2.5%.
     int thick   = (thin > 0) ? 2 * thin : 2;
 
-    m_light.setColor (QColor("#888888"));
+    m_light.setColor (QColor(0x88, 0x88, 0x88));
     m_light.setWidth (thin);
-    m_heavy.setColor (QColor(QStringLiteral("black")));
+    m_heavy.setColor (QColor(Qt::black));
     m_heavy.setWidth (thick);
     m_heavy.setCapStyle (Qt::RoundCap);
-    m_dashes.setColor (QColor(QStringLiteral("black")));
+    m_dashes.setColor (QColor(Qt::black));
     m_dashes.setWidth (thin);
     m_dashes.setStyle (Qt::DashLine);
 
@@ -278,7 +278,7 @@ void PuzzlePrinter::drawCell (int posX, int posY, int edge)
     int y = m_topY + m_sCell * posY;
     QRect rect (x, y, m_sCell, m_sCell);
     if (edge & (1 << Detached)) {		// Shade a cell, as in XSudoku.
-	m_p->fillRect (rect, QColor ("#DDDDDD"));
+	m_p->fillRect (rect, QColor (0xDD, 0xDD, 0xDD));
     }
     m_p->setPen (m_light);			// First draw every cell light.
     m_p->drawRect (rect);
