@@ -92,7 +92,7 @@ bool Renderer::loadTheme(const KGameTheme* theme) {
 
 void Renderer::fillNameHashes() {
     m_borderNames = QList<QString>();
-    m_borderNames << QStringLiteral("");
+    m_borderNames << QString();
     m_borderNames << QStringLiteral("1");
     m_borderNames << QStringLiteral("2");
     m_borderNames << QStringLiteral("12");
