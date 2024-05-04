@@ -91,52 +91,60 @@ bool Renderer::loadTheme(const KGameTheme* theme) {
 }
 
 void Renderer::fillNameHashes() {
-    m_borderNames << QString();
-    m_borderNames << QStringLiteral("1");
-    m_borderNames << QStringLiteral("2");
-    m_borderNames << QStringLiteral("12");
-    m_borderNames << QStringLiteral("3");
-    m_borderNames << QStringLiteral("13");
-    m_borderNames << QStringLiteral("23");
-    m_borderNames << QStringLiteral("123");
-    m_borderNames << QStringLiteral("4");
-    m_borderNames << QStringLiteral("14");
-    m_borderNames << QStringLiteral("24");
-    m_borderNames << QStringLiteral("124");
-    m_borderNames << QStringLiteral("34");
-    m_borderNames << QStringLiteral("134");
-    m_borderNames << QStringLiteral("234");
-    m_borderNames << QStringLiteral("1234");
-	m_borderTypes << QString();
-    m_borderTypes << QStringLiteral("row");
-    m_borderTypes << QStringLiteral("column");
-    m_borderTypes << QStringLiteral("block");
-    m_borderTypes << QStringLiteral("special");
-    m_borderTypes << QStringLiteral("block");	// Use block-type borders for cages.
-    m_borderTypes << QStringLiteral("special");
-    m_borderTypes << QStringLiteral("special");
-	m_borderTypes << QString();
-    m_borderTypes << QStringLiteral("row_h");
-    m_borderTypes << QStringLiteral("column_h");
-    m_borderTypes << QStringLiteral("block_h");
-    m_borderTypes << QStringLiteral("special_h");
-    m_borderTypes << QStringLiteral("block_h");	// Use block-type borders for cages.
-    m_borderTypes << QStringLiteral("special_h");
-    m_borderTypes << QStringLiteral("special_h");
-    m_specialNames << QStringLiteral("cell");
-    m_specialNames << QStringLiteral("cell_preset");
-    m_specialNames << QStringLiteral("cell");
-    m_specialNames << QStringLiteral("cell_mistake");
-    m_specialNames << QStringLiteral("cursor");
-    m_specialNames << QStringLiteral("valuelist_item");
-    m_specialNames << QStringLiteral("valuelist_selector");
-    m_special3dNames << QStringLiteral("cell3d");
-    m_special3dNames << QStringLiteral("cell3d_preset");
-    m_special3dNames << QStringLiteral("cell3d");
-    m_special3dNames << QStringLiteral("cell3d_mistake");
-    m_special3dNames << QStringLiteral("cursor");
-    m_special3dNames << QStringLiteral("valuelist_item");
-    m_special3dNames << QStringLiteral("valuelist_selector");
+    m_borderNames = {
+        QString(),
+        QStringLiteral("1"),
+        QStringLiteral("2"),
+        QStringLiteral("12"),
+        QStringLiteral("3"),
+        QStringLiteral("13"),
+        QStringLiteral("23"),
+        QStringLiteral("123"),
+        QStringLiteral("4"),
+        QStringLiteral("14"),
+        QStringLiteral("24"),
+        QStringLiteral("124"),
+        QStringLiteral("34"),
+        QStringLiteral("134"),
+        QStringLiteral("234"),
+        QStringLiteral("1234"),
+    };
+    m_borderTypes = {
+        QString(),
+        QStringLiteral("row"),
+        QStringLiteral("column"),
+        QStringLiteral("block"),
+        QStringLiteral("special"),
+        QStringLiteral("block"),	// Use block-type borders for cages.
+        QStringLiteral("special"),
+        QStringLiteral("special"),
+        QString(),
+        QStringLiteral("row_h"),
+        QStringLiteral("column_h"),
+        QStringLiteral("block_h"),
+        QStringLiteral("special_h"),
+        QStringLiteral("block_h"),	// Use block-type borders for cages.
+        QStringLiteral("special_h"),
+        QStringLiteral("special_h"),
+    };
+    m_specialNames = {
+        QStringLiteral("cell"),
+        QStringLiteral("cell_preset"),
+        QStringLiteral("cell"),
+        QStringLiteral("cell_mistake"),
+        QStringLiteral("cursor"),
+        QStringLiteral("valuelist_item"),
+        QStringLiteral("valuelist_selector"),
+    };
+    m_special3dNames = {
+        QStringLiteral("cell3d"),
+        QStringLiteral("cell3d_preset"),
+        QStringLiteral("cell3d"),
+        QStringLiteral("cell3d_mistake"),
+        QStringLiteral("cursor"),
+        QStringLiteral("valuelist_item"),
+        QStringLiteral("valuelist_selector"),
+    };
 	// TODO get this hardcoded values from the SVG file
 // 	m_markerName << "markers9" << "markers9" //...
 }
