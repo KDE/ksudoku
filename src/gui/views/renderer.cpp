@@ -42,6 +42,7 @@ Renderer::Renderer() {
 	m_renderer = new QSvgRenderer();
 	m_cache = new KImageCache(QStringLiteral("ksudoku-cache"), 3*1024);
 	m_mathdokuStyle = false;
+	fillNameHashes();
 	
 	m_themeProvider->discoverThemes(
 	    QStringLiteral("themes"), // theme file location
@@ -86,12 +87,10 @@ bool Renderer::loadTheme(const KGameTheme* theme) {
 	qCDebug(KSudokuLog) << "discarding cache";
 	m_cache->clear();
 	
-	fillNameHashes();
 	return true;
 }
 
 void Renderer::fillNameHashes() {
-    m_borderNames = QList<QString>();
     m_borderNames << QStringLiteral("");
     m_borderNames << QStringLiteral("1");
     m_borderNames << QStringLiteral("2");
