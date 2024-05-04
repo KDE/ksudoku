@@ -552,7 +552,7 @@ bool Serializer::serializeGraph(QDomElement &parent, const SKGraph *graph)
 		    e.setAttribute(QStringLiteral("size"), cSize);
 
 		    // Serialize the cell-numbers in the clique (or group).
-		    QString contentStr = QLatin1String("");
+		    QString contentStr;
 		    for(int j=0; j < cSize; j++) {
             contentStr += QString::number
                               (graph->clique(cNum).at(j)) + QLatin1Char(' ');
