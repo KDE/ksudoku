@@ -277,7 +277,7 @@ bool SudokuGame::canConfigure() const {
 }
 
 bool SudokuGame::configure() {
-	KMessageBox::information(nullptr, i18n("Configuration not yet implemented"), QLatin1String(""));
+	KMessageBox::information(nullptr, i18n("Configuration not yet implemented"));
 	return false;
 }
 
@@ -334,7 +334,7 @@ bool RoxdokuGame::canConfigure() const {
 }
 
 bool RoxdokuGame::configure() {
-	KMessageBox::information(nullptr, i18n("Configuration not yet implemented"), QLatin1String(""));
+	KMessageBox::information(nullptr, i18n("Configuration not yet implemented"));
 	return false;
 }
 

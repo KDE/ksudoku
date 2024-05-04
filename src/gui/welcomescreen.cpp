@@ -130,7 +130,7 @@ void WelcomeScreen::onCurrentVariantChange() {
 }
 
 void WelcomeScreen::getNewVariant() {
-	KMessageBox::information(this, i18n("GetNewVariant not implemented"), QLatin1String(""));
+	KMessageBox::information(this, i18n("GetNewVariant not implemented"));
 }
 
 void WelcomeScreen::configureVariant() {
