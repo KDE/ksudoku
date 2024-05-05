@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-02 00:37+0000\n"
+"POT-Creation-Date: 2024-05-05 00:37+0000\n"
 "PO-Revision-Date: 2019-11-11 15:13+0200\n"
 "Last-Translator: Marek Laane <qiilaq69@gmail.com>\n"
 "Language-Team: Estonian <kde-et@lists.linux.ee>\n"
@@ -378,47 +378,47 @@ msgstr "Roxi ruumiline sudoku"
 msgid "Missing Variant Name"
 msgstr "Variandi nimi puudub"
 
-#: src/gui/ksudoku.cpp:219
+#: src/gui/ksudoku.cpp:221
 #, kde-format
 msgid "Sudoku 16x16"
 msgstr "Sudoku 16x16"
 
-#: src/gui/ksudoku.cpp:220
+#: src/gui/ksudoku.cpp:222
 #, kde-format
 msgid "Sudoku with 16 symbols"
 msgstr "Sudoku 16 märgiga"
 
-#: src/gui/ksudoku.cpp:222
+#: src/gui/ksudoku.cpp:224
 #, kde-format
 msgid "Sudoku 25x25"
 msgstr "Sudoku 25x25"
 
-#: src/gui/ksudoku.cpp:223
+#: src/gui/ksudoku.cpp:225
 #, kde-format
 msgid "Sudoku with 25 symbols"
 msgstr "Sudoku 25 märgiga"
 
-#: src/gui/ksudoku.cpp:226
+#: src/gui/ksudoku.cpp:228
 #, kde-format
 msgid "Roxdoku 16 (4x4x4)"
 msgstr "Roxdoku 16 (4x4x4)"
 
-#: src/gui/ksudoku.cpp:227
+#: src/gui/ksudoku.cpp:229
 #, kde-format
 msgid "The Rox 3D sudoku with 16 symbols"
 msgstr "Roxi ruumiline sudoku 16 märgiga"
 
-#: src/gui/ksudoku.cpp:229
+#: src/gui/ksudoku.cpp:231
 #, kde-format
 msgid "Roxdoku 25 (5x5x5)"
 msgstr "Roxdoku 25 (5x5x5)"
 
-#: src/gui/ksudoku.cpp:230
+#: src/gui/ksudoku.cpp:232
 #, kde-format
 msgid "The Rox 3D sudoku with 25 symbols"
 msgstr "Roxi ruumiline sudoku 25 sümboliga"
 
-#: src/gui/ksudoku.cpp:276
+#: src/gui/ksudoku.cpp:278
 #, kde-format
 msgid ""
 "Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
@@ -451,12 +451,12 @@ msgstr ""
 "seadistustedialoogis, ploki maksimaalse suuruse aga KSudoku raskusastme "
 "nupuga."
 
-#: src/gui/ksudoku.cpp:295
+#: src/gui/ksudoku.cpp:297
 #, kde-format
 msgid "Playing Mathdoku"
 msgstr "Mathdoku lahendamine"
 
-#: src/gui/ksudoku.cpp:299
+#: src/gui/ksudoku.cpp:301
 #, kde-format
 msgid ""
 "Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
@@ -483,12 +483,12 @@ msgstr ""
 "Üldiselt on suuremate plokkide õige lahenduse leidmine raskem Ploki "
 "maksimaalse suuruse saab valida KSudoku raskusastme nupuga."
 
-#: src/gui/ksudoku.cpp:313
+#: src/gui/ksudoku.cpp:315
 #, kde-format
 msgid "Playing Killer Sudoku"
 msgstr "Killer Sudoku lahendamine"
 
-#: src/gui/ksudoku.cpp:317
+#: src/gui/ksudoku.cpp:319
 #, kde-format
 msgid ""
 "Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
@@ -543,17 +543,17 @@ msgstr ""
 "sisestatud mõistatusel oleks tõepoolest ainult üks lahendus. Kui "
 "kontrollimine nurjub, siis oled ilmselt teinud mõne ploki sisestamisel vea."
 
-#: src/gui/ksudoku.cpp:347
+#: src/gui/ksudoku.cpp:349
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
 msgstr "Andmete sisestamine plokkidega mõistatuste puhul"
 
-#: src/gui/ksudoku.cpp:403
+#: src/gui/ksudoku.cpp:405
 #, kde-format
 msgid "The puzzle you entered contains some errors."
 msgstr "Sisestatud mõistatus sisaldab mõningaid vigu."
 
-#: src/gui/ksudoku.cpp:416
+#: src/gui/ksudoku.cpp:418
 #, kde-format
 msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
@@ -562,21 +562,21 @@ msgstr ""
 "Vabandust, lahendust ei leitud. Palun kontrolli, kas oled sisestanud "
 "korrektselt kogu mõistatuse."
 
-#: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
+#: src/gui/ksudoku.cpp:421 src/gui/ksudoku.cpp:428 src/gui/ksudoku.cpp:434
 #, fuzzy, kde-format
 #| msgid "Check Puzzle"
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Mõistatuse kontrollimine"
 
-#: src/gui/ksudoku.cpp:424
+#: src/gui/ksudoku.cpp:426
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr ""
 "Sisestatud mõistatusel on ainult üks lahendus ja seda võib kohe mängima "
 "asuda."
 
-#: src/gui/ksudoku.cpp:429
+#: src/gui/ksudoku.cpp:431
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
@@ -585,136 +585,136 @@ msgstr ""
 "Sisestatud mõistatusel on mitu lahendust. Palun kontrolli, kas oled "
 "sisestanud korrektselt kogu mõistatuse."
 
-#: src/gui/ksudoku.cpp:435
+#: src/gui/ksudoku.cpp:437
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
 msgstr "Kas mängida mõistatus kohe läbi?"
 
-#: src/gui/ksudoku.cpp:436
+#: src/gui/ksudoku.cpp:438
 #, fuzzy, kde-format
 #| msgid "Play Puzzle"
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Mõistatuse mängimine"
 
-#: src/gui/ksudoku.cpp:437
+#: src/gui/ksudoku.cpp:439
 #, fuzzy, kde-format
 #| msgid "Play"
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Mängi"
 
-#: src/gui/ksudoku.cpp:476
+#: src/gui/ksudoku.cpp:478
 #, fuzzy, kde-format
 #| msgid "Enable all messages"
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "Kõigi teadete lubamine"
 
-#: src/gui/ksudoku.cpp:493
+#: src/gui/ksudoku.cpp:495
 #, fuzzy, kde-format
 #| msgid "Check"
 msgctxt "@action"
 msgid "Check"
 msgstr "Kontrolli"
 
-#: src/gui/ksudoku.cpp:509
+#: src/gui/ksudoku.cpp:511
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "Saatanlik"
 
-#: src/gui/ksudoku.cpp:511
+#: src/gui/ksudoku.cpp:513
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "Piiramatu"
 
-#: src/gui/ksudoku.cpp:522
+#: src/gui/ksudoku.cpp:524
 #, fuzzy, kde-format
 #| msgid "Difficulty"
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "Raskusaste"
 
-#: src/gui/ksudoku.cpp:526
+#: src/gui/ksudoku.cpp:528
 #, fuzzy, kde-format
 #| msgid "Symmetry"
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "Sümmeetria"
 
-#: src/gui/ksudoku.cpp:530
+#: src/gui/ksudoku.cpp:532
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "Sümmeetria"
 
-#: src/gui/ksudoku.cpp:532
+#: src/gui/ksudoku.cpp:534
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr "Vihjete paigutuse sümmeetria mängu alustamisel"
 
-#: src/gui/ksudoku.cpp:534
+#: src/gui/ksudoku.cpp:536
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "Diagonaalne"
 
-#: src/gui/ksudoku.cpp:535
+#: src/gui/ksudoku.cpp:537
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "Keskelt lähtuv"
 
-#: src/gui/ksudoku.cpp:536
+#: src/gui/ksudoku.cpp:538
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "Vasakult paremale"
 
-#: src/gui/ksudoku.cpp:537
+#: src/gui/ksudoku.cpp:539
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "Spiraalne"
 
-#: src/gui/ksudoku.cpp:538
+#: src/gui/ksudoku.cpp:540
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "Neljatine"
 
-#: src/gui/ksudoku.cpp:539
+#: src/gui/ksudoku.cpp:541
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "Juhuslik valik"
 
-#: src/gui/ksudoku.cpp:540
+#: src/gui/ksudoku.cpp:542
 #, kde-format
 msgid "No Symmetry"
 msgstr "Sümmeetria puudub"
 
-#: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
+#: src/gui/ksudoku.cpp:646 src/gui/ksudoku.cpp:705
 #, fuzzy, kde-format
 #| msgid "Error in Cage"
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr "Tõrge plokis"
 
-#: src/gui/ksudoku.cpp:660
+#: src/gui/ksudoku.cpp:662
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr "Kas tõesti lõpetada see mäng ja alustada uut?"
 
-#: src/gui/ksudoku.cpp:661
+#: src/gui/ksudoku.cpp:663
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
 msgstr "Uus mäng"
 
-#: src/gui/ksudoku.cpp:662
+#: src/gui/ksudoku.cpp:664
 #, fuzzy, kde-format
 #| msgctxt "window title"
 #| msgid "New Game"
@@ -722,18 +722,18 @@ msgctxt "@action:button"
 msgid "New Game"
 msgstr "Uus mäng"
 
-#: src/gui/ksudoku.cpp:679
+#: src/gui/ksudoku.cpp:681
 #, kde-format
 msgid "Do you really want to restart this game?"
 msgstr "Kas tõesti käivitada see mäng uuesti?"
 
-#: src/gui/ksudoku.cpp:680
+#: src/gui/ksudoku.cpp:682
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "Mängu taaskäivitamine"
 
-#: src/gui/ksudoku.cpp:681
+#: src/gui/ksudoku.cpp:683
 #, fuzzy, kde-format
 #| msgctxt "window title"
 #| msgid "Restart Game"
@@ -741,19 +741,19 @@ msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Mängu taaskäivitamine"
 
-#: src/gui/ksudoku.cpp:730
+#: src/gui/ksudoku.cpp:732
 #, fuzzy, kde-format
 #| msgid "Error Writing File"
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Tõrge faili kirjutamisel"
 
-#: src/gui/ksudoku.cpp:752
+#: src/gui/ksudoku.cpp:754
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "Paistab, et pole ühtegi sudokut trükkida."
 
-#: src/gui/ksudoku.cpp:789
+#: src/gui/ksudoku.cpp:791
 #, fuzzy, kde-format
 #| msgctxt "Game Section in Config"
 #| msgid "Game"
@@ -761,14 +761,14 @@ msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Mäng"
 
-#: src/gui/ksudoku.cpp:790
+#: src/gui/ksudoku.cpp:792
 #, fuzzy, kde-format
 #| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Teema"
 
-#: src/gui/ksudoku.cpp:822
+#: src/gui/ksudoku.cpp:824
 #, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
@@ -785,14 +785,14 @@ msgstr ""
 "Palun arvesta ka sellega, et seda tüüpi mängu genereerimine võtab palju "
 "rohkem aega. Genereerimise ajal ei saa KSudokut kuidagi kasutada."
 
-#: src/gui/ksudoku.cpp:829
+#: src/gui/ksudoku.cpp:831
 #, fuzzy, kde-format
 #| msgid "Warning"
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Hoiatus"
 
-#: src/gui/ksudoku.cpp:869
+#: src/gui/ksudoku.cpp:871
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -805,7 +805,7 @@ msgstr ""
 "\n"
 "Kas jätkata?"
 
-#: src/gui/ksudoku.cpp:873
+#: src/gui/ksudoku.cpp:875
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"

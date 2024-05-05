@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-02 00:37+0000\n"
+"POT-Creation-Date: 2024-05-05 00:37+0000\n"
 "PO-Revision-Date: 2024-05-03 03:26+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -368,47 +368,47 @@ msgstr "Rox 立體數獨"
 msgid "Missing Variant Name"
 msgstr "找不到變數名稱"
 
-#: src/gui/ksudoku.cpp:219
+#: src/gui/ksudoku.cpp:221
 #, kde-format
 msgid "Sudoku 16x16"
 msgstr "進階數獨（16x16）"
 
-#: src/gui/ksudoku.cpp:220
+#: src/gui/ksudoku.cpp:222
 #, kde-format
 msgid "Sudoku with 16 symbols"
 msgstr "進階數獨，16 個符號"
 
-#: src/gui/ksudoku.cpp:222
+#: src/gui/ksudoku.cpp:224
 #, kde-format
 msgid "Sudoku 25x25"
 msgstr "高級數獨（25x25）"
 
-#: src/gui/ksudoku.cpp:223
+#: src/gui/ksudoku.cpp:225
 #, kde-format
 msgid "Sudoku with 25 symbols"
 msgstr "高級數獨，25 個符號"
 
-#: src/gui/ksudoku.cpp:226
+#: src/gui/ksudoku.cpp:228
 #, kde-format
 msgid "Roxdoku 16 (4x4x4)"
 msgstr "立體數獨（4x4x4，16 個符號）"
 
-#: src/gui/ksudoku.cpp:227
+#: src/gui/ksudoku.cpp:229
 #, kde-format
 msgid "The Rox 3D sudoku with 16 symbols"
 msgstr "Rox 立體數獨，16 個符號"
 
-#: src/gui/ksudoku.cpp:229
+#: src/gui/ksudoku.cpp:231
 #, kde-format
 msgid "Roxdoku 25 (5x5x5)"
 msgstr "立體數獨（5x5x5，25 個符號）"
 
-#: src/gui/ksudoku.cpp:230
+#: src/gui/ksudoku.cpp:232
 #, kde-format
 msgid "The Rox 3D sudoku with 25 symbols"
 msgstr "Rox 立體數獨，25 個符號"
 
-#: src/gui/ksudoku.cpp:276
+#: src/gui/ksudoku.cpp:278
 #, kde-format
 msgid ""
 "Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
@@ -438,12 +438,12 @@ msgstr ""
 "一般來說，較大的 Mathdoku 更難，也有更大的框架。您可以在 KSudoku 的設定對話框"
 "中選取謎題大小，並使用 KSudoku 的難度按鈕來選取最大的框架大小。"
 
-#: src/gui/ksudoku.cpp:295
+#: src/gui/ksudoku.cpp:297
 #, kde-format
 msgid "Playing Mathdoku"
 msgstr "玩 Mathdoku"
 
-#: src/gui/ksudoku.cpp:299
+#: src/gui/ksudoku.cpp:301
 #, kde-format
 msgid ""
 "Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
@@ -467,12 +467,12 @@ msgstr ""
 "\n"
 "一般來說，較大的框架較難。您可以使用 KSudoku 的難度按鈕來選取最大框架尺寸。"
 
-#: src/gui/ksudoku.cpp:313
+#: src/gui/ksudoku.cpp:315
 #, kde-format
 msgid "Playing Killer Sudoku"
 msgstr "玩殺手數獨"
 
-#: src/gui/ksudoku.cpp:317
+#: src/gui/ksudoku.cpp:319
 #, kde-format
 msgid ""
 "Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
@@ -519,210 +519,210 @@ msgstr ""
 "當網格被框框填滿時，按下檢查鈕，解決題目並確保只有一種解法。若檢查失敗，您可"
 "能在某個框框的某處有一些錯誤。"
 
-#: src/gui/ksudoku.cpp:347
+#: src/gui/ksudoku.cpp:349
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
 msgstr "適用於使用框架的拼圖的資料項目"
 
-#: src/gui/ksudoku.cpp:403
+#: src/gui/ksudoku.cpp:405
 #, kde-format
 msgid "The puzzle you entered contains some errors."
 msgstr "您輸入的謎題有錯誤。"
 
-#: src/gui/ksudoku.cpp:416
+#: src/gui/ksudoku.cpp:418
 #, kde-format
 msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr "抱歉，沒有解決方案被找到。請確定你輸入的拼圖是完整跟正確的。"
 
-#: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
+#: src/gui/ksudoku.cpp:421 src/gui/ksudoku.cpp:428 src/gui/ksudoku.cpp:434
 #, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "檢查拼圖"
 
-#: src/gui/ksudoku.cpp:424
+#: src/gui/ksudoku.cpp:426
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr "您輸入的謎題有無限個解答、並且已經準備遊玩。"
 
-#: src/gui/ksudoku.cpp:429
+#: src/gui/ksudoku.cpp:431
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr "這個拼圖你輸入了多個解決方案。你確定你輸入的拼圖是完整且正確的。"
 
-#: src/gui/ksudoku.cpp:435
+#: src/gui/ksudoku.cpp:437
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
 msgstr "你希望現在玩此謎題嗎？"
 
-#: src/gui/ksudoku.cpp:436
+#: src/gui/ksudoku.cpp:438
 #, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "開始遊戲"
 
-#: src/gui/ksudoku.cpp:437
+#: src/gui/ksudoku.cpp:439
 #, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "遊玩"
 
-#: src/gui/ksudoku.cpp:476
+#: src/gui/ksudoku.cpp:478
 #, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "啟用所有訊息"
 
-#: src/gui/ksudoku.cpp:493
+#: src/gui/ksudoku.cpp:495
 #, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "檢查"
 
-#: src/gui/ksudoku.cpp:509
+#: src/gui/ksudoku.cpp:511
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "恐怖的"
 
-#: src/gui/ksudoku.cpp:511
+#: src/gui/ksudoku.cpp:513
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "不限制"
 
-#: src/gui/ksudoku.cpp:522
+#: src/gui/ksudoku.cpp:524
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "困難度："
 
-#: src/gui/ksudoku.cpp:526
+#: src/gui/ksudoku.cpp:528
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "對稱性："
 
-#: src/gui/ksudoku.cpp:530
+#: src/gui/ksudoku.cpp:532
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "對稱性"
 
-#: src/gui/ksudoku.cpp:532
+#: src/gui/ksudoku.cpp:534
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr "遊戲開始時的線索的對稱性"
 
-#: src/gui/ksudoku.cpp:534
+#: src/gui/ksudoku.cpp:536
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "對角線"
 
-#: src/gui/ksudoku.cpp:535
+#: src/gui/ksudoku.cpp:537
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "中央"
 
-#: src/gui/ksudoku.cpp:536
+#: src/gui/ksudoku.cpp:538
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "左-右"
 
-#: src/gui/ksudoku.cpp:537
+#: src/gui/ksudoku.cpp:539
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "螺旋"
 
-#: src/gui/ksudoku.cpp:538
+#: src/gui/ksudoku.cpp:540
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "四方"
 
-#: src/gui/ksudoku.cpp:539
+#: src/gui/ksudoku.cpp:541
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "隨機選擇"
 
-#: src/gui/ksudoku.cpp:540
+#: src/gui/ksudoku.cpp:542
 #, kde-format
 msgid "No Symmetry"
 msgstr "不對稱"
 
-#: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
+#: src/gui/ksudoku.cpp:646 src/gui/ksudoku.cpp:705
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr "載入遊戲時發生錯誤"
 
-#: src/gui/ksudoku.cpp:660
+#: src/gui/ksudoku.cpp:662
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr "您確定要結束此遊戲並開始新遊戲嗎？"
 
-#: src/gui/ksudoku.cpp:661
+#: src/gui/ksudoku.cpp:663
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
 msgstr "新的遊戲"
 
-#: src/gui/ksudoku.cpp:662
+#: src/gui/ksudoku.cpp:664
 #, kde-format
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "新的遊戲"
 
-#: src/gui/ksudoku.cpp:679
+#: src/gui/ksudoku.cpp:681
 #, kde-format
 msgid "Do you really want to restart this game?"
 msgstr "您確定要重新開始遊戲嗎？"
 
-#: src/gui/ksudoku.cpp:680
+#: src/gui/ksudoku.cpp:682
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "重新開始遊戲"
 
-#: src/gui/ksudoku.cpp:681
+#: src/gui/ksudoku.cpp:683
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "重新開始遊戲"
 
-#: src/gui/ksudoku.cpp:730
+#: src/gui/ksudoku.cpp:732
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "寫入檔案錯誤"
 
-#: src/gui/ksudoku.cpp:752
+#: src/gui/ksudoku.cpp:754
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "似乎沒有題目要印。"
 
-#: src/gui/ksudoku.cpp:789
+#: src/gui/ksudoku.cpp:791
 #, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "遊戲"
 
-#: src/gui/ksudoku.cpp:790
+#: src/gui/ksudoku.cpp:792
 #, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "主題"
 
-#: src/gui/ksudoku.cpp:822
+#: src/gui/ksudoku.cpp:824
 #, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
@@ -738,13 +738,13 @@ msgstr ""
 "請記住，生成這種類型的題目會比其他種類的久。在這段時間內，KSudoku 將不會有回"
 "應。"
 
-#: src/gui/ksudoku.cpp:829
+#: src/gui/ksudoku.cpp:831
 #, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "警告"
 
-#: src/gui/ksudoku.cpp:869
+#: src/gui/ksudoku.cpp:871
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -756,7 +756,7 @@ msgstr ""
 "\n"
 "仍然繼續？"
 
-#: src/gui/ksudoku.cpp:873
+#: src/gui/ksudoku.cpp:875
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-02 00:37+0000\n"
+"POT-Creation-Date: 2024-05-05 00:37+0000\n"
 "PO-Revision-Date: 2013-07-05 22:27+0300\n"
 "Last-Translator: Dimitris Kardarakos <dimkard@gmail.com>\n"
 "Language-Team: Greek <kde-i18n-el@kde.org>\n"
@@ -404,47 +404,47 @@ msgstr "Το sudoku Rox 3D"
 msgid "Missing Variant Name"
 msgstr "Λείπει όνομα παραλλαγής"
 
-#: src/gui/ksudoku.cpp:219
+#: src/gui/ksudoku.cpp:221
 #, kde-format
 msgid "Sudoku 16x16"
 msgstr "Sudoku 16x16"
 
-#: src/gui/ksudoku.cpp:220
+#: src/gui/ksudoku.cpp:222
 #, kde-format
 msgid "Sudoku with 16 symbols"
 msgstr "Sudoku με 16 σύμβολα"
 
-#: src/gui/ksudoku.cpp:222
+#: src/gui/ksudoku.cpp:224
 #, kde-format
 msgid "Sudoku 25x25"
 msgstr "Sudoku 25x25"
 
-#: src/gui/ksudoku.cpp:223
+#: src/gui/ksudoku.cpp:225
 #, kde-format
 msgid "Sudoku with 25 symbols"
 msgstr "Sudoku με 25 σύμβολα"
 
-#: src/gui/ksudoku.cpp:226
+#: src/gui/ksudoku.cpp:228
 #, kde-format
 msgid "Roxdoku 16 (4x4x4)"
 msgstr "Roxdoku 16 (4x4x4)"
 
-#: src/gui/ksudoku.cpp:227
+#: src/gui/ksudoku.cpp:229
 #, kde-format
 msgid "The Rox 3D sudoku with 16 symbols"
 msgstr "Το Rox 3D sudoku με 16 σύμβολα"
 
-#: src/gui/ksudoku.cpp:229
+#: src/gui/ksudoku.cpp:231
 #, kde-format
 msgid "Roxdoku 25 (5x5x5)"
 msgstr "Roxdoku 25 (5x5x5)"
 
-#: src/gui/ksudoku.cpp:230
+#: src/gui/ksudoku.cpp:232
 #, kde-format
 msgid "The Rox 3D sudoku with 25 symbols"
 msgstr "Το Rox 3D sudoku με 25 σύμβολα"
 
-#: src/gui/ksudoku.cpp:276
+#: src/gui/ksudoku.cpp:278
 #, kde-format
 msgid ""
 "Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
@@ -463,12 +463,12 @@ msgid ""
 "size by using KSudoku's Difficulty button."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:295
+#: src/gui/ksudoku.cpp:297
 #, kde-format
 msgid "Playing Mathdoku"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:299
+#: src/gui/ksudoku.cpp:301
 #, kde-format
 msgid ""
 "Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
@@ -484,12 +484,12 @@ msgid ""
 "size by using KSudoku's Difficulty button."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:313
+#: src/gui/ksudoku.cpp:315
 #, kde-format
 msgid "Playing Killer Sudoku"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:317
+#: src/gui/ksudoku.cpp:319
 #, kde-format
 msgid ""
 "Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
@@ -518,168 +518,168 @@ msgid ""
 "have probably made an error somewhere in one of the cages."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:347
+#: src/gui/ksudoku.cpp:349
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:403
+#: src/gui/ksudoku.cpp:405
 #, kde-format
 msgid "The puzzle you entered contains some errors."
 msgstr "Το παζλ στο οποίο μπήκατε περιέχει κάποια σφάλματα."
 
-#: src/gui/ksudoku.cpp:416
+#: src/gui/ksudoku.cpp:418
 #, kde-format
 msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:419 src/gui/ksudoku.cpp:426 src/gui/ksudoku.cpp:432
+#: src/gui/ksudoku.cpp:421 src/gui/ksudoku.cpp:428 src/gui/ksudoku.cpp:434
 #, fuzzy, kde-format
 #| msgid "Play Puzzle"
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Παίξιμο παζλ"
 
-#: src/gui/ksudoku.cpp:424
+#: src/gui/ksudoku.cpp:426
 #, fuzzy, kde-format
 #| msgid "The Puzzle you entered has multiple solutions."
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr "Το παζλ στο οποίο μπήκατε έχει πολλαπλές λύσεις."
 
-#: src/gui/ksudoku.cpp:429
+#: src/gui/ksudoku.cpp:431
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:435
+#: src/gui/ksudoku.cpp:437
 #, fuzzy, kde-format
 #| msgid "Do you want to play the puzzle now?"
 msgid "Do you wish to play the puzzle now?"
 msgstr "Επιθυμείτε να παίξετε το παζλ τώρα;"
 
-#: src/gui/ksudoku.cpp:436
+#: src/gui/ksudoku.cpp:438
 #, fuzzy, kde-format
 #| msgid "Play Puzzle"
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Παίξιμο παζλ"
 
-#: src/gui/ksudoku.cpp:437
+#: src/gui/ksudoku.cpp:439
 #, fuzzy, kde-format
 #| msgid "Play"
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Παιχνίδι"
 
-#: src/gui/ksudoku.cpp:476
+#: src/gui/ksudoku.cpp:478
 #, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:493
+#: src/gui/ksudoku.cpp:495
 #, fuzzy, kde-format
 #| msgid "Check"
 msgctxt "@action"
 msgid "Check"
 msgstr "Έλεγχος"
 
-#: src/gui/ksudoku.cpp:509
+#: src/gui/ksudoku.cpp:511
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "Διαβολικό"
 
-#: src/gui/ksudoku.cpp:511
+#: src/gui/ksudoku.cpp:513
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "Χωρίς όριο"
 
-#: src/gui/ksudoku.cpp:522
+#: src/gui/ksudoku.cpp:524
 #, fuzzy, kde-format
 #| msgid "Difficulty"
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "Δυσκολία"
 
-#: src/gui/ksudoku.cpp:526
+#: src/gui/ksudoku.cpp:528
 #, fuzzy, kde-format
 #| msgid "Symmetry"
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "Συμμετρία"
 
-#: src/gui/ksudoku.cpp:530
+#: src/gui/ksudoku.cpp:532
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "Συμμετρία"
 
-#: src/gui/ksudoku.cpp:532
+#: src/gui/ksudoku.cpp:534
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr ""
 "Η συμμετρία της διάταξης των στοιχείων υπόδειξης κατά την εκκίνηση του παζλ"
 
-#: src/gui/ksudoku.cpp:534
+#: src/gui/ksudoku.cpp:536
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "Διαγώνια"
 
-#: src/gui/ksudoku.cpp:535
+#: src/gui/ksudoku.cpp:537
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "Στο κέντρο"
 
-#: src/gui/ksudoku.cpp:536
+#: src/gui/ksudoku.cpp:538
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "Αριστερά-Δεξιά"
 
-#: src/gui/ksudoku.cpp:537
+#: src/gui/ksudoku.cpp:539
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "Σπειροειδής"
 
-#: src/gui/ksudoku.cpp:538
+#: src/gui/ksudoku.cpp:540
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "Τεσσάρων κατευθύνσεων"
 
-#: src/gui/ksudoku.cpp:539
+#: src/gui/ksudoku.cpp:541
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "Τυχαία επιλογή"
 
-#: src/gui/ksudoku.cpp:540
+#: src/gui/ksudoku.cpp:542
 #, kde-format
 msgid "No Symmetry"
 msgstr "Χωρίς συμμετρία"
 
-#: src/gui/ksudoku.cpp:644 src/gui/ksudoku.cpp:703
+#: src/gui/ksudoku.cpp:646 src/gui/ksudoku.cpp:705
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:660
+#: src/gui/ksudoku.cpp:662
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr ""
 "Επιθυμείτε πραγματικά τον τερματισμό του παιχνιδιού για την έναρξη νέου;"
 
-#: src/gui/ksudoku.cpp:661
+#: src/gui/ksudoku.cpp:663
 #, fuzzy, kde-format
 #| msgctxt "Game Section in Config"
 #| msgid "Game"
@@ -687,7 +687,7 @@ msgctxt "window title"
 msgid "New Game"
 msgstr "Παιχνίδι"
 
-#: src/gui/ksudoku.cpp:662
+#: src/gui/ksudoku.cpp:664
 #, fuzzy, kde-format
 #| msgctxt "Game Section in Config"
 #| msgid "Game"
@@ -695,20 +695,20 @@ msgctxt "@action:button"
 msgid "New Game"
 msgstr "Παιχνίδι"
 
-#: src/gui/ksudoku.cpp:679
+#: src/gui/ksudoku.cpp:681
 #, fuzzy, kde-format
 #| msgid "Do you really want to end this game in order to start a new one?"
 msgid "Do you really want to restart this game?"
 msgstr ""
 "Επιθυμείτε πραγματικά τον τερματισμό του παιχνιδιού για την έναρξη νέου;"
 
-#: src/gui/ksudoku.cpp:680
+#: src/gui/ksudoku.cpp:682
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "Επανεκκίνηση παιχνιδιού"
 
-#: src/gui/ksudoku.cpp:681
+#: src/gui/ksudoku.cpp:683
 #, fuzzy, kde-format
 #| msgctxt "window title"
 #| msgid "Restart Game"
@@ -716,18 +716,18 @@ msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Επανεκκίνηση παιχνιδιού"
 
-#: src/gui/ksudoku.cpp:730
+#: src/gui/ksudoku.cpp:732
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:752
+#: src/gui/ksudoku.cpp:754
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "Φαίνεται πως δεν υπάρχει παζλ για εκτύπωση."
 
-#: src/gui/ksudoku.cpp:789
+#: src/gui/ksudoku.cpp:791
 #, fuzzy, kde-format
 #| msgctxt "Game Section in Config"
 #| msgid "Game"
@@ -735,14 +735,14 @@ msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Παιχνίδι"
 
-#: src/gui/ksudoku.cpp:790
+#: src/gui/ksudoku.cpp:792
 #, fuzzy, kde-format
 #| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Θέμα"
 
-#: src/gui/ksudoku.cpp:822
+#: src/gui/ksudoku.cpp:824
 #, fuzzy, kde-format
 #| msgid ""
 #| "Warning: The Unlimited difficulty level has no limit on how many guesses "
@@ -760,14 +760,14 @@ msgstr ""
 "μαντεψιές ή σημεία διακλάδωσης απαιτούνται για την επίλυση του παζλ και δεν "
 "υπάρχει και ελάχιστο όριο για το πόσο σύντομα θα απαιτηθεί να μαντέψετε."
 
-#: src/gui/ksudoku.cpp:829
+#: src/gui/ksudoku.cpp:831
 #, fuzzy, kde-format
 #| msgid "Warning"
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Προειδοποίηση"
 
-#: src/gui/ksudoku.cpp:869
+#: src/gui/ksudoku.cpp:871
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -776,7 +776,7 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:873
+#: src/gui/ksudoku.cpp:875
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
