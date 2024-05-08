@@ -1212,17 +1212,3 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "Dokument som skal opnast"
-
-#~ msgid "Could not load game."
-#~ msgstr "Klarte ikkje lasta spel."
-
-#~ msgctxt "button label"
-#~ msgid "New Game"
-#~ msgstr "Nytt spel"
-
-#~ msgctxt "button label"
-#~ msgid "Restart Game"
-#~ msgstr "Start spelet på nytt"
-
-#~ msgid "Open Location"
-#~ msgstr "Opna plassering"

@@ -33,15 +33,13 @@ msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr "差不多200次生成谜题的尝试都失败了。再试试？"
 
 #: src/generator/sudokuboard.cpp:125
-#, fuzzy, kde-format
-#| msgid "Mathdoku or Killer Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "Mathdoku 或者 Killer 数独谜题"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "重试(&T)"
@@ -75,15 +73,13 @@ msgstr ""
 
 #: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
 #: src/generator/sudokuboard.cpp:266
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "难度级别"
 
 #: src/generator/sudokuboard.cpp:231
-#, fuzzy, kde-format
-#| msgid "&Accept"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Accept"
 msgstr "接受(&A)"
@@ -102,8 +98,7 @@ msgstr ""
 "内部难度分为 %1，初始给出 %2 个提示数，理论上 %3 步就可解决。"
 
 #: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
-#, fuzzy, kde-format
-#| msgid "&Retry"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
 msgstr "重试(&R)"
@@ -535,8 +530,7 @@ msgid ""
 msgstr "抱歉，你输入的谜题无解。请检查你输入的谜题是否正确。"
 
 #: src/gui/ksudoku.cpp:421 src/gui/ksudoku.cpp:428 src/gui/ksudoku.cpp:434
-#, fuzzy, kde-format
-#| msgid "Check Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "检查谜题"
@@ -559,29 +553,25 @@ msgid "Do you wish to play the puzzle now?"
 msgstr "您现在想要玩这个谜题吗？"
 
 #: src/gui/ksudoku.cpp:438
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "玩拼图"
 
 #: src/gui/ksudoku.cpp:439
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "玩游戏"
 
 #: src/gui/ksudoku.cpp:478
-#, fuzzy, kde-format
-#| msgid "Enable all messages"
+#, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
-msgstr "打开所有信息显示"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:495
-#, fuzzy, kde-format
-#| msgid "Check"
+#, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "检查"
@@ -663,11 +653,10 @@ msgid "No Symmetry"
 msgstr "无对称"
 
 #: src/gui/ksudoku.cpp:646 src/gui/ksudoku.cpp:705
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr "区错误"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:662
 #, kde-format
@@ -681,9 +670,7 @@ msgid "New Game"
 msgstr "新游戏"
 
 #: src/gui/ksudoku.cpp:664
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "新游戏"
@@ -700,16 +687,13 @@ msgid "Restart Game"
 msgstr "重新开始游戏"
 
 #: src/gui/ksudoku.cpp:683
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "重新开始游戏"
 
 #: src/gui/ksudoku.cpp:732
-#, fuzzy, kde-format
-#| msgid "Error Writing File"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "写入文件错误"
@@ -720,16 +704,13 @@ msgid "There seems to be no puzzle to print."
 msgstr "似乎没有可以打印的谜题。"
 
 #: src/gui/ksudoku.cpp:791
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "游戏"
 
 #: src/gui/ksudoku.cpp:792
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "主题"
@@ -751,8 +732,7 @@ msgstr ""
 "停止响应。"
 
 #: src/gui/ksudoku.cpp:831
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "警告"
@@ -795,8 +775,7 @@ msgid ""
 msgstr "在杀手数独中，运算符总是 + 或为空。KSudoku 自动设置正确的选择。"
 
 #: src/gui/ksudokugame.cpp:377
-#, fuzzy, kde-format
-#| msgid "Killer Sudoku Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "杀手数独区"
@@ -809,8 +788,7 @@ msgstr "您选择的单元格已在区中使用。"
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
 #: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "区错误"
@@ -860,8 +838,7 @@ msgstr "你想要删除此区吗？"
 
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
-#, fuzzy, kde-format
-#| msgid "Delete Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "删除区"
@@ -932,8 +909,7 @@ msgid "KSudoku has sent output to your printer."
 msgstr "KSudoku 已将谜题输出到您的打印机。"
 
 #: src/gui/puzzleprinter.cpp:121
-#, fuzzy, kde-format
-#| msgid "Print Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "打印数独谜题"
@@ -969,57 +945,49 @@ msgid "Unable to upload file."
 msgstr "无法上传文件。"
 
 #: src/gui/views/gameactions.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "选择 %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, fuzzy, kde-format
-#| msgid "Enter %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "输入 %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, fuzzy, kde-format
-#| msgid "Mark %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "标记 %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
-#| msgid "Move Up"
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
 msgstr "上移"
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
-#| msgid "Move Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
 msgstr "下移"
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
 msgstr "左移"
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
 msgstr "右移"
 
 #: src/gui/views/gameactions.cpp:123
-#, fuzzy, kde-format
-#| msgid "Clear Cell"
+#, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
 msgstr "清除单元"
@@ -1038,11 +1006,10 @@ msgstr "请选择谜题的种类。"
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
-#| msgid "Unable to start puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
-msgstr "无法启动谜题"
+msgstr ""
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
@@ -1162,17 +1129,3 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "打开文档"
-
-#~ msgid "Could not load game."
-#~ msgstr "无法加载游戏。"
-
-#~ msgctxt "button label"
-#~ msgid "New Game"
-#~ msgstr "新游戏"
-
-#~ msgctxt "button label"
-#~ msgid "Restart Game"
-#~ msgstr "重新开始游戏"
-
-#~ msgid "Open Location"
-#~ msgstr "打开位置"
