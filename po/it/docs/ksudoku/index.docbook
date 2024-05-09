@@ -222,7 +222,7 @@
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
->Configura &ksudoku;...</guimenuitem
+>Configura &ksudoku;…</guimenuitem
 ></menuchoice
 > per disattivarla.</para>
 
@@ -390,7 +390,7 @@
 ><guimenu
 >Partita</guimenu
 > <guimenuitem
->Stampa...</guimenuitem
+>Stampa…</guimenuitem
 ></menuchoice
 >.</para
 ></listitem>
@@ -459,7 +459,7 @@
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
->Configura &ksudoku;...</guimenuitem
+>Configura &ksudoku;…</guimenuitem
 ></menuchoice
 >, per evidenziare gli errori.</para
 ></listitem>
@@ -604,7 +604,7 @@
 > <guimenu
 >Partita</guimenu
 > <guimenuitem
->Carica...</guimenuitem
+>Carica…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -642,7 +642,7 @@
 ><guimenu
 >Partita</guimenu
 > <guimenuitem
->Salva come...</guimenuitem
+>Salva come…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -664,7 +664,7 @@
 > <guimenu
 >Partita</guimenu
 > <guimenuitem
->Stampa</guimenuitem
+>Stampa…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -816,7 +816,7 @@
 ><guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Configura &ksudoku;...</guimenuitem
+>Configura &ksudoku;…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -862,7 +862,7 @@
 ><guimenu
 >Impostazioni</guimenu
 ><guimenuitem
->Configura &ksudoku;...</guimenuitem
+>Configura &ksudoku;…</guimenuitem
 ></menuchoice
 > nella barra dei menu.</para
 ></answer>
