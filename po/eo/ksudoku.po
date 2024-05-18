@@ -1,15 +1,15 @@
 # Translation of ksudoku into esperanto.
 # Copyright (C) 2009 Free Software Foundation, Inc.
 # Axel Rousseau <axel@esperanto-jeunes.org>, 2009.
-# Oliver Kellogg <okellogg@users.sourceforge.net>, 2023.
+# Oliver Kellogg <olivermkellogg@gmail.com>, 2023.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-02-21 00:36+0000\n"
-"PO-Revision-Date: 2024-03-28 10:37+0100\n"
-"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
+"PO-Revision-Date: 2024-05-02 23:45+0100\n"
+"Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr "Emmanuelle Richard,Oliver Kellogg"
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "emmanuelle@esperanto-jeunes.org,okellogg@users.sourceforge.net"
+msgstr "emmanuelle@esperanto-jeunes.org,olivermkellogg@gmail.com"
 
 #: src/generator/sudokuboard.cpp:123
 #, kde-format
@@ -37,7 +37,7 @@ msgstr ""
 #: src/generator/sudokuboard.cpp:125
 #, kde-format
 msgid "Mathdoku or Killer Sudoku Puzzle"
-msgstr "Mathdoku aŭ Killer Sudoku-Puzlo"
+msgstr "Mathdoku aŭ Killer Sudoku-Enigmo"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:229
 #, kde-format
@@ -83,7 +83,7 @@ msgstr "Nivelo de malfacilaĵo"
 #: src/generator/sudokuboard.cpp:229
 #, kde-format
 msgid "&Accept"
-msgstr "&Akceptu"
+msgstr "&Akcepti"
 
 #: src/generator/sudokuboard.cpp:241
 #, kde-format
@@ -132,7 +132,7 @@ msgstr "Presante, provu alĝustigi pli ol unu enigmon sur paĝo"
 #: src/gui/configgame.ui:43
 #, kde-format
 msgid "Highlight the row, column and block that contain the selected cell"
-msgstr "Marku la vicon, kolumnon kaj blokon, kiuj enhavas la elektitan ĉelon"
+msgstr "Marki la vicon, kolumnon kaj blokon, kiuj enhavas la elektitan ĉelon"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:46
@@ -141,14 +141,14 @@ msgid ""
 "Highlight the row, column and block that contain the selected cell. Blocks "
 "may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
 msgstr ""
-"Marku la vicon, kolumnon kaj blokon, kiuj enhavas la elektitan ĉelon. Blokoj "
+"Marki la vicon, kolumnon kaj blokon, kiuj enhavas la elektitan ĉelon. Blokoj "
 "povas esti kvadrataj aŭ neregulaj (kiel en puzlo-specaj aŭ XSudoku-enigmoj)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:49
 #, kde-format
 msgid "Show highlights in 2-D puzzles"
-msgstr "Montru kulminaĵojn en 2-D enigmoj"
+msgstr "Montri kulminaĵojn en 2-D enigmoj"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -156,7 +156,7 @@ msgstr "Montru kulminaĵojn en 2-D enigmoj"
 #, kde-format
 msgid "Highlight in red any cells whose values break the Sudoku rules."
 msgstr ""
-"Marku ruĝe iujn ajn ĉelojn, kies valoroj malobeas la regulojn de Sudoku."
+"Marki ruĝe iujn ajn ĉelojn, kies valoroj malobeas la regulojn de Sudoku."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
 #: src/gui/configgame.ui:62
@@ -356,7 +356,7 @@ msgstr "Gratulon! Vi finis ĝin en %1 kaj %2."
 #: src/gui/ksudoku.cpp:178
 #, kde-format
 msgid "Sudoku Standard (9x9)"
-msgstr "Standarda Sudoko (9x9)"
+msgstr "Norma Sudoko (9x9)"
 
 #: src/gui/ksudoku.cpp:179
 #, kde-format
@@ -486,7 +486,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:313
 #, kde-format
 msgid "Playing Killer Sudoku"
-msgstr "Ludante Killer Sudoku"
+msgstr "Ludante Killer-Sudoku"
 
 #: src/gui/ksudoku.cpp:317
 #, kde-format
@@ -564,7 +564,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:418 src/gui/ksudoku.cpp:424 src/gui/ksudoku.cpp:429
 #, kde-format
 msgid "Check Puzzle"
-msgstr "Kontrolu Puzlon"
+msgstr "Kontroli Puzlon"
 
 #: src/gui/ksudoku.cpp:423
 #, kde-format
@@ -813,7 +813,7 @@ msgstr ""
 #: src/gui/ksudokugame.cpp:377
 #, kde-format
 msgid "Killer Sudoku Cage"
-msgstr "Killer Sudoku Kaĝo"
+msgstr "Killer-Sudoku Kaĝo"
 
 #: src/gui/ksudokugame.cpp:422
 #, kde-format
@@ -956,7 +956,7 @@ msgstr "KSudoku sendis eliron al via presilo."
 #: src/gui/puzzleprinter.cpp:121
 #, kde-format
 msgid "Print Sudoku Puzzle"
-msgstr "Presi Sudoku-Puzlon"
+msgstr "Presi Sudoku-Enigmon"
 
 #: src/gui/serializer.cpp:399
 #, kde-format
@@ -1079,13 +1079,13 @@ msgstr "Akiri novan"
 #: src/gui/welcomescreen.ui:48
 #, kde-format
 msgid "Enter In A Puzzle"
-msgstr "Eniri En Puzlo"
+msgstr "Eniri En Enigmo"
 
 #. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
 #: src/gui/welcomescreen.ui:55
 #, kde-format
 msgid "Generate A Puzzle"
-msgstr "Generi Puzlon"
+msgstr "Generi Enigmon"
 
 #: src/main.cpp:47
 #, kde-format
