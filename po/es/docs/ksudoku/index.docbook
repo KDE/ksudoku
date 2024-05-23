@@ -96,6 +96,20 @@
 ><contrib
 >Traductora</contrib
 ></othercredit
+> <othercredit role="translator"
+><firstname
+>Eloy</firstname
+> <surname
+>Cuadra</surname
+> <affiliation
+><address
+><email
+>ecuadra@eloihr.net</email
+></address
+></affiliation
+> <contrib
+>Corrección de la traducción</contrib
+></othercredit
 > 
 </authorgroup>
 
@@ -124,7 +138,7 @@
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
 	<para
->Esta documentación describe el juego &ksudoku;, un rompecabezas lógico de colocación de símbolos.</para>
+>Esta documentación describe el juego &ksudoku;, un rompecabezas de colocación de símbolos basado en la lógica.</para>
 </abstract>
 
 <!--List of relevant keywords-->
@@ -177,20 +191,20 @@
 ></note>
 
 <para
->&ksudoku; es un rompecabezas de lógica basado en símbolos.</para>
+>&ksudoku; es un rompecabezas de colocación de símbolos basado en la lógica.</para>
 
 <para
->El jugador tiene que rellenar una rejilla con símbolos de forma que cada columna, fila y bloque del tablero de juego contenga solo un ejemplar de cada símbolo. En &ksudoku; los símbolos son habitualmente los números del 1 al 9, pero también las letras A a P o A a Y en rompecabezas más grandes. Los rompecabezas empiezan con el tablero parcialmente rellenado y su trabajo es rellenar el resto. Algunos tipos de rompecabezas tienen menos de nueve símbolos.</para>
+>El jugador tiene que llenar una cuadrícula con símbolos para que cada columna, fila y bloque del tablero de juego contenga solo una ejemplar de cada símbolo. En &ksudoku;, los símbolos suelen ser los números del 1 al 9, pero también las letras de la A a la P o de la A a la Y en rompecabezas más grandes. Los rompecabezas empiezan con el tablero parcialmente rellenado y tu trabajo consiste en rellenar el resto. Algunos tipos de rompecabezas tienen menos de nueve símbolos.</para>
 
 <para
->Cuando empieza un juego, puede elegir entre diversos tipos y tamaños de Sudoku. Además, puede hacer que &ksudoku; genere un rompecabezas para que usted lo resuelva o puede comenzar con un tablero vacío e introducir un rompecabezas de otra fuente, como un periódico, y después hacer que &ksudoku; lo compruebe y tal vez lo resuelva.</para>
+>Cuando empiezas una partida, puedes elegir entre diversos tipos y tamaños de sudokus. Además, puedes hacer que &ksudoku; genere un rompecabezas para que lo resuelvas o puedes empezar con un tablero vacío e introducir un rompecabezas de otra fuente, como un periódico, y luego hacer que &ksudoku; lo compruebe y tal vez lo resuelva.</para>
 
 <para
->Existen muchas variantes del Sudoku y &ksudoku; proporciona una buena selección de ellas. El tipo más común, el Sudoku estándar, tiene una rejilla de 9x9 y usa la numeración arábiga del 1 al 9 como símbolos. La rejilla tiene 9 filas y 9 columnas y se divide en 9 bloques de 3x3 cuadrados. El problema es que cada símbolo solo puede usarse una vez por fila, columna o bloque.</para>
+>Existen muchas variantes del sudoku y &ksudoku; proporciona una buena selección de ellas. El tipo más común, el sudoku estándar, tiene una cuadrícula de 9x9 y usa números arábigos del 1 al 9 como símbolos. La cuadrícula tiene 9 filas y 9 columnas, y se divide en 9 bloques de 3x3 cuadros. El problema es que cada símbolo solo se puede usar una vez por fila, columna o bloque.</para>
 
 	<note
 ><para
->Lleva tiempo y concentración completar cada partida. No obstante, resolver los rompecabezas de Sudoku le ayuda a incrementar la actividad cerebral total y por ello es altamente recomendado.</para
+>Completar una partida requiere tiempo y concentración. No obstante, resolver rompecabezas de sudoku te ayuda a aumentar la actividad cerebral total, por lo que es un pasatiempos altamente recomendable.</para
 ></note>
 </chapter>
 
@@ -203,36 +217,36 @@
 ><title
 >Objetivo:</title
 ><para
->Rellene la rejilla de forma que cada columna, fila y bloque en el campo de juego contenga solo un ejemplar de cada símbolo.</para
+>Rellena la cuadrícula de forma que cada columna, fila y bloque del campo de juego contenga solo un ejemplar de cada símbolo.</para
 ></note>
 
 <para
->Cuando comienza el juego se le pide que elija el tipo de juego y el tamaño del tablero en el que está interesado. Puede introducir un rompecabezas desde otra fuente o hacer que &ksudoku; lo genere. El generador tiene varias preferencias de seguridad y de simetría, que afectan a la forma en la que se genera el rompecabezas. Su experiencia de juego dependerá de cuáles de estas opciones escoja.</para>
+>Cuando comienza el juego se te pide que elijas el tipo de juego y el tamaño del tablero que prefieras. Puedes introducir un rompecabezas desde otra fuente o hacer que &ksudoku; lo genere. El generador tiene varias preferencias de dificultad y de simetría, que afectan a la forma en la que se genera el rompecabezas. Tu experiencia de juego dependerá de las opciones que escojas.</para>
 
 <para
->Cuando aparece el tablero del rompecabezas, mire al lado izquierdo. Hay una lista de selección que contiene todos los símbolos disponibles para el juego actual. El conjunto de símbolos depende del tamaño del juego que elija. Los juegos pueden tener 4, 9, 16 o 25 símbolos. Los dos primeros conjuntos utilizan los números del 1 al 4 o del 1 al 9; los otros usan las letras de la A a la P o de la A a la Y.</para>
+>Cuando aparezca el tablero del rompecabezas, observa el lado izquierdo. Verás una lista de selección que contiene todos los símbolos disponibles para el juego actual. El conjunto de símbolos depende del tamaño del juego que elijas. Los juegos pueden tener 4, 9, 16 o 25 símbolos. Los dos primeros conjuntos usan los números del 1 al 4 o del 1 al 9; los otros usan las letras de la A a la P o de la A a la Y.</para>
 
 <para
->En primer lugar, observe los límites del campo de juego. Las líneas negras gruesas dibujan el contorno de los bloques. Cada uno de estos bloques debe completarse utilizando los símbolos disponibles, de forma que cada símbolo se utilice en cada sector una y solo una vez. Lo mismo se aplica para las filas y las columnas del tablero.</para>
+>En primer lugar, observa los límites del tablero de juego. Las líneas negras gruesas dibujan el contorno de los bloques. Cada uno de estos bloques debe completarse usando los símbolos disponibles, de forma que cada símbolo se emplee en cada sector una única vez. Lo mismo se aplica para las filas y las columnas del tablero.</para>
 
 <para
->Ahora puede empezar a introducir los símbolos en los cuadrados vacíos del tablero. Para hacerlo, seleccione el símbolo que desea introducir de la lista de selección a la izquierda, y después use el ratón para hacer clic en un cuadrado vacío en el tablero. De forma alternativa, puede deslizar el ratón sobre un cuadrado vacío y utilizar el teclado para introducir un símbolo.</para>
+>Ya puedes empezar a introducir los símbolos en los cuadros vacíos del tablero. Para ello, selecciona primero el símbolo que quieras introducir en la lista de selección de la izquierda, y usa después el ratón para hacer clic en un cuadro vacío del tablero. De forma alternativa, puedes situar el ratón sobre un cuadrado vacío y usar el teclado para introducir un símbolo.</para>
 
 <para
->En los rompecabezas Roxdoku (tridimensionales), use siempre el ratón para darle a un cubo un valor, y haga <emphasis
+>En los rompecabezas Roxdoku (tridimensionales), usa siempre el ratón para darle a un cubo un valor, y haz <emphasis
 >doble clic</emphasis
->. Cuando rote el cubo grande haciendo clic y arrastrando con el ratón, es más fácil ver qué valores están en los cubos pequeños del fondo si hace clic <emphasis
+>. Cuando rotes el cubo grande haciendo clic y arrastrando con el ratón, es más fácil ver los valores que están en los cubos pequeños del fondo si haces clic <emphasis
 >entre</emphasis
-> los cubos pequeños, no sobre ellos.</para>
+> los cubos pequeños, en lugar de en ellos.</para>
 
 <para
->A veces es útil introducir marcas o notas, que son pequeños símbolos dentro de un cuadrado. No influyen en la solución, pero puede ayudarle a hacer un seguimiento de ideas que haya tenido, especialmente cuando hay opción entre dos alternativas y aún no tiene bastante información para decidir entre ellas. Para introducir un marcador o una nota, haga clic con el &RMB; o mantenga pulsada la tecla &Shift; cuando use el teclado.</para>
+>A veces resulta útil introducir marcas o notas, que son pequeños símbolos dentro de un cuadro. No influye en la solución, pero puede ayudarte a hacer un seguimiento de las ideas que hayas tenido, especialmente cuando hay dudas entre dos alternativas y aún no tiene bastante información para decidir entre ellas. Para introducir un marcador o una nota, haz clic con el &RMB; o mantén pulsada la tecla &Shift; cuando uses el teclado.</para>
 
 <para
->Para limpiar los símbolos de un recuadro, deslícese sobre él con el ratón y pulse &Del; o &Backspace; en el teclado, o haga clic con el &RMB; en el recuadro.</para>
+>Para limpiar los símbolos de un cuadro, sitúa el ratón sobre él y pulsa &Del; o &Backspace; en el teclado, o haz clic con el &RMB; en el cuadro.</para>
 
 <para
->Observe que los cuadrados cambian de color mientras mantiene sobre ellos el ratón. Esto es para ayudarle a seguir las reglas de &ksudoku;. Utilice las líneas verticales y horizontales para comprobar si el símbolo que va a introducir en el hueco ya se está utilizando en alguna parte de la línea vertical u horizontal de las que forma parte el cuadrado. El coloreado también resalta el bloque que, como recordará, también debe contener un solo ejemplar de cada símbolo. Si no necesita el resaltado, puede usar la opción de menú <menuchoice
+>Observa que los cuadros cambian de color cuando sitúas el ratón sobre ellos. Esto te ayuda a seguir las reglas de &ksudoku;. Usa las líneas verticales y horizontales para comprobar si el símbolo que vas a introducir en el hueco ya se está usando en alguna parte de la línea vertical u horizontal de las que forma parte el cuadro. El color también resalta el bloque que, como recordarás, también debe contener un solo ejemplar de cada símbolo. Si no necesitas este resaltado, puedes usar la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
@@ -241,7 +255,7 @@
 > para desactivarlo.</para>
 
 <para
->Introduzca los símbolos de acuerdo con las reglas hasta que rellene el campo de juego. En este momento, &ksudoku; comprobará si todas las entradas son válidas o debe corregirlas, e incluso puede corregirlo o aceptar su solución.</para>
+>Introduce los símbolos de acuerdo con las reglas hasta que rellenes todo el tablero de juego. En este momento, &ksudoku; comprobará si todas las entradas son válidas y te corregirá o aceptará tu solución.</para>
 </chapter>
 
 <chapter id="rules_and_tips"
@@ -258,11 +272,11 @@
 	<itemizedlist>
 	<listitem
 ><para
->Dependiendo del tamaño del tablero de juego, del tipo de rompecabezas y del nivel de dificultad elegido, un rompecabezas de &ksudoku; puede tomar desde unos pocos minutos hasta varias horas para resolverse.</para
+>Según el tamaño del tablero de juego, el tipo de rompecabezas y el nivel de dificultad elegido, un rompecabezas de &ksudoku; se puede resolver en unos minutos o en varias horas.</para
 ></listitem>
 	<listitem
 ><para
->Cada cuadrado puede contener un único símbolo.</para
+>Cada cuadro debe contener un único símbolo.</para
 ></listitem>
 	<listitem
 ><para
@@ -274,7 +288,7 @@
 ></listitem>
 	<listitem
 ><para
->Cada bloque (tal y como se ha definido en el tablero de juego) puede contener cada símbolo una única vez</para
+>Cada bloque (tal y como se ha definido en el tablero de juego) puede contener cada símbolo una única vez.</para
 ></listitem>
 	</itemizedlist>
 
@@ -282,21 +296,21 @@
 ><title
 >Nota:</title
 ><para
->El conjunto de símbolos varía dependiendo del tamaño de juego que elija.</para
+>El conjunto de símbolos depende del tamaño de juego que elijas.</para
 ></note>
 
 	<itemizedlist>
 	<listitem
 ><para
->No se necesitan conocimientos de matemáticas o de idiomas para resolver los rompecabezas de &ksudoku;, aunque sí cierta habilidad aritmética para Killer Sudoku y Mathdoku.</para
+>No se necesitan conocimientos de matemáticas ni de idiomas para resolver los rompecabezas de &ksudoku;, aunque sí cierta habilidad aritmética para el «Killer Sudoku» y el «Mathdoku».</para
 ></listitem>
 	<listitem
 ><para
->Los símbolos que ya están en el tablero de juego cuando comienza el rompecabezas no se pueden cambiar.</para
+>Los símbolos que ya están en el tablero de juego cuando empieza el rompecabezas no se pueden cambiar.</para
 ></listitem>
 	<listitem
 ><para
->Solo puede modificar los símbolos que haya introducido previamente.</para
+>Solo puedes modificar los símbolos que hayas introducido previamente.</para
 ></listitem>
 	<listitem
 ><para
@@ -304,7 +318,7 @@
 ></listitem>
 	<listitem
 ><para
->Los rompecabezas que introduzca pueden no tener solución, o tener más de una solución, pero si son de una fuente publicada esto probablemente significa que ha cometido un error al introducir los datos.</para
+>Es posible que los rompecabezas que introduzcas no tengan solución o que tengan más de una, aunque, si son de una fuente publicada, probablemente signifique que has cometido un error al introducir los datos.</para
 ></listitem>
 	</itemizedlist>
 </sect1>
@@ -315,32 +329,32 @@
 
 <sect2 id="standard_sudoku"
 ><title
->Rompecabezas Sudoku</title>
+>Rompecabezas de sudoku</title>
 
 	<itemizedlist>
 	<listitem
 ><para
->El Sudoku estándar de 9x9 tiene 9 filas, 9 columnas y 9 bloques cuadrados de tamaño 3x3.</para
+>El sudoku estándar de 9x9 tiene 9 filas, 9 columnas y 9 bloques cuadrados de tamaño 3x3.</para
 ></listitem>
 	<listitem
 ><para
->Otros tamaños de Sudoku estándar son 4x4 (muy fácil), 16x16 y 25x25 (no tan fáciles).</para
+>Otros tamaños del sudoku estándar son 4x4 (muy fácil), 16x16 y 25x25 (no tan fáciles).</para
 ></listitem>
 	<listitem
 ><para
->Las variantes Puzzle y Azteca son iguales que el Sudoku estándar de 9x9, excepto que algunos bloques no son cuadrados.</para
+>Las variantes «Puzle» y «Azteca» son iguales que el sudoku estándar de 9x9, excepto que algunos bloques no son cuadrados.</para
 ></listitem>
 	<listitem
 ><para
->La variante XSudoku es exactamente igual que el Sudoku estándar, con un requisito adicional: las dos diagonales principales deben contener los símbolos 1 a 9 una y solo una vez. &ksudoku; resalta las diagonales para hacerlas más fácil de ver.</para
+>La variante «XSudoku» es exactamente igual que el sudoku estándar, con un requisito adicional: las dos diagonales principales deben contener los símbolos del 1 al 9 una única vez. &ksudoku; resalta las diagonales para hacerlas más fácil de ver.</para
 ></listitem>
 	<listitem
 ><para
->Las variantes Nonominó 9x9, Pentominó 5x5 y Tetrominó 4x4 son iguales que el Sudoku estándar, excepto que algunos bloques no son cuadrados.</para
+>Las variantes «Nonominó» 9x9, «Pentominó» 5x5 y «Tetrominó» 4x4 son iguales que el sudoku estándar, excepto que algunos bloques no son cuadrados.</para
 ></listitem>
 	<listitem
 ><para
->La variante de 6x6 es igual que el Sudoku estándar, excepto que los bloques son seis rectángulos de 3x2.</para
+>La variante de 6x6 es igual que el sudoku estándar, excepto que los bloques son seis rectángulos de 3x2.</para
 ></listitem>
 	</itemizedlist>
 </sect2>
@@ -352,19 +366,19 @@
 	<itemizedlist>
 	<listitem
 ><para
->El Sudoku Samurái consiste en cinco rompecabezas Sudoku estándar de 9x9 cuadrados cada uno, superponiéndose en las esquinas en cuatro bloques de 3x3. Cada uno de los cinco rompecabezas tiene 9 filas, 9 columnas y 9 bloques a resolver, y los símbolos de los cuadrados que se superponen deben ajustarse a las soluciones de los dos Sudokus estándares de 9x9.</para
+>El sudoku «Samurái» consiste en cinco rompecabezas de sudoku estándar de 9x9 cuadros cada uno que se superponen en las esquinas en cuatro bloques de 3x3. Cada uno de los cinco rompecabezas tiene 9 filas, 9 columnas y 9 bloques que se deben resolver, y los símbolos de los cuadros que se superponen deben ajustarse a las soluciones de los dos sudokus estándares de 9x9.</para
 ></listitem>
 	<listitem
 ><para
->El pequeño Sudoku Samurái contiene cinco rompecabezas Sudoku de 4x4 que se superponen en las esquinas en cuatro cuadrados. Cada uno de los cinco rompecabezas tiene 4 filas, 4 columnas y 4 bloques para resolver.</para
+>El sudoku «Pequeño Samurái» contiene cinco rompecabezas sudoku de 4x4 que se superponen en las esquinas en cuatro cuadros. Cada uno de los cinco rompecabezas tiene 4 filas, 4 columnas y 4 bloques para resolver.</para
 ></listitem>
 	<listitem
 ><para
->La variante del Molino de viento consta de cinco rompecabezas Sudoku estándares de 9x9, que se superponen en las esquinas con dos bloques de 3x3. Es semejante al Sudoku Samurái, aunque el Sudoku central de 9x9 es más difícil de ver. Ocho de sus bloques de 3x3 forman parte de las aspas del molino y solo el bloque central de 3x3 no forma parte de ellas. </para
+>La variante del «Molino de viento» consta de cinco rompecabezas sudoku estándares de 9x9 que se superponen en las esquinas con dos bloques de 3x3. Es semejante al sudoku «Samurái», aunque el sudoku central de 9x9 es más difícil de ver. Ocho de sus bloques de 3x3 forman parte de las aspas del molino y solo el bloque central de 3x3 no forma parte de ellas. </para
 ></listitem>
 	<listitem
 ><para
->La variación Sohei es otro tipo de Samurái que tiene cuatro rompecabezas Sudoku de 9x9 que se solapan en dos esquinas con un bloque de 3x3. El bloque central de 3x3 está vacío. </para
+>La variante «Sohei» es otro tipo de «Samurái» que tiene cuatro rompecabezas sudoku de 9x9 que se solapan en dos esquinas con un bloque de 3x3. El bloque central de 3x3 está vacío. </para
 ></listitem>
 	</itemizedlist>
 </sect2>
@@ -376,19 +390,19 @@
 	<itemizedlist>
 	<listitem
 ><para
->Las variantes Roxdoku se basan en cubos de tres dimensiones, pero son más fáciles de lo que parece. No hay filas ni columnas. Un rompecabezas Roxdoku de 3x3x3 tiene 27 pequeños cubos dispuestos dentro de un cubo de 3x3x3 más grande. Este contiene nueve capas, cada una conteniendo 3x3 cubos pequeños, y estos son los bloques cuadrados que deben rellenarse con los números del 1 al 9. Un Roxdoku de 4x4x4 tiene doce capas de 4x4, y un Roxdoku de 5x5x5 tiene quince capas de 5x5.</para
+>Las variantes «Roxdoku» se basan en cubos de tres dimensiones, pero son más fáciles de lo que parece. No hay filas ni columnas. Un rompecabezas «Roxdoku» de 3x3x3 tiene 27 pequeños cubos dispuestos dentro de un cubo de 3x3x3 más grande. Este contiene nueve capas, cada una de las cuales contiene 3x3 cubos pequeños, y estos son los bloques cuadrados que se deben rellenar con los números del 1 al 9. Un «Roxdoku» de 4x4x4 tiene doce capas de 4x4, y un «Roxdoku» de 5x5x5 tiene quince capas de 5x5.</para
 ></listitem>
 	<listitem
 ><para
->La variante Roxdoku gemelos consta de dos rompecabezas Roxdoku de 3x3x3 que comparten una esquina. La pieza de la esquina debe ser parte de la solución de ambos cubos de 3x3x3.</para
+>La variante «Roxdoku gemelos» consta de dos rompecabezas «Roxdoku» de 3x3x3 que comparten una esquina. La pieza de la esquina debe ser parte de la solución de ambos cubos de 3x3x3.</para
 ></listitem>
 	<listitem
 ><para
->La variante Roxdoku doble consta de dos rompecabezas Roxdoku de 3x3x3 que comparten tres piezas a lo largo de un borde. Las piezas del borde deben ser parte de la solución de ambos cubos de 3x3x3. </para
+>La variante «Roxdoku doble» consta de dos rompecabezas «Roxdoku» de 3x3x3 que comparten tres piezas a lo largo de un borde. Las piezas del borde deben ser parte de la solución de ambos cubos de 3x3x3. </para
 ></listitem>
 	<listitem
 ><para
->La variante Roxdoku samurái tiene nueve rompecabezas Roxdoku de 3x3x3. Uno está en el centro y los otros ocho cubos de 3x3x3 se solapan con él, uno en cada esquina del cubo central. Cada una de las piezas de estas esquinas debe ser parte de la solución de dos cubos de 3x3x3.</para
+>La variante «Roxdoku Samurái» tiene nueve rompecabezas «Roxdoku» de 3x3x3. Uno está en el centro y los otros ocho cubos de 3x3x3 se solapan con él, uno en cada esquina del cubo central. Cada una de las piezas de estas esquinas debe ser parte de la solución de dos cubos de 3x3x3.</para
 ></listitem>
 	</itemizedlist>
 </sect2>
@@ -400,9 +414,9 @@
 	<itemizedlist>
 	<listitem
 ><para
->Los rompecabezas Killer tienen dos variantes: el Killer pequeño (4x4) y el Killer Sudoku (9x9). Los dos tienen filas, columnas y bloques cuadrados, al igual que un Sudoku estándar, y siguen exactamente sus mismas reglas. También tienen áreas de forma irregular que se denominan jaulas, cuyos dígitos deben sumar el número pequeño que hay en la esquina de la jaula, además de no poder repetirse dentro de la jaula. Típicamente, el rompecabezas empieza con solo unos cuadrados que contienen símbolos. Debe usar cálculos aritméticos y las reglas normales del Sudoku de forma conjunta para obtener la solución. Los gráficos de la pantalla dificultan la visualización de los bloques cuadrados presentes, aunque se pueden ver más fácilmente si imprime el rompecabezas usando la opción del menú <menuchoice
+>Los rompecabezas «Killer» tienen dos variantes: el «Killer pequeño» (4x4) y el «Killer Sudoku» (9x9). Los dos tienen filas, columnas y bloques cuadrados, al igual que un sudoku estándar, y siguen exactamente sus mismas reglas. También tienen áreas de forma irregular que se denominan jaulas, cuyos dígitos deben sumar el número pequeño que hay en la esquina de la jaula, además de no poder repetirse dentro de la jaula. Típicamente, el rompecabezas empieza con solo unos cuadrados que contienen símbolos. Debes usar cálculos aritméticos y las reglas normales del sudoku de forma conjunta para obtener la solución. Los gráficos de la pantalla dificultan la visualización de los bloques cuadrados presentes, aunque se pueden ver más fácilmente si imprimes el rompecabezas con la opción del menú <menuchoice
 ><guimenu
->Partida</guimenu
+>Juego</guimenu
 > <guimenuitem
 >Imprimir...</guimenuitem
 ></menuchoice
@@ -410,15 +424,15 @@
 ></listitem>
 	<listitem
 ><para
->Las variantes Mathdoku, también conocidas como <trademark
+>Las variantes «Mathdoku», también conocidas como <trademark
 >Kenken</trademark
->, no tienen bloques, sino restricciones de filas y de columnas, así como jaulas en las que se deben añadir, restar, dividir o multiplicar dígitos según los valores y los símbolos aritméticos en letra pequeña que hay en sus esquinas. Un dígito de una jaula de Mathdoku se puede repetir, pero no en la misma fila o columna. Por ejemplo, una forma en L de tres cuadros con el requisito 5+ puede tener las soluciones 1 3 1 o 2 1 2, suponiendo que los unos y los doses no están en la misma fila ni columna que los otros. Tenga en cuenta que las jaulas de resta y de división siempre tienen dos cuadros y los dos dígitos de la solución pueden aparecer en cualquier orden. Por ejemplo, una jaula de 2 puede tener las soluciones 1 3, 3 1, 2 4, 4 2, etc.</para
+>, no tienen bloques, sino restricciones de filas y de columnas, así como jaulas en las que se deben añadir, restar, dividir o multiplicar dígitos según los valores y los símbolos aritméticos en letra pequeña que hay en sus esquinas. Un dígito de una jaula de «Mathdoku» se puede repetir, pero no en la misma fila o columna. Por ejemplo, una forma en L de tres cuadros con el requisito 5+ puede tener las soluciones 1 3 1 o 2 1 2, suponiendo que los unos y los doses no están en la misma fila ni columna que los otros. Ten en cuenta que las jaulas de resta y de división siempre tienen dos cuadros y que los dos dígitos de la solución pueden aparecer en cualquier orden. Por ejemplo, una jaula de 2 puede tener las soluciones 1 3, 3 1, 2 4, 4 2, etc.</para
 ></listitem>
 	<listitem
 ><para
->Al no existir bloques en un Mathdoku, puede tener cualquier tamaño desde 3x3 hasta 9x9, siendo 6x6 el tamaño predeterminado. Consulte la sección <link linkend="configuration"
+>Al no existir bloques en un «Mathdoku», puede tener cualquier tamaño desde 3x3 hasta 9x9, siendo 6x6 el tamaño predeterminado. Consulta la sección <link linkend="configuration"
 >Configuración del juego</link
-> para más detalles. Para empezar, existe una variante que se llama Mathdoku 101 de tamaño 4x4.</para
+> para más detalles. Para empezar, existe una variante que se llama «Mathdoku 101» de tamaño 4x4.</para
 ></listitem>
 	</itemizedlist>
 </sect2>
@@ -431,33 +445,33 @@
 	<itemizedlist>
 	<listitem
 ><para
->Tómese su tiempo y no se precipite. &ksudoku; no es un juego rápido.</para
+>Tómate su tiempo y no te precipites. &ksudoku; no es un juego rápido.</para
 ></listitem>
 	<listitem
 ><para
->Preste atención al coloreado de la fila, la columna y el bloque. Están ahí para ayudarle.</para
+>Presta atención a los colores de la fila, la columna y el bloque. Están ahí para ayudarte.</para
 ></listitem>
 	<listitem
 ><para
->Asegúrese de que no existen símbolos duplicados en la fila, la columna o el bloque donde está introduciendo el símbolo.</para
+>Asegúrate de que no existen símbolos duplicados en la fila, la columna o el bloque donde estás introduciendo el símbolo.</para
 ></listitem>
 	<listitem
 ><para
->En caso de duda, intente prever si el cuadrado en el que ha introducido un símbolo puede necesitar de otro símbolo que de otra forma no podría colocar en ningún otro sitio debido a las reglas de la fila, la columna o el bloque.</para
+>En caso de duda, intenta prever si el cuadrado en el que estás introduciendo un símbolo puede necesitar de otro símbolo que de otra forma no podrías colocar en ningún otro sitio siguiendo las reglas de la fila, la columna y el bloque.</para
 ></listitem>
 	<listitem
 ><para
->Utilice Internet para buscar pistas generales y estrategias para resolver rompecabezas Sudoku.</para
+>Usa internet para buscar pistas y estrategias generales para resolver rompecabezas sudoku.</para
 ></listitem>
 	<listitem
 ><para
->Utilice marcadores de movimiento cuando localice un cuadrado o cuadrados que tienen unas pocas alternativas, pero entre las que usted no puede decidirse inmediatamente. Los marcadores le ahorrarán tiempo y esfuerzo de memoria más tarde, cuando más cuadrados hayan sido rellenados. Vea <link linkend="howto"
+>Usa marcadores de movimiento cuando localices uno o más cuadros que tengan pocas alternativas, pero entre las que no puedas decidirte inmediatamente. Los marcadores te ahorrarán tiempo y esfuerzo de memoria más adelante, cuando hayas rellenado más cuadros. Consulta <link linkend="howto"
 >Cómo jugar</link
-> para obtener más información sobre cómo utilizar los marcadores.</para
+> para obtener más información sobre cómo se usan los marcadores.</para
 ></listitem>
 	<listitem
 ><para
->Si tiene problemas, intente reconstruir sus pasos y vea exactamente dónde ha cometido un error. Puede usar las opciones de menú <menuchoice
+>Si estás en un aprieto, intenta reconstruir tus pasos y trata de ver dónde has cometido un error. Puedes usar las opciones del menú <menuchoice
 ><guimenu
 >Movimiento</guimenu
 > <guimenuitem
@@ -469,7 +483,7 @@
 > <guimenuitem
 >Rehacer</guimenuitem
 ></menuchoice
->, repetidamente si es necesario; y también hay una configuración en <menuchoice
+>, repetidamente si es necesario. También dispones de un ajuste en <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
@@ -479,15 +493,15 @@
 ></listitem>
 	<listitem
 ><para
->Aunque &ksudoku; proporciona la opción «Pista», intente no usarla con mucha frecuencia. Recuerde que resolver todo el rompecabezas por sí mismo mejora la actividad de su cerebro, mientras que utilizar la funcionalidad de «Pista» con mucha frecuencia es hacer trampas.</para
+>Aunque &ksudoku; proporciona la opción «Pista», intenta no usarla con mucha frecuencia. Recuerda que resolver todo el rompecabezas por ti mismo mejora la actividad del cerebro, mientras que usar la función de «Pista» con mucha frecuencia es hacer trampas.</para
 ></listitem>
 	<listitem
 ><para
->Si tiene demasiados problemas para resolver un determinado rompecabezas, y no hace más que utilizar la funcionalidad «Pista», quizá debería reducir el nivel de dificultad o probar un rompecabezas más simple y básico.</para
+>Si tienes demasiadas complicaciones para resolver un determinado rompecabezas y no dejas de usar la función de «Pista», tal vez deberías reducir el nivel de dificultad o probar un rompecabezas más simple y básico.</para
 ></listitem>
 	<listitem
 ><para
->Algunas distribuciones de rompecabezas presentan unas formas de tablero de juego muy específicas. Es una buena idea mantener la opción de resaltado activada, incluso si usted se considera un jugador experimentado.</para
+>Algunas distribuciones de rompecabezas presentan unas formas de tablero de juego muy específicas. Es una buena idea mantener la opción de resaltado activada, incluso si te consideras un jugador experimentado.</para
 ></listitem>
 	</itemizedlist>
 </sect1>
@@ -495,7 +509,7 @@
 
 <chapter id="interface"
 ><title
->Visión general de la interfaz</title
+>Vista general de la interfaz</title
 > <!-- do not change this! -->
 
 <sect1 id="welcome-screen"
@@ -503,40 +517,40 @@
 >La pantalla de bienvenida</title>
 
 <para
->La pantalla de bienvenida es la primera cosa que ve cuando inicia &ksudoku; o utiliza la barra de herramientas o el menú para solicitar un nuevo juego. Tiene una lista de todos los tipos de rompecabezas y puede hacer clic sobre uno de ellos para hacer la selección.</para>
+>La pantalla de bienvenida es lo primero que ve tras arrancar &ksudoku; o tras usar la barra de herramientas o el menú empezar un nuevo juego. Tiene una lista de todos los tipos de rompecabezas y se puede pulsar sobre uno de ellos para seleccionarlo.</para>
 
 <para
->Si hace clic en el botón marcado <guibutton
+>Si pulsas el botón <guibutton
 >Introducir un rompecabezas</guibutton
->, aparecerá un tablero vacío del tipo seleccionado. Aquí puede usar el ratón o el teclado para introducir un rompecabezas desde otra fuente, como un periódico. Cuando haya terminado, use la acción <guilabel
+>, aparecerá un tablero vacío del tipo seleccionado. En él puedes usar el ratón o el teclado para introducir un rompecabezas de otra fuente, como un periódico. Cuando hayas terminado, usa la acción <guilabel
 >Comprobar</guilabel
-> en la barra de herramientas o el menú para comprobar el rompecabezas. Debería tener solo una solución Si es así, puede empezar a resolver el rompecabezas o tal vez hacer que &ksudoku; lo resuelva. Si no hay solución o hay más de una, probablemente significará que ha cometido un error al introducir los datos en alguna parte.</para>
+> de la barra de herramientas o del menú para comprobar el rompecabezas. Debería tener solo una solución. Si es así, puedes empezar a resolverlo o hacer que &ksudoku; lo resuelva. Si no tiene solución o tiene más de una, es muy probable que hayas cometido un error al introducir los datos.</para>
 
 <para
->Si hace clic en el botón marcado con <guibutton
+>Si pulsas el botón <guibutton
 >Generar un rompecabezas</guibutton
->, &ksudoku; mostrará un tablero con algunos de los recuadros ya rellenados. Dependerá de usted rellenar el resto.</para>
+>, &ksudoku; mostrará un tablero con algunos de los recuadros ya rellenados. Tú tendrás que rellenar el resto.</para>
 
 <para
->Antes de generar un rompecabezas, compruebe que las preferencias de las listas desplegables <guilabel
+>Antes de generar un rompecabezas, comprueba que los ajustes de las listas desplegables <guilabel
 >Dificultad:</guilabel
 > y <guilabel
 >Simetría:</guilabel
-> están a su gusto. Puede cambiarlos durante el juego, pero no tendrán efecto hasta que se genere el próximo rompecabezas.</para>
+> son correctas. Puedes cambiarlos durante el juego, aunque no tendrán efecto hasta que se genere el próximo rompecabezas.</para>
 
 	<note
 ><para
->Si no puede ver las listas desplegables de <guilabel
+>Si no puedes ver las listas desplegables de <guilabel
 >Dificultad:</guilabel
 > y <guilabel
 >Simetría:</guilabel
->, use la opción de menú <menuchoice
+>, usa la opción de menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
 >Mostrar barra de estado</guimenuitem
 ></menuchoice
-> para asegurarse de que la barra de estado está visible.</para
+> para asegurarte de que la barra de estado está visible.</para
 ></note>
 
 <para
@@ -554,21 +568,21 @@
 >Difícil</guimenuitem
 > y <guimenuitem
 >Diabólico</guimenuitem
-> pueden llevar una hora o así, y se intenta que sean equivalentes a los difíciles que aparecen en los periódicos. Los rompecabezas Samurai y los de tamaño 16x16 y 25x25 necesitan más tiempo para resolverse, simplemente porque hay más filas, columnas y bloques y más cuadrados para rellenar.</para>
+> pueden llevar alrededor de una hora (se ha intentado que sean equivalentes a los difíciles que aparecen en los periódicos). Los rompecabezas «Samurái» y los de tamaño 16x16 y 25x25 necesitan más tiempo para resolverse, simplemente porque tienen más filas, columnas, bloques y más cuadrados para rellenar.</para>
 
 <para
 >El nivel <guimenuitem
 >Diabólico</guimenuitem
-> requiere típicamente una o más conjeturas, teniendo que volver atrás si ha cometido un error. Los niveles inferiores se pueden resolver habitualmente solo mediante la lógica. El nivel <guimenuitem
+> suele requerir una o más conjeturas, teniendo que volver atrás si cometes un error. Los niveles inferiores se pueden resolver habitualmente solo mediante la lógica. El nivel <guimenuitem
 >Ilimitado</guimenuitem
-> no tiene límites en el número de conjeturas requeridas, lo pronto que se necesite la hacer la primera o en lo compleja que pueda ser la lógica. Se proporciona por el interés de los jugadores expertos, pero tiende a generar rompecabezas «inhumanos» poco interesantes, y no se recomienda para uso general.</para>
+> no tiene límites en cuanto al número de conjeturas necesarias, lo pronto que tengas que hacer la primera de ellas o en lo compleja que pueda ser la lógica para resolverlo. Se proporciona para satisfacer el interés de los jugadores expertos, pero suele generar rompecabezas «inhumanos» poco interesantes y no se recomienda para uso general.</para>
 
  <para
 >La lista desplegable <guilabel
 >Simetría:</guilabel
-> proporciona siete tipos de simetría, que incluye <guimenuitem
+> proporciona siete tipos de simetría, incluyendo <guimenuitem
 >Sin simetría</guimenuitem
->. Esto controla la distribución y el aspecto de los cuadrados que se rellenan al inicio de un rompecabezas, y tienen principalmente un efecto estético, excepto que los rompecabezas sin simetría tienden a ser un poco más difíciles que los que tienen una simetría alta, y es menos probable que &ksudoku; pueda generar un rompecabezas que tenga tanto una alta dificultad como una alta simetría.</para>
+>. Sirve para controlar la distribución y el aspecto de los cuadrados que se rellenan al inicio de un rompecabezas, y tiene principalmente un efecto estético, excepto que los rompecabezas sin simetría tienden a ser un poco más difíciles que los que tienen una alta simetría. Es poco probable que &ksudoku; pueda generar un rompecabezas que tenga tanto una alta dificultad como una alta simetría.</para>
 </sect1>
 
 <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
@@ -577,7 +591,7 @@
 > for better viewing.-->
 <sect1 id="game-menu"
 ><title
->El menú Jugar</title>
+>El menú Juego</title>
 
 		<variablelist>
 			<varlistentry id="game-menu-new">
@@ -598,7 +612,7 @@
 				<listitem
 ><para
 ><action
->Inicia una partida nueva.</action
+>Empieza una partida nueva.</action
 ></para
 ></listitem>
 			</varlistentry>
@@ -643,7 +657,7 @@
 ><para
 ><action
 >Guarda</action
-> la partida actual como un archivo guardado predeterminado.</para
+> la partida actual en un archivo predeterminado.</para
 ></listitem>
 			</varlistentry>
 			<varlistentry id="game-menu-save-as">
@@ -659,7 +673,7 @@
 ><para
 ><action
 >Guarda</action
-> la partida actual como un archivo de su elección.</para
+> la partida actual en un archivo de tu elección.</para
 ></listitem>
 			</varlistentry>
 			<varlistentry>
@@ -681,8 +695,8 @@
 ><para
 ><action
 >Imprime</action
-> el estado actual de la partida bidimiensional en la impresora seleccionada. Los contornos del bloque y los valores originales del rompecabezas se imprimen en negro. Las demás casillas, los valores rellenados y los valores de solución se imprimen en gris. Existe una opción para imprimir solamente un rompecabezas o más de uno por página. Consulte la<link linkend="configuration"
->Configuración de la partida</link
+> el estado actual de la partida bidimiensional en la impresora seleccionada. Los contornos del bloque y los valores originales del rompecabezas se imprimen en negro. Las demás casillas, los valores rellenados y los valores de la solución se imprimen en gris. Existe una opción para imprimir solo un rompecabezas o más de uno por página. Consulta la <link linkend="configuration"
+>Configuración del juego</link
 >.</para
 ></listitem>
 			</varlistentry>
@@ -732,8 +746,8 @@
 				<listitem
 ><para
 ><action
->Deshaga</action
-> su último movimiento, repetidamente si es necesario.</para
+>Deshace</action
+> tu último movimiento, repetidamente si es necesario.</para
 ></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-redo">
@@ -754,7 +768,7 @@
 				<listitem
 ><para
 ><action
->Rehaga</action
+>Rehace</action
 > un movimiento deshecho, repetidamente si es necesario.</para
 ></listitem>
 			</varlistentry>
@@ -774,7 +788,7 @@
 				<listitem
 ><para
 ><action
->Le da una pista</action
+>Proporciona una pista</action
 > rellenando un cuadrado vacío.</para
 ></listitem>
 			</varlistentry>
@@ -800,14 +814,14 @@
 ><guimenu
 >Mover</guimenu
 > <guimenuitem
->Marcar</guimenuitem
+>Comprobar</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
 ><para
 ><action
->Comprobar</action
-> la validez del rompecabezas introducido. Si solo tiene una solución, se vuelve disponible para el juego. Si no tiene solución o tiene más de una, probablemente ha habido un error al introducir los datos.</para
+>Comprueba</action
+> la validez del rompecabezas introducido. Si solo tiene una solución, estará listo para jugar. Si no tiene solución o tiene más de una, probablemente ha habido un error al introducir los datos.</para
 ></listitem>
 			</varlistentry>
 		</variablelist>
@@ -829,22 +843,22 @@
 ><para
 ><action
 >Abre un diálogo para configurar &ksudoku;.</action
-> Consulte el bloque <link linkend="configuration"
+> Consulte la sección <link linkend="configuration"
 >Configuración del juego</link
 > para obtener más información.</para
 ></listitem>
 			</varlistentry>
 		</variablelist>
 		<para
->Además &ksudoku; tiene las opciones de menú <guimenu
+>Además, &ksudoku; tiene las opciones de los menús <guimenu
 >Preferencias</guimenu
 > y <guimenu
 >Ayuda</guimenu
-> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+> comunes de &kde;. Para obtener más información, consulta las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Menú «Preferencias»</ulink
-> y <ulink url="help:/fundamentals/menus.html#menus-help"
+> y el <ulink url="help:/fundamentals/menus.html#menus-help"
 >Menú «Ayuda» </ulink
-> de «Aspectos básicos de &kde;». </para>
+> de los «Aspectos básicos de &kde;». </para>
 </sect1>
 </chapter>
 
@@ -860,27 +874,27 @@
 <qandaentry>
  <question
 ><para
->Quiero cambiar el aspecto del juego ¿Puedo? </para
+>Quiero cambiar el aspecto del juego. ¿Puedo? </para
 ></question>
  <answer
 ><para
->Los juegos de Sudoku se juegan tradicionalmente utilizando una rejilla cuadrada. Los temas no tienen aquí mucho sentido, pero puede seleccionar algunos esquemas de color y fondos. Para hacerlo, utilice <menuchoice
+>Los juegos de sudoku se juegan tradicionalmente usando una cuadrícula. Los temas no tienen aquí mucho sentido, pero puedes seleccionar algunos esquemas de color y fondos. Para ello, usa la opción del menú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 ><guimenuitem
 >Configurar &ksudoku;...</guimenuitem
 ></menuchoice
-> en la barra de menú.</para
+>.</para
 ></answer>
 </qandaentry>
 <qandaentry>
  <question
 ><para
->¿Puedo utilizar el teclado para jugar? </para
+>¿Puedo usar el teclado para jugar a este juego? </para
 ></question>
  <answer
 ><para
->Sí. En &ksudoku; está siempre activado el juego con el teclado. Utilice las teclas de cursor para mover la selección, los caracteres numéricos para introducir los símbolos y la tecla &Shift; para aplicar los marcadores.</para
+>Sí. En &ksudoku; está siempre activado el juego con el teclado. Puedes usar las teclas de cursor para mover la selección, los caracteres numéricos para introducir los símbolos y la tecla &Shift; para aplicar marcadores.</para
 ></answer>
 </qandaentry>
 <qandaentry>
@@ -911,11 +925,11 @@
 		<varlistentry>
 			<term
 ><guilabel
->Al imprimir, tratar de encajar más de un rompecabezas en cada página</guilabel
+>Al imprimir, intentar encajar más de un rompecabezas en cada página</guilabel
 ></term>
 			<listitem>
 			<para
->Conmuta la opción de imprimir más de un rompecabezas por página siempre que quepan.</para>
+>Marca la opción de imprimir más de un rompecabezas por página siempre que quepan en ella.</para>
 			<para
 >Si esta opción está marcada, los rompecabezas se imprimirán cuando no quepan más en una página o cuando termine &ksudoku;. En caso contrario, se imprimen de forma inmediata.</para>
 			<para
@@ -925,7 +939,7 @@
 		<varlistentry>
 			<term
 ><guilabel
->Mostrar resaltados en rompecabezas 2-D</guilabel
+>Mostrar resaltados en rompecabezas 2D</guilabel
 ></term>
 			<listitem
 ><para
@@ -945,7 +959,7 @@
 		<varlistentry>
 			<term
 ><guilabel
->Mostrar resaltados en rompecabezas 3-D</guilabel
+>Mostrar resaltados en rompecabezas 3D</guilabel
 ></term>
 			<listitem
 ><para
@@ -959,17 +973,17 @@
 ></term>
 			<listitem
 ><para
->Escoger un tamaño para los rompecabezas Mathdoku, desde 3 (muy fácil) hasta 9 (muy difícil), siendo el tamaño 6 el predeterminado.</para
+>Escoger un tamaño para los rompecabezas «Mathdoku», desde 3 (muy fácil) hasta 9 (muy difícil), siendo el tamaño 6 el predeterminado.</para
 ></listitem>
 		</varlistentry>
 		<varlistentry>
 			<term
 ><guilabel
->Preferencias solo para rompecabezas 3-D</guilabel
+>Preferencias solo para rompecabezas 3D</guilabel
 ></term>
 			<listitem
 ><para
->Estas cinco preferencias ajustan el resaltado y la visibilidad de las casillas en los rompecabezas tridimensionales. La idea es facilitar la visualización de las relaciones entre las casillas, especialmente si están detrás de otras casillas.</para
+>Estas cinco preferencias ajustan el resaltado y la visibilidad de las casillas de los rompecabezas tridimensionales. La idea es facilitar la visualización de las relaciones entre las casillas, especialmente si están detrás de otras casillas.</para
 ></listitem>
 		</varlistentry>
 	</variablelist>
@@ -1010,8 +1024,8 @@
 
 <para
 >Nuevo solucionador y generador de algoritmos 2011 David Bau, <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
-> ver la página web.</ulink
-></para>
+>consultar la página web</ulink
+>.</para>
 
 <para
 >Copyright de la documentación 2005 Francesco Rossi <email
@@ -1031,12 +1045,16 @@
 ></para>
 
 <para
->Traducido por Rocío Gallego <email
+>Documentación traducida por Rocío Gallego <email
 >traducciones@rociogallego.com</email
 >, Santiago Fernández Sancho <email
 >santi@kde-es.org</email
 > y Kira J. Fernández <email
 >kirajfdez@gmail.com</email
+>.</para
+><para
+>Corregida por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
 >.</para
 > &underFDL; &underGPL; </chapter>
 
