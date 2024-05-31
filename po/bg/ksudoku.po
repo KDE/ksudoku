@@ -1081,18 +1081,3 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "Документ за отваряне"
-
-#~ msgid "Could not load game."
-#~ msgstr "Играта не може да бъде заредена."
-
-#, fuzzy
-#~ msgctxt "button label"
-#~ msgid "New Game"
-#~ msgstr "Игра"
-
-#~ msgctxt "button label"
-#~ msgid "Restart Game"
-#~ msgstr "Нова игра"
-
-#~ msgid "Open Location"
-#~ msgstr "Отваряне на местоположение"
