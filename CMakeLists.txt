@@ -66,8 +66,8 @@ if (OPENGL_FOUND AND OPENGL_GLU_FOUND)
 endif()
 
 ecm_set_disabled_deprecation_versions(
-    QT 6.5
-    KF 6.0
+    QT 6.7
+    KF 6.4
     KDEGAMES 6.0
 )
 
