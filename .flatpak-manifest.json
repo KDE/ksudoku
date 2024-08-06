@@ -37,6 +37,7 @@
         },
         {
             "name": "glu",
+            "buildsystem": "meson",
             "sources": [ { "type": "git", "url": "https://gitlab.freedesktop.org/mesa/glu.git", "branch": "glu-9.0.3" } ]
         },
         {
