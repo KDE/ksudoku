@@ -38,14 +38,12 @@ msgstr ""
 
 #: src/generator/sudokuboard.cpp:125
 #, fuzzy, kde-format
-#| msgid "Mathdoku or Killer Sudoku Puzzle"
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "Mattedoku eller killer-sudoku"
 
 #: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
 #, fuzzy, kde-format
-#| msgid "&Try Again"
 msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "&Prøv på nytt"
@@ -80,14 +78,12 @@ msgstr ""
 #: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
 #: src/generator/sudokuboard.cpp:266
 #, fuzzy, kde-format
-#| msgid "Difficulty Level"
 msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "Vanskegrad"
 
 #: src/generator/sudokuboard.cpp:231
 #, fuzzy, kde-format
-#| msgid "&Accept"
 msgctxt "@action:button"
 msgid "&Accept"
 msgstr "&Godta"
@@ -109,7 +105,6 @@ msgstr ""
 
 #: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
 #, fuzzy, kde-format
-#| msgid "&Retry"
 msgctxt "@action:button"
 msgid "&Retry"
 msgstr "&Lag eit nytt brett"
@@ -570,7 +565,6 @@ msgstr ""
 
 #: src/gui/ksudoku.cpp:421 src/gui/ksudoku.cpp:428 src/gui/ksudoku.cpp:434
 #, fuzzy, kde-format
-#| msgid "Check Puzzle"
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Kontroller oppgåva"
@@ -596,28 +590,24 @@ msgstr "Vil du spela oppgåva no?"
 
 #: src/gui/ksudoku.cpp:438
 #, fuzzy, kde-format
-#| msgid "Play Puzzle"
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Spel oppgåva"
 
 #: src/gui/ksudoku.cpp:439
 #, fuzzy, kde-format
-#| msgid "Play"
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Spel"
 
 #: src/gui/ksudoku.cpp:478
 #, fuzzy, kde-format
-#| msgid "Enable all messages"
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "Vis alle meldingar"
 
 #: src/gui/ksudoku.cpp:495
 #, fuzzy, kde-format
-#| msgid "Check"
 msgctxt "@action"
 msgid "Check"
 msgstr "Kontroller"
@@ -700,7 +690,6 @@ msgstr "Ingen symmetri"
 
 #: src/gui/ksudoku.cpp:646 src/gui/ksudoku.cpp:705
 #, fuzzy, kde-format
-#| msgid "Error in Cage"
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr "Feil i bur"
@@ -719,8 +708,6 @@ msgstr "Nytt spel"
 
 #: src/gui/ksudoku.cpp:664
 #, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "Nytt spel"
@@ -738,15 +725,12 @@ msgstr "Start spelet på nytt"
 
 #: src/gui/ksudoku.cpp:683
 #, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Start spelet på nytt"
 
 #: src/gui/ksudoku.cpp:732
 #, fuzzy, kde-format
-#| msgid "Error Writing File"
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Feil ved skriving til fil"
@@ -758,15 +742,12 @@ msgstr "Du har ikkje noko sudoku-oppgåve å skriva ut."
 
 #: src/gui/ksudoku.cpp:791
 #, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Spel"
 
 #: src/gui/ksudoku.cpp:792
 #, fuzzy, kde-format
-#| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
@@ -790,7 +771,6 @@ msgstr ""
 
 #: src/gui/ksudoku.cpp:831
 #, fuzzy, kde-format
-#| msgid "Warning"
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Åtvaring"
@@ -837,7 +817,6 @@ msgstr ""
 
 #: src/gui/ksudokugame.cpp:377
 #, fuzzy, kde-format
-#| msgid "Killer Sudoku Cage"
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "Killer-sudoku-bur"
@@ -851,7 +830,6 @@ msgstr "Ruta du valde er alt brukt i eit bur."
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
 #: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
 #, fuzzy, kde-format
-#| msgid "Error in Cage"
 msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "Feil i bur"
@@ -908,7 +886,6 @@ msgstr "Er du sikker på at du vil sletta dette buret?"
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
 #, fuzzy, kde-format
-#| msgid "Delete Cage"
 msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "Slett bur"
@@ -983,7 +960,6 @@ msgstr "KSudoku har sendt utskrifta til skrivaren din."
 
 #: src/gui/puzzleprinter.cpp:121
 #, fuzzy, kde-format
-#| msgid "Print Sudoku Puzzle"
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "Skriv ut sudoku-oppgåve"
@@ -1020,56 +996,48 @@ msgstr "Klarte ikkje lasta opp fil."
 
 #: src/gui/views/gameactions.cpp:54
 #, fuzzy, kde-format
-#| msgid "Select %1 (%2)"
 msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "Vel %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
 #, fuzzy, kde-format
-#| msgid "Enter %1 (%2)"
 msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "Skriv inn %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
 #, fuzzy, kde-format
-#| msgid "Mark %1 (%2)"
 msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "Merk %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
 #, fuzzy, kde-format
-#| msgid "Move Up"
 msgctxt "@action"
 msgid "Move Up"
 msgstr "Flytt opp"
 
 #: src/gui/views/gameactions.cpp:102
 #, fuzzy, kde-format
-#| msgid "Move Down"
 msgctxt "@action"
 msgid "Move Down"
 msgstr "Flytt ned"
 
 #: src/gui/views/gameactions.cpp:109
 #, fuzzy, kde-format
-#| msgid "Move Left"
 msgctxt "@action"
 msgid "Move Left"
 msgstr "Flytt til venstre"
 
 #: src/gui/views/gameactions.cpp:116
 #, fuzzy, kde-format
-#| msgid "Move Right"
 msgctxt "@action"
 msgid "Move Right"
 msgstr "Flytt til høgre"
 
 #: src/gui/views/gameactions.cpp:123
 #, fuzzy, kde-format
-#| msgid "Clear Cell"
 msgctxt "@action"
 msgid "Clear Cell"
 msgstr "Tøm rute"
@@ -1089,7 +1057,6 @@ msgstr "Vel oppgåvevariant."
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
 #, fuzzy, kde-format
-#| msgid "Unable to start puzzle"
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
 msgstr "Klarte ikkje starta oppgåve"
