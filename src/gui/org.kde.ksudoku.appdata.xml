@@ -154,6 +154,7 @@ SentUpstream: 2014-09-24
     <binary>ksudoku</binary>
   </provides>
   <releases>
+    <release version="1.4.24081" date="2024-09-12"/>
     <release version="1.4.24080" date="2024-08-22"/>
     <release version="1.4.24052" date="2024-07-04"/>
     <release version="1.4.24051" date="2024-06-13"/>
