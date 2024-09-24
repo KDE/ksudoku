@@ -1,0 +1,1031 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksudoku "KSudoku">
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Slovenian "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="ksudoku" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>&ksudoku; Priročnik</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immediate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Ian</firstname
+> <surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+	</author>
+<othercredit role="translator"
+><firstname
+>Matjaž</firstname
+><surname
+>Jeran</surname
+><affiliation
+><address
+><email
+>matjaz.jeran@amis.net</email
+></address
+></affiliation
+><contrib
+>Prevod</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<copyright>
+	<year
+>2011</year>
+	<holder
+>Ian Wadham</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>10.12.2020</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>01.04.20</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>Ta dokumentacija opisuje igro &ksudoku;, uganko o postavljanju simbolov, ki temelji na logiki.</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>KDE</keyword
+> <!-- do not change this! -->
+	<keyword
+>kdegames</keyword
+> <!-- do not change this! -->
+	<keyword
+>igra</keyword
+> <!-- do not change this! -->
+	<keyword
+>ksudoku</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>logika</keyword>
+	<keyword
+>tabla</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>en igralec</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>uganka</keyword>
+</keywordset>
+</bookinfo>
+
+<!--Content begins here: -->
+
+<chapter id="introduction"
+><title
+>Uvod</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Vrsta igre:</title
+><para
+>Logika, tabla</para
+></note>
+
+	<note
+><title
+>Število možnih igralcev:</title
+><para
+>Eden</para
+></note>
+
+<para
+>&ksudoku; je logična uganka o postavljanju simbolov.</para>
+
+<para
+>Igralec mora zapolniti mrežo s simboli, tako da vsak stolpec, vrstica in blok na igralni plošči vsebuje samo en primerek vsakega simbola. V &ksudoku; so simboli običajno številke od 1 do 9, lahko pa so črke od A do P ali A do Y v večjih ugankah. Uganke se začnejo z delno zapolnjeno tablo, vaša naloga pa je, da izpolnite preostanek. Nekatere vrste sestavljank imajo manj kot devet simbolov.</para>
+
+<para
+>Ko začnete igro, lahko izbirate med več vrstami in velikostmi Sudokuja. Nato imate lahko &ksudoku; ustvarite uganko, ki jo boste rešili, lahko pa začnete s prazno tablo in vnesete uganko iz drugega vira, kot je časopis, nato pa dobite &ksudoku; za preveriti in morda rešiti.</para>
+
+<para
+>Obstaja veliko različic Sudokuja in &ksudoku; ponuja dober izbor le-teh. Najpogostejši tip, standardni sudoku, ima kvadratno mrežo 9x9 in uporablja arabske številke od 1 do 9 kot simbole. Mreža ima 9 vrstic in 9 stolpcev ter je razdeljena na 9 blokov kvadratov 3x3. Težava je v tem, da je vsak simbol mogoče uporabiti samo enkrat na vrstico, stolpec ali blok.</para>
+
+	<note
+><para
+>Za dokončanje igre sta potrebna čas in koncentracija. Vendar pa reševanje sudokujev pomaga povečati celotno možgansko aktivnost in je zato zelo priporočljivo.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>Kako igrati</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>Cilj:</title
+><para
+>Izpolnite mrežo tako, da vsak stolpec, vrstica in blok vsebuje samo en primerek posameznega simbola.</para
+></note>
+
+<para
+>Ko se igra začne, boste pozvani, da izberete, katera vrsta igre in velikost plošče vas zanimata. Lahko vstopite v sestavljanko iz drugega vira ali imate &ksudoku; ustvari sestavljanko. Generator ima več težavnostnih nastavitev in nekaj nastavitev simetrije, ki vplivajo na vzorec, v katerem je uganka ustvarjena. Vaša igralna izkušnja bo odvisna od tega, katero od vseh teh možnosti izberete.</para>
+
+<para
+>Ko se prikaže tabla z ugankami, poglejte na levo stran. Obstaja izbirni seznam, ki vsebuje vse simbole, ki so na voljo v trenutni igri. Nabor simbolov je odvisen od velikosti igre, ki jo izberete. Igre imajo lahko 4, 9, 16 ali 25 simbolov. Prva dva sklopa uporabljata številke od 1 do 4 ali od 1 do 9: drugi uporabljajo črke od A do P ali od A do Y.</para>
+
+<para
+>Najprej si zapomnite meje na igralni plošči. Debele črte označujejo bloke. Vsak od teh blokov je treba izpolniti z razpoložljivimi simboli in vsak simbol je treba uporabiti enkrat in samo enkrat v bloku. Enako velja za vrstice in stolpce na tabli.</para>
+
+<para
+>Zdaj lahko začnete vnašati simbole v prazna polja na tabli. To storite tako, da iz izbirnega seznama na levi izberete simbol, ki ga želite vnesti, nato pa z miško kliknete na prazno polje na plošči. Druga možnost je, da se z miško pomaknete nad prazen kvadrat ali uporabite smerne tipke za premikanje, nato pa uporabite tipkovnico za vnos simbola.</para>
+
+<para
+>V Roxdoku (tridimenzionalnih) ugankah vedno uporabite miško, da nastavite majhno kocko na vrednost in uporabite <emphasis
+>dvojni</emphasis
+> klik. Ko vrtite veliko kocko s klikanjem in vlečenjem z miško, je lažje videti, katere vrednosti so na majhnih kockah v ozadju, če kliknete <emphasis
+>med</emphasis
+> malimi kockami, ne nanje.</para>
+
+<para
+>Včasih je koristno vnesti oznake ali opombe, ki so drobni simboli v kvadratu. Ti nimajo vpliva na rešitev, lahko pa vam pomagajo slediti idejam, ki ste jih imeli, še posebej, ko obstaja izbira med dvema alternativama in še nimate dovolj informacij, da bi se odločili med njima. Če želite vnesti oznako ali opombo, kliknite z &RMB; ali držite &Shift; tipko pri uporabi tipkovnice.</para>
+
+<para
+>Če želite izbrisati simbole iz kvadrata, se z miško pomaknite nad kvadrat in pritisnite &Del; ali &Backspace; na tipkovnici ali kliknite z &RMB; na trgu.</para>
+
+<para
+>Upoštevajte, da kvadratki spreminjajo barvo, medtem ko miško premikate nad njimi. To vam bo pomagalo slediti pravilom &ksudoku;. Z navpičnimi in vodoravnimi črtami preverite, ali je simbol, ki ga boste vnesli na prazno mesto, že v uporabi kjer koli v navpični ali vodoravni črti, katere del je ta kvadrat. Barvanje poudarja tudi blok, ki mora, če se spomnite, prav tako vsebovati samo en primerek posameznega simbola. Če označevanja ne potrebujete, lahko uporabite menijski element <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Konfiguriraj &ksudoku;…</guimenuitem
+></menuchoice
+>, da ga izklopite.</para>
+
+<para
+>Vnašajte simbole v skladu s pravili, dokler ni zapolnjeno celotno igralno polje. Na tej točki &ksudoku; preveri, ali so vsi vnosi veljavni, in vas popravi ali sprejme vašo rešitev.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>Pravila igre, strategije in nasveti</title
+> <!-- do not change this! -->
+
+<sect1 id="rules"
+><title
+>Splošna pravila igre</title>
+
+<para
+>Pravila &ksudoku; so precej preprosta.</para>
+	<itemizedlist>
+	<listitem
+><para
+>Odvisno od velikosti igralne plošče, vrste uganke in težavnostne stopnje, izbrani posamezni &ksudoku; rešitev uganke lahko traja od nekaj minut do nekaj ur.</para
+></listitem>
+	<listitem
+><para
+>Vsak kvadrat lahko vsebuje en in samo en simbol.</para
+></listitem>
+	<listitem
+><para
+>Vsaka vodoravna vrstica (kot je določena z igralno ploščo) lahko vsebuje vsak simbol natanko enkrat.</para
+></listitem>
+	<listitem
+><para
+>Vsak navpični stolpec (kot ga določa igralna plošča) lahko vsebuje vsak simbol natanko enkrat.</para
+></listitem>
+	<listitem
+><para
+>Vsak blok (kot ga določa igralna plošča) lahko vsebuje vsak simbol natanko enkrat</para
+></listitem>
+	</itemizedlist>
+
+	<note
+><title
+>Opomba:</title
+><para
+>Nabor simbolov je odvisen od velikosti igre, ki jo izberete.</para
+></note>
+
+	<itemizedlist>
+	<listitem
+><para
+>Za reševanje &ksudoku; ni potrebno znanje matematike ali jezika. uganke, vendar je pri ugankah Killer Sudoku in Mathdoku potrebno malo spretnosti z aritmetiko.</para
+></listitem>
+	<listitem
+><para
+>Simbolov, ki so že na igralni plošči, ko se uganka začne, ni mogoče spremeniti.</para
+></listitem>
+	<listitem
+><para
+>Spremenite lahko samo simbole, ki ste jih predhodno vnesli.</para
+></listitem>
+	<listitem
+><para
+>Uganke, ki jih ustvari &ksudoku; imajo samo eno rešitev.</para
+></listitem>
+	<listitem
+><para
+>Uganke, ki jih vnesete, morda nimajo rešitve ali pa imajo več kot eno rešitev, vendar če so iz objavljenega vira, to verjetno pomeni, da ste naredili napako pri vnosu podatkov.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="variants"
+><title
+>&ksudoku; Različice</title>
+
+<sect2 id="standard_sudoku"
+><title
+>Sudoku uganke</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Standardna uganka Sudoku 9x9 ima 9 vrstic, 9 stolpcev in 9 kvadratnih blokov velikosti 3x3.</para
+></listitem>
+	<listitem
+><para
+>Druge velikosti standardnega sudokuja so 4x4 (zelo enostavno), 16x16 in 25x25 (ne tako enostavno).</para
+></listitem>
+	<listitem
+><para
+>Različici Jigsaw in Aztec sta enaki kot standardni sudoku 9x9, le da nekateri bloki niso kvadratni.</para
+></listitem>
+	<listitem
+><para
+>Različica XSudoku je popolnoma enaka standardnemu sudokuju z dodatno zahtevo: obe glavni diagonali morata prav tako vsebovati simbole od 1 do 9 enkrat in samo enkrat. &ksudoku; poudari diagonale, da je to lažje videti.</para
+></listitem>
+	<listitem
+><para
+>Različice Nonomino 9x9, Pentomino 5x5 in Tetromino 4x4 so enake kot standardni sudoku, le da nekateri bloki niso kvadratni.</para
+></listitem>
+	<listitem
+><para
+>Različica 6x6 je enaka standardnemu sudokuju, le da so bloki šest pravokotnikov 3x2.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="samurai"
+><title
+>Samurajske uganke</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Samuraiski Sudoku je sestavljen iz petih standardnih ugank Sudoku, vsaka po 9x9 kvadratov, ki se na vogalih prekrivajo s štirimi bloki 3x3. Vsaka od petih ugank ima 9 vrstic, 9 stolpcev in 9 blokov, ki jih je treba rešiti, simboli v prekrivajočih se kvadratih pa se morajo ujemati z rešitvami dveh standardnih sudokujev 9x9.</para
+></listitem>
+	<listitem
+><para
+>Mali Samuraijski Sudoku vsebuje pet ugank 4x4 Sudoku, ki se na vogalih prekrivajo s štirimi kvadratki. Vsaka od petih ugank ima 4 vrstice, 4 stolpce in 4 bloke, ki jih je treba rešiti.</para
+></listitem>
+	<listitem
+><para
+>Različica Mlin na veter je sestavljena iz petih standardnih sudokujev 9x9, ki se na vogalih prekrivajo z dvema blokoma 3x3. Je kot samurajski sudoku, vendar je osrednji sudoku 9x9 težje videti. Osem njenih blokov 3x3 si deli z jadri mlina na veter in samo osrednji blok 3x3 ne. </para
+></listitem>
+	<listitem
+><para
+>Različica Sohei je še en samurajski tip in ima štiri uganke Sudoku 9x9, ki se na dveh vogalih prekrivajo z blokom 3x3. Osrednji blok 3x3 sestavljanke je prazen. </para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="roxdoku"
+><title
+>Roxdoku 3D uganke</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Različice Roxdoku temeljijo na kockah v treh dimenzijah, vendar so lažje, kot se sliši. Ni vrstic ali stolpcev. Sestavljanka Roxdoku 3x3x3 ima 27 majhnih kock, razporejenih v večjo kocko 3x3x3. Ta vsebuje devet rezin, od katerih vsaka vsebuje 3x3 majhne kocke, in to so kvadratni bloki, ki morajo biti izpolnjeni s številkami od 1 do 9. Roxdoku 4x4x4 ima dvanajst rezin 4x4, Roxdoku 5x5x5 pa petnajst rezin 5x5.</para
+></listitem>
+	<listitem
+><para
+>Različica Roxdoku Twin ima dve uganki Roxdoku velikosti 3x3x3, ki si delita vogal. Kotni del mora biti del rešitve obeh kock 3x3x3.</para
+></listitem>
+	<listitem
+><para
+>Različica Double Roxdoku vsebuje dve uganki Roxdoku velikosti 3x3x3, ki si delita tri dele vzdolž roba. Robovi morajo biti del rešitve obeh kock 3x3x3. </para
+></listitem>
+	<listitem
+><para
+>Različica Samurai Roxdoku ima devet ugank 3x3x3 Roxdoku. Ena je v središču, ostalih osem kock 3x3x3 pa se prekriva z njo, po ena na vsakem vogalu osrednje kocke. Vsak od teh vogalnih kosov mora biti del rešitve dveh kock 3x3x3.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="killer"
+><title
+>Variacije Killer in Mathdoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Ubijalske uganke imajo dve različici: Tiny Killer (4x4) in Killer Sudoku (9x9). Oba imata vrstice, stolpce in kvadratne bloke, natanko tako kot v standardnih sudoku ugankah in po popolnoma enakih pravilih. Imajo tudi področja nepravilne oblike, imenovane kletke, kjer se morajo števke vsake kletke sešteti z majhnim številom v kotu kletke in nobena števka se ne sme ponoviti v kletki. Običajno se sestavljanka začne z le nekaj kvadratki, ki vsebujejo simbole. Za rešitev morate uporabiti aritmetiko in običajna pravila Sudokuja. Zaslonska grafika otežuje vizualizacijo prisotnih kvadratnih blokov, vendar jih je lažje videti, če natisnete sestavljanko z uporabo elementa menija <menuchoice
+><guimenu
+>Igre</guimenu
+> <guimenuitem
+>Natisni…</guimenuitem 
+></menuchoice
+>.</para
+></listitem>
+	<listitem
+><para
+>Različice Mathdokuja, znane tudi kot <trademark
+>Kenken</trademark
+>, nimajo blokov, ampak le omejitve vrstic in stolpcev, in imajo kletke, kjer morajo števke seštevati, odštevati, deliti ali množiti glede na vrednosti in aritmetične simbole v majhni pisavi njihovih kotičkih. Števka v kletki Mathdoku se lahko ponovi, vendar ne v istem stolpcu ali vrstici. Na primer, oblika L treh kvadratov z zahtevo 5+ ima lahko rešitve 1 3 1 ali 2 1 2, pod pogojem, da enice ali dve niso v isti vrstici ali stolpcu. Upoštevajte, da imajo kletke za odštevanje in deljenje vedno dva kvadrata in dve števki rešitve sta lahko prikazani v katerem koli vrstnem redu. Na primer, 2-kletka bi lahko imela rešitve 1 3 ali 3 1 ali 2 4 ali 4 2, itd.</para
+></listitem>
+	<listitem
+><para
+>Ker v uganki Mathdoku ni blokov, je lahko poljubne velikosti od 3x3 do 9x9, privzeto pa je 6x6. Za podrobnosti glejte razdelek <link linkend="configuration"
+>Konfiguracija igre</link
+>. Za lažji začetek je na voljo različica Mathdoku 101 velikosti 4x4.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+</sect1>
+
+<sect1 id="tips"
+><title
+>Strategije in nasveti</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Vzemite si čas in ne hitite. &ksudoku; ni hitra igra.</para
+></listitem>
+	<listitem
+><para
+>Bodite pozorni na barve vrstic, stolpcev in blokov. Tam so, da vam pomagajo.</para
+></listitem>
+	<listitem
+><para
+>Prepričajte se, da v vrstici, stolpcu ali bloku, kamor vnašate simbol, že ni podvojenega simbola.</para
+></listitem>
+	<listitem
+><para
+>Če ste v dvomih, poskusite predvideti, ali kvadratek, v katerega vnašate simbol, morda potrebuje kakšen drug simbol, ki sicer ne more iti nikamor drugam zaradi pravil vrstic, stolpcev in blokov.</para
+></listitem>
+	<listitem
+><para
+>Uporabite internet za iskanje splošnih namigov in strategij za reševanje sudokujev.</para
+></listitem>
+	<listitem
+><para
+>Uporabite poteze označevalcev, ko opazite polje ali polja, ki imajo le nekaj možnosti, vendar se ne morete takoj odločiti med njimi. Označevalci vam bodo pozneje, ko bo izpolnjenih več kvadratkov, prihranili čas in spomin. Glejte <link linkend="howto"
+>Kako igrati</link
+> za podrobnosti o uporabi označevalcev.</para
+></listitem>
+	<listitem
+><para
+>Če imate težave, poskusite slediti svojim korakom in natančno ugotovite, kje ste naredili napako. Uporabite lahko <menuchoice
+><guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Razveljavi</guimenuitem
+></menuchoice
+> in <menuchoice
+><guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Uveljavi</guimenuitem
+></menuchoice 
+> elementi menija, večkrat, če je potrebno, in obstaja nastavitev v <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Konfiguriraj &ksudoku;…</guimenuitem
+></menuchoice
+>, ki osvetli napake.</para
+></listitem>
+	<listitem
+><para
+>Čeprav &ksudoku; ponuja možnost 'Namig', je poskusite ne uporabljati pogosto. Ne pozabite, da samostojno reševanje uganke izboljša vašo možgansko aktivnost, medtem ko je prepogosta uporaba funkcije »Namig« goljufanje.</para
+></listitem>
+	<listitem
+><para
+>Če imate preveč težav z reševanjem določene uganke in preprosto morate uporabiti funkcijo 'Namig', potem bi morda morali poskusiti znižati težavnostno stopnjo ali poskusiti s preprostejšo, bolj osnovno uganko.</para
+></listitem>
+	<listitem
+><para
+>Nekatere postavitve ugank imajo zelo specifične oblike igralnih plošč. Dobro je imeti možnost označevanja omogočeno, tudi če se imate za izkušenega igralca.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>Pregled vmesnika</title
+> <!-- do not change this! -->
+
+<sect1 id="welcome-screen"
+><title
+>Pozdravni zaslon</title>
+
+<para
+>Pozdravni zaslon je prva stvar, ki jo vidite, ko zaženete &ksudoku; ali uporabite orodno vrstico ali meni, da zahtevate novo igro. Ima seznam vseh vrst in velikosti uganke in lahko kliknete eno od njih, da izberete.</para>
+
+<para
+>Če kliknete gumb z oznako <guibutton
+>Vstopi v uganko</guibutton
+>, se prikaže prazna tabla izbrane vrste in velikosti. Tukaj lahko z miško ali tipkovnico vstopite v uganko iz drugega vira, kot je časopis. Ko končate, uporabite dejanje <guilabel
+>Preveri</guilabel
+> v orodni vrstici ali meniju, da preverite uganko. Imeti mora samo eno rešitev. Če je tako, lahko začnete reševati uganko ali morda uspete &ksudoku; rešiti. Če rešitve ni ali jih je več kot ena, verjetno pomeni, da ste nekje naredili napako pri vnosu podatkov.</para>
+
+<para
+>Če kliknete gumb <guibutton
+>Ustvari uganko</guibutton
+>, &ksudoku; bo prikazala tablo z nekaterimi kvadratki, ki so že izpolnjeni. Na vas je, da izpolnite ostalo.</para>
+
+<para
+>Preden ustvarite uganko, preverite, ali so nastavitve spustnih oken <guilabel
+>Težavnost:</guilabel
+> in <guilabel
+>Simetrija:</guilabel
+> po vaših željah. Lahko jih spremenite med igro, vendar potem ne bodo imele učinka, dokler ne ustvarite naslednje uganke.</para>
+
+	<note
+><para
+>Če ne vidite spustnih oken <guilabel
+>Težavnost:</guilabel
+> in <guilabel
+>Simetrija:</guilabel
+>, uporabite <menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Pokaži vrstico stanja</guimenuitem
+> </menuchoice
+>, da zagotovite, da je vrstica stanja vidna.</para
+></note>
+
+<para
+>Spustni meni <guilabel
+>Težavnost:</guilabel
+> ponuja šest težavnostnih stopenj, od <guimenuitem
+>Zelo enostavno</guimenuitem
+> do <guimenuitem
+>Težko</guimenuitem
+>, <guimenuitem
+>Diabolično</guimenuitem
+> in <guimenuitem
+>Neomejeno</guimenuitem
+>. Reševanje lažjih ravni lahko traja nekaj minut na plošči 9x9. Stopnji <guimenuitem
+>Težko</guimenuitem
+> in <guimenuitem
+>Diabolično</guimenuitem
+> lahko trajata kakšno uro in naj bi bili enakovredni težkim ocenam, ki se pojavljajo v časopisih. Samurajske uganke in uganke velikosti 16 x 16 ali 25 x 25 bodo reševane še dlje, preprosto zato, ker je na voljo več vrstic, stolpcev in blokov ter več kvadratov, ki jih je treba izpolniti.</para>
+
+<para
+>Stopnja <guimenuitem
+>Diabolična</guimenuitem
+> običajno zahteva eno ali več ugibanj, s sledenjem nazaj, če ugibate narobe. Nižje stopnje je običajno mogoče rešiti zgolj z logiko. Raven <guimenuitem
+>Neomejeno</guimenuitem
+> nima omejitev glede števila zahtevanih ugibanj, kako hitro je potrebno prvo ugibanje ali kako zapletena je lahko logika. Na voljo je za zanimanje izkušenih igralcev, vendar se nagiba k ustvarjanju nezanimivih <quote
+>nečloveških</quote
+> ugank in ni priporočljivo za splošno uporabo.</para>
+
+ <para
+>Spustno polje <guilabel
+>Simetrija:</guilabel
+> ponuja sedem vrst simetrije, vključno z <guimenuitem
+>Brez simetrije</guimenuitem
+>. To nadzoruje postavitev in videz kvadratov, ki so izpolnjeni na začetku uganke, in ima predvsem estetski učinek, le da so uganke brez simetrije nekoliko trše od tistih z visoko simetrijo in manj verjetno je, da &ksudoku; lahko ustvari uganko z visoko težavnostjo in visoko simetrijo skupaj.</para>
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu"
+><title
+>Meni igre</title>
+
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Začne novo igro.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Naloži…</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Naloži shranjeno igro.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Shrani</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Shrani</action
+> trenutno igro kot privzeto datoteko za shranjevanje.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>Igra</guimenu
+> <guimenuitem
+>Shrani kot…</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Shrani</action
+> trenutno igro kot datoteko po vaši izbiri.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Natisni…</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Natisne</action
+> trenutno stanje dvodimenzionalne igre na tiskalnik po vaši izbiri. Obrisi blokov in izvirne vrednosti sestavljanke so natisnjeni v črni barvi. Druge celice, izpolnjene vrednosti in vrednosti rešitve so natisnjene sivo. Obstaja možnost tiskanja samo ene uganke ali več ugank na stran. Glejte <link linkend="configuration"
+>Konfiguracija igre</link
+>.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Igra</guimenu
+> <guimenuitem
+>Zapri</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Zapusti</action
+> &ksudoku;.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+>Meni Premakni</title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Razveljavi</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Razveljavite</action
+> svojo zadnjo potezo, po potrebi večkrat.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Ponovi</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Ponovi</action
+> potezo, ki je bila razveljavljena, po potrebi večkrat.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+><keycap
+>H</keycap
+></shortcut
+> <guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Namig</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Podajte namig</action
+> tako, da izpolnite prazen kvadrat.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Reši</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Takoj reši</action
+> uganko.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>Premakni</guimenu
+> <guimenuitem
+>Preveri</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Preveri</action
+> veljavnost vnesene uganke. Če ima samo eno rešitev, postane na voljo za igro. Če nima rešitve ali jih je več kot eno, je verjetno prišlo do napake pri vnosu podatkov.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>Meni z nastavitvami</title>
+		<variablelist>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>Nastavitve</guimenu
+> <guimenuitem
+>Konfiguriraj &ksudoku;…</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>Odprite pogovorno okno za konfiguracijo &ksudoku;.</action
+> Za podrobnosti glejte razdelek <link linkend="configuration"
+>Konfiguracija igre</link
+>.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+		<para
+>Poleg tega &ksudoku; ima skupno &kde; Elemente menija <guimenu
+>Nastavitve</guimenu
+> in <guimenu
+>Pomoč</guimenu
+>, za več informacij preberite razdelke o <ulink url="help:/fundamentals/menus.html#menus-settings"
+>meniju z nastavitvami</ulink
+> in <ulink url="help:/fundamentals/menus.html#menus-help"
+>meni Pomoč</ulink
+> v &kde; Osnove. </para>
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>Pogosto zastavljena vprašanja</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>Želim spremeniti videz te igre. Ali lahko? </para
+></question>
+ <answer
+><para
+>Sudoku igre se tradicionalno igrajo s kvadratno mrežo. Teme tukaj nimajo velikega smisla, vendar lahko izberete nekaj barvnih shem in ozadij. To storite tako, da uporabite <menuchoice
+><guimenu
+>Nastavitve</guimenu
+><guimenuitem
+>Konfiguriraj &ksudoku;…</guimenuitem
+></menuchoice
+> v menijski vrstici.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Ali lahko uporabljam tipkovnico za igranje te igre? </para
+></question>
+ <answer
+><para
+>Da. V &ksudoku; igranje s tipkovnico je vedno omogočeno. Uporabite smerne tipke za premikanje izbire, številske ali abecedne znake za vnos simbolov in &Shift; tipka za uporabo markerjev.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>Kje so visoki rezultati?</para
+></question>
+ <answer
+><para
+>&ksudoku; nima te funkcije.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>Konfiguracija igre</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+>Možnosti igre</title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>Pri tiskanju poskušajte na stran namestiti več kot eno sestavljanko</guilabel
+></term>
+			<listitem>
+			<para
+>Preklopite možnost za tiskanje več kot ene uganke na stran, kadar koli ustrezajo.</para>
+			<para
+>Če je ta možnost označena, bodo uganke natisnjene, ko jih na stran ne bo več ali ko &ksudoku; preneha. V nasprotnem primeru se uganka takoj natisne.</para>
+			<para
+>Tridimenzionalnih sestavljank ni mogoče natisniti.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Pokaži poudarke v 2-D ugankah</guilabel
+></term>
+			<listitem
+><para
+>Preklopite &ksudoku; možnost osvetlitve za dvodimenzionalne uganke.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Prikaži napake</guilabel
+></term>
+			<listitem
+><para
+>Preklopite možnost za označevanje napak.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Prikaži poudarke v 3-D ugankah</guilabel
+></term>
+			<listitem
+><para
+>Preklopite &ksudoku; možnost osvetlitve za tridimenzionalne uganke.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Velikost uganke Mathdoku (3-9)</guilabel
+></term>
+			<listitem
+><para
+>Izberite velikost za uganke Mathdoku, od 3 (zelo enostavno) do 9 (zelo težko), pri čemer je privzeta velikost 6.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Nastavitve samo za 3-D uganke</guilabel
+></term>
+			<listitem
+><para
+>Teh pet nastavitev prilagodi označevanje in vidnost celic v tridimenzionalnih ugankah. Ideja je olajšati ogled odnosov med celicami, še posebej, če so za drugimi celicami.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+		<note
+><title
+>Opomba:</title
+><para
+>Omogočanje možnosti označevanja je priporočljivo tudi za najbolj izkušene igralce, saj vam pomaga videti dejanske omejitve igralne plošče.</para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>Zasluge in licenca</title
+> <!-- do not change this! -->
+
+<para
+>&ksudoku; </para>
+
+<!--List all the copyright holders here-->
+<para
+>Avtorske pravice 2005-2007 Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Avtorske pravice 2006-2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Johannes Bergmeier <email
+>johannes.bergmeier@gmx.net</email
+></para>
+
+<para
+>Avtorske pravice 2011 Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Novi reševalni in generatorski algoritmi 2011 David Bau, <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
+> glejte spletno stran.</ulink
+></para>
+
+<para
+>Avtorske pravice za dokumentacijo 2005 Francesco Rossi <email
+>redsh@email.it</email
+></para>
+
+<para
+>Avtorske pravice za dokumentacijo 2007 Mick Kappenburg <email
+>ksudoku@kappenburg.net</email
+>, Eugene Trounev <email
+>eugene.trounev@gmail.com</email
+></para>
+
+<para
+>Avtorske pravice za dokumentacijo 2011-2020 Ian Wadham <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>Prevod: Matjaž Jeran<email
+>matjaz.jeran@amis.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
