@@ -28,6 +28,18 @@ set(ksudoku_SRCS
 	ksudoku.qrc
 )
 
+if(APPLE)
+    set_target_properties(ksudoku PROPERTIES
+        MACOSX_BUNDLE_DISPLAY_NAME "KSudoku"
+       MACOSX_BUNDLE_BUNDLE_NAME "KSudoku"
+       MACOSX_BUNDLE_LONG_VERSION_STRING "KSudoku ${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${RELEASE_SERVICE_VERSION_MAJOR}.${RELEASE_SERVICE_VERSION_MINOR}"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${RELEASE_SERVICE_VERSION}"
+        MACOSX_BUNDLE_GUI_IDENTIFIER "org.kde.ksudoku"
+       MACOSX_BUNDLE_COPYRIGHT "2024 The KSudoku Developers")
+endif()
+
+
 ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX KSUDOKU VERSION_HEADER ksudoku_version.h)
 
 ecm_qt_declare_logging_category(ksudoku_SRCS
