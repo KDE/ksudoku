@@ -19,11 +19,11 @@ endif(OPENGL_SUPPORT)
 
 set(ksudoku_SRCS
 	main.cpp
-	generator/sudokuboard.cpp
-	generator/state.cpp
-	generator/dlxsolver.cpp
-	generator/cagegenerator.cpp
-	generator/mathdokugenerator.cpp
+	generator/sudokuboard.cpp generator/sudokuboard.h
+	generator/state.cpp generator/state.h
+	generator/dlxsolver.cpp generator/dlxsolver.h
+	generator/cagegenerator.cpp generator/cagegenerator.h
+	generator/mathdokugenerator.cpp generator/mathdokugenerator.h
 
 	ksudoku.qrc
 )

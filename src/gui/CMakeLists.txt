@@ -1,29 +1,29 @@
 include_directories( views )
 
 set(ksudoku_SRCS
-	config.cpp
-	ksudoku.cpp
-	ksudokugame.cpp
-	serializer.cpp
-	history.cpp
-	symbols.cpp
-	gamevariants.cpp
-	welcomescreen.cpp
-	puzzleprinter.cpp
+	config.cpp config.h
+	ksudoku.cpp ksudoku.h
+	ksudokugame.cpp ksudokugame.h
+	serializer.cpp serializer.h
+	history.cpp history.h
+	symbols.cpp symbols.h
+	gamevariants.cpp gamevariants.h
+	welcomescreen.cpp welcomescreen.h
+	puzzleprinter.cpp puzzleprinter.h
 )
 
 set(ksudoku_views_SRCS
-	views/ksview.cpp
-	views/gameactions.cpp
-	views/renderer.cpp
-	views/valuelistwidget.cpp
-	views/view2d.cpp )
+	views/ksview.cpp views/ksview.h
+	views/gameactions.cpp views/gameactions.h
+	views/renderer.cpp views/renderer.h
+	views/valuelistwidget.cpp views/valuelistwidget.h
+	views/view2d.cpp views/view2d.h )
 
 if(OPENGL_SUPPORT)
 	set(ksudoku_views_SRCS
 		${ksudoku_views_SRCS}
-		views/ArcBall.cpp
-		views/roxdokuview.cpp )
+		views/ArcBall.cpp views/ArcBall.h
+		views/roxdokuview.cpp views/roxdokuview.h )
 endif(OPENGL_SUPPORT)
 
 

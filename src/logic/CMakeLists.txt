@@ -1,6 +1,6 @@
 set(ksudoku_logic_SRCS
-	skgraph.cpp
-	puzzle.cpp
+	skgraph.cpp skgraph.h
+	puzzle.cpp puzzle.h
 )
 
 add_library(ksudoku_logic STATIC ${ksudoku_logic_SRCS})
