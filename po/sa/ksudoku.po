@@ -1,0 +1,1172 @@
+# Sanskrit translations for ksudoku package.
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the ksudoku package.
+# Kali <EMAIL@ADDRESS>, 2024.
+#
+# SPDX-FileCopyrightText: 2024 kali <skkalwar999@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: ksudoku\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2024-05-05 00:37+0000\n"
+"PO-Revision-Date: 2024-12-13 20:20+0530\n"
+"Last-Translator: kali <skkalwar999@gmail.com>\n"
+"Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
+"Language: sa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n>2);\n"
+"X-Generator: Lokalize 24.08.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr ""
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr ""
+
+#: src/generator/sudokuboard.cpp:123
+#, kde-format
+msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
+msgstr ""
+"प्रायः २०० प्रयत्नानाम् अनन्तरं प्रहेलिकां जनयितुं प्रयत्नाः असफलाः अभवन् । पुनः प्रयासं कुरुत?"
+
+#: src/generator/sudokuboard.cpp:125
+#, kde-format
+msgctxt "@title:window"
+msgid "Mathdoku or Killer Sudoku Puzzle"
+msgstr ""
+
+#: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
+#, kde-format
+msgctxt "@action:button"
+msgid "&Try Again"
+msgstr ""
+
+#: src/generator/sudokuboard.cpp:212 src/generator/sudokuboard.cpp:254
+#, kde-format
+msgid "%1"
+msgstr "%1"
+
+#: src/generator/sudokuboard.cpp:218
+#, kde-format
+msgid ""
+"After %1 tries, the best difficulty level achieved by the generator is %2, "
+"with internal difficulty rating %3, but you requested difficulty level %4.\n"
+"\n"
+"Do you wish to let the generator try again or accept the puzzle as is?\n"
+"\n"
+"Hint: you can try to increase the difficulty rating by doing the following: "
+"Continue with the 'Accept' button, choose Game -> New, then change the "
+"Symmetry setting to 'No Symmetry' or some low symmetry type and then use "
+"'Generate A Puzzle' again."
+msgstr ""
+"%1 प्रयत्नस्य अनन्तरं जनरेटर् द्वारा प्राप्तः सर्वोत्तमः कठिनतास्तरः %2 अस्ति, "
+"आन्तरिककठिनतामूल्याङ्कनं %3 सह, परन्तु भवान् कठिनतास्तरं %4 अनुरोधितवान् ।\n"
+"\n"
+"किं भवन्तः जनरेटरं पुनः प्रयासं कर्तुम् इच्छन्ति वा प्रहेलिकां यथावत् स्वीकुर्वन्तु वा?\n"
+"\n"
+"सङ्केतः: भवान् निम्नलिखितम् कृत्वा कठिनता-रेटिंग् वर्धयितुं प्रयतितुं शक्नोति: 'Accept' बटनेन "
+"सह निरन्तरं कुर्वन्तु, Game -> New इति चिनोतु, ततः Symmetry सेटिंग् 'No Symmetry' अथवा "
+"किञ्चित् न्यूनसमरूपता प्रकारं परिवर्तयन्तु ततः 'Generate A' इत्यस्य उपयोगं कुर्वन्तु प्रहेलिका' "
+"पुनः ।"
+
+#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
+#: src/generator/sudokuboard.cpp:266
+#, kde-format
+msgctxt "@title:window"
+msgid "Difficulty Level"
+msgstr ""
+
+#: src/generator/sudokuboard.cpp:231
+#, kde-format
+msgctxt "@action:button"
+msgid "&Accept"
+msgstr ""
+
+#: src/generator/sudokuboard.cpp:243
+#, kde-format
+msgid ""
+"It will be possible to solve the generated puzzle by logic alone. No "
+"guessing will be required.\n"
+"\n"
+"The internal difficulty rating is %1. There are %2 clues at the start and %3 "
+"moves to go."
+msgstr ""
+"उत्पन्नप्रहेलिका तर्कमात्रेण समाधानं कर्तुं शक्यते भविष्यति। अनुमानस्य आवश्यकता न भविष्यति।\n"
+"\n"
+"आन्तरिककठिनतामूल्याङ्कनं %1 अस्ति । आरम्भे %2 सूचकाः सन्ति तथा च %3 गन्तुं चालयति ।"
+
+#: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
+#, kde-format
+msgctxt "@action:button"
+msgid "&Retry"
+msgstr ""
+
+#: src/generator/sudokuboard.cpp:257
+#, kde-format
+msgid ""
+"Solving the generated puzzle will require an average of %1 guesses or branch "
+"points and if you guess wrong, backtracking will be necessary. The first "
+"guess should come after %2 moves.\n"
+"\n"
+"The internal difficulty rating is %3, there are %4 clues at the start and %5 "
+"moves to go."
+msgstr ""
+"उत्पन्नप्रहेलिकासमाधानार्थं %1 अनुमानस्य अथवा शाखाबिन्दुस्य औसतस्य आवश्यकता भविष्यति तथा च "
+"यदि भवान् गलत् अनुमानं करोति तर्हि पश्चात्तापः आवश्यकः भविष्यति । प्रथमः अनुमानः %2 "
+"चालनानन्तरं आगच्छेत् ।\n"
+"\n"
+"आन्तरिककठिनतामूल्याङ्कनं %3 अस्ति, आरम्भे %4 सूचकाः सन्ति तथा च %5 गन्तुं चालयति ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
+#: src/gui/configgame.ui:20
+#, kde-format
+msgid "When printing, try to fit more than one puzzle on a page"
+msgstr "मुद्रणं कुर्वन् पृष्ठे एकादशाधिकं प्रहेलिकां स्थापयितुं प्रयतध्वम्"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:43
+#, kde-format
+msgid "Highlight the row, column and block that contain the selected cell"
+msgstr "चयनितं कोष्ठकं यस्मिन् पङ्क्तिः, स्तम्भः, खण्डः च प्रकाशयन्तु"
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:46
+#, kde-format
+msgid ""
+"Highlight the row, column and block that contain the selected cell. Blocks "
+"may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
+msgstr ""
+"चयनितं कोष्ठकं यस्मिन् पङ्क्तिः, स्तम्भः, खण्डः च प्रकाशयन्तु । खण्डाः वर्गाकाराः अनियमिताः "
+"वा भवितुम् अर्हन्ति (यथा आरा-प्रकारस्य अथवा XSudoku पहेलिकासु) ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
+#: src/gui/configgame.ui:49
+#, kde-format
+msgid "Show highlights in 2-D puzzles"
+msgstr "2-D पहेलिकासु मुख्यविषयाणि दर्शयन्तु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:56 src/gui/configgame.ui:59
+#, kde-format
+msgid "Highlight in red any cells whose values break the Sudoku rules."
+msgstr "येषां कोष्ठकानां मूल्यानि सुडोकु नियमं भङ्गयन्ति तान् रक्तवर्णेन प्रकाशयन्तु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
+#: src/gui/configgame.ui:62
+#, kde-format
+msgid "Show errors"
+msgstr "दोषान् दर्शयतु"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:69 src/gui/configgame.ui:72
+#, kde-format
+msgid "Highlight the planes (blocks) that contain the selected cell."
+msgstr "चयनितं कोष्ठकं येषु विमानेषु (ब्लॉक्स्) सन्ति तान् प्रकाशयन्तु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
+#: src/gui/configgame.ui:75
+#, kde-format
+msgid "Show highlights in 3-D puzzles"
+msgstr "3-D पहेलिकासु मुख्यविषयाणि दर्शयन्तु"
+
+#. i18n: ectx: property (text), widget (QLabel, label_4)
+#: src/gui/configgame.ui:137
+#, kde-format
+msgid "Mathdoku puzzle size (3-9)"
+msgstr "मथडोकु पहेली आकार (३-९) २."
+
+#. i18n: ectx: property (text), widget (QLabel, label_2)
+#: src/gui/configgame.ui:167
+#, kde-format
+msgid "Settings for 3-D Puzzles Only"
+msgstr "केवलं 3-D पहेलीनां कृते सेटिंग्स्"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_6)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_6)
+#: src/gui/configgame.ui:182 src/gui/configgame.ui:185
+#: src/gui/configgame.ui:228 src/gui/configgame.ui:231
+#, kde-format
+msgid "Set the relative size of 3-D cells and the spaces between them."
+msgstr "3-D कोष्ठकानां सापेक्षिकं आकारं तेषां मध्ये रिक्तस्थानानि च सेट् कुर्वन्तु ।"
+
+#. i18n: ectx: property (text), widget (QLabel, label_6)
+#: src/gui/configgame.ui:234
+#, kde-format
+msgid "Overall size of 3-D cells"
+msgstr "3-D कोशिकानां समग्रः आकारः"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label)
+#: src/gui/configgame.ui:254 src/gui/configgame.ui:257
+#: src/gui/configgame.ui:300 src/gui/configgame.ui:303
+#, no-c-format, kde-format
+msgid "Shrink or expand a cell by up to 30% when it is selected."
+msgstr "कोष्ठकं चयनं कृत्वा ३०% पर्यन्तं संकोचयन्तु अथवा विस्तारयन्तु ।"
+
+#. i18n: ectx: property (text), widget (QLabel, label)
+#: src/gui/configgame.ui:306
+#, kde-format
+msgid "Size of selected 3-D cell"
+msgstr "चयनितस्य 3-D कोष्ठकस्य आकारः"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_3)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_3)
+#: src/gui/configgame.ui:326 src/gui/configgame.ui:329
+#: src/gui/configgame.ui:363 src/gui/configgame.ui:366
+#, no-c-format, kde-format
+msgid "Shrink or expand cells by up to 30% when they are highlighted."
+msgstr "कोशिकानां प्रकाशनसमये ३०% पर्यन्तं संकोचनं वा विस्तारं वा कुर्वन्तु ।"
+
+#. i18n: ectx: property (text), widget (QLabel, label_3)
+#: src/gui/configgame.ui:369
+#, kde-format
+msgid "Size of highlighted 3-D cells"
+msgstr "हाइलाइट् कृतानां 3-D कोशिकानां आकारः"
+
+#. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (toolTip), widget (QLabel, label_5)
+#: src/gui/configgame.ui:389 src/gui/configgame.ui:426
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell."
+msgstr ""
+"यदि ते NxNxN घने न सन्ति यस्मिन् चयनितं कोष्ठकं भवति तर्हि कोशिकान् ६०% पर्यन्तं संकुचयन्तु ।"
+
+#. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
+#. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:392 src/gui/configgame.ui:429
+#: src/gui/configgame.ui:449
+#, no-c-format, kde-format
+msgid ""
+"Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
+"selected cell. This is useful if a 3-D puzzle has more than one cube."
+msgstr ""
+"यदि ते NxNxN घने न सन्ति यस्मिन् चयनितं कोष्ठकं भवति तर्हि कोशिकान् ६०% पर्यन्तं संकुचयन्तु । "
+"यदि 3-D प्रहेलिकायां एकादशाधिकघनानि सन्ति तर्हि एतत् उपयोगी भवति ।"
+
+#. i18n: ectx: property (text), widget (QLabel, label_5)
+#: src/gui/configgame.ui:432
+#, kde-format
+msgid "Size of 3-D cells outside the selected volume"
+msgstr "चयनित आयतनात् बहिः 3-D कोशिकानां आकारः"
+
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:446
+#, kde-format
+msgid ""
+"Darken cells if they are not in an NxNxN cube that contains the selected "
+"cell."
+msgstr ""
+"यदि ते NxNxN घने नास्ति यस्मिन् चयनितं कोष्ठकं भवति तर्हि कोष्ठकान् अन्धकारं कुर्वन्तु ।"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
+#: src/gui/configgame.ui:452
+#, kde-format
+msgid "Darken 3-D cells outside the selected volume"
+msgstr "चयनित आयतनात् बहिः 3-D कोष्ठकान् अन्धकारं कुर्वन्तु"
+
+#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
+#, kde-format
+msgid "Configuration not yet implemented"
+msgstr "विन्यासः अद्यापि कार्यान्वितः नास्ति"
+
+#: src/gui/ksudoku.cpp:76
+#, kde-format
+msgid ""
+"Sorry, your solution contains mistakes.\n"
+"\n"
+"Enable \"Show errors\" in the settings to highlight them."
+msgstr ""
+"क्षम्यतां, भवतः समाधानं त्रुटयः सन्ति।\n"
+"\n"
+"तान् प्रकाशयितुं सेटिङ्ग्स् मध्ये \"Show errors\" सक्षमं कुर्वन्तु ।"
+
+#: src/gui/ksudoku.cpp:87
+#, kde-format
+msgid "Congratulations! You made it in 1 second. With some tricks."
+msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/ksudoku.cpp:89
+#, kde-format
+msgid "Congratulations! You made it in 1 minute. With some tricks."
+msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#, kde-format
+msgid "1 minute"
+msgid_plural "%1 minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#, kde-format
+msgid "1 second"
+msgid_plural "%1 seconds"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/ksudoku.cpp:91
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2. With some tricks."
+msgstr ""
+
+#: src/gui/ksudoku.cpp:94
+#, kde-format
+msgid "Congratulations! You made it in 1 second."
+msgid_plural "Congratulations! You made it in %1 seconds."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/ksudoku.cpp:96
+#, kde-format
+msgid "Congratulations! You made it in 1 minute."
+msgid_plural "Congratulations! You made it in %1 minutes."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/gui/ksudoku.cpp:98
+#, kde-format
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2."
+msgstr ""
+
+#: src/gui/ksudoku.cpp:178
+#, kde-format
+msgid "Sudoku Standard (9x9)"
+msgstr "मानक सुडोकु (9x9) ."
+
+#: src/gui/ksudoku.cpp:179
+#, kde-format
+msgid "The classic and fashionable game"
+msgstr "क्लासिकः फैशनयुक्तः च क्रीडा"
+
+#: src/gui/ksudoku.cpp:182
+#, kde-format
+msgid "Roxdoku 9 (3x3x3)"
+msgstr "रॉक्सडोकु ९ (३x३x३) २."
+
+#: src/gui/ksudoku.cpp:183
+#, kde-format
+msgid "The Rox 3D Sudoku"
+msgstr "द रॉक्स 3 डी सुडोकु"
+
+#: src/gui/ksudoku.cpp:205
+#, kde-format
+msgid "Missing Variant Name"
+msgstr "लुप्त रूप नाम"
+
+#: src/gui/ksudoku.cpp:221
+#, kde-format
+msgid "Sudoku 16x16"
+msgstr "सुडोकु १६x१६"
+
+#: src/gui/ksudoku.cpp:222
+#, kde-format
+msgid "Sudoku with 16 symbols"
+msgstr "१६ चिह्नैः सह सुडोकुः"
+
+#: src/gui/ksudoku.cpp:224
+#, kde-format
+msgid "Sudoku 25x25"
+msgstr "सुडोकु २५x२५"
+
+#: src/gui/ksudoku.cpp:225
+#, kde-format
+msgid "Sudoku with 25 symbols"
+msgstr "२५ चिह्नैः सह सुडोकुः"
+
+#: src/gui/ksudoku.cpp:228
+#, kde-format
+msgid "Roxdoku 16 (4x4x4)"
+msgstr "रॉक्सडोकु १६ (४x४x४) २."
+
+#: src/gui/ksudoku.cpp:229
+#, kde-format
+msgid "The Rox 3D sudoku with 16 symbols"
+msgstr "१६ चिह्नैः सह Rox 3D sudoku इति"
+
+#: src/gui/ksudoku.cpp:231
+#, kde-format
+msgid "Roxdoku 25 (5x5x5)"
+msgstr "रॉक्सडोकु २५ (५x५x५) २."
+
+#: src/gui/ksudoku.cpp:232
+#, kde-format
+msgid "The Rox 3D sudoku with 25 symbols"
+msgstr "२५ चिह्नैः सह Rox 3D sudoku इति"
+
+#: src/gui/ksudoku.cpp:278
+#, kde-format
+msgid ""
+"Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
+"grid in which every row and every column contains the available digits (1-3 "
+"up to 1-9) exactly once. The grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues, but there are not many of "
+"them. Cages of larger size have a target value and an arithmetic operator (+-"
+"x/). The digits in the cage must combine together, using the operator, to "
+"reach the target value, e.g. '12x' means that the digits must multiply "
+"together to make 12. A digit can occur more than once in a cage, provided it "
+"occurs in different rows and columns.\n"
+"\n"
+"In general, larger Mathdokus are more difficult and so are larger cages. You "
+"can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"मथडोकु पहेलिकाः ३x३ तः ९x९ पर्यन्तं किमपि आकारं भवितुम् अर्हन्ति । समाधानं एकं जालम् अस्ति "
+"यस्मिन् प्रत्येकं पङ्क्तिः प्रत्येकं स्तम्भं च उपलब्धानि अङ्कानि (1-3 तः 1-9 पर्यन्तं) एकवारं "
+"सम्यक् भवन्ति । जालम् अनियमितरूपेण पञ्जरैः आवृतं भवति ।\n"
+"\n"
+"१ आकारस्य पञ्जराः आरम्भ-मूल्यानि वा सूचकाः वा सन्ति, परन्तु तेषु बहवः नास्ति । बृहत्तर "
+"आकारस्य पञ्जरेषु लक्ष्यमूल्यं गणितीयसञ्चालकः (+-x/) च भवति । पञ्जरे स्थिताः अङ्काः लक्ष्यमूल्यं "
+"प्राप्तुं संचालकस्य उपयोगेन एकत्र संयोजिताः भवेयुः, उदा. '12x' इत्यस्य अर्थः अस्ति यत् अङ्काः "
+"एकत्र गुणयित्वा 12. अङ्कः पञ्जरे एकवारादधिकं भवितुं शक्नोति, यद्यपि सः भिन्नपङ्क्तौ स्तम्भेषु "
+"च भवति\n"
+"\n"
+"सामान्यतया बृहत्तराः मथडोकुः कठिनतराः भवन्ति तथा च बृहत्तराः पञ्जराः । KSudoku इत्यस्य "
+"सेटिंग्स् संवादे पहेली आकारं चयनं कर्तुं शक्नुवन्ति तथा च KSudoku इत्यस्य कठिनता बटनस्य उपयोगेन "
+"अधिकतमं पञ्जर-आकारं चिन्वितुं शक्नुवन्ति ।"
+
+#: src/gui/ksudoku.cpp:297
+#, kde-format
+msgid "Playing Mathdoku"
+msgstr "मथडोकु क्रीडन्"
+
+#: src/gui/ksudoku.cpp:301
+#, kde-format
+msgid ""
+"Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
+"or nine 3x3 blocks. The solution must follow Classic Sudoku rules. The "
+"difference is that there are few starting-values or clues (if any). Instead "
+"the grid is covered with irregularly shaped cages.\n"
+"\n"
+"Cages of size 1 are starting-values or clues. Cages of larger size have a "
+"target value and the digits in them must add up to that value. In Killer "
+"Sudoku, a cage cannot contain any digit more than once.\n"
+"\n"
+"In general, larger cages are more difficult. You can select the maximum cage-"
+"size by using KSudoku's Difficulty button."
+msgstr ""
+"किलर सुडोकु पहेलीषु ४x४ अथवा ९x९ आकाराः भवितुम् अर्हन्ति, यत्र चत्वारः २x२ खण्डाः अथवा "
+"नव ३x३ खण्डाः सन्ति । समाधानं Classic Sudoku नियमानाम् अनुसरणं करणीयम् । अन्तरं तु "
+"अस्ति यत् आरम्भ-मूल्यानि वा सूचकाः (यदि सन्ति) अल्पानि सन्ति । अपि तु जालं अनियमितरूपेण "
+"पञ्जरैः आवृतं भवति ।\n"
+"\n"
+"१ आकारस्य पञ्जराः आरम्भ-मूल्यानि अथवा सूचकाः सन्ति । बृहत्तरप्रमाणस्य पञ्जरस्य लक्ष्यमूल्यं "
+"भवति तथा च तेषु अङ्काः तत् मूल्यं यावत् योगं कुर्वन्ति । किलर सुडोकु इत्यस्मिन् पञ्जरे "
+"एकवारादधिकं किमपि अङ्कं न भवितुं शक्नोति ।\n"
+"\n"
+"सामान्यतया बृहत्तराः पञ्जराः अधिकं कठिनाः भवन्ति । KSudoku इत्यस्य Difficulty बटन् "
+"इत्यस्य उपयोगेन अधिकतमं पञ्जर-आकारं चिन्वितुं शक्नुवन्ति ।"
+
+#: src/gui/ksudoku.cpp:315
+#, kde-format
+msgid "Playing Killer Sudoku"
+msgstr "किलर सुडोकु खेलना"
+
+#: src/gui/ksudoku.cpp:319
+#, kde-format
+msgid ""
+"Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
+"cage at a time. To start a cage, left click on any unused cell or enter a "
+"number in the cell that is under the cursor or enter + - / or x there. A "
+"small cage-label will appear in that cell. To extend the cage in any "
+"direction, left-click on a neigbouring cell or move the cursor there and "
+"type a Space.\n"
+"\n"
+"The number you type is the cage's value and it can have one or more digits, "
+"including zero. A cell of size 1 has to have a 1-digit number, as in a "
+"normal Sudoku puzzle. It becomes a starting-value or clue for the player.\n"
+"\n"
+"The + - / or x is the operator (Add, Subtract, Divide or Multiply). You must "
+"have one in cages of size 2 or more. In Killer Sudoku, the operator is "
+"provided automatically because it is always + or none.\n"
+"\n"
+"You can enter digits, operators and cells in any order. To complete the cage "
+"and start another cage, always press Return. If you make a mistake, the only "
+"thing to do is delete a whole cage and re-enter it. Use right click in the "
+"current cage or any earlier cage, if you wish to delete it. Alternatively, "
+"use the cursor and the Delete or Backspace key.\n"
+"\n"
+"When the grid is filled with cages, hit the Check button, to solve the "
+"puzzle and make sure there is only one solution. If the check fails, you "
+"have probably made an error somewhere in one of the cages."
+msgstr ""
+"मथडोकु तथा किलर सुडोकु पहेलीषु एकैकं पञ्जरं कार्यं कृत्वा कीलं करणीयम् अस्ति । पञ्जरस्य "
+"आरम्भार्थं कस्मिन् अपि अप्रयुक्ते कोष्ठके वामक्लिक् कुर्वन्तु अथवा कर्सरस्य अधः स्थिते कोष्ठके एकं "
+"सङ्ख्यां प्रविशन्तु अथवा तत्र + - / अथवा x इति प्रविशन्तु । तस्मिन् कोष्ठके लघु पञ्जर-लेबलं "
+"दृश्यते । पञ्जरं कस्यापि दिशि विस्तारयितुं समीपस्थे कोष्ठके वाम-क्लिक् कुर्वन्तु अथवा तत्र कर्सरं "
+"चालयित्वा Space इति टङ्कयन्तु ।\n"
+"\n"
+"भवन्तः यत् सङ्ख्यां टङ्कयन्ति तत् पञ्जरस्य मूल्यं भवति तथा च तस्य शून्यसहितं एकं वा अधिकं वा "
+"अङ्कं भवितुम् अर्हति । १ आकारस्य कोष्ठकस्य १ अङ्कीयसङ्ख्या भवितुमर्हति, यथा सामान्यसुडोकु-"
+"प्रहेलिकायां । क्रीडकस्य कृते आरम्भ-मूल्यं वा सूचकं वा भवति ।\n"
+"\n"
+"+ - / अथवा x इति संचालकः (Add, Subtract, Divide or Multiply) इति । भवतः २ "
+"आकारस्य वा अधिकस्य वा पञ्जरेषु एकः अवश्यं भवितव्यः । किलर सुडोकु इत्यस्मिन् सर्वदा + अथवा "
+"कोऽपि नास्ति इति कारणेन संचालकः स्वयमेव प्रदत्तः भवति ।\n"
+"\n"
+"भवन्तः अङ्काः, संचालकाः, कोष्ठकाः च यथाक्रमं प्रविष्टुं शक्नुवन्ति । पञ्जरं पूर्णं कर्तुं अन्यं "
+"पञ्जरं आरभ्य च सर्वदा Return नुदन्तु । यदि भवान् त्रुटिं करोति तर्हि केवलं सम्पूर्णं पञ्जरं "
+"विलोप्य पुनः प्रविशति । वर्तमानपञ्जरे अथवा पूर्वं कस्मिन् अपि पञ्जरे राइट् क्लिक् इत्यस्य "
+"उपयोगं कुर्वन्तु, यदि भवान् तत् विलोपयितुम् इच्छति । वैकल्पिकरूपेण कर्सरस्य तथा Delete अथवा "
+"Backspace कीलस्य उपयोगं कुर्वन्तु ।\n"
+"\n"
+"यदा जालपुटं पञ्जरैः पूरितं भवति तदा Check बटनं नुदन्तु, प्रहेलिकासमाधानार्थं तथा च एकमेव "
+"समाधानं भवति इति सुनिश्चितं कुर्वन्तु । यदि जाँचः विफलः भवति तर्हि भवता सम्भवतः एकस्मिन् "
+"पञ्जरे कुत्रचित् त्रुटिः कृता अस्ति ।"
+
+#: src/gui/ksudoku.cpp:349
+#, kde-format
+msgid "Data-entry for Puzzles with Cages"
+msgstr "पञ्जरैः सह पहेलीनां कृते आँकडा-प्रविष्टिः"
+
+#: src/gui/ksudoku.cpp:405
+#, kde-format
+msgid "The puzzle you entered contains some errors."
+msgstr "भवता प्रविष्टायां प्रहेलिकायां केचन दोषाः सन्ति ।"
+
+#: src/gui/ksudoku.cpp:418
+#, kde-format
+msgid ""
+"Sorry, no solutions have been found. Please check that you have entered in "
+"the puzzle completely and correctly."
+msgstr ""
+"क्षम्यतां, समाधानं न प्राप्तम्। कृपया पश्यन्तु यत् भवान् प्रहेलिकायां सम्पूर्णतया सम्यक् च "
+"प्रविष्टवान् वा।"
+
+#: src/gui/ksudoku.cpp:421 src/gui/ksudoku.cpp:428 src/gui/ksudoku.cpp:434
+#, kde-format
+msgctxt "@title:window"
+msgid "Check Puzzle"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:426
+#, kde-format
+msgid "The Puzzle you entered has a unique solution and is ready to be played."
+msgstr "भवता प्रविष्टा प्रहेलिका अद्वितीयं समाधानं धारयति, क्रीडितुं सज्जं च अस्ति ।"
+
+#: src/gui/ksudoku.cpp:431
+#, kde-format
+msgid ""
+"The Puzzle you entered has multiple solutions. Please check that you have "
+"entered in the puzzle completely and correctly."
+msgstr ""
+"भवता प्रविष्टस्य पहेलीयाः बहुविधाः समाधानाः सन्ति । कृपया पश्यन्तु यत् भवान् प्रहेलिकायां "
+"सम्पूर्णतया सम्यक् च प्रविष्टवान् वा।"
+
+#: src/gui/ksudoku.cpp:437
+#, kde-format
+msgid "Do you wish to play the puzzle now?"
+msgstr "किं भवन्तः इदानीं प्रहेलिकां क्रीडितुं इच्छन्ति ?"
+
+#: src/gui/ksudoku.cpp:438
+#, kde-format
+msgctxt "@title:window"
+msgid "Play Puzzle"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:439
+#, kde-format
+msgctxt "@action:button"
+msgid "Play"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:478
+#, kde-format
+msgctxt "@action"
+msgid "Enable All Messages"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:495
+#, kde-format
+msgctxt "@action"
+msgid "Check"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:511
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Diabolical"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:513
+#, kde-format
+msgctxt "A level of difficulty in Sudoku puzzles"
+msgid "Unlimited"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:524
+#, kde-format
+msgctxt "@option drop down box"
+msgid "Difficulty:"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:528
+#, kde-format
+msgctxt "@option drop down box"
+msgid "Symmetry:"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:532
+#, kde-format
+msgctxt "Symmetry of layout of clues when puzzle starts"
+msgid "Symmetry"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:534
+#, kde-format
+msgid "The symmetry of layout of the clues when the puzzle starts"
+msgstr "प्रहेलिका आरभ्यते सति सूचकानां विन्यासस्य समरूपता"
+
+#: src/gui/ksudoku.cpp:536
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Diagonal"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:537
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Central"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:538
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Left-Right"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:539
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Spiral"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:540
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Four-Way"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:541
+#, kde-format
+msgctxt "Symmetry of layout of clues"
+msgid "Random Choice"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:542
+#, kde-format
+msgid "No Symmetry"
+msgstr "न समरूपता"
+
+#: src/gui/ksudoku.cpp:646 src/gui/ksudoku.cpp:705
+#, kde-format
+msgctxt "@title:window"
+msgid "Error Loading Game"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:662
+#, kde-format
+msgid "Do you really want to end this game in order to start a new one?"
+msgstr "किं भवन्तः वास्तवमेव नूतनं क्रीडां आरभ्य एतस्य क्रीडायाः समाप्तिम् इच्छन्ति?"
+
+#: src/gui/ksudoku.cpp:663
+#, kde-format
+msgctxt "window title"
+msgid "New Game"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:664
+#, kde-format
+msgctxt "@action:button"
+msgid "New Game"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:681
+#, kde-format
+msgid "Do you really want to restart this game?"
+msgstr "किं भवन्तः वास्तवमेव एतत् क्रीडां पुनः आरभतुम् इच्छन्ति?"
+
+#: src/gui/ksudoku.cpp:682
+#, kde-format
+msgctxt "window title"
+msgid "Restart Game"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:683
+#, kde-format
+msgctxt "@action:button"
+msgid "Restart Game"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:732
+#, kde-format
+msgctxt "@title:window"
+msgid "Error Writing File"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:754
+#, kde-format
+msgid "There seems to be no puzzle to print."
+msgstr "मुद्रणार्थं प्रहेलिका नास्ति इव ।"
+
+#: src/gui/ksudoku.cpp:791
+#, kde-format
+msgctxt "@title:tab Game Section in Config"
+msgid "Game"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:792
+#, kde-format
+msgctxt "@title:tab"
+msgid "Theme"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:824
+#, kde-format
+msgid ""
+"Warning: The Unlimited difficulty level has no limit on how many guesses or "
+"branch points are required to solve the puzzle and there is no lower limit "
+"on how soon guessing becomes necessary.\n"
+"\n"
+"Please also note that the generation of this type of puzzle might take much "
+"longer than other ones. During this time KSudoku will not respond."
+msgstr ""
+"चेतावनी: असीमितकठिनतास्तरस्य पहेलीसमाधानार्थं कियन्तः अनुमानाः शाखाबिन्दवः वा आवश्यकाः "
+"इति सीमा नास्ति तथा च अनुमानं कियत् शीघ्रं आवश्यकं भवति इति न्यूनसीमा नास्ति।\n"
+"\n"
+"कृपया इदमपि ज्ञातव्यं यत् एतादृशस्य प्रहेलिकाजननस्य अन्येभ्यः अपेक्षया बहुकालं यावत् समयः भवितुं "
+"शक्नोति । अस्मिन् काले केसुडोकुः प्रतिक्रियां न दास्यति ।"
+
+#: src/gui/ksudoku.cpp:831
+#, kde-format
+msgctxt "@title:window"
+msgid "Warning"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:871
+#, kde-format
+msgid ""
+"This will enable all the dialogs that you had disabled by marking the 'Do "
+"not show this message again' option.\n"
+"\n"
+"Do you want to continue?"
+msgstr ""
+"एतेन 'पुनः एतत् सन्देशं न दर्शयतु' इति विकल्पं चिह्नित्वा भवता निष्क्रियं कृतवन्तः सर्वे संवादाः "
+"सक्षमाः भविष्यन्ति ।\n"
+"\n"
+"किं त्वं निरन्तरं कर्तुम् इच्छसि ?"
+
+#: src/gui/ksudoku.cpp:875
+#, kde-format
+msgctxt "@action:button"
+msgid "Enable"
+msgstr ""
+
+#. i18n: ectx: label, entry (Theme), group (Themes)
+#: src/gui/ksudoku.kcfg:41
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "प्रयोक्तव्यः चित्रात्मकः विषयः ।"
+
+#. i18n: ectx: label, entry (Symbols), group (Themes)
+#: src/gui/ksudoku.kcfg:44
+#, kde-format
+msgid "Select the themes you want to use"
+msgstr "भवन्तः येषां विषयाणां उपयोगं कर्तुम् इच्छन्ति तान् चिनोतु"
+
+#: src/gui/ksudokugame.cpp:375
+#, kde-format
+msgid ""
+"In Killer Sudoku, the operator is always + or none and KSudoku automatically "
+"sets the correct choice."
+msgstr ""
+"Killer Sudoku इत्यस्मिन् ऑपरेटरः सर्वदा + अथवा कोऽपि नास्ति तथा च KSudoku स्वयमेव "
+"सम्यक् विकल्पं सेट् करोति ।"
+
+#: src/gui/ksudokugame.cpp:377
+#, kde-format
+msgctxt "@title:window"
+msgid "Killer Sudoku Cage"
+msgstr ""
+
+#: src/gui/ksudokugame.cpp:423
+#, kde-format
+msgid "The cell you have selected has already been used in a cage."
+msgstr "भवता चयनितः कोष्ठकः पूर्वमेव पञ्जरे उपयुज्यते ।"
+
+#: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
+#: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
+#: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
+#, kde-format
+msgctxt "@title:window"
+msgid "Error in Cage"
+msgstr ""
+
+#: src/gui/ksudokugame.cpp:453
+#, kde-format
+msgid ""
+"The cell you have selected is not next to any cell in the cage you are "
+"creating."
+msgstr "भवता चयनितः कोष्ठकः भवता निर्मितस्य पञ्जरस्य कस्यापि कोष्ठकस्य पार्श्वे नास्ति ।"
+
+#: src/gui/ksudokugame.cpp:478
+#, kde-format
+msgid ""
+"The cage you wish to complete has no cells in it yet. Please click on a cell "
+"or key in + - / x or a number."
+msgstr ""
+"भवन्तः यस्मिन् पञ्जरे पूर्णं कर्तुम् इच्छन्ति तस्य अद्यापि कोष्ठकाः नास्ति । कृपया कस्मिंश्चित् "
+"कोष्ठके अथवा + - / x अथवा सङ्ख्यायां कीलं क्लिक् कुर्वन्तु ।"
+
+#: src/gui/ksudokugame.cpp:485
+#, kde-format
+msgid ""
+"The cage you wish to complete has no value yet. Please key in a number with "
+"one or more digits."
+msgstr ""
+"भवन्तः यस्य पञ्जरस्य पूर्णतां कर्तुम् इच्छन्ति तस्य अद्यापि मूल्यं नास्ति। कृपया एकेन वा अधिकेन "
+"अङ्कैः सह सङ्ख्यां कीलं कुर्वन्तु ।"
+
+#: src/gui/ksudokugame.cpp:493
+#, kde-format
+msgid ""
+"The cage you wish to complete has more than one cell, but it has no operator "
+"yet. Please key in + - / or x."
+msgstr ""
+"भवन्तः यस्मिन् पञ्जरे पूर्णं कर्तुम् इच्छन्ति तस्य एकादशाधिककोष्ठकाः सन्ति, परन्तु तस्य अद्यापि "
+"कोऽपि संचालकः नास्ति । कृपया + - / अथवा x कीलं कुर्वन्तु।"
+
+#: src/gui/ksudokugame.cpp:501
+#, kde-format
+msgid ""
+"The cage you wish to complete has one cell, but its value is too large. A "
+"single-cell cage must have a value from 1 to %1 in a puzzle of this size."
+msgstr ""
+"भवन्तः यस्य पञ्जरस्य पूर्णतां कर्तुम् इच्छन्ति तस्य एकः कोष्ठकः अस्ति, परन्तु तस्य मूल्यं "
+"अतिविशालम् अस्ति । एककोष्ठपञ्जरस्य एतादृशप्रमाणस्य प्रहेलिकायां १ तः %1 पर्यन्तं मूल्यं "
+"भवितुमर्हति ।"
+
+#: src/gui/ksudokugame.cpp:537
+#, kde-format
+msgid "Do you wish to delete this cage?"
+msgstr "किं भवन्तः एतत् पञ्जरं विलोपयितुम् इच्छन्ति ?"
+
+#: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
+#: src/gui/ksudokugame.cpp:574
+#, kde-format
+msgctxt "@title:window"
+msgid "Delete Cage"
+msgstr ""
+
+#: src/gui/ksudokugame.cpp:564
+#, kde-format
+msgid ""
+"The cell you have selected is not in any cage, so the Delete action will not "
+"delete anything."
+msgstr ""
+"भवता चयनितः कोष्ठकः कस्मिन् अपि पञ्जरे नास्ति, अतः Delete क्रिया किमपि न "
+"विलोपयिष्यति ।"
+
+#: src/gui/ksudokugame.cpp:572
+#, kde-format
+msgid "The Delete action finds that there are no cages to delete."
+msgstr "Delete क्रिया ज्ञायते यत् विलोपनीयाः पञ्जराः नास्ति ।"
+
+#. i18n: ectx: Menu (game)
+#: src/gui/ksudokuui.rc:10
+#, kde-format
+msgid "&Game"
+msgstr "&क्रीडा"
+
+#. i18n: ectx: Menu (move)
+#: src/gui/ksudokuui.rc:23
+#, kde-format
+msgid "&Move"
+msgstr "&चलनम्"
+
+#. i18n: ectx: Menu (help)
+#: src/gui/ksudokuui.rc:38
+#, kde-format
+msgid "&Help"
+msgstr "&साहाय्यम्‌"
+
+#. i18n: ectx: ToolBar (mainToolBar)
+#: src/gui/ksudokuui.rc:46
+#, kde-format
+msgid "Main Toolbar"
+msgstr "मुख्य साधनपट्टी"
+
+#. i18n: ectx: ToolBar (actionsToolbar)
+#: src/gui/ksudokuui.rc:53
+#, kde-format
+msgid "Actions Toolbar"
+msgstr "क्रियाः साधनपट्टिका"
+
+#: src/gui/puzzleprinter.cpp:62
+#, kde-format
+msgid "Sorry, cannot print three-dimensional puzzles."
+msgstr "क्षम्यतां, त्रिविमप्रहेलिकाः मुद्रयितुं न शक्नोति।"
+
+#: src/gui/puzzleprinter.cpp:92
+#, kde-format
+msgid ""
+"The KSudoku setting for printing several puzzles per page is currently "
+"selected.\n"
+"\n"
+"Your puzzle will be printed when no more will fit on the page or when "
+"KSudoku terminates."
+msgstr ""
+"प्रतिपृष्ठं अनेकाः पहेलिकाः मुद्रयितुं KSudoku सेटिंग् सम्प्रति चयनितम् अस्ति ।\n"
+"\n"
+"यदा पृष्ठे अधिकं न उपयुज्यते अथवा यदा KSudoku समाप्तं भवति तदा भवतः पहेलिका मुद्रिता "
+"भविष्यति।"
+
+#: src/gui/puzzleprinter.cpp:108
+#, kde-format
+msgid "KSudoku has sent output to your printer."
+msgstr "KSudoku इत्यनेन भवतः मुद्रकं प्रति आउटपुट् प्रेषितम् ।"
+
+#: src/gui/puzzleprinter.cpp:121
+#, kde-format
+msgctxt "@title:window"
+msgid "Print Sudoku Puzzle"
+msgstr ""
+
+#: src/gui/serializer.cpp:399
+#, kde-format
+msgid "Unable to download file: URL is empty."
+msgstr "सञ्चिकां डाउनलोड् कर्तुं असमर्थः: URL रिक्तम् अस्ति।"
+
+#: src/gui/serializer.cpp:406
+#, kde-format
+msgid "Unable to open file."
+msgstr "सञ्चिकां उद्घाटयितुं असमर्थः।"
+
+#: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
+#, kde-format
+msgid "Cannot read XML file on line %1"
+msgstr "%1 पङ्क्तौ XML सञ्चिकां पठितुं न शक्यते"
+
+#: src/gui/serializer.cpp:440
+#, kde-format
+msgid "Unable to download file."
+msgstr "सञ्चिकां डाउनलोड् कर्तुं असमर्थः।"
+
+#: src/gui/serializer.cpp:680
+#, kde-format
+msgid "Unable to create temporary file."
+msgstr "अस्थायीसञ्चिकां निर्मातुं असमर्थः।"
+
+#: src/gui/serializer.cpp:693
+#, kde-format
+msgid "Unable to upload file."
+msgstr "सञ्चिकां अपलोड् कर्तुं असमर्थः।"
+
+#: src/gui/views/gameactions.cpp:54
+#, kde-format
+msgctxt "@action"
+msgid "Select %1 (%2)"
+msgstr ""
+
+#: src/gui/views/gameactions.cpp:60
+#, kde-format
+msgctxt "@action"
+msgid "Enter %1 (%2)"
+msgstr ""
+
+#: src/gui/views/gameactions.cpp:83
+#, kde-format
+msgctxt "@action"
+msgid "Mark %1 (%2)"
+msgstr ""
+
+#: src/gui/views/gameactions.cpp:95
+#, kde-format
+msgctxt "@action"
+msgid "Move Up"
+msgstr ""
+
+#: src/gui/views/gameactions.cpp:102
+#, kde-format
+msgctxt "@action"
+msgid "Move Down"
+msgstr ""
+
+#: src/gui/views/gameactions.cpp:109
+#, kde-format
+msgctxt "@action"
+msgid "Move Left"
+msgstr ""
+
+#: src/gui/views/gameactions.cpp:116
+#, kde-format
+msgctxt "@action"
+msgid "Move Right"
+msgstr ""
+
+#: src/gui/views/gameactions.cpp:123
+#, kde-format
+msgctxt "@action"
+msgid "Clear Cell"
+msgstr ""
+
+#: src/gui/welcomescreen.cpp:133
+#, kde-format
+msgid "GetNewVariant not implemented"
+msgstr "GetNewVariant कार्यान्वितं न कृतम्"
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:163
+#: src/gui/welcomescreen.cpp:179
+#, kde-format
+msgid "Please select a puzzle variant."
+msgstr "कृपया एकं पहेलीरूपं चिनुत।"
+
+#: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
+#: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
+#: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
+#, kde-format
+msgctxt "@title:window"
+msgid "Unable to Start Puzzle"
+msgstr ""
+
+#: src/gui/welcomescreen.cpp:152
+#, kde-format
+msgid ""
+"Unable to create an empty puzzle of the chosen variant; please try another."
+msgstr "चयनितस्य रूपस्य रिक्तं प्रहेलिका निर्मातुं असमर्थः; कृपया अन्यत् प्रयतस्व।"
+
+#: src/gui/welcomescreen.cpp:169
+#, kde-format
+msgid "Unable to start a puzzle of the chosen variant; please try another."
+msgstr "चयनितस्य रूपान्तरस्य प्रहेलिकां आरभ्य कर्तुं असमर्थः; कृपया अन्यत् प्रयतस्व।"
+
+#: src/gui/welcomescreen.cpp:185
+#, kde-format
+msgid "Unable to generate a puzzle of the chosen variant; please try another."
+msgstr "चयनितस्य रूपान्तरस्य प्रहेलिकां जनयितुं असमर्थः; कृपया अन्यत् प्रयतस्व।"
+
+#. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
+#: src/gui/welcomescreen.ui:17
+#, kde-format
+msgid "Choose your Game"
+msgstr "स्वस्य Game इति चिनोतु"
+
+#. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
+#: src/gui/welcomescreen.ui:28
+#, kde-format
+msgid "Get New"
+msgstr "नवीनं प्राप्नुत"
+
+#. i18n: ectx: property (text), widget (QPushButton, startEmptyButton)
+#: src/gui/welcomescreen.ui:48
+#, kde-format
+msgid "Enter In A Puzzle"
+msgstr "Enter In A Puzzle इति"
+
+#. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
+#: src/gui/welcomescreen.ui:55
+#, kde-format
+msgid "Generate A Puzzle"
+msgstr "एकं पहेली उत्पन्नं कुर्वन्तु"
+
+#: src/main.cpp:47
+#, kde-format
+msgid "KSudoku"
+msgstr "केसुदोकु"
+
+#: src/main.cpp:49
+#, kde-format
+msgid "KSudoku - Sudokus and more"
+msgstr "KSudoku - सुडोकुः इत्यादयः"
+
+#: src/main.cpp:51
+#, kde-format
+msgid "(c) 2005-2007 The KSudoku Authors"
+msgstr "(ग) 2005-2007 द केसुडोकु लेखक"
+
+#: src/main.cpp:53
+#, kde-format
+msgid "Francesco Rossi"
+msgstr "फ्रांसिस्को रॉसी"
+
+#: src/main.cpp:53
+#, kde-format
+msgid "KSudoku Author"
+msgstr "KSudoku लेखक"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Johannes Bergmeier"
+msgstr "जोहानस बर्गमेयर"
+
+#: src/main.cpp:54
+#, kde-format
+msgid "Maintainer"
+msgstr "परिपालकः"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "Ian Wadham"
+msgstr "इयान् वाधम्"
+
+#: src/main.cpp:55
+#, kde-format
+msgid "New puzzle generator and solver"
+msgstr "नवीन पहेली जनरेटर तथा सॉल्वर"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Mick Kappenburg"
+msgstr "मिक् कप्पेनबर्ग्"
+
+#: src/main.cpp:56
+#, kde-format
+msgid "Printing and export of 0.4"
+msgstr "0.4 इत्यस्य मुद्रणं निर्यातं च"
+
+#: src/main.cpp:57
+#, kde-format
+msgid "Thanks to NeHe for OpenGL tutorials"
+msgstr "OpenGL पाठ्यक्रमस्य कृते NeHe इत्यस्मै धन्यवादः"
+
+#: src/main.cpp:58
+#, kde-format
+msgid "David Bau"
+msgstr "डेविड् बाउ"
+
+#: src/main.cpp:58
+#, kde-format
+msgid ""
+"Algorithms for new puzzle generator and solver at davidbau.com/"
+"archives/2006/09/04/sudoku_generator.html"
+msgstr ""
+"davidbau.com/archives/2006/09/04/sudoku_generator.html इत्यत्र नवीनपहेलीजनरेटरस्य "
+"सॉल्वरस्य च एल्गोरिदम्"
+
+#: src/main.cpp:66
+#, kde-format
+msgid "Document to open"
+msgstr "दस्तावेजं उद्घाटयितुं"
