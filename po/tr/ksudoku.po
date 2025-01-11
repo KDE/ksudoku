@@ -5,13 +5,13 @@
 # Muhammet Kara <muhammetk@gmail.com>, 2008.
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013.
-# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
+# SPDX-FileCopyrightText: 2022, 2023, 2024, 2025 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:37+0000\n"
-"PO-Revision-Date: 2024-09-23 15:20+0300\n"
+"PO-Revision-Date: 2025-01-10 16:13+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 24.11.70\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -74,9 +74,9 @@ msgstr ""
 "Yeniden denemek istiyor musunuz veya bulmacayı olduğu gibi kabul ediyor "
 "musunuz?\n"
 "\n"
-"İpucu: Şunu yaparak zorluk düzeyini artırabilirsiniz: ‘Kabul Et’ düğmesi ile "
-"sürdürün, Oyun: Yeni’yi seçin ve sonra simetri ayarını ‘Simetri Yok’ veya "
-"başka bir düşük simetri ayarına değiştirip yeniden ‘Bulmaca Üret’e basın."
+"İpucu: Şunu yaparak zorluk düzeyini artırabilirsiniz: “Kabul Et” düğmesi ile "
+"sürdürün, Oyun: Yeni’yi seçin ve sonra simetri ayarını “Simetri Yok” veya "
+"başka bir düşük simetri ayarına değiştirip yeniden “Bulmaca Üret”e basın."
 
 #: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
 #: src/generator/sudokuboard.cpp:266
@@ -302,7 +302,7 @@ msgid ""
 msgstr ""
 "Üzgünüm, çözümünüzde hatalar var.\n"
 "\n"
-"Hatalarınızın vurgulanması için ayarlar menüsünden ‘Hataları göster’ ögesini "
+"Hatalarınızın vurgulanması için ayarlar menüsünden “Hataları göster” ögesini "
 "etkinleştirin."
 
 #: src/gui/ksudoku.cpp:87
