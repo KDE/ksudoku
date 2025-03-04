@@ -2,20 +2,21 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Thanomsub Noppaburana <donga.nb@gmail.com>, 2010.
+# SPDX-FileCopyrightText: 2025 Pongsakorn S. <kde@xerusion.me>
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:37+0000\n"
-"PO-Revision-Date: 2010-03-21 18:22+0700\n"
-"Last-Translator: Thanomsub Noppaburana <donga.nb@gmail.com>\n"
-"Language-Team: Thai <thai-l10n@googlegroups.com>\n"
+"PO-Revision-Date: 2025-03-03 20:07+0700\n"
+"Last-Translator: Pongsakorn S. <kde@xerusion.me>\n"
+"Language-Team: Thai\n"
 "Language: th\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 1.0\n"
+"X-Generator: Lokalize 24.12.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -684,7 +685,7 @@ msgstr "เกม"
 #| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
-msgstr "ชุดตกแต่ง"
+msgstr "ธีม"
 
 #: src/gui/ksudoku.cpp:824
 #, kde-format
@@ -722,13 +723,13 @@ msgstr ""
 #: src/gui/ksudoku.kcfg:41
 #, kde-format
 msgid "The graphical theme to be used."
-msgstr "ชุดตกแต่งกราฟิกที่จะใช้"
+msgstr "ธีมกราฟิกที่จะใช้"
 
 #. i18n: ectx: label, entry (Symbols), group (Themes)
 #: src/gui/ksudoku.kcfg:44
 #, kde-format
 msgid "Select the themes you want to use"
-msgstr "เลือกชุดตกแต่งที่คุณต้องการจะใช้"
+msgstr "เลือกธีมที่คุณต้องการจะใช้"
 
 #: src/gui/ksudokugame.cpp:375
 #, kde-format
