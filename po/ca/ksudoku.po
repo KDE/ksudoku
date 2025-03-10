@@ -1208,17 +1208,3 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "Document a obrir"
-
-#~ msgid "Could not load game."
-#~ msgstr "No s'ha pogut carregar la partida."
-
-#~ msgctxt "button label"
-#~ msgid "New Game"
-#~ msgstr "Partida nova"
-
-#~ msgctxt "button label"
-#~ msgid "Restart Game"
-#~ msgstr "Reinicia el joc"
-
-#~ msgid "Open Location"
-#~ msgstr "Obre la localització"
