@@ -33,6 +33,7 @@
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QMimeData>
+#include <QMimeDatabase>
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QKeySequence>
@@ -71,6 +72,19 @@
 #include "config.h"
 
 using namespace ksudoku;
+
+static QString openSaveFilterString() {
+	static QString filterString;
+	if (filterString.isEmpty()) {
+		QStringList mimeFilters;
+		QMimeDatabase db;
+		mimeFilters += db.mimeTypeForName(QStringLiteral("application/xml")).filterString();
+		mimeFilters += db.mimeTypeForName(QStringLiteral("text/plain")).filterString();
+		mimeFilters += i18n("All Files (*)");
+		filterString = mimeFilters.join(QStringLiteral(";;"));
+	}
+	return filterString;
+}
 
 void KSudoku::onCompleted(bool isCorrect, QTime required, bool withHelp) {
 	if(!isCorrect) {
@@ -696,9 +710,8 @@ void KSudoku::gameOpen()
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
 	// button is clicked
 	// standard filedialog
-	QString filter = i18n("XML files (*.xml);;Text files (*.txt);;All files (*.*)");
-	QString docsDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
-	const QUrl Url = QFileDialog::getOpenFileUrl(this, QString(), QUrl::fromLocalFile(docsDir), filter);
+	const QString docsDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+	const QUrl Url = QFileDialog::getOpenFileUrl(this, QString(), QUrl::fromLocalFile(docsDir), openSaveFilterString());
 
 	if (!Url.isEmpty() && Url.isValid())
 	{
@@ -744,13 +757,12 @@ void KSudoku::gameSaveAs()
 	Game game = currentGame();
 	if(!game.isValid()) 
 		return;
-	QDir docsDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
-	QString fName = i18n("Game_") +
+	const QDir docsDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+	const QString fName = i18n("Game_") +
 		 QDateTime::currentDateTime().toString(QStringLiteral("yyyy_MM_dd_hhmmss")) +
 		QStringLiteral(".ksudoku.xml");
-	QUrl fileName = QUrl::fromLocalFile(docsDir.filePath(fName));
-	QString filter = i18n("XML files (*.xml);;Text files (*.txt);;All files (*.*)");
-	game.setUrl(QFileDialog::getSaveFileUrl(this,i18n("Save Game"),fileName, filter));
+	const QUrl fileName = QUrl::fromLocalFile(docsDir.filePath(fName));
+	game.setUrl(QFileDialog::getSaveFileUrl(this,i18n("Save Game"),fileName, openSaveFilterString()));
     if (!game.getUrl().isEmpty() && game.getUrl().isValid())
     	gameSave();
 }
