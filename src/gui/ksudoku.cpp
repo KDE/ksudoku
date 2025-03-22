@@ -176,11 +176,11 @@ void KSudoku::updateShapesList()
 	// TODO clear the list
     GameVariant* variant = nullptr;
 
-	variant = new SudokuGame(i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
+	variant = new SudokuGame(this, i18n("Sudoku Standard (9x9)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The classic and fashionable game"));
 	variant->setIcon(QStringLiteral("ksudoku-ksudoku_9x9"));
 #ifdef OPENGL_SUPPORT
-	variant = new RoxdokuGame(i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
+	variant = new RoxdokuGame(this, i18n("Roxdoku 9 (3x3x3)"), 9, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D Sudoku"));
 	variant->setIcon(QStringLiteral("ksudoku-roxdoku_3x3x3"));
 #endif
@@ -213,23 +213,23 @@ void KSudoku::updateShapesList()
 
 		variantDataPath = variantDir.filePath(variantDataFile);
 
-		variant = new CustomGame(variantName, QUrl::fromLocalFile(variantDataPath), m_gameVariants);
+		variant = new CustomGame(this, variantName, QUrl::fromLocalFile(variantDataPath), m_gameVariants);
 		variant->setDescription(variantDescr);
 		variant->setIcon(variantIcon);
 	}
 
 	// Put variants first and extra sizes last.
-	variant = new SudokuGame(i18n("Sudoku 16x16"), 16, m_gameVariants);
+	variant = new SudokuGame(this, i18n("Sudoku 16x16"), 16, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 16 symbols"));
 	variant->setIcon(QStringLiteral("ksudoku-ksudoku_16x16"));
-	variant = new SudokuGame(i18n("Sudoku 25x25"), 25, m_gameVariants);
+	variant = new SudokuGame(this, i18n("Sudoku 25x25"), 25, m_gameVariants);
 	variant->setDescription(i18n("Sudoku with 25 symbols"));
 	variant->setIcon(QStringLiteral("ksudoku-ksudoku_25x25"));
 #ifdef OPENGL_SUPPORT
-	variant = new RoxdokuGame(i18n("Roxdoku 16 (4x4x4)"), 16, m_gameVariants);
+	variant = new RoxdokuGame(this, i18n("Roxdoku 16 (4x4x4)"), 16, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku with 16 symbols"));
 	variant->setIcon(QStringLiteral("ksudoku-roxdoku_4x4x4"));
-	variant = new RoxdokuGame(i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
+	variant = new RoxdokuGame(this, i18n("Roxdoku 25 (5x5x5)"), 25, m_gameVariants);
 	variant->setDescription(i18n("The Rox 3D sudoku with 25 symbols"));
 	variant->setIcon(QStringLiteral("ksudoku-roxdoku_5x5x5"));
 #endif

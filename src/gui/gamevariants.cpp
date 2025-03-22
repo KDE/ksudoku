@@ -41,8 +41,9 @@ namespace ksudoku {
 // class GameVariant
 ///////////////////////////////////////////////////////////////////////////////
 
-GameVariant::GameVariant(const QString& name, GameVariantCollection* collection)
+GameVariant::GameVariant(QWidget *parent, const QString& name, GameVariantCollection* collection)
 	: m_name(name)
+	, m_parent(parent)
 {
 	if(collection)
 		collection->addVariant(this);
@@ -260,8 +261,8 @@ bool GameVariantDelegate::eventFilter(QObject* watched, QEvent* event) {
 // class SudokuGame
 ///////////////////////////////////////////////////////////////////////////////
 
-SudokuGame::SudokuGame(const QString& name, uint order, GameVariantCollection* collection)
-	: GameVariant(name, collection), m_order(order), m_graph(nullptr)
+SudokuGame::SudokuGame(QWidget *parent, const QString& name, uint order, GameVariantCollection* collection)
+	: GameVariant(parent, name, collection), m_order(order), m_graph(nullptr)
 {
 	// TODO load from settings
 	m_symmetry = 0;
@@ -291,7 +292,7 @@ Game SudokuGame::startEmpty() {
 		m_graph->initSudoku();
 	}
 
-	auto* puzzle = new Puzzle(m_graph, false);
+	auto* puzzle = new Puzzle(getParent(), m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
@@ -303,7 +304,7 @@ Game SudokuGame::createGame(int difficulty, int symmetry) {
 		m_graph->initSudoku();
 	}
 	
-	auto* puzzle = new Puzzle(m_graph, true);
+	auto* puzzle = new Puzzle(getParent(), m_graph, true);
 	puzzle->init(difficulty, symmetry);
 
 	return Game(puzzle);
@@ -318,8 +319,8 @@ KsView* SudokuGame::createView(const Game& /*game*/) const {
 // class RoxdokuGame
 ///////////////////////////////////////////////////////////////////////////////
 
-RoxdokuGame::RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection)
-	: GameVariant(name, collection), m_order(order), m_graph(nullptr)
+RoxdokuGame::RoxdokuGame(QWidget *parent, const QString& name, uint order, GameVariantCollection* collection)
+	: GameVariant(parent, name, collection), m_order(order), m_graph(nullptr)
 {
 	m_symmetry = 0;
 }
@@ -348,7 +349,7 @@ Game RoxdokuGame::startEmpty() {
 		m_graph->initRoxdoku();
 	}
 
-	auto* puzzle = new Puzzle(m_graph, false);
+	auto* puzzle = new Puzzle(getParent(), m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
@@ -360,7 +361,7 @@ Game RoxdokuGame::createGame(int difficulty, int symmetry) {
 		m_graph->initRoxdoku();
 	}
 
-	auto* puzzle = new Puzzle(m_graph, true);
+	auto* puzzle = new Puzzle(getParent(), m_graph, true);
 	puzzle->init(difficulty, symmetry);
 
 	return Game(puzzle);
@@ -375,9 +376,9 @@ KsView* RoxdokuGame::createView(const Game& /*game*/) const {
 // class CustomGame
 ///////////////////////////////////////////////////////////////////////////////
 
-CustomGame::CustomGame(const QString& name, const QUrl& url,
+CustomGame::CustomGame(QWidget *parent, const QString& name, const QUrl& url,
                        GameVariantCollection* collection)
-    : GameVariant(name, collection), m_url(url), m_graph(nullptr)
+	: GameVariant(parent, name, collection), m_url(url), m_graph(nullptr)
 {
 	m_symmetry = 0;
 }
@@ -403,7 +404,7 @@ Game CustomGame::startEmpty() {
 	if (! createSKGraphObject()) {
 	    return Game();
 	}
-	auto* puzzle = new Puzzle(m_graph, false);
+	auto* puzzle = new Puzzle(getParent(), m_graph, false);
 	puzzle->init();
 
 	return Game(puzzle);
@@ -413,7 +414,7 @@ Game CustomGame::createGame(int difficulty, int symmetry) {
 	if (! createSKGraphObject()) {
 	    return Game();
 	}
-	auto* puzzle = new Puzzle(m_graph, true);
+	auto* puzzle = new Puzzle(getParent(), m_graph, true);
 	puzzle->init(difficulty, symmetry);
 
 	return Game(puzzle);

@@ -26,7 +26,6 @@
 #include "mathdokugenerator.h"
 
 #include <KLocalizedString>
-#include <KMessageBox>
 #include <KStandardGuiItem>
 
 #include <QElapsedTimer>
@@ -91,7 +90,7 @@ void SudokuBoard::setSeed()
     }
 }
 
-bool SudokuBoard::generatePuzzle             (BoardContents & puzzle,
+bool SudokuBoard::generateMathdokuKillerSudokuTypes (BoardContents & puzzle,
                                               BoardContents & solution,
                                               Difficulty difficultyRequired,
                                               Symmetry symmetry)
@@ -100,8 +99,6 @@ bool SudokuBoard::generatePuzzle             (BoardContents & puzzle,
                         << difficultyRequired << ", symmetry " << symmetry;
     setSeed();
 
-    SudokuType puzzleType = m_graph->specificType();
-    if ((puzzleType == Mathdoku) || (puzzleType == KillerSudoku)) {
 	// Generate variants of Mathdoku (aka KenKen TM) or Killer Sudoku types.
 	int maxTries = 10;
 	int numTries = 0;
@@ -115,28 +112,12 @@ bool SudokuBoard::generatePuzzle             (BoardContents & puzzle,
 	    success = mg.generateMathdokuTypes (puzzle, solution,
 				    &m_KSudokuMoves, difficultyRequired);
 	    if (success) {
-		return true;
+            return true;
 	    }
 	    else if (numTries >= maxTries) {
-		QWidget owner;
-		if (KMessageBox::questionTwoActions (&owner,
-			    i18n("Attempts to generate a puzzle failed after "
-				 "about 200 tries. Try again?"),
-			    i18nc("@title:window", "Mathdoku or Killer Sudoku Puzzle"),
-			    KGuiItem(i18nc("@action:button", "&Try Again"), QStringLiteral("view-refresh")),
-                            KStandardGuiItem::cancel())
-			    == KMessageBox::SecondaryAction) {
-		    return false;	// Go back to the Welcome screen.
+		    return false;
 		}
-		numTries = 0;		// Try again.
-	    }
 	}
-    }
-    else {
-	// Generate variants of Sudoku (2D) and Roxdoku (3D) types.
-	return generateSudokuRoxdokuTypes (puzzle, solution,
-                                    difficultyRequired, symmetry);
-    }
 }
 
 bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
@@ -144,6 +125,10 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
                                               Difficulty difficultyRequired,
                                               Symmetry symmetry)
 {
+    qCDebug(KSudokuLog) << "Entered generatePuzzle(): difficulty "
+                        << difficultyRequired << ", symmetry " << symmetry;
+    setSeed();
+
     const int     maxTries = 20;
     int           count = 0;
     float         bestRating = 0.0;
@@ -164,12 +149,11 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
     }
     qCDebug(KSudokuLog) << "SYMMETRY IS" << symmetry;
     if (symmetry == DIAGONAL_1) {
-	// If diagonal symmetry, choose between NW->SE and NE->SW diagonals.
+        // If diagonal symmetry, choose between NW->SE and NE->SW diagonals.
         symmetry = (randomGenerator()->bounded(2) == 0) ? DIAGONAL_1 : DIAGONAL_2;
         qCDebug(KSudokuLog) << "Diagonal symmetry, choosing " <<
             ((symmetry == DIAGONAL_1) ? "DIAGONAL_1" : "DIAGONAL_2");
     }
-
     while (true) {
         // Fill the board with values that satisfy the Sudoku rules but are
         // chosen in a random way: these values are the solution of the puzzle.
@@ -186,7 +170,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
         if (difficultyRequired > m_stats.difficulty) {
             // Make the puzzle harder by removing values at random.
             currPuzzle = removeValues (currSolution, currPuzzle,
-                                       difficultyRequired, symmetry);
+                                        difficultyRequired, symmetry);
             qCDebug(KSudokuLog) << "Return from removeValues() - duration:"
                                 << t.elapsed() << " msec";
         }
@@ -194,96 +178,65 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
         Difficulty d = calculateRating (currPuzzle, 5);
         count++;
         qCInfo(KSudokuLog) <<  "CYCLE" << count << ", achieved difficulty" << d
-                           << ", required" << difficultyRequired << ", rating"
-                           << m_accum.rating;
+                            << ", required" << difficultyRequired << ", rating"
+                            << m_accum.rating;
 
-	// Use the highest rated puzzle so far.
-	if (m_accum.rating > bestRating) {
-	    bestRating       = m_accum.rating;
-	    bestDifficulty   = d;
-	    bestNClues       = m_stats.nClues;
-	    bestNGuesses     = m_accum.nGuesses;
-	    bestFirstGuessAt = m_stats.firstGuessAt;
-	    solution         = currSolution;
-	    puzzle           = currPuzzle;
-	}
+        // Use the highest rated puzzle so far.
+        if (m_accum.rating > bestRating) {
+            bestRating       = m_accum.rating;
+            bestDifficulty   = d;
+            bestNClues       = m_stats.nClues;
+            bestNGuesses     = m_accum.nGuesses;
+            bestFirstGuessAt = m_stats.firstGuessAt;
+            solution         = currSolution;
+            puzzle           = currPuzzle;
+        }
 
-	// Express the rating to 1 decimal place in whatever locale we have.
-	QString ratingStr = ki18n("%1").subs(bestRating, 0, 'f', 1).toString();
-	// Check and explain the Sudoku/Roxdoku puzzle-generator's results.
-	if ((d < difficultyRequired) && (count >= maxTries)) {
-            // Exit after max attempts?
-            QWidget owner;
-            int ans = KMessageBox::questionTwoActions (&owner,
-                      i18n("After %1 tries, the best difficulty level achieved by the generator "
-			   "is %2, with internal difficulty rating %3, but you "
-			   "requested difficulty level %4.\n"
-			   "\n"
-			   "Do you wish to let the generator try again or accept the puzzle as is?\n"
-			   "\n"
-			   "Hint: you can try to increase the difficulty rating by doing the following: "
-			   "Continue with the 'Accept' button, choose Game -> New, then change the Symmetry setting "
-			   "to 'No Symmetry' or some low symmetry type and then use 'Generate A Puzzle' again.",
-			   maxTries, bestDifficulty,
-			   ratingStr, difficultyRequired),
-                      i18nc("@title:window", "Difficulty Level"),
-                      KGuiItem(i18nc("@action:button", "&Try Again"), QStringLiteral("view-refresh")),
-                      KGuiItem(i18nc("@action:button", "&Accept")));
-            if (ans == KMessageBox::PrimaryAction) {
-                count = 0;	// Continue on if the puzzle is not hard enough.
-                continue;
+        // Express the rating to 1 decimal place in whatever locale we have.
+        QString ratingStr = ki18n("%1").subs(bestRating, 0, 'f', 1).toString();
+        // Check and explain the Sudoku/Roxdoku puzzle-generator's results.
+        if ((d < difficultyRequired) && (count >= maxTries)) {
+                // Exit after max attempts?
+                messageString = i18n("After %1 tries, the best difficulty level achieved by the generator "
+                "is %2, with internal difficulty rating %3, but you "
+                "requested difficulty level %4.\n"
+                "\n"
+                "Do you wish to let the generator try again or accept the puzzle as is?\n"
+                "\n"
+                "Hint: you can try to increase the difficulty rating by doing the following: "
+                "Continue with the 'OK' button, choose Game -> New, then change the Symmetry setting "
+                "to 'No Symmetry' or some low symmetry type and then use 'Generate A Puzzle' again.",
+                maxTries, bestDifficulty,
+                ratingStr, difficultyRequired);
+                return false;		// Exit if the puzzle is accepted.
             }
-            break;		// Exit if the puzzle is accepted.
-	}
         if ((d >= difficultyRequired) || (count >= maxTries)) {
-            QWidget owner;
-	    int ans = 0;
-	    if (m_accum.nGuesses == 0) {
-                ans = KMessageBox::questionTwoActions (&owner,
-		       i18n("It will be possible to solve the generated puzzle "
-			    "by logic alone. No guessing will be required.\n"
-			    "\n"
-			    "The internal difficulty rating is %1. There are "
-			    "%2 clues at the start and %3 moves to go.",
-			    ratingStr, bestNClues,
-			    (m_stats.nCells - bestNClues)),
-		       i18nc("@title:window", "Difficulty Level"),
-                       KStandardGuiItem::ok(), KGuiItem(i18nc("@action:button", "&Retry"), QStringLiteral("view-refresh")));
-	    }
-	    else {
-                QString avGuessStr = ki18n("%1").subs(((float) bestNGuesses) /
-			5.0, 0, 'f', 1).toString(); // Format as for ratingStr.
-                ans = KMessageBox::questionTwoActions (&owner,
-		       i18n("Solving the generated puzzle will require an "
-			    "average of %1 guesses or branch points and if you "
-			    "guess wrong, backtracking will be necessary. The "
-			    "first guess should come after %2 moves.\n"
-			    "\n"
-			    "The internal difficulty rating is %3, there are "
-			    "%4 clues at the start and %5 moves to go.",
-			    avGuessStr, bestFirstGuessAt, ratingStr,
-			    bestNClues, (m_stats.nCells - bestNClues)),
-                       i18nc("@title:window", "Difficulty Level"),
-                       KStandardGuiItem::ok(),
-                       KGuiItem(i18nc("@action:button", "&Retry"), QStringLiteral("view-refresh")));
-	    }
-	    // Exit when the required difficulty or number of tries is reached.
-            if (ans == KMessageBox::SecondaryAction) {
-                count = 0;
-                bestRating = 0.0;
-                bestDifficulty = 0;
-                bestNClues = 0;
-                bestNGuesses = 0;
-                bestFirstGuessAt = 0;
-                continue;	// Start again if the user rejects this puzzle.
+            if (m_accum.nGuesses == 0) {
+                messageString = i18n("It will be possible to solve the generated puzzle "
+                "by logic alone. No guessing will be required.\n"
+                "\n"
+                "The internal difficulty rating is %1. There are "
+                "%2 clues at the start and %3 moves to go.",
+                ratingStr, bestNClues,
+                (m_stats.nCells - bestNClues));
+                return true;
             }
-	    break;		// Exit if the puzzle is OK.
+            else {
+                QString avGuessStr = ki18n("%1").subs(((float) bestNGuesses) /
+                    5.0, 0, 'f', 1).toString(); // Format as for ratingStr.
+                messageString = i18n("Solving the generated puzzle will require an "
+                "average of %1 guesses or branch points and if you "
+                "guess wrong, backtracking will be necessary. The "
+                "first guess should come after %2 moves.\n"
+                "\n"
+                "The internal difficulty rating is %3, there are "
+                "%4 clues at the start and %5 moves to go.",
+                avGuessStr, bestFirstGuessAt, ratingStr,
+                bestNClues, (m_stats.nCells - bestNClues));
+                return true;
+            }
         }
     }
-
-    qCDebug(KSudokuLog) << "FINAL PUZZLE" << puzzle;
-
-    return true;
 }
 
 Difficulty SudokuBoard::calculateRating (const BoardContents & puzzle,

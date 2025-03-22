@@ -47,7 +47,7 @@ const SudokuType types[]     = {Plain, XSudoku, Jigsaw, Aztec,
 				Samurai, TinySamurai, Roxdoku,
 				Mathdoku, KillerSudoku};
 
-Game Serializer::deserializeGame(const QDomElement &element) {
+Game Serializer::deserializeGame(const QDomElement &element, QWidget* window) {
 	bool hasPuzzle = false;
     Puzzle* puzzle = nullptr;
 	bool hasHistory = false;
@@ -65,7 +65,7 @@ Game Serializer::deserializeGame(const QDomElement &element) {
 					return Game();
 				}
 
-				puzzle = deserializePuzzle(child.toElement());
+				puzzle = deserializePuzzle(child.toElement(), window);
 				hasPuzzle = true;
 			} else if(child.nodeName() == QLatin1String("history")) {
 				if(hasHistory) {
@@ -94,7 +94,7 @@ Game Serializer::deserializeGame(const QDomElement &element) {
 	return game;
 }
 
-Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
+Puzzle* Serializer::deserializePuzzle(const QDomElement &element, QWidget* window) {
 	bool hasGraph = false;
     SKGraph* graph = nullptr;
 	bool hasValues = false;
@@ -146,8 +146,7 @@ Puzzle* Serializer::deserializePuzzle(const QDomElement &element) {
 		delete graph;
         return nullptr;
 	}
-
-	auto* puzzle = new Puzzle(graph, hasSolution);
+	auto* puzzle = new Puzzle(window, graph, hasSolution);
 
 	BoardContents values;
 	values.resize(graph->size());
@@ -458,7 +457,7 @@ Game Serializer::load(const QUrl& url, QWidget* window, QString& errorMsg) {
 				if(hasGame)
 					return Game();
 
-				game = deserializeGame(child.toElement());
+				game = deserializeGame(child.toElement(), window);
 				hasGame = true;
 			}
 		}

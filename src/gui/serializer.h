@@ -48,8 +48,8 @@ public:
 private:
 	// TODO - IDW. Maybe there should be shared methods for file handling.
 	//             And do all these methods need to be static?
-	static Game deserializeGame(const QDomElement &element);
-	static Puzzle* deserializePuzzle(const QDomElement &element) ;
+	static Game deserializeGame(const QDomElement &element, QWidget* window);
+	static Puzzle* deserializePuzzle(const QDomElement &element, QWidget* window) ;
 	static SKGraph* deserializeGraph(const QDomElement &element);
 	static bool deserializeClique(SKGraph * graph, const QString & size,
 						       const QString & text);

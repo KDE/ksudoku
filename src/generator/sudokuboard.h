@@ -142,10 +142,15 @@ public:
      *                      back to the Welcome screen (e.g. to change reqs.)
      *                      after too many attempts to generate a puzzle.
      */
-    bool                    generatePuzzle (BoardContents & puzzle,
+    bool                    generateMathdokuKillerSudokuTypes (BoardContents & puzzle,
                                             BoardContents & solution,
                                             Difficulty      difficulty,
                                             Symmetry        symmetry);
+    bool                    generateSudokuRoxdokuTypes (BoardContents & puzzle,
+                                                       BoardContents & solution,
+                                                       Difficulty    difficulty,
+                                                       Symmetry      symmetry);
+
 
     /**
      * Check that a puzzle is soluble, has the desired solution and has only one
@@ -221,7 +226,8 @@ public:
      * Initialize or re-initialize the random number generator.
      */
     void                    setSeed();
-
+	QString	                getMessage() { return messageString; };
+    
 protected:
     BoardContents           m_currentValues;	///< The current state of the
 						///< cell values during solve().
@@ -272,10 +278,7 @@ protected:
     void                    randomSequence (QList<int> & sequence);
 
 private:
-    bool                    generateSudokuRoxdokuTypes (BoardContents & puzzle,
-                                                       BoardContents & solution,
-                                                       Difficulty    difficulty,
-                                                       Symmetry      symmetry);
+	QString                 messageString;
 
     SKGraph *               m_graph;
     int                     m_vacant;
@@ -292,7 +295,6 @@ private:
 
     QList<qint32>           m_validCellValues;
     QList<qint32>           m_requiredGroupValues;
-
     // These are the principal methods of the solver.  The key method is
     // deduceValues().  It finds and fills cells that have only one possible
     // value left.  If no more cells can be deduced, it returns a randomised

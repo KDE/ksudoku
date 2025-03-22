@@ -26,6 +26,7 @@
 #include <QList>
 #include <QObject>
 #include <QUrl>
+#include <QWidget>
 
 class SKGraph;
 namespace ksudoku {
@@ -35,7 +36,7 @@ class Game;
 class GameVariantCollection;
 class GameVariant {
 public:
-	explicit GameVariant(const QString& name, GameVariantCollection* collection=nullptr);
+	explicit GameVariant(QWidget *parent, const QString& name, GameVariantCollection* collection=nullptr);
 	virtual ~GameVariant() {}
 
 public:
@@ -43,6 +44,7 @@ public:
 	QString description() const { return m_description; }
 	void setDescription(const QString& descr);
 	QString icon() const { return m_icon; }
+	QWidget *getParent() const { return m_parent; }
 	void setIcon(const QString& icon);
 
 	/// This method returs whether the variant has an configure option
@@ -63,11 +65,13 @@ public:
 	/// Creates the correct view for the game.
 	/// Game needs to be compatible with this GameVariant
 	virtual KsView* createView(const Game& game) const = 0;
+	
 
 private:
 	QString m_name;
 	QString m_description;
 	QString m_icon;
+	QWidget *m_parent; // Store the parent window
 };
 
 class GameVariantCollection : public QAbstractListModel {
@@ -129,7 +133,7 @@ private:
 
 class SudokuGame : public GameVariant {
 public:
-	SudokuGame(const QString& name, uint order, GameVariantCollection* collection=nullptr);
+	SudokuGame(QWidget *parent,const QString& name, uint order, GameVariantCollection* collection=nullptr);
 	~SudokuGame() override;
 
 public:
@@ -149,7 +153,7 @@ private:
 
 class RoxdokuGame : public GameVariant {
 public:
-	RoxdokuGame(const QString& name, uint order, GameVariantCollection* collection=nullptr);
+	RoxdokuGame(QWidget *parent, const QString& name, uint order, GameVariantCollection* collection=nullptr);
 	~RoxdokuGame() override;
 
 public:
@@ -169,7 +173,7 @@ private:
 
 class CustomGame : public GameVariant {
 public:
-	CustomGame(const QString& name, const QUrl& url, GameVariantCollection* collection=nullptr);
+	CustomGame(QWidget *parent, const QString& name, const QUrl& url, GameVariantCollection* collection=nullptr);
 	~CustomGame() override;
 
 public:

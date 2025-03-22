@@ -26,6 +26,8 @@
 #include "skgraph.h"
 #include "globals.h"
 
+#include <QWidget>
+
 namespace ksudoku {
 	
 class Puzzle {
@@ -34,7 +36,7 @@ public:
 	* @param[in] sovler       The solver used for this puzzle (the GameType) (not deleted when Puzzle is deleted)
 	* @param[in] withSolution Whether a the solution for this puzzle should be stored
 	*/
-	explicit Puzzle(SKGraph* graph, bool withSolution = true);
+	explicit Puzzle(QWidget *parent, SKGraph* graph, bool withSolution = true);
 
 public:
 	/**
@@ -84,7 +86,8 @@ public:
 		}
 
 	///create new Puzzle with same solver and set withSolution to true
-	Puzzle* dubPuzzle() { return new Puzzle(m_graph, true) ; }
+	Puzzle* dubPuzzle() { return new Puzzle(m_parent, m_graph, true) ; }
+	
 
 public:
 	inline SKGraph *graph() const { return m_graph; }
@@ -98,6 +101,7 @@ private:
 	QList<int> m_hintList;
 
 	bool m_initialized;
+	QWidget *m_parent;	//Store the parent window
 };
 
 }

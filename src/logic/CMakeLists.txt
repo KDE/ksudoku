@@ -4,4 +4,9 @@ set(ksudoku_logic_SRCS
 )
 
 add_library(ksudoku_logic STATIC ${ksudoku_logic_SRCS})
-target_link_libraries(ksudoku_logic Qt6::Core)
+target_link_libraries(
+		ksudoku_logic
+		Qt6::Core
+		KF6::WidgetsAddons
+		KF6::I18n
+)

@@ -27,13 +27,19 @@
 #include "sudokuboard.h"
 #include "mathdokugenerator.h"
 
+
+#include <KMessageBox>
+#include <KLocalizedString>
+
 namespace ksudoku {
 
-Puzzle::Puzzle(SKGraph *graph, bool withSolution)
+Puzzle::Puzzle(QWidget *parent, SKGraph *graph, bool withSolution)
 	: m_withSolution(withSolution)
 	, m_graph(graph)
 	, m_initialized(false)
-{ }
+	, m_parent(parent)
+{
+}
 
 int Puzzle::value(int index) const {
 	return ((index < m_puzzle.size()) ? m_puzzle.at(index) : 0);
@@ -55,7 +61,7 @@ bool Puzzle::init() {
 
 	// Set up an empty puzzle.  The user will enter his/her own puzzle.
 	if(m_graph) {
-	    m_puzzle = m_graph->emptyBoard();
+		m_puzzle = m_graph->emptyBoard();
 	}
 	return true;
 }
@@ -63,18 +69,50 @@ bool Puzzle::init() {
 bool Puzzle::init(int difficulty, int symmetry) {
 	if(m_initialized) return false;
 
-	auto * board = new SudokuBoard (m_graph);
-
 	// Generate a puzzle and its solution.
-	bool success =  board->generatePuzzle (m_puzzle, m_solution,
-			      (Difficulty) difficulty, (Symmetry) symmetry);
+
+	bool success = false;
+	SudokuType puzzleType = m_graph->specificType();
+
+	auto * board = new SudokuBoard (m_graph);
+	if ((puzzleType == Mathdoku) ||
+		(puzzleType == KillerSudoku)) {
+
+		loopMKS:
+		success =  board->generateMathdokuKillerSudokuTypes(m_puzzle, m_solution,
+					(Difficulty) difficulty, (Symmetry) symmetry);
+		if (!success){
+			if (KMessageBox::questionTwoActions (m_parent,
+					i18n("Attempts to generate a puzzle failed after "
+					"about 200 tries. Try again?"),
+					i18nc("@title:window", "Mathdoku or Killer Sudoku Puzzle"),
+					KGuiItem(i18nc("@action:button", "&Try Again"), QStringLiteral("view-refresh")),
+								KStandardGuiItem::cancel())
+					== KMessageBox::PrimaryAction) {
+				goto loopMKS;	// Retry puzzle generation.
+			}
+		}
+	}
+	else {
+		loopSR:
+		success =  board->generateSudokuRoxdokuTypes(m_puzzle, m_solution,
+					(Difficulty) difficulty, (Symmetry) symmetry);
+		int ans = KMessageBox::questionTwoActions (m_parent,
+						board->getMessage(),
+						i18nc("@title:window", "Difficulty Level"),
+						KStandardGuiItem::ok(),
+						KGuiItem(i18nc("@action:button", "&Retry"), QStringLiteral("view-refresh")));
+		if (ans == KMessageBox::SecondaryAction) {
+			goto loopSR;	// Retry puzzle generation.
+		}
+	}
 	if (success) {
-	    board->getMoveList (m_hintList);
+		board->getMoveList (m_hintList);
 	}
 	// Too many tries at generating a puzzle that meets the user's reqs.
 	else {
-	    m_puzzle.clear();		// Wipe the puzzle and its solution.
-	    m_solution.clear();
+		m_puzzle.clear();		// Wipe the puzzle and its solution.
+		m_solution.clear();
 	}
 	delete board;
 	return success;
@@ -90,28 +128,28 @@ int Puzzle::init(const BoardContents & values) {
 	m_hintList.clear();
 
 	if ((t != Mathdoku) && (t != KillerSudoku)) {
-	    auto * board = new SudokuBoard (m_graph);
-	    m_solution = board->solveBoard (m_puzzle);
+		auto * board = new SudokuBoard (m_graph);
+		m_solution = board->solveBoard (m_puzzle);
 
-	    // Get SudokuBoard to check the solution.
-	    result = board->checkPuzzle (m_puzzle);
-	    if (result != 0) {
+		// Get SudokuBoard to check the solution.
+		result = board->checkPuzzle (m_puzzle);
+		if (result != 0) {
 		board->getMoveList (m_hintList);
-	    }
-	    if (result >= 0) {
+		}
+		if (result >= 0) {
 		result = 1;		// There is one solution.
-	    }
-	    else if (result == -1) {
+		}
+		else if (result == -1) {
 		result = 0;		// There is no solution.
-	    }
-	    else {
+		}
+		else {
 		result = 2;		// There is more than one solution.
-	    }
-	    delete board;
+		}
+		delete board;
 	}
 	else {
-	    MathdokuGenerator mg (m_graph);
-	    result = mg.solveMathdokuTypes (m_solution, &m_hintList);
+		MathdokuGenerator mg (m_graph);
+		result = mg.solveMathdokuTypes (m_solution, &m_hintList);
 	}
 	return result;
 }
