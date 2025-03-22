@@ -26,6 +26,7 @@
 
 #include <QAction>
 #include <QComboBox>
+#include <QDateTime>
 #include <QDir>
 #include <QDragEnterEvent>
 #include <QDropEvent>
@@ -695,7 +696,9 @@ void KSudoku::gameOpen()
 	// the Open shortcut is pressed (usually CTRL+O) or the Open toolbar
 	// button is clicked
 	// standard filedialog
-	const QUrl Url = QFileDialog::getOpenFileUrl(this, QString(), QUrl::fromLocalFile(QDir::homePath()), QString());
+	QString filter = i18n("XML files (*.xml);;Text files (*.txt);;All files (*.*)");
+	QString docsDir = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
+	const QUrl Url = QFileDialog::getOpenFileUrl(this, QString(), QUrl::fromLocalFile(docsDir), filter);
 
 	if (!Url.isEmpty() && Url.isValid())
 	{
@@ -722,10 +725,12 @@ void KSudoku::gameSave()
     // save the current file
 
 	Game game = currentGame();
-	if(!game.isValid()) return;
+	
+	if(game.getUrl().isEmpty()) {
 
-	if(game.getUrl().isEmpty()) game.setUrl(QFileDialog::getSaveFileUrl());
-	if (!game.getUrl().isEmpty() && game.getUrl().isValid())
+		gameSaveAs();
+	}
+	else if (!game.getUrl().isEmpty() && game.getUrl().isValid())
 	{
 		QString errorMsg;
 		if (!ksudoku::Serializer::store(game, game.getUrl(), this, errorMsg))
@@ -737,9 +742,15 @@ void KSudoku::gameSaveAs()
 {
     // this slot is called whenever the Game->Save As menu is selected,
 	Game game = currentGame();
-	if(!game.isValid()) return;
-
-	game.setUrl(QFileDialog::getSaveFileUrl());
+	if(!game.isValid()) 
+		return;
+	QDir docsDir(QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation));
+	QString fName = i18n("Game_") +
+		 QDateTime::currentDateTime().toString(QStringLiteral("yyyy_MM_dd_hhmmss")) +
+		QStringLiteral(".ksudoku.xml");
+	QUrl fileName = QUrl::fromLocalFile(docsDir.filePath(fName));
+	QString filter = i18n("XML files (*.xml);;Text files (*.txt);;All files (*.*)");
+	game.setUrl(QFileDialog::getSaveFileUrl(this,i18n("Save Game"),fileName, filter));
     if (!game.getUrl().isEmpty() && game.getUrl().isValid())
     	gameSave();
 }
