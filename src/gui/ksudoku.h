@@ -26,6 +26,8 @@
 
 #include <QUrl>
 #include <QTime>
+#include <QTimer>
+#include <QLabel>
 #include <KXmlGuiWindow>
 #if 0
 #include <knewstuff/knewstuff.h>
@@ -90,7 +92,6 @@ public:
 
 	ksudoku::Game    currentGame() const;
 	ksudoku::KsView* currentView() const;
-
 protected:
 	void dragEnterEvent(QDragEnterEvent *event) override;
 	void dropEvent(QDropEvent *event) override;
@@ -116,6 +117,7 @@ private Q_SLOTS:
 	void gameSaveAs();
 	void gamePrint();
 	void gameExport();
+	void gamePause();
 
 	void undo();
 	void redo();
@@ -137,6 +139,13 @@ private Q_SLOTS:
 
 	void enableMessages();
 
+	/*
+	 * Can be reimplemented per
+	 * https://doc.qt.io/qt-6/qwidget.html#changeEvent
+	 */
+	void changeEvent(QEvent *event) override;
+	void setTimerDisplay();
+
 Q_SIGNALS:
 	void settingsChanged();
 
@@ -149,9 +158,10 @@ private:
 private:
 	QWidget* wrapper;
 
+	QAction * m_pauseButton;
 	QAction* m_gameSave;
 	QAction* m_gameSaveAs;
-
+	int m_gameTime;
 	ksudoku::GameVariantCollection* m_gameVariants;
 	ksudoku::WelcomeScreen* m_welcomeScreen;
 
@@ -163,6 +173,14 @@ private:
 	ksudoku::GameActions* m_gameActions;
 
 	PuzzlePrinter * m_puzzlePrinter;
+
+	QLabel *m_timeDisplay;
+	QTimer *m_timer;
+
+	// Indicates the pause button has been pressed at least once
+	// and flagging message queue upon solving
+	// see KSudoku::onCompleted
+	bool m_wasPaused;
 };
 
 #endif // _KSUDOKU_H_

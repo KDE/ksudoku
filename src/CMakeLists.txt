@@ -18,15 +18,16 @@ if(OPENGL_SUPPORT)
 endif(OPENGL_SUPPORT)
 
 set(ksudoku_SRCS
-	main.cpp
-	generator/sudokuboard.cpp generator/sudokuboard.h
-	generator/state.cpp generator/state.h
-	generator/dlxsolver.cpp generator/dlxsolver.h
-	generator/cagegenerator.cpp generator/cagegenerator.h
-	generator/mathdokugenerator.cpp generator/mathdokugenerator.h
+        main.cpp
+        generator/sudokuboard.cpp generator/sudokuboard.h
+        generator/state.cpp generator/state.h
+        generator/dlxsolver.cpp generator/dlxsolver.h
+        generator/cagegenerator.cpp generator/cagegenerator.h
+        generator/mathdokugenerator.cpp generator/mathdokugenerator.h
 
-	ksudoku.qrc
+        ksudoku.qrc
 )
+qt_add_resources(ksudoku_SRCS Background.qrc)
 
 ecm_setup_version(${PROJECT_VERSION} VARIABLE_PREFIX KSUDOKU VERSION_HEADER ksudoku_version.h)
 
@@ -39,7 +40,8 @@ ecm_qt_declare_logging_category(ksudoku_SRCS
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/*-apps-ksudoku.png")
 ecm_add_app_icon(ksudoku_SRCS ICONS ${ICONS_SRCS})
-add_executable(ksudoku ${ksudoku_SRCS})
+add_executable(ksudoku ${ksudoku_SRCS}
+    Background.qrc)
 
 target_link_libraries(ksudoku
     ksudoku_gui
@@ -53,7 +55,7 @@ target_link_libraries(ksudoku
 
 if(OPENGL_SUPPORT)
 target_link_libraries(ksudoku
-	OpenGL::GL OpenGL::GLU ${CMAKE_DL_LIBS}
+        OpenGL::GL OpenGL::GLU ${CMAKE_DL_LIBS}
 )
 endif(OPENGL_SUPPORT)
 

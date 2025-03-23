@@ -10,6 +10,7 @@
 	<Menu noMerge="1" name="game" ><text>&amp;Game</text>
 		<Action group="game_merge" name="game_new"  />
 		<Action group="game_merge" name="game_restart" />
+                <Action group="game_merge" name="game_pause" />
 		<Action group="game_merge" name="game_load" />
 		<Separator group="game_merge" />
 		<Action group="save_merge" name="game_save" />
@@ -46,6 +47,7 @@
 	<text>Main Toolbar</text>
 	<Action name="game_new" />
 	<Action name="game_restart" />
+        <Action name="game_pause" />
 	<Action name="game_print" />
 </ToolBar>
 

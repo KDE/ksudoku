@@ -92,6 +92,10 @@ void KSudoku::onCompleted(bool isCorrect, QTime required, bool withHelp) {
 		return;
 	}
 
+	m_timer->stop();
+	setTimerDisplay();
+	m_pauseButton->setEnabled(false);
+
 	QString msg;
 	int secs = QTime(0,0).secsTo(required);
 	int mins = secs / 60;
@@ -104,6 +108,13 @@ void KSudoku::onCompleted(bool isCorrect, QTime required, bool withHelp) {
 			msg = i18np("Congratulations! You made it in 1 minute. With some tricks.", "Congratulations! You made it in %1 minutes. With some tricks.", mins);
 		else
 			msg = i18nc("The two parameters are strings like '2 minutes' or '1 second'.", "Congratulations! You made it in %1 and %2. With some tricks.", i18np("1 minute", "%1 minutes", mins), i18np("1 second", "%1 seconds", secs));
+	else if(m_wasPaused)
+		if (mins == 0)
+			msg = i18np("Congratulations! You made it in 1 second. With at least 1 pause.", "Congratulations! You made it in %1 seconds. With at least 1 pause.", secs);
+		else if (secs == 0)
+			msg = i18np("Congratulations! You made it in 1 minute. With at least 1 pause.", "Congratulations! You made it in %1 minutes. With at least 1 pause.", mins);
+		else
+			msg = i18nc("The two parameters are strings like '2 minutes' or '1 second'.", "Congratulations! You made it in %1 and %2. With at least 1 pause.", i18np("1 minute", "%1 minutes", mins), i18np("1 second", "%1 seconds", secs));
 	else
 		if (mins == 0)
 			msg = i18np("Congratulations! You made it in 1 second.", "Congratulations! You made it in %1 seconds.", secs);
@@ -140,10 +151,14 @@ KSudoku::KSudoku()
 {
 	setObjectName( QStringLiteral("ksudoku" ));
 
-    m_gameWidget = nullptr;
+	// Set game has been paused to false
+	m_wasPaused = false;
+
+	m_gameWidget = nullptr;
     m_gameUI = nullptr;
 
     m_gameActions = nullptr;
+	m_timeDisplay = new QLabel;
 
 	// then, setup our actions
 	setupActions();
@@ -269,6 +284,12 @@ void KSudoku::startGame(const Game& game) {
 	g.setMessageParent(view->widget());
 
 	wrapper->layout()->addWidget(widget);
+	wrapper->setObjectName(QStringLiteral("BG"));
+	wrapper->setStyleSheet(QStringLiteral("#BG { background-image: url(:/shapes/icon_pause.png);"
+										"background-repeat: no-repeat;"
+										"background-position: center; }"
+										));
+
 	widget->show();
 	widget->setFocus();
 
@@ -363,6 +384,46 @@ void KSudoku::startGame(const Game& game) {
 		     "an error somewhere in one of the cages."),
 		i18n("Data-entry for Puzzles with Cages"),
 		QStringLiteral("CageDataEntry"));
+	}
+}
+
+void KSudoku::gamePause() {
+
+	if(m_pauseButton->isChecked())
+	{
+		m_wasPaused = true;
+		// Disable all other visible game play buttons
+		action(QStringLiteral("game_new"))->setEnabled(false);
+		action(QStringLiteral("game_restart"))->setEnabled(false);
+		action(QStringLiteral("game_print"))->setEnabled(false);
+		action(QStringLiteral("move_hint"))->setEnabled(false);
+		action(QStringLiteral("move_solve"))->setEnabled(false);
+
+		// Hide/Disable the game widgets
+		m_gameUI->widget()->setDisabled(true);
+		m_gameUI->widget()->hide();
+		m_gameUI->valueListWidget()->hide();
+
+		// Capture the current timer value
+		m_gameTime = m_gameUI->game().msecsElapsed();
+		m_timer->stop();
+	}
+	else{
+		// Enable all other visible game play buttons
+		action(QStringLiteral("game_new"))->setEnabled(true);
+		action(QStringLiteral("game_restart"))->setEnabled(true);
+		action(QStringLiteral("game_print"))->setEnabled(currentGame().isValid());
+		action(QStringLiteral("move_hint"))->setEnabled(!currentGame().allValuesSetAndUsable());
+		action(QStringLiteral("move_solve"))->setEnabled(!currentGame().wasFinished());
+
+		// Show/Enable the game widgets
+		m_gameUI->widget()->setEnabled(true);
+		m_gameUI->widget()->show();
+		m_gameUI->valueListWidget()->show();
+
+		// Set the game timer to the previous value
+		m_gameUI->game().setTime(m_gameTime);
+		m_timer->start();
 	}
 }
 
@@ -481,6 +542,8 @@ void KSudoku::setupActions()
 	KGameStandardAction::gameNew(this, &KSudoku::gameNew, actionCollection());
 	KGameStandardAction::restart(this, &KSudoku::gameRestart, actionCollection());
 	KGameStandardAction::load(this, &KSudoku::gameOpen, actionCollection());
+	m_pauseButton = KGameStandardAction::pause(this, &KSudoku::gamePause, actionCollection());
+	KActionCollection::setDefaultShortcut(m_pauseButton, QKeySequence(Qt::Key_F8));
 	m_gameSave = KGameStandardAction::save(this, &KSudoku::gameSave, actionCollection());
 	m_gameSaveAs = KGameStandardAction::saveAs(this, &KSudoku::gameSaveAs, actionCollection());
 	KGameStandardAction::print(this, &KSudoku::gamePrint, actionCollection());
@@ -556,6 +619,19 @@ void KSudoku::setupStatusBar (int difficulty, int symmetry)
 	symmetryBox->addItem(i18nc("Symmetry of layout of clues", "Random Choice"));
 	symmetryBox->addItem(i18n("No Symmetry"));
 	symmetryBox->setCurrentIndex (symmetry);
+
+	// Setup the timer display in the status bar
+	QFont font(QStringLiteral("Monospace"));
+	font.setFixedPitch(true);
+	m_timeDisplay->setFrameStyle(QFrame::NoFrame);
+	m_timeDisplay->setFont(font);
+	m_timeDisplay->setText(QStringLiteral("00:00:00"));
+	statusBar()->addWidget (new QLabel (i18nc("@action", "Elapsed Time:")));
+	statusBar()->addWidget (m_timeDisplay);
+	m_timer = new QTimer(this);
+	connect(m_timer, &QTimer::timeout, this, &KSudoku::setTimerDisplay);
+	m_timer->setInterval(500);
+	m_timer->start();
 }
 
 void KSudoku::adaptActions2View() {
@@ -565,6 +641,7 @@ void KSudoku::adaptActions2View() {
 	m_gameSaveAs->setEnabled(game.isValid());
 	action(QStringLiteral("game_new"))->setEnabled(game.isValid());
 	action(QStringLiteral("game_restart"))->setEnabled(game.isValid());
+	action(QStringLiteral("game_pause"))->setEnabled(game.isValid());
 	action(QStringLiteral("game_print"))->setEnabled(game.isValid());
 	if(game.isValid()) {
 		bool isEnterPuzzleMode = !game.puzzle()->hasSolution();
@@ -689,7 +766,6 @@ void KSudoku::gameRestart()
 	if (!currentView()) return;
 
 	auto game = currentGame();
-
 	// only show question when the current game hasn't been finished until now
 	if (!game.wasFinished()) {
 		if (KMessageBox::questionTwoActions(this,
@@ -701,7 +777,11 @@ void KSudoku::gameRestart()
 		}
 	}
 
+	m_wasPaused = false;
+	action(QStringLiteral("game_pause"))->setEnabled(game.isValid());
 	game.restart();
+	game.setTime(0);
+	m_timer->start();
 }
 
 void KSudoku::gameOpen()
@@ -900,6 +980,32 @@ void KSudoku::enableMessages()
 	if (result == KMessageBox::PrimaryAction) {
 		KMessageBox::enableAllMessages();
 		KSharedConfig::openConfig()->sync();	// Save the changes to disk.
+	}
+}
+
+void KSudoku::changeEvent(QEvent *event)
+{
+	// Reimplemented to handle window minimize/maximize events
+	if (event->type() == QEvent::WindowStateChange)
+	{
+		if (event->spontaneous() && !isMinimized() && currentGame().isValid())
+		{
+			// On maximize, set the game timer to the previous value
+			m_gameUI->game().setTime(m_gameTime);
+		}
+		else if (event->spontaneous() && isMinimized() && currentGame().isValid())
+		{
+			// On minimize, capture the current game timer value
+			m_gameTime = m_gameUI->game().msecsElapsed();
+		}
+	}
+}
+
+void KSudoku::setTimerDisplay()
+{
+	if(currentGame().isValid())
+	{
+		m_timeDisplay->setText(currentGame().time().toString(QStringLiteral("hh:mm:ss")));
 	}
 }
 
