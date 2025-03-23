@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-05 00:37+0000\n"
+"POT-Creation-Date: 2025-03-23 00:39+0000\n"
 "PO-Revision-Date: 2022-02-26 11:47+0530\n"
 "Last-Translator: Raghavendra Kamath <raghu@raghukamath.com>\n"
 "Language-Team: Hindi <kde-l10n-hi@kde.org>\n"
@@ -30,31 +30,12 @@ msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
 msgstr "karunakar@indlinux.org"
 
-#: src/generator/sudokuboard.cpp:123
-#, kde-format
-msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
-msgstr ""
-
-#: src/generator/sudokuboard.cpp:125
-#, fuzzy, kde-format
-#| msgid "Print Sudoku Puzzle"
-msgctxt "@title:window"
-msgid "Mathdoku or Killer Sudoku Puzzle"
-msgstr "सुडोकु पहेली छापें"
-
-#: src/generator/sudokuboard.cpp:126 src/generator/sudokuboard.cpp:230
-#, fuzzy, kde-format
-#| msgid "&Try Again"
-msgctxt "@action:button"
-msgid "&Try Again"
-msgstr "फिर से कोशिश करें (&T)"
-
-#: src/generator/sudokuboard.cpp:212 src/generator/sudokuboard.cpp:254
+#: src/generator/sudokuboard.cpp:196 src/generator/sudokuboard.cpp:225
 #, kde-format
 msgid "%1"
 msgstr "%1"
 
-#: src/generator/sudokuboard.cpp:218
+#: src/generator/sudokuboard.cpp:200
 #, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
@@ -63,27 +44,12 @@ msgid ""
 "Do you wish to let the generator try again or accept the puzzle as is?\n"
 "\n"
 "Hint: you can try to increase the difficulty rating by doing the following: "
-"Continue with the 'Accept' button, choose Game -> New, then change the "
-"Symmetry setting to 'No Symmetry' or some low symmetry type and then use "
-"'Generate A Puzzle' again."
+"Continue with the 'OK' button, choose Game -> New, then change the Symmetry "
+"setting to 'No Symmetry' or some low symmetry type and then use 'Generate A "
+"Puzzle' again."
 msgstr ""
 
-#: src/generator/sudokuboard.cpp:229 src/generator/sudokuboard.cpp:250
-#: src/generator/sudokuboard.cpp:266
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
-msgctxt "@title:window"
-msgid "Difficulty Level"
-msgstr "कठिनाई स्तर"
-
-#: src/generator/sudokuboard.cpp:231
-#, fuzzy, kde-format
-#| msgid "&Accept"
-msgctxt "@action:button"
-msgid "&Accept"
-msgstr "स्वीकारें (&A)"
-
-#: src/generator/sudokuboard.cpp:243
+#: src/generator/sudokuboard.cpp:215
 #, kde-format
 msgid ""
 "It will be possible to solve the generated puzzle by logic alone. No "
@@ -93,14 +59,7 @@ msgid ""
 "moves to go."
 msgstr ""
 
-#: src/generator/sudokuboard.cpp:251 src/generator/sudokuboard.cpp:268
-#, fuzzy, kde-format
-#| msgid "&Retry"
-msgctxt "@action:button"
-msgid "&Retry"
-msgstr "फिर कोशिश करें (&R)"
-
-#: src/generator/sudokuboard.cpp:257
+#: src/generator/sudokuboard.cpp:227
 #, kde-format
 msgid ""
 "Solving the generated puzzle will require an average of %1 guesses or branch "
@@ -264,12 +223,17 @@ msgstr ""
 msgid "Darken 3-D cells outside the selected volume"
 msgstr ""
 
-#: src/gui/gamevariants.cpp:280 src/gui/gamevariants.cpp:337
+#: src/gui/gamevariants.cpp:281 src/gui/gamevariants.cpp:338
 #, kde-format
 msgid "Configuration not yet implemented"
 msgstr "कॉन्फ़िगुरेशन अभी लागू नहीं है"
 
-#: src/gui/ksudoku.cpp:76
+#: src/gui/ksudoku.cpp:83
+#, kde-format
+msgid "All Files (*)"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:91
 #, kde-format
 msgid ""
 "Sorry, your solution contains mistakes.\n"
@@ -277,126 +241,126 @@ msgid ""
 "Enable \"Show errors\" in the settings to highlight them."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:87
+#: src/gui/ksudoku.cpp:102
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
 msgstr[0] "बधाईयाँ! आपने %1 सेकंड में हल कर लिया. कुछ ट्रिक के साथ."
 msgstr[1] "बधाईयाँ! आपने %1 सेकंड में हल कर लिया. कुछ ट्रिक के साथ."
 
-#: src/gui/ksudoku.cpp:89
+#: src/gui/ksudoku.cpp:104
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
 msgstr[0] "बधाईयाँ! आपने 1 मिनट में हल कर लिया. कुछ ट्रिक के साथ."
 msgstr[1] "बधाईयाँ! आपने %1 मिनटों में हल कर लिया. कुछ ट्रिक के साथ."
 
-#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#: src/gui/ksudoku.cpp:106 src/gui/ksudoku.cpp:113
 #, kde-format
 msgid "1 minute"
 msgid_plural "%1 minutes"
 msgstr[0] "1 मिनट"
 msgstr[1] "%1 मिनटें"
 
-#: src/gui/ksudoku.cpp:91 src/gui/ksudoku.cpp:98
+#: src/gui/ksudoku.cpp:106 src/gui/ksudoku.cpp:113
 #, kde-format
 msgid "1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "1 सेकंड"
 msgstr[1] "%1 सेकंड"
 
-#: src/gui/ksudoku.cpp:91
+#: src/gui/ksudoku.cpp:106
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "बधाईयाँ! आपने %1 तथा %2 में हल कर लिया. कुछ ट्रिक के साथ."
 
-#: src/gui/ksudoku.cpp:94
+#: src/gui/ksudoku.cpp:109
 #, kde-format
 msgid "Congratulations! You made it in 1 second."
 msgid_plural "Congratulations! You made it in %1 seconds."
 msgstr[0] "बधाईयाँ! आपने इसे १ सेकण़्ड में पूरा कर लिया."
 msgstr[1] "बधाईयाँ! आपने इसे %1 सेकण़्डों में पूरा कर लिया."
 
-#: src/gui/ksudoku.cpp:96
+#: src/gui/ksudoku.cpp:111
 #, kde-format
 msgid "Congratulations! You made it in 1 minute."
 msgid_plural "Congratulations! You made it in %1 minutes."
 msgstr[0] "बधाईयाँ! आपने इसे 1 मिनट में पूरा कर लिया."
 msgstr[1] "बधाईयाँ! आपने इसे %1 मिनटों में पूरा कर लिया."
 
-#: src/gui/ksudoku.cpp:98
+#: src/gui/ksudoku.cpp:113
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2."
 msgstr "बधाईयाँ! आपने इसे %1 तथा %2 पूरा कर लिया."
 
-#: src/gui/ksudoku.cpp:178
+#: src/gui/ksudoku.cpp:193
 #, kde-format
 msgid "Sudoku Standard (9x9)"
 msgstr "सुडोकु मानक (९x९)"
 
-#: src/gui/ksudoku.cpp:179
+#: src/gui/ksudoku.cpp:194
 #, kde-format
 msgid "The classic and fashionable game"
 msgstr "क्लासिक तथा फैशन का एक खेल"
 
-#: src/gui/ksudoku.cpp:182
+#: src/gui/ksudoku.cpp:197
 #, kde-format
 msgid "Roxdoku 9 (3x3x3)"
 msgstr "रॉक्सडोकु 9 (3x3x3)"
 
-#: src/gui/ksudoku.cpp:183
+#: src/gui/ksudoku.cpp:198
 #, kde-format
 msgid "The Rox 3D Sudoku"
 msgstr "रॉक्स ३डी सुडोकु"
 
-#: src/gui/ksudoku.cpp:205
+#: src/gui/ksudoku.cpp:220
 #, kde-format
 msgid "Missing Variant Name"
 msgstr "वेरिएन्ट नाम गुम है"
 
-#: src/gui/ksudoku.cpp:221
+#: src/gui/ksudoku.cpp:236
 #, kde-format
 msgid "Sudoku 16x16"
 msgstr "सुडोकु १६x१६"
 
-#: src/gui/ksudoku.cpp:222
+#: src/gui/ksudoku.cpp:237
 #, kde-format
 msgid "Sudoku with 16 symbols"
 msgstr "१६ चिह्न सहित सुडोकु"
 
-#: src/gui/ksudoku.cpp:224
+#: src/gui/ksudoku.cpp:239
 #, kde-format
 msgid "Sudoku 25x25"
 msgstr "सुडोकु २५x२५"
 
-#: src/gui/ksudoku.cpp:225
+#: src/gui/ksudoku.cpp:240
 #, kde-format
 msgid "Sudoku with 25 symbols"
 msgstr "२५ चिह्न सहित सुडोकु"
 
-#: src/gui/ksudoku.cpp:228
+#: src/gui/ksudoku.cpp:243
 #, kde-format
 msgid "Roxdoku 16 (4x4x4)"
 msgstr "रॉक्सडोकु १६ (४x४x४)"
 
-#: src/gui/ksudoku.cpp:229
+#: src/gui/ksudoku.cpp:244
 #, kde-format
 msgid "The Rox 3D sudoku with 16 symbols"
 msgstr "१६ चिह्नों सहित रॉक्स ३डी सुडोकु"
 
-#: src/gui/ksudoku.cpp:231
+#: src/gui/ksudoku.cpp:246
 #, kde-format
 msgid "Roxdoku 25 (5x5x5)"
 msgstr "रॉक्सडोकु २५ (५x५x५)"
 
-#: src/gui/ksudoku.cpp:232
+#: src/gui/ksudoku.cpp:247
 #, kde-format
 msgid "The Rox 3D sudoku with 25 symbols"
 msgstr "२५ चिह्नों सहित रॉक्स ३डी सुडोकु"
 
-#: src/gui/ksudoku.cpp:278
+#: src/gui/ksudoku.cpp:293
 #, kde-format
 msgid ""
 "Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
@@ -415,12 +379,12 @@ msgid ""
 "size by using KSudoku's Difficulty button."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:297
+#: src/gui/ksudoku.cpp:312
 #, kde-format
 msgid "Playing Mathdoku"
 msgstr "मेथडोकु खेलें"
 
-#: src/gui/ksudoku.cpp:301
+#: src/gui/ksudoku.cpp:316
 #, kde-format
 msgid ""
 "Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
@@ -436,12 +400,12 @@ msgid ""
 "size by using KSudoku's Difficulty button."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:315
+#: src/gui/ksudoku.cpp:330
 #, kde-format
 msgid "Playing Killer Sudoku"
 msgstr "कातिल सुडोकु खेलें"
 
-#: src/gui/ksudoku.cpp:319
+#: src/gui/ksudoku.cpp:334
 #, kde-format
 msgid ""
 "Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
@@ -470,173 +434,173 @@ msgid ""
 "have probably made an error somewhere in one of the cages."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:349
+#: src/gui/ksudoku.cpp:364
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:405
+#: src/gui/ksudoku.cpp:420
 #, kde-format
 msgid "The puzzle you entered contains some errors."
 msgstr "जो पहेली आपने प्रविष्ट की है उसमें कुछ त्रुटियाँ हैं."
 
-#: src/gui/ksudoku.cpp:418
+#: src/gui/ksudoku.cpp:433
 #, kde-format
 msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:421 src/gui/ksudoku.cpp:428 src/gui/ksudoku.cpp:434
+#: src/gui/ksudoku.cpp:436 src/gui/ksudoku.cpp:443 src/gui/ksudoku.cpp:449
 #, fuzzy, kde-format
 #| msgid "Check Puzzle"
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "पहेली जाँचे"
 
-#: src/gui/ksudoku.cpp:426
+#: src/gui/ksudoku.cpp:441
 #, fuzzy, kde-format
 #| msgid "The Puzzle you entered has multiple solutions."
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr "जो पहेली आपने भरी है उसमें बहुत से हल हैं."
 
-#: src/gui/ksudoku.cpp:431
+#: src/gui/ksudoku.cpp:446
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:437
+#: src/gui/ksudoku.cpp:452
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
 msgstr "क्या आप पहेली अभी खेलना चाहते हैं?"
 
-#: src/gui/ksudoku.cpp:438
+#: src/gui/ksudoku.cpp:453
 #, fuzzy, kde-format
 #| msgid "Play Puzzle"
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "पहेली खेलें"
 
-#: src/gui/ksudoku.cpp:439
+#: src/gui/ksudoku.cpp:454
 #, fuzzy, kde-format
 #| msgid "Play"
 msgctxt "@action:button"
 msgid "Play"
 msgstr "बजाएँ"
 
-#: src/gui/ksudoku.cpp:478
+#: src/gui/ksudoku.cpp:493
 #, fuzzy, kde-format
 #| msgid "Enable all messages"
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "सभी संदेश सक्षम करें"
 
-#: src/gui/ksudoku.cpp:495
+#: src/gui/ksudoku.cpp:510
 #, fuzzy, kde-format
 #| msgid "Check"
 msgctxt "@action"
 msgid "Check"
 msgstr "जाँचें"
 
-#: src/gui/ksudoku.cpp:511
+#: src/gui/ksudoku.cpp:526
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "अप्रिय"
 
-#: src/gui/ksudoku.cpp:513
+#: src/gui/ksudoku.cpp:528
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "असीमित"
 
-#: src/gui/ksudoku.cpp:524
+#: src/gui/ksudoku.cpp:539
 #, fuzzy, kde-format
 #| msgid "Difficulty"
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "कठिनाई"
 
-#: src/gui/ksudoku.cpp:528
+#: src/gui/ksudoku.cpp:543
 #, fuzzy, kde-format
 #| msgid "Symmetry"
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "समानता"
 
-#: src/gui/ksudoku.cpp:532
+#: src/gui/ksudoku.cpp:547
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "समानता"
 
-#: src/gui/ksudoku.cpp:534
+#: src/gui/ksudoku.cpp:549
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:536
+#: src/gui/ksudoku.cpp:551
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "तिर्यक"
 
-#: src/gui/ksudoku.cpp:537
+#: src/gui/ksudoku.cpp:552
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "केंद्रिय"
 
-#: src/gui/ksudoku.cpp:538
+#: src/gui/ksudoku.cpp:553
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "बाएँ दाएँ"
 
-#: src/gui/ksudoku.cpp:539
+#: src/gui/ksudoku.cpp:554
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "चक्राकार"
 
-#: src/gui/ksudoku.cpp:540
+#: src/gui/ksudoku.cpp:555
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "चार राह"
 
-#: src/gui/ksudoku.cpp:541
+#: src/gui/ksudoku.cpp:556
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "बेतरतीब चुनाव"
 
-#: src/gui/ksudoku.cpp:542
+#: src/gui/ksudoku.cpp:557
 #, kde-format
 msgid "No Symmetry"
 msgstr "समानता नहीं"
 
-#: src/gui/ksudoku.cpp:646 src/gui/ksudoku.cpp:705
+#: src/gui/ksudoku.cpp:661 src/gui/ksudoku.cpp:721
 #, fuzzy, kde-format
 #| msgid "Error in Cage"
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr "पिंजरे में त्रुटि"
 
-#: src/gui/ksudoku.cpp:662
+#: src/gui/ksudoku.cpp:677
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr "नया खेल प्रारंभ करने के लिए क्या आप सचमुच इस खेल को बन्द करना चाहते हैं?"
 
-#: src/gui/ksudoku.cpp:663
+#: src/gui/ksudoku.cpp:678
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
 msgstr "नया खेल"
 
-#: src/gui/ksudoku.cpp:664
+#: src/gui/ksudoku.cpp:679
 #, fuzzy, kde-format
 #| msgctxt "window title"
 #| msgid "New Game"
@@ -644,18 +608,18 @@ msgctxt "@action:button"
 msgid "New Game"
 msgstr "नया खेल"
 
-#: src/gui/ksudoku.cpp:681
+#: src/gui/ksudoku.cpp:696
 #, kde-format
 msgid "Do you really want to restart this game?"
 msgstr "क्या आप सचमुच इस खेल को दोबारा शुरु करना चाहते हैं?"
 
-#: src/gui/ksudoku.cpp:682
+#: src/gui/ksudoku.cpp:697
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "खेल पुनः शुरु करें"
 
-#: src/gui/ksudoku.cpp:683
+#: src/gui/ksudoku.cpp:698
 #, fuzzy, kde-format
 #| msgctxt "window title"
 #| msgid "Restart Game"
@@ -663,19 +627,33 @@ msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "खेल पुनः शुरु करें"
 
-#: src/gui/ksudoku.cpp:732
+#: src/gui/ksudoku.cpp:750
 #, fuzzy, kde-format
 #| msgid "Error Writing File"
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "फ़ाइल लिखने में त्रुटि"
 
-#: src/gui/ksudoku.cpp:754
+#: src/gui/ksudoku.cpp:761
+#, fuzzy, kde-format
+#| msgctxt "Game Section in Config"
+#| msgid "Game"
+msgid "Game_"
+msgstr "खेल"
+
+#: src/gui/ksudoku.cpp:765
+#, fuzzy, kde-format
+#| msgctxt "window title"
+#| msgid "New Game"
+msgid "Save Game"
+msgstr "नया खेल"
+
+#: src/gui/ksudoku.cpp:777
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "छापने के लिए कोई पहेली नहीं है"
 
-#: src/gui/ksudoku.cpp:791
+#: src/gui/ksudoku.cpp:814
 #, fuzzy, kde-format
 #| msgctxt "Game Section in Config"
 #| msgid "Game"
@@ -683,14 +661,14 @@ msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "खेल"
 
-#: src/gui/ksudoku.cpp:792
+#: src/gui/ksudoku.cpp:815
 #, fuzzy, kde-format
 #| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "प्रसंग"
 
-#: src/gui/ksudoku.cpp:824
+#: src/gui/ksudoku.cpp:847
 #, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
@@ -701,14 +679,14 @@ msgid ""
 "longer than other ones. During this time KSudoku will not respond."
 msgstr ""
 
-#: src/gui/ksudoku.cpp:831
+#: src/gui/ksudoku.cpp:854
 #, fuzzy, kde-format
 #| msgid "Warning"
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "चेतावनी"
 
-#: src/gui/ksudoku.cpp:871
+#: src/gui/ksudoku.cpp:894
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -717,7 +695,7 @@ msgid ""
 "Do you want to continue?"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:875
+#: src/gui/ksudoku.cpp:898
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
@@ -880,32 +858,32 @@ msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "सुडोकु पहेली छापें"
 
-#: src/gui/serializer.cpp:399
+#: src/gui/serializer.cpp:398
 #, kde-format
 msgid "Unable to download file: URL is empty."
 msgstr ""
 
-#: src/gui/serializer.cpp:406
+#: src/gui/serializer.cpp:405
 #, kde-format
 msgid "Unable to open file."
 msgstr "फाइल खोलने में असमर्थ."
 
-#: src/gui/serializer.cpp:413 src/gui/serializer.cpp:446
+#: src/gui/serializer.cpp:412 src/gui/serializer.cpp:445
 #, kde-format
 msgid "Cannot read XML file on line %1"
 msgstr "एक्सएमएल फ़ाइल पंक्ति %1 पर पढ़ नहीं सका"
 
-#: src/gui/serializer.cpp:440
+#: src/gui/serializer.cpp:439
 #, kde-format
 msgid "Unable to download file."
 msgstr "फ़ाइल डाउनलोड नहीं कर सका."
 
-#: src/gui/serializer.cpp:680
+#: src/gui/serializer.cpp:679
 #, kde-format
 msgid "Unable to create temporary file."
 msgstr ""
 
-#: src/gui/serializer.cpp:693
+#: src/gui/serializer.cpp:692
 #, kde-format
 msgid "Unable to upload file."
 msgstr "फ़ाइल अपलोड नहीं कर सका."
@@ -1026,6 +1004,39 @@ msgstr "पहेली में जाएँ"
 msgid "Generate A Puzzle"
 msgstr "पहेली बनाएँ"
 
+#: src/logic/puzzle.cpp:86
+#, kde-format
+msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
+msgstr ""
+
+#: src/logic/puzzle.cpp:88
+#, fuzzy, kde-format
+#| msgid "Print Sudoku Puzzle"
+msgctxt "@title:window"
+msgid "Mathdoku or Killer Sudoku Puzzle"
+msgstr "सुडोकु पहेली छापें"
+
+#: src/logic/puzzle.cpp:89
+#, fuzzy, kde-format
+#| msgid "&Try Again"
+msgctxt "@action:button"
+msgid "&Try Again"
+msgstr "फिर से कोशिश करें (&T)"
+
+#: src/logic/puzzle.cpp:102
+#, fuzzy, kde-format
+#| msgid "Difficulty Level"
+msgctxt "@title:window"
+msgid "Difficulty Level"
+msgstr "कठिनाई स्तर"
+
+#: src/logic/puzzle.cpp:104
+#, fuzzy, kde-format
+#| msgid "&Retry"
+msgctxt "@action:button"
+msgid "&Retry"
+msgstr "फिर कोशिश करें (&R)"
+
 #: src/main.cpp:47
 #, kde-format
 msgid "KSudoku"
@@ -1102,6 +1113,12 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "दस्तावेज़ जिसे खोलना है"
+
+#, fuzzy
+#~| msgid "&Accept"
+#~ msgctxt "@action:button"
+#~ msgid "&Accept"
+#~ msgstr "स्वीकारें (&A)"
 
 #~ msgid "Could not load game."
 #~ msgstr "खेल को लोड नही कर सका."
