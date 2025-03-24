@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-23 00:39+0000\n"
+"POT-Creation-Date: 2025-03-24 00:39+0000\n"
 "PO-Revision-Date: 2020-12-09 13:14+0000\n"
 "Last-Translator: José Nuno Coelho Pires <zepires@gmail.com>\n"
 "Language-Team: pt <kde-i18n-doc@kde.org>\n"
@@ -283,126 +283,154 @@ msgstr ""
 "\n"
 "Active a opção \"Mostrar os erros\" da configuração para os realçar."
 
-#: src/gui/ksudoku.cpp:102
+#: src/gui/ksudoku.cpp:106
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
 msgstr[0] "Parabéns! Terminou com sucesso em 1 segundo, com alguns truques."
 msgstr[1] "Parabéns! Terminou com sucesso em %1 segundos, com alguns truques."
 
-#: src/gui/ksudoku.cpp:104
+#: src/gui/ksudoku.cpp:108
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
 msgstr[0] "Parabéns! Terminou com sucesso em 1 minuto, com alguns truques."
 msgstr[1] "Parabéns! Terminou com sucesso em %1 minutos, com alguns truques."
 
-#: src/gui/ksudoku.cpp:106 src/gui/ksudoku.cpp:113
+#: src/gui/ksudoku.cpp:110 src/gui/ksudoku.cpp:117 src/gui/ksudoku.cpp:124
 #, kde-format
 msgid "1 minute"
 msgid_plural "%1 minutes"
 msgstr[0] "Um minuto"
 msgstr[1] "%1 minutos"
 
-#: src/gui/ksudoku.cpp:106 src/gui/ksudoku.cpp:113
+#: src/gui/ksudoku.cpp:110 src/gui/ksudoku.cpp:117 src/gui/ksudoku.cpp:124
 #, kde-format
 msgid "1 second"
 msgid_plural "%1 seconds"
 msgstr[0] "Um segundo"
 msgstr[1] "%1 segundos"
 
-#: src/gui/ksudoku.cpp:106
+#: src/gui/ksudoku.cpp:110
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Parabéns! Terminou com sucesso em %1 e %2, com alguns truques."
 
-#: src/gui/ksudoku.cpp:109
+#: src/gui/ksudoku.cpp:113
+#, fuzzy, kde-format
+#| msgid "Congratulations! You made it in 1 second. With some tricks."
+#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+msgid "Congratulations! You made it in 1 second. With at least 1 pause."
+msgid_plural ""
+"Congratulations! You made it in %1 seconds. With at least 1 pause."
+msgstr[0] "Parabéns! Terminou com sucesso em 1 segundo, com alguns truques."
+msgstr[1] "Parabéns! Terminou com sucesso em %1 segundos, com alguns truques."
+
+#: src/gui/ksudoku.cpp:115
+#, fuzzy, kde-format
+#| msgid "Congratulations! You made it in 1 minute. With some tricks."
+#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
+msgid_plural ""
+"Congratulations! You made it in %1 minutes. With at least 1 pause."
+msgstr[0] "Parabéns! Terminou com sucesso em 1 minuto, com alguns truques."
+msgstr[1] "Parabéns! Terminou com sucesso em %1 minutos, com alguns truques."
+
+#: src/gui/ksudoku.cpp:117
+#, fuzzy, kde-format
+#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
+msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
+msgstr "Parabéns! Terminou com sucesso em %1 e %2, com alguns truques."
+
+#: src/gui/ksudoku.cpp:120
 #, kde-format
 msgid "Congratulations! You made it in 1 second."
 msgid_plural "Congratulations! You made it in %1 seconds."
 msgstr[0] "Parabéns! Terminou com sucesso em 1 segundo."
 msgstr[1] "Parabéns! Terminou com sucesso em %1 segundos."
 
-#: src/gui/ksudoku.cpp:111
+#: src/gui/ksudoku.cpp:122
 #, kde-format
 msgid "Congratulations! You made it in 1 minute."
 msgid_plural "Congratulations! You made it in %1 minutes."
 msgstr[0] "Parabéns! Terminou com sucesso em 1 minuto."
 msgstr[1] "Parabéns! Terminou com sucesso em %1 minutos."
 
-#: src/gui/ksudoku.cpp:113
+#: src/gui/ksudoku.cpp:124
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2."
 msgstr "Parabéns! Terminou com sucesso em %1 e %2."
 
-#: src/gui/ksudoku.cpp:193
+#: src/gui/ksudoku.cpp:208
 #, kde-format
 msgid "Sudoku Standard (9x9)"
 msgstr "Sudoku Normal (9x9)"
 
-#: src/gui/ksudoku.cpp:194
+#: src/gui/ksudoku.cpp:209
 #, kde-format
 msgid "The classic and fashionable game"
 msgstr "O jogo clássico e na moda"
 
-#: src/gui/ksudoku.cpp:197
+#: src/gui/ksudoku.cpp:212
 #, kde-format
 msgid "Roxdoku 9 (3x3x3)"
 msgstr "Roxdoku 9 (3x3x3)"
 
-#: src/gui/ksudoku.cpp:198
+#: src/gui/ksudoku.cpp:213
 #, kde-format
 msgid "The Rox 3D Sudoku"
 msgstr "O Sudoku 3D Rox"
 
-#: src/gui/ksudoku.cpp:220
+#: src/gui/ksudoku.cpp:235
 #, kde-format
 msgid "Missing Variant Name"
 msgstr "Falta o Nome da Variante"
 
-#: src/gui/ksudoku.cpp:236
+#: src/gui/ksudoku.cpp:251
 #, kde-format
 msgid "Sudoku 16x16"
 msgstr "Sudoku 16x16"
 
-#: src/gui/ksudoku.cpp:237
+#: src/gui/ksudoku.cpp:252
 #, kde-format
 msgid "Sudoku with 16 symbols"
 msgstr "Sudoku com 16 símbolos"
 
-#: src/gui/ksudoku.cpp:239
+#: src/gui/ksudoku.cpp:254
 #, kde-format
 msgid "Sudoku 25x25"
 msgstr "Sudoku 25x25"
 
-#: src/gui/ksudoku.cpp:240
+#: src/gui/ksudoku.cpp:255
 #, kde-format
 msgid "Sudoku with 25 symbols"
 msgstr "Sudoku com 25 símbolos"
 
-#: src/gui/ksudoku.cpp:243
+#: src/gui/ksudoku.cpp:258
 #, kde-format
 msgid "Roxdoku 16 (4x4x4)"
 msgstr "Roxdoku 16 (4x4x4)"
 
-#: src/gui/ksudoku.cpp:244
+#: src/gui/ksudoku.cpp:259
 #, kde-format
 msgid "The Rox 3D sudoku with 16 symbols"
 msgstr "O Sudoku 3D Rox com 16 símbolos"
 
-#: src/gui/ksudoku.cpp:246
+#: src/gui/ksudoku.cpp:261
 #, kde-format
 msgid "Roxdoku 25 (5x5x5)"
 msgstr "Roxdoku 25 (5x5x5)"
 
-#: src/gui/ksudoku.cpp:247
+#: src/gui/ksudoku.cpp:262
 #, kde-format
 msgid "The Rox 3D sudoku with 25 symbols"
 msgstr "O Sudoku 3D Rox com 25 símbolos"
 
-#: src/gui/ksudoku.cpp:293
+#: src/gui/ksudoku.cpp:314
 #, kde-format
 msgid ""
 "Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
@@ -438,12 +466,12 @@ msgstr ""
 "Configuração do KSudoku, e o tamanho máximo da caixa, usando o botão de "
 "Dificuldade do KSudoku."
 
-#: src/gui/ksudoku.cpp:312
+#: src/gui/ksudoku.cpp:333
 #, kde-format
 msgid "Playing Mathdoku"
 msgstr "Jogar o Matedoku"
 
-#: src/gui/ksudoku.cpp:316
+#: src/gui/ksudoku.cpp:337
 #, kde-format
 msgid ""
 "Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
@@ -472,12 +500,12 @@ msgstr ""
 "De um modo geral, as caixas maiores são mais difíceis. Poderá seleccionar o "
 "tamanho máximo da caixa, usando o botão de Dificuldade do KSudoku."
 
-#: src/gui/ksudoku.cpp:330
+#: src/gui/ksudoku.cpp:351
 #, kde-format
 msgid "Playing Killer Sudoku"
 msgstr "Jogar o Sudoku Assassino"
 
-#: src/gui/ksudoku.cpp:334
+#: src/gui/ksudoku.cpp:355
 #, kde-format
 msgid ""
 "Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
@@ -534,17 +562,17 @@ msgstr ""
 "verificação for mal-sucedida, provavelmente cometeu algum erro numa das "
 "caixas."
 
-#: src/gui/ksudoku.cpp:364
+#: src/gui/ksudoku.cpp:385
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
 msgstr "Introdução de Dados em 'Puzzles' com Caixas"
 
-#: src/gui/ksudoku.cpp:420
+#: src/gui/ksudoku.cpp:481
 #, kde-format
 msgid "The puzzle you entered contains some errors."
 msgstr "O 'puzzle' que introduziu contém alguns erros."
 
-#: src/gui/ksudoku.cpp:433
+#: src/gui/ksudoku.cpp:494
 #, kde-format
 msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
@@ -553,20 +581,20 @@ msgstr ""
 "Infelizmente, não foram encontradas soluções. Verifique por favor que "
 "introduziu o 'puzzle' por completo e de forma correcta."
 
-#: src/gui/ksudoku.cpp:436 src/gui/ksudoku.cpp:443 src/gui/ksudoku.cpp:449
+#: src/gui/ksudoku.cpp:497 src/gui/ksudoku.cpp:504 src/gui/ksudoku.cpp:510
 #, fuzzy, kde-format
 #| msgid "Check Puzzle"
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Verificar o 'Puzzle'"
 
-#: src/gui/ksudoku.cpp:441
+#: src/gui/ksudoku.cpp:502
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr ""
 "O 'puzzle' que introduziu tem uma única solução e está pronto a ser jogado."
 
-#: src/gui/ksudoku.cpp:446
+#: src/gui/ksudoku.cpp:507
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
@@ -575,134 +603,140 @@ msgstr ""
 "O 'puzzle' que introduziu tem várias soluções. Verifique por favor se "
 "introduziu o 'puzzle' por completo e de forma correcta."
 
-#: src/gui/ksudoku.cpp:452
+#: src/gui/ksudoku.cpp:513
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
 msgstr "Deseja jogar o 'puzzle' agora?"
 
-#: src/gui/ksudoku.cpp:453
+#: src/gui/ksudoku.cpp:514
 #, fuzzy, kde-format
 #| msgid "Play Puzzle"
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Jogar o 'Puzzle'"
 
-#: src/gui/ksudoku.cpp:454
+#: src/gui/ksudoku.cpp:515
 #, fuzzy, kde-format
 #| msgid "Play"
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Jogar"
 
-#: src/gui/ksudoku.cpp:493
+#: src/gui/ksudoku.cpp:556
 #, fuzzy, kde-format
 #| msgid "Enable all messages"
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "Activar todas as mensagens"
 
-#: src/gui/ksudoku.cpp:510
+#: src/gui/ksudoku.cpp:573
 #, fuzzy, kde-format
 #| msgid "Check"
 msgctxt "@action"
 msgid "Check"
 msgstr "Verificar"
 
-#: src/gui/ksudoku.cpp:526
+#: src/gui/ksudoku.cpp:589
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "Diabólico"
 
-#: src/gui/ksudoku.cpp:528
+#: src/gui/ksudoku.cpp:591
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "Ilimitado"
 
-#: src/gui/ksudoku.cpp:539
+#: src/gui/ksudoku.cpp:602
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "Dificuldade:"
 
-#: src/gui/ksudoku.cpp:543
+#: src/gui/ksudoku.cpp:606
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "Simetria:"
 
-#: src/gui/ksudoku.cpp:547
+#: src/gui/ksudoku.cpp:610
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "Simetria"
 
-#: src/gui/ksudoku.cpp:549
+#: src/gui/ksudoku.cpp:612
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr "A simetria da disposição das pistas quando iniciar o 'puzzle'"
 
-#: src/gui/ksudoku.cpp:551
+#: src/gui/ksudoku.cpp:614
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "Diagonal"
 
-#: src/gui/ksudoku.cpp:552
+#: src/gui/ksudoku.cpp:615
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "Central"
 
-#: src/gui/ksudoku.cpp:553
+#: src/gui/ksudoku.cpp:616
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "Esquerda-Direita"
 
-#: src/gui/ksudoku.cpp:554
+#: src/gui/ksudoku.cpp:617
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "Espiral"
 
-#: src/gui/ksudoku.cpp:555
+#: src/gui/ksudoku.cpp:618
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "Quatro-Direcções"
 
-#: src/gui/ksudoku.cpp:556
+#: src/gui/ksudoku.cpp:619
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "Escolha Aleatória"
 
-#: src/gui/ksudoku.cpp:557
+#: src/gui/ksudoku.cpp:620
 #, kde-format
 msgid "No Symmetry"
 msgstr "Sem Simetria"
 
-#: src/gui/ksudoku.cpp:661 src/gui/ksudoku.cpp:721
+#: src/gui/ksudoku.cpp:629
+#, kde-format
+msgctxt "@action"
+msgid "Elapsed Time:"
+msgstr ""
+
+#: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, fuzzy, kde-format
 #| msgid "Error in Cage"
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr "Erro na Caixa"
 
-#: src/gui/ksudoku.cpp:677
+#: src/gui/ksudoku.cpp:754
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr "Deseja mesmo terminar este jogo para iniciar um novo?"
 
-#: src/gui/ksudoku.cpp:678
+#: src/gui/ksudoku.cpp:755
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
 msgstr "Novo Jogo"
 
-#: src/gui/ksudoku.cpp:679
+#: src/gui/ksudoku.cpp:756
 #, fuzzy, kde-format
 #| msgctxt "window title"
 #| msgid "New Game"
@@ -710,18 +744,18 @@ msgctxt "@action:button"
 msgid "New Game"
 msgstr "Novo Jogo"
 
-#: src/gui/ksudoku.cpp:696
+#: src/gui/ksudoku.cpp:772
 #, kde-format
 msgid "Do you really want to restart this game?"
 msgstr "Deseja realmente reiniciar este jogo?"
 
-#: src/gui/ksudoku.cpp:697
+#: src/gui/ksudoku.cpp:773
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "Reiniciar o Jogo"
 
-#: src/gui/ksudoku.cpp:698
+#: src/gui/ksudoku.cpp:774
 #, fuzzy, kde-format
 #| msgctxt "window title"
 #| msgid "Restart Game"
@@ -729,33 +763,33 @@ msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Reiniciar o Jogo"
 
-#: src/gui/ksudoku.cpp:750
+#: src/gui/ksudoku.cpp:830
 #, fuzzy, kde-format
 #| msgid "Error Writing File"
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Erro ao Escrever o Ficheiro"
 
-#: src/gui/ksudoku.cpp:761
+#: src/gui/ksudoku.cpp:841
 #, fuzzy, kde-format
 #| msgctxt "Game Section in Config"
 #| msgid "Game"
 msgid "Game_"
 msgstr "Jogo"
 
-#: src/gui/ksudoku.cpp:765
+#: src/gui/ksudoku.cpp:845
 #, fuzzy, kde-format
 #| msgctxt "window title"
 #| msgid "New Game"
 msgid "Save Game"
 msgstr "Novo Jogo"
 
-#: src/gui/ksudoku.cpp:777
+#: src/gui/ksudoku.cpp:857
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "Não parecem existir 'puzzles' para imprimir."
 
-#: src/gui/ksudoku.cpp:814
+#: src/gui/ksudoku.cpp:894
 #, fuzzy, kde-format
 #| msgctxt "Game Section in Config"
 #| msgid "Game"
@@ -763,14 +797,14 @@ msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Jogo"
 
-#: src/gui/ksudoku.cpp:815
+#: src/gui/ksudoku.cpp:895
 #, fuzzy, kde-format
 #| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
 
-#: src/gui/ksudoku.cpp:847
+#: src/gui/ksudoku.cpp:927
 #, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
@@ -788,14 +822,14 @@ msgstr ""
 "Lembre-se também que a geração deste tipo de 'puzzle' poderá levar muito "
 "mais tempo que os outros. Durante esse período, o KSudoku não irá responder."
 
-#: src/gui/ksudoku.cpp:854
+#: src/gui/ksudoku.cpp:934
 #, fuzzy, kde-format
 #| msgid "Warning"
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Aviso"
 
-#: src/gui/ksudoku.cpp:894
+#: src/gui/ksudoku.cpp:974
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -808,7 +842,7 @@ msgstr ""
 "\n"
 "Deseja continuar?"
 
-#: src/gui/ksudoku.cpp:898
+#: src/gui/ksudoku.cpp:978
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
@@ -936,25 +970,25 @@ msgid "&Game"
 msgstr "Jo&go"
 
 #. i18n: ectx: Menu (move)
-#: src/gui/ksudokuui.rc:23
+#: src/gui/ksudokuui.rc:24
 #, kde-format
 msgid "&Move"
 msgstr "Jo&gada"
 
 #. i18n: ectx: Menu (help)
-#: src/gui/ksudokuui.rc:38
+#: src/gui/ksudokuui.rc:39
 #, kde-format
 msgid "&Help"
 msgstr "A&juda"
 
 #. i18n: ectx: ToolBar (mainToolBar)
-#: src/gui/ksudokuui.rc:46
+#: src/gui/ksudokuui.rc:47
 #, kde-format
 msgid "Main Toolbar"
 msgstr "Barra Principal"
 
 #. i18n: ectx: ToolBar (actionsToolbar)
-#: src/gui/ksudokuui.rc:53
+#: src/gui/ksudokuui.rc:55
 #, kde-format
 msgid "Actions Toolbar"
 msgstr "Barra de Acções"
