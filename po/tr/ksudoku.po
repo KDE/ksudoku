@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2025-03-23 17:51+0300\n"
+"PO-Revision-Date: 2025-03-24 22:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 25.07.70\n"
+"X-Generator: Lokalize 25.03.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -307,32 +307,26 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Tebrikler! %1 %2 içerisinde bazı hileler ile bitirdiniz."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Tebrikler! %1 saniye içinde bazı hileler ile bitirdiniz."
-msgstr[1] "Tebrikler! %1 saniye içinde bazı hileler ile bitirdiniz."
+msgstr[0] "Tebrikler! 1 saniye içinde en az 1 duraklama ile bitirdiniz."
+msgstr[1] "Tebrikler! %1 saniye içinde en az 1 duraklama ile bitirdiniz."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Tebrikler! %1 dakika içerisinde bazı hileler ile bitirdiniz."
-msgstr[1] "Tebrikler! %1 dakika içerisinde bazı hileler ile bitirdiniz."
+msgstr[0] "Tebrikler! 1 dakika içinde en az 1 duraklama ile bitirdiniz."
+msgstr[1] "Tebrikler! %1 dakika içinde en az 1 duraklama ile bitirdiniz."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Tebrikler! %1 %2 içerisinde bazı hileler ile bitirdiniz."
+msgstr "Tebrikler! %1 ve %2 içinde en az 1 duraklama ile bitirdiniz."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -694,7 +688,7 @@ msgstr "Simetri Yok"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Geçen süre:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format

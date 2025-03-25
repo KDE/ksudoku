@@ -1,10 +1,10 @@
 # Translation of ksudoku.po to Catalan (Valencian)
-# Copyright (C) 2007-2024 This_file_is_part_of_KDE
+# Copyright (C) 2007-2025 This_file_is_part_of_KDE
 # This file is distributed under the license LGPL version 2.1 or
 # version 3 or later versions approved by the membership of KDE e.V.
 #
 # Albert Astals Cid <aacid@kde.org>, 2007, 2008, 2009.
-# Josep M. Ferrer <txemaq@gmail.com>, 2009, 2010, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024.
+# Josep M. Ferrer <txemaq@gmail.com>, 2009, 2010, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2021, 2023, 2024, 2025.
 # Manuel Tortosa <manutortosa@gmail.com>, 2009, 2011.
 # Antoni Bella Pérez <antonibella5@yahoo.com>, 2014, 2020, 2022.
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2024-05-02 15:30+0200\n"
+"PO-Revision-Date: 2025-03-24 12:00+0100\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
 "Language: ca@valencia\n"
@@ -39,18 +39,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -69,9 +58,9 @@ msgstr ""
 "Voleu provar-ho de nou o accepteu el puzle tal com és?\n"
 "\n"
 "Consell: podeu intentar augmentar la puntuació de dificultat fent el "
-"següent: Continueu amb el botó «Accepta», trieu Joc -> Nou, després canvieu "
-"l'opció Simetria a «Sense simetria» o algun tipus baix de simetria i després "
-"torneu a utilitzar «Genera un puzle»."
+"següent: Continueu amb el botó «D'acord», trieu «Joc -> Nou», després "
+"canvieu l'opció «Simetria» a «Sense simetria» o algun tipus baix de simetria "
+"i després torneu a utilitzar «Genera un puzle»."
 
 #: src/generator/sudokuboard.cpp:215
 #, kde-format
@@ -274,7 +263,7 @@ msgstr "La configuració encara no està implementada"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Tots els fitxers (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -322,32 +311,26 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Felicitats! Ho heu fet en %1 minuts i %2 segons. Fent servir trucs."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Felicitats! Ho heu fet en 1 segon. Fent servir trucs."
-msgstr[1] "Felicitats! Ho heu fet en %1 segons. Fent servir trucs."
+msgstr[0] "Felicitats! Ho heu fet en 1 segon. Amb almenys 1 pausa."
+msgstr[1] "Felicitats! Ho heu fet en %1 segons. Amb almenys 1 pausa."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Felicitats! Ho heu fet en 1 minut. Fent servir trucs."
-msgstr[1] "Felicitats! Ho heu fet en %1 minuts. Fent servir trucs."
+msgstr[0] "Felicitats! Ho heu fet en 1 minut. Amb almenys 1 pausa."
+msgstr[1] "Felicitats! Ho heu fet en %1 minuts. Amb almenys 1 pausa."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Felicitats! Ho heu fet en %1 minuts i %2 segons. Fent servir trucs."
+msgstr "Felicitats! Ho heu fet en %1 minuts i %2 segons. Amb almenys 1 pausa."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -716,7 +699,7 @@ msgstr "Sense simetria"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Temps transcorregut:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -765,18 +748,14 @@ msgid "Error Writing File"
 msgstr "S'ha produït un error en escriure en el fitxer"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Joc"
+msgstr "Partida_"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Partida nova"
+msgstr "Guarda la partida"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
@@ -1265,7 +1244,3 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "Document que s'ha d'obrir"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Accept"
-#~ msgstr "&Accepta"

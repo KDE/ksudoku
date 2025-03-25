@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2025-03-23 05:23+0100\n"
+"PO-Revision-Date: 2025-03-24 03:45+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -306,32 +306,26 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "გლოცავთ! ეს %1 %2 ში შესძელით. დახმარებით."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "გილოცავთ! თქვენ ეს 1 წამში შესძელით. დახმარებით."
-msgstr[1] "გილოცავთ! თქვენ ეს %1 წამში შესძელით. დახმარებით."
+msgstr[0] "გილოცავთ! თქვენ ეს 1 წამში შესძელით. სულ ცოტა ერთი პაუზით."
+msgstr[1] "გილოცავთ! თქვენ ეს %1 წამში შესძელით. სულ ცოტა 1 პაუზით."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "გილოცავთ! თქვენ ეს 1 წუთში შესძელით. დახმარებით."
-msgstr[1] "გილოცავთ! თქვენ ეს %1 წუთში შესძელით. დახმარებით."
+msgstr[0] "გილოცავთ! თქვენ ეს 1 წუთში შესძელით. სულ ცოტა 1 პაუზით."
+msgstr[1] "გილოცავთ! თქვენ ეს %1 წუთში შესძელით. სულ ცოტა 1 პაუზით."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "გლოცავთ! ეს %1 %2 ში შესძელით. დახმარებით."
+msgstr "გლოცავთ! ეს %1 %2 ში შესძელით. სულ ცოტა, ერთი პაუზით."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -696,7 +690,7 @@ msgstr "სიმეტრიის გარეშე"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "გასული დრო:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format

@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2025-03-23 10:50+0200\n"
+"PO-Revision-Date: 2025-03-24 15:02+0200\n"
 "Last-Translator: Yuri Chornoivan <yurchor@ukr.net>\n"
 "Language-Team: Ukrainian <trans-uk@lists.fedoraproject.org>\n"
 "Language: uk\n"
@@ -325,36 +325,38 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Вітання! Ви зробили це за %1 і %2. З деякими підказками."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Вітання! Ви зробили це за %1 секунду. З деякими підказками."
-msgstr[1] "Вітання! Ви зробили це за %1 секунди. З деякими підказками."
-msgstr[2] "Вітання! Ви зробили це за %1 секунд. З деякими підказками."
-msgstr[3] "Вітання! Ви зробили це за %1 секунду. З деякими підказками."
+msgstr[0] ""
+"Вітання! Ви зробили це за %1 секунду. З принаймні однією призупинкою."
+msgstr[1] ""
+"Вітання! Ви зробили це за %1 секунди. З принаймні однією призупинкою."
+msgstr[2] ""
+"Вітання! Ви зробили це за %1 секунд. З принаймні однією призупинкою."
+msgstr[3] ""
+"Вітання! Ви зробили це за %1 секунду. З принаймні однією призупинкою."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Вітання! Ви зробили це за %1 хвилину. З деякими підказками."
-msgstr[1] "Вітання! Ви зробили це за %1 хвилини. З деякими підказками."
-msgstr[2] "Вітання! Ви зробили це за %1 хвилин. З деякими підказками."
-msgstr[3] "Вітання! Ви зробили це за %1 хвилину. З деякими підказками."
+msgstr[0] ""
+"Вітання! Ви зробили це за %1 хвилину. З принаймні однією призупинкою."
+msgstr[1] ""
+"Вітання! Ви зробили це за %1 хвилини. З принаймні однією призупинкою."
+msgstr[2] ""
+"Вітання! Ви зробили це за %1 хвилин. З принаймні однією призупинкою."
+msgstr[3] ""
+"Вітання! Ви зробили це за %1 хвилину. З принаймні однією призупинкою."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Вітання! Ви зробили це за %1 і %2. З деякими підказками."
+msgstr "Вітання! Ви зробили це за %1 і %2. З принаймні однією призупинкою."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -728,7 +730,7 @@ msgstr "Несиметрична"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Час, що минув:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format

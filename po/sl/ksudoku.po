@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2025-03-23 07:20+0100\n"
+"PO-Revision-Date: 2025-03-24 07:28+0100\n"
 "Last-Translator: Matjaž Jeran <matjaz.jeran@amis.net>\n"
 "Language-Team: Slovenian <lugos-slo@lugos.si>\n"
 "Language: sl\n"
@@ -313,36 +313,30 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Čestitamo! Igro ste rešili v %1 in %2. Z nekaj pomoči."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Čestitamo! Igro ste rešili v %1 sekundi. Z nekaj pomoči."
-msgstr[1] "Čestitamo! Igro ste rešili v %1 sekundah. Z nekaj pomoči."
-msgstr[2] "Čestitamo! Igro ste rešili v %1 sekundah. Z nekaj pomoči."
-msgstr[3] "Čestitamo! Igro ste rešili v %1 sekundah. Z nekaj pomoči."
+msgstr[0] "Čestitamo! Igro ste rešili v %1 sekundi. Z vsaj 1 premorom."
+msgstr[1] "Čestitamo! Igro ste rešili v %1 sekundah. Z vsaj 1 premorom."
+msgstr[2] "Čestitamo! Igro ste rešili v %1 sekundah. Z vsaj 1 premorom."
+msgstr[3] "Čestitamo! Igro ste rešili v %1 sekundah. Z vsaj 1 premorom."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Čestitamo! Igro ste rešili v %1 minuti. Z nekaj pomoči."
-msgstr[1] "Čestitamo! Igro ste rešili v %1 minutah. Z nekaj pomoči."
-msgstr[2] "Čestitamo! Igro ste rešili v %1 minutah. Z nekaj pomoči."
-msgstr[3] "Čestitamo! Igro ste rešili v %1 minutah. Z nekaj pomoči."
+msgstr[0] "Čestitamo! Igro ste rešili v %1 minuti. Z vsaj 1 premorom."
+msgstr[1] "Čestitamo! Igro ste rešili v %1 minutah. Z vsaj 1 premorom."
+msgstr[2] "Čestitamo! Igro ste rešili v %1 minutah. Z vsaj 1 premorom."
+msgstr[3] "Čestitamo! Igro ste rešili v %1 minutah. Z vsaj 1 premorom."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Čestitamo! Igro ste rešili v %1 in %2. Z nekaj pomoči."
+msgstr "Čestitamo! Igro ste rešili v %1 in %2. Z vsaj 1 premorom."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -704,7 +698,7 @@ msgstr "Brez simetrije"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Pretečeni čas:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
