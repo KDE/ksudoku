@@ -10,7 +10,7 @@ msgstr ""
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
 "PO-Revision-Date: 2024-05-30 10:26+0200\n"
-"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
+"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -229,7 +229,7 @@ msgstr "Konfigurace ještě není implementována"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Všechny soubory (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -683,11 +683,9 @@ msgid "Game_"
 msgstr "Hra"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Nová hra"
+msgstr "Uložit hru"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
