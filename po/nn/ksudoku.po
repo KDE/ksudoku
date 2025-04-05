@@ -36,17 +36,6 @@ msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
 #, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -317,8 +306,6 @@ msgstr "Gratulerer! Du løyste oppgåva på %1 og %2. Med litt hjelp."
 
 #: src/gui/ksudoku.cpp:113
 #, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
@@ -327,8 +314,6 @@ msgstr[1] "Gratulerer! Du løyste oppgåva på %1 sekund. Med litt hjelp."
 
 #: src/gui/ksudoku.cpp:115
 #, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
@@ -337,8 +322,6 @@ msgstr[1] "Gratulerer! Du løyste oppgåva på %1 minutt. Med litt hjelp."
 
 #: src/gui/ksudoku.cpp:117
 #, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
 msgstr "Gratulerer! Du løyste oppgåva på %1 og %2. Med litt hjelp."
@@ -754,8 +737,6 @@ msgstr "Spel"
 
 #: src/gui/ksudoku.cpp:845
 #, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
 msgid "Save Game"
 msgstr "Nytt spel"
 

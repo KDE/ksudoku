@@ -298,8 +298,6 @@ msgstr "Gratulerer! Du klarte det på %1 og %2. Med noen knep."
 
 #: src/gui/ksudoku.cpp:113
 #, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
@@ -308,8 +306,6 @@ msgstr[1] "Gratulerer! Du klarte det på %1 sekunder. Med noen knep."
 
 #: src/gui/ksudoku.cpp:115
 #, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
@@ -318,8 +314,6 @@ msgstr[1] "Gratulerer! Du klarte det på %1 minutter. Med noen knep."
 
 #: src/gui/ksudoku.cpp:117
 #, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
 msgstr "Gratulerer! Du klarte det på %1 og %2. Med noen knep."

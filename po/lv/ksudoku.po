@@ -4,13 +4,13 @@
 #
 # Einars Sprugis <einars8@gmail.com>, 2009, 2010, 2012.
 # Maris Nartiss <maris.kde@gmail.com>, 2009.
-# SPDX-FileCopyrightText: 2024 Toms Trasuns <toms.trasuns@posteo.net>
+# SPDX-FileCopyrightText: 2024, 2025 Toms Trasuns <toms.trasuns@posteo.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2024-06-27 21:37+0300\n"
+"PO-Revision-Date: 2025-04-03 17:58+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.05.0\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -37,18 +37,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -60,14 +49,14 @@ msgid ""
 "setting to 'No Symmetry' or some low symmetry type and then use 'Generate A "
 "Puzzle' again."
 msgstr ""
-"Pēc %1 mēģinājumiem labākais sasniegtais grūtības pakāpe ir %2, ar iekšējo "
+"Pēc %1 mēģinājumiem labākā sasniegtā grūtības pakāpe ir %2 ar iekšējo "
 "grūtības vērtējumu %3, bet jūsu pieprasītā grūtības pakāpe ir %4.\n"
 "\n"
 "Vai vēlaties likt ģeneratoram vēlreiz ģenerēt mīklu, vai arī to pieņemsit "
 "tās pašreizējā stāvoklī?\n"
 "\n"
-"Padoms: grūtības līmeni varat mēģināt palielināt, spiežot „Pieņemt“ pogu, "
-"tad izvēloties Spēle —> Jauna, pēc tam mainot Simetrijas iestatījumu uz „Bez "
+"Padoms: grūtības līmeni varat mēģināt palielināt, spiežot „Labi“ pogu, tad "
+"izvēloties „Spēle“ —> „Jauna“, pēc tam mainot simetrijas iestatījumu uz „Bez "
 "simetrijas“ vai izvēloties zemu simetrijas tipu, bet pēc tam spiežot uz "
 "„Ģenerēt mīklu“."
 
@@ -269,7 +258,7 @@ msgstr "Konfigurācija vēl nav ieviesta"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Visas datnes (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -286,17 +275,22 @@ msgstr ""
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
-msgstr[0] "Apsveicu! Tu atrisināji mīklu %1 sekundē. Ar dažu triku palīdzību."
-msgstr[1] "Apsveicu! Tu atrisināji mīklu %1 sekundēs. Ar dažu triku palīdzību."
-msgstr[2] "Apsveicu! Tu atrisināji mīklu %1 sekundēs. Ar dažu triku palīdzību."
+msgstr[0] ""
+"Brīnišķīgi! Tu atrisināji mīklu %1 sekundē. Ar dažu triku palīdzību."
+msgstr[1] ""
+"Brīnišķīgi! Tu atrisināji mīklu %1 sekundēs. Ar dažu triku palīdzību."
+msgstr[2] ""
+"Brīnišķīgi! Tu atrisināji mīklu %1 sekundēs. Ar dažu triku palīdzību."
 
 #: src/gui/ksudoku.cpp:108
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
-msgstr[0] "Apsveicu! Tu atrisināji mīklu %1 minūtē. Ar dažu triku palīdzību."
-msgstr[1] "Apsveicu! Tu atrisināji mīklu %1 minūtēs. Ar dažu triku palīdzību."
-msgstr[2] "Apsveicu! Tu atrisināji mīklu %1 minūtēs. Ar dažu triku palīdzību."
+msgstr[0] "Brīnišķīgi! Tu atrisināji mīklu %1 minūtē. Ar dažu triku palīdzību."
+msgstr[1] ""
+"Brīnišķīgi! Tu atrisināji mīklu %1 minūtēs. Ar dažu triku palīdzību."
+msgstr[2] ""
+"Brīnišķīgi! Tu atrisināji mīklu %1 minūtēs. Ar dažu triku palīdzību."
 
 #: src/gui/ksudoku.cpp:110 src/gui/ksudoku.cpp:117 src/gui/ksudoku.cpp:124
 #, kde-format
@@ -318,59 +312,53 @@ msgstr[2] "%1 sekundēs"
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With some tricks."
-msgstr "Apsveicu! Tu atrisināji mīklu %1 un %2. Ar dažu triku palīdzību."
+msgstr "Brīnišķīgi! Tu atrisināji mīklu %1 un %2. Ar dažu triku palīdzību."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Apsveicu! Tu atrisināji mīklu %1 sekundē. Ar dažu triku palīdzību."
-msgstr[1] "Apsveicu! Tu atrisināji mīklu %1 sekundēs. Ar dažu triku palīdzību."
-msgstr[2] "Apsveicu! Tu atrisināji mīklu %1 sekundēs. Ar dažu triku palīdzību."
+msgstr[0] "Brīnišķīgi! Tu atrisināji mīklu %1 sekundē. Ar vismaz vienu pauzi."
+msgstr[1] "Brīnišķīgi! Tu atrisināji mīklu %1 sekundēs. Ar vismaz vienu pauzi."
+msgstr[2] "Brīnišķīgi! Tu atrisināji mīklu %1 sekundēs. Ar vismaz vienu pauzi."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Apsveicu! Tu atrisināji mīklu %1 minūtē. Ar dažu triku palīdzību."
-msgstr[1] "Apsveicu! Tu atrisināji mīklu %1 minūtēs. Ar dažu triku palīdzību."
-msgstr[2] "Apsveicu! Tu atrisināji mīklu %1 minūtēs. Ar dažu triku palīdzību."
+msgstr[0] "Brīnišķīgi! Tu atrisināji mīklu %1 minūtē. Ar vismaz vienu pauzi."
+msgstr[1] "Brīnišķīgi! Tu atrisināji mīklu %1 minūtēs. Ar vismaz vienu pauzi."
+msgstr[2] "Brīnišķīgi! Tu atrisināji mīklu %1 minūtēs. Ar vismaz vienu pauzi."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Apsveicu! Tu atrisināji mīklu %1 un %2. Ar dažu triku palīdzību."
+msgstr "Brīnišķīgi! Tu atrisināji mīklu %1 un %2. Ar vismaz vienu pauzi."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
 msgid "Congratulations! You made it in 1 second."
 msgid_plural "Congratulations! You made it in %1 seconds."
-msgstr[0] "Apsveicu! Tu atrisināji mīklu %1 sekundē."
-msgstr[1] "Apsveicu! Tu atrisināji mīklu %1 sekundēs."
-msgstr[2] "Apsveicu! Tu atrisināji mīklu %1 sekundēs."
+msgstr[0] "Brīnišķīgi! Tu atrisināji mīklu %1 sekundē."
+msgstr[1] "Brīnišķīgi! Tu atrisināji mīklu %1 sekundēs."
+msgstr[2] "Brīnišķīgi! Tu atrisināji mīklu %1 sekundēs."
 
 #: src/gui/ksudoku.cpp:122
 #, kde-format
 msgid "Congratulations! You made it in 1 minute."
 msgid_plural "Congratulations! You made it in %1 minutes."
-msgstr[0] "Apsveicu! Tu atrisināji mīklu %1 minūtē."
-msgstr[1] "Apsveicu! Tu atrisināji mīklu %1 minūtēs."
-msgstr[2] "Apsveicu! Tu atrisināji mīklu %1 minūtēs."
+msgstr[0] "Brīnišķīgi! Tu atrisināji mīklu %1 minūtē."
+msgstr[1] "Brīnišķīgi! Tu atrisināji mīklu %1 minūtēs."
+msgstr[2] "Brīnišķīgi! Tu atrisināji mīklu %1 minūtēs."
 
 #: src/gui/ksudoku.cpp:124
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2."
-msgstr "Apsveicu! Tu atrisināji mīklu %1 un %2."
+msgstr "Brīnišķīgi! Tu atrisināji mīklu %1 un %2."
 
 #: src/gui/ksudoku.cpp:208
 #, kde-format
@@ -712,7 +700,7 @@ msgstr "Bez simetrijas"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Pavadītais laiks"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -761,18 +749,14 @@ msgid "Error Writing File"
 msgstr "Kļūda, saglabājot datni"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Spēle"
+msgstr "Spēle_"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Jauna spēle"
+msgstr "Saglabāt spēli"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
