@@ -2,13 +2,13 @@
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
 #
-# SPDX-FileCopyrightText: 2007, 2008, 2009, 2011, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2023, 2024 Stefan Asserhäll <stefan.asserhall@gmail.com>
+# SPDX-FileCopyrightText: 2007, 2008, 2009, 2011, 2012, 2013, 2015, 2017, 2018, 2019, 2020, 2023, 2024, 2025 Stefan Asserhäll <stefan.asserhall@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2024-06-21 10:48+0200\n"
+"PO-Revision-Date: 2025-04-05 14:05+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@gmail.com>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
 "Language: sv\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 23.08.5\n"
+"X-Generator: Lokalize 24.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -34,18 +34,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -57,13 +46,13 @@ msgid ""
 "setting to 'No Symmetry' or some low symmetry type and then use 'Generate A "
 "Puzzle' again."
 msgstr ""
-"Efter %1 försök är den bästa svårighetsnivån som uppnåtts %2, med den "
-"interna svårighetsgraden %3, men du begärde svårighetsnivå %4.\n"
+"Efter %1 försök är den bästa svårighetsnivån som uppnåtts av genereringen "
+"%2, med den interna svårighetsgraden %3, men du begärde svårighetsnivå %4.\n"
 "\n"
-"Vill du försöka igen eller acceptera spelet som det är?\n"
+"Vill du låta genereringen försöka igen eller acceptera spelet som det är?\n"
 "\n"
-"Tips: Du kan försöka öka svårighetsnivån genom att göra följande:Fortsätt "
-"med knappen 'Acceptera', välj Spel -> Nytt, ändra därefter inställningen av "
+"Tips: Du kan försöka öka svårighetsnivån genom att göra följande: Fortsätt "
+"med knappen 'Ok', välj Spel -> Nytt, ändra därefter inställningen av "
 "symmetri till 'Ingen symmetri' eller någon typ av låg symmetri och använd "
 "därefter 'Skapa ett spel' igen."
 
@@ -270,7 +259,7 @@ msgstr "Inställning ännu inte implementerad"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Alla filer (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -318,32 +307,26 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Gratulerar! Du klarade av det på %1 och %2, med vissa trick."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Gratulerar! Du klarade av det på 1 sekund, med vissa trick."
-msgstr[1] "Gratulerar! Du klarade av det på %1 sekunder, med vissa trick."
+msgstr[0] "Gratulerar! Du klarade av det på 1 sekund, med minst en paus."
+msgstr[1] "Gratulerar! Du klarade av det på %1 sekunder, med minst en paus."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Gratulerar! Du klarade av det på 1 minut, med vissa trick."
-msgstr[1] "Gratulerar! Du klarade av det på %1 minuter, med vissa trick."
+msgstr[0] "Gratulerar! Du klarade av det på 1 minut, med minst en paus."
+msgstr[1] "Gratulerar! Du klarade av det på %1 minuter, med minst en paus."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Gratulerar! Du klarade av det på %1 och %2, med vissa trick."
+msgstr "Gratulerar! Du klarade av det på %1 och %2, med minst en paus."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -710,7 +693,7 @@ msgstr "Ingen symmetri"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Förfluten tid:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -759,18 +742,14 @@ msgid "Error Writing File"
 msgstr "Fel vid skrivning av fil"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Spel"
+msgstr "Spel…"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Nytt spel"
+msgstr "Spara spel"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format

@@ -4,14 +4,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # Youssef Chahibi <chahibi@gmail.com>, 2007.
 # OsamaKhalid <osamak.wfm@gmail.com>, 2009.
-# SPDX-FileCopyrightText: 2009, 2021, 2022, 2024 zayed <zayed.alsaidi@gmail.com>
+# SPDX-FileCopyrightText: 2009, 2021, 2022, 2024, 2025 zayed <zayed.alsaidi@gmail.com>
 # Abdalrahim Fakhouri <abdilra7eem@yahoo.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2024-05-02 11:15+0400\n"
+"PO-Revision-Date: 2025-04-05 13:43+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -20,6 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -37,18 +38,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -66,8 +56,8 @@ msgstr ""
 "هل ترغب في السماح للمولد بالمحاولة مرة أخرى أم قبول اللغز كما هو؟ \n"
 "\n"
 "تلميح: يمكنك محاولة زيادة تصنيف الصعوبة عن طريق القيام بما يلي: تابع "
-"باستخدام الزر \"اقبل\" ، واختر لعبة -> جديد ، ثم غير إعداد التماثل إلى "
-"\"بدون تماثل\" أو نوع من التماثل المنخفض ثم استخدم \"ولد لغز\" مرة أخرى."
+"باستخدام الزر \"حسنا\" ، واختر لعبة -> جديد ، ثم غير إعداد التماثل إلى "
+"\"بدون تماثل\" أو نوع من التماثل المنخفض ثم استخدم \"ولّد لغز\" مرة أخرى."
 
 #: src/generator/sudokuboard.cpp:215
 #, kde-format
@@ -263,7 +253,7 @@ msgstr "لن تنفذ الإعدادات بعد"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "كلّ الملفّات (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -327,40 +317,34 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "تهانينا! أنجزتها في %1 و%2. مع بعض الخدع."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "تهانينا! أنجزتها في أقل من ثانية. مع بعض الخدع."
-msgstr[1] "تهانينا! أنجزتها في ثانية. مع بعض الخدع."
-msgstr[2] "تهانينا! أنجزتها في ثانيتين. مع بعض الخدع."
-msgstr[3] "تهانينا! أنجزتها في %1 ثوانٍ. مع بعض الخدع."
-msgstr[4] "تهانينا! أنجزتها في %1 ثانية. مع بعض الخدع."
-msgstr[5] "تهانينا! أنجزتها في %1 ثانية. مع بعض الخدع."
+msgstr[0] "تهانينا! أنجزتها في أقل من ثانية. مع توقف واحد."
+msgstr[1] "تهانينا! أنجزتها في ثانية.  مع توقف واحد."
+msgstr[2] "تهانينا! أنجزتها في ثانيتين.  مع توقف واحد."
+msgstr[3] "تهانينا! أنجزتها في %1 ثوانٍ.  مع توقف واحد."
+msgstr[4] "تهانينا! أنجزتها في %1 ثانية. مع توقف واحد."
+msgstr[5] "تهانينا! أنجزتها في %1 ثانية.  مع توقف واحد."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "تهانينا! أنجزتها في أقل من دقيقة. مع بعض الخدع."
-msgstr[1] "تهانينا! أنجزتها في دقيقة. مع بعض الخدع."
-msgstr[2] "تهانينا! أنجزتها في دقيقتين. مع بعض الخدع."
-msgstr[3] "تهانينا! أنجزتها في %1 دقائق. مع بعض الخدع."
-msgstr[4] "تهانينا! أنجزتها في %1 دقيقة. مع بعض الخدع."
-msgstr[5] "تهانينا! أنجزتها في %1 دقيقة. مع بعض الخدع."
+msgstr[0] "تهانينا! أنجزتها في أقل من دقيقة.  مع توقف واحد."
+msgstr[1] "تهانينا! أنجزتها في دقيقة.  مع توقف واحد."
+msgstr[2] "تهانينا! أنجزتها في دقيقتين. مع توقف واحد."
+msgstr[3] "تهانينا! أنجزتها في %1 دقائق. مع توقف واحد."
+msgstr[4] "تهانينا! أنجزتها في %1 دقيقة. مع توقف واحد."
+msgstr[5] "تهانينا! أنجزتها في %1 دقيقة. مع توقف واحد."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "تهانينا! أنجزتها في %1 و%2. مع بعض الخدع."
+msgstr "تهانينا! أنجزتها في %1 و%2. مع توقف واحد."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -723,7 +707,7 @@ msgstr "دون تماثل"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "الوقت المنقضي:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -772,18 +756,14 @@ msgid "Error Writing File"
 msgstr "خطأ عند كتابة الملف"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "اللعبة"
+msgstr "لعبة_"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "لعبة جديدة"
+msgstr "احفظ لعبة"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
