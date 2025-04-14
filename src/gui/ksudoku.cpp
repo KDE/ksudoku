@@ -986,7 +986,7 @@ void KSudoku::enableMessages()
 void KSudoku::changeEvent(QEvent *event)
 {
 	// Reimplemented to handle window minimize/maximize events
-	if (event->type() == QEvent::WindowStateChange)
+	if (event->type() == QEvent::WindowStateChange && !m_pauseButton->isChecked())
 	{
 		if (event->spontaneous() && !isMinimized() && currentGame().isValid())
 		{
