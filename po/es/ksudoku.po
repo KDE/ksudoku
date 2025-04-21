@@ -1,21 +1,19 @@
-# translation of ksudoku.po to Spanish
-# Copyright (C) YEAR This_file_is_part_of_KDE
-# This file is distributed under the same license as the PACKAGE package.
+# Spanish translations for ksudoku.po package.
+# Copyright (C) 2007-2025 This_file_is_part_of_KDE
+# This file is distributed under the same license as the ksudoku package.
 #
-# Sofia Priego <spriego@darksylvania.net>, %Y.
-# Santiago Fernández Sancho <santi@kde-es.org>, 2007, 2008.
-# Enrique Matias Sanchez (Quique) <cronopios@gmail.com>, 2009.
+# SPDX-FileCopyrightText: 2007, 2008 Santiago Fernández Sancho <santi@kde-es.org>
+# SPDX-FileCopyrightText: 2009 Enrique Matias Sanchez (Quique) <cronopios@gmail.com>
 # SPDX-FileCopyrightText: 2009, 2012, 2015, 2017, 2018, 2019, 2020, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
-# Huever, 2009.
-# Kira J. Fernandez <kirajfdez@gmail.com>, 2010, 2011, 2012.
-# Rocio Gallego <traducciones@rociogallego.com>, 2012, 2013.
-# Sofía Priego <spriego@darksylvania.net>, %Y.
+# SPDX-FileCopyrightText: 2010, 2011, 2012 Kira J. Fernandez <kirajfdez@gmail.com>
+# SPDX-FileCopyrightText: 2012, 2013 Rocio Gallego <traducciones@rociogallego.com>
+# SPDX-FileCopyrightText: 2024, 2025 Sofía Priego <spriego@darksylvania.net>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-05 00:37+0000\n"
-"PO-Revision-Date: 2024-05-02 18:51+0100\n"
+"PO-Revision-Date: 2025-04-20 11:27+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
@@ -1214,54 +1212,3 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "Documento que se abrirá"
-
-#~ msgid "Could not load game."
-#~ msgstr "No se ha podido cargar la partida."
-
-#~ msgctxt "button label"
-#~ msgid "New Game"
-#~ msgstr "Nueva partida"
-
-#~ msgctxt "button label"
-#~ msgid "Restart Game"
-#~ msgstr "Reiniciar la partida"
-
-#~ msgid "Open Location"
-#~ msgstr "Abrir la ubicación"
-
-#~ msgid "&OK"
-#~ msgstr "&Aceptar"
-
-#~ msgid "Delete"
-#~ msgstr "Borrar"
-
-#~ msgid "Home Page"
-#~ msgstr "Página principal"
-
-#~ msgid "KSudoku - Sudoku games and more"
-#~ msgstr "KSudoku - Juegos de sudoku y más"
-
-#~ msgid ""
-#~ "Sorry, printing Mathdoku and Killer Sudoku puzzles is not yet supported."
-#~ msgstr ""
-#~ "Lo sentimos, aún no se pueden imprimir los rompecabezas Mathdoku ni "
-#~ "Killer Sudoku."
-
-#~ msgid "Sorry, no solutions have been found."
-#~ msgstr "Lo siento, no se han encontrado soluciones."
-
-#~ msgid "The Puzzle you entered has only one solution."
-#~ msgstr "El rompecabezas que ha introducido solo tiene una solución."
-
-#~ msgid ""
-#~ "Sorry, saving Mathdoku and Killer Sudoku puzzles is not yet supported."
-#~ msgstr ""
-#~ "Lo sentimos, aún no se pueden guardar los rompecabezas Mathdoku ni Killer "
-#~ "Sudoku."
-
-#~ msgid ""
-#~ "Sorry, entering in Mathdoku and Killer Sudoku puzzles is not yet "
-#~ "supported."
-#~ msgstr ""
-#~ "Lo sentimos, aún no se puede entrar en los rompecabezas Mathdoku ni "
-#~ "Killer Sudoku."
