@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2025-04-03 17:58+0300\n"
+"PO-Revision-Date: 2025-05-05 16:10+0300\n"
 "Last-Translator: Toms Trasuns <toms.trasuns@posteo.net>\n"
 "Language-Team: Latvian <kde-i18n-doc@kde.org>\n"
 "Language: lv\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
 "2);\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -95,7 +95,7 @@ msgstr ""
 #: src/gui/configgame.ui:20
 #, kde-format
 msgid "When printing, try to fit more than one puzzle on a page"
-msgstr "Drukājot mēģiniet uz lapas ietilpināt vairāk par vienu mīklu"
+msgstr "Drukājot mēģināt uz lapas ietilpināt vairāk par vienu mīklu"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:43
@@ -188,7 +188,7 @@ msgstr "Samazināt vai palielināt šūnu par līdz 30%, kad tā ir izvēlēta."
 #: src/gui/configgame.ui:306
 #, kde-format
 msgid "Size of selected 3-D cell"
-msgstr "Izvēlētās 3-D šūnas izmērs"
+msgstr "Atlasītās 3-D šūnas izmērs"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
@@ -234,7 +234,7 @@ msgstr ""
 #: src/gui/configgame.ui:432
 #, kde-format
 msgid "Size of 3-D cells outside the selected volume"
-msgstr "3-D šūnu, kas atrodas ārpus izvēlētās tilpnes, izmērs"
+msgstr "3-D šūnu, kas atrodas ārpus atlasītā apjoma, izmērs"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:446
@@ -242,13 +242,13 @@ msgstr "3-D šūnu, kas atrodas ārpus izvēlētās tilpnes, izmērs"
 msgid ""
 "Darken cells if they are not in an NxNxN cube that contains the selected "
 "cell."
-msgstr "Aptumšot šūnas, kad tās nav N✕N✕N kubā, kas satur izvēlēto šūnu."
+msgstr "Aptumšot šūnas, kad tās nav N✕N✕N kubā, kas satur atlasīto šūnu."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:452
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
-msgstr "Aptumšot 3-D šūnas, kas atrodas ārpus izvēlētās tilpnes"
+msgstr "Aptumšot 3-D šūnas, kas atrodas ārpus atlasītā apjoma"
 
 #: src/gui/gamevariants.cpp:281 src/gui/gamevariants.cpp:338
 #, kde-format
@@ -478,7 +478,7 @@ msgid ""
 "In general, larger cages are more difficult. You can select the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
-"„Killer“ sudoku mīklu izmēri var bū 4✕4 vai 9✕9 ar vai nu četriem 2✕2 "
+"„Killer“ sudoku mīklu izmēri var būt 4✕4 vai 9✕9 ar vai nu četriem 2✕2 "
 "blokiem vai deviņiem 3✕3 blokiem. Risinājums atbilst klasiskajiem sudoku "
 "noteikumiem. Atšķirība ir tāda, ka ir mazāk sākuma vērtību vai pavedienu (ja "
 "vispār ir). Tā vietā režģis ir klāts ar neregulāras formas kastēm.\n"
@@ -827,7 +827,7 @@ msgstr "Izmantojamais vizuālais motīvs."
 #: src/gui/ksudoku.kcfg:44
 #, kde-format
 msgid "Select the themes you want to use"
-msgstr "Izvēlaties izmantojamos motīvus"
+msgstr "Atlasiet izmantojamos motīvus"
 
 #: src/gui/ksudokugame.cpp:375
 #, kde-format
@@ -847,7 +847,7 @@ msgstr "„Killer“ sudoku kaste"
 #: src/gui/ksudokugame.cpp:423
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
-msgstr "Izvēlētā šūna jau ir izmantota kastē."
+msgstr "Atlasītā šūna jau ir izmantota kastē."
 
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
@@ -863,7 +863,7 @@ msgid ""
 "The cell you have selected is not next to any cell in the cage you are "
 "creating."
 msgstr ""
-"Izvēlētā šūna neatrodas blakus citai šūnai, kas atrastos veidojamajā kastē."
+"Atlasītā šūna neatrodas blakus citai šūnai, kas atrastos veidojamajā kastē."
 
 #: src/gui/ksudokugame.cpp:478
 #, kde-format
@@ -919,8 +919,7 @@ msgid ""
 "The cell you have selected is not in any cage, so the Delete action will not "
 "delete anything."
 msgstr ""
-"Jūsu atlasītā šūna neatrodas nevienā kastē, tāpēc dzēšanas darbība neko "
-"nedzēsīs."
+"Atlasītā šūna neatrodas nevienā kastē, tāpēc dzēšanas darbība neko nedzēsīs."
 
 #: src/gui/ksudokugame.cpp:572
 #, kde-format
@@ -1023,7 +1022,7 @@ msgstr "Nevar augšupielādēt datni."
 #, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
-msgstr "Izvēlēties %1 (%2)"
+msgstr "Atlasīt %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
 #, kde-format
@@ -1169,7 +1168,7 @@ msgstr "„KSudoku“ — Sudoku un vairāk"
 #: src/main.cpp:51
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
-msgstr "(c) 2005–2007 „KSudoku“ autori"
+msgstr "(c) 2005—2007 „KSudoku“ autori"
 
 #: src/main.cpp:53
 #, kde-format
