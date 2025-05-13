@@ -287,40 +287,28 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Blahopřeji! Hra byla vyřešena během %1 a %2. S trochou švindlování."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
 msgstr[0] ""
-"Blahopřeji! Hra byla vyřešena během 1 sekundy. S trochou švindlování."
 msgstr[1] ""
-"Blahopřeji! Hra byla vyřešena během %1 sekund. S trochou švindlování."
 msgstr[2] ""
-"Blahopřeji! Hra byla vyřešena během %1 sekund. S trochou švindlování."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
 msgstr[0] ""
-"Blahopřeji! Hra byla vyřešena během 1 minuty. S trochou švindlování."
 msgstr[1] ""
-"Blahopřeji! Hra byla vyřešena během %1 minut. S trochou švindlování."
 msgstr[2] ""
-"Blahopřeji! Hra byla vyřešena během %1 minut. S trochou švindlování."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Blahopřeji! Hra byla vyřešena během %1 a %2. S trochou švindlování."
+msgstr ""
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -676,11 +664,9 @@ msgid "Error Writing File"
 msgstr "Chyba při zápisu do souboru"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Hra"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:845
 #, kde-format
@@ -1134,7 +1120,3 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "Soubor k otevření"
-
-#~ msgctxt "@action:button"
-#~ msgid "&Accept"
-#~ msgstr "Př&ijmout"
