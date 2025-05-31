@@ -4,7 +4,7 @@
 # Juuso Helmijoki <juuso.helmijoki@nettihemi.net>, 2007, 2008.
 # Teemu Rytilahti <teemu.rytilahti@kde-fi.org>, 2008.
 # Lasse Liehu <lasse.liehu@gmail.com>, 2010, 2013, 2015.
-# SPDX-FileCopyrightText: 2011, 2012, 2016, 2018, 2020, 2021, 2023, 2024 Tommi Nieminen <translator@legisign.org>
+# SPDX-FileCopyrightText: 2011, 2012, 2016, 2018, 2020, 2021, 2023, 2024, 2025 Tommi Nieminen <translator@legisign.org>
 #
 # KDE Finnish translation sprint participants:
 msgid ""
@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2024-11-15 10:11+0200\n"
+"PO-Revision-Date: 2025-05-29 18:47+0300\n"
 "Last-Translator: Tommi Nieminen <translator@legisign.org>\n"
 "Language-Team: Finnish <kde-i18n-doc@kde.org>\n"
 "Language: fi\n"
@@ -25,7 +25,7 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Juuso Helmijoki,Tommi Nieminen,Lasse Liehu"
+msgstr "Juuso Helmijoki, Tommi Nieminen, Lasse Liehu"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
@@ -39,18 +39,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -66,9 +55,9 @@ msgstr ""
 "vaikeusasteenaan %3, mutta pyysit vaikeutta %4.\n"
 "Haluatko yrittää uudelleen vai hyväksyä tehtävän sellaisenaan?\n"
 "\n"
-"Vihje: Voit yrittää lisätä vaikeutta niin, että napsautat ”Hyväksy”, "
-"valitset Peli → Uusi ja vaihdat symmetria-asetukseksi ”Ei symmetriaa” tai "
-"jonkin vähäisen symmetrian, minkä jälkeen valitset ”Luo tehtävä” uudestaan."
+"Vihje: vaikeutta voit yrittää lisätä niin, että napsauttaa ”Hyväksy”, "
+"valitsee Peli → Uusi ja vaihtaa symmetria-asetukseksi ”Ei symmetriaa” tai "
+"jonkin vähäisen symmetrian, minkä jälkeen valitaan ”Luo tehtävä” uudestaan."
 
 #: src/generator/sudokuboard.cpp:215
 #, kde-format
@@ -272,7 +261,7 @@ msgstr "Asetusten muuttamista ei ole toteutettu"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Kaikki tiedostot (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -320,32 +309,28 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Onneksi olkoon! Ratkaisit tehtävän %1 ja %2 – huijaten."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Onneksi olkoon! Ratkaisit tehtävän sekunnissa – huijaten."
-msgstr[1] "Onneksi olkoon! Ratkaisit tehtävän %1 sekunnissa – huijaten."
+msgstr[0] "Onnea! Ratkaisit tehtävän sekunnissa (vähintään yhdellä tauolla)."
+msgstr[1] ""
+"Onnea! Ratkaisit tehtävän %1 sekunnissa (vähintään yhdellä tauolla)."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Onneksi olkoon! Ratkaisit tehtävän minuutissa – huijaten."
-msgstr[1] "Onneksi olkoon! Ratkaisit tehtävän %1 minuutissa – huijaten."
+msgstr[0] "Onnea! Ratkaisit tehtävän minuutissa (vähintään yhdellä tauolla)."
+msgstr[1] ""
+"Onnea! Ratkaisit tehtävän %1 minuutissa (vähintään yhdellä tauolla)."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Onneksi olkoon! Ratkaisit tehtävän %1 ja %2 – huijaten."
+msgstr "Onnea! Ratkaisit tehtävän %1 ja %2 (vähintään yhdellä tauolla)."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -705,7 +690,7 @@ msgstr "Ei symmetriaa"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Kulunut aika:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -754,18 +739,14 @@ msgid "Error Writing File"
 msgstr "Virhe kirjoitettaessa tiedostoa"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Peli"
+msgstr "Peli_"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Uusi peli"
+msgstr "Tallenna peli"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
