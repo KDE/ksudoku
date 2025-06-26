@@ -1,7 +1,7 @@
 # Translation for ksudoku.po to Euskara/Basque (eu).
 # Copyright (C) 2010-2023 This file is copyright:
 # This file is distributed under the same license as the ksudoku package.
-# SPDX-FileCopyrightText: 2023, 2024 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
+# SPDX-FileCopyrightText: 2023, 2024, 2025 KDE euskaratzeko proiektuko arduraduna <xalba@ni.eus>
 #
 # Translators:
 # Iñigo Salvador Azurmendi <xalba@ni.eus>, 2010, 2020, 2021, 2024.
@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2024-07-13 11:49+0200\n"
+"PO-Revision-Date: 2025-06-25 22:11+0200\n"
 "Last-Translator: Iñigo Salvador Azurmendi <xalba@ni.eus>\n"
 "Language-Team: Basque <kde-i18n-eu@kde.org>\n"
 "Language: eu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -36,18 +36,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -60,12 +49,14 @@ msgid ""
 "Puzzle' again."
 msgstr ""
 "%1 saiakera ondoren, sortzaileak lortu duen zailtasun mailarik onena %2 da, "
-"barneko zailtasuna %3 balioztatua, baina zeuk %4(e)ko maila eskatu duzu.\n"
+"barneko zailtasuna %3 balioztatua, baina zeuk %4(e)ko zailtasun maila eskatu "
+"duzu.\n"
 "\n"
 "Buru-hausgarria dagoen bezala onartu nahi duzu edo sorgailuari berriro "
 "saiatzen utzi nahi diozu?\n"
+"\n"
 "Iradokizuna: ondokoa eginez zailtasun balioztapena handitzen saia zaitezke: "
-"Jarraitu «Ados» botoiarekin, aukeratu «Jokoa -> Berria», ondoren aldatu "
+"Jarraitu «Ados» botoiarekin, aukeratu Jokoa -> Berria, ondoren aldatu "
 "simetria ezarpenak «Simetriarik gabe» aukerara edo simetria baxuko motaren "
 "batera eta gero berriro erabili «Sortu buru-hausgarri bat»."
 
@@ -271,7 +262,7 @@ msgstr "Konfiguraketa ez da oraindik inplementatu"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Fitxategi guztiak (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -319,32 +310,26 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Zorionak! %1 eta %2-tan ebatzi duzu. Amarru batzurekin."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Zorionak! Segundu bakarrean ebatzi duzu. Amarru batzurekin."
-msgstr[1] "Zorionak! %1 segundutan ebatzi duzu. Amarru batzurekin."
+msgstr[0] "Zorionak! Segundo 1ean ebatzi duzu. Gutxienez etenaldi 1ekin."
+msgstr[1] "Zorionak! %1 segundotan ebatzi duzu. Gutxienez etenaldi 1ekin."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Zorionak! Segundu bakarrean ebatzi duzu. Amarru batzurekin."
-msgstr[1] "Zorionak! %1 segundutan ebatzi duzu. Amarru batzurekin."
+msgstr[0] "Zorionak! Minutu 1ean ebatzi duzu. Gutxienez etenaldi 1ekin."
+msgstr[1] "Zorionak! %1 minututan ebatzi duzu. Gutxienez etenaldi 1ekin."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Zorionak! %1 eta %2-tan ebatzi duzu. Amarru batzurekin."
+msgstr "Zorionak! %1 eta %2tan ebatzi duzu. Gutxienez etenaldi batekin."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -711,7 +696,7 @@ msgstr "Simetriarik gabe"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Igarotako denbora:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -760,18 +745,14 @@ msgid "Error Writing File"
 msgstr "Fitxategia idaztean errorea"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Jokoa"
+msgstr "Jokoa_"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Joko berria"
+msgstr "Gorde jokoa"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
