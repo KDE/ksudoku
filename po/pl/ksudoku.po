@@ -1,19 +1,19 @@
 # translation of ksudoku.po to
 # Copyright (C) YEAR This_file_is_part_of_KDE
 # This file is distributed under the same license as the PACKAGE package.
-#
 # Michał Klich <majkimajki@wp.pl>, 2007.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2007, 2008, 2013.
 # Michał Klich <majkimajki@o2.pl>, 2008.
 # Michał Klich <tlumaczeniekde@michalklich.com>, 2008.
 # Maciej Wikło <maciej.wiklo@wp.pl>, 2009.
-# SPDX-FileCopyrightText: 2012, 2014, 2015, 2017, 2018, 2019, 2021, 2023, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2012, 2014, 2015, 2017, 2018, 2019, 2021, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2024-05-26 12:28+0200\n"
+"PO-Revision-Date: 2025-06-29 18:12+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -22,6 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 25.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -39,18 +40,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -69,9 +59,9 @@ msgstr ""
 "jest?\n"
 "\n"
 "Wskazówka: możesz spróbować zwiększyć poziom trudności następująco: "
-"Kontynuuj po naciśnięciu przycisku \"Zatwierdź\", wybierz Gra -> Nowa, a "
-"następnie zmień ustawienie symetrii na \"Bez symetrii\" lub wybierz jakiś "
-"rodzaj małej symetrii, a następnie wybierz ponownie \"Stwórz układankę\"."
+"Kontynuuj po naciśnięciu przycisku \"OK\", wybierz Gra -> Nowa, a następnie "
+"zmień ustawienie symetrii na \"Bez symetrii\" lub wybierz jakiś rodzaj małej "
+"symetrii, a następnie wybierz ponownie \"Stwórz układankę\"."
 
 #: src/generator/sudokuboard.cpp:215
 #, kde-format
