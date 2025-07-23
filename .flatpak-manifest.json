@@ -2,13 +2,28 @@
     "id": "org.kde.ksudoku",
     "branch": "master",
     "runtime": "org.kde.Platform",
-    "runtime-version": "6.8",
+    "runtime-version": "6.9",
     "sdk": "org.kde.Sdk",
     "command": "ksudoku",
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
     "finish-args": ["--share=ipc", "--socket=fallback-x11", "--socket=wayland" ],
-
+    "cleanup": [
+        "*.a",
+        "*.la",
+        "/doc",
+        "/docs",
+        "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig",
+        "/lib/x86_64-linux-gnu/cmake",
+        "/lib/x86_64-linux-gnu/pkgconfig",
+        "/man",
+        "/share/cmake",
+        "/share/doc",
+        "/share/man",
+        "/share/pkgconfig"
+    ],
     "modules": [
         {
             "config-opts": [ "-DENABLE_TESTING=OFF" ],
