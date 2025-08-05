@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-03-24 00:39+0000\n"
-"PO-Revision-Date: 2025-08-03 12:29+0400\n"
+"PO-Revision-Date: 2025-08-03 23:19+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -264,7 +264,7 @@ msgid ""
 msgstr ""
 "عذرا، حلك يحتوي أخطاءً.\n"
 "\n"
-"فعّل \"أظهر الأخطاء\" في الإعدادات لإبرازها."
+"مكّن \"أظهر الأخطاء\" في الإعدادات لإبرازها."
 
 #: src/gui/ksudoku.cpp:106
 #, kde-format
@@ -547,8 +547,8 @@ msgstr ""
 "الحال في أحجية سودوكو العادية. يصبح قيمة بداية أو دليلًا للاعب. \n"
 "\n"
 "+ أو - أو / أو × هي عوامل رياضية (جمع، طرح، قسمة، ضرب). يجب أن يكون لديك "
-"واحد في أقفاص بحجم 2 أو أكثر. في قاتل سودوكو ، يتم توفير عامل التشغيل "
-"تلقائيًا لأنه دائمًا + أو لا شيء. \n"
+"واحد في أقفاص بحجم 2 أو أكثر. في قاتل سودوكو ، يتم توفير عامل التشغيل آليًّا "
+"لأنه دائمًا + أو لا شيء. \n"
 "\n"
 "يمكنك إدخال الأرقام والعوامل والخلايا بأي ترتيب. لإكمال القفص وبدء قفص آخر ، "
 "اضغط دائمًا على مفتاح الرجوع. إذا قمت بخطأ ما ، فإن الشيء الوحيد الذي يجب "
@@ -821,7 +821,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr "فعّل"
+msgstr "مكّن"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:41
@@ -841,8 +841,8 @@ msgid ""
 "In Killer Sudoku, the operator is always + or none and KSudoku automatically "
 "sets the correct choice."
 msgstr ""
-"في قاتل سودوكو يكون عامل التشغيل دائمًا + أو لا شيء ويقوم كسودوكو تلقائيًا "
-"بتعيين الخيار الصحيح."
+"في قاتل سودوكو يكون عامل التشغيل دائمًا + أو لا شيء ويقوم كسودوكو آليًّا بتعيين "
+"الخيار الصحيح."
 
 #: src/gui/ksudokugame.cpp:377
 #, kde-format
