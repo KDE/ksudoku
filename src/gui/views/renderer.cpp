@@ -127,15 +127,17 @@ void Renderer::fillNameHashes() {
         QStringLiteral("special_h"),
         QStringLiteral("special_h"),
     };
+	// m_specialNames are indexed by SpecialType
     m_specialNames = {
-        QStringLiteral("cell"),
-        QStringLiteral("cell_preset"),
-        QStringLiteral("cell"),
-        QStringLiteral("cell_mistake"),
-        QStringLiteral("cursor"),
-        QStringLiteral("valuelist_item"),
-        QStringLiteral("valuelist_selector"),
-    };
+        QStringLiteral("cell"),  // SpecialCell
+        QStringLiteral("cell_preset"),  // SpecialCellPreset
+        QStringLiteral("cell"),  // SpecialCellMarkers
+        QStringLiteral("cell_mistake"),  // SpecialCellMistake
+        QStringLiteral("cursor"),  // SpecialCursor
+        QStringLiteral("valuelist_item"),  // SpecialListItem
+        QStringLiteral("valuelist_selector"),  // SpecialListCursor
+        QStringLiteral("cursor"),  // SpecialCellHighlight  - using cursor to visually highlight the cell
+    };	
     m_special3dNames = {
         QStringLiteral("cell3d"),
         QStringLiteral("cell3d_preset"),

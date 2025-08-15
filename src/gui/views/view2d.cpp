@@ -140,6 +140,7 @@ void CellGraphicsItem::updatePixmap() {
 				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, m_values[0].color, m_range, SymbolEdited);
 			}
 			break;
+		case SpecialCellHighlight:
 		case SpecialCellPreset:
                         if(!m_values.isEmpty()) {
 				pic = Renderer::instance()->renderSymbolOn(pic, m_values[0].value, 0, m_range, SymbolPreset);
@@ -563,6 +564,34 @@ void View2DScene::hover(int cell) {
 	m_cursorPos = cell;
 // 	qCDebug(KSudokuLog) << "hover cell" << cell << m_cells[cell];
 	QPoint pos(m_cells[cell]->pos());
+
+	// First unhighlight all cells from previous hover
+	update(-1);
+
+	// If the cell has a value and highlighting same values is enabled, highlight matching cells
+	if (m_selectedValue > 0 && Settings::highlightSameValues()) {
+		for (int i = 0; i < m_cells.size(); ++i) {
+		CellInfo cellInfo = m_game.cellInfo(i);
+			if (m_game.value(i) == m_selectedValue) {
+				switch(cellInfo.state()) {
+					case GivenValue:
+					case CorrectValue:
+						m_cells[i]->setType(SpecialCellHighlight);
+						break;
+					case WrongValue:
+					case ObviouslyWrong:
+						if(!Settings::showErrors()) {
+							m_cells[i]->setType(SpecialCellHighlight);
+						}
+						break;
+					default:
+						break;
+				}
+			}
+		}
+	}
+
+	// Highlight groups as before
 	for (GroupGraphicsItem* item : std::as_const(m_groups)) {
 		item->setHighlight(pos, m_highlightsOn);
 	}
@@ -679,6 +708,7 @@ void View2DScene::updateCage (int cageNumP1, bool drawLabel) {
 
 void View2DScene::selectValue(int value) {
  	m_selectedValue = value;
+	hover(m_cursorPos);
  	Q_EMIT valueSelected( value );
 }
 
@@ -773,6 +803,7 @@ void View2DScene::wheelEvent(QGraphicsSceneWheelEvent* event) {
 		if(m_selectedValue < 1)
 			m_selectedValue = m_game.order();
 	}
+	hover(m_cursorPos);
 	Q_EMIT valueSelected(m_selectedValue);
 }
 
@@ -810,6 +841,15 @@ void View2D::selectValue(int value) {
 
 void View2D::settingsChanged() {
 	m_scene->setSceneSize(size());
+	m_scene->settingsChanged();
+}
+
+void View2DScene::settingsChanged() {
+	// If we have a selected value and highlighting is enabled, refresh the view
+	if (m_selectedValue > 0) {
+		// Re-trigger hover on current cell to update highlighting
+		hover(m_cursorPos);
+	}
 }
 
 }

@@ -51,6 +51,19 @@
     </widget>
    </item>
    <item>
+    <widget class="QCheckBox" name="kcfg_HighlightSameValues">
+     <property name="toolTip">
+      <string>Highlight cells containing the currently selected value</string>
+     </property>
+     <property name="whatsThis">
+      <string>When you select a value, all other cells containing the same value will be highlighted. This can help you quickly identify patterns and potential conflicts.</string>
+     </property>
+     <property name="text">
+      <string>Highlight cells containing the currently selected value</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <widget class="QCheckBox" name="kcfg_ShowErrors">
      <property name="toolTip">
       <string>Highlight in red any cells whose values break the Sudoku rules.</string>

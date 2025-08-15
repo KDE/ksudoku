@@ -35,6 +35,10 @@
     <entry name="DarkenOuterCells3D" type="Bool" key="darkenOuterCells3D">
       <default>true</default>
     </entry>
+    <entry name="HighlightSameValues" type="Bool" key="highlightSameValues">
+      <label>Highlight cells containing the same value</label>
+      <default>true</default>
+    </entry>
   </group>
   <group name="Themes">
     <entry name="Theme" type="String" key="theme">

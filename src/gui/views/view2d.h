@@ -74,6 +74,7 @@ public Q_SLOTS:
 	void flipMarkValue(int val, int cell=-1);
 	void moveCursor(int dx, int dy);
 	void update(int cell = -1);
+	void settingsChanged();
 	/**
 	 * Add, replace or delete graphics for a Mathdoku or Killer Sudoku cage.
 	 *
