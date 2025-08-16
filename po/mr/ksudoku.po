@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-03-24 00:39+0000\n"
+"POT-Creation-Date: 2025-08-16 00:40+0000\n"
 "PO-Revision-Date: 2013-03-23 15:08+0530\n"
 "Last-Translator: Chetan Khona <chetan@kompkin.com>\n"
 "Language-Team: Marathi <kde-i18n-doc@kde.org>\n"
@@ -93,40 +93,56 @@ msgstr ""
 msgid "Show highlights in 2-D puzzles"
 msgstr ""
 
+#. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
+#: src/gui/configgame.ui:56 src/gui/configgame.ui:62
+#, kde-format
+msgid "Highlight cells containing the currently selected value"
+msgstr ""
+
+#. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
+#: src/gui/configgame.ui:59
+#, kde-format
+msgid ""
+"When you select a value, all other cells containing the same value will be "
+"highlighted. This can help you quickly identify patterns and potential "
+"conflicts."
+msgstr ""
+
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
-#: src/gui/configgame.ui:56 src/gui/configgame.ui:59
+#: src/gui/configgame.ui:69 src/gui/configgame.ui:72
 #, kde-format
 msgid "Highlight in red any cells whose values break the Sudoku rules."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
-#: src/gui/configgame.ui:62
+#: src/gui/configgame.ui:75
 #, kde-format
 msgid "Show errors"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
-#: src/gui/configgame.ui:69 src/gui/configgame.ui:72
+#: src/gui/configgame.ui:82 src/gui/configgame.ui:85
 #, kde-format
 msgid "Highlight the planes (blocks) that contain the selected cell."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
-#: src/gui/configgame.ui:75
+#: src/gui/configgame.ui:88
 #, kde-format
 msgid "Show highlights in 3-D puzzles"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
-#: src/gui/configgame.ui:137
+#: src/gui/configgame.ui:150
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
-#: src/gui/configgame.ui:167
+#: src/gui/configgame.ui:180
 #, kde-format
 msgid "Settings for 3-D Puzzles Only"
 msgstr ""
@@ -135,14 +151,14 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_6)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_6)
-#: src/gui/configgame.ui:182 src/gui/configgame.ui:185
-#: src/gui/configgame.ui:228 src/gui/configgame.ui:231
+#: src/gui/configgame.ui:195 src/gui/configgame.ui:198
+#: src/gui/configgame.ui:241 src/gui/configgame.ui:244
 #, kde-format
 msgid "Set the relative size of 3-D cells and the spaces between them."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
-#: src/gui/configgame.ui:234
+#: src/gui/configgame.ui:247
 #, kde-format
 msgid "Overall size of 3-D cells"
 msgstr ""
@@ -151,14 +167,14 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
 #. i18n: ectx: property (toolTip), widget (QLabel, label)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label)
-#: src/gui/configgame.ui:254 src/gui/configgame.ui:257
-#: src/gui/configgame.ui:300 src/gui/configgame.ui:303
+#: src/gui/configgame.ui:267 src/gui/configgame.ui:270
+#: src/gui/configgame.ui:313 src/gui/configgame.ui:316
 #, no-c-format, kde-format
 msgid "Shrink or expand a cell by up to 30% when it is selected."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label)
-#: src/gui/configgame.ui:306
+#: src/gui/configgame.ui:319
 #, kde-format
 msgid "Size of selected 3-D cell"
 msgstr ""
@@ -167,21 +183,21 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_3)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_3)
-#: src/gui/configgame.ui:326 src/gui/configgame.ui:329
-#: src/gui/configgame.ui:363 src/gui/configgame.ui:366
+#: src/gui/configgame.ui:339 src/gui/configgame.ui:342
+#: src/gui/configgame.ui:376 src/gui/configgame.ui:379
 #, no-c-format, kde-format
 msgid "Shrink or expand cells by up to 30% when they are highlighted."
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
-#: src/gui/configgame.ui:369
+#: src/gui/configgame.ui:382
 #, kde-format
 msgid "Size of highlighted 3-D cells"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_5)
-#: src/gui/configgame.ui:389 src/gui/configgame.ui:426
+#: src/gui/configgame.ui:402 src/gui/configgame.ui:439
 #, no-c-format, kde-format
 msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
@@ -191,8 +207,8 @@ msgstr ""
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_DarkenOuterCells3D)
-#: src/gui/configgame.ui:392 src/gui/configgame.ui:429
-#: src/gui/configgame.ui:449
+#: src/gui/configgame.ui:405 src/gui/configgame.ui:442
+#: src/gui/configgame.ui:462
 #, no-c-format, kde-format
 msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
@@ -200,13 +216,13 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
-#: src/gui/configgame.ui:432
+#: src/gui/configgame.ui:445
 #, kde-format
 msgid "Size of 3-D cells outside the selected volume"
 msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
-#: src/gui/configgame.ui:446
+#: src/gui/configgame.ui:459
 #, kde-format
 msgid ""
 "Darken cells if they are not in an NxNxN cube that contains the selected "
@@ -214,7 +230,7 @@ msgid ""
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
-#: src/gui/configgame.ui:452
+#: src/gui/configgame.ui:465
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
 msgstr ""
@@ -717,14 +733,20 @@ msgctxt "@action:button"
 msgid "Enable"
 msgstr ""
 
+#. i18n: ectx: label, entry (HighlightSameValues), group (Options)
+#: src/gui/ksudoku.kcfg:39
+#, kde-format
+msgid "Highlight cells containing the same value"
+msgstr ""
+
 #. i18n: ectx: label, entry (Theme), group (Themes)
-#: src/gui/ksudoku.kcfg:41
+#: src/gui/ksudoku.kcfg:45
 #, kde-format
 msgid "The graphical theme to be used."
 msgstr ""
 
 #. i18n: ectx: label, entry (Symbols), group (Themes)
-#: src/gui/ksudoku.kcfg:44
+#: src/gui/ksudoku.kcfg:48
 #, kde-format
 msgid "Select the themes you want to use"
 msgstr ""
