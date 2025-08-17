@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:40+0000\n"
-"PO-Revision-Date: 2025-03-24 03:45+0100\n"
+"PO-Revision-Date: 2025-08-16 06:32+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -121,10 +121,9 @@ msgstr "გამოკვეთა 2D მოზაიკებში"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:62
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the currently selected value"
-msgstr "ზედაპირების (ბლოკების)  გამოკვეთა, რომლებიც მონიშნულ უჯრედს შეიცავენ."
+msgstr "ამჟამად მონიშნული მნიშვნელობის შემცველი უჯრედების გამოკვეთა"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:59
@@ -134,6 +133,9 @@ msgid ""
 "highlighted. This can help you quickly identify patterns and potential "
 "conflicts."
 msgstr ""
+"როცა აირჩევთ მნიშვნელობას, გამოიკვეთება ყველა სხვა უჯრედი, რომელიც იგივე "
+"მნიშვნელობას შეიცავს. ამას შეუძლია, დაგეხმაროთ, სწრაფად ამოიცნოთ ნიმუშები და "
+"პოტენციური კონფლიქტები."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -826,10 +828,9 @@ msgstr "ჩართვა"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the same value"
-msgstr "ზედაპირების (ბლოკების)  გამოკვეთა, რომლებიც მონიშნულ უჯრედს შეიცავენ."
+msgstr "იგივე მნიშვნელობის შემცველი უჯრედების გამოკვეთა"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:45
