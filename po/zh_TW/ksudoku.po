@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:40+0000\n"
-"PO-Revision-Date: 2025-03-27 21:56+0900\n"
+"PO-Revision-Date: 2025-08-19 02:57+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
 "Language: zh_TW\n"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "dot tw>\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Lokalize 24.12.3\n"
+"X-Generator: Lokalize 25.11.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -118,10 +118,9 @@ msgstr "在平面遊戲上顯示突顯"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:62
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the currently selected value"
-msgstr "突顯包含選取的格子的區塊。"
+msgstr "突顯包含目前選取的數字的格子"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:59
@@ -131,6 +130,8 @@ msgid ""
 "highlighted. This can help you quickly identify patterns and potential "
 "conflicts."
 msgstr ""
+"當您選取數字時，包含同樣數字的其他格子將會被突顯。這可以幫您快速找出相似的樣"
+"式與可能有的衝突。"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -786,10 +787,9 @@ msgstr "啟用"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the same value"
-msgstr "突顯包含選取的格子的區塊。"
+msgstr "突顯包含相同內容的格子"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:45
