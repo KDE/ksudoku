@@ -827,7 +827,7 @@ msgstr "El tema gràfic que s'utilitzarà."
 #: src/gui/ksudoku.kcfg:44
 #, kde-format
 msgid "Select the themes you want to use"
-msgstr "Seleccioneu els temes que voleu utilitzar"
+msgstr "Trieu els temes que voleu utilitzar"
 
 #: src/gui/ksudokugame.cpp:375
 #, kde-format
@@ -1026,7 +1026,7 @@ msgstr "No s'ha pogut pujar el fitxer."
 #, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
-msgstr "Selecciona %1 (%2)"
+msgstr "Tria %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
 #, kde-format
@@ -1079,7 +1079,7 @@ msgstr "GetNewVariant no està implementat"
 #: src/gui/welcomescreen.cpp:179
 #, kde-format
 msgid "Please select a puzzle variant."
-msgstr "Selecciona una variant del puzle."
+msgstr "Tria una variant del puzle."
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
