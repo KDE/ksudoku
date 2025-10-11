@@ -1,10 +1,10 @@
 # SPDX-FileCopyrightText: 2024 Alois.spitzbart <spitz234@hotmail.com>
-# Stefan Winter <swinter@kde.org>, 2007.
-# Burkhard Lück <lueck@hube-lueck.de>, 2008, 2011, 2013, 2015, 2017, 2018, 2019, 2020, 2021.
-# Thomas Reitelbach <tr@erdfunkstelle.de>, 2009.
-# Johannes Obermayr <johannesobermayr@gmx.de>, 2009, 2011, 2012, 2023.
-# Frederik Schwarzer <schwarzer@kde.org>, 2011, 2012.
-# Jonas Schürmann <jonasschuermann@aol.de>, 2012.
+# SPDX-FileCopyrightText: 2007 Stefan Winter <swinter@kde.org>
+# SPDX-FileCopyrightText: 2008, 2011, 2013, 2015, 2017, 2018, 2019, 2020, 2021 Burkhard Lück <lueck@hube-lueck.de>
+# SPDX-FileCopyrightText: 2009 Thomas Reitelbach <tr@erdfunkstelle.de>
+# SPDX-FileCopyrightText: 2009, 2011, 2012, 2023 Johannes Obermayr <johannesobermayr@gmx.de>
+# SPDX-FileCopyrightText: 2011, 2012 Frederik Schwarzer <schwarzer@kde.org>
+# SPDX-FileCopyrightText: 2012 Jonas Schürmann <jonasschuermann@aol.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
