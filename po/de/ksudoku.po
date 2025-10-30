@@ -1,24 +1,24 @@
-# SPDX-FileCopyrightText: 2024 Alois.spitzbart <spitz234@hotmail.com>
 # SPDX-FileCopyrightText: 2007 Stefan Winter <swinter@kde.org>
 # SPDX-FileCopyrightText: 2008, 2011, 2013, 2015, 2017, 2018, 2019, 2020, 2021 Burkhard Lück <lueck@hube-lueck.de>
 # SPDX-FileCopyrightText: 2009 Thomas Reitelbach <tr@erdfunkstelle.de>
 # SPDX-FileCopyrightText: 2009, 2011, 2012, 2023 Johannes Obermayr <johannesobermayr@gmx.de>
 # SPDX-FileCopyrightText: 2011, 2012 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2012 Jonas Schürmann <jonasschuermann@aol.de>
+# SPDX-FileCopyrightText: 2024, 2025 Alois Spitzbart <spitz234@hotmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:40+0000\n"
-"PO-Revision-Date: 2024-09-06 12:09+0200\n"
-"Last-Translator: Alois.spitzbart <spitz234@hotmail.com>\n"
+"PO-Revision-Date: 2025-10-26 20:15+0100\n"
+"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 24.05.2\n"
+"X-Generator: Lokalize 25.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -36,18 +36,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved by the generator is "
-#| "%2, with internal difficulty rating %3, but you requested difficulty "
-#| "level %4.\n"
-#| "\n"
-#| "Do you wish to let the generator try again or accept the puzzle as is?\n"
-#| "\n"
-#| "Hint: you can try to increase the difficulty rating by doing the "
-#| "following: Continue with the 'Accept' button, choose Game -> New, then "
-#| "change the Symmetry setting to 'No Symmetry' or some low symmetry type "
-#| "and then use 'Generate A Puzzle' again."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -66,10 +55,10 @@ msgstr ""
 "Soll ein erneuter Versuch gestartet oder das aktuelle Rätsel verwendet "
 "werden?\n"
 "\n"
-"Sie können versuchen, den Schwierigkeitsgrad folgendermaßen zu erhöhen: "
-"Übernehmen Sie die Änderungen und wählen Sie dann Spiel -> Neu. Wählen Sie "
-"„Keine Symmetrie“ oder eine geringe Symmetrie und generieren Sie dann ein "
-"neues Rätsel."
+"Hinweis: Sie können versuchen, den Schwierigkeitsgrad folgendermaßen zu "
+"erhöhen: Übernehmen Sie die Änderungen mit „OK“ und wählen Sie dann Spiel → "
+"Neu. Wählen Sie „Keine Symmetrie“ oder eine geringe Symmetrie und generieren "
+"Sie dann ein neues Rätsel."
 
 #: src/generator/sudokuboard.cpp:215
 #, kde-format
@@ -135,10 +124,9 @@ msgstr "Hervorhebungen bei 2D-Rätseln anzeigen"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:62
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the currently selected value"
-msgstr "Die Flächen (Blöcke) des ausgewählten Felds hervorheben."
+msgstr "Zellen hervorheben, die den aktuell ausgewählten Wert enthalten."
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:59
@@ -148,6 +136,9 @@ msgid ""
 "highlighted. This can help you quickly identify patterns and potential "
 "conflicts."
 msgstr ""
+"Wenn Sie einen Wert auswählen, dann werden alle anderen Zellen "
+"hervorgehoben, die denselben Wert enthalten. Das kann Ihnen helfen, schnell "
+"ein Muster und mögliche Konflikte zu erkennen."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -291,7 +282,7 @@ msgstr "Einstellungen sind noch nicht implementiert"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Alle Dateien (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -345,37 +336,35 @@ msgstr ""
 "Glückwunsch! Sie haben es in %1 und %2 geschafft. Mit ein bisschen Hilfe."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
 msgstr[0] ""
-"Glückwunsch! Sie haben es in 1 Sekunde geschafft. Mit ein bisschen Hilfe."
+"Glückwunsch! Sie haben es in einer Sekunde geschafft. Mit mindestens einer "
+"Pause."
 msgstr[1] ""
-"Glückwunsch! Sie haben es in %1 Sekunden geschafft. Mit ein bisschen Hilfe."
+"Glückwunsch! Sie haben es in %1 Sekunden geschafft. Mit mindestens einer "
+"Pause."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
 msgstr[0] ""
-"Glückwunsch! Sie haben es in 1 Minute geschafft. Mit ein bisschen Hilfe."
+"Glückwunsch! Sie haben es in einer Minute geschafft. Mit mindestens einer "
+"Pause."
 msgstr[1] ""
-"Glückwunsch! Sie haben es in %1 Minuten geschafft. Mit ein bisschen Hilfe."
+"Glückwunsch! Sie haben es in %1 Minuten geschafft. Mit mindestens einer "
+"Pause."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
 msgstr ""
-"Glückwunsch! Sie haben es in %1 und %2 geschafft. Mit ein bisschen Hilfe."
+"Glückwunsch! Sie haben es in %1 und %2 geschafft. Mit mindestens einer Pause."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -741,7 +730,7 @@ msgstr "Keine Symmetrie"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Verstrichene Zeit:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -791,18 +780,14 @@ msgid "Error Writing File"
 msgstr "Fehler beim Schreiben der Datei"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Spiel"
+msgstr "Spiel_"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Neues Spiel"
+msgstr "Spiel speichern"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
@@ -865,10 +850,9 @@ msgstr "Aktivieren"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the same value"
-msgstr "Die Flächen (Blöcke) des ausgewählten Felds hervorheben."
+msgstr "Zellen hervorheben, die denselben Wert enthalten."
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:45
