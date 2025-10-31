@@ -24,8 +24,6 @@
 #include <QGraphicsSimpleTextItem>
 #include <QWheelEvent>
 
-#include <KColorScheme>
-
 #include "renderer.h"
 
 namespace ksudoku {
