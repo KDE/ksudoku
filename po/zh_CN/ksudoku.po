@@ -14,8 +14,8 @@ msgstr ""
 "X-Crowdin-Project: kdeorg\n"
 "X-Crowdin-Project-ID: 269464\n"
 "X-Crowdin-Language: zh-CN\n"
-"X-Crowdin-File: /kf6-trunk/messages/ksudoku/ksudoku.pot\n"
-"X-Crowdin-File-ID: 46265\n"
+"X-Crowdin-File: /kf6-stable/messages/ksudoku/ksudoku.pot\n"
+"X-Crowdin-File-ID: 50162\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -254,7 +254,7 @@ msgstr "配置还没有生效"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "所有文件(*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -565,7 +565,7 @@ msgstr "玩游戏"
 #, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
-msgstr ""
+msgstr "启用所有消息"
 
 #: src/gui/ksudoku.cpp:573
 #, kde-format
@@ -653,13 +653,13 @@ msgstr "无对称"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "已用时间:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr ""
+msgstr "加载游戏失败"
 
 #: src/gui/ksudoku.cpp:754
 #, kde-format
@@ -709,7 +709,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:845
 #, kde-format
 msgid "Save Game"
-msgstr ""
+msgstr "保存游戏"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
