@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: KDE 4.3\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-08-16 00:40+0000\n"
-"PO-Revision-Date: 2025-07-08 22:54+0200\n"
+"PO-Revision-Date: 2025-11-08 22:39+0100\n"
 "Last-Translator: Kristof Kiszel <ulysses@fsf.hu>\n"
 "Language-Team: Hungarian <kde-l10n-hu@kde.org>\n"
 "Language: hu\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.04.3\n"
+"X-Generator: Lokalize 25.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -125,10 +125,9 @@ msgstr "Kiemelések megjelenítése a 2D kirakókban"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:62
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the currently selected value"
-msgstr "A kijelölt cellát tartalmazó síkok (blokkok) kiemelése."
+msgstr "A jelenleg kiválasztott értéket tartalmazó cellák kiemelése"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:59
@@ -138,6 +137,9 @@ msgid ""
 "highlighted. This can help you quickly identify patterns and potential "
 "conflicts."
 msgstr ""
+"Ha kijelöl egy értéket, az összes többi cella, amely ugyanazt az értéket "
+"tartalmazza, ki lesz emelve. Ez segíthet a minták és lehetséges ütközések "
+"gyors azonosításában."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -858,10 +860,9 @@ msgstr "Bekapcsolás"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the same value"
-msgstr "A kijelölt cellát tartalmazó síkok (blokkok) kiemelése."
+msgstr "Az azonos értéket tartalmazó cellák kiemelése"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:45
