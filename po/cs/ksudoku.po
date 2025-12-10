@@ -1,6 +1,6 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# Vít Pelčák <vit@pelcak.org>, 2011, 2012, 2013, 2014, 2015, 2017, 2018.
+# SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2025 Vít Pelčák <vit@pelcak.org>
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2013.
 # SPDX-FileCopyrightText: 2021, 2024 Vit Pelcak <vit@pelcak.org>
 #
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 14:39+0000\n"
-"PO-Revision-Date: 2024-05-30 10:26+0200\n"
+"PO-Revision-Date: 2025-12-05 10:48+0100\n"
 "Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 24.02.2\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -100,7 +100,7 @@ msgstr "Zobrazovat zvýraznění ve 2D puzzle"
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:62
 #, kde-format
 msgid "Highlight cells containing the currently selected value"
-msgstr ""
+msgstr "Zvýraznit buňky obsahující právě vybranou hodnotu"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:59
@@ -308,8 +308,11 @@ msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
 msgstr[0] ""
+"Blahopřeji! Hra byla vyřešena během 1 sekundy. S minimálně 1 přestávkou."
 msgstr[1] ""
+"Blahopřeji! Hra byla vyřešena během %1 sekund. S minimálně 1 přestávkou."
 msgstr[2] ""
+"Blahopřeji! Hra byla vyřešena během %1 sekund. S minimálně 1 přestávkou."
 
 #: src/gui/ksudoku.cpp:115
 #, kde-format
@@ -317,14 +320,17 @@ msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
 msgstr[0] ""
+"Blahopřeji! Hra byla vyřešena během 1 minuty. S minimálně 1 přestávkou."
 msgstr[1] ""
+"Blahopřeji! Hra byla vyřešena během %1 minut. S minimálně 1 přestávkou."
 msgstr[2] ""
+"Blahopřeji! Hra byla vyřešena během %1 minut. S minimálně 1 přestávkou."
 
 #: src/gui/ksudoku.cpp:117
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr ""
+msgstr "Blahopřeji! Hra byla vyřešena během %1 a %2. S minimálně 1 přestávkou."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -631,7 +637,7 @@ msgstr "Bez symetrie"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Uplynulý čas:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -682,7 +688,7 @@ msgstr "Chyba při zápisu do souboru"
 #: src/gui/ksudoku.cpp:841
 #, kde-format
 msgid "Game_"
-msgstr ""
+msgstr "Hra_"
 
 #: src/gui/ksudoku.cpp:845
 #, kde-format
@@ -742,7 +748,7 @@ msgstr "Povolit"
 #: src/gui/ksudoku.kcfg:39
 #, kde-format
 msgid "Highlight cells containing the same value"
-msgstr ""
+msgstr "Zvýrazňovat buňky obsahující stejnou hodnotu"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:45
