@@ -1,7 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-<!ENTITY ksudoku "KSudoku">
-<!ENTITY kappname "&ksudoku;">
+  <!ENTITY ksudoku "KSudoku">
   <!ENTITY package "kdegames"
 >  <!-- do not change this! -->
   <!ENTITY % Brazilian-Portuguese "INCLUDE"
@@ -14,7 +13,7 @@
 > <!-- do not change this! -->
 <bookinfo>
 	<title
->Manual do &kappname;</title
+>Manual do &ksudoku;</title
 > <!-- This is the title of this docbook. -->
 <!-- List of immediate authors begins here. -->
 <!--INPORTANT! - All other contributors: [to be determined] -->
@@ -102,16 +101,16 @@
 >&FDLNotice;</legalnotice>
 
 <date
->18/12/2013</date
+>10/12/2020</date
 ><!-- Date of (re)writing, or update.-->
 <releaseinfo
->1.2.1 (&kde; 4.12)</releaseinfo
+>1.4.20120</releaseinfo
 ><!-- Application version number. Use the variable definitions within header to change this value.-->
 
 <!--Short description of this document. Do not change unless necessary!-->
 <abstract>
 	<para
->Esta documentação descreve o jogo &kappname;, um puzzle de colocação de símbolos, baseado na lógica.</para>
+>Esta documentação descreve o jogo &ksudoku;, um puzzle de colocação de símbolos, baseado na lógica.</para>
 </abstract>
 
 <!--List of relevant keywords-->
@@ -164,16 +163,16 @@
 ></note>
 
 <para
->O &kappname; é um quebra-cabeça de colocação de símbolos baseados em lógica.</para>
+>O &ksudoku; é um quebra-cabeça de colocação de símbolos baseados em lógica.</para>
 
 <para
->O jogador precisa preencher uma grade com símbolos de modo que cada coluna, linha e bloco do tabuleiro contenha apenas uma instância de cada símbolo. No &kappname;, os símbolos são normalmente os números 1 a 9, mas também podem ser as letras A a P ou A a Y nos quebra-cabeças maiores. Os quebra-cabeças começam com o tabuleiro parcialmente preenchido e a sua tarefa é preencher o resto.</para>
+>O jogador precisa preencher uma grade com símbolos de modo que cada coluna, linha e bloco do tabuleiro contenha apenas uma instância de cada símbolo. No &ksudoku;, os símbolos são normalmente os números 1 a 9, mas também podem ser as letras A a P ou A a Y nos quebra-cabeças maiores. Os quebra-cabeças começam com o tabuleiro parcialmente preenchido e a sua tarefa é preencher o resto. Alguns tipos de quebra-cabeça têm menos de nove símbolos.</para>
 
 <para
->Quando iniciar um jogo, você poderá escolher entre vários tipos e tamanhos do Sudoku. Você pode fazer então o &kappname; gerar um quebra-cabeça para resolver ou poderá começar com um tabuleiro vazio e introduzir um quebra-cabeça de outra origem, como um jornal, e depois fazer com que o &kappname; o valide ou talvez resolva.</para>
+>Quando iniciar um jogo, você poderá escolher entre vários tipos e tamanhos do Sudoku. Você pode fazer então o &ksudoku; gerar um quebra-cabeça para resolver ou poderá começar com um tabuleiro vazio e introduzir um quebra-cabeça de outra origem, como um jornal, e depois fazer com que o &ksudoku; o valide ou talvez resolva.</para>
 
 <para
->Existem diversas variantes do Sudoku existentes e o &kappname; oferece uma boa seleção delas. A variante mais comum do jogo tem uma grade de quadrados 9x9 e usa algarismos arábicos de 1 a 9 como símbolos. A grade tem 9 linhas e 9 colunas, que são divididas em 9 blocos de quadrados 3x3. O problema é - cada símbolo só pode ser usado uma vez por linha, coluna e bloco.</para>
+>Existem diversas variantes do Sudoku existentes e o &ksudoku; oferece uma boa seleção delas. O tipo mais comum do jogo, o Sudoku Padrão, tem uma grade de quadrados 9x9 e usa algarismos arábicos de 1 a 9 como símbolos. A grade tem 9 linhas e 9 colunas, que são divididas em 9 blocos de quadrados 3x3. O problema é - cada símbolo só pode ser usado uma vez por linha, coluna e bloco.</para>
 
 	<note
 ><para
@@ -194,7 +193,7 @@
 ></note>
 
 <para
->Quando o jogo começa, você será questionado a escolher o tipo de jogo e o tamanho do tabuleiro que lhe interessa. Você poderá introduzir um quebra-cabeça de outra origem ou pedir ao &kappname; para gerar um. O gerador tem várias opções de dificuldade e algumas de simetria, que afetam o padrão sobre o qual é gerado o quebra-cabeça. A sua experiência do jogo irá depender dos valores que escolher para estas opções.</para>
+>Quando o jogo começa, você será questionado a escolher o tipo de jogo e o tamanho do tabuleiro que lhe interessa. Você poderá introduzir um quebra-cabeça de outra origem ou pedir ao &ksudoku; para gerar um. O gerador tem várias opções de dificuldade e algumas de simetria, que afetam o padrão sobre o qual é gerado o quebra-cabeça. A sua experiência do jogo irá depender dos valores que escolher para estas opções.</para>
 
 <para
 >Quando o tabuleiro aparecer verifique o lado esquerdo. Existe uma lista de seleção que contém todos os símbolos disponíveis para o jogo atual. O conjunto de símbolos depende do tamanho do jogo que você escolher. Os jogos poderão ter 4, 9, 16 ou 25 símbolos. Os primeiros dois conjuntos usam os números de 1 a 4 ou de 1 a 9: os outros usam as letras A a P ou A a Y.</para>
@@ -213,26 +212,22 @@
 > os pequenos cubos, não sobre eles.</para>
 
 <para
->Algumas vezes é útil introduzir marcadores ou notas, que são pequenos símbolos dentro de um quadrado. Estes não têm qualquer influência sobre a solução, mas pode ajudá-lo a manter um registro das ideias que teve, especialmente quando existir uma escolha entre duas alternativas e se não tiver ainda informação suficiente para decidir entre elas. Para introduzir um marcador ou nota, clique com o botão direito do rato ou mantenha pressionada a tecla &Shift; ao usar o teclado.</para>
+>Algumas vezes é útil introduzir marcadores ou notas, que são pequenos símbolos dentro de um quadrado. Estes não têm qualquer influência sobre a solução, mas pode ajudá-lo a manter um registro das ideias que teve, especialmente quando existir uma escolha entre duas alternativas e se não tiver ainda informação suficiente para decidir entre elas. Para introduzir um marcador ou nota, clique com o &RMB; ou mantenha pressionada a tecla &Shift; ao usar o teclado.</para>
 
 <para
->Para limpar os símbolos de um quadrado, passe com o ponteiro do mouse sobre o mesmo e pressione a tecla <keycap
->Delete</keycap
-> ou <keycap
->Backspace</keycap
-> no teclado ou clique com o &RMB; no quadrado.</para>
+>Para limpar os símbolos de um quadrado, passe com o ponteiro do mouse sobre o mesmo e pressione a tecla &Del; ou &Backspace; no teclado ou clique com o &RMB; no quadrado.</para>
 
 <para
->Repare que os quadrados mudam de cor enquanto você passa o mouse sobre eles. Isto é feito para ajudá-lo a se manter dentro das regras do &kappname;. Use as linhas verticais e horizontais para verificar se o símbolo que está prestes a inserir em um lugar livre já existe em qualquer ponto da linha vertical ou horizontal da qual esse quadrado faz parte. A coloração também realça o bloco que, como já foi mencionado, também só pode conter uma única instância de cada símbolo. Se não precisar do realce, você pode usar a opção <menuchoice
+>Repare que os quadrados mudam de cor enquanto você passa o mouse sobre eles. Isto é feito para ajudá-lo a se manter dentro das regras do &ksudoku;. Use as linhas verticais e horizontais para verificar se o símbolo que está prestes a inserir em um lugar livre já existe em qualquer ponto da linha vertical ou horizontal da qual esse quadrado faz parte. A coloração também realça o bloco que, como já foi mencionado, também só pode conter uma única instância de cada símbolo. Se não precisar do realce, você pode usar a opção <menuchoice
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar o &kappname;...</guimenuitem
+>Configurar o &ksudoku;…</guimenuitem
 ></menuchoice
 > para o desativá-lo.</para>
 
 <para
->Continue a inserir símbolos de acordo com as regras, até que todo o campo de jogo tenha sido preenchido. Neste ponto, o &kappname; irá verificar se todos os elementos introduzidos são válidos e irá corrigi-lo ou continuará à espera da solução.</para>
+>Continue a inserir símbolos de acordo com as regras, até que todo o campo de jogo tenha sido preenchido. Neste ponto, o &ksudoku; irá verificar se todos os elementos introduzidos são válidos e irá corrigi-lo ou continuará à espera da solução.</para>
 </chapter>
 
 <chapter id="rules_and_tips"
@@ -245,11 +240,11 @@
 >Regras Gerais do Jogo</title>
 
 <para
->As regras do &kappname; são bastante simples.</para>
+>As regras do &ksudoku; são bastante simples.</para>
 	<itemizedlist>
 	<listitem
 ><para
->Dependendo do tamanho do tabuleiro do jogo, do tipo de quebra-cabeça e do nível de dificuldade escolhido, um quebra-cabeça individual do &kappname; poderá levar até algumas horas para ser selecionado.</para
+>Dependendo do tamanho do tabuleiro do jogo, do tipo de quebra-cabeça e do nível de dificuldade escolhido, um quebra-cabeça individual do &ksudoku; poderá levar até algumas horas para ser selecionado.</para
 ></listitem>
 	<listitem
 ><para
@@ -279,7 +274,7 @@
 	<itemizedlist>
 	<listitem
 ><para
->Não é necessário qualquer conhecimento matemático ou linguístico para resolver os quebra-cabeças do &kappname;.</para
+>Não é necessário qualquer conhecimento matemático ou linguístico para resolver os quebra-cabeças do &ksudoku;, mas um pouco de habilidade com aritmética é necessária nos quebra-cabeças de Killer Sudoku e Mathdoku.</para
 ></listitem>
 	<listitem
 ><para
@@ -291,7 +286,7 @@
 ></listitem>
 	<listitem
 ><para
->Os quebra-cabeças gerados pelo &kappname; só têm uma solução.</para
+>Os quebra-cabeças gerados pelo &ksudoku; só têm uma solução.</para
 ></listitem>
 	<listitem
 ><para
@@ -302,7 +297,11 @@
 
 <sect1 id="variants"
 ><title
->Variações do &kappname;</title>
+>Variações do &ksudoku;</title>
+
+<sect2 id="standard_sudoku"
+><title
+>Quebra-cabeças Sudoku</title>
 
 	<itemizedlist>
 	<listitem
@@ -315,25 +314,100 @@
 ></listitem>
 	<listitem
 ><para
->A variante Jigsaw é a mesma do Sudoku normal, com exceção de que alguns blocos não são quadrados.</para
+>As variantes Jigsaw e Asteca são a mesma do Sudoku padrão de 9x9, com exceção de que alguns blocos não são quadrados.</para
 ></listitem>
 	<listitem
 ><para
->A variante XSudoku é exatamente igual à do Sudoku normal, apenas com mais um requisito: as duas diagonais principais também deverão conter apenas uma vez os símbolos 1 a 9. O &kappname; realça as diagonais para torná-lo mais fácil de ver.</para
+>A variante XSudoku é exatamente igual à do Sudoku normal, apenas com mais um requisito: as duas diagonais principais também deverão conter apenas uma vez os símbolos 1 a 9. O &ksudoku; realça as diagonais para torná-lo mais fácil de ver.</para
 ></listitem>
+	<listitem
+><para
+>As variantes Nonomino 9x9, Pentomino 5x5 e Tetromino 4x4 são iguais a um Sudoku padrão, exceto pelo fato de que alguns blocos não são quadrados.</para
+></listitem>
+	<listitem
+><para
+>A variante 6x6 é igual a um Sudoku padrão, exceto que os blocos são seis retângulos 3x2.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="samurai"
+><title
+>Quebra-cabeças Samurai</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>O Sudoku Samurai consiste em cinco quebra-cabeças normais do Sudoku de quadrados 9x9, sobrepondo-se nos cantos com quatro blocos de 3x3. Cada um dos cinco quebra-cabeças tem 9 linhas, 9 colunas e 9 blocos para resolver e os símbolos nos quadrados sobrepostos devem caber nas soluções de dois Sudokus padrão de 9x9.</para
+></listitem>
+	<listitem
+><para
+>O Sudoku Samurai pequeno contém cinco quebra-cabeças Sudoku de 4x4, sobrepondo-se nos cantos em quatro quadrados. Cada um dos cinco quebra-cabeças tem 4 linhas, 4 colunas e 4 blocos para resolver.</para
+></listitem>
+	<listitem
+><para
+>A variante Moinho de Vento consiste em cinco quebra-cabeças Sudoku padrão de 9x9, sobrepostos nos cantos por dois blocos 3x3. É como um Sudoku Samurai, mas o Sudoku 9x9 central é mais difícil de ver. Oito de seus blocos 3x3 são compartilhados com as pás do moinho de vento e apenas o bloco 3x3 central não é. </para
+></listitem>
+	<listitem
+><para
+>A variante Sohei é outro tipo Samurai e possui quatro quebra-cabeças Sudoku de 9x9, sobrepostos em dois cantos por um bloco 3x3. O bloco central 3x3 do quebra-cabeça está vazio. </para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="roxdoku"
+><title
+>Quebra-cabeças Roxdoku 3D</title>
+
+	<itemizedlist>
 	<listitem
 ><para
 >As variantes Roxdoku são baseadas em cubos tridimensionais, mas são mais simples do que parecem. Não existem linhas nem colunas. Um quebra-cabeça Roxdoku 3x3x3 tem 27 pequenos cubos organizados em um cubo 3x3x3 maior. Este contém nove pedaços, cada um contendo pequenos cubos 3x3, sendo estes os blocos quadrados que deverão ser preenchidos com os números de 1 a 9. Um Roxdoku 4x4x4 tem doze pedaços 4x4 e um Roxdoku 5x5x5 tem quinze pedaços 5x5.</para
 ></listitem>
 	<listitem
 ><para
->O Sudoku Samurai consiste em cinco quebra-cabeças normais do Sudoku de quadrados 9x9, sobrepondo-se nos cantos com quatro blocos de 3x3. Cada um dos cinco quebra-cabeças tem 9 linhas e 9 colunas para resolver, mas em vez de 45, só existem 41 blocos para resolver devido à sobreposição.</para
+>A variante Roxdoku Gêmeo possui dois quebra-cabeças Roxdoku 3x3x3 compartilhando um canto. A peça do canto deve fazer parte da solução de ambos os cubos 3x3x3.</para
 ></listitem>
 	<listitem
 ><para
->O Sudoku Samurai pequeno consiste em cinco quebra-cabeças 4x4, sobrepondo-se nos cantos em quatro quadrados. Cada um dos cinco quebra-cabeças tem 4 linhas, 4 colunas e 4 blocos para resolver.</para
+>A variante Roxdoku Duplo contém dois quebra-cabeças Roxdoku 3x3x3 que compartilham três peças ao longo de uma aresta. As peças da aresta devem fazer parte da solução de ambos os cubos 3x3x3. </para
+></listitem>
+	<listitem
+><para
+>A variante Samurai Roxdoku possui nove quebra-cabeças Roxdoku 3x3x3. Um está no centro e os outros oito cubos 3x3x3 o sobrepõem, um em cada um dos cantos do cubo central. Cada uma dessas peças de canto deve fazer parte da solução de dois cubos 3x3x3.</para
 ></listitem>
 	</itemizedlist>
+</sect2>
+
+<sect2 id="killer"
+><title
+>Variantes Killer e Mathdoku</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>Os quebra-cabeças Killer têm duas variantes: Tiny Killer (4x4) e Killer Sudoku (9x9). Ambos têm linhas, colunas e blocos quadrados, exatamente como nos quebra-cabeças Sudoku padrão, e seguem exatamente as mesmas regras. Eles também têm áreas de formato irregular chamadas gaiolas, onde os dígitos de cada gaiola devem somar o número em letras pequenas no canto da gaiola e nenhum dígito pode ser repetido dentro da gaiola. Normalmente, o quebra-cabeça começa com apenas alguns quadrados contendo símbolos. Você precisa usar aritmética e as regras usuais do Sudoku juntos para encontrar a solução. Os gráficos na tela dificultam a visualização dos blocos quadrados presentes, mas eles são mais fáceis de ver se você imprimir o quebra-cabeça, usando o item de menu <menuchoice
+><guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Imprimir…</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+	<listitem
+><para
+>As variantes do Mathdoku, também conhecidas como <trademark
+>Kenken</trademark
+>, não possuem blocos, apenas restrições de linha e coluna, e têm gaiolas onde os dígitos devem somar, subtrair, dividir ou multiplicar de acordo com os valores e símbolos aritméticos em letras pequenas em seus cantos. Um dígito em uma gaiola do Mathdoku pode ser repetido, mas não na mesma coluna ou linha. Por exemplo, uma forma de L de três quadrados com um requisito de 5+ pode ter as soluções 1 3 1 ou 2 1 2, desde que os uns ou dois não estejam na mesma linha ou coluna. Observe que as gaiolas de subtração e divisão sempre têm dois quadrados e os dois dígitos da solução podem aparecer em qualquer ordem. Por exemplo, uma gaiola de 2 poderia ter as soluções 1 3 ou 3 1 ou 2 4 ou 4 2, &etc;</para
+></listitem>
+	<listitem
+><para
+>Como não há blocos em um quebra-cabeça Mathdoku, ele pode ter qualquer tamanho de 3x3 até 9x9, sendo o padrão 6x6. Consulte a seção <link linkend="configuration"
+>Configuração do Jogo</link
+> para obter detalhes. Para começar, existe uma variante chamada Mathdoku 101 de tamanho 4x4.</para
+></listitem>
+	</itemizedlist>
+</sect2>
 </sect1>
 
 <sect1 id="tips"
@@ -343,7 +417,7 @@
 	<itemizedlist>
 	<listitem
 ><para
->Leve o tempo que quiser e não se apresse. O &kappname; não é um jogo rápido.</para
+>Leve o tempo que quiser e não se apresse. O &ksudoku; não é um jogo rápido.</para
 ></listitem>
 	<listitem
 ><para
@@ -385,13 +459,13 @@
 ><guimenu
 >Configuração</guimenu
 > <guimenuitem
->Configurar o &kappname;...</guimenuitem
+>Configurar o &ksudoku;…</guimenuitem
 ></menuchoice
 > que realça os erros.</para
 ></listitem>
 	<listitem
 ><para
->Ainda que o &kappname; ofereça uma opção de 'Dica', tente não usá-la com muita frequência. Lembre-se de que a resolução do quebra-cabeça por si só aumenta a sua atividade cerebral, enquanto a funcionalidade de 'Dica' usada com frequência é trapaça.</para
+>Ainda que o &ksudoku; ofereça uma opção de 'Dica', tente não usá-la com muita frequência. Lembre-se de que a resolução do quebra-cabeça por si só aumenta a sua atividade cerebral, enquanto a funcionalidade de 'Dica' usada com frequência é trapaça.</para
 ></listitem>
 	<listitem
 ><para
@@ -415,33 +489,33 @@
 >A tela de boas-vindas</title>
 
 <para
->A tela de boas-vindas é a primeira coisa que você vê quando iniciar o &kappname; ou use a barra de ferramentas ou menu para pedir um novo jogo. Ele tem uma lista com todos os tipos e tamanhos de quebra-cabeça, podendo clicar em um deles para selecioná-lo.</para>
+>A tela de boas-vindas é a primeira coisa que você vê quando iniciar o &ksudoku; ou use a barra de ferramentas ou menu para pedir um novo jogo. Ele tem uma lista com todos os tipos e tamanhos de quebra-cabeça, podendo clicar em um deles para selecioná-lo.</para>
 
 <para
->Se você clicar no botão <guilabel
->Inserir um quebra-cabeça</guilabel
+>Se você clicar no botão <guibutton
+>Inserir um quebra-cabeça</guibutton
 >, irá aparecer um tabuleiro vazio do tipo e tamanho selecionados. Aqui você poderá usar o mouse ou o teclado para inserir um quebra-cabeça de outra origem, como um jornal. Quando tiver concluído, use o botão <guilabel
 >Verificar</guilabel
-> da barra de ferramentas ou do menu para verificar o quebra-cabeça. Ele deverá ter apenas uma solução. Se for o caso, você poderá começar a resolver o quebra-cabeça ou pedir ao &kappname; para o resolvê-lo. Se não existir uma solução ou existir mais que uma, provavelmente significa que você cometeu um erro ao inserir os dados.</para>
+> da barra de ferramentas ou do menu para verificar o quebra-cabeça. Ele deverá ter apenas uma solução. Se for o caso, você poderá começar a resolver o quebra-cabeça ou pedir ao &ksudoku; para o resolvê-lo. Se não existir uma solução ou existir mais que uma, provavelmente significa que você cometeu um erro ao inserir os dados.</para>
 
 <para
->Se você clicar no botão <guilabel
->Gerar um quebra-cabeça</guilabel
->, o &kappname; irá mostrar um tabuleiro com alguns quadrados já preenchidos. Dependerá de você preenchimento do resto.</para>
+>Se você clicar no botão <guibutton
+>Gerar um quebra-cabeça</guibutton
+>, o &ksudoku; irá mostrar um tabuleiro com alguns quadrados já preenchidos. Dependerá de você preenchimento do resto.</para>
 
 <para
 >Antes de gerar um quebra-cabeça, verifique se as configurações dos botões de <guilabel
->Dificuldade</guilabel
+>Dificuldade:</guilabel
 > e <guilabel
->Simetria</guilabel
+>Simetria:</guilabel
 >estão a seu gosto. Você pode alterá-los durante um jogo, mas não farão efeito até que o próximo quebra-cabeça seja gerado.</para>
 
 	<note
 ><para
 >Se você não conseguir ver os botões de <guilabel
->Dificuldade</guilabel
+>Dificuldade:</guilabel
 > e <guilabel
->Simetria</guilabel
+>Simetria:</guilabel
 >, use o item do menu <menuchoice
 ><guimenu
 >Configurações</guimenu
@@ -452,8 +526,8 @@
 ></note>
 
 <para
->O botão <guilabel
->Dificuldade</guilabel
+>O caixa de opções <guilabel
+>Dificuldade:</guilabel
 > oferece seis níveis de dificuldade, do <guimenuitem
 >Muito fácil</guimenuitem
 > ao <guimenuitem
@@ -469,14 +543,20 @@
 > podem levar cerca de uma hora e pretendem ser equivalentes aos níveis de dificuldade encontrados nos jornais. Os quebra-cabeças Samurai e os tamanhos 16x16 ou 25x25 levam mais tempo para resolver, simplesmente porque existem mais linhas, colunas e blocos para preencher.</para>
 
 <para
->O nível Diabólico normalmente necessita de uma ou mais adivinhações, com a hipótese de voltar atrás se você se enganar. Os níveis mais baixos podem ser resolvidos normalmente apenas com lógica. O nível Ilimitado não tem limites sobre o número de adivinhações necessárias, quando é necessária a primeira adivinhação ou quão complexa poderá ser a lógica. É fornecido apenas para interesse dos jogadores experientes, mas tende a gerar quebra-cabeças quase impossíveis e desinteressantes, não sendo recomendado para o uso geral.</para>
+>O nível <guimenuitem
+>Diabólico</guimenuitem
+> normalmente necessita de uma ou mais adivinhações, com a hipótese de voltar atrás se você se enganar. Os níveis mais baixos podem ser resolvidos normalmente apenas com lógica. O nível <guimenuitem
+>Ilimitado</guimenuitem
+> não tem limites sobre o número de adivinhações necessárias, quando é necessária a primeira adivinhação ou quão complexa poderá ser a lógica. É fornecido apenas para interesse dos jogadores experientes, mas tende a gerar quebra-cabeças quase <quote
+>desumanos</quote
+> e desinteressantes, não sendo recomendado para o uso geral.</para>
 
  <para
 >O botão <guilabel
->Simetria</guilabel
+>Simetria:</guilabel
 > oferecem sete tipos de simetria, incluindo a <guimenuitem
->Sem Simetria</guimenuitem
->. Isto controla a disposição e aparência dos quadrados que são preenchidos no início de um quebra-cabeça e tem apenas um efeito estético, exceto no caso dos quebra-cabeças sem simetria, que tendem a ser mais complicados que aqueles que possuem alta simetria, sendo menos provável que o &kappname; gere um quebra-cabeça com dificuldade elevada e uma alta simetria conjugadas.</para>
+>Sem simetria</guimenuitem
+>. Isto controla a disposição e aparência dos quadrados que são preenchidos no início de um quebra-cabeça e tem apenas um efeito estético, exceto no caso dos quebra-cabeças sem simetria, que tendem a ser mais complicados que aqueles que possuem alta simetria, sendo menos provável que o &ksudoku; gere um quebra-cabeça com dificuldade elevada e uma alta simetria conjugadas.</para>
 </sect1>
 
 <!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
@@ -522,7 +602,7 @@
 > <guimenu
 >Jogo</guimenu
 > <guimenuitem
->Carregar...</guimenuitem
+>Carregar…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -560,7 +640,7 @@
 ><guimenu
 >Jogo</guimenu
 > <guimenuitem
->Salvar Como...</guimenuitem
+>Salvar como…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -582,7 +662,7 @@
 > <guimenu
 >Jogo</guimenu
 > <guimenuitem
->Imprimir...</guimenuitem
+>Imprimir…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -613,7 +693,7 @@
 ><para
 ><action
 >Sai</action
-> do &kappname;.</para
+> do &ksudoku;.</para
 ></listitem>
 			</varlistentry>
 		</variablelist>
@@ -730,13 +810,13 @@
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar o &kappname;...</guimenuitem
+>Configurar o &ksudoku;…</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
 ><para
 ><action
->Abre uma janela para configurar o &kappname;.</action
+>Abre uma janela para configurar o &ksudoku;.</action
 > Veja a seção de <link linkend="configuration"
 >Configuração do Jogo</link
 > para mais detalhes.</para
@@ -776,7 +856,7 @@
 ><guimenu
 >Configurações</guimenu
 ><guimenuitem
->Configurar o &kappname;...</guimenuitem
+>Configurar o &ksudoku;…</guimenuitem
 ></menuchoice
 >.</para
 ></answer>
@@ -788,7 +868,7 @@
 ></question>
  <answer
 ><para
->Sim. No &kappname;, o jogo com o teclado está sempre ativo. Por favor, use as teclas de cursores para mover a seleção, os caracteres numéricos e alfabéticos para inserir os símbolos e a tecla &Shift; para aplicar as marcações.</para
+>Sim. No &ksudoku;, o jogo com o teclado está sempre ativo. Por favor, use as teclas de cursores para mover a seleção, os caracteres numéricos e alfabéticos para inserir os símbolos e a tecla &Shift; para aplicar as marcações.</para
 ></answer>
 </qandaentry>
 <qandaentry>
@@ -798,7 +878,7 @@
 ></question>
  <answer
 ><para
->O &kappname; não tem esta funcionalidade.</para
+>O &ksudoku; não tem esta funcionalidade.</para
 ></answer>
 </qandaentry>
 <!--Please add more Q&As if needed-->
@@ -825,7 +905,7 @@
 			<para
 >Ativa ou desativa a opção para imprimir mais de um quebra-cabeça por página, desde que seja possível.</para>
 			<para
->Se esta opção estiver assinalada, os puzzles serão impressos quando não couber mais nenhum na página ou quando o &kappname; terminar. Caso contrário, será impresso um puzzle imediatamente.</para>
+>Se esta opção estiver assinalada, os puzzles serão impressos quando não couber mais nenhum na página ou quando o &ksudoku; terminar. Caso contrário, será impresso um puzzle imediatamente.</para>
 			<para
 >Os puzzles em três dimensões não podem ser impressos.</para>
 			</listitem>
@@ -837,7 +917,7 @@
 ></term>
 			<listitem
 ><para
->Ativa ou desativa a opção de realce do &kappname; para os quebra-cabeças bidimensionais.</para
+>Ativa ou desativa a opção de realce do &ksudoku; para os quebra-cabeças bidimensionais.</para
 ></listitem>
 		</varlistentry>
 		<varlistentry>
@@ -857,7 +937,17 @@
 ></term>
 			<listitem
 ><para
->Ativa ou desativa a opção de realce do &kappname; para os quebra-cabeças tridimensionais.</para
+>Ativa ou desativa a opção de realce do &ksudoku; para os quebra-cabeças tridimensionais.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>Tamanho do quebra-cabeças Mathdoku (3-9)</guilabel
+></term>
+			<listitem
+><para
+>Escolha um tamanho para os quebra-cabeças Mathdoku, de 3 (muito fácil) a 9 (muito difícil), sendo o tamanho 6 o padrão.</para
 ></listitem>
 		</varlistentry>
 		<varlistentry>
@@ -886,7 +976,7 @@
 > <!-- do not change this! -->
 
 <para
->&kappname; </para>
+>&ksudoku; </para>
 
 <!--List all the copyright holders here-->
 <para
@@ -908,7 +998,7 @@
 
 <para
 >Novos algoritmos de resolução e geração 2011 David Bau, <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
-> veja a página Web.</ulink
+> veja o site.</ulink
 ></para>
 
 <para
@@ -924,7 +1014,7 @@
 ></para>
 
 <para
->Direitos autorais da documentação 2011 Ian Wadham <email
+>Direitos autorais da documentação 2011-2020 Ian Wadham <email
 >iandw.au@gmail.com</email
 ></para>
 
@@ -935,19 +1025,6 @@
 >alvarenga@kde.org</email
 ></para
 > &underFDL; &underGPL; </chapter>
-
-<appendix id="installation">
-<title
->Instalação</title>
-
-&install.intro.documentation;
-
-
-<sect1 id="Compilation">
-<title
->Compilação e instalação</title
->&install.compile.documentation; </sect1>
-</appendix>
 
 &documentation.index;
 </book>
