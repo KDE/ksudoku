@@ -5,20 +5,21 @@
 # SPDX-FileCopyrightText: 2011, 2012 Frederik Schwarzer <schwarzer@kde.org>
 # SPDX-FileCopyrightText: 2012 Jonas Schürmann <jonasschuermann@aol.de>
 # SPDX-FileCopyrightText: 2024, 2025 Alois Spitzbart <spitz234@hotmail.com>
+# SPDX-FileCopyrightText: 2025 Philipp Kiemle <l10n.daphipz@fastmail.de>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2025-10-26 20:15+0100\n"
-"Last-Translator: Alois Spitzbart <spitz234@hotmail.com>\n"
+"PO-Revision-Date: 2025-12-26 20:42+0100\n"
+"Last-Translator: Philipp Kiemle <l10n.daphipz@fastmail.de>\n"
 "Language-Team: German <kde-i18n-de@kde.org>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Lokalize 25.08.1\n"
+"X-Generator: Lokalize 25.08.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -71,7 +72,7 @@ msgid ""
 msgstr ""
 "Dieses Rätsel kann allein durch Logik gelöst werden (ohne zu raten).\n"
 "\n"
-"Der interne Schwierigkeitsgrad liegt bei %1 wobei zu Beginn %2 Felder "
+"Der interne Schwierigkeitsgrad liegt bei %1, wobei zu Beginn %2 Felder "
 "vorgegeben sowie %3 Felder auszufüllen sind."
 
 #: src/generator/sudokuboard.cpp:227
@@ -89,7 +90,7 @@ msgstr ""
 "Eingaben wieder zurückzunehmen. Das erste Raten ist nach dem Ausfüllen von "
 "%2 Feldern erforderlich.\n"
 "\n"
-"Der interne Schwierigkeitsgrad liegt bei %3 wobei zu Beginn %4 Felder "
+"Der interne Schwierigkeitsgrad liegt bei %3, wobei zu Beginn %4 Felder "
 "vorgegeben sowie %5 Felder auszufüllen sind."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
@@ -170,7 +171,7 @@ msgstr "Hervorhebungen bei 3D-Rätseln anzeigen"
 #: src/gui/configgame.ui:150
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
-msgstr "MathDoku-Rätselgröße (3-9)"
+msgstr "MathDoku-Rätselgröße (3–9)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/configgame.ui:180
@@ -884,7 +885,7 @@ msgstr "Killer-Sudoku-Block"
 #: src/gui/ksudokugame.cpp:423
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
-msgstr "Das von Ihnen ausgewählte Feld wird bereits in einem Block benutzt."
+msgstr "Das von Ihnen ausgewählte Feld wird bereits in einem Block verwendet."
 
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
