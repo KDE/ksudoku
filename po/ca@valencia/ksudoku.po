@@ -724,7 +724,7 @@ msgstr "Temps transcorregut:"
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr "S'ha produït un error en carregar el joc"
+msgstr "S'ha produït un error mentre es carregava el joc"
 
 #: src/gui/ksudoku.cpp:754
 #, kde-format
@@ -764,7 +764,7 @@ msgstr "Reinicia el joc"
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
-msgstr "S'ha produït un error en escriure en el fitxer"
+msgstr "S'ha produït un error mentre s'escrivia al fitxer"
 
 #: src/gui/ksudoku.cpp:841
 #, kde-format
@@ -1199,7 +1199,7 @@ msgstr "KSudoku"
 #: src/main.cpp:49
 #, kde-format
 msgid "KSudoku - Sudokus and more"
-msgstr "KSudoku - Sudokus i més"
+msgstr "KSudoku - Sudoku i més"
 
 #: src/main.cpp:51
 #, kde-format
