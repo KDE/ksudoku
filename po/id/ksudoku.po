@@ -1,41 +1,36 @@
-# translation of ksudoku to Romanian
-# Copyright (C) 2008 This_file_is_part_of_KDE
+# Copyright (C) 2025 This file is copyright:
 # This file is distributed under the same license as the ksudoku package.
-# Laurenţiu Buzdugan <lbuz@rolix.org>, 2008".
-# SPDX-FileCopyrightText: 2008, 2009, 2013, 2026 Sergiu Bivol <sergiu@cip.md>
-# Cristian Oneț <onet.cristian@gmail.com>, 2011.
+# SPDX-FileCopyrightText: 2025 Wantoyo <wantoyek@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2026-01-28 23:30+0000\n"
-"Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
-"Language-Team: Romanian <kde-i18n-ro@kde.org>\n"
-"Language: ro\n"
+"PO-Revision-Date: 2025-05-14 19:12+0700\n"
+"Last-Translator: Wantoyo <wantoyek@gmail.com>\n"
+"Language-Team: https://t.me/Localizations_KDE_Indonesia\n"
+"Language: id\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n==1 ? 0 : (n==0 || (n%100 > 0 && n%100 < "
-"20)) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.08.1\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 25.04.0\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Sergiu Bivol"
+msgstr "Wantoyo"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sergiu@cip.md"
+msgstr "wantoyekwantoyek@gmail.com"
 
 #: src/generator/sudokuboard.cpp:196 src/generator/sudokuboard.cpp:225
-#, fuzzy, kde-format
-#| msgid "%"
+#, kde-format
 msgid "%1"
-msgstr "%"
+msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
 #, kde-format
@@ -80,10 +75,9 @@ msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:43
-#, fuzzy, kde-format
-#| msgid "Highlight the current row, column and box in different colors"
+#, kde-format
 msgid "Highlight the row, column and block that contain the selected cell"
-msgstr "Evidențiază rîndul, coloana și celula curentă în diferite culori"
+msgstr ""
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:46
@@ -95,10 +89,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:49
-#, fuzzy, kde-format
-#| msgid "Show highlights"
+#, kde-format
 msgid "Show highlights in 2-D puzzles"
-msgstr "Afișează evidențieri"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
@@ -119,16 +112,15 @@ msgstr ""
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
 #: src/gui/configgame.ui:69 src/gui/configgame.ui:72
-#, fuzzy, kde-format
-#| msgid "Highlight cells which values are against the rules in red"
+#, kde-format
 msgid "Highlight in red any cells whose values break the Sudoku rules."
-msgstr "Evidențiază celulele ale căror valori contravin regulilor în roșu"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowErrors)
 #: src/gui/configgame.ui:75
 #, kde-format
 msgid "Show errors"
-msgstr "Afișare erori"
+msgstr ""
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights3D)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowHighlights3D)
@@ -139,10 +131,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
 #: src/gui/configgame.ui:88
-#, fuzzy, kde-format
-#| msgid "Show highlights"
+#, kde-format
 msgid "Show highlights in 3-D puzzles"
-msgstr "Afișează evidențieri"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/configgame.ui:150
@@ -247,12 +238,12 @@ msgstr ""
 #: src/gui/gamevariants.cpp:281 src/gui/gamevariants.cpp:338
 #, kde-format
 msgid "Configuration not yet implemented"
-msgstr "Configurație neimplementată încă"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Semua Berkas (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -261,165 +252,162 @@ msgid ""
 "\n"
 "Enable \"Show errors\" in the settings to highlight them."
 msgstr ""
-"Scuze, soluția conține greșeli.\n"
-"\n"
-"Activați „Arată erorile” în configurări pentru a le evidenția."
 
 #: src/gui/ksudoku.cpp:106
 #, kde-format
 msgid "Congratulations! You made it in 1 second. With some tricks."
 msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
-msgstr[0] "Felicitări! V-ați isprăvit în 1 secundă. Cu unele șiretlicuri."
-msgstr[1] "Felicitări! V-ați isprăvit în %1 secunde. Cu unele șiretlicuri."
-msgstr[2] "Felicitări! V-ați isprăvit în %1 de secunde. Cu unele șiretlicuri."
+msgstr[0] ""
+"Selamat! Anda menyelesaikannya dalam waktu sedetik. Dengan beberapa trik."
+msgstr[1] ""
+"Selamat! Anda menyelesaikannya dalam waktu %1 detik. Dengan beberapa trik."
 
 #: src/gui/ksudoku.cpp:108
 #, kde-format
 msgid "Congratulations! You made it in 1 minute. With some tricks."
 msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
-msgstr[0] "Felicitări! V-ați isprăvit în 1 minut. Cu unele șiretlicuri."
-msgstr[1] "Felicitări! V-ați isprăvit în %1 minute. Cu unele șiretlicuri."
-msgstr[2] "Felicitări! V-ați isprăvit în %1 de minute. Cu unele șiretlicuri."
+msgstr[0] ""
+"Selamat! Anda menyelesaikannya dalam waktu semenit. Dengan beberapa trik."
+msgstr[1] ""
+"Selamat! Anda menyelesaikannya dalam waktu %1 menit. Dengan beberapa trik."
 
 #: src/gui/ksudoku.cpp:110 src/gui/ksudoku.cpp:117 src/gui/ksudoku.cpp:124
 #, kde-format
 msgid "1 minute"
 msgid_plural "%1 minutes"
-msgstr[0] "1 minut"
-msgstr[1] "%1 minute"
-msgstr[2] "%1 de minute"
+msgstr[0] "Semenit"
+msgstr[1] "%1 menit"
 
 #: src/gui/ksudoku.cpp:110 src/gui/ksudoku.cpp:117 src/gui/ksudoku.cpp:124
 #, kde-format
 msgid "1 second"
 msgid_plural "%1 seconds"
-msgstr[0] "1 secundă"
-msgstr[1] "%1 secunde"
-msgstr[2] "%1 de secunde"
+msgstr[0] "sedetik"
+msgstr[1] "%1 detik"
 
 #: src/gui/ksudoku.cpp:110
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With some tricks."
-msgstr "Felicitări! V-ați isprăvit în %1 și %2. Cu unele șiretlicuri."
+msgstr ""
+"Selamat! Anda menyelesaikannya dalam waktu %1 dan %2. Dengan beberapa trik."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Felicitări! V-ați isprăvit în 1 secundă. Cu unele șiretlicuri."
-msgstr[1] "Felicitări! V-ați isprăvit în %1 secunde. Cu unele șiretlicuri."
-msgstr[2] "Felicitări! V-ați isprăvit în %1 de secunde. Cu unele șiretlicuri."
+msgstr[0] ""
+"Selamat! Anda menyelesaikannya dalam waktu sedetik. Dengan setidaknya satu "
+"jeda."
+msgstr[1] ""
+"Selamat! Anda menyelesaikannya dalam waktu %1 detik. Dengan setidaknya 1 "
+"jeda."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Felicitări! V-ați isprăvit în 1 minut. Cu unele șiretlicuri."
-msgstr[1] "Felicitări! V-ați isprăvit în %1 minute. Cu unele șiretlicuri."
-msgstr[2] "Felicitări! V-ați isprăvit în %1 de minute. Cu unele șiretlicuri."
+msgstr[0] ""
+"Selamat! Anda menyelesaikannya dalam waktu semenit. Dengan setidaknya satu "
+"jeda."
+msgstr[1] ""
+"Selamat! Anda menyelesaikannya dalam waktu %1 menit. Dengan setidaknya 1 "
+"jeda."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Felicitări! V-ați isprăvit în %1 și %2. Cu unele șiretlicuri."
+msgstr ""
+"Selamat! Anda menyelesaikannya dalam waktu %1 an %2. Dengan setidaknya 1 "
+"jeda."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
 msgid "Congratulations! You made it in 1 second."
 msgid_plural "Congratulations! You made it in %1 seconds."
-msgstr[0] "Felicitări! V-ați isprăvit în 1 secundă."
-msgstr[1] "Felicitări! V-ați isprăvit în %1 secunde."
-msgstr[2] "Felicitări! V-ați isprăvit în %1 de secunde."
+msgstr[0] "Selamat! Anda menyelesaikannya dalam waktu sedetik."
+msgstr[1] "Selamat! Anda menyelesaikannya dalam waktu %1 detik."
 
 #: src/gui/ksudoku.cpp:122
 #, kde-format
 msgid "Congratulations! You made it in 1 minute."
 msgid_plural "Congratulations! You made it in %1 minutes."
-msgstr[0] "Felicitări! V-ați isprăvit în 1 minut."
-msgstr[1] "Felicitări! V-ați isprăvit în %1 minute."
-msgstr[2] "Felicitări! V-ați isprăvit în %1 de minute."
+msgstr[0] "Selamat! Anda menyelesaikannya dalam waktu semenit."
+msgstr[1] "Selamat! Anda menyelesaikannya dalam waktu %1 menit."
 
 #: src/gui/ksudoku.cpp:124
 #, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2."
-msgstr "Felicitări! V-ați isprăvit în %1 și %2."
+msgstr "Selamat! Anda menyelesaikannya dalam waktu %1 dan %2."
 
 #: src/gui/ksudoku.cpp:208
 #, kde-format
 msgid "Sudoku Standard (9x9)"
-msgstr "Sudoku Standard (9x9)"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:209
 #, kde-format
 msgid "The classic and fashionable game"
-msgstr "Jocul clasic și elegant"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:212
 #, kde-format
 msgid "Roxdoku 9 (3x3x3)"
-msgstr "Roxdoku 9 (3x3x3)"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:213
-#, fuzzy, kde-format
-#| msgid "The Rox 3D sudoku"
+#, kde-format
 msgid "The Rox 3D Sudoku"
-msgstr "Sudoku Rox 3D"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:235
 #, kde-format
 msgid "Missing Variant Name"
-msgstr "Denumire variantă lipsă"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:251
 #, kde-format
 msgid "Sudoku 16x16"
-msgstr "Sudoku 16x16"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:252
 #, kde-format
 msgid "Sudoku with 16 symbols"
-msgstr "Sudoku cu 16 simboluri"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:254
 #, kde-format
 msgid "Sudoku 25x25"
-msgstr "Sudoku 25x25"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:255
 #, kde-format
 msgid "Sudoku with 25 symbols"
-msgstr "Sudoku cu 25 de simboluri"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:258
 #, kde-format
 msgid "Roxdoku 16 (4x4x4)"
-msgstr "Roxdoku 16 (4x4x4)"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:259
 #, kde-format
 msgid "The Rox 3D sudoku with 16 symbols"
-msgstr "Sudoku Rox 3D cu 16 simboluri"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:261
 #, kde-format
 msgid "Roxdoku 25 (5x5x5)"
-msgstr "Roxdoku 25 (5x5x5)"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:262
 #, kde-format
 msgid "The Rox 3D sudoku with 25 symbols"
-msgstr "Sudoku Rox 3D cu 25 de simboluri"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:314
 #, kde-format
@@ -503,7 +491,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:481
 #, kde-format
 msgid "The puzzle you entered contains some errors."
-msgstr "Varianta pe care ați introdus-o conține unele erori."
+msgstr ""
 
 #: src/gui/ksudoku.cpp:494
 #, kde-format
@@ -513,17 +501,15 @@ msgid ""
 msgstr ""
 
 #: src/gui/ksudoku.cpp:497 src/gui/ksudoku.cpp:504 src/gui/ksudoku.cpp:510
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
-msgstr "Joacă varianta"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:502
-#, fuzzy, kde-format
-#| msgid "The Puzzle you entered has multiple solutions."
+#, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
-msgstr "Puzzle-ul introdus are o soluții multiple."
+msgstr ""
 
 #: src/gui/ksudoku.cpp:507
 #, kde-format
@@ -535,61 +521,61 @@ msgstr ""
 #: src/gui/ksudoku.cpp:513
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
-msgstr "Doriți să jucați varianta acum?"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:514
 #, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
-msgstr "Joacă varianta"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:515
 #, kde-format
 msgctxt "@action:button"
 msgid "Play"
-msgstr "Joacă"
+msgstr "Mainkan"
 
 #: src/gui/ksudoku.cpp:556
 #, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
-msgstr ""
+msgstr "Fungsikan Semua Pesan"
 
 #: src/gui/ksudoku.cpp:573
 #, kde-format
 msgctxt "@action"
 msgid "Check"
-msgstr "Verifică"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:589
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
-msgstr "Diabolică"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:591
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
-msgstr "Nelimitată"
+msgstr "Tak terbatas"
 
 #: src/gui/ksudoku.cpp:602
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
-msgstr "Dificultate:"
+msgstr "Tingkat Kesulitan:"
 
 #: src/gui/ksudoku.cpp:606
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
-msgstr "Simetrie:"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:610
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
-msgstr "Simetrie"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:612
 #, kde-format
@@ -600,25 +586,25 @@ msgstr ""
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
-msgstr "Diagonală"
+msgstr "Diagonal"
 
 #: src/gui/ksudoku.cpp:615
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
-msgstr "Centrală"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:616
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
-msgstr "Stînga-dreapta"
+msgstr "Kiri-Kanan"
 
 #: src/gui/ksudoku.cpp:617
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
-msgstr "Spirală"
+msgstr "Spiral"
 
 #: src/gui/ksudoku.cpp:618
 #, kde-format
@@ -630,74 +616,74 @@ msgstr ""
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
-msgstr "Alegere aleatorie"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:620
 #, kde-format
 msgid "No Symmetry"
-msgstr "Fără simetrie"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:629
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr "Timp scurs:"
+msgstr "Waktu Berlalu:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr "Eroare la încărcarea jocului"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:754
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
-msgstr "Sigur doriți să încheiați acest joc pentru a porni unul nou?"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:755
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
-msgstr "Joc nou"
+msgstr "Permainan Baru"
 
 #: src/gui/ksudoku.cpp:756
 #, kde-format
 msgctxt "@action:button"
 msgid "New Game"
-msgstr "Joc nou"
+msgstr "Permainan Baru"
 
 #: src/gui/ksudoku.cpp:772
 #, kde-format
 msgid "Do you really want to restart this game?"
-msgstr "Sigur doriți să reîncepeți acest joc?"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:773
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
-msgstr "Reîncepe jocul"
+msgstr "Mulai Ulang Permainan"
 
 #: src/gui/ksudoku.cpp:774
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
-msgstr "Reîncepe jocul"
+msgstr "Mulai Ulang Permainan"
 
 #: src/gui/ksudoku.cpp:830
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
-msgstr "Eroare la scrierea fișierului"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:841
 #, kde-format
 msgid "Game_"
-msgstr "Joc_"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:845
 #, kde-format
 msgid "Save Game"
-msgstr "Salvează jocul"
+msgstr "Simpan Permainan"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
@@ -708,13 +694,13 @@ msgstr ""
 #, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
-msgstr "Joc"
+msgstr "Permainan"
 
 #: src/gui/ksudoku.cpp:895
 #, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
-msgstr "Tematică"
+msgstr "Tema"
 
 #: src/gui/ksudoku.cpp:927
 #, kde-format
@@ -731,7 +717,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Warning"
-msgstr "Avertisment"
+msgstr "Peringatan"
 
 #: src/gui/ksudoku.cpp:974
 #, kde-format
@@ -746,7 +732,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr "Activează"
+msgstr "Fungsikan"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
@@ -758,13 +744,13 @@ msgstr ""
 #: src/gui/ksudoku.kcfg:45
 #, kde-format
 msgid "The graphical theme to be used."
-msgstr "Tematica grafică de utilizat."
+msgstr "Tema grafik yang akan digunakan."
 
 #. i18n: ectx: label, entry (Symbols), group (Themes)
 #: src/gui/ksudoku.kcfg:48
 #, kde-format
 msgid "Select the themes you want to use"
-msgstr "Alegeți tematicile pe care le doriți"
+msgstr ""
 
 #: src/gui/ksudokugame.cpp:375
 #, kde-format
@@ -855,31 +841,31 @@ msgstr ""
 #: src/gui/ksudokuui.rc:10
 #, kde-format
 msgid "&Game"
-msgstr "&Joc"
+msgstr "&Permainan"
 
 #. i18n: ectx: Menu (move)
 #: src/gui/ksudokuui.rc:24
 #, kde-format
 msgid "&Move"
-msgstr "&Mutare"
+msgstr "&Pindah"
 
 #. i18n: ectx: Menu (help)
 #: src/gui/ksudokuui.rc:39
 #, kde-format
 msgid "&Help"
-msgstr "&Ajutor"
+msgstr "&Bantuan"
 
 #. i18n: ectx: ToolBar (mainToolBar)
 #: src/gui/ksudokuui.rc:47
 #, kde-format
 msgid "Main Toolbar"
-msgstr "Bara de unelte principală"
+msgstr "Bilah Alat Utama"
 
 #. i18n: ectx: ToolBar (actionsToolbar)
 #: src/gui/ksudokuui.rc:55
 #, kde-format
 msgid "Actions Toolbar"
-msgstr "Bara de acțiuni"
+msgstr ""
 
 #: src/gui/puzzleprinter.cpp:62
 #, kde-format
@@ -913,85 +899,82 @@ msgid "Unable to download file: URL is empty."
 msgstr ""
 
 #: src/gui/serializer.cpp:405
-#, fuzzy, kde-format
-#| msgid "Cannot load file."
+#, kde-format
 msgid "Unable to open file."
-msgstr "Fișierul nu poate fi încărcat."
+msgstr "Tidak dapat membuka file."
 
 #: src/gui/serializer.cpp:412 src/gui/serializer.cpp:445
 #, kde-format
 msgid "Cannot read XML file on line %1"
-msgstr "Fișierul XML nu poate fi citit la linia %1"
+msgstr ""
 
 #: src/gui/serializer.cpp:439
-#, fuzzy, kde-format
-#| msgid "Cannot load file."
+#, kde-format
 msgid "Unable to download file."
-msgstr "Fișierul nu poate fi încărcat."
+msgstr ""
 
 #: src/gui/serializer.cpp:679
 #, kde-format
 msgid "Unable to create temporary file."
-msgstr ""
+msgstr "Tidak dapat membuat berkas temporer."
 
 #: src/gui/serializer.cpp:692
-#, fuzzy, kde-format
-#| msgid "Cannot load file."
+#, kde-format
 msgid "Unable to upload file."
-msgstr "Fișierul nu poate fi încărcat."
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:54
 #, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
-msgstr "Alege %1 (%2)"
+msgstr "Pilih %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
 #, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
-msgstr "Introdu %1 (%2)"
+msgstr "Memasukkan %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
 #, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
-msgstr "Marchează %1 (%2)"
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:95
 #, kde-format
 msgctxt "@action"
 msgid "Move Up"
-msgstr "Mută în sus"
+msgstr "Pindah Naik"
 
 #: src/gui/views/gameactions.cpp:102
 #, kde-format
 msgctxt "@action"
 msgid "Move Down"
-msgstr "Mută în jos"
+msgstr "Pindah Turun"
 
 #: src/gui/views/gameactions.cpp:109
 #, kde-format
 msgctxt "@action"
 msgid "Move Left"
-msgstr "Mută la stânga"
+msgstr "Pindah Kiri"
 
 #: src/gui/views/gameactions.cpp:116
 #, kde-format
 msgctxt "@action"
 msgid "Move Right"
-msgstr "Mută la dreapta"
+msgstr "Pindah Kanan"
 
 #: src/gui/views/gameactions.cpp:123
 #, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
-msgstr "Curăță celula"
+msgstr ""
 
 #: src/gui/welcomescreen.cpp:133
 #, kde-format
 msgid "GetNewVariant not implemented"
-msgstr "GetNewVariant neimplementat"
+msgstr ""
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:163
 #: src/gui/welcomescreen.cpp:179
@@ -1002,11 +985,10 @@ msgstr ""
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
-#| msgid "Cannot load file."
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
-msgstr "Fișierul nu poate fi încărcat."
+msgstr ""
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
@@ -1028,27 +1010,25 @@ msgstr ""
 #: src/gui/welcomescreen.ui:17
 #, kde-format
 msgid "Choose your Game"
-msgstr "Alegeți jocul"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, getNewGameButton)
 #: src/gui/welcomescreen.ui:28
 #, kde-format
 msgid "Get New"
-msgstr "Obține noi"
+msgstr "Dapatkan Baru"
 
 #. i18n: ectx: property (text), widget (QPushButton, startEmptyButton)
 #: src/gui/welcomescreen.ui:48
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgid "Enter In A Puzzle"
-msgstr "Joacă varianta"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
 #: src/gui/welcomescreen.ui:55
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgid "Generate A Puzzle"
-msgstr "Joacă varianta"
+msgstr ""
 
 #: src/logic/puzzle.cpp:86
 #, kde-format
@@ -1062,25 +1042,22 @@ msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr ""
 
 #: src/logic/puzzle.cpp:89
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
-msgstr "Î&ncercați din nou"
+msgstr "&Coba lagi"
 
 #: src/logic/puzzle.cpp:102
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
-msgstr "Nivel de dificultate"
+msgstr "Level Tingkat Kesulitan"
 
 #: src/logic/puzzle.cpp:104
-#, fuzzy, kde-format
-#| msgid "&Retry"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
-msgstr "&Reîncearcă"
+msgstr "&Coba Lagi"
 
 #: src/main.cpp:47
 #, kde-format
@@ -1090,37 +1067,37 @@ msgstr "KSudoku"
 #: src/main.cpp:49
 #, kde-format
 msgid "KSudoku - Sudokus and more"
-msgstr "KSudoku - Sudoku și multe altele"
+msgstr ""
 
 #: src/main.cpp:51
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
-msgstr "(c) 2005-2007 Autorii KSudoku"
+msgstr ""
 
 #: src/main.cpp:53
 #, kde-format
 msgid "Francesco Rossi"
-msgstr "Francesco Rossi"
+msgstr ""
 
 #: src/main.cpp:53
 #, kde-format
 msgid "KSudoku Author"
-msgstr "Autor KSudoku"
+msgstr ""
 
 #: src/main.cpp:54
 #, kde-format
 msgid "Johannes Bergmeier"
-msgstr "Johannes Bergmeier"
+msgstr ""
 
 #: src/main.cpp:54
 #, kde-format
 msgid "Maintainer"
-msgstr "Responsabil"
+msgstr "Pemelihara"
 
 #: src/main.cpp:55
 #, kde-format
 msgid "Ian Wadham"
-msgstr ""
+msgstr "Ian Wadham"
 
 #: src/main.cpp:55
 #, kde-format
@@ -1130,17 +1107,17 @@ msgstr ""
 #: src/main.cpp:56
 #, kde-format
 msgid "Mick Kappenburg"
-msgstr "Mick Kappenburg"
+msgstr ""
 
 #: src/main.cpp:56
 #, kde-format
 msgid "Printing and export of 0.4"
-msgstr "Tipărire și export 0.4"
+msgstr ""
 
 #: src/main.cpp:57
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
-msgstr "Mulțumiri lui NeHe pentru îndrumare OpenGL"
+msgstr ""
 
 #: src/main.cpp:58
 #, kde-format
@@ -1157,218 +1134,4 @@ msgstr ""
 #: src/main.cpp:66
 #, kde-format
 msgid "Document to open"
-msgstr "Document de deschis"
-
-#, fuzzy
-#~| msgid "&Accept"
-#~ msgctxt "@action:button"
-#~ msgid "&Accept"
-#~ msgstr "&Acceptă"
-
-#~ msgid "Could not load game."
-#~ msgstr "Jocul nu a putut fi încărcat."
-
-#, fuzzy
-#~| msgctxt "Game Section in Config"
-#~| msgid "Game"
-#~ msgctxt "button label"
-#~ msgid "New Game"
-#~ msgstr "Joc"
-
-#~ msgctxt "button label"
-#~ msgid "Restart Game"
-#~ msgstr "Reinițializează jocul"
-
-#~ msgid "Open Location"
-#~ msgstr "Deschide locația"
-
-#~ msgid "&OK"
-#~ msgstr "&OK"
-
-#~ msgid "Home Page"
-#~ msgstr "Pagina de pornire"
-
-#~ msgid "KSudoku - Sudoku games and more"
-#~ msgstr "KSudoku - Jocuri Sudoku și multe altele"
-
-#~ msgid "Sorry, no solutions have been found."
-#~ msgstr "Scuze, nu au fost găsite soluții."
-
-#~ msgid "The Puzzle you entered has only one solution."
-#~ msgstr "Puzzle-ul introdus are o singură soluție."
-
-#~ msgid "A0"
-#~ msgstr "A0"
-
-#~ msgid "A1"
-#~ msgstr "A1"
-
-#~ msgid "A2"
-#~ msgstr "A2"
-
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgid "A4"
-#~ msgstr "A4"
-
-#~ msgid "A5"
-#~ msgstr "A5"
-
-#~ msgid "A6"
-#~ msgstr "A6"
-
-#~ msgid "A7"
-#~ msgstr "A7"
-
-#~ msgid "A8"
-#~ msgstr "A8"
-
-#~ msgid "A9"
-#~ msgstr "A9"
-
-#~ msgid "B0"
-#~ msgstr "B0"
-
-#~ msgid "B1"
-#~ msgstr "B1"
-
-#~ msgid "B10"
-#~ msgstr "B10"
-
-#~ msgid "B2"
-#~ msgstr "B2"
-
-#~ msgid "B3"
-#~ msgstr "B3"
-
-#~ msgid "B4"
-#~ msgstr "B4"
-
-#~ msgid "B5"
-#~ msgstr "B5"
-
-#~ msgid "B6"
-#~ msgstr "B6"
-
-#~ msgid "B7"
-#~ msgstr "B7"
-
-#~ msgid "B8"
-#~ msgstr "B8"
-
-#~ msgid "B9"
-#~ msgstr "B9"
-
-#~ msgid "C5E"
-#~ msgstr "C5E"
-
-#~ msgid "Comm10E"
-#~ msgstr "Comm10E"
-
-#~ msgid "DLE"
-#~ msgstr "DLE"
-
-#~ msgid "Folio"
-#~ msgstr "Folio"
-
-#~ msgid "Ledger"
-#~ msgstr "Ledger"
-
-#~ msgid "Legal"
-#~ msgstr "Legal"
-
-#~ msgid "Letter"
-#~ msgstr "Scrisoare"
-
-#~ msgid "Tabloid"
-#~ msgstr "Tabloid"
-
-#~ msgid "Custom"
-#~ msgstr "Personalizat"
-
-#~ msgid "Sorry. I am not able to export this puzzle type (yet)"
-#~ msgstr "Scuze, nu pot exporta acest tip de variantă (deocamdată)"
-
-#~ msgid "Export Ksudoku"
-#~ msgstr "Export Ksudoku"
-
-#~ msgid ""
-#~ "A document with this name already exists.\n"
-#~ "Do you want to overwrite it?"
-#~ msgstr ""
-#~ "Un document cu această denumire există deja.\n"
-#~ "Îl suprascrieți?"
-
-#~ msgid "1 puzzle available"
-#~ msgid_plural "%1 puzzles available"
-#~ msgstr[0] "1 variantă disponibilă"
-#~ msgstr[1] "%1 variante disponibile"
-#~ msgstr[2] "%1 de variante disponibile"
-
-#~ msgid "generating puzzle %1 of %2"
-#~ msgstr "generare variantă %1 din %2"
-
-#~ msgid "KSudoku options"
-#~ msgstr "Opțiuni KSudoku"
-
-#~ msgid "Ksudoku Export"
-#~ msgstr "Export KSudoku"
-
-#~ msgid "Game Count"
-#~ msgstr "Contor jocuri"
-
-#~ msgid "Spacing"
-#~ msgstr "Spațiere"
-
-#~ msgid "Output Size (Save only)"
-#~ msgstr "Dimensiune ieșire (numai salvare)"
-
-#~ msgid "Custom Size (mm)"
-#~ msgstr "Dimensiune personalizată (mm)"
-
-#~ msgid "Lock"
-#~ msgstr "Blochează"
-
-#~ msgid "View (and generate) game data"
-#~ msgstr "Vizualizează (și generează) datele jocului"
-
-#~ msgid "Use current game"
-#~ msgstr "Utilizează jocul curent"
-
-#~ msgid "Start Empty"
-#~ msgstr "Pornește gol"
-
-#~ msgid "Configure..."
-#~ msgstr "Configurare..."
-
-#~ msgid "Easy"
-#~ msgstr "Ușor"
-
-#~ msgid "Hard"
-#~ msgstr "Dificil"
-
-#~ msgctxt "list arg2 consists of arg1 symbols: arg3"
-#~ msgid "<html><h4>%2</h4>consists of 1 symbol:<br/>%3</html>"
-#~ msgid_plural "<html><h4>%2</h4>consists of %1 symbols:<br/>%3</html>"
-#~ msgstr[0] "<html><h4>%2</h4>e compusă din 1 simbol:<br/>%3</html>"
-#~ msgstr[1] "<html><h4>%2</h4>e compusă din %1 simboluri:<br/>%3</html>"
-#~ msgstr[2] "<html><h4>%2</h4>e compusă din %1 de simboluri:<br/>%3</html>"
-
-#~ msgid "Symbol Themes"
-#~ msgstr "Tematici de simboluri"
-
-#~ msgid "Simple Forms"
-#~ msgstr "Forme simple"
-
-#~ msgid "Dices"
-#~ msgstr "Zaruri"
-
-#~ msgid "Digits"
-#~ msgstr "Cifre"
-
-#~ msgid "Small Letters"
-#~ msgstr "Litere mici"
-
-#~ msgid "Capital Letters"
-#~ msgstr "Majuscule"
+msgstr "Dokumen untuk dibuka"
