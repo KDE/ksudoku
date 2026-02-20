@@ -28,10 +28,9 @@ msgid "Your emails"
 msgstr "kscanne@gmail.com"
 
 #: src/generator/sudokuboard.cpp:196 src/generator/sudokuboard.cpp:225
-#, fuzzy, kde-format
-#| msgid "%"
+#, kde-format
 msgid "%1"
-msgstr "%"
+msgstr ""
 
 #: src/generator/sudokuboard.cpp:200
 #, kde-format
@@ -309,38 +308,26 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Comhghairdeas! Chríochnaigh tú é i %1 agus %2.  Le cleasa."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Comhghairdeas! Chríochnaigh tú é i 1 soicind.  Le cleasa."
-msgstr[1] "Comhghairdeas! Chríochnaigh tú é i %1 shoicind.  Le cleasa."
-msgstr[2] "Comhghairdeas! Chríochnaigh tú é i %1 shoicind.  Le cleasa."
-msgstr[3] "Comhghairdeas! Chríochnaigh tú é i %1 soicind.  Le cleasa."
-msgstr[4] "Comhghairdeas! Chríochnaigh tú é i %1 soicind.  Le cleasa."
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Comhghairdeas! Chríochnaigh tú é i 1 nóiméad.  Le cleasa."
-msgstr[1] "Comhghairdeas! Chríochnaigh tú é i %1 nóiméad.  Le cleasa."
-msgstr[2] "Comhghairdeas! Chríochnaigh tú é i %1 nóiméad.  Le cleasa."
-msgstr[3] "Comhghairdeas! Chríochnaigh tú é i %1 nóiméad.  Le cleasa."
-msgstr[4] "Comhghairdeas! Chríochnaigh tú é i %1 nóiméad.  Le cleasa."
+msgstr[0] ""
+msgstr[1] ""
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Comhghairdeas! Chríochnaigh tú é i %1 agus %2.  Le cleasa."
+msgstr ""
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -525,17 +512,15 @@ msgid ""
 msgstr ""
 
 #: src/gui/ksudoku.cpp:497 src/gui/ksudoku.cpp:504 src/gui/ksudoku.cpp:510
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
-msgstr "Imir an Puzal"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:502
-#, fuzzy, kde-format
-#| msgid "The Puzzle you entered has multiple solutions."
+#, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
-msgstr "Tá níos mó ná aon réiteach amháin ag an bpuzal a d'iontráil tú."
+msgstr ""
 
 #: src/gui/ksudoku.cpp:507
 #, kde-format
@@ -545,24 +530,21 @@ msgid ""
 msgstr ""
 
 #: src/gui/ksudoku.cpp:513
-#, fuzzy, kde-format
-#| msgid "Do you want to play the puzzle now?"
+#, kde-format
 msgid "Do you wish to play the puzzle now?"
-msgstr "An bhfuil fonn ort an puzal a imirt anois?"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:514
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
-msgstr "Imir an Puzal"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:515
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
-msgstr "Seinn"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:556
 #, kde-format
@@ -571,11 +553,10 @@ msgid "Enable All Messages"
 msgstr ""
 
 #: src/gui/ksudoku.cpp:573
-#, fuzzy, kde-format
-#| msgid "Check"
+#, kde-format
 msgctxt "@action"
 msgid "Check"
-msgstr "Seiceáil"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:589
 #, kde-format
@@ -590,18 +571,16 @@ msgid "Unlimited"
 msgstr "Gan teorainn"
 
 #: src/gui/ksudoku.cpp:602
-#, fuzzy, kde-format
-#| msgid "Difficulty"
+#, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
-msgstr "Deacracht"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:606
-#, fuzzy, kde-format
-#| msgid "Symmetry"
+#, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
-msgstr "Siméadracht"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:610
 #, kde-format
@@ -675,28 +654,21 @@ msgstr ""
 "ceann nua a thosú?"
 
 #: src/gui/ksudoku.cpp:755
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "window title"
 msgid "New Game"
-msgstr "Cluiche"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:756
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
-msgstr "Cluiche"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:772
-#, fuzzy, kde-format
-#| msgid "Do you really want to end this game in order to start a new one?"
+#, kde-format
 msgid "Do you really want to restart this game?"
 msgstr ""
-"An bhfuil tú cinnte gur mian leat deireadh a chur leis an gcluiche seo agus "
-"ceann nua a thosú?"
 
 #: src/gui/ksudoku.cpp:773
 #, kde-format
@@ -705,12 +677,10 @@ msgid "Restart Game"
 msgstr "Atosaigh an Cluiche"
 
 #: src/gui/ksudoku.cpp:774
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
-msgstr "Atosaigh an Cluiche"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:830
 #, kde-format
@@ -719,18 +689,14 @@ msgid "Error Writing File"
 msgstr ""
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Cluiche"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Cluiche"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
@@ -738,19 +704,16 @@ msgid "There seems to be no puzzle to print."
 msgstr ""
 
 #: src/gui/ksudoku.cpp:894
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
-msgstr "Cluiche"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:895
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
-msgstr "Téama"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:927
 #, kde-format
@@ -764,11 +727,10 @@ msgid ""
 msgstr ""
 
 #: src/gui/ksudoku.cpp:934
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
-msgstr "Rabhadh"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:974
 #, kde-format
@@ -950,10 +912,9 @@ msgid "Unable to download file: URL is empty."
 msgstr ""
 
 #: src/gui/serializer.cpp:405
-#, fuzzy, kde-format
-#| msgid "Cannot load file."
+#, kde-format
 msgid "Unable to open file."
-msgstr "Ní féidir comhad a luchtú."
+msgstr ""
 
 #: src/gui/serializer.cpp:412 src/gui/serializer.cpp:445
 #, kde-format
@@ -961,10 +922,9 @@ msgid "Cannot read XML file on line %1"
 msgstr "Ní féidir an comhad XML a léamh ar líne %1"
 
 #: src/gui/serializer.cpp:439
-#, fuzzy, kde-format
-#| msgid "Cannot load file."
+#, kde-format
 msgid "Unable to download file."
-msgstr "Ní féidir comhad a luchtú."
+msgstr ""
 
 #: src/gui/serializer.cpp:679
 #, kde-format
@@ -972,66 +932,57 @@ msgid "Unable to create temporary file."
 msgstr ""
 
 #: src/gui/serializer.cpp:692
-#, fuzzy, kde-format
-#| msgid "Cannot load file."
+#, kde-format
 msgid "Unable to upload file."
-msgstr "Ní féidir comhad a luchtú."
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
-msgstr "Roghnaigh %1 (%2)"
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:60
-#, fuzzy, kde-format
-#| msgid "Enter %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
-msgstr "Iontráil %1 (%2)"
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:83
-#, fuzzy, kde-format
-#| msgid "Mark %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
-msgstr "Marcáil %1 (%2)"
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
-#| msgid "Move Up"
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
-msgstr "Bog Suas"
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
-#| msgid "Move Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
-msgstr "Bog Síos"
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
-msgstr "Bog Faoi Chlé"
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
-msgstr "Bog Faoi Dheis"
+msgstr ""
 
 #: src/gui/views/gameactions.cpp:123
-#, fuzzy, kde-format
-#| msgid "Clear Cell"
+#, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
-msgstr "Glan Cill"
+msgstr ""
 
 #: src/gui/welcomescreen.cpp:133
 #, kde-format
@@ -1047,11 +998,10 @@ msgstr ""
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
-#| msgid "Cannot load file."
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
-msgstr "Ní féidir comhad a luchtú."
+msgstr ""
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
@@ -1105,18 +1055,16 @@ msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr ""
 
 #: src/logic/puzzle.cpp:89
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
-msgstr "Déan Iarrach&t Arís"
+msgstr ""
 
 #: src/logic/puzzle.cpp:102
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
-msgstr "Deacracht"
+msgstr ""
 
 #: src/logic/puzzle.cpp:104
 #, kde-format
@@ -1202,258 +1150,3 @@ msgstr ""
 #, kde-format
 msgid "Document to open"
 msgstr "Cáipéis le hoscailt"
-
-#, fuzzy
-#~| msgid "&Accept"
-#~ msgctxt "@action:button"
-#~ msgid "&Accept"
-#~ msgstr "&Glac Leis"
-
-#~ msgid "Could not load game."
-#~ msgstr "Níorbh fhéidir cluiche a luchtú."
-
-#, fuzzy
-#~| msgctxt "Game Section in Config"
-#~| msgid "Game"
-#~ msgctxt "button label"
-#~ msgid "New Game"
-#~ msgstr "Cluiche"
-
-#~ msgctxt "button label"
-#~ msgid "Restart Game"
-#~ msgstr "Atosaigh an Cluiche"
-
-#~ msgid "Open Location"
-#~ msgstr "Oscail Suíomh"
-
-#~ msgid "Home Page"
-#~ msgstr "Leathanach Baile"
-
-#~ msgid "KSudoku - Sudoku games and more"
-#~ msgstr "KSudoku - Cluichí Sudoku agus tuilleadh"
-
-#~ msgid "Sorry, no solutions have been found."
-#~ msgstr "Brón orm, níor aimsíodh réiteach ar bith."
-
-#~ msgid "The Puzzle you entered has only one solution."
-#~ msgstr "Níl ach réiteach amháin ag an bpuzal a d'iontráil tú."
-
-#~ msgid "A0"
-#~ msgstr "A0"
-
-#~ msgid "A1"
-#~ msgstr "A1"
-
-#~ msgid "A2"
-#~ msgstr "A2"
-
-#~ msgid "A3"
-#~ msgstr "A3"
-
-#~ msgid "A4"
-#~ msgstr "A4"
-
-#~ msgid "A5"
-#~ msgstr "A5"
-
-#~ msgid "A6"
-#~ msgstr "A6"
-
-#~ msgid "A7"
-#~ msgstr "A7"
-
-#~ msgid "A8"
-#~ msgstr "A8"
-
-#~ msgid "A9"
-#~ msgstr "A9"
-
-#~ msgid "B0"
-#~ msgstr "B0"
-
-#~ msgid "B1"
-#~ msgstr "B1"
-
-#~ msgid "B10"
-#~ msgstr "B10"
-
-#~ msgid "B2"
-#~ msgstr "B2"
-
-#~ msgid "B3"
-#~ msgstr "B3"
-
-#~ msgid "B4"
-#~ msgstr "B4"
-
-#~ msgid "B5"
-#~ msgstr "B5"
-
-#~ msgid "B6"
-#~ msgstr "B6"
-
-#~ msgid "B7"
-#~ msgstr "B7"
-
-#~ msgid "B8"
-#~ msgstr "B8"
-
-#~ msgid "B9"
-#~ msgstr "B9"
-
-#~ msgid "C5E"
-#~ msgstr "C5E"
-
-#~ msgid "Comm10E"
-#~ msgstr "Comm10E"
-
-#~ msgid "DLE"
-#~ msgstr "DLE"
-
-#~ msgid "Folio"
-#~ msgstr "Fóilió"
-
-#~ msgid "Ledger"
-#~ msgstr "Mórleabhar"
-
-#~ msgid "Legal"
-#~ msgstr "Dlí"
-
-#~ msgid "Letter"
-#~ msgstr "Litir"
-
-#~ msgid "Tabloid"
-#~ msgstr "Tablóid"
-
-#~ msgid "Custom"
-#~ msgstr "Saincheaptha"
-
-#~ msgid "Sorry. I am not able to export this puzzle type (yet)"
-#~ msgstr "Ní féidir puzal den chineál seo a easpórtáil (fós)"
-
-#~ msgid "Export Ksudoku"
-#~ msgstr "Easpórtáil Ksudoku"
-
-#~ msgid ""
-#~ "A document with this name already exists.\n"
-#~ "Do you want to overwrite it?"
-#~ msgstr ""
-#~ "Tá comhad ann cheana agus an t-ainm seo air.\n"
-#~ "An bhfuil fonn ort scríobh air?"
-
-#~ msgid "1 puzzle available"
-#~ msgid_plural "%1 puzzles available"
-#~ msgstr[0] "1 phuzal ar fáil"
-#~ msgstr[1] "%1 phuzal ar fáil"
-#~ msgstr[2] "%1 phuzal ar fáil"
-#~ msgstr[3] "%1 bpuzal ar fáil"
-#~ msgstr[4] "%1 puzal ar fáil"
-
-#~ msgid "generating puzzle %1 of %2"
-#~ msgstr "puzal %1 as %2 á ghiniúint"
-
-#~ msgid "KSudoku options"
-#~ msgstr "Roghanna KSudoku"
-
-#~ msgid "Ksudoku Export"
-#~ msgstr "Easpórtáil Ksudoku"
-
-#~ msgid "Game Count"
-#~ msgstr "Líon na gCluichí"
-
-#~ msgid "Spacing"
-#~ msgstr "Spásáil"
-
-#~ msgid "Output Size (Save only)"
-#~ msgstr "Méid Aschurtha (Sábháil amháin)"
-
-#~ msgid "Custom Size (mm)"
-#~ msgstr "Méid Saincheaptha (mm)"
-
-#~ msgid "Lock"
-#~ msgstr "Cuir Faoi Ghlas"
-
-#~ msgid "View (and generate) game data"
-#~ msgstr "Amharc ar (agus cruthaigh) shonraí cluiche"
-
-#~ msgid "Use current game"
-#~ msgstr "Úsáid an cluiche reatha"
-
-#~ msgid "Start Empty"
-#~ msgstr "Tosaigh Folamh"
-
-#~ msgid "Configure..."
-#~ msgstr "Cumraigh..."
-
-#~ msgid "Easy"
-#~ msgstr "Éasca"
-
-#~ msgid "Hard"
-#~ msgstr "Crua"
-
-#~ msgctxt "list arg2 consists of arg1 symbols: arg3"
-#~ msgid "<html><h4>%2</h4>consists of 1 symbol:<br/>%3</html>"
-#~ msgid_plural "<html><h4>%2</h4>consists of %1 symbols:<br/>%3</html>"
-#~ msgstr[0] "<html>Is é siombail amháin atá i <h4>%2</h4>:<br/>%3</html>"
-#~ msgstr[1] "<html>Is é %1 siombail atá i <h4>%2</h4>:<br/>%3</html>"
-#~ msgstr[2] "<html>Is é %1 siombail atá i <h4>%2</h4>:<br/>%3</html>"
-#~ msgstr[3] "<html>Is é %1 siombail atá i <h4>%2</h4>:<br/>%3</html>"
-#~ msgstr[4] "<html>Is é %1 siombail atá i <h4>%2</h4>:<br/>%3</html>"
-
-#~ msgid "Symbol Themes"
-#~ msgstr "Téamaí Siombailí"
-
-#~ msgid "Simple Forms"
-#~ msgstr "Foirmeacha Simplí"
-
-#~ msgid "Dices"
-#~ msgstr "Díslí"
-
-#~ msgid "Digits"
-#~ msgstr "Digití"
-
-#~ msgid "Small Letters"
-#~ msgstr "Litreacha Beaga"
-
-#~ msgid "Capital Letters"
-#~ msgstr "Ceannlitreacha"
-
-#~ msgid "The Puzzle you entered has only one solution. (Forks required: %1)"
-#~ msgstr ""
-#~ "Níl ach réiteach amháin ag an bpuzal a d'iontráil tú.  (Forcanna de "
-#~ "dhíth: %1)"
-
-#~ msgid "Selected item %1, Time elapsed %2. Press SHIFT to highlight."
-#~ msgstr "Roghnaíodh mír %1, Am imithe %2. Brúigh Shift chun aibhsiú."
-
-#~ msgid ""
-#~ "Selected item %1, Time elapsed %2. Use RMB to pencil-mark(superscript)."
-#~ msgstr ""
-#~ "Roghnaíodh mír %1, Am imithe %2. Úsáid RMB chun nod pionsail a "
-#~ "dhéanamh(forscript)."
-
-#~ msgid ""
-#~ "Selected item %1, Time elapsed %2. Type in a cell to replace that number "
-#~ "in it."
-#~ msgstr ""
-#~ "Roghnaíodh mír %1, Am imithe %2. Clóscríobh i gcill chun uimhir nua a "
-#~ "chur inti."
-
-#~ msgid "BUG: No default color defined, but it is apparently needed"
-#~ msgstr "FABHT: Gan dath réamhshocraithe, ach tá sé de dhíth"
-
-#~ msgid ""
-#~ "Sorry the solution you entered is not correct.\n"
-#~ "If you want to see error check Options->Guided mode please."
-#~ msgstr ""
-#~ "Tá brón orm ach níl do réiteach ceart.\n"
-#~ "Más mian leat an earráid a fheiceáil, féach ar Roghanna->Mód treoraithe."
-
-#~ msgid "Export"
-#~ msgstr "Easpórtáil"
-
-#~ msgid "Sudoku game for KDE"
-#~ msgstr "Cluiche Sudoku le haghaidh KDE"
-
-#~ msgid "(C) 2005 Francesco Rossi"
-#~ msgstr "© 2005 Francesco Rossi"
