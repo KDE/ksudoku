@@ -3,31 +3,32 @@
 # SPDX-FileCopyrightText: 2011, 2012, 2013, 2014, 2015, 2017, 2018, 2025 Vít Pelčák <vit@pelcak.org>
 # Tomáš Chvátal <tomas.chvatal@gmail.com>, 2013.
 # SPDX-FileCopyrightText: 2021, 2024 Vit Pelcak <vit@pelcak.org>
+# SPDX-FileCopyrightText: 2026 Libor Filípek <filipek.libor@protonmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2025-12-05 10:48+0100\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
-"Language-Team: Czech <kde-i18n-doc@kde.org>\n"
+"PO-Revision-Date: 2026-04-16 12:46+0200\n"
+"Last-Translator: Libor Filípek <filipek.libor@protonmail.com>\n"
+"Language-Team: \n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 25.08.3\n"
+"X-Generator: Lokalize 25.12.3\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Karel Volný,David Kolibáč"
+msgstr "Karel Volný,David Kolibáč,Libor Filípek"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "kavol@seznam.cz,david@kolibac.cz"
+msgstr "kavol@seznam.cz,david@kolibac.cz,libor.filipek@gmail.com"
 
 #: src/generator/sudokuboard.cpp:196 src/generator/sudokuboard.cpp:225
 #, kde-format
@@ -47,6 +48,15 @@ msgid ""
 "setting to 'No Symmetry' or some low symmetry type and then use 'Generate A "
 "Puzzle' again."
 msgstr ""
+"Po %1 pokusech dosáhl generátor nejvyšší úrovně obtížnosti %2 s interním "
+"hodnocením obtížnosti %3, ale vy jste požadovali úroveň obtížnosti %4.\n"
+"\n"
+"Chcete nechat generátor zkusit to znovu, nebo přijmout hádanku tak, jak je?\n"
+"\n"
+"Tip: Můžete zkusit zvýšit hodnocení obtížnosti následujícím způsobem: "
+"Pokračujte tlačítkem \"OK\", vyberte Hra -> Nová, poté změňte nastavení "
+"Symetrie na \"Žádná symetrie\" nebo nějaký typ s nízkou symetrií a poté "
+"znovu použijte \"Vygenerovat hádanku\"."
 
 #: src/generator/sudokuboard.cpp:215
 #, kde-format
@@ -57,6 +67,10 @@ msgid ""
 "The internal difficulty rating is %1. There are %2 clues at the start and %3 "
 "moves to go."
 msgstr ""
+"Vytvořenou hádanku bude možné vyřešit čistě logicky. Nebude třeba hádat.\n"
+"\n"
+"Vnitřní hodnocení obtížnosti je %1. Na začátku je k dispozici %2 nápověd a "
+"zbývá %3 tahů."
 
 #: src/generator/sudokuboard.cpp:227
 #, kde-format
@@ -68,12 +82,18 @@ msgid ""
 "The internal difficulty rating is %3, there are %4 clues at the start and %5 "
 "moves to go."
 msgstr ""
+"Vyřešení této hádanky bude vyžadovat v průměru %1 pokusů nebo odboček a v "
+"případě nesprávného odhadu bude nutné se vrátit zpět. První pokus by měl "
+"následovat po %2 tazích.\n"
+"\n"
+"Vnitřní hodnocení obtížnosti je %3, na začátku je k dispozici %4 nápověd a "
+"zbývá %5 tahů."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
 #: src/gui/configgame.ui:20
 #, kde-format
 msgid "When printing, try to fit more than one puzzle on a page"
-msgstr ""
+msgstr "Při tisku se snažte na jednu stránku umístit více než jednu hádanku"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:43
@@ -88,6 +108,8 @@ msgid ""
 "Highlight the row, column and block that contain the selected cell. Blocks "
 "may be square or irregular (as in jigsaw-type or XSudoku puzzles)."
 msgstr ""
+"Zvýraznit řádek, sloupec a blok, které obsahují vybranou buňku. Bloky mohou "
+"být čtvercové nebo nepravidelné (například u skládaček nebo XSudoku)."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights)
 #: src/gui/configgame.ui:49
@@ -110,6 +132,8 @@ msgid ""
 "highlighted. This can help you quickly identify patterns and potential "
 "conflicts."
 msgstr ""
+"Po výběru hodnoty se zvýrazní všechny ostatní buňky obsahující stejnou "
+"hodnotu. To vám pomůže rychle odhalit vzorce a případné nesrovnalosti."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -129,25 +153,25 @@ msgstr "Zobrazovat chyby"
 #: src/gui/configgame.ui:82 src/gui/configgame.ui:85
 #, kde-format
 msgid "Highlight the planes (blocks) that contain the selected cell."
-msgstr ""
+msgstr "Zvýraznit roviny (bloky), které obsahují vybranou buňku."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_ShowHighlights3D)
 #: src/gui/configgame.ui:88
 #, kde-format
 msgid "Show highlights in 3-D puzzles"
-msgstr "Zobrazovat zvýraznění ve 3D puzzle"
+msgstr "Zobrazovat zvýraznění ve 3D hádankách"
 
 #. i18n: ectx: property (text), widget (QLabel, label_4)
 #: src/gui/configgame.ui:150
 #, kde-format
 msgid "Mathdoku puzzle size (3-9)"
-msgstr ""
+msgstr "Velikost hádanky Mathdoku (3–9)"
 
 #. i18n: ectx: property (text), widget (QLabel, label_2)
 #: src/gui/configgame.ui:180
 #, kde-format
 msgid "Settings for 3-D Puzzles Only"
-msgstr ""
+msgstr "Nastavení pouze pro 3D hádanky"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OverallSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OverallSize3D)
@@ -157,13 +181,13 @@ msgstr ""
 #: src/gui/configgame.ui:241 src/gui/configgame.ui:244
 #, kde-format
 msgid "Set the relative size of 3-D cells and the spaces between them."
-msgstr ""
+msgstr "Nastavit relativní velikost 3D buněk a mezery mezi nimi."
 
 #. i18n: ectx: property (text), widget (QLabel, label_6)
 #: src/gui/configgame.ui:247
 #, kde-format
 msgid "Overall size of 3-D cells"
-msgstr ""
+msgstr "Celková velikost 3D buněk"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_SelectionSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_SelectionSize3D)
@@ -173,13 +197,13 @@ msgstr ""
 #: src/gui/configgame.ui:313 src/gui/configgame.ui:316
 #, no-c-format, kde-format
 msgid "Shrink or expand a cell by up to 30% when it is selected."
-msgstr ""
+msgstr "Zmenšit nebo zvětšit buňku až o 30 %, pokud je vybrána."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/configgame.ui:319
 #, kde-format
 msgid "Size of selected 3-D cell"
-msgstr ""
+msgstr "Velikost vybrané 3D buňky"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_HighlightedSize3D)
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_HighlightedSize3D)
@@ -189,13 +213,13 @@ msgstr ""
 #: src/gui/configgame.ui:376 src/gui/configgame.ui:379
 #, no-c-format, kde-format
 msgid "Shrink or expand cells by up to 30% when they are highlighted."
-msgstr ""
+msgstr "Zmenšit nebo zvětšit buňky až o 30 %, když jsou zvýrazněné."
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/configgame.ui:382
 #, kde-format
 msgid "Size of highlighted 3-D cells"
-msgstr ""
+msgstr "Velikost zvýrazněných 3D buněk"
 
 #. i18n: ectx: property (toolTip), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (toolTip), widget (QLabel, label_5)
@@ -205,6 +229,8 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell."
 msgstr ""
+"Zmenšit buňky až o 60 %, pokud se nenacházejí v krychli NxNxN, která "
+"obsahuje vybranou buňku."
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
@@ -216,12 +242,15 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell. This is useful if a 3-D puzzle has more than one cube."
 msgstr ""
+"Zmenšit buňky až o 60 %, pokud se nenacházejí v krychli NxNxN, která "
+"obsahuje vybranou buňku. To se hodí v případě, že 3D hádanka obsahuje více "
+"než jednu krychli."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
 #: src/gui/configgame.ui:445
 #, kde-format
 msgid "Size of 3-D cells outside the selected volume"
-msgstr ""
+msgstr "Velikost 3D buněk mimo vybraný objem"
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:459
@@ -230,17 +259,19 @@ msgid ""
 "Darken cells if they are not in an NxNxN cube that contains the selected "
 "cell."
 msgstr ""
+"Ztmavit buňky, pokud se nenacházejí v krychli NxNxN, která obsahuje vybranou "
+"buňku."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_DarkenOuterCells3D)
 #: src/gui/configgame.ui:465
 #, kde-format
 msgid "Darken 3-D cells outside the selected volume"
-msgstr ""
+msgstr "Ztmavit 3D buňky mimo vybraný objem"
 
 #: src/gui/gamevariants.cpp:281 src/gui/gamevariants.cpp:338
 #, kde-format
 msgid "Configuration not yet implemented"
-msgstr "Konfigurace ještě není implementována"
+msgstr "Nastavení ještě není implementováno"
 
 #: src/gui/ksudoku.cpp:83
 #, kde-format
@@ -372,7 +403,7 @@ msgstr "Roxdoku 9 (3×3×3)"
 #: src/gui/ksudoku.cpp:213
 #, kde-format
 msgid "The Rox 3D Sudoku"
-msgstr ""
+msgstr "Sudokostka"
 
 #: src/gui/ksudoku.cpp:235
 #, kde-format
@@ -437,11 +468,27 @@ msgid ""
 "can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
+"Hádanky typu Mathdoku mohou mít libovolnou velikost od 3x3 až po 9x9. "
+"Řešením je mřížka, v níž každý řádek a každý sloupec obsahuje dostupné "
+"číslice (1–3 až 1–9) přesně jednou. Mřížka je pokryta nepravidelně "
+"tvarovanými bloky.\n"
+"\n"
+"Bloky velikosti 1 představují výchozí hodnoty nebo nápovědy, ale není jich "
+"mnoho. Bloky větší velikosti obsahují cílovou hodnotu a aritmetický operátor "
+"(+-x/). Číslice v bloku se musí pomocí operátoru zkombinovat tak, aby "
+"dosáhly cílové hodnoty, např. \"12x\" znamená, že číslice se musí vynásobit, "
+"aby daly dohromady 12. Jedna číslice se může v bloku vyskytnout vícekrát, "
+"pokud se vyskytuje v různých řádcích a sloupcích.\n"
+"\n"
+"Obecně platí, že čím větší je Mathdoku, tím je obtížnější, a totéž platí i "
+"pro větší bloky. Velikost hádanky si můžete vybrat v dialogovém okně "
+"Nastavení programu KSudoku a maximální velikost bloku pomocí tlačítka "
+"Obtížnost v programu KSudoku."
 
 #: src/gui/ksudoku.cpp:333
 #, kde-format
 msgid "Playing Mathdoku"
-msgstr ""
+msgstr "Hraní Mathdoku"
 
 #: src/gui/ksudoku.cpp:337
 #, kde-format
@@ -458,11 +505,24 @@ msgid ""
 "In general, larger cages are more difficult. You can select the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
+"Hádanky typu Sudoku zabiják mohou mít rozměry 4x4 nebo 9x9, přičemž se "
+"skládají buď ze čtyř bloků 2x2, nebo z devíti bloků 3x3. Řešení musí "
+"odpovídat pravidlům klasického Sudoku. Rozdíl spočívá v tom, že je zde jen "
+"málo výchozích hodnot nebo nápověd (pokud vůbec nějaké jsou). Místo toho je "
+"mřížka pokryta nepravidelně tvarovanými bloky.\n"
+"\n"
+"Bloky o velikosti 1 jsou počáteční hodnoty nebo nápovědy. Bloky větší "
+"velikosti mají cílovou hodnotu a číslice v nich se musí sčítat na tuto "
+"hodnotu. V Sudoku zabijákovi nesmí žádný blok obsahovat žádnou číslici více "
+"než jednou.\n"
+"\n"
+"Obecně platí, že větší bloky jsou obtížnější. Maximální velikost bloků "
+"můžete vybrat pomocí tlačítka Obtížnost v programu KSudoku."
 
 #: src/gui/ksudoku.cpp:351
 #, kde-format
 msgid "Playing Killer Sudoku"
-msgstr ""
+msgstr "Hraní Sudoku zabijáka"
 
 #: src/gui/ksudoku.cpp:355
 #, kde-format
@@ -492,11 +552,39 @@ msgid ""
 "puzzle and make sure there is only one solution. If the check fails, you "
 "have probably made an error somewhere in one of the cages."
 msgstr ""
+"Hádanky typu Mathdoku a Sudoku zabiják je třeba vyplňovat tak, že se pracuje "
+"vždy na jednom bloku. Chcete-li začít s jedním blokem, klikněte levým "
+"tlačítkem myši na libovolnou prázdnou buňku, zadejte číslo do buňky pod "
+"kurzorem nebo tam zadejte znaménko +, -, / nebo x. V této buňce se objeví "
+"malý popisek bloku. Chcete-li blok rozšířit v jakémkoli směru, klikněte "
+"levým tlačítkem myši na sousední buňku nebo tam přesuňte kurzor a zadejte "
+"mezeru.\n"
+"\n"
+"Číslo, které zadáte, je hodnotou bloku a může mít jednu nebo více číslic, "
+"včetně nuly. Buňka velikosti 1 musí obsahovat jednociferné číslo, stejně "
+"jako v běžné hádance Sudoku. Stává se výchozí hodnotou nebo vodítkem pro "
+"hráče.\n"
+"\n"
+"Znaky +, -, / nebo x představují matematické operátory (sčítání, odčítání, "
+"dělení nebo násobení). V blocích o velikosti 2 a více musí být vždy jeden "
+"takový znak. V hře Sudoku zabiják se operátor vyplňuje automaticky, protože "
+"se vždy jedná o znaménko + nebo není zadáno žádné.\n"
+"\n"
+"Číslice, operátory a buňky můžete zadávat v libovolném pořadí. Chcete-li "
+"dokončit blok a začít s další, vždy stiskněte klávesu Return. Pokud uděláte "
+"chybu, jediné, co můžete udělat, je smazat celý blok a zadat jej znovu. "
+"Chcete-li blok smazat, klikněte pravým tlačítkem myši na aktuální blok nebo "
+"na jakýkoli předchozí blok. Případně použijte kurzor a klávesu Delete nebo "
+"Backspace.\n"
+"\n"
+"Když je mřížka vyplněna bloky, stiskněte tlačítko Zkontrolovat, abyste "
+"vyřešili hádanku a ujistili se, že existuje pouze jedno řešení. Pokud "
+"kontrola selže, pravděpodobně jste někde v jednom z bloků udělali chybu."
 
 #: src/gui/ksudoku.cpp:385
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
-msgstr ""
+msgstr "Zadávání dat pro hádanky s bloky"
 
 #: src/gui/ksudoku.cpp:481
 #, kde-format
@@ -509,12 +597,14 @@ msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr ""
+"Je nám líto, ale nebyla nalezena žádná řešení. Zkontrolujte prosím, zda jste "
+"zadali hádanku úplně a správně."
 
 #: src/gui/ksudoku.cpp:497 src/gui/ksudoku.cpp:504 src/gui/ksudoku.cpp:510
 #, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
-msgstr ""
+msgstr "Zkontrolovat hádanku"
 
 #: src/gui/ksudoku.cpp:502
 #, kde-format
@@ -527,6 +617,8 @@ msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
+"Hádanka, kterou jste zadali, má více řešení. Zkontrolujte prosím, zda jste "
+"hádanku zadali úplně a správně."
 
 #: src/gui/ksudoku.cpp:513
 #, kde-format
@@ -555,13 +647,13 @@ msgstr "Povolit všechny zprávy"
 #, kde-format
 msgctxt "@action"
 msgid "Check"
-msgstr "Ověřit"
+msgstr "Zkontrolovat"
 
 #: src/gui/ksudoku.cpp:589
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
-msgstr ""
+msgstr "Ďábelské"
 
 #: src/gui/ksudoku.cpp:591
 #, kde-format
@@ -590,7 +682,7 @@ msgstr "Symetrie"
 #: src/gui/ksudoku.cpp:612
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
-msgstr ""
+msgstr "Symetrie rozložení nápověd na začátku hádanky"
 
 #: src/gui/ksudoku.cpp:614
 #, kde-format
@@ -602,13 +694,13 @@ msgstr "Diagonální"
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
-msgstr ""
+msgstr "Centrální"
 
 #: src/gui/ksudoku.cpp:616
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
-msgstr ""
+msgstr "Levá - pravá"
 
 #: src/gui/ksudoku.cpp:617
 #, kde-format
@@ -620,13 +712,13 @@ msgstr "Spirála"
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
-msgstr ""
+msgstr "Čtyřcestná"
 
 #: src/gui/ksudoku.cpp:619
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
-msgstr ""
+msgstr "Náhodná volba"
 
 #: src/gui/ksudoku.cpp:620
 #, kde-format
@@ -698,7 +790,7 @@ msgstr "Uložit hru"
 #: src/gui/ksudoku.cpp:857
 #, kde-format
 msgid "There seems to be no puzzle to print."
-msgstr ""
+msgstr "Zdá se, že není žádná hádanka k vytištění."
 
 #: src/gui/ksudoku.cpp:894
 #, kde-format
@@ -722,6 +814,12 @@ msgid ""
 "Please also note that the generation of this type of puzzle might take much "
 "longer than other ones. During this time KSudoku will not respond."
 msgstr ""
+"Upozornění: V obtížnosti \"Bez omezení\" není omezen počet pokusů ani počet "
+"odboček potřebných k vyřešení hádanky a neexistuje ani spodní limit pro to, "
+"kdy je nutné začít hádat.\n"
+"\n"
+"Vezměte prosím také na vědomí, že generování tohoto typu hádanky může trvat "
+"mnohem déle než u ostatních. Během této doby nebude KSudoku reagovat."
 
 #: src/gui/ksudoku.cpp:934
 #, kde-format
@@ -737,6 +835,10 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"Tím se znovu zobrazí všechna dialogová okna, která jste skryli zaškrtnutím "
+"možnosti \"Tuto zprávu již nezobrazovat\".\n"
+"\n"
+"Chcete pokračovat?"
 
 #: src/gui/ksudoku.cpp:978
 #, kde-format
@@ -768,17 +870,19 @@ msgid ""
 "In Killer Sudoku, the operator is always + or none and KSudoku automatically "
 "sets the correct choice."
 msgstr ""
+"V hře Sudoku zabiják je operátorem vždy znaménko „+“ nebo žádný operátor a "
+"KSudoku automaticky nastaví správnou volbu."
 
 #: src/gui/ksudokugame.cpp:377
 #, kde-format
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
-msgstr ""
+msgstr "Sudoku zabiják v bloku"
 
 #: src/gui/ksudokugame.cpp:423
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
-msgstr ""
+msgstr "Buňka, kterou jste vybrali, již byla použita v bloku."
 
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
@@ -786,7 +890,7 @@ msgstr ""
 #, kde-format
 msgctxt "@title:window"
 msgid "Error in Cage"
-msgstr ""
+msgstr "Chyba v bloku"
 
 #: src/gui/ksudokugame.cpp:453
 #, kde-format
@@ -794,6 +898,7 @@ msgid ""
 "The cell you have selected is not next to any cell in the cage you are "
 "creating."
 msgstr ""
+"Vybraná buňka nesousedí s žádnou buňkou v bloku, který právě vytváříte."
 
 #: src/gui/ksudokugame.cpp:478
 #, kde-format
@@ -801,6 +906,8 @@ msgid ""
 "The cage you wish to complete has no cells in it yet. Please click on a cell "
 "or key in + - / x or a number."
 msgstr ""
+"Blok, který chcete vyplnit, zatím neobsahuje žádné buňky. Klikněte prosím na "
+"buňku nebo zadejte znaménko +, -, /, x nebo číslo."
 
 #: src/gui/ksudokugame.cpp:485
 #, kde-format
@@ -808,6 +915,8 @@ msgid ""
 "The cage you wish to complete has no value yet. Please key in a number with "
 "one or more digits."
 msgstr ""
+"Blok, který chcete vyplnit, zatím neobsahuje žádnou hodnotu. Zadejte prosím "
+"číslo o délce jedné nebo více číslic."
 
 #: src/gui/ksudokugame.cpp:493
 #, kde-format
@@ -815,6 +924,8 @@ msgid ""
 "The cage you wish to complete has more than one cell, but it has no operator "
 "yet. Please key in + - / or x."
 msgstr ""
+"Blok, který chcete vyplnit, obsahuje více než jednu buňku, ale zatím v něm "
+"není žádný operátor. Zadejte prosím +, -, / nebo x."
 
 #: src/gui/ksudokugame.cpp:501
 #, kde-format
@@ -822,18 +933,21 @@ msgid ""
 "The cage you wish to complete has one cell, but its value is too large. A "
 "single-cell cage must have a value from 1 to %1 in a puzzle of this size."
 msgstr ""
+"Blok, který chcete vyplnit, má jednu buňku, ale jeho hodnota je příliš "
+"vysoká. Jednobuněčný blok musí mít v hádance této velikosti hodnotu v "
+"rozmezí od 1 do %1."
 
 #: src/gui/ksudokugame.cpp:537
 #, kde-format
 msgid "Do you wish to delete this cage?"
-msgstr ""
+msgstr "Chcete tento blok smazat?"
 
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
 #, kde-format
 msgctxt "@title:window"
 msgid "Delete Cage"
-msgstr ""
+msgstr "Smazat blok"
 
 #: src/gui/ksudokugame.cpp:564
 #, kde-format
@@ -841,11 +955,12 @@ msgid ""
 "The cell you have selected is not in any cage, so the Delete action will not "
 "delete anything."
 msgstr ""
+"Vybraná buňka není součástí žádného bloku, takže akce Smazat nic neodstraní."
 
 #: src/gui/ksudokugame.cpp:572
 #, kde-format
 msgid "The Delete action finds that there are no cages to delete."
-msgstr ""
+msgstr "Akce Smazat zjistila, že nejsou k dispozici žádné bloky ke smazání."
 
 #. i18n: ectx: Menu (game)
 #: src/gui/ksudokuui.rc:10
@@ -880,7 +995,7 @@ msgstr "Panel nástrojů činností"
 #: src/gui/puzzleprinter.cpp:62
 #, kde-format
 msgid "Sorry, cannot print three-dimensional puzzles."
-msgstr ""
+msgstr "Je nám líto, ale trojrozměrnou hádanku nelze vytisknout."
 
 #: src/gui/puzzleprinter.cpp:92
 #, kde-format
@@ -891,17 +1006,22 @@ msgid ""
 "Your puzzle will be printed when no more will fit on the page or when "
 "KSudoku terminates."
 msgstr ""
+"V programu KSudoku je aktuálně nastaveno tisknutí více hádanek na jednu "
+"stránku.\n"
+"\n"
+"Vaše hádanka se vytiskne, až se na stránku již žádné další nevejdou, nebo až "
+"se program KSudoku ukončí."
 
 #: src/gui/puzzleprinter.cpp:108
 #, kde-format
 msgid "KSudoku has sent output to your printer."
-msgstr ""
+msgstr "Program KSudoku odeslal výstup na vaši tiskárnu."
 
 #: src/gui/puzzleprinter.cpp:121
 #, kde-format
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
-msgstr ""
+msgstr "Vytisknout Sudoku hádanku"
 
 #: src/gui/serializer.cpp:398
 #, kde-format
@@ -990,7 +1110,7 @@ msgstr "GetNewVariant neimplementováno"
 #: src/gui/welcomescreen.cpp:179
 #, kde-format
 msgid "Please select a puzzle variant."
-msgstr "Prosím, vyberte variantu skládanky."
+msgstr "Prosím, vyberte variantu hádanky."
 
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
@@ -1005,17 +1125,17 @@ msgstr "Hru nelze spustit"
 msgid ""
 "Unable to create an empty puzzle of the chosen variant; please try another."
 msgstr ""
-"Nelze vytvořit prázdnou skládanku ve zvolené variantě. Prosím zkuste jinou."
+"Nelze vytvořit prázdnou hádanku ve zvolené variantě. Prosím zkuste jinou."
 
 #: src/gui/welcomescreen.cpp:169
 #, kde-format
 msgid "Unable to start a puzzle of the chosen variant; please try another."
-msgstr ""
+msgstr "Nelze spustit hádanku ve zvolené variantě; zkuste prosím jinou."
 
 #: src/gui/welcomescreen.cpp:185
 #, kde-format
 msgid "Unable to generate a puzzle of the chosen variant; please try another."
-msgstr "Nelze vygenerovat skládanku ve zvolené variantě. Prosím zkuste jinou."
+msgstr "Nelze vygenerovat hádanku ve zvolené variantě. Prosím zkuste jinou."
 
 #. i18n: ectx: property (title), widget (QGroupBox, groupBox1)
 #: src/gui/welcomescreen.ui:17
@@ -1033,24 +1153,26 @@ msgstr "Získat nové"
 #: src/gui/welcomescreen.ui:48
 #, kde-format
 msgid "Enter In A Puzzle"
-msgstr ""
+msgstr "Vyřešit hádanku"
 
 #. i18n: ectx: property (text), widget (QPushButton, puzzleGeneratorButton)
 #: src/gui/welcomescreen.ui:55
 #, kde-format
 msgid "Generate A Puzzle"
-msgstr "Vygenerovat puzzle"
+msgstr "Vygenerovat hádanku"
 
 #: src/logic/puzzle.cpp:86
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
 msgstr ""
+"Po asi 200 pokusech se nepodařilo vygenerovat hádanku. Chcete to zkusit "
+"znovu?"
 
 #: src/logic/puzzle.cpp:88
 #, kde-format
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
-msgstr ""
+msgstr "Hádanka Mathdoku nebo Sudoku zabiják"
 
 #: src/logic/puzzle.cpp:89
 #, kde-format
@@ -1113,7 +1235,7 @@ msgstr "Ian Wadham"
 #: src/main.cpp:55
 #, kde-format
 msgid "New puzzle generator and solver"
-msgstr "Nový generátor a řešitel puzzle"
+msgstr "Nový generátor a řešitel hádanek"
 
 #: src/main.cpp:56
 #, kde-format
@@ -1141,7 +1263,7 @@ msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 msgstr ""
-"Algoritmy pro nový generátor a řešitel puzzle na davidbau.com/"
+"Algoritmy pro nový generátor a řešitel hádanek na davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 
 #: src/main.cpp:66
