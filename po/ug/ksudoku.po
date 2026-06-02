@@ -8,30 +8,30 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-31 19:45-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #: src/generator/sudokuboard.cpp:196 src/generator/sudokuboard.cpp:225
-#, fuzzy, kde-format
-#| msgid "%"
+#, kde-format
 msgid "%1"
-msgstr "%"
+msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
 #, kde-format
@@ -244,7 +244,7 @@ msgstr ""
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "ھەممە ھۆججەت(*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -508,21 +508,19 @@ msgid "Play Puzzle"
 msgstr ""
 
 #: src/gui/ksudoku.cpp:515
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
-msgstr "قوي"
+msgstr "ياڭرات"
 
 #: src/gui/ksudoku.cpp:556
 #, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
-msgstr ""
+msgstr "ھەممە ئۇچۇرنى قوزغات"
 
 #: src/gui/ksudoku.cpp:573
-#, fuzzy, kde-format
-#| msgid "Check"
+#, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "تەكشۈر"
@@ -540,18 +538,16 @@ msgid "Unlimited"
 msgstr "چەكسىز"
 
 #: src/gui/ksudoku.cpp:602
-#, fuzzy, kde-format
-#| msgid "Difficulty"
+#, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
-msgstr "قىيىنلىقى"
+msgstr "قىيىنلىقى:"
 
 #: src/gui/ksudoku.cpp:606
-#, fuzzy, kde-format
-#| msgid "Symmetry"
+#, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
-msgstr "سىممېترىك"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:610
 #, kde-format
@@ -623,20 +619,16 @@ msgid "Do you really want to end this game in order to start a new one?"
 msgstr ""
 
 #: src/gui/ksudoku.cpp:755
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "window title"
 msgid "New Game"
-msgstr "ئويۇن"
+msgstr "يېڭى ئويۇن"
 
 #: src/gui/ksudoku.cpp:756
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
-msgstr "ئويۇن"
+msgstr "يېڭى ئويۇن"
 
 #: src/gui/ksudoku.cpp:772
 #, kde-format
@@ -650,9 +642,7 @@ msgid "Restart Game"
 msgstr "ئويۇننى قايتا باشلاش"
 
 #: src/gui/ksudoku.cpp:774
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "ئويۇننى قايتا باشلاش"
@@ -661,21 +651,17 @@ msgstr "ئويۇننى قايتا باشلاش"
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
-msgstr ""
+msgstr "ھۆججەتكە يازغاندا خاتالىق كۆرۈلدى"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "ئويۇن"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Save Game"
-msgstr "ئويۇن"
+msgstr ""
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
@@ -683,16 +669,13 @@ msgid "There seems to be no puzzle to print."
 msgstr ""
 
 #: src/gui/ksudoku.cpp:894
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "ئويۇن"
 
 #: src/gui/ksudoku.cpp:895
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "ئۆرنەك"
@@ -709,8 +692,7 @@ msgid ""
 msgstr ""
 
 #: src/gui/ksudoku.cpp:934
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "ئاگاھلاندۇرۇش"
@@ -728,7 +710,7 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr ""
+msgstr "قوزغات"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
@@ -938,29 +920,25 @@ msgid "Mark %1 (%2)"
 msgstr ""
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
-#| msgid "Move Up"
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
 msgstr "ئۈستىگە"
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
-#| msgid "Move Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
-msgstr "پەسكە"
+msgstr "ئاستىغا"
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
 msgstr "سولغا يۆتكە"
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
 msgstr "ئوڭغا يۆتكە"
@@ -1042,25 +1020,22 @@ msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr ""
 
 #: src/logic/puzzle.cpp:89
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
-msgstr "قايتا سىنا(&T)"
+msgstr ""
 
 #: src/logic/puzzle.cpp:102
-#, fuzzy, kde-format
-#| msgid "Difficulty"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
-msgstr "قىيىنلىقى"
+msgstr ""
 
 #: src/logic/puzzle.cpp:104
-#, fuzzy, kde-format
-#| msgid "&Retry"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
-msgstr "قايتا سىنا(&R)"
+msgstr ""
 
 #: src/main.cpp:47
 #, kde-format
@@ -1095,12 +1070,12 @@ msgstr ""
 #: src/main.cpp:54
 #, kde-format
 msgid "Maintainer"
-msgstr "مەسئۇل كىشى"
+msgstr "ئاسرىغۇچى"
 
 #: src/main.cpp:55
 #, kde-format
 msgid "Ian Wadham"
-msgstr "Ian Wadham"
+msgstr ""
 
 #: src/main.cpp:55
 #, kde-format
@@ -1139,13 +1114,11 @@ msgstr ""
 msgid "Document to open"
 msgstr "ئاچىدىغان پۈتۈك"
 
-#, fuzzy
 #~| msgid "&Accept"
 #~ msgctxt "@action:button"
 #~ msgid "&Accept"
 #~ msgstr "قوبۇل قىل(&A)"
 
-#, fuzzy
 #~| msgctxt "Game Section in Config"
 #~| msgid "Game"
 #~ msgctxt "button label"
