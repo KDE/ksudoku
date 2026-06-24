@@ -32,6 +32,7 @@
 #include <QApplication>
 #include <QCommandLineParser>
 #include <QDir>
+#include <QSurfaceFormat>
 #include <QUrl>
 
 #include <cstdlib>
@@ -71,6 +72,11 @@ int main(int argc, char **argv)
 	KCrash::initialize();
 
 	KDBusService service;
+
+    QSurfaceFormat format;
+    format.setOption(QSurfaceFormat::FormatOption::DeprecatedFunctions, true);
+    format.setRenderableType(QSurfaceFormat::RenderableType::OpenGL);
+    QSurfaceFormat::setDefaultFormat(format);
 
 	// see if we are starting with session management
 	/*if (app.isRestored())
