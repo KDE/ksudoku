@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:50+0000\n"
+"POT-Creation-Date: 2026-06-26 00:42+0000\n"
 "PO-Revision-Date: 2025-08-16 14:19+0300\n"
 "Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
 "Language-Team: צוות התרגום של KDE ישראל\n"
@@ -1153,72 +1153,72 @@ msgctxt "@action:button"
 msgid "&Retry"
 msgstr "&ניסיון מחדש"
 
-#: src/main.cpp:47
+#: src/main.cpp:48
 #, kde-format
 msgid "KSudoku"
 msgstr "KSudoku"
 
-#: src/main.cpp:49
+#: src/main.cpp:50
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "KSudoku - לוחות סודוקו ועוד"
 
-#: src/main.cpp:51
+#: src/main.cpp:52
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "(c) 2005‏-2007 יוצרי KSudoku"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "פרנצ׳סקו רוסי"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "KSudoku Author"
 msgstr "יוצר KSudoku"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "יוהאנס ברגמאייר"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "Maintainer"
 msgstr "מתחזק"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "Ian Wadham"
 msgstr "איאן ודהאם"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr "יוצר ופותר התצרפים החדש"
 
-#: src/main.cpp:56
+#: src/main.cpp:57
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "מיק קפנבורג"
 
-#: src/main.cpp:56
+#: src/main.cpp:57
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "הדפסה וייצוא ב־0.4"
 
-#: src/main.cpp:57
+#: src/main.cpp:58
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "תודה ל־NeHe על מדריכי OpenGL"
 
-#: src/main.cpp:58
+#: src/main.cpp:59
 #, kde-format
 msgid "David Bau"
 msgstr "דיויד באו"
 
-#: src/main.cpp:58
+#: src/main.cpp:59
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
@@ -1227,7 +1227,7 @@ msgstr ""
 "אלגוריתמים ליוצר ופותר תצרפים חדש ב־davidbau.com/archives/2006/09/04/"
 "sudoku_generator.html"
 
-#: src/main.cpp:66
+#: src/main.cpp:67
 #, kde-format
 msgid "Document to open"
 msgstr "מסמך לפתיחה"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2025-11-17 11:50+0000\n"
+"POT-Creation-Date: 2026-06-26 00:42+0000\n"
 "PO-Revision-Date: 2025-08-16 18:52+0200\n"
 "Last-Translator: Freek de Kruijf <freekdekruijf@kde.nl>\n"
 "Language-Team: \n"
@@ -1194,72 +1194,72 @@ msgctxt "@action:button"
 msgid "&Retry"
 msgstr "&Nogmaals"
 
-#: src/main.cpp:47
+#: src/main.cpp:48
 #, kde-format
 msgid "KSudoku"
 msgstr "KSudoku"
 
-#: src/main.cpp:49
+#: src/main.cpp:50
 #, kde-format
 msgid "KSudoku - Sudokus and more"
 msgstr "KSudoku - Sudoku's en meer"
 
-#: src/main.cpp:51
+#: src/main.cpp:52
 #, kde-format
 msgid "(c) 2005-2007 The KSudoku Authors"
 msgstr "(c) 2005-2007 - de auteurs van KSudoku"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "Francesco Rossi"
 msgstr "Francesco Rossi"
 
-#: src/main.cpp:53
+#: src/main.cpp:54
 #, kde-format
 msgid "KSudoku Author"
 msgstr "KSudoku-auteur"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "Johannes Bergmeier"
 msgstr "Johannes Bergmeier"
 
-#: src/main.cpp:54
+#: src/main.cpp:55
 #, kde-format
 msgid "Maintainer"
 msgstr "Onderhouder"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "Ian Wadham"
 msgstr "Ian Wadham"
 
-#: src/main.cpp:55
+#: src/main.cpp:56
 #, kde-format
 msgid "New puzzle generator and solver"
 msgstr "Nieuwe puzzelgenerator en -oplosser"
 
-#: src/main.cpp:56
+#: src/main.cpp:57
 #, kde-format
 msgid "Mick Kappenburg"
 msgstr "Mick Kappenburg"
 
-#: src/main.cpp:56
+#: src/main.cpp:57
 #, kde-format
 msgid "Printing and export of 0.4"
 msgstr "Afdruk- en exporttechnologie van versie 0.4"
 
-#: src/main.cpp:57
+#: src/main.cpp:58
 #, kde-format
 msgid "Thanks to NeHe for OpenGL tutorials"
 msgstr "NeHe, bedankt voor de OpenGL-oefeningen"
 
-#: src/main.cpp:58
+#: src/main.cpp:59
 #, kde-format
 msgid "David Bau"
 msgstr "David Bau"
 
-#: src/main.cpp:58
+#: src/main.cpp:59
 #, kde-format
 msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
@@ -1268,7 +1268,7 @@ msgstr ""
 "Algoritmes voor nieuwe puzzelgenerator en oplosser op davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 
-#: src/main.cpp:66
+#: src/main.cpp:67
 #, kde-format
 msgid "Document to open"
 msgstr "Te openen document"
