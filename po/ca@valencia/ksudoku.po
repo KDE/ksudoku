@@ -58,9 +58,9 @@ msgstr ""
 "Voleu provar-ho de nou o accepteu el puzle tal com és?\n"
 "\n"
 "Consell: podeu intentar augmentar la puntuació de dificultat fent el "
-"següent: Continueu amb el botó «D'acord», trieu «Joc -> Nou», després "
-"canvieu l'opció «Simetria» a «Sense simetria» o algun tipus baix de simetria "
-"i després torneu a utilitzar «Genera un puzle»."
+"següent: Continueu amb el botó «D'acord», trieu «Joc → Nou», després canvieu "
+"l'opció «Simetria» a «Sense simetria» o algun tipus baix de simetria i "
+"després torneu a utilitzar «Genera un puzle»."
 
 #: src/generator/sudokuboard.cpp:215
 #, kde-format
@@ -542,7 +542,7 @@ msgstr ""
 "Els puzles de Sudoku Mathdoku i Killer s'han d'introduir treballant una "
 "caixa cada vegada. Per a començar una caixa, cliqueu amb el botó esquerre "
 "damunt de qualsevol cel·la no utilitzada o introduïu un nombre en la cel·la "
-"que està baix el cursor o introduïu-hi + - / o x. En esta cel·la apareixerà "
+"que està baix el cursor o introduïu-hi + – / o x. En esta cel·la apareixerà "
 "una xicoteta etiqueta de caixa. Per a ampliar la caixa en qualsevol "
 "direcció, cliqueu amb el botó esquerre damunt d'una cel·la veïna o moveu el "
 "cursor allí i teclegeu un espai.\n"
@@ -552,7 +552,7 @@ msgstr ""
 "en un puzle de Sudoku normal. Esdevindrà un valor inicial o pista per al "
 "jugador.\n"
 "\n"
-"El + - / o x és l'operador (suma, resta, divisió o multiplicació). Cal "
+"El + – / o x és l'operador (suma, resta, divisió o multiplicació). Cal "
 "tindre'n un en caixes de mida 2 o més. En Killer Sudoku, l'operador es "
 "proporciona automàticament perquè sempre és + o res.\n"
 "\n"
@@ -764,7 +764,7 @@ msgstr "Reinicia el joc"
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
-msgstr "S'ha produït un error mentre s'escrivia al fitxer"
+msgstr "S'ha produït un error mentre s'escrivia en el fitxer"
 
 #: src/gui/ksudoku.cpp:841
 #, kde-format
@@ -898,7 +898,7 @@ msgid ""
 "or key in + - / x or a number."
 msgstr ""
 "La caixa que voleu completar encara no té cap cel·la. Per favor, cliqueu "
-"damunt d'una cel·la o introduïu-hi + - / x o un nombre."
+"damunt d'una cel·la o introduïu-hi + – / x o un nombre."
 
 #: src/gui/ksudokugame.cpp:485
 #, kde-format
@@ -916,7 +916,7 @@ msgid ""
 "yet. Please key in + - / or x."
 msgstr ""
 "La caixa que voleu completar té més d'una cel·la, però encara no té cap "
-"operador. Introduïu-hi + - / o x."
+"operador. Introduïu-hi + – / o x."
 
 #: src/gui/ksudokugame.cpp:501
 #, kde-format
@@ -1199,7 +1199,7 @@ msgstr "KSudoku"
 #: src/main.cpp:50
 #, kde-format
 msgid "KSudoku - Sudokus and more"
-msgstr "KSudoku - Sudoku i més"
+msgstr "KSudoku – Sudoku i més"
 
 #: src/main.cpp:52
 #, kde-format
