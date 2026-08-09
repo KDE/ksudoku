@@ -1,12 +1,12 @@
 # Translation of ksudoku to Norwegian Nynorsk
 #
-# Karl Ove Hufthammer <karl@huftis.org>, 2008, 2009, 2016, 2017, 2018, 2019, 2020.
+# Karl Ove Hufthammer <karl@huftis.org>, 2008, 2009, 2016, 2017, 2018, 2019, 2020, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:42+0000\n"
-"PO-Revision-Date: 2020-12-09 19:15+0100\n"
+"PO-Revision-Date: 2026-08-08 12:45+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@nuug.no>\n"
 "Language: nn\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Lokalize 21.03.70\n"
+"X-Generator: Lokalize 26.11.70\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
@@ -35,7 +35,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -52,7 +52,7 @@ msgstr ""
 "\n"
 "Vil du be generatoren prøva på nytt, eller godta oppgåva som ho er?\n"
 "\n"
-"Hint: Du kan prøva å auka vanskegraden slik: Vel «Godta», «Spel → Nytt», byt "
+"Hint: Du kan prøva å auka vanskegraden slik: Vel «OK», «Spel → Nytt», byt "
 "symmetritype til «Ingen symmetri» eller ein låg symmetritype og vel så på "
 "nytt «Lag tilfeldig oppgåve»."
 
@@ -119,10 +119,9 @@ msgstr "Bruk markering på 2D-oppgåver"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:62
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the currently selected value"
-msgstr "Markera plana (blokkene) som inneheld den valde ruta."
+msgstr "Uthev celler som inneheld gjeldande verdi"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:59
@@ -132,6 +131,8 @@ msgid ""
 "highlighted. This can help you quickly identify patterns and potential "
 "conflicts."
 msgstr ""
+"Når du vel éin verdi, vert alle andre celler med same verdi òg utheva. Det "
+"hjelper deg å enkelt sjå mønster og potensielle konfliktar."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -274,7 +275,7 @@ msgstr "Oppsett er ikkje implementert enno"
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Alle filer (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -322,26 +323,26 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Gratulerer! Du løyste oppgåva på %1 og %2. Med litt hjelp."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Gratulerer! Du løyste oppgåva på 1 sekund. Med litt hjelp."
-msgstr[1] "Gratulerer! Du løyste oppgåva på %1 sekund. Med litt hjelp."
+msgstr[0] "Gratulerer! Du løyste oppgåva på 1 sekund. Med minst éin pause."
+msgstr[1] "Gratulerer! Du løyste oppgåva på %1 sekund. Med minst éin pause."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Gratulerer! Du løyste oppgåva på 1 minutt. Med litt hjelp."
-msgstr[1] "Gratulerer! Du løyste oppgåva på %1 minutt. Med litt hjelp."
+msgstr[0] "Gratulerer! Du løyste oppgåva på 1 minutt. Med minst éin pause."
+msgstr[1] "Gratulerer! Du løyste oppgåva på %1 minutt. Med minst éin pause."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Gratulerer! Du løyste oppgåva på %1 og %2. Med litt hjelp."
+msgstr "Gratulerer! Du løyste oppgåva på %1 og %2. Med minst éin pause."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -570,7 +571,7 @@ msgstr ""
 "fullstendig."
 
 #: src/gui/ksudoku.cpp:497 src/gui/ksudoku.cpp:504 src/gui/ksudoku.cpp:510
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Kontroller oppgåva"
@@ -595,25 +596,25 @@ msgid "Do you wish to play the puzzle now?"
 msgstr "Vil du spela oppgåva no?"
 
 #: src/gui/ksudoku.cpp:514
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Spel oppgåva"
 
 #: src/gui/ksudoku.cpp:515
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Spel"
 
 #: src/gui/ksudoku.cpp:556
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "Vis alle meldingar"
 
 #: src/gui/ksudoku.cpp:573
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "Kontroller"
@@ -698,13 +699,13 @@ msgstr "Ingen symmetri"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Tid gått:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr "Feil i bur"
+msgstr "Feil ved spelinnlasting"
 
 #: src/gui/ksudoku.cpp:754
 #, kde-format
@@ -719,7 +720,7 @@ msgid "New Game"
 msgstr "Nytt spel"
 
 #: src/gui/ksudoku.cpp:756
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "Nytt spel"
@@ -736,26 +737,26 @@ msgid "Restart Game"
 msgstr "Start spelet på nytt"
 
 #: src/gui/ksudoku.cpp:774
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Start spelet på nytt"
 
 #: src/gui/ksudoku.cpp:830
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Feil ved skriving til fil"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game_"
-msgstr "Spel"
+msgstr "Spel_"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
+#, kde-format
 msgid "Save Game"
-msgstr "Nytt spel"
+msgstr "Lagra spel"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
@@ -763,13 +764,13 @@ msgid "There seems to be no puzzle to print."
 msgstr "Du har ikkje noko sudoku-oppgåve å skriva ut."
 
 #: src/gui/ksudoku.cpp:894
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Spel"
 
 #: src/gui/ksudoku.cpp:895
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
@@ -792,7 +793,7 @@ msgstr ""
 "oppgåve­genereringa vil programmet vera ikkje-responsivt."
 
 #: src/gui/ksudoku.cpp:934
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Åtvaring"
@@ -814,14 +815,13 @@ msgstr ""
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr ""
+msgstr "Ta i bruk"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the same value"
-msgstr "Markera plana (blokkene) som inneheld den valde ruta."
+msgstr "Uthev celler som inneheld same verdi."
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:45
@@ -845,7 +845,7 @@ msgstr ""
 "automatisk rett verdi."
 
 #: src/gui/ksudokugame.cpp:377
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "Killer-sudoku-bur"
@@ -858,7 +858,7 @@ msgstr "Ruta du valde er alt brukt i eit bur."
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
 #: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "Feil i bur"
@@ -914,7 +914,7 @@ msgstr "Er du sikker på at du vil sletta dette buret?"
 
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "Slett bur"
@@ -988,7 +988,7 @@ msgid "KSudoku has sent output to your printer."
 msgstr "KSudoku har sendt utskrifta til skrivaren din."
 
 #: src/gui/puzzleprinter.cpp:121
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "Skriv ut sudoku-oppgåve"
@@ -1024,49 +1024,49 @@ msgid "Unable to upload file."
 msgstr "Klarte ikkje lasta opp fil."
 
 #: src/gui/views/gameactions.cpp:54
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "Vel %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "Skriv inn %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "Merk %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
-msgstr "Flytt opp"
+msgstr "Gå opp"
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
-msgstr "Flytt ned"
+msgstr "Gå ned"
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
-msgstr "Flytt til venstre"
+msgstr "Gå til venstre"
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
-msgstr "Flytt til høgre"
+msgstr "Gå til høgre"
 
 #: src/gui/views/gameactions.cpp:123
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
 msgstr "Tøm rute"
@@ -1085,7 +1085,7 @@ msgstr "Vel oppgåvevariant."
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
 msgstr "Klarte ikkje starta oppgåve"
@@ -1138,28 +1138,28 @@ msgstr ""
 "nytt?"
 
 #: src/logic/puzzle.cpp:88
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "Mattedoku eller killer-sudoku"
 
 #: src/logic/puzzle.cpp:89
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "&Prøv på nytt"
 
 #: src/logic/puzzle.cpp:102
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "Vanskegrad"
 
 #: src/logic/puzzle.cpp:104
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
-msgstr "&Lag eit nytt brett"
+msgstr "&Prøv på nytt"
 
 #: src/main.cpp:48
 #, kde-format
