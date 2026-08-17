@@ -6,23 +6,23 @@
 # Michał Klich <majkimajki@o2.pl>, 2008.
 # Michał Klich <tlumaczeniekde@michalklich.com>, 2008.
 # Maciej Wikło <maciej.wiklo@wp.pl>, 2009.
-# SPDX-FileCopyrightText: 2012, 2014, 2015, 2017, 2018, 2019, 2021, 2023, 2024, 2025 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
+# SPDX-FileCopyrightText: 2012, 2014-2015, 2017-2019, 2021, 2023-2026 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:42+0000\n"
-"PO-Revision-Date: 2025-06-29 18:12+0200\n"
+"PO-Revision-Date: 2026-08-16 16:54+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
-"Language-Team: Polish <kde-i18n-doc@kde.org>\n"
+"Language-Team: pl\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 25.04.2\n"
+"X-Generator: Lokalize 26.04.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -127,10 +127,9 @@ msgstr "Pokaż podświetlenia w układankach 2-D"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:62
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the currently selected value"
-msgstr "Podświetl płaszczyzny (bloki), które zawierają wybraną kratkę."
+msgstr "Podświetl kratki, zawierające obecnie zaznaczoną wartość"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:59
@@ -140,6 +139,9 @@ msgid ""
 "highlighted. This can help you quickly identify patterns and potential "
 "conflicts."
 msgstr ""
+"Gdy zaznaczysz wartość, to wszystkie pozostałe kratki zawierające tę samą "
+"wartość zostaną podświetlone. Jest to użyteczne do rozpoznawania wzorców i "
+"możliwych błędów."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -284,7 +286,7 @@ msgstr "Konfiguracja jeszcze nie dodana."
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "Wszystkie pliki (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -343,41 +345,42 @@ msgstr ""
 "Gratulacje! Udało ci się, twój czas to %1 i %2. Przy użyciu paru sztuczek."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
 msgstr[0] ""
-"Gratulacje! Udało ci się, twój czas to 1 sekunda. Przy użyciu paru sztuczek."
+"Gratulacje! Udało ci się, twój czas to 1 sekunda. Przy użyciu co najmniej 1 "
+"przerwy."
 msgstr[1] ""
-"Gratulacje! Udało ci się, twój czas to %1 sekundy. Przy użyciu paru sztuczek."
+"Gratulacje! Udało ci się, twój czas to %1 sekundy. Przy użyciu co najmniej 1 "
+"przerwy."
 msgstr[2] ""
-"Gratulacje! Udało ci się, twój czas to %1 sekund. Przy użyciu paru sztuczek."
+"Gratulacje! Udało ci się, twój czas to %1 sekund. Przy użyciu co najmniej 1 "
+"przerwy."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
 msgstr[0] ""
-"Gratulacje! Udało ci się, twój czas to %1 minuta. Przy użyciu paru sztuczek."
+"Gratulacje! Udało ci się, twój czas to 1 minuta. Przy użyciu co najmniej 1 "
+"przerwy."
 msgstr[1] ""
-"Gratulacje! Udało ci się, twój czas to %1 minuty. Przy użyciu paru sztuczek."
+"Gratulacje! Udało ci się, twój czas to %1 minuty. Przy użyciu co najmniej 1 "
+"przerwy."
 msgstr[2] ""
-"Gratulacje! Udało ci się, twój czas to %1 minut. Przy użyciu paru sztuczek."
+"Gratulacje! Udało ci się, twój czas to %1 minut. Przy użyciu co najmniej 1 "
+"przerwy."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
 msgstr ""
-"Gratulacje! Udało ci się, twój czas to %1 i %2. Przy użyciu paru sztuczek."
+"Gratulacje! Udało ci się, twój czas to %1 i %2. Przy użyciu co najmniej 1 "
+"przerwy."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -743,7 +746,7 @@ msgstr "Bez Symetrii"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Czas który upłynął:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
 #, kde-format
@@ -792,18 +795,14 @@ msgid "Error Writing File"
 msgstr "Błąd podczas zapisu pliku"
 
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "@title:tab Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Gra"
+msgstr "Gra_"
 
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "New Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Nowa gra"
+msgstr "Zapisz grę"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
@@ -867,10 +866,9 @@ msgstr "Włącz"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the same value"
-msgstr "Podświetl płaszczyzny (bloki), które zawierają wybraną kratkę."
+msgstr "Podświetl kratki, zawierające tę samą wartość"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:45
