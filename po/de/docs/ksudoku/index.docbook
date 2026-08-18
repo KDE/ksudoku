@@ -166,13 +166,13 @@
 >&ksudoku; ist ein Logikspiel, bei dem Symbole (Zahlen) in einer bestimmten Reihenfolge angeordnet werden müssen.</para>
 
 <para
->Der Spieler muss ein Gitter mit Symbolen füllen, so dass jedes Symbol in jeder Reihe, jeder Spalte und jedem Block nur einmal vorkommt. In &ksudoku; werden normalerweise die Zahlen 1 bis 9 als Symbole benutzt, in größeren Sudokus aber auch A bis P oder A bis Y. Ein Spiel beginnt mit einem teilweise ausgefüllten Spielfeld, Ihre Aufgabe ist es die noch freien Felder auszufüllen. Einige Sudoku-Rätsel haben weniger als 9 Symbole.</para>
+>Der Spieler muss ein Raster mit Symbolen füllen, so dass jedes Symbol in jeder Reihe, jeder Spalte und jedem Block nur einmal vorkommt. In &ksudoku; werden normalerweise die Zahlen 1 bis 9 als Symbole verwendet, in größeren Sudokus aber auch A bis P oder A bis Y. Ein Spiel beginnt mit einem teilweise ausgefüllten Spielfeld, Ihre Aufgabe ist es, die noch freien Felder auszufüllen. Einige Sudoku-Rätseltypen haben weniger als 9 Symbole.</para>
 
 <para
 >Wenn Sie ein Spiel starten, können Sie aus mehreren Arten und Größen von Sudokus auswählen. Sie können sich von &ksudoku; ein Spiel generieren lassen oder mit einem leeren Spielfeld starten und ein Sudoku aus einer anderen Quelle wie zum Beispiel einer Zeitung eingeben. Lassen Sie Ihre Eingabe dann von &ksudoku; überprüfen und lösen Sie das Sudoku.</para>
 
 <para
->Es gibt viele verschiedene Spielweisen von Sudoku und &ksudoku; bietet eine große Auswahl davon. Die meist gespielte Variante, das Standard-Sudoku, hat ein quadratisches Gitter mit 9 x 9 Zellen und arabischen Zahlen als Symbole. Das Gitter hat 9 Zeilen und 9 Spalten und ist zusätzlich Blöcke mit Quadraten von 3 x 3 Zellen unterteilt. Das Problem hierbei ist, dass jedes Symbol in jeder Zeile, Spalte und jedem Block nur einmal vorkommen darf.</para>
+>Es gibt viele verschiedene Spielweisen von Sudoku und &ksudoku; bietet eine große Auswahl davon. Die meist gespielte Variante, das Standard-Sudoku, hat ein quadratisches Raster mit 9 x 9 Zellen und arabischen Zahlen als Symbole. Das Raster hat 9 Zeilen und 9 Spalten und ist zusätzlich in Blöcke mit Quadraten von 3 x 3 Zellen unterteilt. Das Problem hierbei ist, dass jedes Symbol in jeder Zeile, Spalte und jedem Block nur einmal vorkommen darf.</para>
 
 	<note
 ><para
@@ -189,40 +189,40 @@
 ><title
 >Spielziel:</title
 ><para
->Die Gitter sind so zu füllen, dass in jeder Spalte, Zeile und jedem Block des Spielfelds ein Symbol nur einmal vorkommt.</para
+>Die Raster sind so zu füllen, dass in jeder Spalte, Zeile und jedem Block des Spielfelds ein Symbol nur einmal vorkommt.</para
 ></note>
 
 <para
 >Wenn das Spiel beginnt, können Sie die Art und Größe des Sudokus auswählen. Sie können ein Sudoku aus einer anderen Quelle eingeben oder sich durch &ksudoku; ein Spiel generieren lassen. Der Generator hat Einstellungen für mehrere Schwierigkeitsgrade und einige Symmetrien, die das generierte Sudoku festlegen. Ihr Spielspaß wird durch alle diese Einstellungen beeinflusst.</para>
 
 <para
->Beim Spielbeginn sehen Sie auf der linken Seite eine Auswahlliste aller für das aktuell verfügbare Spiel. Diese Liste der Symbole hängt ab von der Größe des ausgewählten Spiels. Spiele können 4, 9, 16 oder 25 Symbole enthalten. Die zwei zuerst genannten Spiele benutzen die Symbole von 1 bis 4 oder 1 bis 9 und die anderen die Buchstaben A bis P oder A bis Y.</para>
+>Beim Spielbeginn sehen Sie auf der linken Seite eine Auswahlliste aller für das aktuell verfügbare Spiel. Diese Liste der Symbole hängt ab von der Größe des ausgewählten Spiels. Spiele können 4, 9, 16 oder 25 Symbole enthalten. Die zwei zuerst genannten Spiele verwenden die Symbole von 1 bis 4 oder 1 bis 9 und die anderen die Buchstaben A bis P oder A bis Y.</para>
 
 <para
 >Zuerst sind die Grenzen des Spielfeldes zu beachten. Die dicken schwarzen Linien kennzeichnen die Blöcke. Jeder dieser Blöcke muss mit allen verfügbaren Symbolen so gefüllt werden, dass jedes Symbol nur einmal darin vorkommt. Das gleiche gilt für alle Zeilen und Spalten des Spielfelds.</para>
 
 <para
->Nun können die freien Zellen des Spielfeldes mit den Symbolen gefüllt werden. Dazu wählen Sie das gewünschte Symbol in der Auswahlliste auf der linken Seite und klicken dann auf die gewünschte freie Zelle im Spielfeld mit der linken Maustaste. Zusätzlich können Sie auch den Mauszeiger auf eine freie Zelle führen oder die Cursor-Tasten zur Bewegung benutzen und das Symbol dann auf der Tastatur eingeben.</para>
+>Nun können die freien Zellen des Spielfeldes mit den Symbolen gefüllt werden. Dazu wählen Sie das gewünschte Symbol in der Auswahlliste auf der linken Seite und klicken dann auf die gewünschte freie Zelle im Spielfeld mit der linken Maustaste. Zusätzlich können Sie auch den Mauszeiger auf eine freie Zelle führen oder die Cursor-Tasten zur Bewegung verwenden und das Symbol dann auf der Tastatur eingeben.</para>
 
 <para
->Benutzen Sie im dreidimensionalen Roxdoku immer einen <emphasis
+>Verwenden Sie im dreidimensionalen Roxdoku immer einen <emphasis
 >Doppel</emphasis
 >klick mit der &LMBn;, um einem kleinen Würfeln einen Wert zuzuweisen. Wenn Sie den großen Würfel durch Klicken und Ziehen mit der &LMBn; drehen, ist es einfacher zu erkennen, welche Werte die kleinen Würfel im Hintergrund haben, wenn Sie <emphasis
 >zwischen</emphasis
 > die kleinen Würfel und nicht darauf klicken.</para>
 
 <para
->Manchmal ist es sinnvoll Markierungen oder Notizen, die kleine Symbole in der Zelle sind, zu benutzen. Sie haben keinen Einfluss auf die Lösung, aber sie helfen Ihnen Ihre Ideen festzuhalten, besonders wenn Sie die Wahl zwischen zwei Lösungswegen haben, aber nicht genug Informationen um zwischen ihnen zu entscheiden. Um einen Markierungen oder Notiz einzugeben, klicken Sie mit der &RMBn; oder halten Sie die &Shift;-Taste gedrückt, wenn Sie die Tastatursteuerung nutzen.</para>
+>Manchmal ist es sinnvoll Markierungen oder Notizen, die kleine Symbole in der Zelle sind, zu verwenden. Sie haben keinen Einfluss auf die Lösung, aber sie helfen Ihnen Ihre Ideen festzuhalten, besonders wenn Sie die Wahl zwischen zwei Lösungswegen haben, aber nicht genug Informationen um zwischen ihnen zu entscheiden. Um einen Markierungen oder Notiz einzugeben, klicken Sie mit der &RMBn; oder halten Sie die &Shift;-Taste gedrückt, wenn Sie die Tastatursteuerung nutzen.</para>
 
 <para
 >Um ein Symbol aus einer Zelle zu löschen, bewegen Sie den Mauszeiger darauf und drücken dann die Tasten &Del; oder &Backspace; oder drücken Sie die &RMB; auf einem Symbol.</para>
 
 <para
->Es ist zu beachten, dass - zur Hilfestellung mit den Regeln von &ksudoku; - die Zellen die Farbe ändern, sobald sich der Mauszeiger über ihnen befindet. In den aufleuchtenden horizontalen und vertikalen Linien sollte geprüft werden, ob das gewählte Symbol bereits darin vorkommen. Der Block leuchtet ebenfalls auf, damit auch dieser überprüft werden kann (auch hier darf das Symbol nur einmal vorkommen). Möchten Sie die Hervorhebung nicht benutzen, schalten Sie sie im Einrichtungsdialog ab, den Sie mit dem Menüeintrag <menuchoice
+>Es ist zu beachten, dass – zur Hilfestellung mit den Regeln von &ksudoku; – die Zellen die Farbe ändern, sobald sich der Mauszeiger über ihnen befindet. In den aufleuchtenden horizontalen und vertikalen Linien sollte geprüft werden, ob das gewählte Symbol bereits darin vorkommt. Der Block leuchtet ebenfalls auf, damit auch dieser überprüft werden kann (auch hier darf das Symbol nur einmal vorkommen). Möchten Sie die Hervorhebung nicht verwenden, deaktivieren Sie sie im Einrichtungsdialog, den Sie mit dem Menüeintrag <menuchoice
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
->&ksudoku; einrichten ...</guimenuitem
+>&ksudoku; einrichten …</guimenuitem
 ></menuchoice
 > öffnen.</para>
 
@@ -386,11 +386,11 @@
 	<itemizedlist>
 	<listitem
 ><para
->Killer-Sudokus gibt es in zwei Varianten. Kleines Killer-Sudoku (4x4) und Killer-Sudoku (9x9). Beide bestehen aus Zeilen, Spalten und quadratischen Blöcken, genauso wie die Standard-Sudokus, und werden nach denselben Regeln gespielt. Das Gitter ist mit unregelmäßig geformten Blöcken bedeckt, dabei müssen die Zahlen in jedem Block die kleingeschriebenen Zahl in der Ecke des Blocks ergeben und jede Zahl darf im Block nur einmal vorkommen. Normalerweise sind beim Start nur wenige Felder mit Symbolen vorhanden. Mit Arithmetik und den üblichen Sudoku-Regeln müssen Sie die Lösung finden. In der Bildschirmgrafik ist es schwierig, die vorhandenen quadratischen Blöcken zu erkennen, daher sollten Sie das Sudoku mit <menuchoice
+>Killer-Sudokus gibt es in zwei Varianten: Kleines Killer-Sudoku (4x4) und Killer-Sudoku (9x9). Beide bestehen aus Zeilen, Spalten und quadratischen Blöcken, genauso wie die Standard-Sudokus, und werden nach denselben Regeln gespielt. Das Raster ist mit unregelmäßig geformten Blöcken bedeckt, dabei müssen die Zahlen in jedem Block die kleingeschriebene Zahl in der Ecke des Blocks ergeben und jede Zahl darf im Block nur einmal vorkommen. Typischerweise sind beim Start nur wenige Felder mit Symbolen vorhanden. Mit Arithmetik und den üblichen Sudoku-Regeln müssen Sie die Lösung finden. In der Bildschirmgrafik ist es schwierig, die vorhandenen quadratischen Blöcke zu erkennen, daher sollten Sie das Sudoku mit <menuchoice
 ><guimenu
 >Spiel</guimenu
 > <guimenuitem
->Drucken ...</guimenuitem
+>Drucken …</guimenuitem
 ></menuchoice
 > ausdrucken.</para
 ></listitem>
@@ -439,17 +439,17 @@
 ></listitem>
 	<listitem
 ><para
->Benutzen Sie das Internet zur Suche nach allgemeinen Tipps und Strategien zur Lösung vom Sudoku-Rätseln</para
+>Verwenden Sie das Internet zur Suche nach allgemeinen Tipps und Strategien zur Lösung vom Sudoku-Rätseln</para
 ></listitem>
 	<listitem
 ><para
->Benutzen Sie Markierungen, wenn es bei einer oder mehreren Zellen nur wenige Möglichkeiten gibt, Sie sich aber noch nicht sofort für einen mögliches Symbol entscheiden können. Markierungen ersparen Ihnen Zeit und Sie müssen sich die möglichen Symbole für diese Zellen nicht merken, wenn später mehr Zellen ausgefüllt sind. Im Abschnitt  <link linkend="howto"
+>Verwenden Sie Markierungen, wenn es bei einer oder mehreren Zellen nur wenige Möglichkeiten gibt, Sie sich aber noch nicht sofort für einen mögliches Symbol entscheiden können. Markierungen ersparen Ihnen Zeit und Sie müssen sich die möglichen Symbole für diese Zellen nicht merken, wenn später mehr Zellen ausgefüllt sind. Im Abschnitt  <link linkend="howto"
 >Spielanleitung</link
 > finden Sie Informationen zur Verwendung von Markierungen.</para
 ></listitem>
 	<listitem
 ><para
->Kommen Sie nicht weiter, dann versuchen Sie Ihre Spielzüge zurückzunehmen, um genau festzustellen, wo Sie einen Fehler gemacht haben. Dazu können Sie die Menüeinträge <menuchoice
+>Kommen Sie nicht weiter, dann versuchen Sie Ihre Spielzüge zurückzuverfolgen, um genau festzustellen, wo Sie einen Fehler gemacht haben. Dazu können Sie die Menüeinträge <menuchoice
 ><guimenu
 >Zug</guimenu
 > <guimenuitem
@@ -461,7 +461,13 @@
 > <guimenuitem
 >Wiederherstellen</guimenuitem
 ></menuchoice
->. Diese Aktionen können Sie auch mehrmals durchführen. Außerdem gibt es ein Einstellung im Einrichtungsdialog, um Fehler hervorzuheben.</para
+> verwenden. Diese Aktionen können Sie auch mehrmals durchführen. Außerdem gibt es eine Einstellung unter <menuchoice
+><guimenu
+>Einstellungen</guimenu
+> <guimenuitem
+>&ksudoku; einrichten …</guimenuitem
+></menuchoice
+> für die Hervorhebung von Fehlern.</para
 ></listitem>
 	<listitem
 ><para
@@ -504,7 +510,7 @@
 <para
 >Wenn Sie auf den Kopf <guibutton
 >Rätsel eingeben</guibutton
-> drücken, wird ein leeres Spielfeld der ausgewählten Art und Größe angezeigt. Nun können Sie mit der Maus oder der Tastatur ein Rätsel aus einer anderen Quelle wie zum Beispiel einer Zeitung eingeben. Haben Sie alles eingetragen, benutzen Sie die Aktion  <guilabel
+> drücken, wird ein leeres Spielfeld der ausgewählten Art und Größe angezeigt. Nun können Sie mit der Maus oder der Tastatur ein Rätsel aus einer anderen Quelle wie zum Beispiel einer Zeitung eingeben. Haben Sie alles eingetragen, verwenden Sie die Aktion  <guilabel
 >Prüfen</guilabel
 > im Menü oder der Werkzeugleiste, damit &ksudoku; die Eingaben auf mögliche Lösungen überprüft. Das Rätsel sollte nur eine mögliche Lösung haben, damit Sie mit dem Spiel beginnen können oder es durch &ksudoku; lösen lassen. Gibt es keine oder mehrere Lösungen, dann haben Sie möglicherweise Fehler bei der Eingabe der Daten gemacht.</para>
 
@@ -527,7 +533,7 @@
 >Schwierigkeitsgrad</guilabel
 > und <guilabel
 >Symmetrie</guilabel
-> nicht angezeigt, benutzen Sie den Menüeintrag <menuchoice
+> nicht angezeigt, verwenden Sie den Menüeintrag <menuchoice
 ><guimenu
 >Einstellungen</guimenu
 > <guimenuitem
@@ -547,7 +553,7 @@
 >Teuflisch</guimenuitem
 > und <guimenuitem
 >Unbegrenzt</guimenuitem
->. Bei den einfachen Schwierigkeitsgraden brauchen Sie wahrscheinlich nur wenige Minuten, um ein 9x9 Sudoku zu lösen. Mit den Schwierigkeitsgraden <guimenuitem
+>. Bei den einfachen Schwierigkeitsgraden benötigen Sie wahrscheinlich nur wenige Minuten, um ein 9x9 Sudoku zu lösen. Mit den Schwierigkeitsgraden <guimenuitem
 >Schwierig</guimenuitem
 > und <guimenuitem
 >Teuflisch</guimenuitem
@@ -604,10 +610,10 @@
 >O</keycap
 ></keycombo
 ></shortcut
-><guimenu
+> <guimenu
 >Spiel</guimenu
-><guimenuitem
->Laden ...</guimenuitem
+> <guimenuitem
+>Laden …</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -642,8 +648,8 @@
 ><menuchoice
 ><guimenu
 >Spiel</guimenu
-><guimenuitem
->Speichern unter ...</guimenuitem
+> <guimenuitem
+>Speichern unter …</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -663,7 +669,7 @@
 > <guimenu
 >Spiel</guimenu
 > <guimenuitem
->Drucken ...</guimenuitem
+>Drucken …</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -758,7 +764,7 @@
 ><para
 ><action
 >Gibt einen Tipp</action
->, in dem ein Symbol in einer freien Zelle des Gitters eingetragen wird.</para
+>, indem ein Symbol in einer freien Zelle des Rasters eingetragen wird.</para
 ></listitem>
 			</varlistentry>
 			<varlistentry id="move-menu-demo">
@@ -802,8 +808,8 @@
 ><menuchoice
 ><guimenu
 >Einstellungen</guimenu
-><guimenuitem
->&ksudoku; einrichten ...</guimenuitem
+> <guimenuitem
+>&ksudoku; einrichten …</guimenuitem
 > </menuchoice
 ></term>
 				<listitem
@@ -843,11 +849,11 @@
 ></question>
  <answer
 ><para
->Die Sudoko-Spiele werden traditionell in quadratischen Gittern gespielt und Designs würden keinen Unterschied darstellen. Jedoch können unterschiedliche Farbschemata und Hintergründe über das Menü <menuchoice
+>Die Sudoku-Spiele werden traditionell in quadratischen Rastern gespielt und Designs würden keinen Unterschied darstellen. Jedoch können unterschiedliche Farbschemata und Hintergründe über das Menü <menuchoice
 ><guimenu
 >Einstellungen</guimenu
 ><guimenuitem
->&ksudoku; einrichten ...</guimenuitem
+>&ksudoku; einrichten …</guimenuitem
 ></menuchoice
 > gewählt werden.</para
 ></answer>
@@ -896,7 +902,7 @@
 			<para
 >Ist diese Einstellung aktiv, werden mehrere Rätsel auf einer Seite gedruckt, wenn diese auf eine Seite passen.</para>
 			<para
->Das Rätsel wird gedruckt, wenn eine Seite voll ist oder wenn &ksudoku; beendet wird. Ist diese Einstellung abgeschaltet, wird das Rätsel sofort gedruckt.</para>
+>Das Rätsel wird gedruckt, wenn eine Seite voll ist oder wenn &ksudoku; beendet wird. Ist diese Einstellung deaktiviert, wird das Rätsel sofort gedruckt.</para>
 			<para
 >Leider können dreidimensionale Rätsel nicht gedruckt werden.</para>
 			</listitem>
@@ -971,7 +977,7 @@
 
 <!--List all the copyright holders here-->
 <para
->Copyright 2005-2007 Francesco Rossi <email
+>© 2005–2007 Francesco Rossi <email
 >redsh@email.it</email
 ></para>
 
@@ -983,7 +989,7 @@
 ></para>
 
 <para
->Copyright 2011 Ian Wadham <email
+>© 2011 Ian Wadham <email
 >iandw.au@gmail.com</email
 ></para>
 
