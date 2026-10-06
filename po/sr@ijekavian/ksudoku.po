@@ -2,13 +2,14 @@
 # Slobodan Simic <slsimic@gmail.com>, 2007, 2009.
 # Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2010, 2011, 2012, 2013, 2015, 2017.
 # Dalibor Djuric <daliborddjuric@gmail.com>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:42+0000\n"
-"PO-Revision-Date: 2017-09-28 17:59+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-05 01:57+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr@ijekavian\n"
 "MIME-Version: 1.0\n"
@@ -24,12 +25,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Слободан Симић"
+msgstr "Слободан Симић,Немања Хиршл"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "slsimic@gmail.com"
+msgstr "slsimic@gmail.com,nemhirsl@gmail.com"
 
 #: src/generator/sudokuboard.cpp:196 src/generator/sudokuboard.cpp:225
 #, kde-format
@@ -37,14 +38,7 @@ msgid "%1"
 msgstr "%1"
 
 #: src/generator/sudokuboard.cpp:200
-#, fuzzy, kde-format
-#| msgid ""
-#| "After %1 tries, the best difficulty level achieved is %2, with internal "
-#| "difficulty rating %3, but you requested difficulty level %4. Do you wish "
-#| "to try again or accept the puzzle as is?\n"
-#| "\n"
-#| "If you accept the puzzle, it may help to change to No Symmetry or some "
-#| "low symmetry type, then use Game->New and try generating another puzzle."
+#, kde-format
 msgid ""
 "After %1 tries, the best difficulty level achieved by the generator is %2, "
 "with internal difficulty rating %3, but you requested difficulty level %4.\n"
@@ -56,13 +50,16 @@ msgid ""
 "setting to 'No Symmetry' or some low symmetry type and then use 'Generate A "
 "Puzzle' again."
 msgstr ""
-"После %1 покушаја, најбољи достигнути ниво тежине је %2, са унутрашњом "
-"оценом %3, док сте ви затражили ниво тежине %4. Желите ли да покушате "
-"поново, или прихватате слагалицу такву каква је?\n"
+"Послије %1 покушаја, најбољи ниво тежине који је генератор достигао је %2, "
+"са унутрашњом оцјеном тежине %3, док сте ви затражили ниво тежине %4.\n"
 "\n"
-"Ако не прихватите слагалицу, пробајте да задате несиметричност или неки "
-"ниски тип симетричности, а затим идите на „Игра→Нова“ и покушајте да "
-"генеришете нову слагалицу."
+"Желите ли да генератор покуша поново, или прихватате слагалицу такву каква "
+"је?\n"
+"\n"
+"Савјет: оцјену тежине можете покушати да повећате овако: наставите дугметом "
+"„У реду“, изаберите „Игра→Нова“, затим промијените поставку симетричности на "
+"„несиметрично“ или на неки ниски тип симетричности, па поново изаберите "
+"„Генериши слагалицу“."
 
 #: src/generator/sudokuboard.cpp:215
 #, kde-format
@@ -73,14 +70,14 @@ msgid ""
 "The internal difficulty rating is %1. There are %2 clues at the start and %3 "
 "moves to go."
 msgstr ""
-"Ова слагалица ће моћи да се реши чистом логиком. Неће бити потребно "
+"Ова слагалица ће моћи да се ријеши чистом логиком. Неће бити потребно "
 "погађати.\n"
 "\n"
-"Унутрашња оцена тежине је %1. Има %2 кључева на почетку и %3 потеза до "
-"краја.|/|Ова слагалица ће моћи да се реши чистом логиком. Неће бити потребно "
-"погађати.\n"
+"Унутрашња оцјена тежине је %1. Има %2 кључева на почетку и %3 потеза до "
+"краја.|/|Ова слагалица ће моћи да се ријеши чистом логиком. Неће бити "
+"потребно погађати.\n"
 "\n"
-"Унутрашња оцена тежине је %1. Има %2 $[множ ^2 кључ кључа кључева] на "
+"Унутрашња оцјена тежине је %1. Има %2 $[множ ^2 кључ кључа кључева] на "
 "почетку и %3 $[множ ^3 потез потеза потеза] до краја."
 
 #: src/generator/sudokuboard.cpp:227
@@ -93,16 +90,16 @@ msgid ""
 "The internal difficulty rating is %3, there are %4 clues at the start and %5 "
 "moves to go."
 msgstr ""
-"Решавање генерисане слагалице захтеваће у просеку %1 погађања или тачака "
+"Рјешавање генерисане слагалице захтијеваће у просјеку %1 погађања или тачака "
 "гранања; кад погрешно погодите мораћете да се вратите назад. Прво погађање "
-"треба да уследи после %2 потеза.\n"
+"треба да услиједи послије %2 потеза.\n"
 "\n"
-"Унутрашња оцена тежине је %3. Има %4 кључева на почетку и %5 потеза до "
-"краја.|/|Решавање генерисане слагалице захтеваће у просеку %1 погађања или "
-"тачака гранања; кад погрешно погодите мораћете да се вратите назад. Прво "
-"погађање треба да уследи после %2 потеза.\n"
+"Унутрашња оцјена тежине је %3. Има %4 кључева на почетку и %5 потеза до "
+"краја.|/|Рјешавање генерисане слагалице захтијеваће у просјеку %1 погађања "
+"или тачака гранања; кад погрешно погодите мораћете да се вратите назад. Прво "
+"погађање треба да услиједи послије %2 потеза.\n"
 "\n"
-"Унутрашња оцена тежине је %3. Има %4 $[множ ^4 кључ кључа кључева] на "
+"Унутрашња оцјена тежине је %3. Има %4 $[множ ^4 кључ кључа кључева] на "
 "почетку и %5 $[множ ^5 потез потеза потеза] до краја."
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_PrintMulti)
@@ -137,10 +134,9 @@ msgstr "Истицање у 2Д слагалицама"
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_HighlightSameValues)
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:56 src/gui/configgame.ui:62
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the currently selected value"
-msgstr "Истицање равни (блокова) које садрже изабрану ћелију."
+msgstr "Истицање ћелија са тренутно изабраном вриједношћу"
 
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_HighlightSameValues)
 #: src/gui/configgame.ui:59
@@ -150,6 +146,8 @@ msgid ""
 "highlighted. This can help you quickly identify patterns and potential "
 "conflicts."
 msgstr ""
+"Када изаберете вриједност, све остале ћелије са истом вриједношћу биће "
+"истакнуте. Ово вам може помоћи да брзо уочите обрасце и могуће сукобе."
 
 #. i18n: ectx: property (toolTip), widget (QCheckBox, kcfg_ShowErrors)
 #. i18n: ectx: property (whatsThis), widget (QCheckBox, kcfg_ShowErrors)
@@ -290,7 +288,7 @@ msgstr "Подешавање још није изведено."
 #: src/gui/ksudoku.cpp:83
 #, kde-format
 msgid "All Files (*)"
-msgstr ""
+msgstr "сви фајлови (*)"
 
 #: src/gui/ksudoku.cpp:91
 #, kde-format
@@ -347,36 +345,30 @@ msgid "Congratulations! You made it in %1 and %2. With some tricks."
 msgstr "Честитамо! Успјели сте за %1 и %2. Уз неке трикове."
 
 #: src/gui/ksudoku.cpp:113
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 second. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 seconds. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 second. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 seconds. With at least 1 pause."
-msgstr[0] "Честитамо! Успјели сте за %1 секунду. Уз неке трикове."
-msgstr[1] "Честитамо! Успјели сте за %1 секунде. Уз неке трикове."
-msgstr[2] "Честитамо! Успјели сте за %1 секунди. Уз неке трикове."
-msgstr[3] "Честитамо! Успјели сте за 1 секунду. Уз неке трикове."
+msgstr[0] "Честитамо! Успјели сте за %1 секунду. Уз бар једну паузу."
+msgstr[1] "Честитамо! Успјели сте за %1 секунде. Уз бар једну паузу."
+msgstr[2] "Честитамо! Успјели сте за %1 секунди. Уз бар једну паузу."
+msgstr[3] "Честитамо! Успјели сте за 1 секунду. Уз бар једну паузу."
 
 #: src/gui/ksudoku.cpp:115
-#, fuzzy, kde-format
-#| msgid "Congratulations! You made it in 1 minute. With some tricks."
-#| msgid_plural "Congratulations! You made it in %1 minutes. With some tricks."
+#, kde-format
 msgid "Congratulations! You made it in 1 minute. With at least 1 pause."
 msgid_plural ""
 "Congratulations! You made it in %1 minutes. With at least 1 pause."
-msgstr[0] "Честитамо! Успјели сте за %1 минут. Уз неке трикове."
-msgstr[1] "Честитамо! Успјели сте за %1 минута. Уз неке трикове."
-msgstr[2] "Честитамо! Успјели сте за %1 минута. Уз неке трикове."
-msgstr[3] "Честитамо! Успјели сте за 1 минут. Уз неке трикове."
+msgstr[0] "Честитамо! Успјели сте за %1 минут. Уз бар једну паузу."
+msgstr[1] "Честитамо! Успјели сте за %1 минута. Уз бар једну паузу."
+msgstr[2] "Честитамо! Успјели сте за %1 минута. Уз бар једну паузу."
+msgstr[3] "Честитамо! Успјели сте за 1 минут. Уз бар једну паузу."
 
 #: src/gui/ksudoku.cpp:117
-#, fuzzy, kde-format
-#| msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
-#| msgid "Congratulations! You made it in %1 and %2. With some tricks."
+#, kde-format
 msgctxt "The two parameters are strings like '2 minutes' or '1 second'."
 msgid "Congratulations! You made it in %1 and %2. With at least 1 pause."
-msgstr "Честитамо! Успјели сте за %1 и %2. Уз неке трикове."
+msgstr "Честитамо! Успјели сте за %1 и %2. Уз бар једну паузу."
 
 #: src/gui/ksudoku.cpp:120
 #, kde-format
@@ -487,15 +479,16 @@ msgid ""
 "can select the puzzle size in KSudoku's Settings dialog and the maximum cage-"
 "size by using KSudoku's Difficulty button."
 msgstr ""
-"Слагалице матудокуа могу да буду величине до 3×3 до 9×9. Решење је мрежа у "
+"Слагалице матудокуа могу да буду величине од 3×3 до 9×9. Рјешење је мрежа у "
 "којој свака врста и свака колона садржи расположиве цифре (од 1–3 до 1–9) "
 "тачно једном. Мрежа је покривена кавезима неправилног облика.\n"
 "\n"
-"Кавези величине 1 су почетне вредности или кључеви, али их нема много. Већи "
-"кавези имају циљну вредност и аритметички оператор (+, -, ×, /). Примена "
-"оператора на цифре у кавезу мора да резултује циљном вредношћу, нпр. „12×“ "
-"значи да се множењем цифара мора добити 12. Иста цифра сме да се јави више "
-"пута у кавезу, под условом да је у увек у различитој врсти и колони.\n"
+"Кавези величине 1 су почетне вриједности или кључеви, али их нема много. "
+"Већи кавези имају циљну вриједност и аритметички оператор (+, -, ×, /). "
+"Примјена оператора на цифре у кавезу мора да резултује циљном вриједношћу, "
+"нпр. „12×“ значи да се множењем цифара мора добити 12. Иста цифра смије да "
+"се јави више пута у кавезу, под условом да је увијек у различитој врсти и "
+"колони.\n"
 "\n"
 "Уопштено, већи матудокуи су тежи, као што су и већи кавези. Величину "
 "слагалице можете да изаберете у дијалогу за подешавање К‑судокуа, а највећу "
@@ -523,13 +516,14 @@ msgid ""
 "size by using KSudoku's Difficulty button."
 msgstr ""
 "Слагалице судоку убице могу да буду величине 4×4 или 9×9, са или четири 2×2 "
-"блока или девет 3×3 блокова. Решење мора да прати правила класичног судокуа. "
-"Разлика је у томе што има мање почетних вредности или кључева (ако иједног). "
-"Уместо тога, мрежа је покривена кавезима неправилног облика.\n"
+"блока или девет 3×3 блокова. Рјешење мора да прати правила класичног "
+"судокуа. Разлика је у томе што има мање почетних вриједности или кључева "
+"(ако иједног). Умјесто тога, мрежа је покривена кавезима неправилног "
+"облика.\n"
 "\n"
-"Кавези величине 1 су почетне вредности или кључеви. Већи кавези имају циљну "
-"вредност која мора да буде једнака збиру свих цифара у кавезу. Кавез не сме "
-"да садржи исту цифру више пута.\n"
+"Кавези величине 1 су почетне вриједности или кључеви. Већи кавези имају "
+"циљну вриједност која мора да буде једнака збиру свих цифара у кавезу. Кавез "
+"не смије да садржи исту цифру више пута.\n"
 "\n"
 "Уопштено, већи кавези су тежи. Највећу величину кавеза можете изабрати преко "
 "дугмета тежине."
@@ -570,29 +564,29 @@ msgid ""
 "have probably made an error somewhere in one of the cages."
 msgstr ""
 "Матудоку и слагалице судоку убице треба уносити један по један кавез. Да "
-"отпочнете кавез, кликните левим на неку слободну ћелију, или унесите број у "
-"ћелији под курсором, или унесите ту +, -, /, или x. Појавиће се мала етикета "
-"кавеза у тој ћелији. Да проширите кавез у неком смеру, кликните левим на "
-"суседну ћелију или померите курсор на њу и притисните Space.\n"
+"отпочнете кавез, кликните лијевим на неку слободну ћелију, или унесите број "
+"у ћелији под курсором, или унесите ту +, -, /, или x. Појавиће се мала "
+"етикета кавеза у тој ћелији. Да проширите кавез у неком смјеру, кликните "
+"лијевим на сусједну ћелију или помјерите курсор на њу и притисните Space.\n"
 "\n"
-"Број који унесете задаје вредност кавеза, и може да садржи једну или више "
+"Број који унесете задаје вриједност кавеза, и може да садржи једну или више "
 "цифара, укључујући нулу. Ћелија величине 1 мора да има једноцифрени број, "
-"као у нормалној судоку слагалици. Она постаје почетна вредност или кључ за "
+"као у нормалној судоку слагалици. Она постаје почетна вриједност или кључ за "
 "играча.\n"
 "\n"
-"+, -, / или x задаје оператор (додавање, одузимање, дељење или множење). "
+"+, -, / или x задаје оператор (додавање, одузимање, дијељење или множење). "
 "Један мора да се нађе у сваком кавезу величине 2 и веће. У судоку убици "
-"оператор се задаје аутоматски, пошто је увек или + или га нема.\n"
+"оператор се задаје аутоматски, пошто је увијек или + или га нема.\n"
 "\n"
-"Можете уносити цифре, операторе и ћелије било којим редоследом. Да завршите "
-"један кавез и отпочнете други, притисните Enter. Ако погрешите, једино "
-"можете да обришете цео кавез па га поново унесете. Кликните десним на "
+"Можете уносити цифре, операторе и ћелије било којим редослиједом. Да "
+"завршите један кавез и отпочнете други, притисните Enter. Ако погрешите, "
+"једино можете да обришете цио кавез па га поново унесете. Кликните десним на "
 "тренутни кавез или било који претходни када желите да га обришете. "
-"Алтернативно, употребите курсор и тастер Backspace или Delete.\n"
+"Алтернативно, употријебите курсор и тастер Backspace или Delete.\n"
 "\n"
-"Када је мрежа покривена кавезима, притисните дугме „Провери слагалицу“ да "
-"проверите да ли слагалица има тачно једно решење. Ако провера пропадне, "
-"вероватно сте направили грешку у неком од кавеза."
+"Када је мрежа покривена кавезима, притисните дугме „Провјери“ да провјерите "
+"да ли слагалица има тачно једно рјешење. Ако провјера пропадне, вјероватно "
+"сте направили грешку у неком од кавеза."
 
 #: src/gui/ksudoku.cpp:385
 #, kde-format
@@ -610,15 +604,14 @@ msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
 "the puzzle completely and correctly."
 msgstr ""
-"Није нађено ниједно рјешење. Проверите да ли сте унијели слагалицу у "
+"Није нађено ниједно рјешење. Провјерите да ли сте унијели слагалицу у "
 "потпуности и исправно."
 
 #: src/gui/ksudoku.cpp:497 src/gui/ksudoku.cpp:504 src/gui/ksudoku.cpp:510
-#, fuzzy, kde-format
-#| msgid "Check Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
-msgstr "Провери слагалицу"
+msgstr "Провјера слагалице"
 
 #: src/gui/ksudoku.cpp:502
 #, kde-format
@@ -632,7 +625,7 @@ msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
 "entered in the puzzle completely and correctly."
 msgstr ""
-"Слагалица коју сте унијели има више рјешења. Проверите да ли сте унијели "
+"Слагалица коју сте унијели има више рјешења. Провјерите да ли сте унијели "
 "слагалицу у потпуности и исправно."
 
 #: src/gui/ksudoku.cpp:513
@@ -642,29 +635,25 @@ msgstr "Желите ли сада да заиграте слагалицу?"
 
 # >> @title:window
 #: src/gui/ksudoku.cpp:514
-#, fuzzy, kde-format
-#| msgid "Play Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
-msgstr "Заиграти слагалицу?"
+msgstr "Играње слагалице"
 
 #: src/gui/ksudoku.cpp:515
-#, fuzzy, kde-format
-#| msgid "Play"
+#, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Играј"
 
 #: src/gui/ksudoku.cpp:556
-#, fuzzy, kde-format
-#| msgid "Enable all messages"
+#, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
-msgstr "Активирај све поруке"
+msgstr "Укључи све поруке"
 
 #: src/gui/ksudoku.cpp:573
-#, fuzzy, kde-format
-#| msgid "Check"
+#, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "Провјери"
@@ -683,19 +672,17 @@ msgstr "неограничена"
 
 # >> @info:status
 #: src/gui/ksudoku.cpp:602
-#, fuzzy, kde-format
-#| msgid "Difficulty"
+#, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
-msgstr "тежина"
+msgstr "Тежина:"
 
 # >> @info:status
 #: src/gui/ksudoku.cpp:606
-#, fuzzy, kde-format
-#| msgid "Symmetry"
+#, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
-msgstr "симетричност"
+msgstr "Симетричност:"
 
 # >> @info:tooltip
 #: src/gui/ksudoku.cpp:610
@@ -725,7 +712,7 @@ msgstr "средишња"
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
-msgstr "лева‑десна"
+msgstr "лијева-десна"
 
 #: src/gui/ksudoku.cpp:617
 #, kde-format
@@ -754,14 +741,13 @@ msgstr "несиметрично"
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
-msgstr ""
+msgstr "Протекло вријеме:"
 
 #: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
-msgstr "Грешка у кавезу"
+msgstr "Грешка при учитавању позиције"
 
 #: src/gui/ksudoku.cpp:754
 #, kde-format
@@ -770,27 +756,22 @@ msgstr "Желите ли заиста да окончате ову партиј
 
 # >> @title:tab
 #: src/gui/ksudoku.cpp:755
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "window title"
 msgid "New Game"
-msgstr "Игра"
+msgstr "Нова партија"
 
 # >> @title:tab
 #: src/gui/ksudoku.cpp:756
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "New Game"
-msgstr "Игра"
+msgstr "Нова партија"
 
 #: src/gui/ksudoku.cpp:772
-#, fuzzy, kde-format
-#| msgid "Do you really want to end this game in order to start a new one?"
+#, kde-format
 msgid "Do you really want to restart this game?"
-msgstr "Желите ли заиста да окончате ову партију да бисте започели нову?"
+msgstr "Желите ли заиста да почнете ову партију изнова?"
 
 # rewrite-msgid: /Game//
 #: src/gui/ksudoku.cpp:773
@@ -801,35 +782,28 @@ msgstr "Почетак изнова"
 
 # rewrite-msgid: /Game//
 #: src/gui/ksudoku.cpp:774
-#, fuzzy, kde-format
-#| msgctxt "window title"
-#| msgid "Restart Game"
+#, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
-msgstr "Почетак изнова"
+msgstr "Поново покрени партију"
 
 #: src/gui/ksudoku.cpp:830
-#, fuzzy, kde-format
-#| msgid "Error Writing File"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Грешка при уписивању фајла"
 
 # >> @title:tab
 #: src/gui/ksudoku.cpp:841
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Game_"
-msgstr "Игра"
+msgstr "Партија_"
 
 # >> @title:tab
 #: src/gui/ksudoku.cpp:845
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgid "Save Game"
-msgstr "Игра"
+msgstr "Уписивање позиције"
 
 #: src/gui/ksudoku.cpp:857
 #, kde-format
@@ -838,28 +812,21 @@ msgstr "Изгледа да нема слагалице за штампање."
 
 # >> @title:tab
 #: src/gui/ksudoku.cpp:894
-#, fuzzy, kde-format
-#| msgctxt "Game Section in Config"
-#| msgid "Game"
+#, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Игра"
 
 # >> @title:tab
 #: src/gui/ksudoku.cpp:895
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Тема"
 
 # rewrite-msgid: /Warning://
 #: src/gui/ksudoku.cpp:927
-#, fuzzy, kde-format
-#| msgid ""
-#| "Warning: The Unlimited difficulty level has no limit on how many guesses "
-#| "or branch points are required to solve the puzzle and there is no lower "
-#| "limit on how soon guessing becomes necessary."
+#, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
 "branch points are required to solve the puzzle and there is no lower limit "
@@ -869,12 +836,14 @@ msgid ""
 "longer than other ones. During this time KSudoku will not respond."
 msgstr ""
 "Неограничени ниво тежине нема ограничења на број погађања или тачака гранања "
-"потребних за решавање слагалице, а ни доњег ограничења на то колико рано "
-"погађање постаје неопходно."
+"потребних за рјешавање слагалице, а ни доњег ограничења на то колико рано "
+"погађање постаје неопходно.\n"
+"\n"
+"Такође имајте у виду да генерисање овакве слагалице може трајати много дуже "
+"него код других. За то вријеме К‑судоку неће одговарати."
 
 #: src/gui/ksudoku.cpp:934
-#, fuzzy, kde-format
-#| msgid "Warning"
+#, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Упозорење"
@@ -887,19 +856,22 @@ msgid ""
 "\n"
 "Do you want to continue?"
 msgstr ""
+"Ово ће поново укључити све дијалоге које сте искључили избором опције „Не "
+"приказуј више ову поруку“.\n"
+"\n"
+"Желите ли да наставите?"
 
 #: src/gui/ksudoku.cpp:978
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
-msgstr ""
+msgstr "Укључи"
 
 #. i18n: ectx: label, entry (HighlightSameValues), group (Options)
 #: src/gui/ksudoku.kcfg:39
-#, fuzzy, kde-format
-#| msgid "Highlight the planes (blocks) that contain the selected cell."
+#, kde-format
 msgid "Highlight cells containing the same value"
-msgstr "Истицање равни (блокова) које садрже изабрану ћелију."
+msgstr "Истицање ћелија са истом вриједношћу"
 
 #. i18n: ectx: label, entry (Theme), group (Themes)
 #: src/gui/ksudoku.kcfg:45
@@ -919,12 +891,11 @@ msgid ""
 "In Killer Sudoku, the operator is always + or none and KSudoku automatically "
 "sets the correct choice."
 msgstr ""
-"У судоку убици оператор је увек + или га нема, и К‑судоку то аутоматски "
+"У судоку убици оператор је увијек + или га нема, и К‑судоку то аутоматски "
 "поставља како треба."
 
 #: src/gui/ksudokugame.cpp:377
-#, fuzzy, kde-format
-#| msgid "Killer Sudoku Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Killer Sudoku Cage"
 msgstr "Кавез судоку убице"
@@ -932,13 +903,12 @@ msgstr "Кавез судоку убице"
 #: src/gui/ksudokugame.cpp:423
 #, kde-format
 msgid "The cell you have selected has already been used in a cage."
-msgstr "Ћелија коју сте изабрали већ је употребљена у неком кавезу."
+msgstr "Ћелија коју сте изабрали већ је употријебљена у неком кавезу."
 
 #: src/gui/ksudokugame.cpp:425 src/gui/ksudokugame.cpp:455
 #: src/gui/ksudokugame.cpp:480 src/gui/ksudokugame.cpp:487
 #: src/gui/ksudokugame.cpp:495 src/gui/ksudokugame.cpp:504
-#, fuzzy, kde-format
-#| msgid "Error in Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Error in Cage"
 msgstr "Грешка у кавезу"
@@ -966,8 +936,8 @@ msgid ""
 "The cage you wish to complete has no value yet. Please key in a number with "
 "one or more digits."
 msgstr ""
-"Кавез који желите да довршите још вредност. Унесите број са једном или више "
-"цифара."
+"Кавез који желите да довршите још нема вриједност. Унесите број са једном "
+"или више цифара."
 
 #: src/gui/ksudokugame.cpp:493
 #, kde-format
@@ -984,8 +954,8 @@ msgid ""
 "The cage you wish to complete has one cell, but its value is too large. A "
 "single-cell cage must have a value from 1 to %1 in a puzzle of this size."
 msgstr ""
-"Кавез који желите да довршите има једну ћелију, али му је вредност "
-"превелика. Једноћелијски кавез мора да има вредност од 1 до %1 у слагалици "
+"Кавез који желите да довршите има једну ћелију, али му је вриједност "
+"превелика. Једноћелијски кавез мора да има вриједност од 1 до %1 у слагалици "
 "ове величине."
 
 #: src/gui/ksudokugame.cpp:537
@@ -996,8 +966,7 @@ msgstr "Желите ли да обришете овај кавез?"
 # >> @title:window
 #: src/gui/ksudokugame.cpp:538 src/gui/ksudokugame.cpp:566
 #: src/gui/ksudokugame.cpp:574
-#, fuzzy, kde-format
-#| msgid "Delete Cage"
+#, kde-format
 msgctxt "@title:window"
 msgid "Delete Cage"
 msgstr "Брисање кавеза"
@@ -1072,8 +1041,7 @@ msgstr "К‑судоку посла излаз на штампач."
 
 # >> @title:window
 #: src/gui/puzzleprinter.cpp:121
-#, fuzzy, kde-format
-#| msgid "Print Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Print Sudoku Puzzle"
 msgstr "Штампање судоку слагалице"
@@ -1084,10 +1052,9 @@ msgid "Unable to download file: URL is empty."
 msgstr "Не могу да преузмем фајл: УРЛ је празан."
 
 #: src/gui/serializer.cpp:405
-#, fuzzy, kde-format
-#| msgid "Unable to download file."
+#, kde-format
 msgid "Unable to open file."
-msgstr "Не могу да преузмем фајл."
+msgstr "Не могу да отворим фајл."
 
 #: src/gui/serializer.cpp:412 src/gui/serializer.cpp:445
 #, kde-format
@@ -1110,57 +1077,49 @@ msgid "Unable to upload file."
 msgstr "Не могу да отпремим фајл."
 
 #: src/gui/views/gameactions.cpp:54
-#, fuzzy, kde-format
-#| msgid "Select %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Select %1 (%2)"
 msgstr "Изабери %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:60
-#, fuzzy, kde-format
-#| msgid "Enter %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Enter %1 (%2)"
 msgstr "Унеси %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:83
-#, fuzzy, kde-format
-#| msgid "Mark %1 (%2)"
+#, kde-format
 msgctxt "@action"
 msgid "Mark %1 (%2)"
 msgstr "Означи %1 (%2)"
 
 #: src/gui/views/gameactions.cpp:95
-#, fuzzy, kde-format
-#| msgid "Move Up"
+#, kde-format
 msgctxt "@action"
 msgid "Move Up"
 msgstr "Помјери нагоре"
 
 #: src/gui/views/gameactions.cpp:102
-#, fuzzy, kde-format
-#| msgid "Move Down"
+#, kde-format
 msgctxt "@action"
 msgid "Move Down"
 msgstr "Помјери надоље"
 
 #: src/gui/views/gameactions.cpp:109
-#, fuzzy, kde-format
-#| msgid "Move Left"
+#, kde-format
 msgctxt "@action"
 msgid "Move Left"
 msgstr "Помјери улијево"
 
 #: src/gui/views/gameactions.cpp:116
-#, fuzzy, kde-format
-#| msgid "Move Right"
+#, kde-format
 msgctxt "@action"
 msgid "Move Right"
 msgstr "Помјери удесно"
 
 #: src/gui/views/gameactions.cpp:123
-#, fuzzy, kde-format
-#| msgid "Clear Cell"
+#, kde-format
 msgctxt "@action"
 msgid "Clear Cell"
 msgstr "Очисти ћелију"
@@ -1179,11 +1138,10 @@ msgstr "Изаберите варијанту слагалице."
 #: src/gui/welcomescreen.cpp:146 src/gui/welcomescreen.cpp:152
 #: src/gui/welcomescreen.cpp:163 src/gui/welcomescreen.cpp:169
 #: src/gui/welcomescreen.cpp:179 src/gui/welcomescreen.cpp:185
-#, fuzzy, kde-format
-#| msgid "Unable to start puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Unable to Start Puzzle"
-msgstr "Не могу да покренем слагалицу."
+msgstr "Не могу да покренем слагалицу"
 
 #: src/gui/welcomescreen.cpp:152
 #, kde-format
@@ -1232,34 +1190,30 @@ msgstr "Генериши слагалицу"
 #: src/logic/puzzle.cpp:86
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
-msgstr "Генерисање слагалице пропало после 200 покушаја. Покушати поново?"
+msgstr "Генерисање слагалице пропало послије 200 покушаја. Покушати поново?"
 
 # well-spelled: Матудоку
 #: src/logic/puzzle.cpp:88
-#, fuzzy, kde-format
-#| msgid "Mathdoku or Killer Sudoku Puzzle"
+#, kde-format
 msgctxt "@title:window"
 msgid "Mathdoku or Killer Sudoku Puzzle"
 msgstr "Матудоку или слагалица судоку убице"
 
 #: src/logic/puzzle.cpp:89
-#, fuzzy, kde-format
-#| msgid "&Try Again"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Try Again"
 msgstr "По&кушај поново"
 
 # >> @title:window
 #: src/logic/puzzle.cpp:102
-#, fuzzy, kde-format
-#| msgid "Difficulty Level"
+#, kde-format
 msgctxt "@title:window"
 msgid "Difficulty Level"
 msgstr "Ниво тежине"
 
 #: src/logic/puzzle.cpp:104
-#, fuzzy, kde-format
-#| msgid "&Retry"
+#, kde-format
 msgctxt "@action:button"
 msgid "&Retry"
 msgstr "&Покушај поново"
@@ -1308,7 +1262,7 @@ msgstr "Ијан Вадам"
 #: src/main.cpp:56
 #, kde-format
 msgid "New puzzle generator and solver"
-msgstr "Нови генератор и решавач слагалица"
+msgstr "Нови генератор и рјешавач слагалица"
 
 #: src/main.cpp:57
 #, kde-format
@@ -1337,36 +1291,10 @@ msgid ""
 "Algorithms for new puzzle generator and solver at davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 msgstr ""
-"Алгоритми за нови генератор и решавач слагалица на davidbau.com/"
+"Алгоритми за нови генератор и рјешавач слагалица на davidbau.com/"
 "archives/2006/09/04/sudoku_generator.html"
 
 #: src/main.cpp:67
 #, kde-format
 msgid "Document to open"
 msgstr "Документ за отварање"
-
-#, fuzzy
-#~| msgid "&Accept"
-#~ msgctxt "@action:button"
-#~ msgid "&Accept"
-#~ msgstr "&Прихвати"
-
-#~ msgid "Could not load game."
-#~ msgstr "Не могу да учитам позицију."
-
-# >> @title:tab
-#, fuzzy
-#~| msgctxt "Game Section in Config"
-#~| msgid "Game"
-#~ msgctxt "button label"
-#~ msgid "New Game"
-#~ msgstr "Игра"
-
-# rewrite-msgid: /Game//
-#~ msgctxt "button label"
-#~ msgid "Restart Game"
-#~ msgstr "Почни поново"
-
-# >> @title:window
-#~ msgid "Open Location"
-#~ msgstr "Отварање локације"
