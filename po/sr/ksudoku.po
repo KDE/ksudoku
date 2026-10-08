@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-06-26 00:42+0000\n"
-"PO-Revision-Date: 2026-10-05 01:57+0200\n"
+"PO-Revision-Date: 2026-10-07 11:45+0200\n"
 "Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 "X-Environment: kde\n"
-"X-Associated-UI-Catalogs: libkdegames5\n"
+"X-Associated-UI-Catalogs: libkdegames6\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -660,13 +660,13 @@ msgstr "Провери"
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
-msgstr "дијаболична"
+msgstr "дијаболично"
 
 #: src/gui/ksudoku.cpp:591
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
-msgstr "неограничена"
+msgstr "неограничено"
 
 # >> @info:status
 #: src/gui/ksudoku.cpp:602
@@ -1188,7 +1188,7 @@ msgstr "Генериши слагалицу"
 #: src/logic/puzzle.cpp:86
 #, kde-format
 msgid "Attempts to generate a puzzle failed after about 200 tries. Try again?"
-msgstr "Генерисање слагалице пропало после 200 покушаја. Покушати поново?"
+msgstr "Генерисање слагалице пропало после око 200 покушаја. Покушати поново?"
 
 # well-spelled: Матудоку
 #: src/logic/puzzle.cpp:88
