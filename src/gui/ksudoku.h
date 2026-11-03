@@ -29,9 +29,6 @@
 #include <QTimer>
 #include <QLabel>
 #include <KXmlGuiWindow>
-#if 0
-#include <knewstuff/knewstuff.h>
-#endif
 
 class KGameDifficultyLevel;
 
@@ -55,21 +52,6 @@ class PuzzlePrinter;
  * @author Francesco Rossi <redsh@email.it>
  * @version 0.3
  */
-
-class KSudoku;
-
-#if 0
-class KSudokuNewStuff : public KNewStuff
-{
-public:
-	KSudoku* parent;
-public:
-	KSudokuNewStuff(KSudoku* p);
-	bool install( const QString &fileName );
-	bool createUploadFile( const QString &fileName );
-};
-#endif
-
 class KSudoku : public KXmlGuiWindow
 {
     Q_OBJECT

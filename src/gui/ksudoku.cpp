@@ -1009,34 +1009,4 @@ void KSudoku::setTimerDisplay()
 	}
 }
 
-#if 0
-KSudokuNewStuff::KSudokuNewStuff( KSudoku* v ) :
-        KNewStuff( "ksudoku", (QWidget*) v )
-{
-	parent = v;
-}
-
-bool KSudokuNewStuff::install( const QString &fileName )
-{
-	KTar archive( fileName );
-	if ( !archive.open( QIODevice::ReadOnly ) )
-		return false;
-
-	const KArchiveDirectory *archiveDir = archive.directory();
-	const QString destDir = QStandardPaths::writableLocation( QStandardPaths::GenericDataLocation ) + QStringLiteral("/ksudoku/");
-	QDir().mkpath(destDir);
-
-	archiveDir->copyTo(destDir);
-	archive.close();
-	//find custom shapes
-	parent->updateShapesList();
-	return true;
-}
-
-bool KSudokuNewStuff::createUploadFile( const QString &/*fileName*/ )
-{
-	return true;
-}
-#endif
-
 #include "moc_ksudoku.cpp"

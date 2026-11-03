@@ -83,7 +83,6 @@ add_subdirectory(themes)
 
 install(PROGRAMS gui/org.kde.ksudoku.desktop  DESTINATION  ${KDE_INSTALL_APPDIR})
 install(FILES gui/org.kde.ksudoku.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
-install(FILES ksudokurc  DESTINATION ${KDE_INSTALL_CONFDIR})
 
 ecm_install_icons(ICONS
     128-apps-ksudoku.png
