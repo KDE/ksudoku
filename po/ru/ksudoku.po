@@ -13,7 +13,7 @@ msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2026-11-08 02:54+0000\n"
-"PO-Revision-Date: 2026-09-26 09:05+0200\n"
+"PO-Revision-Date: 2026-11-11 20:48+0200\n"
 "Last-Translator: Alexander Yavorsky <kekcuha@gmail.com>\n"
 "Language-Team: Russian <kde-russian@lists.kde.ru>\n"
 "Language: ru\n"
@@ -209,7 +209,7 @@ msgstr "Общий размер ячеек"
 #: src/gui/configgame.ui:313 src/gui/configgame.ui:316
 #, no-c-format, kde-format
 msgid "Shrink or expand a cell by up to 30% when it is selected."
-msgstr "Уменьшать или увеличивать выбранную ячейку на 30%."
+msgstr "Уменьшать или увеличивать выбранную ячейку на 30 %."
 
 #. i18n: ectx: property (text), widget (QLabel, label)
 #: src/gui/configgame.ui:319
@@ -225,7 +225,7 @@ msgstr "Размер выбранной ячейки"
 #: src/gui/configgame.ui:376 src/gui/configgame.ui:379
 #, no-c-format, kde-format
 msgid "Shrink or expand cells by up to 30% when they are highlighted."
-msgstr "Уменьшать или увеличивать выделенные ячейки на 30%."
+msgstr "Уменьшать или увеличивать выделенные ячейки на 30 %."
 
 #. i18n: ectx: property (text), widget (QLabel, label_3)
 #: src/gui/configgame.ui:382
@@ -240,7 +240,7 @@ msgstr "Размер выделенных ячеек"
 msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell."
-msgstr "Уменьшать на 60% ячейки, не входящие в один куб NxNxN с выбранной."
+msgstr "Уменьшать на 60 % ячейки, не входящие в один куб NxNxN с выбранной."
 
 #. i18n: ectx: property (whatsThis), widget (QSlider, kcfg_OuterCellSize3D)
 #. i18n: ectx: property (whatsThis), widget (QLabel, label_5)
@@ -252,7 +252,7 @@ msgid ""
 "Shrink cells by up to 60% if they are not in an NxNxN cube that contains the "
 "selected cell. This is useful if a 3-D puzzle has more than one cube."
 msgstr ""
-"Уменьшать на 60% ячейки, не входящие в один куб NxNxN с выбранной. Это "
+"Уменьшать на 60 % ячейки, не входящие в один куб NxNxN с выбранной. Это "
 "полезно, если в головоломке больше одного куба."
 
 #. i18n: ectx: property (text), widget (QLabel, label_5)
