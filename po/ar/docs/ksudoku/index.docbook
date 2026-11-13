@@ -1,0 +1,1031 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksudoku "KSudoku">
+  <!ENTITY package "kdegames"
+>  <!-- do not change this! -->
+  <!ENTITY % Arabic "INCLUDE"
+> <!-- change language only here -->
+  <!ENTITY % addindex "IGNORE"
+> <!-- do not change this! -->
+]>
+
+<book id="ksudoku" lang="&language;"
+> <!-- do not change this! -->
+<bookinfo>
+	<title
+>دليل كسودوكو</title
+> <!-- This is the title of this docbook. -->
+<!-- List of immediate authors begins here. -->
+<!--INPORTANT! - All other contributors: [to be determined] -->
+<authorgroup>
+	<author
+><firstname
+>Mick</firstname
+> <surname
+>Kappenburg</surname
+> <affiliation
+><address
+><email
+>ksudoku@kappenburg.net</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Eugene</firstname
+> <surname
+>Trounev</surname
+> <affiliation
+><address
+><email
+>eugene.trounev@gmail.com</email
+></address
+></affiliation>
+	</author>
+	<author
+><firstname
+>Ian</firstname
+> <surname
+>Wadham</surname
+> <affiliation
+><address
+><email
+>iandw.au@gmail.com</email
+></address
+></affiliation>
+	</author>
+<othercredit role="translator"
+><firstname
+>زايد</firstname
+><surname
+>السعيدي</surname
+><affiliation
+><address
+><email
+>zayed.alsaidi@gmail.com</email
+></address
+></affiliation
+><contrib
+>التّرجمة العربيّة</contrib
+></othercredit
+> 
+</authorgroup>
+
+<copyright>
+	<year
+>2007</year>
+	<holder
+>Mick Kappenburg</holder>
+</copyright>
+<copyright>
+	<year
+>2011</year>
+	<holder
+>Ian Wadham</holder>
+</copyright>
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2020-12-10</date
+><!-- Date of (re)writing, or update.-->
+<releaseinfo
+>1.4.20120</releaseinfo
+><!-- Application version number. Use the variable definitions within header to change this value.-->
+
+<!--Short description of this document. Do not change unless necessary!-->
+<abstract>
+	<para
+>يصف هذا التوثيق لعبة كسودوكو، وهي أحجية وضع رموز تعتمد على المنطق.</para>
+</abstract>
+
+<!--List of relevant keywords-->
+<keywordset>
+	<keyword
+>كيدي</keyword
+> <!-- do not change this! -->
+	<keyword
+>ألعاب كيدي</keyword
+> <!-- do not change this! -->
+	<keyword
+>لعبة</keyword
+> <!-- do not change this! -->
+	<keyword
+>كسودوكو</keyword
+><!--Application name goes here-->
+<!-- Game genre. Use as many as necessary. Available game types are: Arcade, Board, Card, Dice, Toys, Logic, Strategy.-->
+	<keyword
+>منطق</keyword>
+	<keyword
+>لوحة</keyword>
+<!--Number of possible players. It can be: One, Two,..., Multiplayer-->
+	<keyword
+>لاعب واحد</keyword>
+<!--All other relevant keywords-->
+	<keyword
+>أحجية</keyword>
+</keywordset>
+</bookinfo>
+
+<!--Content begins here: -->
+
+<chapter id="introduction"
+><title
+>مقدمة</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>نوع اللعبة:</title
+><para
+>منطق، لوحة</para
+></note>
+
+	<note
+><title
+>عدد اللاعبين الممكنين:</title
+><para
+>واحد</para
+></note>
+
+<para
+>كسودوكو هي أحجية وضع رموز تعتمد على المنطق.</para>
+
+<para
+>يتعين على اللاعب ملء شبكة بالرموز بحيث يحتوي كل عمود وصف وكتلة في لوحة اللعبة على نسخة واحدة فقط من كل رمز. في كسودوكو، تكون الرموز عادةً هي الأرقام من 1 إلى 9، ولكنها قد تكون الحروف من A إلى P أو من A إلى Y في الأحاجي الأكبر. تبدأ الأحاجي بلوحة مملوءة جزئيًا ومهمتك هي ملء الباقي. بعض أنواع الأحاجي تحتوي على أقل من تسعة رموز.</para>
+
+<para
+>عند بدء لعبة، يمكنك الاختيار من بين عدة أنواع وأحجام لسودوكو. يمكنك بعد ذلك جعل كسودوكو يولد أحجية لك لتحلها أو يمكنك البدء بلوحة فارغة وإدخال أحجية من مصدر آخر، مثل صحيفة، ثم تطلب من كسودوكو التحقق منها وربما حلها.</para>
+
+<para
+>هناك العديد من تنويعات سودوكو الموجودة، ويوفر كسودوكو مجموعة جيدة منها. النوع الأكثر شيوعًا، سودوكو القياسي، يحتوي على شبكة مربعة 9x9 ويستخدم الأرقام من 1 إلى 9 كرموز. تحتوي الشبكة على 9 صفوف و9 أعمدة ومقسمة إلى 9 كتل من مربعات 3x3. التحدي هو – يمكن استخدام كل رمز مرة واحدة فقط في كل صف أو عمود أو كتلة.</para>
+
+	<note
+><para
+>يستغرق إكمال اللعبة وقتًا وتركيزًا. ومع ذلك، فإن حل أحاجي سودوكو يساعد على زيادة نشاط الدماغ العام وبالتالي يوصى به بشدة.</para
+></note>
+</chapter>
+
+<chapter id="howto"
+><title
+>كيف تلعب</title
+> <!-- do not change this! -->
+
+	<note
+><title
+>الهدف:</title
+><para
+>املأ الشبكة بحيث يحتوي كل عمود وصف وكتلة على نسخة واحدة فقط من كل رمز.</para
+></note>
+
+<para
+>عندما تبدأ اللعبة، سيُطلب منك اختيار نوع اللعبة وحجم اللوحة الذي تهتم به. يمكنك إدخال أحجية من مصدر آخر أو جعل كسودوكو يولد أحجية. المولد لديه عدة إعدادات للصعوبة وبعض إعدادات التناظر، والتي تؤثر على النمط الذي تُولد به الأحجية. ستعتمد تجربة لعبك على أي من هذه الخيارات تختار.</para>
+
+<para
+>عندما تظهر لوحة الأحجية، ألقِ نظرة على الجانب الأيسر. توجد قائمة اختيار تحتوي على جميع الرموز المتاحة في اللعبة الحالية. تعتمد مجموعة الرموز على حجم اللعبة الذي تختاره. قد تحتوي الألعاب على 4 أو 9 أو 16 أو 25 رمزًا. تستخدم المجموعتان الأوليان الأرقام من 1 إلى 4 أو من 1 إلى 9: وتستخدم المجموعات الأخرى الحروف من A إلى P أو من A إلى Y.</para>
+
+<para
+>أولًا، لاحظ الحدود في لوحة اللعبة. الخطوط السميكة تحدد الكتل. يجب إكمال كل من هذه الكتل باستخدام الرموز المتاحة ويجب استخدام كل رمز مرة واحدة ومرة واحدة فقط داخل الكتلة. وينطبق الشيء نفسه على الصفوف والأعمدة في اللوحة.</para>
+
+<para
+>الآن يمكنك البدء في إدخال الرموز في المربعات الشاغرة على اللوحة. للقيام بذلك، اختر الرمز الذي ترغب في إدخاله من قائمة الاختيار على اليسار، ثم استخدم الفأرة للنقر على مربع شاغر في اللوحة. بدلًا من ذلك، يمكنك التحويم بالفأرة فوق مربع شاغر أو استخدام مفاتيح الأسهم للتنقل، ثم استخدام لوحة المفاتيح لإدخال الرمز.</para>
+
+<para
+>في أحاجي Roxdoku (ثلاثية الأبعاد)، استخدم الفأرة دائمًا لتعيين قيمة لمكعب صغير واستخدم <emphasis
+>نقرة مزدوجة</emphasis
+>. عندما تقوم بتدوير المكعب الكبير، عن طريق النقر والسحب بالفأرة، سيكون من الأسهل رؤية القيم الموجودة على المكعبات الصغيرة في الخلفية إذا نقرت <emphasis
+>بين</emphasis
+> المكعبات الصغيرة، وليس عليها.</para>
+
+<para
+>من المفيد أحيانًا إدخال علامات أو ملاحظات، وهي رموز صغيرة داخل المربع. ليس لهذه العلامات تأثير على الحل، لكنها يمكن أن تساعدك في تتبع الأفكار التي خطرت لك، خاصة عندما يكون هناك خيار بين بديلين ولا تملك بعد معلومات كافية للتقرير بينهما. لإدخال علامة أو ملاحظة، انقر بزر الفأرة الأيمن أو استمر في الضغط على مفتاح &Shift; عند استخدام لوحة المفاتيح.</para>
+
+<para
+>لمسح الرموز من مربع، حوم فوق المربع بالفأرة واضغط على &Del; أو &Backspace; في لوحة المفاتيح أو انقر بزر الفأرة الأيمن على المربع.</para>
+
+<para
+>لاحظ أن المربعات يتغير لونها أثناء تحويم الفأرة فوقها. هذا لمساعدتك في الالتزام بقواعد كسودوكو. استخدم الخطوط العمودية والأفقية للتحقق مما إذا كان الرمز الذي أوشكت على إدخاله في مكان شاغر مستخدمًا بالفعل في أي مكان في الخط العمودي أو الأفقي الذي يعد هذا المربع جزءًا منه. يبرز التلوين أيضًا الكتلة التي، إذا تذكرت، يجب أن تحتوي أيضًا على نسخة واحدة فقط من كل رمز. إذا كنت لا تحتاج إلى الإبراز، يمكنك استخدام عنصر قائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>اضبط كسودوكو…</guimenuitem
+></menuchoice
+> لإيقاف تشغيله.</para>
+
+<para
+>استمر في إدخال الرموز وفقًا للقواعد حتى يمتلئ ميدان اللعبة بالكامل. عند هذه النقطة، سيتحقق كسودوكو مما إذا كانت جميع المدخلات صحيحة وسيقوم إما بتصحيحك أو قبول حلك.</para>
+</chapter>
+
+<chapter id="rules_and_tips"
+><title
+>قواعد اللعبة واستراتيجياتها وتلميحاتها</title
+> <!-- do not change this! -->
+
+<sect1 id="rules"
+><title
+>قواعد اللعبة العامة</title>
+
+<para
+>قواعد كسودوكو بسيطة للغاية.</para>
+	<itemizedlist>
+	<listitem
+><para
+>اعتمادًا على حجم لوحة اللعبة ونوع الأحجية ومستوى الصعوبة المختار، قد تستغرق أحجية كسودوكو الفردية من بضع دقائق إلى بضع ساعات لحلها.</para
+></listitem>
+	<listitem
+><para
+>يمكن لكل مربع أن يحمل رمزًا واحدًا وواحدًا فقط.</para
+></listitem>
+	<listitem
+><para
+>يمكن لكل صف أفقي (كما هو محدد في لوحة اللعبة) أن يحتوي على كل رمز مرة واحدة بالضبط.</para
+></listitem>
+	<listitem
+><para
+>يمكن لكل عمود عمودي (كما هو محدد في لوحة اللعبة) أن يحتوي على كل رمز مرة واحدة بالضبط.</para
+></listitem>
+	<listitem
+><para
+>يمكن لكل كتلة (كما هي محددة في لوحة اللعبة) أن تحتوي على كل رمز مرة واحدة بالضبط.</para
+></listitem>
+	</itemizedlist>
+
+	<note
+><title
+>الملاحظة:</title
+><para
+>تعتمد مجموعة الرموز على حجم اللعبة الذي تختاره.</para
+></note>
+
+	<itemizedlist>
+	<listitem
+><para
+>لا تتطلب حل أحاجي كسودوكو معرفة بالرياضيات أو اللغة، ولكن هناك حاجة إلى القليل من القدرة الحسابية في أحاجي سودوكو القاتل (Killer Sudoku) ورياضيات-دوكو (Mathdoku).</para
+></listitem>
+	<listitem
+><para
+>الرموز الموجودة بالفعل على لوحة اللعبة عند بدء الأحجية لا يمكن تغييرها.</para
+></listitem>
+	<listitem
+><para
+>يمكنك فقط تعديل الرموز التي أدخلتها مسبقًا.</para
+></listitem>
+	<listitem
+><para
+>الأحاجي التي يولدها كسودوكو لها حل واحد فقط.</para
+></listitem>
+	<listitem
+><para
+>الأحاجي التي تدخلها قد لا يكون لها حل أو يكون لها أكثر من حل، ولكن إذا كانت من مصدر منشور فهذا يعني على الأرجح أنك ارتكبت خطأ في إدخال البيانات.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+
+<sect1 id="variants"
+><title
+>تنويعات كسودوكو</title>
+
+<sect2 id="standard_sudoku"
+><title
+>أحاجي سودوكو</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>أحجية سودوكو القياسية 9x9 تحتوي على 9 صفوف و9 أعمدة و9 كتل مربعة بحجم 3x3.</para
+></listitem>
+	<listitem
+><para
+>الأحجام الأخرى لسودوكو القياسي هي 4x4 (سهل جدًا)، و16x16، و25x25 (ليست سهلة).</para
+></listitem>
+	<listitem
+><para
+>تنويعات Jigsaw وAztec هي نفس سودوكو القياسي 9x9 باستثناء أن بعض الكتل ليست مربعة.</para
+></listitem>
+	<listitem
+><para
+>تنويع XSudoku هو تمامًا مثل سودوكو القياسي مع متطلب إضافي: يجب أن يحتوي القطران الرئيسيان أيضًا على الرموز من 1 إلى 9 مرة واحدة ومرة واحدة فقط. يبرز كسودوكو الأقطار لتسهيل رؤية ذلك.</para
+></listitem>
+	<listitem
+><para
+>تنويعات Nonomino 9x9 وPentomino 5x5 وTetromino 4x4 هي نفس سودوكو القياسي باستثناء أن بعض الكتل ليست مربعة.</para
+></listitem>
+	<listitem
+><para
+>تنويع 6x6 هو نفس سودوكو القياسي باستثناء أن الكتل عبارة عن ستة مستطيلات 3x2.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="samurai"
+><title
+>أحاجي الساموراي</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>تتكون سودوكو الساموراي من خمس أحاجي سودوكو قياسية من مربعات 9x9 لكل منها، تتداخل عند الزوايا بأربع كتل 3x3. تحتوي كل من الأحاجي الخمس على 9 صفوف و9 أعمدة و9 كتل لحلها ويجب أن تتناسب الرموز في المربعات المتداخلة مع حلول أحجيتين سودوكو قياسيتين 9x9.</para
+></listitem>
+	<listitem
+><para
+>سودوكو الساموراي الصغير يحتوي على خمس أحاجي سودوكو 4x4، تتداخل عند الزوايا بأربعة مربعات. كل من الأحاجي الخمس لها 4 صفوف و4 أعمدة و4 كتل لحلها.</para
+></listitem>
+	<listitem
+><para
+>يتكون تنويع الطاحونة (Windmill) من خمس أحاجي سودوكو قياسية 9x9، تتداخل عند الزوايا بكتلتين 3x3. إنها مثل سودوكو الساموراي، لكن من الصعب رؤية سودوكو 9x9 المركزية. ثمانية من كتلها 3x3 مشتركة مع أشرعة الطاحونة وفقط الكتلة المركزية 3x3 ليست كذلك. </para
+></listitem>
+	<listitem
+><para
+>تنويع سويهي (Sohei) هو نوع آخر من الساموراي ويحتوي على أربع أحاجي سودوكو 9x9، تتداخل عند زاويتين بكتلة 3x3. الكتلة المركزية 3x3 من الأحجية فارغة. </para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="roxdoku"
+><title
+>أحاجي Roxdoku ثلاثية الأبعاد</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>تعتمد تنويعات Roxdoku على المكعبات في ثلاثة أبعاد، لكنها أسهل مما تبدو. لا توجد صفوف أو أعمدة. أحجية Roxdoku 3x3x3 تحتوي على 27 مكعبًا صغيرًا مرتبة في مكعب أكبر 3x3x3. هذا يحتوي على تسع شرائح، كل منها يحتوي على 3x3 مكعبات صغيرة، وهذه هي الكتل المربعة التي يجب ملؤها بالأرقام من 1 إلى 9. أحجية Roxdoku 4x4x4 تحتوي على اثني عشر شريحة 4x4 وأحجية Roxdoku 5x5x5 تحتوي على خمس عشرة شريحة 5x5.</para
+></listitem>
+	<listitem
+><para
+>تنويع Roxdoku التوأم (Twin) يحتوي على أحجيتين Roxdoku 3x3x3 تشتركان في زاوية. يجب أن تكون قطعة الزاوية جزءًا من حل كلا المكعبين 3x3x3.</para
+></listitem>
+	<listitem
+><para
+>تنويع Roxdoku المزدوج (Double) يحتوي على أحجيتين Roxdoku 3x3x3 تشتركان في ثلاث قطع على طول حافة واحدة. يجب أن تكون قطع الحافة جزءًا من حل كلا المكعبين 3x3x3. </para
+></listitem>
+	<listitem
+><para
+>تنويع Roxdoku الساموراي يحتوي على تسع أحاجي Roxdoku 3x3x3. واحدة في المركز والمكعبات الثمانية الأخرى 3x3x3 تتداخل معها، واحدة عند كل ركن من أركان المكعب المركزي. يجب أن تكون قطع الزوايا هذه جزءًا من حل مكعبين 3x3x3.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+
+<sect2 id="killer"
+><title
+>تنويعات القاتل ورياضيات-دوكو</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>أحاجي القاتل (Killer) لها تنويعان: القاتل الصغير (4x4) وسودوكو القاتل (9x9). كلاهما يحتوي على صفوف وأعمدة وكتل مربعة، تمامًا كما في أحاجي سودوكو القياسية ويتبعان نفس القواعد تمامًا. كما يحتويان أيضًا على مناطق غير منتظمة الشكل تسمى الأقفاص، حيث يجب أن يكون مجموع أرقام كل قفص مساويًا للرقم المكتوب بخط صغير في زاوية القفص ولا يمكن تكرار أي رقم داخل القفص. عادة ما تبدأ الأحجية ببضعة مربعات فقط تحتوي على رموز. تحتاج إلى استخدام الحساب وقواعد سودوكو المعتادة معًا للوصول إلى الحل. تجعل رسوميات الشاشة من الصعب تصور الكتل المربعة الموجودة، ولكن من الأسهل رؤيتها إذا طبعت الأحجية باستخدام عنصر القائمة <menuchoice
+><guimenu
+>لعبة</guimenu
+> <guimenuitem
+>اطبع…</guimenuitem
+></menuchoice
+>.</para
+></listitem>
+	<listitem
+><para
+>تنويعات رياضيات-دوكو (Mathdoku)، المعروفة أيضًا باسم <trademark
+>كين كين</trademark
+>، ليس لها كتل، بل قيود على الصفوف والأعمدة فقط، ولها أقفاص حيث يجب جمع الأرقام أو طرحها أو قسمتها أو ضربها وفقًا للقيم والرموز الحسابية المكتوبة بخط صغير في زواياها. يمكن تكرار الرقم في قفص رياضيات-دوكو، ولكن ليس في نفس العمود أو الصف. على سبيل المثال، شكل L من ثلاثة مربعات بمتطلب +5 يمكن أن يكون له حلول 1 3 1 أو 2 1 2، بشرط ألا يكون الرقمان 1 أو 2 في نفس الصف أو العمود. لاحظ أن أقفاص الطرح والقسمة تحتوي دائمًا على مربعين ويمكن أن يظهر رقما الحل بأي ترتيب. على سبيل المثال، قفص 2- يمكن أن يكون حله 1 3 أو 3 1 أو 2 4 أو 4 2، إلخ.</para
+></listitem>
+	<listitem
+><para
+>نظرًا لعدم وجود كتل في أحجية رياضيات-دوكو، يمكن أن يكون لها أي حجم من 3x3 إلى 9x9، والمبدئي هو 6x6. انظر قسم <link linkend="configuration"
+>ضبط اللعبة</link
+> لمزيد من التفاصيل. لتبدأ، هناك تنويع يسمى رياضيات-دوكو 101 بحجم 4x4.</para
+></listitem>
+	</itemizedlist>
+</sect2>
+</sect1>
+
+<sect1 id="tips"
+><title
+>الاستراتيجيات والتلميحات</title>
+
+	<itemizedlist>
+	<listitem
+><para
+>خذ وقتك ولا تتعجل. كسودوكو ليست لعبة سريعة.</para
+></listitem>
+	<listitem
+><para
+>انتبه لتلوينات الصفوف والأعمدة والكتل. إنها موجودة لمساعدتك.</para
+></listitem>
+	<listitem
+><para
+>تأكد من عدم وجود رمز مكرر بالفعل في الصف أو العمود أو الكتلة حيث تدخل الرمز.</para
+></listitem>
+	<listitem
+><para
+>إذا كنت في شك، حاول أن تتوقع ما إذا كان المربع الذي تدخل فيه رمزًا قد يحتاج إليه رمز آخر، والذي بخلاف ذلك لا يمكنه الذهاب إلى أي مكان آخر بسبب قواعد الصفوف والأعمدة والكتل.</para
+></listitem>
+	<listitem
+><para
+>استخدم الإنترنت للبحث عن تلميحات واستراتيجيات عامة لحل أحاجي سودوكو.</para
+></listitem>
+	<listitem
+><para
+>استخدم حركات العلامات عندما تكتشف مربعًا أو مربعات لها بدائل قليلة فقط ولكن لا يمكنك الاختيار بينها على الفور. ستوفر العلامات عليك الوقت وجهد الذاكرة لاحقًا، عندما يتم ملء المزيد من المربعات. انظر <link linkend="howto"
+>كيف تلعب</link
+> لمزيد من التفاصيل حول كيفية استخدام العلامات.</para
+></listitem>
+	<listitem
+><para
+>إذا كنت تواجه مشكلة، حاول تتبع خطواتك ومعرفة المكان الذي ارتكبت فيه الخطأ بالضبط. يمكنك استخدام عناصر قائمة <menuchoice
+><guimenu
+>حركة</guimenu
+> <guimenuitem
+>تراجع</guimenuitem
+></menuchoice
+> و <menuchoice
+><guimenu
+>حركة</guimenu
+> <guimenuitem
+>أعد</guimenuitem
+></menuchoice
+>، بشكل متكرر إذا لزم الأمر، وهناك إعداد في <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>اضبط كسودوكو…</guimenuitem
+></menuchoice
+> يبرز الأخطاء.</para
+></listitem>
+	<listitem
+><para
+>على الرغم من أن كسودوكو يوفر لك خيار 'تلميحة'، حاول ألا تستخدمه كثيرًا. تذكر أن حل الأحجية بمفردك يعزز نشاط دماغك، بينما استخدام ميزة 'تلميحة' كثيرًا هو نوع من الغش.</para
+></listitem>
+	<listitem
+><para
+>إذا واجهت صعوبة بالغة في حل أحجية معينة واضطررت لاستخدام ميزة 'تلميحة'، فربما يجب عليك محاولة تقليل مستوى الصعوبة، أو تجربة أحجية أبسط وأكثر أساسية.</para
+></listitem>
+	<listitem
+><para
+>تتميز بعض تخطيطات الأحاجي بأشكال لوحة لعب محددة للغاية. من الجيد تمكين خيار الإبراز حتى لو كنت تعتبر نفسك لاعبًا متمرسًا.</para
+></listitem>
+	</itemizedlist>
+</sect1>
+</chapter>
+
+<chapter id="interface"
+><title
+>نظرة عامة على الواجهة</title
+> <!-- do not change this! -->
+
+<sect1 id="welcome-screen"
+><title
+>شاشة الترحيب</title>
+
+<para
+>شاشة الترحيب هي أول ما تراه عند بدء تشغيل كسودوكو أو استخدام شريط الأدوات أو القائمة لطلب لعبة جديدة. تحتوي على قائمة بجميع أنواع وأحجام الأحاجي ويمكنك النقر فوق أحدها لإجراء اختيار.</para>
+
+<para
+>إذا نقرت على الزر المسمى <guibutton
+>أدخل أحجية</guibutton
+>، فستظهر لوحة فارغة من النوع والحجم المختارين. هنا يمكنك استخدام الفأرة أو لوحة المفاتيح لإدخال أحجية من مصدر آخر، مثل صحيفة. عندما تنتهي، استخدم إجراء <guilabel
+>تحقق</guilabel
+>، من شريط الأدوات أو القائمة، للتحقق من الأحجية. يجب أن يكون لها حل واحد فقط. إذا كان الأمر كذلك، يمكنك البدء في حل الأحجية أو ربما جعل كسودوكو يحلها. إذا لم يكن هناك حل أو وجد أكثر من حل، فمن المحتمل أنك ارتكبت خطأ في إدخال البيانات في مكان ما.</para>
+
+<para
+>إذا نقرت على الزر المسمى <guibutton
+>ولد أحجية</guibutton
+>، فسيعرض كسودوكو لوحة بها بعض المربعات المملوءة بالفعل. الأمر متروك لك لملء الباقي.</para>
+
+<para
+>قبل إنشاء أحجية، تأكد من أن إعدادات مربعات القائمة المنسدلة <guilabel
+>الصعوبة:</guilabel
+> و <guilabel
+>التناظر:</guilabel
+> تناسب ذوقك. يمكنك تغييرها أثناء اللعبة، لكن لن يكون لها أي تأثير حتى يتم إنشاء الأحجية التالية.</para>
+
+	<note
+><para
+>إذا لم تتمكن من رؤية مربعات القائمة المنسدلة <guilabel
+>الصعوبة:</guilabel
+> و <guilabel
+>التناظر:</guilabel
+>، فاستخدم عنصر القائمة <menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>أظهر شريط الحالة</guimenuitem
+></menuchoice
+> للتأكد من أن شريط الحالة مرئي.</para
+></note>
+
+<para
+>يوفر مربع القائمة المنسدلة <guilabel
+>الصعوبة:</guilabel
+> ستة مستويات من الصعوبة، من <guimenuitem
+>سهل جدًا</guimenuitem
+> إلى <guimenuitem
+>صعب</guimenuitem
+>، و <guimenuitem
+>شيطاني</guimenuitem
+> و <guimenuitem
+>غير محدود</guimenuitem
+>. قد تستغرق المستويات الأسهل بضع دقائق لحلها على لوحة 9x9. قد تستغرق المستويات <guimenuitem
+>صعب</guimenuitem
+> و <guimenuitem
+>شيطاني</guimenuitem
+> ساعة أو نحو ذلك وهي تهدف إلى أن تكون معادلة للدرجات الصعبة التي تظهر في الصحف. ستستغرق أحاجي الساموراي وأحجام 16x16 أو 25x25 وقتًا أطول لحلها، ببساطة لأن هناك المزيد من الصفوف والأعمدة والكتل والمزيد من المربعات لملئها.</para>
+
+<para
+>يتطلب المستوى <guimenuitem
+>شيطاني</guimenuitem
+> عادةً تخمينًا واحدًا أو أكثر، مع التراجع إذا كان التخمين خاطئًا. يمكن عادةً حل المستويات الأدنى بالمنطق وحده. مستوى <guimenuitem
+>غير محدود</guimenuitem
+> ليس له حدود لعدد التخمينات المطلوبة، أو مدى سرعة الحاجة للتخمين الأول أو مدى تعقيد المنطق. يتم توفيره لاهتمام اللاعبين الخبراء، ولكنه يميل إلى توليد أحاجي <quote
+>غير بشرية</quote
+> غير ممتعة ولا يوصى به للاستخدام العام.</para>
+
+ <para
+>يوفر مربع القائمة المنسدلة <guilabel
+>التناظر:</guilabel
+> سبعة أنواع من التناظر، بما في ذلك <guimenuitem
+>لا تناظر</guimenuitem
+>. يتحكم هذا في تخطيط ومظهر المربعات التي يتم ملؤها عند بدء الأحجية وله تأثير جمالي بشكل أساسي، باستثناء أن الأحاجي التي لا يوجد بها تناظر تميل إلى أن تكون أصعب قليلًا من تلك التي تتمتع بتناظر عالٍ ومن غير المرجح أن يتمكن كسودوكو من توليد أحجية بصعوبة عالية وتناظر عالٍ في آن واحد.</para>
+</sect1>
+
+<!-- This section has to do with menubar. Describe every single entry in order. Use <variablelist
+> and <varlistentry
+>. Split the chapter into sections using <sect1(2,3)
+> for better viewing.-->
+<sect1 id="game-menu"
+><title
+>قائمة اللعبة</title>
+
+		<variablelist>
+			<varlistentry id="game-menu-new">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>جديد</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يبدأ لعبة جديدة.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry  id="game-menu-load">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>O</keycap
+></keycombo
+></shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>حمّل…</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يُحمّل لعبة محفوظة.</action
+></para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>S</keycap
+></keycombo
+></shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>احفظ</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يحفظ</action
+> اللعبة الحالية كملف حفظ مبدئي.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="game-menu-save-as">
+				<term
+><menuchoice
+><guimenu
+>اللعبة</guimenu
+><guimenuitem
+>حفظ باسم…</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يحفظ</action
+> اللعبة الحالية في ملف من اختيارك.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>P</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>اطبع…</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يطبع</action
+> الحالة الحالية للعبة ثنائية الأبعاد على طابعة من اختيارك. تُطبع حدود الكتل وقيم الأحجية الأصلية باللون الأسود. وتُطبع الخلايا الأخرى والقيم المملوءة وقيم الحل باللون الرمادي. هناك خيار لطباعة أحجية واحدة فقط أو أكثر من أحجية في الصفحة الواحدة. انظر <link linkend="configuration"
+>ضبط اللعبة</link
+>.</para
+></listitem>
+			</varlistentry>
+			<varlistentry>
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>لعبة</guimenu
+> <guimenuitem
+>أنهِ</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>ينهي</action
+> كسودوكو.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="move-menu">
+	<title
+>قائمة تحرك</title>
+		<variablelist>
+			<varlistentry id="move-menu-undo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حركة</guimenu
+> <guimenuitem
+>تراجع</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يتراجع</action
+> عن حركتك الأخيرة، بشكل متكرر إذا لزم الأمر.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-redo">
+				<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;&Shift;<keycap
+>Z</keycap
+></keycombo
+></shortcut
+> <guimenu
+>حركة</guimenu
+> <guimenuitem
+>أعد</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>أعد</action
+> حركة أُلغيت، تكرارًا إذا لزم الأمر.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-hint">
+				<term
+><menuchoice
+><shortcut
+> <keycap
+>H</keycap
+> </shortcut
+> <guimenu
+>نقلة</guimenu
+> <guimenuitem
+>تلميحة</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يعطي تلميحة</action
+> بملء مربع شاغر.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-demo">
+				<term
+><menuchoice
+><guimenu
+>حركة</guimenu
+> <guimenuitem
+>حل</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يحل</action
+> الأحجية فورًا.</para
+></listitem>
+			</varlistentry>
+			<varlistentry id="move-menu-shuffle">
+				<term
+><menuchoice
+><guimenu
+>حركة</guimenu
+> <guimenuitem
+>تحقق</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يتحقق</action
+> من صحة الأحجية المدخلة. إذا كان لها حل واحد فقط، تصبح متاحة للعب. إذا لم يكن لها حل أو وجد أكثر من حل، فمن المحتمل أن يكون هناك خطأ في إدخال البيانات.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+</sect1>
+<sect1 id="settings-menu">
+	<title
+>قائمة الإعدادات</title>
+		<variablelist>
+			<varlistentry id="settings-menu-settings">
+				<term
+><menuchoice
+><guimenu
+>إعدادات</guimenu
+> <guimenuitem
+>اضبط كسودوكو…</guimenuitem
+> </menuchoice
+></term>
+				<listitem
+><para
+><action
+>يفتح حوارًا لضبط كسودوكو.</action
+> انظر قسم <link linkend="configuration"
+>ضبط اللعبة</link
+> لمزيد من التفاصيل.</para
+></listitem>
+			</varlistentry>
+		</variablelist>
+		<para
+>بالإضافة إلى ذلك، يحتوي كسودوكو على عناصر قائمة كيدي الشائعة <guimenu
+>إعدادات</guimenu
+> و <guimenu
+>مساعدة</guimenu
+>، لمزيد من المعلومات اقرأ الأقسام حول <ulink url="help:/fundamentals/menus.html#menus-settings"
+>قائمة الإعدادات</ulink
+> و <ulink url="help:/fundamentals/menus.html#menus-help"
+>قائمة المساعدة</ulink
+> في أساسيات كيدي. </para>
+</sect1>
+</chapter>
+
+<chapter id="faq"
+><title
+>الأسئلة الشائعة</title
+> <!-- do not change this! -->
+<!--This chapter is for frequently asked questions. Please use <qandaset
+> <qandaentry
+> only!-->
+<qandaset>
+<!--Following is a standard list of FAQ questions.-->
+<qandaentry>
+ <question
+><para
+>أريد تغيير شكل اللعبة. هل يمكنني ذلك؟ </para
+></question>
+ <answer
+><para
+>تُلعب ألعاب سودوكو تقليديًا باستخدام شبكة مربعة. السِمات لا تعني الكثير هنا، ولكن يمكنك اختيار بعض مخططات الألوان والخلفيات. للقيام بذلك، استخدم <menuchoice
+><guimenu
+>إعدادات</guimenu
+><guimenuitem
+>اضبط كسودوكو…</guimenuitem
+></menuchoice
+> في شريط القوائم.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>هل يمكنني استخدام لوحة المفاتيح للعب هذه اللعبة؟ </para
+></question>
+ <answer
+><para
+>نعم. اللعب بلوحة المفاتيح مُمكّن دائمًا في كسودوكو. يرجى استخدام مفاتيح الأسهم لتحريك الاختيار، والشخصيات الرقمية أو الأبجدية لإدخال الرموز ومفتاح &Shift; لوضع العلامات.</para
+></answer>
+</qandaentry>
+<qandaentry>
+ <question
+><para
+>أين هي أعلى النتائج؟</para
+></question>
+ <answer
+><para
+>كسودوكو لا يحتوي على هذه الميزة.</para
+></answer>
+</qandaentry>
+<!--Please add more Q&As if needed-->
+
+</qandaset>
+</chapter>
+
+<chapter id="configuration"
+><title
+>ضبط اللعبة</title
+> <!-- do not change this! -->
+<!--This section describes configuration GUI. If your game is configured using menubar exclusively, please remove this section.-->
+
+<sect1 id="general-options"
+><title
+>خصائص اللعبة</title>
+	<variablelist>
+		<varlistentry>
+			<term
+><guilabel
+>عند الطباعة، حاول وضع أكثر من لغز واحد في الصفحة</guilabel
+></term>
+			<listitem>
+			<para
+>بدّل خيار طباعة أكثر من أحجية في الصفحة الواحدة متى ما كانت مناسبة.</para>
+			<para
+>إذا تم تحديد هذا الخيار، فسيتم طباعة الأحاجي عندما لا يتسع المزيد منها في الصفحة أو عند انتهاء كسودوكو. بخلاف ذلك، يتم طباعة الأحجية على الفور.</para>
+			<para
+>الأحاجي ثلاثية الأبعاد لا يمكن طباعتها.</para>
+			</listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>أظهر الإبرازات في ألغاز ثلاثية الأبعاد</guilabel
+></term>
+			<listitem
+><para
+>بدّل خيار الإبراز في كسودوكو للأحاجي ثنائية الأبعاد.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>أظهر الأخطاء</guilabel
+></term>
+			<listitem
+><para
+>بدّل خيار إبراز الأخطاء.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>أظهر الإبرازات في ألغاز ثلاثية الأبعاد</guilabel
+></term>
+			<listitem
+><para
+>بدّل خيار الإبراز في كسودوكو للأحاجي ثلاثية الأبعاد.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>حجم لغز رياضيات-دوكو (3-9)</guilabel
+></term>
+			<listitem
+><para
+>اختر حجمًا لأحاجي رياضيات-دوكو، من 3 (سهل جدًا) إلى 9 (صعب جدًا) مع كون الحجم 6 هو المبدئي.</para
+></listitem>
+		</varlistentry>
+		<varlistentry>
+			<term
+><guilabel
+>إعدادات ألغاز ثلاثية الأبعاد فقط</guilabel
+></term>
+			<listitem
+><para
+>تضبط هذه الإعدادات الخمسة إبراز ورؤية الخلايا في الأحاجي ثلاثية الأبعاد. الفكرة هي تسهيل رؤية العلاقات بين الخلايا، خاصة إذا كانت خلف خلايا أخرى.</para
+></listitem>
+		</varlistentry>
+	</variablelist>
+		<note
+><title
+>الملاحظة:</title
+><para
+>يوصى بتمكين خيارات الإبراز حتى بالنسبة للاعبين الأكثر خبرة، حيث يساعدك ذلك في رؤية قيود لوحة اللعبة الفعلية.</para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="credits"
+><title
+>الحقوق والترخيص</title
+> <!-- do not change this! -->
+
+<para
+>كسودوكو </para>
+
+<!--List all the copyright holders here-->
+<para
+>حقوق النشر 2005-2007 فرانشيسكو روسي <email
+>redsh@email.it</email
+></para>
+
+<para
+>حقوق النشر 2006-2007 ميك كابينبرج <email
+>ksudoku@kappenburg.net</email
+>، ويوهانس بيرجمير <email
+>johannes.bergmeier@gmx.net</email
+></para>
+
+<para
+>حقوق النشر 2011 إيان وادهام <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>خوارزميات حل وتوليد جديدة 2011 ديفيد باو، <ulink url="http://davidbau.com/archives/2006/09/04/sudoku_generator.html"
+> انظر الموقع.</ulink
+></para>
+
+<para
+>حقوق نشر التوثيق 2005 فرانشيسكو روسي <email
+>redsh@email.it</email
+></para>
+
+<para
+>حقوق نشر التوثيق 2007 ميك كابينبرج <email
+>ksudoku@kappenburg.net</email
+>، ويوجين ترونيف <email
+>eugene.trounev@gmail.com</email
+></para>
+
+<para
+>حقوق نشر التوثيق 2011-2020 إيان وادهام <email
+>iandw.au@gmail.com</email
+></para>
+
+<para
+>الترجمة: زايد السعيدي <email
+>zayed.alsaidi@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+&documentation.index;
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-minimize-attributes:nil
+sgml-general-insert-case:lower
+sgml-omittag:t
+sgml-shorttag:t
+sgml-namecase-general:t
+sgml-always-quote-attributes:t
+sgml-indent-step:0
+sgml-indent-data:nil
+sgml-parent-document:nil
+sgml-exposed-tags:nil
+sgml-local-catalogs:nil
+sgml-local-ecat-files:nil
+End:
+-->
