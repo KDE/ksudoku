@@ -147,6 +147,8 @@ SentUpstream: 2014-09-24
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=ksudoku</url>
   <url type="help">https://docs.kde.org/?application=ksudoku</url>
   <url type="donation">https://www.kde.org/community/donations/?app=ksudoku&amp;source=appdata</url>
+  <url type="vcs-browser">https://invent.kde.org/games/ksudoku/</url>
+  <url type="contribute">https://community.kde.org/Get_Involved</url>
   <screenshots>
     <screenshot type="default">
       <image>https://cdn.kde.org/screenshots/ksudoku/ksudoku.png</image>
