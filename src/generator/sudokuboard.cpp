@@ -208,7 +208,7 @@ bool SudokuBoard::generateSudokuRoxdokuTypes (BoardContents & puzzle,
                 "to 'No Symmetry' or some low symmetry type and then use 'Generate A Puzzle' again.",
                 maxTries, bestDifficulty,
                 ratingStr, difficultyRequired);
-                return false;		// Exit if the puzzle is accepted.
+                return true;		// Exit if the puzzle is accepted.
             }
         if ((d >= difficultyRequired) || (count >= maxTries)) {
             if (m_accum.nGuesses == 0) {
