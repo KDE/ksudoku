@@ -281,6 +281,7 @@ void KSudoku::startGame(const Game& game) {
 	QWidget* widget = view->widget();
 	m_gameUI = view;
 	Game g = currentGame();
+	game.setTime(0);
 	g.setMessageParent(view->widget());
 
 	wrapper->layout()->addWidget(widget);
@@ -385,6 +386,7 @@ void KSudoku::startGame(const Game& game) {
 		i18n("Data-entry for Puzzles with Cages"),
 		QStringLiteral("CageDataEntry"));
 	}
+	m_timer->start();
 }
 
 void KSudoku::gamePause() {
@@ -631,7 +633,6 @@ void KSudoku::setupStatusBar (int difficulty, int symmetry)
 	m_timer = new QTimer(this);
 	connect(m_timer, &QTimer::timeout, this, &KSudoku::setTimerDisplay);
 	m_timer->setInterval(500);
-	m_timer->start();
 }
 
 void KSudoku::adaptActions2View() {
