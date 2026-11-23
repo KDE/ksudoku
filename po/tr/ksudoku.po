@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:54+0000\n"
+"POT-Creation-Date: 2026-11-23 00:59+0000\n"
 "PO-Revision-Date: 2026-05-02 19:54+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -431,7 +431,7 @@ msgstr "Roxdoku 25 (5 × 5 × 5)"
 msgid "The Rox 3D sudoku with 25 symbols"
 msgstr "25 sembollü Rox 3B sudoku"
 
-#: src/gui/ksudoku.cpp:314
+#: src/gui/ksudoku.cpp:315
 #, kde-format
 msgid ""
 "Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
@@ -465,12 +465,12 @@ msgstr ""
 "boyutunu K Sudoku’nun Ayarlar pencresinden, en büyük kafes boyutunu K "
 "Sudoku’nun Zorluk düğmesinden seçebilirsiniz."
 
-#: src/gui/ksudoku.cpp:333
+#: src/gui/ksudoku.cpp:334
 #, kde-format
 msgid "Playing Mathdoku"
 msgstr "Mathdoku Oynamak"
 
-#: src/gui/ksudoku.cpp:337
+#: src/gui/ksudoku.cpp:338
 #, kde-format
 msgid ""
 "Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
@@ -499,12 +499,12 @@ msgstr ""
 "Genelde büyük kafesler daha zordur. K Sudoku’nun Zorluk düğmesiyle en büyük "
 "kafes boyutunu seçebilirsiniz."
 
-#: src/gui/ksudoku.cpp:351
+#: src/gui/ksudoku.cpp:352
 #, kde-format
 msgid "Playing Killer Sudoku"
 msgstr "Öldürücü Sudoku Oynamak"
 
-#: src/gui/ksudoku.cpp:355
+#: src/gui/ksudoku.cpp:356
 #, kde-format
 msgid ""
 "Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
@@ -558,17 +558,17 @@ msgstr ""
 "kafeslerle dolduğunda, Kontrol düğmesine basın. Kontrol başarısız olursa "
 "kafeslerden birinde bir hata yaptınız demektir."
 
-#: src/gui/ksudoku.cpp:385
+#: src/gui/ksudoku.cpp:386
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
 msgstr "Kafesli Bulmacalar için Veri girişi"
 
-#: src/gui/ksudoku.cpp:481
+#: src/gui/ksudoku.cpp:483
 #, kde-format
 msgid "The puzzle you entered contains some errors."
 msgstr "Girdiğiniz bulmacada bazı hatalar var."
 
-#: src/gui/ksudoku.cpp:494
+#: src/gui/ksudoku.cpp:496
 #, kde-format
 msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
@@ -577,18 +577,18 @@ msgstr ""
 "Üzgünüm, çözüm bulunamadı. Bulmacayı tam olarak ve doğru girdiğinizden emin "
 "olun."
 
-#: src/gui/ksudoku.cpp:497 src/gui/ksudoku.cpp:504 src/gui/ksudoku.cpp:510
+#: src/gui/ksudoku.cpp:499 src/gui/ksudoku.cpp:506 src/gui/ksudoku.cpp:512
 #, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Bulmacayı Denetle"
 
-#: src/gui/ksudoku.cpp:502
+#: src/gui/ksudoku.cpp:504
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr "Girdiğiniz Bulmacanın özgün bir çözümü var ve oynanmaya hazır."
 
-#: src/gui/ksudoku.cpp:507
+#: src/gui/ksudoku.cpp:509
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
@@ -597,192 +597,192 @@ msgstr ""
 "Girdiğiniz Bulmacanın birden çok çözümü var. Lütfen bulmacayı tam olarak ve "
 "doğru girdiğinizden emin olun."
 
-#: src/gui/ksudoku.cpp:513
+#: src/gui/ksudoku.cpp:515
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
 msgstr "Bulmacayı şimdi oynamak ister misiniz?"
 
-#: src/gui/ksudoku.cpp:514
+#: src/gui/ksudoku.cpp:516
 #, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Bulmaca Çöz"
 
-#: src/gui/ksudoku.cpp:515
+#: src/gui/ksudoku.cpp:517
 #, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Oyna"
 
-#: src/gui/ksudoku.cpp:556
+#: src/gui/ksudoku.cpp:558
 #, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "Tüm İletileri Etkinleştir"
 
-#: src/gui/ksudoku.cpp:573
+#: src/gui/ksudoku.cpp:575
 #, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "Denetle"
 
-#: src/gui/ksudoku.cpp:589
+#: src/gui/ksudoku.cpp:591
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "Şeytani"
 
-#: src/gui/ksudoku.cpp:591
+#: src/gui/ksudoku.cpp:593
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "Sınırsız"
 
-#: src/gui/ksudoku.cpp:602
+#: src/gui/ksudoku.cpp:604
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "Zorluk:"
 
-#: src/gui/ksudoku.cpp:606
+#: src/gui/ksudoku.cpp:608
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "Simetri:"
 
-#: src/gui/ksudoku.cpp:610
+#: src/gui/ksudoku.cpp:612
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "Simetri"
 
-#: src/gui/ksudoku.cpp:612
+#: src/gui/ksudoku.cpp:614
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr "Bulmaca başlarken ipuçlarının yerleşim simetrisi"
 
-#: src/gui/ksudoku.cpp:614
+#: src/gui/ksudoku.cpp:616
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "Köşegen"
 
-#: src/gui/ksudoku.cpp:615
+#: src/gui/ksudoku.cpp:617
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "Merkez"
 
-#: src/gui/ksudoku.cpp:616
+#: src/gui/ksudoku.cpp:618
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "Sol–Sağ"
 
-#: src/gui/ksudoku.cpp:617
+#: src/gui/ksudoku.cpp:619
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "Kıvrılma"
 
-#: src/gui/ksudoku.cpp:618
+#: src/gui/ksudoku.cpp:620
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "Dört Yönlü"
 
-#: src/gui/ksudoku.cpp:619
+#: src/gui/ksudoku.cpp:621
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "Rasgele Seçim"
 
-#: src/gui/ksudoku.cpp:620
+#: src/gui/ksudoku.cpp:622
 #, kde-format
 msgid "No Symmetry"
 msgstr "Simetri Yok"
 
-#: src/gui/ksudoku.cpp:629
+#: src/gui/ksudoku.cpp:631
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
 msgstr "Geçen süre:"
 
-#: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
+#: src/gui/ksudoku.cpp:739 src/gui/ksudoku.cpp:802
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr "Oyun Yüklenirken Hata"
 
-#: src/gui/ksudoku.cpp:754
+#: src/gui/ksudoku.cpp:755
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr ""
 "Gerçekten yeni bir oyuna başlamak için bu oyunu bitirmek istiyor musunuz?"
 
-#: src/gui/ksudoku.cpp:755
+#: src/gui/ksudoku.cpp:756
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
 msgstr "Yeni Oyun"
 
-#: src/gui/ksudoku.cpp:756
+#: src/gui/ksudoku.cpp:757
 #, kde-format
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "Yeni Oyun"
 
-#: src/gui/ksudoku.cpp:772
+#: src/gui/ksudoku.cpp:773
 #, kde-format
 msgid "Do you really want to restart this game?"
 msgstr "Bu oyunu yeniden başlatmayı gerçekten istiyor musunuz?"
 
-#: src/gui/ksudoku.cpp:773
+#: src/gui/ksudoku.cpp:774
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "Oyunu Yeniden Başlat"
 
-#: src/gui/ksudoku.cpp:774
+#: src/gui/ksudoku.cpp:775
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Oyunu Yeniden Başlat"
 
-#: src/gui/ksudoku.cpp:830
+#: src/gui/ksudoku.cpp:831
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Dosyaya Yazmada Hata"
 
-#: src/gui/ksudoku.cpp:841
+#: src/gui/ksudoku.cpp:842
 #, kde-format
 msgid "Game_"
 msgstr "Oyun"
 
-#: src/gui/ksudoku.cpp:845
+#: src/gui/ksudoku.cpp:846
 #, kde-format
 msgid "Save Game"
 msgstr "Oyunu Kaydet"
 
-#: src/gui/ksudoku.cpp:857
+#: src/gui/ksudoku.cpp:858
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "Yazdırılacak bir bulmaca yok gibi görünüyor."
 
-#: src/gui/ksudoku.cpp:894
+#: src/gui/ksudoku.cpp:895
 #, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Oyun"
 
-#: src/gui/ksudoku.cpp:895
+#: src/gui/ksudoku.cpp:896
 #, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
 
-#: src/gui/ksudoku.cpp:927
+#: src/gui/ksudoku.cpp:928
 #, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
@@ -799,13 +799,13 @@ msgstr ""
 "Ayrıca bu tür bulmacayı oluşturmak diğerlerinden daha uzun sürer. K Sudoku, "
 "bu süre boyunca yanıt vermeyecektir."
 
-#: src/gui/ksudoku.cpp:934
+#: src/gui/ksudoku.cpp:935
 #, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Uyarı"
 
-#: src/gui/ksudoku.cpp:974
+#: src/gui/ksudoku.cpp:975
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -818,7 +818,7 @@ msgstr ""
 "\n"
 "Sürdürmek istiyor musunuz?"
 
-#: src/gui/ksudoku.cpp:978
+#: src/gui/ksudoku.cpp:979
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"

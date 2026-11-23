@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksudoku\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2026-11-08 02:54+0000\n"
+"POT-Creation-Date: 2026-11-23 00:59+0000\n"
 "PO-Revision-Date: 2025-03-23 07:29+0100\n"
 "Last-Translator: Oliver Kellogg <olivermkellogg@gmail.com>\n"
 "Language-Team: Esperanto <kde-i18n-doc@kde.org>\n"
@@ -436,7 +436,7 @@ msgstr "Roxdoko 25 (5x5x5)"
 msgid "The Rox 3D sudoku with 25 symbols"
 msgstr "La Rox 3D sudoko kun 25 simboloj"
 
-#: src/gui/ksudoku.cpp:314
+#: src/gui/ksudoku.cpp:315
 #, kde-format
 msgid ""
 "Mathdoku puzzles can have any size from 3x3 up to 9x9. The solution is a "
@@ -469,12 +469,12 @@ msgstr ""
 "kaĝoj. . Vi povas elekti la enigmon en la dialogo Agordoj de KSudoku kaj la "
 "maksimuman kaĝgrandecon per la butono de Malfacilaĵo de KSudoku."
 
-#: src/gui/ksudoku.cpp:333
+#: src/gui/ksudoku.cpp:334
 #, kde-format
 msgid "Playing Mathdoku"
 msgstr "Ludante Mathdoku"
 
-#: src/gui/ksudoku.cpp:337
+#: src/gui/ksudoku.cpp:338
 #, kde-format
 msgid ""
 "Killer Sudoku puzzles can have sizes 4x4 or 9x9, with either four 2x2 blocks "
@@ -501,12 +501,12 @@ msgstr ""
 "Ĝenerale, pli grandaj kaĝoj estas pli malfacilaj. Vi povas elekti la "
 "maksimuman kaĝgrandecon per la butono de Malfacileco de KSudoku."
 
-#: src/gui/ksudoku.cpp:351
+#: src/gui/ksudoku.cpp:352
 #, kde-format
 msgid "Playing Killer Sudoku"
 msgstr "Ludante Killer-Sudoku"
 
-#: src/gui/ksudoku.cpp:355
+#: src/gui/ksudoku.cpp:356
 #, kde-format
 msgid ""
 "Mathdoku and Killer Sudoku puzzles have to be keyed in by working on one "
@@ -560,17 +560,17 @@ msgstr ""
 "la enigmon kaj certigi, ke ekzistas nur unu solvo. Se la kontrolo "
 "malsukcesas, vi verŝajne faris eraron ie en unu el la kaĝoj."
 
-#: src/gui/ksudoku.cpp:385
+#: src/gui/ksudoku.cpp:386
 #, kde-format
 msgid "Data-entry for Puzzles with Cages"
 msgstr "Enigo de datumoj por Enigmoj kun Kaĝoj"
 
-#: src/gui/ksudoku.cpp:481
+#: src/gui/ksudoku.cpp:483
 #, kde-format
 msgid "The puzzle you entered contains some errors."
 msgstr "La ludo, kiun vi kreis enhavas erarojn."
 
-#: src/gui/ksudoku.cpp:494
+#: src/gui/ksudoku.cpp:496
 #, kde-format
 msgid ""
 "Sorry, no solutions have been found. Please check that you have entered in "
@@ -579,20 +579,20 @@ msgstr ""
 "Pardonu, neniuj solvoj estis trovitaj. Bonvolu kontroli, ke vi eniris la "
 "enigmon tute kaj ĝuste."
 
-#: src/gui/ksudoku.cpp:497 src/gui/ksudoku.cpp:504 src/gui/ksudoku.cpp:510
+#: src/gui/ksudoku.cpp:499 src/gui/ksudoku.cpp:506 src/gui/ksudoku.cpp:512
 #, kde-format
 msgctxt "@title:window"
 msgid "Check Puzzle"
 msgstr "Kontroli Puzlon"
 
-#: src/gui/ksudoku.cpp:502
+#: src/gui/ksudoku.cpp:504
 #, kde-format
 msgid "The Puzzle you entered has a unique solution and is ready to be played."
 msgstr ""
 "La Enigmo, kiun vi enigis, havas unikan solvon kaj estas preta por esti "
 "ludita."
 
-#: src/gui/ksudoku.cpp:507
+#: src/gui/ksudoku.cpp:509
 #, kde-format
 msgid ""
 "The Puzzle you entered has multiple solutions. Please check that you have "
@@ -601,191 +601,191 @@ msgstr ""
 "La Enigmo, kiun vi enigis, havas plurajn solvojn. Bonvolu kontroli, ke vi "
 "eniris la enigmon tute kaj ĝuste."
 
-#: src/gui/ksudoku.cpp:513
+#: src/gui/ksudoku.cpp:515
 #, kde-format
 msgid "Do you wish to play the puzzle now?"
 msgstr "Ĉu vi volas ludi la enigmon nun?"
 
-#: src/gui/ksudoku.cpp:514
+#: src/gui/ksudoku.cpp:516
 #, kde-format
 msgctxt "@title:window"
 msgid "Play Puzzle"
 msgstr "Ludi"
 
-#: src/gui/ksudoku.cpp:515
+#: src/gui/ksudoku.cpp:517
 #, kde-format
 msgctxt "@action:button"
 msgid "Play"
 msgstr "Ludi"
 
-#: src/gui/ksudoku.cpp:556
+#: src/gui/ksudoku.cpp:558
 #, kde-format
 msgctxt "@action"
 msgid "Enable All Messages"
 msgstr "Ebligi Ĉiujn Mesaĝojn"
 
-#: src/gui/ksudoku.cpp:573
+#: src/gui/ksudoku.cpp:575
 #, kde-format
 msgctxt "@action"
 msgid "Check"
 msgstr "Kontroli"
 
-#: src/gui/ksudoku.cpp:589
+#: src/gui/ksudoku.cpp:591
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Diabolical"
 msgstr "Diabla"
 
-#: src/gui/ksudoku.cpp:591
+#: src/gui/ksudoku.cpp:593
 #, kde-format
 msgctxt "A level of difficulty in Sudoku puzzles"
 msgid "Unlimited"
 msgstr "Senlima"
 
-#: src/gui/ksudoku.cpp:602
+#: src/gui/ksudoku.cpp:604
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Difficulty:"
 msgstr "Malfacileco:"
 
-#: src/gui/ksudoku.cpp:606
+#: src/gui/ksudoku.cpp:608
 #, kde-format
 msgctxt "@option drop down box"
 msgid "Symmetry:"
 msgstr "Simetrio:"
 
-#: src/gui/ksudoku.cpp:610
+#: src/gui/ksudoku.cpp:612
 #, kde-format
 msgctxt "Symmetry of layout of clues when puzzle starts"
 msgid "Symmetry"
 msgstr "Simetrio"
 
-#: src/gui/ksudoku.cpp:612
+#: src/gui/ksudoku.cpp:614
 #, kde-format
 msgid "The symmetry of layout of the clues when the puzzle starts"
 msgstr "La simetrio de aranĝo de la indicoj kiam la enigmo komenciĝas"
 
-#: src/gui/ksudoku.cpp:614
+#: src/gui/ksudoku.cpp:616
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Diagonal"
 msgstr "Diagonala"
 
-#: src/gui/ksudoku.cpp:615
+#: src/gui/ksudoku.cpp:617
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Central"
 msgstr "Centra"
 
-#: src/gui/ksudoku.cpp:616
+#: src/gui/ksudoku.cpp:618
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Left-Right"
 msgstr "Maldekstra-Dekstra"
 
-#: src/gui/ksudoku.cpp:617
+#: src/gui/ksudoku.cpp:619
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Spiral"
 msgstr "Spiralo"
 
-#: src/gui/ksudoku.cpp:618
+#: src/gui/ksudoku.cpp:620
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Four-Way"
 msgstr "Kvar-Voja"
 
-#: src/gui/ksudoku.cpp:619
+#: src/gui/ksudoku.cpp:621
 #, kde-format
 msgctxt "Symmetry of layout of clues"
 msgid "Random Choice"
 msgstr "Hazarda Elekto"
 
-#: src/gui/ksudoku.cpp:620
+#: src/gui/ksudoku.cpp:622
 #, kde-format
 msgid "No Symmetry"
 msgstr "Neniu Simetrio"
 
-#: src/gui/ksudoku.cpp:629
+#: src/gui/ksudoku.cpp:631
 #, kde-format
 msgctxt "@action"
 msgid "Elapsed Time:"
 msgstr ""
 
-#: src/gui/ksudoku.cpp:738 src/gui/ksudoku.cpp:801
+#: src/gui/ksudoku.cpp:739 src/gui/ksudoku.cpp:802
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Loading Game"
 msgstr "Eraro Ŝargante Ludon"
 
-#: src/gui/ksudoku.cpp:754
+#: src/gui/ksudoku.cpp:755
 #, kde-format
 msgid "Do you really want to end this game in order to start a new one?"
 msgstr "̈̈Ĉu vi vere volas fini tiun ludon kaj komenci novan?"
 
-#: src/gui/ksudoku.cpp:755
+#: src/gui/ksudoku.cpp:756
 #, kde-format
 msgctxt "window title"
 msgid "New Game"
 msgstr "Nova Ludo"
 
-#: src/gui/ksudoku.cpp:756
+#: src/gui/ksudoku.cpp:757
 #, kde-format
 msgctxt "@action:button"
 msgid "New Game"
 msgstr "Nova Ludo"
 
-#: src/gui/ksudoku.cpp:772
+#: src/gui/ksudoku.cpp:773
 #, kde-format
 msgid "Do you really want to restart this game?"
 msgstr "Ĉu vi vere volas rekomenci ĉi tiun ludon?"
 
-#: src/gui/ksudoku.cpp:773
+#: src/gui/ksudoku.cpp:774
 #, kde-format
 msgctxt "window title"
 msgid "Restart Game"
 msgstr "Rekomenci Ludon"
 
-#: src/gui/ksudoku.cpp:774
+#: src/gui/ksudoku.cpp:775
 #, kde-format
 msgctxt "@action:button"
 msgid "Restart Game"
 msgstr "Rekomenci Ludon"
 
-#: src/gui/ksudoku.cpp:830
+#: src/gui/ksudoku.cpp:831
 #, kde-format
 msgctxt "@title:window"
 msgid "Error Writing File"
 msgstr "Eraro dum Skriba Dosiero"
 
-#: src/gui/ksudoku.cpp:841
+#: src/gui/ksudoku.cpp:842
 #, kde-format
 msgid "Game_"
 msgstr "Ludo_"
 
-#: src/gui/ksudoku.cpp:845
+#: src/gui/ksudoku.cpp:846
 #, kde-format
 msgid "Save Game"
 msgstr "Konservi Ludon"
 
-#: src/gui/ksudoku.cpp:857
+#: src/gui/ksudoku.cpp:858
 #, kde-format
 msgid "There seems to be no puzzle to print."
 msgstr "Ŝajnas esti neniu enigmo por presi."
 
-#: src/gui/ksudoku.cpp:894
+#: src/gui/ksudoku.cpp:895
 #, kde-format
 msgctxt "@title:tab Game Section in Config"
 msgid "Game"
 msgstr "Ludo"
 
-#: src/gui/ksudoku.cpp:895
+#: src/gui/ksudoku.cpp:896
 #, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Etoso"
 
-#: src/gui/ksudoku.cpp:927
+#: src/gui/ksudoku.cpp:928
 #, kde-format
 msgid ""
 "Warning: The Unlimited difficulty level has no limit on how many guesses or "
@@ -802,13 +802,13 @@ msgstr ""
 "Bonvolu noti ankaŭ, ke la generacio de ĉi tiu speco de enigmo eble povus. "
 "daŭras multe pli longe ol aliaj. Dum ĉi tiu tempo KSudoku ne respondos."
 
-#: src/gui/ksudoku.cpp:934
+#: src/gui/ksudoku.cpp:935
 #, kde-format
 msgctxt "@title:window"
 msgid "Warning"
 msgstr "Averto"
 
-#: src/gui/ksudoku.cpp:974
+#: src/gui/ksudoku.cpp:975
 #, kde-format
 msgid ""
 "This will enable all the dialogs that you had disabled by marking the 'Do "
@@ -821,7 +821,7 @@ msgstr ""
 "\n"
 "Ĉu vi volas daŭrigi?"
 
-#: src/gui/ksudoku.cpp:978
+#: src/gui/ksudoku.cpp:979
 #, kde-format
 msgctxt "@action:button"
 msgid "Enable"
