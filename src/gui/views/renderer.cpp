@@ -58,7 +58,7 @@ Renderer::Renderer() {
 		}
 	}
 	loadTheme(provider->currentTheme());
-	QObject::connect(m_themeProvider, &KGameThemeProvider::currentThemeChanged, [this](const KGameTheme* theme) {
+	QObject::connect(m_themeProvider, &KGameThemeProvider::currentThemeChanged, m_themeProvider, [this](const KGameTheme* theme) {
 		loadTheme(theme);
 	});
 
